@@ -1,0 +1,38 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy to Cloudflare Pages
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Add noindex meta tags
+        run: |
+          # Add noindex, nofollow to all HTML files
+          find . -name "*.html" -type f -exec sed -i '/<head>/a \ \ <meta name="robots" content="noindex, nofollow">' {} \;
+        
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: 805companies-luxury
+          directory: ./
+          # Optional: Add build command if needed
+          # buildCommand: echo "Building site"
+          
+      - name: Post-deployment check
+        run: |
+          echo "✅ Deployment completed successfully!"
+          echo "🌐 Site URL: https://805companies-luxury.pages.dev"
