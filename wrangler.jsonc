@@ -1,9 +1,0 @@
-{
-  "name": "805companies-luxury",
-  "compatibility_date": "2025-07-23",
-  "assets": {
-    "directory": "./",
-    "include": ["**/*"],
-    "exclude": [".git/**", "README.md", ".gitignore"]
-  }
-}
