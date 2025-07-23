@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Distinguished Estates & Premium Events | 805 LifeGuard</title>
-    <meta name="description" content="Explore our portfolio of luxury aquatic services delivered to Southern California's most prestigious estates and exclusive events.">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Client Portfolio - 805 LifeGuard | Luxury Estate Projects & Success Stories</title>
+    <meta name="description" content="Explore our portfolio of distinguished estates and successful aquatic safety projects across Southern California's most prestigious properties.">
     
     <!-- Luxury Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
@@ -16,6 +17,10 @@
     
     <!-- Luxury Theme CSS -->
     <link rel="stylesheet" href="css/luxury-theme.css">
+    
+    <!-- Preload critical images -->
+    <link rel="preload" as="image" href="images/gallery/gallery-estate-pool-01-800x600.jpg">
+    <link rel="preload" as="image" href="images/805-lifeguard-logo.png">
 </head>
 <body>
     <!-- Header -->
@@ -27,11 +32,11 @@
                     <span>Licensed, Bonded & Insured Since 2016</span>
                 </div>
                 <div class="header-top-contact">
-                    <a href="tel:+18058051234">
+                    <a href="tel:+18058051234" aria-label="Call us at 805-805-1234">
                         <i class="fas fa-phone"></i>
                         (805) 805-1234
                     </a>
-                    <a href="mailto:concierge@805lifeguard.com">
+                    <a href="mailto:concierge@805lifeguard.com" aria-label="Email our concierge team">
                         <i class="fas fa-envelope"></i>
                         concierge@805lifeguard.com
                     </a>
@@ -40,8 +45,8 @@
         </div>
         
         <nav class="navbar">
-            <a href="/" class="logo">
-                <img src="https://805companies.com/images/805-lifeguard-logo.png" alt="805 LifeGuard" class="logo-img" onerror="this.style.display='none'">
+            <a href="/" class="logo" aria-label="805 LifeGuard Home">
+                <img src="images/805-lifeguard-logo.png" alt="805 LifeGuard Premium Logo" class="logo-img">
                 <div class="logo-text">
                     <div class="logo-main">805 LifeGuard</div>
                     <div class="logo-subtitle">Premier Aquatic Services</div>
@@ -49,41 +54,49 @@
             </a>
             
             <!-- Mobile Menu Toggle -->
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             
-            <ul class="nav-links" id="navLinks">
-                <li><a href="/about" class="nav-link">About</a></li>
-                <li><a href="/services" class="nav-link">Services</a></li>
-                <li><a href="/#coverage" class="nav-link">Coverage Areas</a></li>
-                <li><a href="/portfolio" class="nav-link active">Portfolio</a></li>
-                <li><a href="/contact" class="nav-link portal">Private Consultation</a></li>
+            <ul class="nav-links" id="navLinks" aria-hidden="true">
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="portfolio.html" class="nav-link active">Portfolio</a></li>
+                <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                <li class="nav-portals">
+                    <a href="https://client.805lifeguard.com" class="nav-link portal-link" target="_blank">
+                        <i class="fas fa-user-circle"></i>
+                        Client Portal
+                    </a>
+                    <a href="https://admin.805lifeguard.com" class="nav-link admin-link" target="_blank">
+                        <i class="fas fa-shield-alt"></i>
+                        Admin
+                    </a>
+                </li>
+                <li><a href="contact.html" class="nav-link btn-consultation">
+                    <i class="fas fa-calendar-check"></i>
+                    Private Consultation
+                </a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="portfolio-hero">
+    <!-- Portfolio Hero Section -->
+    <section class="portfolio-hero" style="background-image: linear-gradient(rgba(10, 22, 40, 0.6), rgba(10, 22, 40, 0.7)), url('images/gallery/gallery-estate-pool-01-800x600.jpg');">
         <div class="hero-content">
             <div class="hero-badge">
-                <i class="fas fa-star"></i>
-                500+ Premium Events Since 2016
+                <i class="fas fa-crown"></i>
+                Distinguished Estate Portfolio
             </div>
-            <h1>Distinguished Estates & Exclusive Events</h1>
+            
+            <h1>Showcasing Excellence Across Southern California</h1>
+            
             <p class="hero-subtitle">
-                A curated selection of the luxury properties and prestigious events where our services 
-                have provided peace of mind to Southern California's most discerning families.
+                From intimate family pools to grand estate gatherings, explore our portfolio of successful 
+                aquatic safety and instruction projects at some of Southern California's most prestigious properties.
             </p>
-        </div>
-        
-        <!-- Background Video/Image -->
-        <div class="hero-background">
-            <img src="https://805companies.com/images/portfolio-hero.jpg" alt="Luxury pool estate" 
-                 onerror="this.onerror=null; this.src='https://805companies.com/images/hero-bg.jpg'">
-            <div class="hero-overlay"></div>
         </div>
     </section>
 
@@ -95,21 +108,21 @@
                     <i class="fas fa-th"></i>
                     All Projects
                 </button>
-                <button class="filter-btn" data-category="estates">
-                    <i class="fas fa-home"></i>
-                    Private Estates
-                </button>
-                <button class="filter-btn" data-category="events">
-                    <i class="fas fa-glass-cheers"></i>
-                    Exclusive Events
+                <button class="filter-btn" data-category="lifeguarding">
+                    <i class="fas fa-shield-alt"></i>
+                    Estate Lifeguarding
                 </button>
                 <button class="filter-btn" data-category="instruction">
                     <i class="fas fa-swimming-pool"></i>
                     Swimming Instruction
                 </button>
-                <button class="filter-btn" data-category="commercial">
-                    <i class="fas fa-building"></i>
-                    Commercial Projects
+                <button class="filter-btn" data-category="events">
+                    <i class="fas fa-champagne-glasses"></i>
+                    Luxury Events
+                </button>
+                <button class="filter-btn" data-category="estates">
+                    <i class="fas fa-home"></i>
+                    Featured Estates
                 </button>
             </div>
         </div>
@@ -118,288 +131,262 @@
     <!-- Portfolio Gallery -->
     <section class="portfolio-gallery">
         <div class="container">
-            <div class="gallery-grid" id="portfolioGrid">
-                
-                <!-- Private Estate Projects -->
-                <div class="portfolio-item" data-category="estates">
+            <div class="gallery-grid">
+                <!-- Estate Lifeguarding Projects -->
+                <article class="portfolio-item" data-category="lifeguarding">
                     <div class="portfolio-image">
-                        <img src="https://805companies.com/images/malibu-estate-1.jpg" alt="Malibu Oceanfront Estate" 
-                             onerror="this.src='https://805companies.com/images/hero-bg.jpg'">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-content">
-                                <div class="portfolio-badge">Private Estate</div>
-                                <h3>Malibu Oceanfront Estate</h3>
-                                <p>Ongoing private lifeguarding and swimming instruction for multi-generational family</p>
-                                <div class="portfolio-details">
-                                    <span class="detail-item">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        Malibu, CA
-                                    </span>
-                                    <span class="detail-item">
-                                        <i class="fas fa-calendar"></i>
-                                        2019-Present
-                                    </span>
+                        <img src="images/gallery/gallery-estate-pool-01-800x600.jpg" alt="Luxury estate pool with professional lifeguarding services" loading="lazy">
+                    </div>
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-content">
+                            <div class="portfolio-badge">Estate Lifeguarding</div>
+                            <h3>Westlake Village Estate</h3>
+                            <p>Providing discreet daily lifeguarding services for a distinguished family with young children, ensuring peace of mind during pool activities.</p>
+                            <div class="portfolio-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Daily Coverage</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Family of 5</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>2+ Years</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="portfolio-item" data-category="estates">
+                <article class="portfolio-item" data-category="instruction">
                     <div class="portfolio-image">
-                        <img src="https://805companies.com/images/thousand-oaks-estate.jpg" alt="Thousand Oaks Private Estate" 
-                             onerror="this.src='https://805companies.com/images/lifeguard-1.jpg'">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-content">
-                                <div class="portfolio-badge">Private Estate</div>
-                                <h3>Thousand Oaks Estate</h3>
-                                <p>Premium pool management and family swim instruction program</p>
-                                <div class="portfolio-details">
-                                    <span class="detail-item">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        Thousand Oaks, CA
-                                    </span>
-                                    <span class="detail-item">
-                                        <i class="fas fa-users"></i>
-                                        Family of 6
-                                    </span>
+                        <img src="images/gallery/gallery-swim-lesson-01-800x600.jpg" alt="Private swimming instruction session" loading="lazy">
+                    </div>
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-content">
+                            <div class="portfolio-badge">Swimming Instruction</div>
+                            <h3>Agoura Hills Family Program</h3>
+                            <p>Customized swimming lessons for three children with varying skill levels, building confidence and technique in a private setting.</p>
+                            <div class="portfolio-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>All Skill Levels</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-heart"></i>
+                                    <span>Special Needs</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-trophy"></i>
+                                    <span>Success Story</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="portfolio-item" data-category="estates">
+                <article class="portfolio-item" data-category="events">
                     <div class="portfolio-image">
-                        <img src="https://805companies.com/images/beverly-hills-estate.jpg" alt="Beverly Hills Luxury Estate" 
-                             onerror="this.src='https://805companies.com/images/swim-lesson-1.jpg'">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-content">
-                                <div class="portfolio-badge">Private Estate</div>
-                                <h3>Beverly Hills Luxury Residence</h3>
-                                <p>Special needs swimming instruction and estate security services</p>
-                                <div class="portfolio-details">
-                                    <span class="detail-item">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        Beverly Hills, CA
-                                    </span>
-                                    <span class="detail-item">
-                                        <i class="fas fa-heart"></i>
-                                        Special Needs
-                                    </span>
+                        <img src="images/services/service-events-800x600.jpg" alt="Luxury pool party with professional safety management" loading="lazy">
+                    </div>
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-content">
+                            <div class="portfolio-badge">Event Management</div>
+                            <h3>Thousand Oaks Corporate Retreat</h3>
+                            <p>Comprehensive aquatic safety management for a 50-person executive retreat featuring pool activities and entertainment.</p>
+                            <div class="portfolio-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-building"></i>
+                                    <span>Corporate</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>50 Guests</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-star"></i>
+                                    <span>Premium Service</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <!-- Exclusive Events -->
-                <div class="portfolio-item" data-category="events">
+                <article class="portfolio-item" data-category="estates">
                     <div class="portfolio-image">
-                        <img src="https://805companies.com/images/corporate-event-1.jpg" alt="Corporate Executive Retreat" 
-                             onerror="this.src='https://805companies.com/images/party-1.jpg'">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-content">
-                                <div class="portfolio-badge">Corporate Event</div>
-                                <h3>Executive Retreat - Fortune 500</h3>
-                                <p>3-day corporate retreat with aquatic safety oversight for 150 executives</p>
-                                <div class="portfolio-details">
-                                    <span class="detail-item">
-                                        <i class="fas fa-building"></i>
-                                        Fortune 500 Company
-                                    </span>
-                                    <span class="detail-item">
-                                        <i class="fas fa-users"></i>
-                                        150 Guests
-                                    </span>
+                        <img src="images/hero/hero-luxury-estate-1600x1200.jpg" alt="Magnificent estate pool environment" loading="lazy">
+                    </div>
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-content">
+                            <div class="portfolio-badge">Featured Estate</div>
+                            <h3>Malibu Oceanfront Property</h3>
+                            <p>Multi-level pool complex requiring specialized safety protocols and discrete professional oversight for high-profile clientele.</p>
+                            <div class="portfolio-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-water"></i>
+                                    <span>Multi-Level Pool</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-user-secret"></i>
+                                    <span>High Profile</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>Security Cleared</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="portfolio-item" data-category="events">
+                <article class="portfolio-item" data-category="instruction">
                     <div class="portfolio-image">
-                        <img src="https://805companies.com/images/wedding-event.jpg" alt="Luxury Wedding Reception" 
-                             onerror="this.src='https://805companies.com/images/pool-party.jpg'">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-content">
-                                <div class="portfolio-badge">Wedding Event</div>
-                                <h3>Luxury Wedding Reception</h3>
-                                <p>Poolside wedding celebration with discrete safety oversight</p>
-                                <div class="portfolio-details">
-                                    <span class="detail-item">
-                                        <i class="fas fa-heart"></i>
-                                        Wedding Reception
-                                    </span>
-                                    <span class="detail-item">
-                                        <i class="fas fa-users"></i>
-                                        200 Guests
-                                    </span>
+                        <img src="images/about/about-team-action-800x600.jpg" alt="Adult swimming instruction session" loading="lazy">
+                    </div>
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-content">
+                            <div class="portfolio-badge">Adult Instruction</div>
+                            <h3>Executive Swimming Program</h3>
+                            <p>Confidence-building swimming lessons for a busy executive who wanted to overcome water anxiety and enjoy pool activities with family.</p>
+                            <div class="portfolio-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-briefcase"></i>
+                                    <span>Executive</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-heart"></i>
+                                    <span>Confidence Building</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>Flexible Schedule</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="portfolio-item" data-category="events">
+                <article class="portfolio-item" data-category="events">
                     <div class="portfolio-image">
-                        <img src="https://805companies.com/images/charity-gala.jpg" alt="Charity Gala Event" 
-                             onerror="this.src='https://805companies.com/images/hero-bg.jpg'">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-content">
-                                <div class="portfolio-badge">Charity Gala</div>
-                                <h3>Annual Charity Gala</h3>
-                                <p>High-profile fundraising event with VIP aquatic safety management</p>
-                                <div class="portfolio-details">
-                                    <span class="detail-item">
-                                        <i class="fas fa-star"></i>
-                                        Celebrity Guests
-                                    </span>
-                                    <span class="detail-item">
-                                        <i class="fas fa-shield-alt"></i>
-                                        VIP Security
-                                    </span>
+                        <img src="images/gallery/gallery-estate-pool-01-800x600.jpg" alt="Wedding reception with pool safety management" loading="lazy">
+                    </div>
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-content">
+                            <div class="portfolio-badge">Special Event</div>
+                            <h3>Westlake Village Wedding</h3>
+                            <p>Elegant wedding reception with poolside ceremony requiring invisible safety management throughout the evening celebration.</p>
+                            <div class="portfolio-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-heart"></i>
+                                    <span>Wedding</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>100 Guests</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-moon"></i>
+                                    <span>Evening Event</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <!-- Swimming Instruction -->
-                <div class="portfolio-item" data-category="instruction">
+                <article class="portfolio-item" data-category="lifeguarding">
                     <div class="portfolio-image">
-                        <img src="https://805companies.com/images/family-lessons.jpg" alt="Family Swimming Lessons" 
-                             onerror="this.src='https://805companies.com/images/swim-lessons.jpg'">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-content">
-                                <div class="portfolio-badge">Swimming Instruction</div>
-                                <h3>Multi-Generational Family Program</h3>
-                                <p>Customized swimming program for ages 3-75, all skill levels</p>
-                                <div class="portfolio-details">
-                                    <span class="detail-item">
-                                        <i class="fas fa-users"></i>
-                                        3 Generations
-                                    </span>
-                                    <span class="detail-item">
-                                        <i class="fas fa-medal"></i>
-                                        Olympic Techniques
-                                    </span>
+                        <img src="images/services/service-lifeguarding-800x600.jpg" alt="Private estate lifeguarding service" loading="lazy">
+                    </div>
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-content">
+                            <div class="portfolio-badge">Estate Lifeguarding</div>
+                            <h3>Hidden Hills Celebrity Estate</h3>
+                            <p>Ongoing aquatic safety services for a celebrity family requiring the highest levels of discretion and professional security clearance.</p>
+                            <div class="portfolio-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-user-secret"></i>
+                                    <span>Celebrity Client</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>On-Call 24/7</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>Security Cleared</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="portfolio-item" data-category="instruction">
+                <article class="portfolio-item" data-category="instruction">
                     <div class="portfolio-image">
-                        <img src="https://805companies.com/images/special-needs-lessons.jpg" alt="Special Needs Swimming Program" 
-                             onerror="this.src='https://805companies.com/images/instructor.jpg'">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-content">
-                                <div class="portfolio-badge">Special Needs Program</div>
-                                <h3>Adaptive Swimming Program</h3>
-                                <p>Specialized instruction for children with developmental challenges</p>
-                                <div class="portfolio-details">
-                                    <span class="detail-item">
-                                        <i class="fas fa-heart"></i>
-                                        Special Needs
-                                    </span>
-                                    <span class="detail-item">
-                                        <i class="fas fa-trophy"></i>
-                                        Success Stories
-                                    </span>
+                        <img src="images/gallery/gallery-swim-lesson-01-800x600.jpg" alt="Special needs swimming instruction" loading="lazy">
+                    </div>
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-content">
+                            <div class="portfolio-badge">Special Needs Program</div>
+                            <h3>Therapeutic Swimming Program</h3>
+                            <p>Specialized aquatic therapy and swimming instruction for a child with autism, focusing on sensory integration and water confidence.</p>
+                            <div class="portfolio-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-heart"></i>
+                                    <span>Special Needs</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-medkit"></i>
+                                    <span>Therapeutic</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Certified Program</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="portfolio-item" data-category="instruction">
+                <article class="portfolio-item" data-category="estates">
                     <div class="portfolio-image">
-                        <img src="https://805companies.com/images/adult-lessons.jpg" alt="Executive Swimming Coaching" 
-                             onerror="this.src='https://805companies.com/images/about-1.jpg'">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-content">
-                                <div class="portfolio-badge">Executive Coaching</div>
-                                <h3>Executive Swimming Coaching</h3>
-                                <p>Private technique refinement for competitive executive swimmer</p>
-                                <div class="portfolio-details">
-                                    <span class="detail-item">
-                                        <i class="fas fa-briefcase"></i>
-                                        Executive Client
-                                    </span>
-                                    <span class="detail-item">
-                                        <i class="fas fa-stopwatch"></i>
-                                        Performance Focus
-                                    </span>
+                        <img src="images/hero/hero-luxury-pool-1600x1200.jpg" alt="Luxury resort-style estate pool" loading="lazy">
+                    </div>
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-content">
+                            <div class="portfolio-badge">Featured Estate</div>
+                            <h3>Calabasas Resort-Style Estate</h3>
+                            <p>Comprehensive aquatic services for a resort-style estate featuring multiple pools, spa, and water features requiring specialized expertise.</p>
+                            <div class="portfolio-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-water"></i>
+                                    <span>Multi-Pool Complex</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-spa"></i>
+                                    <span>Spa Features</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-crown"></i>
+                                    <span>Ultra-Luxury</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Commercial Projects -->
-                <div class="portfolio-item" data-category="commercial">
-                    <div class="portfolio-image">
-                        <img src="https://805companies.com/images/resort-project.jpg" alt="Luxury Resort Partnership" 
-                             onerror="this.src='https://805companies.com/images/hero-bg.jpg'">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-content">
-                                <div class="portfolio-badge">Resort Partnership</div>
-                                <h3>Luxury Resort Aquatic Services</h3>
-                                <p>Premium lifeguarding services for exclusive resort properties</p>
-                                <div class="portfolio-details">
-                                    <span class="detail-item">
-                                        <i class="fas fa-hotel"></i>
-                                        Resort Property
-                                    </span>
-                                    <span class="detail-item">
-                                        <i class="fas fa-clock"></i>
-                                        24/7 Coverage
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="commercial">
-                    <div class="portfolio-image">
-                        <img src="https://805companies.com/images/community-center.jpg" alt="Community Center Training" 
-                             onerror="this.src='https://805companies.com/images/swim-lesson-1.jpg'">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-content">
-                                <div class="portfolio-badge">Community Training</div>
-                                <h3>Lifeguard Training Program</h3>
-                                <p>Advanced training program for community center aquatic staff</p>
-                                <div class="portfolio-details">
-                                    <span class="detail-item">
-                                        <i class="fas fa-graduation-cap"></i>
-                                        Staff Training
-                                    </span>
-                                    <span class="detail-item">
-                                        <i class="fas fa-certificate"></i>
-                                        Certification Program
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- Statistics Section -->
+    <!-- Portfolio Statistics -->
     <section class="portfolio-stats">
         <div class="container">
             <div class="section-header">
-                <div class="section-badge">Our Impact</div>
-                <h2>Excellence in Numbers</h2>
-                <p class="section-description">
-                    These statistics represent our commitment to safety, excellence, and client satisfaction 
-                    across Southern California's most prestigious properties.
+                <div class="section-badge" style="background: var(--luxury-gold); color: var(--deep-navy);">Portfolio Achievements</div>
+                <h2 style="color: var(--pearl-white);">Success by the Numbers</h2>
+                <p style="color: rgba(255,255,255,0.9);">
+                    Our track record speaks to our commitment to excellence and the trust placed in us by Southern California's most distinguished families.
                 </p>
             </div>
             
@@ -409,75 +396,75 @@
                         <i class="fas fa-home"></i>
                     </div>
                     <div class="stat-number" data-target="150">0</div>
-                    <div class="stat-label">Private Estates Served</div>
+                    <div class="stat-label">Estates Served</div>
                 </div>
                 
                 <div class="stat-item">
                     <div class="stat-icon">
-                        <i class="fas fa-glass-cheers"></i>
+                        <i class="fas fa-calendar-alt"></i>
                     </div>
                     <div class="stat-number" data-target="500">0</div>
-                    <div class="stat-label">Exclusive Events</div>
+                    <div class="stat-label">Events Managed</div>
                 </div>
                 
                 <div class="stat-item">
                     <div class="stat-icon">
-                        <i class="fas fa-swimming-pool"></i>
+                        <i class="fas fa-graduation-cap"></i>
                     </div>
                     <div class="stat-number" data-target="1000">0</div>
-                    <div class="stat-label">Swimming Lessons</div>
+                    <div class="stat-label">Lessons Taught</div>
                 </div>
                 
                 <div class="stat-item">
                     <div class="stat-icon">
-                        <i class="fas fa-shield-alt"></i>
+                        <i class="fas fa-clock"></i>
                     </div>
-                    <div class="stat-number" data-target="100">0</div>
-                    <div class="stat-label">Safety Record %</div>
+                    <div class="stat-number" data-target="10000">0</div>
+                    <div class="stat-label">Service Hours</div>
                 </div>
                 
                 <div class="stat-item">
                     <div class="stat-icon">
                         <i class="fas fa-star"></i>
                     </div>
-                    <div class="stat-number" data-target="95">0</div>
-                    <div class="stat-label">Client Referral Rate %</div>
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-label">% Client Satisfaction</div>
                 </div>
                 
                 <div class="stat-item">
                     <div class="stat-icon">
-                        <i class="fas fa-calendar"></i>
+                        <i class="fas fa-shield-alt"></i>
                     </div>
-                    <div class="stat-number" data-target="8">0</div>
-                    <div class="stat-label">Years of Excellence</div>
+                    <div class="stat-number" data-target="7">0</div>
+                    <div class="stat-label">Years Experience</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Client Testimonials -->
+    <!-- Portfolio Testimonials -->
     <section class="portfolio-testimonials">
         <div class="container">
             <div class="section-header">
                 <div class="section-badge">Client Excellence</div>
                 <h2>What Our Distinguished Clients Say</h2>
                 <p class="section-description">
-                    Hear directly from the families and organizations who have experienced 
-                    our premium aquatic services firsthand.
+                    The trust and satisfaction of our clients is the foundation of our success. 
+                    Here are just a few words from the families we've had the privilege to serve.
                 </p>
             </div>
             
             <div class="testimonials-slider">
-                <div class="testimonial-card featured">
+                <article class="testimonial-card featured">
                     <div class="testimonial-content">
-                        <p>"Jasper has been providing lifeguard services for our family events for over 3 years. His professionalism and attention to detail is exactly what we need for our high-profile gatherings. We trust him completely."</p>
+                        <p>"Jasper has been incredible with our three children. His patience and expertise have transformed our kids from being afraid of water to confident swimmers. The professionalism and discretion he brings to our estate is exactly what we needed."</p>
                     </div>
                     <div class="testimonial-author">
                         <div class="author-info">
-                            <div class="author-name">Private Estate Owner</div>
-                            <div class="author-location">Malibu, CA</div>
+                            <div class="author-name">Jennifer & Michael R.</div>
+                            <div class="author-location">Westlake Village Estate</div>
                         </div>
-                        <div class="testimonial-rating">
+                        <div class="testimonial-rating" aria-label="5 star rating">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -485,18 +472,18 @@
                             <i class="fas fa-star"></i>
                         </div>
                     </div>
-                </div>
+                </article>
                 
-                <div class="testimonial-card">
+                <article class="testimonial-card">
                     <div class="testimonial-content">
-                        <p>"Our special needs daughter made incredible progress with Jasper's patient and adaptive teaching methods. He understands each child's unique needs and creates a safe, encouraging environment."</p>
+                        <p>"For our corporate retreat, 805 LifeGuard provided seamless aquatic safety management. Our guests could enjoy the pool activities with complete peace of mind, and the service was so professional it was practically invisible."</p>
                     </div>
                     <div class="testimonial-author">
                         <div class="author-info">
-                            <div class="author-name">The Johnson Family</div>
-                            <div class="author-location">Beverly Hills, CA</div>
+                            <div class="author-name">David Chen</div>
+                            <div class="author-location">Tech Executive, Thousand Oaks</div>
                         </div>
-                        <div class="testimonial-rating">
+                        <div class="testimonial-rating" aria-label="5 star rating">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -504,18 +491,18 @@
                             <i class="fas fa-star"></i>
                         </div>
                     </div>
-                </div>
+                </article>
                 
-                <div class="testimonial-card">
+                <article class="testimonial-card">
                     <div class="testimonial-content">
-                        <p>"For our annual company retreat, 805 LifeGuard provided seamless aquatic safety management. Their discrete professionalism allowed our executives to focus on team building without safety concerns."</p>
+                        <p>"Working with special needs children requires a unique skill set, and Jasper exceeded all expectations. His specialized training and compassionate approach helped our son develop both swimming skills and confidence in the water."</p>
                     </div>
                     <div class="testimonial-author">
                         <div class="author-info">
-                            <div class="author-name">Fortune 500 Executive</div>
-                            <div class="author-location">Corporate Retreat</div>
+                            <div class="author-name">Sarah M.</div>
+                            <div class="author-location">Agoura Hills, CA</div>
                         </div>
-                        <div class="testimonial-rating">
+                        <div class="testimonial-rating" aria-label="5 star rating">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -523,592 +510,190 @@
                             <i class="fas fa-star"></i>
                         </div>
                     </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- Call to Action -->
+    <!-- Portfolio CTA -->
     <section class="portfolio-cta">
         <div class="container">
             <div class="cta-content">
-                <h2>Ready to Join Our Distinguished Portfolio?</h2>
-                <p>
-                    Let us create a bespoke aquatic service experience tailored to your estate's unique requirements. 
-                    Schedule a confidential consultation to discuss how we can serve your family.
+                <div class="section-badge" style="background: var(--luxury-gold); color: var(--deep-navy);">Join Our Distinguished Portfolio</div>
+                <h2 style="color: var(--pearl-white);">Experience the 805 LifeGuard Difference</h2>
+                <p style="color: rgba(255,255,255,0.9); margin-bottom: 40px;">
+                    Discover why Southern California's most discerning families trust us with their aquatic safety needs. 
+                    Let us create a customized service plan that seamlessly integrates with your estate's lifestyle.
                 </p>
+                
                 <div class="cta-buttons">
-                    <a href="/contact" class="btn-primary large">
-                        <i class="fas fa-calendar-alt"></i>
+                    <a href="contact.html" class="btn-primary">
+                        <i class="fas fa-calendar-check"></i>
                         Schedule Private Consultation
                     </a>
-                    <a href="/services" class="btn-secondary large">
+                    <a href="services.html" class="btn-secondary">
                         <i class="fas fa-water"></i>
-                        Explore Our Services
+                        Explore Services
                     </a>
                 </div>
+                
                 <div class="cta-contact">
-                    <p>Prefer to speak directly?</p>
-                    <a href="tel:+18058051234" class="phone-link">
+                    <p>
                         <i class="fas fa-phone"></i>
-                        (805) 805-1234
-                    </a>
+                        Call (805) 805-1234 for immediate consultation
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Enhanced JavaScript -->
-    <script src="js/luxury-app.js"></script>
-    <script>
-        // Mobile Navigation Handler
-        class MobileNavigation {
-            constructor() {
-                this.toggle = document.getElementById('mobileMenuToggle');
-                this.navLinks = document.getElementById('navLinks');
-                this.init();
-            }
-            
-            init() {
-                if (this.toggle && this.navLinks) {
-                    this.toggle.addEventListener('click', () => this.toggleMenu());
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section footer-brand">
+                    <div class="footer-logo">
+                        <img src="images/805-lifeguard-logo.png" alt="805 LifeGuard Logo" class="footer-logo-img">
+                        <div>
+                            <h3>805 LifeGuard</h3>
+                            <p>Premier Aquatic Services</p>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        Providing exceptional aquatic safety and instruction services to Southern California's 
+                        most distinguished estates since 2016. Licensed, bonded, and insured for your peace of mind.
+                    </p>
+                    <div class="footer-credentials">
+                        <div class="credential-badge">
+                            <i class="fas fa-certificate"></i>
+                            Red Cross Certified
+                        </div>
+                        <div class="credential-badge">
+                            <i class="fas fa-shield-alt"></i>
+                            Licensed & Bonded
+                        </div>
+                        <div class="credential-badge">
+                            <i class="fas fa-award"></i>
+                            7+ Years Experience
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4><i class="fas fa-water"></i> Services</h4>
+                    <ul>
+                        <li><a href="services.html#lifeguarding">Private Estate Lifeguarding</a></li>
+                        <li><a href="services.html#instruction">Bespoke Swimming Instruction</a></li>
+                        <li><a href="services.html#events">Luxury Event Management</a></li>
+                        <li><a href="services.html#safety">Water Safety Consulting</a></li>
+                        <li><a href="services.html#maintenance">Pool Maintenance Oversight</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4><i class="fas fa-building"></i> Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Jasper & Team</a></li>
+                        <li><a href="portfolio.html">Client Portfolio</a></li>
+                        <li><a href="faq.html">Frequently Asked Questions</a></li>
+                        <li><a href="contact.html">Contact & Consultation</a></li>
+                        <li><a href="testimonials.html">Client Testimonials</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4><i class="fas fa-map-marker-alt"></i> Service Areas</h4>
+                    <div class="service-areas">
+                        <div class="area-group">
+                            <strong>Primary Coverage:</strong>
+                            <ul>
+                                <li>Thousand Oaks</li>
+                                <li>Westlake Village</li>
+                                <li>Agoura Hills</li>
+                                <li>Newbury Park</li>
+                            </ul>
+                        </div>
+                        <div class="area-group">
+                            <strong>Extended Coverage:</strong>
+                            <ul>
+                                <li>Malibu & Calabasas</li>
+                                <li>Beverly Hills</li>
+                                <li>Manhattan Beach</li>
+                                <li>Newport Beach</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section footer-contact">
+                    <h4><i class="fas fa-concierge-bell"></i> Concierge Contact</h4>
+                    <div class="contact-methods">
+                        <a href="tel:+18058051234" class="contact-method priority">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>(805) 805-1234</strong>
+                                <span>24/7 Emergency Line</span>
+                            </div>
+                        </a>
+                        <a href="mailto:concierge@805lifeguard.com" class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>concierge@805lifeguard.com</strong>
+                                <span>Consultation Requests</span>
+                            </div>
+                        </a>
+                        <a href="https://client.805lifeguard.com" class="contact-method portal" target="_blank">
+                            <i class="fas fa-user-circle"></i>
+                            <div>
+                                <strong>Client Portal</strong>
+                                <span>Schedule & Account Access</span>
+                            </div>
+                        </a>
+                    </div>
                     
-                    this.navLinks.querySelectorAll('.nav-link').forEach(link => {
-                        link.addEventListener('click', () => this.closeMenu());
-                    });
+                    <div class="emergency-notice">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <div>
+                            <strong>Pool Emergency?</strong>
+                            <p>Call (805) 805-1234 immediately. Available 24/7 for existing clients.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <div class="footer-legal">
+                        <p>&copy; 2025 805 LifeGuard LLC. All rights reserved.</p>
+                        <div class="legal-links">
+                            <a href="privacy.html">Privacy Policy</a>
+                            <a href="terms.html">Terms of Service</a>
+                            <a href="insurance.html">Insurance & Bonding</a>
+                        </div>
+                    </div>
                     
-                    document.addEventListener('click', (e) => {
-                        if (!this.toggle.contains(e.target) && !this.navLinks.contains(e.target)) {
-                            this.closeMenu();
-                        }
-                    });
+                    <div class="footer-portals">
+                        <a href="https://client.805lifeguard.com" class="portal-link client" target="_blank">
+                            <i class="fas fa-user-circle"></i>
+                            Client Portal
+                        </a>
+                        <a href="https://admin.805lifeguard.com" class="portal-link admin" target="_blank">
+                            <i class="fas fa-shield-alt"></i>
+                            Admin Portal
+                        </a>
+                    </div>
                     
-                    window.addEventListener('resize', () => {
-                        if (window.innerWidth > 768) {
-                            this.closeMenu();
-                        }
-                    });
-                }
-            }
-            
-            toggleMenu() {
-                const isActive = this.navLinks.classList.contains('active');
-                if (isActive) {
-                    this.closeMenu();
-                } else {
-                    this.openMenu();
-                }
-            }
-            
-            openMenu() {
-                this.toggle.classList.add('active');
-                this.navLinks.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-            
-            closeMenu() {
-                this.toggle.classList.remove('active');
-                this.navLinks.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        }
-        
-        // Portfolio Filter
-        class PortfolioFilter {
-            constructor() {
-                this.filterBtns = document.querySelectorAll('.filter-btn');
-                this.portfolioItems = document.querySelectorAll('.portfolio-item');
-                this.init();
-            }
-            
-            init() {
-                this.filterBtns.forEach(btn => {
-                    btn.addEventListener('click', () => this.filterItems(btn));
-                });
-            }
-            
-            filterItems(activeBtn) {
-                // Update active button
-                this.filterBtns.forEach(btn => btn.classList.remove('active'));
-                activeBtn.classList.add('active');
-                
-                const category = activeBtn.dataset.category;
-                
-                this.portfolioItems.forEach(item => {
-                    if (category === 'all' || item.dataset.category === category) {
-                        item.style.display = 'block';
-                        setTimeout(() => {
-                            item.style.opacity = '1';
-                            item.style.transform = 'scale(1)';
-                        }, 50);
-                    } else {
-                        item.style.opacity = '0';
-                        item.style.transform = 'scale(0.8)';
-                        setTimeout(() => {
-                            item.style.display = 'none';
-                        }, 300);
-                    }
-                });
-            }
-        }
-        
-        // Statistics Counter
-        class StatsCounter {
-            constructor() {
-                this.statsObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            this.animateCounter(entry.target);
-                        }
-                    });
-                });
-                
-                document.querySelectorAll('.stat-number').forEach(stat => {
-                    this.statsObserver.observe(stat);
-                });
-            }
-            
-            animateCounter(element) {
-                const target = parseInt(element.dataset.target);
-                const duration = 2000;
-                const increment = target / (duration / 16);
-                let current = 0;
-                
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        element.textContent = target;
-                        clearInterval(timer);
-                    } else {
-                        element.textContent = Math.floor(current);
-                    }
-                }, 16);
-            }
-        }
-        
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            new MobileNavigation();
-            new PortfolioFilter();
-            new StatsCounter();
-            
-            // Header scroll effects
-            let lastScrollY = window.scrollY;
-            const header = document.querySelector('.header');
-            
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 100) {
-                    header.style.background = 'rgba(248, 246, 240, 0.98)';
-                    header.style.boxShadow = '0 4px 20px rgba(10, 22, 40, 0.1)';
-                } else {
-                    header.style.background = 'rgba(248, 246, 240, 0.95)';
-                    header.style.boxShadow = 'none';
-                }
-                lastScrollY = window.scrollY;
-            });
-            
-            // Portfolio items animation
-            const portfolioObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            });
-            
-            document.querySelectorAll('.portfolio-item').forEach(item => {
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(30px)';
-                item.style.transition = 'all 0.6s ease';
-                portfolioObserver.observe(item);
-            });
-        });
-    </script>
+                    <div class="footer-credentials-compact">
+                        <span class="credential">CA Licensed</span>
+                        <span class="credential">Bonded & Insured</span>
+                        <span class="credential">Background Checked</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-    <style>
-        /* Portfolio Page Specific Styles */
-        .portfolio-hero {
-            min-height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            text-align: center;
-            color: var(--pearl-white);
-            padding: 120px 20px 60px;
-        }
-        
-        .hero-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
-        }
-        
-        .hero-background img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--gradient-overlay);
-        }
-        
-        .portfolio-filter {
-            padding: 40px 0;
-            background: var(--pearl-white);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-        }
-        
-        .filter-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            max-width: var(--container-max);
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .filter-btn {
-            background: white;
-            border: 2px solid rgba(212, 175, 55, 0.3);
-            color: var(--deep-navy);
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: var(--gradient-gold);
-            border-color: var(--luxury-gold);
-            color: var(--deep-navy);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-button);
-        }
-        
-        .portfolio-gallery {
-            padding: 80px 0;
-            background: var(--champagne);
-        }
-        
-        .gallery-grid {
-            max-width: var(--container-max);
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px;
-            padding: 0 20px;
-        }
-        
-        .portfolio-item {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow-card);
-            transition: all 0.5s ease;
-            background: white;
-        }
-        
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-luxury);
-        }
-        
-        .portfolio-image {
-            position: relative;
-            height: 300px;
-            overflow: hidden;
-        }
-        
-        .portfolio-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .portfolio-item:hover .portfolio-image img {
-            transform: scale(1.1);
-        }
-        
-        .portfolio-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(10, 22, 40, 0.9) 0%, rgba(30, 58, 95, 0.8) 100%);
-            display: flex;
-            align-items: end;
-            padding: 30px;
-            color: var(--pearl-white);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-        
-        .portfolio-badge {
-            display: inline-block;
-            background: var(--luxury-gold);
-            color: var(--deep-navy);
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        
-        .portfolio-content h3 {
-            color: var(--pearl-white);
-            margin-bottom: 10px;
-            font-size: 1.3rem;
-        }
-        
-        .portfolio-content p {
-            color: rgba(248, 246, 240, 0.9);
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-        
-        .portfolio-details {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .detail-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.9rem;
-            color: var(--luxury-gold);
-        }
-        
-        .portfolio-stats {
-            padding: var(--section-padding);
-            background: var(--deep-navy);
-            color: var(--pearl-white);
-        }
-        
-        .stats-grid {
-            max-width: var(--container-max);
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            padding: 0 20px;
-        }
-        
-        .stat-item {
-            text-align: center;
-            padding: 30px 20px;
-            background: rgba(212, 175, 55, 0.1);
-            border-radius: 15px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-        
-        .stat-icon {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 20px;
-            background: var(--gradient-gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: var(--deep-navy);
-        }
-        
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--luxury-gold);
-            font-family: var(--font-primary);
-            display: block;
-            margin-bottom: 10px;
-        }
-        
-        .stat-label {
-            color: rgba(248, 246, 240, 0.9);
-            font-weight: 500;
-        }
-        
-        .portfolio-testimonials {
-            padding: var(--section-padding);
-            background: var(--pearl-white);
-        }
-        
-        .testimonials-slider {
-            max-width: var(--container-max);
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            padding: 0 20px;
-        }
-        
-        .testimonial-card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: var(--shadow-card);
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-luxury);
-        }
-        
-        .testimonial-card.featured {
-            border: 2px solid var(--luxury-gold);
-            background: linear-gradient(135deg, var(--champagne) 0%, white 100%);
-        }
-        
-        .testimonial-content {
-            margin-bottom: 25px;
-        }
-        
-        .testimonial-content p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: var(--deep-navy);
-            font-style: italic;
-            margin: 0;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .author-name {
-            font-weight: 600;
-            color: var(--deep-navy);
-        }
-        
-        .author-location {
-            color: var(--warm-gray);
-            font-size: 0.9rem;
-        }
-        
-        .testimonial-rating {
-            color: var(--luxury-gold);
-        }
-        
-        .portfolio-cta {
-            padding: var(--section-padding);
-            background: var(--gradient-primary);
-            text-align: center;
-            color: var(--pearl-white);
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin: 40px 0;
-            flex-wrap: wrap;
-        }
-        
-        .btn-large {
-            padding: 18px 40px;
-            font-size: 1.1rem;
-        }
-        
-        .cta-contact {
-            margin-top: 40px;
-            opacity: 0.9;
-        }
-        
-        .phone-link {
-            color: var(--luxury-gold);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.2rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .phone-link:hover {
-            color: var(--pearl-white);
-            transform: scale(1.05);
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .filter-tabs {
-                gap: 10px;
-            }
-            
-            .filter-btn {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
-            
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            }
-            
-            .testimonials-slider {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .portfolio-details {
-                flex-direction: column;
-                gap: 10px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .portfolio-overlay {
-                padding: 20px;
-            }
-            
-            .testimonial-card {
-                padding: 30px 20px;
-            }
-            
-            .stat-number {
-                font-size: 2.5rem;
-            }
-        }
-    </style>
+    <!-- JavaScript -->
+    <script src="js/luxury-app.js"></script>
 </body>
 </html>
