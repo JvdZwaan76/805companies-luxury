@@ -62,6 +62,7 @@
             <ul class="nav-links" id="navLinks" aria-hidden="true">
                 <li><a href="about.html" class="nav-link">About</a></li>
                 <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="pool-cleaning.html" class="nav-link">Pool Cleaning</a></li>
                 <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
                 <li><a href="faq.html" class="nav-link">FAQ</a></li>
                 <li class="nav-portals">
@@ -233,6 +234,15 @@
                                 <label for="service-events">
                                     <i class="fas fa-champagne-glasses"></i>
                                     Luxury Event Management
+                                </label>
+                            </div>
+                            
+                            <div class="service-option exclusive" tabindex="0" role="checkbox" aria-checked="false">
+                                <input type="checkbox" name="services[]" value="pool-cleaning" id="service-cleaning">
+                                <label for="service-cleaning">
+                                    <i class="fas fa-broom"></i>
+                                    Exclusive Pool Cleaning
+                                    <span class="service-note">Available to lifeguarding/instruction clients</span>
                                 </label>
                             </div>
                             
@@ -448,8 +458,8 @@
                         <li><a href="services.html#lifeguarding">Private Estate Lifeguarding</a></li>
                         <li><a href="services.html#instruction">Bespoke Swimming Instruction</a></li>
                         <li><a href="services.html#events">Luxury Event Management</a></li>
+                        <li><a href="pool-cleaning.html">Exclusive Pool Cleaning</a></li>
                         <li><a href="services.html#safety">Water Safety Consulting</a></li>
-                        <li><a href="services.html#maintenance">Pool Maintenance Oversight</a></li>
                     </ul>
                 </div>
                 
@@ -556,7 +566,178 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script src="js/luxury-app.js"></script>
+    <!-- JavaScript with D1 Database Integration -->
+    <script>
+        // Form submission handler integrated with Cloudflare D1
+        document.getElementById('consultationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const formData = new FormData(form);
+            
+            // Show loading overlay
+            document.getElementById('loadingOverlay').style.display = 'flex';
+            
+            // Collect form data
+            const consultationData = {
+                first_name: formData.get('firstName'),
+                last_name: formData.get('lastName'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                estate_location: formData.get('estateLocation'),
+                property_type: formData.get('propertyType') || '',
+                services: formData.getAll('services[]').join(', '),
+                timeframe: formData.get('timeline') || '',
+                requirements: formData.get('details') || '',
+                client_tier: determineClientTier(formData.get('estateLocation'), formData.get('propertyType')),
+                priority_level: formData.get('urgency') || 'standard',
+                estimated_value: estimateConsultationValue(formData.getAll('services[]'), formData.get('estateLocation')),
+                submission_source: 'website'
+            };
+            
+            try {
+                // Submit to your existing Cloudflare Worker endpoint
+                const response = await fetch('/api/consultation', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(consultationData)
+                });
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    
+                    // Hide loading overlay
+                    document.getElementById('loadingOverlay').style.display = 'none';
+                    
+                    // Show success modal with consultation ID
+                    document.getElementById('consultationIdDisplay').textContent = result.consultation_id;
+                    document.getElementById('successModal').style.display = 'flex';
+                    
+                    // Reset form
+                    form.reset();
+                    
+                } else {
+                    throw new Error('Submission failed');
+                }
+                
+            } catch (error) {
+                console.error('Error submitting consultation:', error);
+                
+                // Hide loading overlay
+                document.getElementById('loadingOverlay').style.display = 'none';
+                
+                // Show error message
+                showErrorMessage('There was an error submitting your consultation request. Please try again or call (805) 805-1234 directly.');
+            }
+        });
+        
+        // Helper functions for client tier and value estimation
+        function determineClientTier(location, propertyType) {
+            const premiumLocations = ['beverly-hills', 'manhattan-beach', 'newport-beach', 'malibu', 'hidden-hills'];
+            const ultraLuxuryTypes = ['private-estate', 'luxury-residence'];
+            
+            if (premiumLocations.includes(location) && ultraLuxuryTypes.includes(propertyType)) {
+                return 'platinum';
+            } else if (premiumLocations.includes(location) || ultraLuxuryTypes.includes(propertyType)) {
+                return 'gold';
+            } else {
+                return 'silver';
+            }
+        }
+        
+        function estimateConsultationValue(services, location) {
+            const baseValues = {
+                'private-lifeguarding': 500,
+                'swim-instruction': 300,
+                'event-management': 400,
+                'pool-cleaning': 200,
+                'water-safety': 150,
+                'special-needs': 350,
+                'ongoing-coverage': 800
+            };
+            
+            const locationMultipliers = {
+                'beverly-hills': 2.0,
+                'manhattan-beach': 1.8,
+                'newport-beach': 1.8,
+                'malibu': 1.9,
+                'hidden-hills': 1.7,
+                'calabasas': 1.5,
+                'westlake-village': 1.3,
+                'thousand-oaks': 1.2
+            };
+            
+            let totalValue = 0;
+            services.forEach(service => {
+                totalValue += baseValues[service] || 100;
+            });
+            
+            const multiplier = locationMultipliers[location] || 1.0;
+            return Math.round(totalValue * multiplier);
+        }
+        
+        function showErrorMessage(message) {
+            const alertDiv = document.getElementById('message-alert');
+            alertDiv.innerHTML = `<div class="alert alert-error"><i class="fas fa-exclamation-triangle"></i> ${message}</div>`;
+            alertDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function closeSuccessModal() {
+            document.getElementById('successModal').style.display = 'none';
+        }
+        
+        // Service option interactivity
+        document.querySelectorAll('.service-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const checkbox = this.querySelector('input[type="checkbox"]');
+                checkbox.checked = !checkbox.checked;
+                this.setAttribute('aria-checked', checkbox.checked);
+                
+                if (checkbox.checked) {
+                    this.classList.add('selected');
+                } else {
+                    this.classList.remove('selected');
+                }
+            });
+        });
+        
+        // Pool cleaning service dependency check
+        document.getElementById('service-cleaning').addEventListener('change', function() {
+            if (this.checked) {
+                const lifeguarding = document.getElementById('service-lifeguarding');
+                const instruction = document.getElementById('service-instruction');
+                
+                if (!lifeguarding.checked && !instruction.checked) {
+                    alert('Pool cleaning services are exclusively available to clients who also utilize our lifeguarding or swimming instruction services. Please select one of these primary services as well.');
+                    this.checked = false;
+                    this.closest('.service-option').classList.remove('selected');
+                    this.closest('.service-option').setAttribute('aria-checked', 'false');
+                }
+            }
+        });
+        
+        // Auto-populate service based on URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const serviceParam = urlParams.get('service');
+        if (serviceParam) {
+            const serviceMapping = {
+                'lifeguarding': 'service-lifeguarding',
+                'instruction': 'service-instruction',
+                'events': 'service-events',
+                'pool-cleaning': 'service-cleaning'
+            };
+            
+            const serviceId = serviceMapping[serviceParam];
+            if (serviceId) {
+                const checkbox = document.getElementById(serviceId);
+                const option = checkbox.closest('.service-option');
+                checkbox.checked = true;
+                option.classList.add('selected');
+                option.setAttribute('aria-checked', 'true');
+            }
+        }
+    </script>
 </body>
 </html>
