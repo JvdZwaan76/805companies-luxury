@@ -1,7 +1,9 @@
 {
-  "name": "lifeguard-luxury-website",
+  "name": "805companies-luxury",
   "compatibility_date": "2025-07-23",
   "assets": {
-    "directory": "./"
+    "directory": "./",
+    "include": ["**/*"],
+    "exclude": [".git/**", "README.md", ".gitignore"]
   }
 }
