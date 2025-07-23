@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Private Consultation - 805 LifeGuard | Luxury Aquatic Services</title>
-    <meta name="description" content="Schedule a confidential consultation for luxury aquatic services. Discreet, professional consultation for Southern California's most distinguished estates.">
+    <title>Private Consultation Request - 805 LifeGuard</title>
+    <meta name="description" content="Request a confidential consultation for bespoke aquatic services at your distinguished estate.">
     
     <!-- Luxury Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,28 +18,9 @@
     <link rel="stylesheet" href="css/luxury-theme.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header" id="header">
-        <div class="header-top">
-            <div class="header-top-content">
-                <div class="header-top-left">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Licensed, Bonded & Insured Since 2016</span>
-                </div>
-                <div class="header-top-contact">
-                    <a href="tel:+18058051234">
-                        <i class="fas fa-phone"></i>
-                        (805) 805-1234
-                    </a>
-                    <a href="mailto:concierge@805lifeguard.com">
-                        <i class="fas fa-envelope"></i>
-                        concierge@805lifeguard.com
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-        <nav class="navbar">
+    <!-- Simplified Header -->
+    <header class="header">
+        <div class="header-content">
             <a href="/" class="logo">
                 <img src="https://805companies.com/images/805-lifeguard-logo.png" alt="805 LifeGuard" class="logo-img" onerror="this.style.display='none'">
                 <div class="logo-text">
@@ -55,18 +36,30 @@
                 <span></span>
             </button>
             
-            <ul class="nav-links" id="navLinks">
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="services.html" class="nav-link">Services</a></li>
-                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
-                <li><a href="faq.html" class="nav-link">FAQ</a></li>
-                <li><a href="contact.html" class="nav-link portal active">Private Consultation</a></li>
+            <div class="header-contact">
+                <a href="tel:+18058051234" class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    (805) 805-1234
+                </a>
+                <a href="mailto:concierge@805lifeguard.com" class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    concierge@805lifeguard.com
+                </a>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <ul class="nav-links mobile-nav" id="navLinks">
+                <li><a href="/" class="nav-link">About</a></li>
+                <li><a href="/services" class="nav-link">Services</a></li>
+                <li><a href="/#coverage" class="nav-link">Coverage Areas</a></li>
+                <li><a href="/#team" class="nav-link">Our Team</a></li>
+                <li><a href="/contact" class="nav-link active">Private Consultation</a></li>
             </ul>
-        </nav>
+        </div>
     </header>
 
-    <!-- Consultation Form -->
-    <main class="consultation-container">
+    <!-- Main Container -->
+    <div class="consultation-container">
         <div class="consultation-form-wrapper">
             <!-- Form Header -->
             <div class="form-header">
@@ -75,256 +68,210 @@
                         <i class="fas fa-lock"></i>
                         Confidential Consultation
                     </div>
-                    <h1 class="form-title">Request Private Consultation</h1>
+                    <h1 class="form-title">Private Estate Consultation</h1>
                     <p class="form-subtitle">
                         Share your estate's unique requirements with our concierge team. 
-                        All information is kept strictly confidential and used only to create 
-                        your bespoke service proposal.
+                        We'll design a bespoke aquatic service package that exceeds your expectations.
                     </p>
                 </div>
             </div>
-            
+
             <!-- Form Content -->
             <div class="form-content">
-                <!-- Message Alert -->
-                <div id="message-alert" class="message-alert" role="alert" aria-live="assertive"></div>
-                
-                <form id="consultationForm" class="luxury-form" novalidate>
+                <div id="message-alert" class="message-alert"></div>
+
+                <form id="consultationForm" class="luxury-form">
                     <!-- Personal Information -->
-                    <div class="form-section">
-                        <h3><i class="fas fa-user"></i> Personal Information</h3>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="firstName" class="form-label required">
-                                    <i class="fas fa-user"></i>
-                                    First Name
-                                </label>
-                                <input type="text" id="firstName" name="firstName" class="form-input" required 
-                                       aria-describedby="firstName-help" autocomplete="given-name">
-                                <div id="firstName-help" class="sr-only">Enter your first name</div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="lastName" class="form-label required">
-                                    <i class="fas fa-user"></i>
-                                    Last Name
-                                </label>
-                                <input type="text" id="lastName" name="lastName" class="form-input" required 
-                                       aria-describedby="lastName-help" autocomplete="family-name">
-                                <div id="lastName-help" class="sr-only">Enter your last name</div>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="email" class="form-label required">
-                                    <i class="fas fa-envelope"></i>
-                                    Email Address
-                                </label>
-                                <input type="email" id="email" name="email" class="form-input" required 
-                                       aria-describedby="email-help" autocomplete="email">
-                                <div id="email-help" class="sr-only">Enter your email address for communication</div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="phone" class="form-label required">
-                                    <i class="fas fa-phone"></i>
-                                    Phone Number
-                                </label>
-                                <input type="tel" id="phone" name="phone" class="form-input" required 
-                                       aria-describedby="phone-help" autocomplete="tel" placeholder="(805) 555-0123">
-                                <div id="phone-help" class="sr-only">Enter your phone number for urgent communications</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Estate Information -->
-                    <div class="form-section">
-                        <h3><i class="fas fa-home"></i> Estate Information</h3>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="estateLocation" class="form-label required">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    Estate Location
-                                </label>
-                                <select id="estateLocation" name="estateLocation" class="form-select" required>
-                                    <option value="">Select Your Area</option>
-                                    <optgroup label="Primary Service Areas">
-                                        <option value="thousand-oaks">Thousand Oaks</option>
-                                        <option value="westlake-village">Westlake Village</option>
-                                        <option value="agoura-hills">Agoura Hills</option>
-                                        <option value="newbury-park">Newbury Park</option>
-                                        <option value="oak-park">Oak Park</option>
-                                    </optgroup>
-                                    <optgroup label="Extended Coverage">
-                                        <option value="malibu">Malibu</option>
-                                        <option value="calabasas">Calabasas</option>
-                                        <option value="hidden-hills">Hidden Hills</option>
-                                        <option value="camarillo">Camarillo</option>
-                                        <option value="ventura">Ventura</option>
-                                    </optgroup>
-                                    <optgroup label="Premium Locations">
-                                        <option value="beverly-hills">Beverly Hills</option>
-                                        <option value="manhattan-beach">Manhattan Beach</option>
-                                        <option value="newport-beach">Newport Beach</option>
-                                        <option value="palos-verdes">Palos Verdes</option>
-                                        <option value="laguna-beach">Laguna Beach</option>
-                                    </optgroup>
-                                    <option value="other">Other Location</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="propertyType" class="form-label">
-                                    <i class="fas fa-building"></i>
-                                    Property Type
-                                </label>
-                                <select id="propertyType" name="propertyType" class="form-select">
-                                    <option value="">Select Property Type</option>
-                                    <option value="private-estate">Private Estate</option>
-                                    <option value="luxury-residence">Luxury Residence</option>
-                                    <option value="vacation-home">Vacation Home</option>
-                                    <option value="corporate-facility">Corporate Facility</option>
-                                    <option value="event-venue">Event Venue</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Service Selection -->
-                    <div class="form-section service-selection">
-                        <h3><i class="fas fa-concierge-bell"></i> Desired Services</h3>
-                        <p>Select all services you're interested in for your estate:</p>
-                        
-                        <div class="service-options">
-                            <div class="service-option" tabindex="0" role="checkbox" aria-checked="false">
-                                <input type="checkbox" id="private-lifeguarding" name="services[]" value="private-lifeguarding">
-                                <label for="private-lifeguarding">Private Estate Lifeguarding</label>
-                            </div>
-                            
-                            <div class="service-option" tabindex="0" role="checkbox" aria-checked="false">
-                                <input type="checkbox" id="swim-instruction" name="services[]" value="swim-instruction">
-                                <label for="swim-instruction">Bespoke Swimming Instruction</label>
-                            </div>
-                            
-                            <div class="service-option" tabindex="0" role="checkbox" aria-checked="false">
-                                <input type="checkbox" id="event-management" name="services[]" value="event-management">
-                                <label for="event-management">Luxury Event Management</label>
-                            </div>
-                            
-                            <div class="service-option" tabindex="0" role="checkbox" aria-checked="false">
-                                <input type="checkbox" id="water-safety" name="services[]" value="water-safety">
-                                <label for="water-safety">Water Safety Consultation</label>
-                            </div>
-                            
-                            <div class="service-option" tabindex="0" role="checkbox" aria-checked="false">
-                                <input type="checkbox" id="special-needs" name="services[]" value="special-needs">
-                                <label for="special-needs">Special Needs Programs</label>
-                            </div>
-                            
-                            <div class="service-option" tabindex="0" role="checkbox" aria-checked="false">
-                                <input type="checkbox" id="corporate-events" name="services[]" value="corporate-events">
-                                <label for="corporate-events">Corporate Aquatic Events</label>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Service Details -->
-                    <div class="form-section">
-                        <h3><i class="fas fa-calendar-alt"></i> Service Requirements</h3>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="timeframe" class="form-label">
-                                    <i class="fas fa-clock"></i>
-                                    Desired Timeframe
-                                </label>
-                                <select id="timeframe" name="timeframe" class="form-select">
-                                    <option value="">Select Timeframe</option>
-                                    <option value="immediate">Immediate (Within 1 week)</option>
-                                    <option value="1-2-weeks">1-2 weeks</option>
-                                    <option value="1-month">Within 1 month</option>
-                                    <option value="2-3-months">2-3 months</option>
-                                    <option value="seasonal">Seasonal service</option>
-                                    <option value="ongoing">Ongoing relationship</option>
-                                    <option value="flexible">Flexible timing</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="budget" class="form-label">
-                                    <i class="fas fa-dollar-sign"></i>
-                                    Service Investment Range
-                                </label>
-                                <select id="budget" name="budget" class="form-select">
-                                    <option value="">Select Investment Range</option>
-                                    <option value="consultation">Consultation Only</option>
-                                    <option value="under-500">Under $500/session</option>
-                                    <option value="500-1000">$500 - $1,000/session</option>
-                                    <option value="1000-2500">$1,000 - $2,500/session</option>
-                                    <option value="2500-5000">$2,500 - $5,000/session</option>
-                                    <option value="5000-plus">$5,000+/session</option>
-                                    <option value="monthly-retainer">Monthly retainer preferred</option>
-                                    <option value="custom-proposal">Custom proposal needed</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group full-width">
-                            <label for="requirements" class="form-label">
-                                <i class="fas fa-list-ul"></i>
-                                Specific Requirements & Preferences
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName" class="form-label required">
+                                <i class="fas fa-user"></i>
+                                First Name
                             </label>
-                            <textarea id="requirements" name="requirements" class="form-textarea" rows="5" 
-                                      maxlength="2000" placeholder="Please share any specific requirements, preferences, or special considerations for your estate's aquatic services. Include details about pool features, family members, special events, or any other relevant information that will help us create the perfect service proposal for you."></textarea>
+                            <input type="text" id="firstName" name="firstName" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName" class="form-label required">
+                                <i class="fas fa-user"></i>
+                                Last Name
+                            </label>
+                            <input type="text" id="lastName" name="lastName" class="form-input" required>
                         </div>
                     </div>
-                    
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email" class="form-label required">
+                                <i class="fas fa-envelope"></i>
+                                Email Address
+                            </label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="form-label required">
+                                <i class="fas fa-phone"></i>
+                                Phone Number
+                            </label>
+                            <input type="tel" id="phone" name="phone" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <!-- Estate Information -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="estateLocation" class="form-label required">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Estate Location
+                            </label>
+                            <select id="estateLocation" name="estateLocation" class="form-select" required>
+                                <option value="">Select Your Area</option>
+                                <option value="malibu">Malibu</option>
+                                <option value="manhattan-beach">Manhattan Beach</option>
+                                <option value="palos-verdes">Palos Verdes</option>
+                                <option value="newport-beach">Newport Beach</option>
+                                <option value="laguna-beach">Laguna Beach</option>
+                                <option value="beverly-hills">Beverly Hills</option>
+                                <option value="bel-air">Bel Air</option>
+                                <option value="thousand-oaks">Thousand Oaks</option>
+                                <option value="westlake-village">Westlake Village</option>
+                                <option value="agoura-hills">Agoura Hills</option>
+                                <option value="newbury-park">Newbury Park</option>
+                                <option value="calabasas">Calabasas</option>
+                                <option value="hidden-hills">Hidden Hills</option>
+                                <option value="other-socal">Other Southern California</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="propertyType" class="form-label">
+                                <i class="fas fa-home"></i>
+                                Property Type
+                            </label>
+                            <select id="propertyType" name="propertyType" class="form-select">
+                                <option value="">Select Property Type</option>
+                                <option value="oceanfront-estate">Oceanfront Estate</option>
+                                <option value="hillside-estate">Hillside Estate</option>
+                                <option value="gated-community">Gated Community</option>
+                                <option value="private-compound">Private Compound</option>
+                                <option value="luxury-residence">Luxury Residence</option>
+                                <option value="estate-home">Estate Home</option>
+                                <option value="residential-property">Residential Property</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Service Interest -->
+                    <div class="form-group full-width">
+                        <div class="service-selection">
+                            <h3><i class="fas fa-water"></i> Services of Interest</h3>
+                            <div class="service-options">
+                                <div class="service-option">
+                                    <input type="checkbox" id="service-lifeguard" name="services[]" value="private-lifeguarding">
+                                    <label for="service-lifeguard">Private Estate Lifeguarding</label>
+                                </div>
+                                <div class="service-option">
+                                    <input type="checkbox" id="service-lessons" name="services[]" value="swim-instruction">
+                                    <label for="service-lessons">Bespoke Swimming Instruction</label>
+                                </div>
+                                <div class="service-option">
+                                    <input type="checkbox" id="service-events" name="services[]" value="event-management">
+                                    <label for="service-events">Corporate & Event Management</label>
+                                </div>
+                                <div class="service-option">
+                                    <input type="checkbox" id="service-safety" name="services[]" value="water-safety">
+                                    <label for="service-safety">Water Safety Training</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timeline & Budget -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="timeframe" class="form-label">
+                                <i class="fas fa-calendar"></i>
+                                Preferred Timeline
+                            </label>
+                            <select id="timeframe" name="timeframe" class="form-select">
+                                <option value="">Select Timeline</option>
+                                <option value="immediate">Immediate (within 1 week)</option>
+                                <option value="short-term">Short-term (1-4 weeks)</option>
+                                <option value="seasonal">Seasonal planning</option>
+                                <option value="ongoing">Ongoing services</option>
+                                <option value="flexible">Flexible</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="budget" class="form-label">
+                                <i class="fas fa-dollar-sign"></i>
+                                Service Level
+                            </label>
+                            <select id="budget" name="budget" class="form-select">
+                                <option value="">Select Service Level</option>
+                                <option value="standard">Standard Services</option>
+                                <option value="premium">Premium Package</option>
+                                <option value="luxury">Luxury Experience</option>
+                                <option value="signature">Signature Collection</option>
+                                <option value="custom">Custom Requirements</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Special Requirements -->
+                    <div class="form-group full-width">
+                        <label for="requirements" class="form-label">
+                            <i class="fas fa-clipboard-list"></i>
+                            Special Requirements or Preferences
+                        </label>
+                        <textarea 
+                            id="requirements" 
+                            name="requirements" 
+                            class="form-textarea" 
+                            rows="5"
+                            placeholder="Please share any specific requirements, scheduling preferences, privacy considerations, special needs accommodations, or special circumstances we should be aware of..."
+                        ></textarea>
+                    </div>
+
                     <!-- Privacy Notice -->
                     <div class="privacy-notice">
-                        <h4><i class="fas fa-shield-alt"></i> Privacy & Confidentiality</h4>
+                        <h4>
+                            <i class="fas fa-shield-alt"></i>
+                            Privacy & Discretion Commitment
+                        </h4>
                         <p>
-                            Your information is protected by our strict confidentiality protocols. 
-                            We understand the importance of discretion for our distinguished clientele. 
-                            All consultation details are secured and used exclusively for service 
-                            planning purposes. See our <a href="privacy.html">Privacy Policy</a> for complete details.
+                            All consultation requests are handled with absolute confidentiality. Your information is secure 
+                            and will only be used to prepare your custom service proposal. We understand the importance 
+                            of discretion when serving distinguished estates and maintain the highest standards of privacy protection.
                         </p>
                     </div>
-                    
+
                     <!-- Submit Section -->
                     <div class="submit-section">
-                        <button type="submit" id="submitBtn" class="btn-submit">
+                        <button type="submit" class="btn-submit" id="submitBtn">
                             <i class="fas fa-paper-plane"></i>
                             Submit Consultation Request
                         </button>
-                        
                         <p class="submit-note">
-                            <i class="fas fa-clock"></i>
-                            Our concierge team will contact you within 4 business hours to schedule your consultation.
+                            A member of our concierge team will contact you within 4 business hours to discuss your requirements.
                         </p>
-                        
                         <div class="alternative-contact">
-                            <p>Prefer immediate assistance?</p>
+                            <p>Prefer to speak directly? Call our concierge line:</p>
                             <a href="tel:+18058051234" class="phone-link">
                                 <i class="fas fa-phone"></i>
-                                Call (805) 805-1234 now
+                                (805) 805-1234
                             </a>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
-    </main>
+    </div>
 
     <!-- Loading Overlay -->
     <div id="loadingOverlay" class="loading-overlay">
         <div class="loading-content">
             <div class="loading-spinner"></div>
-            <h3>Processing Your Request</h3>
-            <p>Please wait while we securely submit your consultation request...</p>
+            <h3>Processing Your Request...</h3>
+            <p>Our concierge team is preparing your consultation.</p>
         </div>
     </div>
 
@@ -335,75 +282,123 @@
                 <i class="fas fa-check-circle"></i>
             </div>
             <h2>Consultation Request Received</h2>
-            <p id="successMessage">Thank you for your consultation request. Our concierge team will contact you within 4 business hours.</p>
-            
+            <p id="successMessage">Thank you for your consultation request. Our team will contact you shortly.</p>
             <div class="consultation-id">
-                <strong>Consultation ID:</strong> <span id="consultationIdDisplay">LUXURY-12345</span>
+                <strong>Reference ID: <span id="consultationIdDisplay">—</span></strong>
             </div>
-            
-            <button onclick="closeSuccessModal()" class="btn-primary">
+            <button class="btn-primary" onclick="closeSuccessModal()">
                 <i class="fas fa-check"></i>
                 Continue
             </button>
-            
-            <p style="margin-top: 20px; opacity: 0.8; font-size: 0.9rem;">
-                You will receive a confirmation email shortly with your consultation details.
-            </p>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <h3>805 LifeGuard</h3>
-                        <p>Premier Aquatic Services</p>
-                    </div>
-                    <p>Providing exceptional aquatic safety and instruction services to Southern California's most distinguished estates since 2016.</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="services.html#lifeguarding">Private Lifeguarding</a></li>
-                        <li><a href="services.html#instruction">Swimming Instruction</a></li>
-                        <li><a href="services.html#events">Event Management</a></li>
-                        <li><a href="services.html#safety">Water Safety</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="terms.html">Terms of Service</a></li>
-                    </ul>
-                    <div class="footer-contact">
-                        <p><i class="fas fa-phone"></i> (805) 805-1234</p>
-                        <p><i class="fas fa-envelope"></i> concierge@805lifeguard.com</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 805 LifeGuard. All rights reserved. Licensed, Bonded & Insured.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
+    <!-- Enhanced JavaScript -->
     <script src="js/luxury-app.js"></script>
+    <script>
+        // Mobile Navigation Handler
+        class MobileNavigation {
+            constructor() {
+                this.toggle = document.getElementById('mobileMenuToggle');
+                this.navLinks = document.getElementById('navLinks');
+                this.init();
+            }
+            
+            init() {
+                if (this.toggle && this.navLinks) {
+                    this.toggle.addEventListener('click', () => this.toggleMenu());
+                    
+                    this.navLinks.querySelectorAll('.nav-link').forEach(link => {
+                        link.addEventListener('click', () => this.closeMenu());
+                    });
+                    
+                    document.addEventListener('click', (e) => {
+                        if (!this.toggle.contains(e.target) && !this.navLinks.contains(e.target)) {
+                            this.closeMenu();
+                        }
+                    });
+                    
+                    window.addEventListener('resize', () => {
+                        if (window.innerWidth > 768) {
+                            this.closeMenu();
+                        }
+                    });
+                }
+            }
+            
+            toggleMenu() {
+                const isActive = this.navLinks.classList.contains('active');
+                if (isActive) {
+                    this.closeMenu();
+                } else {
+                    this.openMenu();
+                }
+            }
+            
+            openMenu() {
+                this.toggle.classList.add('active');
+                this.navLinks.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            closeMenu() {
+                this.toggle.classList.remove('active');
+                this.navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+        
+        // Success Modal
+        function closeSuccessModal() {
+            document.getElementById('successModal').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        
+        // Pre-fill service based on URL parameter
+        function preSelectService() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const service = urlParams.get('service');
+            
+            if (service) {
+                const serviceMap = {
+                    'lifeguarding': 'private-lifeguarding',
+                    'instruction': 'swim-instruction',
+                    'events': 'event-management',
+                    'safety': 'water-safety'
+                };
+                
+                const mappedService = serviceMap[service];
+                if (mappedService) {
+                    const checkbox = document.querySelector(`input[value="${mappedService}"]`);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                        checkbox.closest('.service-option').style.borderColor = 'var(--luxury-gold)';
+                        checkbox.closest('.service-option').style.background = 'rgba(212, 175, 55, 0.1)';
+                    }
+                }
+            }
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            new MobileNavigation();
+            preSelectService();
+            
+            // Header scroll effects
+            let lastScrollY = window.scrollY;
+            const header = document.querySelector('.header');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.style.background = 'rgba(248, 246, 240, 0.98)';
+                    header.style.boxShadow = '0 4px 20px rgba(10, 22, 40, 0.1)';
+                } else {
+                    header.style.background = 'rgba(248, 246, 240, 0.95)';
+                    header.style.boxShadow = 'none';
+                }
+                lastScrollY = window.scrollY;
+            });
+        });
+    </script>
 </body>
 </html>
