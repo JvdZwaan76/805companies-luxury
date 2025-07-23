@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frequently Asked Questions - 805 LifeGuard Premier Aquatic Services</title>
-    <meta name="description" content="Find answers to common questions about our luxury aquatic services, pricing, safety protocols, and booking process for Southern California estates.">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Frequently Asked Questions - 805 LifeGuard | Aquatic Safety FAQ</title>
+    <meta name="description" content="Find answers to common questions about our luxury aquatic services, pricing, certifications, and estate safety protocols. Professional guidance from certified experts.">
     
     <!-- Luxury Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
@@ -16,6 +17,9 @@
     
     <!-- Luxury Theme CSS -->
     <link rel="stylesheet" href="css/luxury-theme.css">
+    
+    <!-- Preload critical images -->
+    <link rel="preload" as="image" href="images/805-lifeguard-logo.png">
 </head>
 <body>
     <!-- Header -->
@@ -27,11 +31,11 @@
                     <span>Licensed, Bonded & Insured Since 2016</span>
                 </div>
                 <div class="header-top-contact">
-                    <a href="tel:+18058051234">
+                    <a href="tel:+18058051234" aria-label="Call us at 805-805-1234">
                         <i class="fas fa-phone"></i>
                         (805) 805-1234
                     </a>
-                    <a href="mailto:concierge@805lifeguard.com">
+                    <a href="mailto:concierge@805lifeguard.com" aria-label="Email our concierge team">
                         <i class="fas fa-envelope"></i>
                         concierge@805lifeguard.com
                     </a>
@@ -40,8 +44,8 @@
         </div>
         
         <nav class="navbar">
-            <a href="/" class="logo">
-                <img src="https://805companies.com/images/805-lifeguard-logo.png" alt="805 LifeGuard" class="logo-img" onerror="this.style.display='none'">
+            <a href="/" class="logo" aria-label="805 LifeGuard Home">
+                <img src="images/805-lifeguard-logo.png" alt="805 LifeGuard Premium Logo" class="logo-img">
                 <div class="logo-text">
                     <div class="logo-main">805 LifeGuard</div>
                     <div class="logo-subtitle">Premier Aquatic Services</div>
@@ -49,51 +53,69 @@
             </a>
             
             <!-- Mobile Menu Toggle -->
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             
-            <ul class="nav-links" id="navLinks">
-                <li><a href="/about" class="nav-link">About</a></li>
-                <li><a href="/services" class="nav-link">Services</a></li>
-                <li><a href="/#coverage" class="nav-link">Coverage Areas</a></li>
-                <li><a href="/portfolio" class="nav-link">Portfolio</a></li>
-                <li><a href="/faq" class="nav-link active">FAQ</a></li>
-                <li><a href="/contact" class="nav-link portal">Private Consultation</a></li>
+            <ul class="nav-links" id="navLinks" aria-hidden="true">
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="faq.html" class="nav-link active">FAQ</a></li>
+                <li class="nav-portals">
+                    <a href="https://client.805lifeguard.com" class="nav-link portal-link" target="_blank">
+                        <i class="fas fa-user-circle"></i>
+                        Client Portal
+                    </a>
+                    <a href="https://admin.805lifeguard.com" class="nav-link admin-link" target="_blank">
+                        <i class="fas fa-shield-alt"></i>
+                        Admin
+                    </a>
+                </li>
+                <li><a href="contact.html" class="nav-link btn-consultation">
+                    <i class="fas fa-calendar-check"></i>
+                    Private Consultation
+                </a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- FAQ Hero Section -->
     <section class="faq-hero">
-        <div class="hero-content">
-            <div class="hero-badge">
-                <i class="fas fa-question-circle"></i>
-                Your Questions Answered
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-question-circle"></i>
+                    Comprehensive FAQ Guide
+                </div>
+                
+                <h1>Frequently Asked Questions</h1>
+                
+                <p class="hero-subtitle">
+                    Find answers to the most common questions about our luxury aquatic services, 
+                    professional certifications, pricing, and estate safety protocols. Our expert 
+                    guidance helps you make informed decisions about your family's aquatic safety needs.
+                </p>
             </div>
-            <h1>Frequently Asked Questions</h1>
-            <p class="hero-subtitle">
-                Find answers to the most common questions about our luxury aquatic services, 
-                safety protocols, and booking process for distinguished estates.
-            </p>
         </div>
     </section>
 
-    <!-- Quick Search -->
+    <!-- FAQ Search -->
     <section class="faq-search">
         <div class="container">
             <div class="search-wrapper">
                 <div class="search-input-wrapper">
                     <i class="fas fa-search"></i>
-                    <input type="text" id="faqSearch" placeholder="Search for answers..." class="search-input">
+                    <input type="text" id="faqSearch" class="search-input" placeholder="Search for answers about services, pricing, certifications...">
                 </div>
+                
                 <div class="search-categories">
-                    <button class="category-btn active" data-category="all">All Questions</button>
+                    <button class="category-btn active" data-category="all">All Topics</button>
                     <button class="category-btn" data-category="services">Services</button>
-                    <button class="category-btn" data-category="safety">Safety</button>
                     <button class="category-btn" data-category="pricing">Pricing</button>
+                    <button class="category-btn" data-category="safety">Safety</button>
                     <button class="category-btn" data-category="booking">Booking</button>
                 </div>
             </div>
@@ -104,1017 +126,483 @@
     <section class="faq-content">
         <div class="container">
             <div class="faq-layout">
-                <!-- FAQ Categories Sidebar -->
-                <div class="faq-sidebar">
+                <!-- FAQ Sidebar -->
+                <aside class="faq-sidebar">
                     <div class="sidebar-header">
-                        <h3>Question Categories</h3>
+                        <h3><i class="fas fa-list"></i> FAQ Categories</h3>
                     </div>
-                    <div class="category-list">
+                    <nav class="category-list">
                         <a href="#services" class="category-link active" data-category="services">
                             <i class="fas fa-water"></i>
-                            <span>Our Services</span>
+                            Services & Offerings
                             <span class="question-count">8</span>
-                        </a>
-                        <a href="#safety" class="category-link" data-category="safety">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>Safety & Credentials</span>
-                            <span class="question-count">6</span>
                         </a>
                         <a href="#pricing" class="category-link" data-category="pricing">
                             <i class="fas fa-dollar-sign"></i>
-                            <span>Pricing & Packages</span>
-                            <span class="question-count">5</span>
+                            Pricing & Packages
+                            <span class="question-count">6</span>
                         </a>
-                        <a href="#booking" class="category-link" data-category="booking">
-                            <i class="fas fa-calendar-alt"></i>
-                            <span>Booking & Scheduling</span>
+                        <a href="#safety" class="category-link" data-category="safety">
+                            <i class="fas fa-shield-alt"></i>
+                            Safety & Certifications
                             <span class="question-count">7</span>
                         </a>
-                        <a href="#privacy" class="category-link" data-category="privacy">
-                            <i class="fas fa-lock"></i>
-                            <span>Privacy & Discretion</span>
+                        <a href="#booking" class="category-link" data-category="booking">
+                            <i class="fas fa-calendar-check"></i>
+                            Booking & Scheduling
+                            <span class="question-count">5</span>
+                        </a>
+                        <a href="#estate" class="category-link" data-category="estate">
+                            <i class="fas fa-home"></i>
+                            Estate Requirements
                             <span class="question-count">4</span>
                         </a>
-                    </div>
+                    </nav>
                     
                     <div class="contact-sidebar">
-                        <h4>Still Have Questions?</h4>
-                        <p>Our concierge team is available to provide personalized answers.</p>
-                        <a href="/contact" class="btn-primary small">
+                        <h4><i class="fas fa-headset"></i> Still Have Questions?</h4>
+                        <p>Our concierge team is available to provide personalized answers and guidance.</p>
+                        <a href="contact.html" class="btn-primary btn-small">
                             <i class="fas fa-phone"></i>
                             Contact Us
                         </a>
                     </div>
-                </div>
+                </aside>
 
-                <!-- FAQ Questions -->
-                <div class="faq-main">
-                    <!-- Services Questions -->
-                    <div class="faq-section" id="services" data-category="services">
+                <!-- FAQ Main Content -->
+                <main class="faq-main">
+                    <!-- Services & Offerings -->
+                    <section id="services" class="faq-section" data-category="services">
                         <h2 class="section-title">
                             <i class="fas fa-water"></i>
-                            Our Services
+                            Services & Offerings
                         </h2>
                         
                         <div class="faq-item">
-                            <div class="faq-question">
+                            <div class="faq-question" tabindex="0" role="button" aria-expanded="false">
                                 <h3>What types of aquatic services do you provide?</h3>
                                 <i class="fas fa-chevron-down"></i>
                             </div>
-                            <div class="faq-answer">
-                                <p>We specialize in three core areas of luxury aquatic services:</p>
+                            <div class="faq-answer" aria-hidden="true">
+                                <p>We specialize in three primary areas of luxury aquatic services:</p>
                                 <ul>
-                                    <li><strong>Private Estate Lifeguarding:</strong> Professional safety oversight for family gatherings, events, and ongoing residential protection</li>
-                                    <li><strong>Bespoke Swimming Instruction:</strong> Personalized lessons for all ages and abilities, including special needs and Olympic-level technique training</li>
-                                    <li><strong>Luxury Pool & Event Management:</strong> Comprehensive aquatic safety and service management for corporate events, weddings, and private celebrations</li>
+                                    <li><strong>Private Estate Lifeguarding:</strong> Professional, discreet safety oversight for daily pool activities, family gatherings, and special events</li>
+                                    <li><strong>Bespoke Swimming Instruction:</strong> Personalized lessons for all ages and skill levels, including special needs instruction</li>
+                                    <li><strong>Luxury Event Management:</strong> Comprehensive aquatic safety management for pool parties, corporate events, and special occasions</li>
                                 </ul>
-                                <p>Each service is tailored to meet the specific needs and privacy requirements of distinguished estates throughout Southern California.</p>
+                                <p>All services are fully customizable to meet the specific requirements of your estate and family lifestyle.</p>
                             </div>
                         </div>
 
                         <div class="faq-item">
-                            <div class="faq-question">
-                                <h3>Do you provide services for special needs swimmers?</h3>
+                            <div class="faq-question" tabindex="0" role="button" aria-expanded="false">
+                                <h3>Do you work with special needs individuals?</h3>
                                 <i class="fas fa-chevron-down"></i>
                             </div>
-                            <div class="faq-answer">
-                                <p>Absolutely. Jasper has specialized training and extensive experience working with special needs swimmers of all ages. Our adaptive swimming programs are designed to:</p>
+                            <div class="faq-answer" aria-hidden="true">
+                                <p>Yes, we have specialized training and certification in adaptive aquatic instruction. Our approach includes:</p>
                                 <ul>
-                                    <li>Build water confidence in a safe, supportive environment</li>
-                                    <li>Develop swimming skills adapted to individual abilities</li>
-                                    <li>Provide patient, encouraging instruction tailored to each swimmer's unique needs</li>
-                                    <li>Create positive water experiences that build independence and joy</li>
+                                    <li>Customized instruction methods for various special needs</li>
+                                    <li>Sensory-friendly approaches for autism spectrum individuals</li>
+                                    <li>Adaptive techniques for physical disabilities</li>
+                                    <li>Therapeutic swimming programs focused on confidence building</li>
                                 </ul>
-                                <p>We work closely with families to understand specific requirements and create customized programs that celebrate each swimmer's progress.</p>
+                                <p>We work closely with families to understand specific needs and create supportive, effective learning environments.</p>
                             </div>
                         </div>
 
                         <div class="faq-item">
-                            <div class="faq-question">
-                                <h3>What age ranges do you work with for swimming instruction?</h3>
+                            <div class="faq-question" tabindex="0" role="button" aria-expanded="false">
+                                <h3>What areas do you serve?</h3>
                                 <i class="fas fa-chevron-down"></i>
                             </div>
-                            <div class="faq-answer">
-                                <p>We provide swimming instruction for all ages, from toddlers to adults (ages 2-99). Our programs are specifically tailored for:</p>
+                            <div class="faq-answer" aria-hidden="true">
+                                <p>Our primary service area covers the Conejo Valley and surrounding luxury communities:</p>
                                 <ul>
-                                    <li><strong>Toddlers (2-4 years):</strong> Water confidence and basic safety skills</li>
-                                    <li><strong>Children (5-12 years):</strong> Fundamental stroke development and swimming proficiency</li>
-                                    <li><strong>Teens (13-17 years):</strong> Advanced technique, competitive training, and performance optimization</li>
-                                    <li><strong>Adults (18+ years):</strong> Beginner confidence building, stroke refinement, and fitness swimming</li>
+                                    <li><strong>Primary Coverage:</strong> Thousand Oaks, Westlake Village, Agoura Hills, Newbury Park, Oak Park</li>
+                                    <li><strong>Extended Coverage:</strong> Malibu, Calabasas, Hidden Hills, Camarillo, Ventura</li>
+                                    <li><strong>Premium Locations:</strong> Beverly Hills, Manhattan Beach, Newport Beach, Palos Verdes, Laguna Beach</li>
                                 </ul>
-                                <p>Multi-generational family programs are also available, allowing families to learn and progress together.</p>
+                                <p>We're happy to discuss service availability for other locations upon request.</p>
                             </div>
                         </div>
 
                         <div class="faq-item">
-                            <div class="faq-question">
-                                <h3>Can you provide lifeguarding services for large events?</h3>
+                            <div class="faq-question" tabindex="0" role="button" aria-expanded="false">
+                                <h3>Can you provide services for corporate events?</h3>
                                 <i class="fas fa-chevron-down"></i>
                             </div>
-                            <div class="faq-answer">
-                                <p>Yes, we specialize in aquatic safety management for events of all sizes, from intimate family gatherings to large corporate retreats with 200+ guests. Our event services include:</p>
+                            <div class="faq-answer" aria-hidden="true">
+                                <p>Absolutely. We provide professional aquatic safety management for corporate retreats, executive events, and business gatherings. Our corporate services include:</p>
                                 <ul>
-                                    <li>Pre-event safety assessment and risk mitigation planning</li>
-                                    <li>Professional lifeguard coverage during your event</li>
-                                    <li>Coordination with catering, event staff, and security teams</li>
-                                    <li>Emergency response protocols tailored to your venue</li>
-                                    <li>Discrete, professional presentation that enhances your event</li>
+                                    <li>Pre-event safety assessment and planning</li>
+                                    <li>Discrete professional oversight during events</li>
+                                    <li>Coordination with event planners and venues</li>
+                                    <li>Emergency response protocols and equipment</li>
+                                    <li>Flexible scheduling for day or evening events</li>
                                 </ul>
-                                <p>We've successfully managed aquatic safety for Fortune 500 corporate retreats, luxury weddings, charity galas, and high-profile private celebrations.</p>
+                                <p>We understand the importance of maintaining a professional atmosphere while ensuring complete safety.</p>
                             </div>
                         </div>
+                    </section>
 
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <h3>Do you offer ongoing residential lifeguarding services?</h3>
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>Yes, we provide ongoing residential lifeguarding services for families who want consistent, professional aquatic safety at their private estates. This service is ideal for:</p>
-                                <ul>
-                                    <li>Families with young children who use their pool regularly</li>
-                                    <li>Multi-generational estates with varying swimming abilities</li>
-                                    <li>Properties that frequently host guests and events</li>
-                                    <li>Families seeking peace of mind and professional oversight</li>
-                                </ul>
-                                <p>We can arrange flexible scheduling including daily, weekly, or seasonal coverage based on your family's lifestyle and needs.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Safety & Credentials Questions -->
-                    <div class="faq-section" id="safety" data-category="safety">
-                        <h2 class="section-title">
-                            <i class="fas fa-shield-alt"></i>
-                            Safety & Credentials
-                        </h2>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <h3>What certifications and training do your lifeguards have?</h3>
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>All our aquatic safety specialists maintain the highest industry certifications:</p>
-                                <ul>
-                                    <li><strong>American Red Cross Lifeguard Certification:</strong> Current and regularly renewed</li>
-                                    <li><strong>CPR/AED Certification:</strong> Professional-level emergency response training</li>
-                                    <li><strong>Water Safety Instructor (WSI):</strong> Advanced teaching and safety management credentials</li>
-                                    <li><strong>First Aid Certification:</strong> Comprehensive medical emergency response</li>
-                                    <li><strong>EMT Training:</strong> Advanced medical response capabilities</li>
-                                </ul>
-                                <p>We also maintain specialized training in special needs instruction, aquatic emergency protocols, and luxury service standards.</p>
-                            </div>
-                        </div>
-
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <h3>Are you licensed, bonded, and insured?</h3>
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>Yes, 805 LifeGuard maintains comprehensive professional credentials:</p>
-                                <ul>
-                                    <li><strong>Licensed:</strong> Fully licensed aquatic services provider in California</li>
-                                    <li><strong>Bonded:</strong> Professional bonding for client protection and peace of mind</li>
-                                    <li><strong>Insured:</strong> Comprehensive general liability and professional liability coverage</li>
-                                    <li><strong>Background Checked:</strong> Extensive screening including celebrity security clearance</li>
-                                </ul>
-                                <p>We provide certificates of insurance and can add additional insured parties as required for your estate or event.</p>
-                            </div>
-                        </div>
-
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <h3>What is your safety record?</h3>
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>We maintain a perfect safety record across 8+ years of service:</p>
-                                <ul>
-                                    <li><strong>Zero serious incidents</strong> across 500+ events and thousands of service hours</li>
-                                    <li><strong>100% client satisfaction</strong> in safety management and emergency preparedness</li>
-                                    <li><strong>Proactive safety protocols</strong> that prevent incidents before they occur</li>
-                                    <li><strong>Continuous training</strong> to maintain the highest safety standards</li>
-                                </ul>
-                                <p>Our commitment to safety excellence is the foundation of every service we provide.</p>
-                            </div>
-                        </div>
-
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <h3>How do you handle medical emergencies?</h3>
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>Our emergency response protocols are comprehensive and immediate:</p>
-                                <ul>
-                                    <li><strong>Immediate Assessment:</strong> Rapid evaluation and response to any emergency situation</li>
-                                    <li><strong>Advanced Life Support:</strong> CPR, AED, and first aid administered by certified professionals</li>
-                                    <li><strong>Emergency Services Coordination:</strong> Direct communication with paramedics and emergency services</li>
-                                    <li><strong>Family Communication:</strong> Clear, calm communication with family members throughout any incident</li>
-                                    <li><strong>Medical Facility Contacts:</strong> Pre-established relationships with premier medical facilities</li>
-                                </ul>
-                                <p>We conduct pre-service safety briefings and maintain emergency action plans tailored to each location.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Pricing & Packages Questions -->
-                    <div class="faq-section" id="pricing" data-category="pricing">
+                    <!-- Pricing & Packages -->
+                    <section id="pricing" class="faq-section" data-category="pricing">
                         <h2 class="section-title">
                             <i class="fas fa-dollar-sign"></i>
                             Pricing & Packages
                         </h2>
                         
                         <div class="faq-item">
-                            <div class="faq-question">
-                                <h3>How is your pricing structured?</h3>
+                            <div class="faq-question" tabindex="0" role="button" aria-expanded="false">
+                                <h3>How much do your services cost?</h3>
                                 <i class="fas fa-chevron-down"></i>
                             </div>
-                            <div class="faq-answer">
-                                <p>Our pricing is customized based on your specific service requirements, location, and duration. Factors that influence pricing include:</p>
+                            <div class="faq-answer" aria-hidden="true">
+                                <p>Our pricing is customized based on service type, duration, and specific requirements:</p>
                                 <ul>
-                                    <li><strong>Service Type:</strong> Lifeguarding, instruction, or event management</li>
-                                    <li><strong>Duration:</strong> Hourly, daily, weekly, or seasonal arrangements</li>
-                                    <li><strong>Location:</strong> Travel distance and estate accessibility</li>
-                                    <li><strong>Group Size:</strong> Number of participants or guests</li>
-                                    <li><strong>Special Requirements:</strong> Additional certifications or specialized services</li>
+                                    <li><strong>Swimming Instruction:</strong> Starting at $150/hour with package discounts available</li>
+                                    <li><strong>Event Management:</strong> $300 minimum with pricing based on duration and guest count</li>
+                                    <li><strong>Estate Lifeguarding:</strong> Custom pricing for daily, weekly, or seasonal coverage</li>
                                 </ul>
-                                <p>We provide transparent, all-inclusive pricing with no hidden fees. Contact us for a personalized consultation and detailed proposal.</p>
+                                <p>We provide detailed quotes during our complimentary consultation to ensure transparent, fair pricing that reflects the value of our professional services.</p>
                             </div>
                         </div>
 
                         <div class="faq-item">
-                            <div class="faq-question">
-                                <h3>Do you offer package deals for multiple services?</h3>
+                            <div class="faq-question" tabindex="0" role="button" aria-expanded="false">
+                                <h3>Do you offer package deals or discounts?</h3>
                                 <i class="fas fa-chevron-down"></i>
                             </div>
-                            <div class="faq-answer">
-                                <p>Yes, we offer comprehensive service packages that provide exceptional value:</p>
+                            <div class="faq-answer" aria-hidden="true">
+                                <p>Yes, we offer several package options and discounts:</p>
                                 <ul>
-                                    <li><strong>Estate Complete Package:</strong> Ongoing lifeguarding + family swimming instruction</li>
-                                    <li><strong>Event Premium Package:</strong> Safety management + coordination + post-event services</li>
-                                    <li><strong>Seasonal Family Package:</strong> Regular instruction + special event coverage</li>
-                                    <li><strong>Corporate Partnership Package:</strong> Multi-event coverage with preferred rates</li>
+                                    <li><strong>Multi-session lesson packages:</strong> 10-20% savings for 5+ lesson packages</li>
+                                    <li><strong>Seasonal coverage:</strong> Reduced rates for ongoing summer lifeguarding</li>
+                                    <li><strong>Multiple service discounts:</strong> Savings when combining instruction with lifeguarding</li>
+                                    <li><strong>Family packages:</strong> Group rates for multiple family members</li>
+                                    <li><strong>Corporate rates:</strong> Volume discounts for multiple events or ongoing services</li>
                                 </ul>
-                                <p>Package pricing offers significant savings compared to individual services and includes priority scheduling and enhanced service levels.</p>
+                                <p>Package details are discussed during your private consultation to match your family's specific needs.</p>
                             </div>
                         </div>
 
                         <div class="faq-item">
-                            <div class="faq-question">
-                                <h3>What payment methods do you accept?</h3>
+                            <div class="faq-question" tabindex="0" role="button" aria-expanded="false">
+                                <h3>What is included in the service fee?</h3>
                                 <i class="fas fa-chevron-down"></i>
                             </div>
-                            <div class="faq-answer">
-                                <p>We offer flexible payment options for your convenience:</p>
+                            <div class="faq-answer" aria-hidden="true">
+                                <p>Our comprehensive service fees include:</p>
                                 <ul>
-                                    <li><strong>Bank Transfer/ACH:</strong> Preferred method for ongoing services</li>
-                                    <li><strong>Credit Cards:</strong> All major cards accepted (Visa, MasterCard, Amex)</li>
-                                    <li><strong>Check:</strong> Corporate and personal checks welcome</li>
-                                    <li><strong>Invoice Terms:</strong> Net 30 terms available for established clients</li>
+                                    <li>Professional certified instructor/lifeguard</li>
+                                    <li>All necessary safety equipment</li>
+                                    <li>Pre-service consultation and assessment</li>
+                                    <li>Customized lesson plans or safety protocols</li>
+                                    <li>Progress tracking and reporting</li>
+                                    <li>Emergency response capabilities</li>
+                                    <li>Professional liability insurance coverage</li>
                                 </ul>
-                                <p>Payment schedules can be arranged to match your preferences, including advance payment for discounts or post-service billing for ongoing arrangements.</p>
+                                <p>There are no hidden fees - our pricing is transparent and comprehensive.</p>
                             </div>
                         </div>
+                    </section>
 
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <h3>Is there a minimum service duration?</h3>
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>Minimum service requirements vary by service type:</p>
-                                <ul>
-                                    <li><strong>Swimming Instruction:</strong> 1-hour sessions (most common: 4-session packages)</li>
-                                    <li><strong>Event Lifeguarding:</strong> 3-hour minimum for most events</li>
-                                    <li><strong>Private Estate Services:</strong> 4-hour minimum for residential coverage</li>
-                                    <li><strong>Corporate Events:</strong> Half-day or full-day packages</li>
-                                </ul>
-                                <p>We're flexible and will work with you to create arrangements that meet your needs while ensuring professional service quality.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Booking & Scheduling Questions -->
-                    <div class="faq-section" id="booking" data-category="booking">
+                    <!-- Safety & Certifications -->
+                    <section id="safety" class="faq-section" data-category="safety">
                         <h2 class="section-title">
-                            <i class="fas fa-calendar-alt"></i>
+                            <i class="fas fa-shield-alt"></i>
+                            Safety & Certifications
+                        </h2>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question" tabindex="0" role="button" aria-expanded="false">
+                                <h3>What certifications and training do you have?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer" aria-hidden="true">
+                                <p>Our comprehensive certifications include:</p>
+                                <ul>
+                                    <li><strong>American Red Cross Lifeguard Certification</strong> (Current)</li>
+                                    <li><strong>CPR/AED for Professional Rescuers</strong></li>
+                                    <li><strong>Water Safety Instructor (WSI) Certification</strong></li>
+                                    <li><strong>Special Needs Aquatic Instruction</strong></li>
+                                    <li><strong>Licensed & Bonded for Private Estate Services</strong></li>
+                                    <li><strong>Background Checked & Security Cleared</strong></li>
+                                </ul>
+                                <p>All certifications are kept current through regular renewal and continuing education programs.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" tabindex="0" role="button" aria-expanded="false">
+                                <h3>Are you insured and bonded?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer" aria-hidden="true">
+                                <p>Yes, we maintain comprehensive insurance and bonding:</p>
+                                <ul>
+                                    <li><strong>Professional Liability Insurance:</strong> $2 million coverage for all services</li>
+                                    <li><strong>General Liability Insurance:</strong> Protection for property and personal injury</li>
+                                    <li><strong>Bonding:</strong> Licensed and bonded for private estate services</li>
+                                    <li><strong>Background Verification:</strong> Complete screening for all team members</li>
+                                </ul>
+                                <p>Insurance certificates and bonding documentation are available upon request and provided to all clients before service commencement.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Booking & Scheduling -->
+                    <section id="booking" class="faq-section" data-category="booking">
+                        <h2 class="section-title">
+                            <i class="fas fa-calendar-check"></i>
                             Booking & Scheduling
                         </h2>
                         
                         <div class="faq-item">
-                            <div class="faq-question">
-                                <h3>How far in advance should I book your services?</h3>
+                            <div class="faq-question" tabindex="0" role="button" aria-expanded="false">
+                                <h3>How far in advance should I book services?</h3>
                                 <i class="fas fa-chevron-down"></i>
                             </div>
-                            <div class="faq-answer">
-                                <p>Booking timeline recommendations vary by service and season:</p>
+                            <div class="faq-answer" aria-hidden="true">
+                                <p>Booking timelines vary by service type and season:</p>
                                 <ul>
-                                    <li><strong>Swimming Instruction:</strong> 1-2 weeks for regular lessons, 3-4 weeks for intensive programs</li>
-                                    <li><strong>Event Lifeguarding:</strong> 2-4 weeks for optimal scheduling, earlier for peak season events</li>
-                                    <li><strong>Emergency/Last-Minute:</strong> We accommodate urgent requests when possible (48-hour notice preferred)</li>
-                                    <li><strong>Seasonal Services:</strong> 4-6 weeks advance booking recommended for summer season</li>
+                                    <li><strong>Swimming Lessons:</strong> 1-2 weeks advance booking recommended</li>
+                                    <li><strong>Event Services:</strong> 2-4 weeks for optimal scheduling</li>
+                                    <li><strong>Emergency Coverage:</strong> Available with 24-48 hours notice</li>
+                                    <li><strong>Summer Season:</strong> Book 4-6 weeks in advance (high demand period)</li>
+                                    <li><strong>Holiday Events:</strong> 6-8 weeks advance booking strongly recommended</li>
                                 </ul>
-                                <p>Peak times (summer months, holidays) book earliest, so early planning ensures your preferred dates and times.</p>
+                                <p>We always try to accommodate urgent requests and maintain flexibility for our established clients.</p>
                             </div>
                         </div>
 
                         <div class="faq-item">
-                            <div class="faq-question">
-                                <h3>What information do you need to provide a quote?</h3>
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>To provide an accurate, customized quote, we need:</p>
-                                <ul>
-                                    <li><strong>Service Type:</strong> Lifeguarding, instruction, or event management</li>
-                                    <li><strong>Location:</strong> Estate address and pool/venue details</li>
-                                    <li><strong>Dates & Times:</strong> Preferred schedule and duration</li>
-                                    <li><strong>Participants:</strong> Number of people, ages, and skill levels</li>
-                                    <li><strong>Special Requirements:</strong> Accessibility needs, special circumstances</li>
-                                    <li><strong>Event Details:</strong> Type of gathering, guest count, other vendors</li>
-                                </ul>
-                                <p>The more details you provide, the more accurate and comprehensive our proposal will be.</p>
-                            </div>
-                        </div>
-
-                        <div class="faq-item">
-                            <div class="faq-question">
+                            <div class="faq-question" tabindex="0" role="button" aria-expanded="false">
                                 <h3>What is your cancellation policy?</h3>
                                 <i class="fas fa-chevron-down"></i>
                             </div>
-                            <div class="faq-answer">
-                                <p>Our cancellation policy is designed to be fair while protecting our ability to serve all clients:</p>
+                            <div class="faq-answer" aria-hidden="true">
+                                <p>Our flexible cancellation policy respects your busy schedule:</p>
                                 <ul>
-                                    <li><strong>48+ Hours Notice:</strong> Full refund or rescheduling at no charge</li>
-                                    <li><strong>24-48 Hours Notice:</strong> 50% charge or reschedule with small fee</li>
-                                    <li><strong>Less than 24 Hours:</strong> Full service charge applies</li>
-                                    <li><strong>Weather Cancellations:</strong> No charge for cancellations due to unsafe weather conditions</li>
-                                    <li><strong>Emergency Situations:</strong> Handled case-by-case with maximum flexibility</li>
+                                    <li><strong>24+ hours notice:</strong> Full refund or reschedule</li>
+                                    <li><strong>4-24 hours notice:</strong> 50% fee for single services</li>
+                                    <li><strong>Less than 4 hours:</strong> Full service fee applies</li>
+                                    <li><strong>Weather cancellations:</strong> No charge for unsafe conditions</li>
+                                    <li><strong>Emergency situations:</strong> Case-by-case consideration</li>
                                 </ul>
-                                <p>We understand that plans change and work with clients to find mutually acceptable solutions whenever possible.</p>
+                                <p>We understand that estate schedules can change and work with our clients to find mutually beneficial solutions.</p>
                             </div>
                         </div>
+                    </section>
 
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <h3>Do you provide services during holidays and weekends?</h3>
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>Yes, we provide services seven days a week, including holidays:</p>
-                                <ul>
-                                    <li><strong>Weekends:</strong> Regular rates, popular for family instruction and events</li>
-                                    <li><strong>Major Holidays:</strong> Premium rates may apply, advance booking essential</li>
-                                    <li><strong>Holiday Weekends:</strong> High demand periods, early booking recommended</li>
-                                    <li><strong>24/7 Availability:</strong> Emergency services and special arrangements available</li>
-                                </ul>
-                                <p>Holiday and weekend services are especially popular for family gatherings and special celebrations.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Privacy & Discretion Questions -->
-                    <div class="faq-section" id="privacy" data-category="privacy">
+                    <!-- Estate Requirements -->
+                    <section id="estate" class="faq-section" data-category="estate">
                         <h2 class="section-title">
-                            <i class="fas fa-lock"></i>
-                            Privacy & Discretion
+                            <i class="fas fa-home"></i>
+                            Estate Requirements
                         </h2>
                         
                         <div class="faq-item">
-                            <div class="faq-question">
-                                <h3>How do you ensure client privacy and discretion?</h3>
+                            <div class="faq-question" tabindex="0" role="button" aria-expanded="false">
+                                <h3>What do you need to know about our pool and estate?</h3>
                                 <i class="fas fa-chevron-down"></i>
                             </div>
-                            <div class="faq-answer">
-                                <p>Privacy and discretion are fundamental to our service:</p>
+                            <div class="faq-answer" aria-hidden="true">
+                                <p>For optimal service delivery, we assess several key factors:</p>
                                 <ul>
-                                    <li><strong>Confidentiality Agreements:</strong> All staff sign comprehensive NDAs</li>
-                                    <li><strong>Professional Conduct:</strong> Training in high-profile client service standards</li>
-                                    <li><strong>Discrete Presence:</strong> Professional, understated presentation that respects your estate's aesthetic</li>
-                                    <li><strong>No Photography/Social Media:</strong> Strict policies prohibiting unauthorized documentation</li>
-                                    <li><strong>Secure Communications:</strong> All client information protected with professional-grade security</li>
+                                    <li><strong>Pool specifications:</strong> Size, depth, special features (spa, slide, etc.)</li>
+                                    <li><strong>Access requirements:</strong> Parking, gate codes, security protocols</li>
+                                    <li><strong>Safety equipment:</strong> Available rescue equipment and emergency access</li>
+                                    <li><strong>Family needs:</strong> Number of swimmers, ages, skill levels, special requirements</li>
+                                    <li><strong>Privacy considerations:</strong> Discretion requirements and estate protocols</li>
                                 </ul>
-                                <p>We understand the importance of privacy for distinguished families and maintain the highest standards of professional discretion.</p>
+                                <p>This information is gathered during our initial consultation to ensure seamless service integration.</p>
                             </div>
                         </div>
-
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <h3>Do you work with celebrities and high-profile clients?</h3>
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>Yes, we have extensive experience serving high-profile clients:</p>
-                                <ul>
-                                    <li><strong>Celebrity Security Clearance:</strong> Background screening suitable for high-profile households</li>
-                                    <li><strong>Enhanced Privacy Protocols:</strong> Additional security measures and confidentiality procedures</li>
-                                    <li><strong>Coordinated Security:</strong> Seamless integration with existing security teams</li>
-                                    <li><strong>Media Training:</strong> Staff trained in handling media situations and maintaining privacy</li>
-                                </ul>
-                                <p>We never disclose client identities or service details, and understand the unique privacy needs of public figures.</p>
-                            </div>
-                        </div>
-
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <h3>Can you coordinate with our existing household staff?</h3>
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>Absolutely. We seamlessly integrate with your existing household team:</p>
-                                <ul>
-                                    <li><strong>Staff Coordination:</strong> Professional communication with housekeepers, chefs, and maintenance staff</li>
-                                    <li><strong>Security Integration:</strong> Coordination with security personnel and systems</li>
-                                    <li><strong>Event Collaboration:</strong> Working alongside catering, event planners, and other vendors</li>
-                                    <li><strong>Scheduling Flexibility:</strong> Adapting to existing household routines and preferences</li>
-                                </ul>
-                                <p>Our goal is to enhance your household's operations without disruption to your established routines.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    </section>
+                </main>
             </div>
         </div>
     </section>
 
-    <!-- Contact CTA -->
+    <!-- FAQ CTA -->
     <section class="faq-cta">
         <div class="container">
             <div class="cta-content">
-                <h2>Didn't Find Your Answer?</h2>
-                <p>
-                    Our concierge team is available to provide personalized answers to any questions 
-                    about our luxury aquatic services and how we can serve your family's needs.
+                <div class="section-badge" style="background: var(--luxury-gold); color: var(--deep-navy);">Need Personal Guidance?</div>
+                <h2 style="color: var(--pearl-white);">Schedule Your Complimentary Consultation</h2>
+                <p style="color: rgba(255,255,255,0.9); margin-bottom: 40px;">
+                    Get personalized answers to your specific questions and learn how our services 
+                    can be customized for your estate's unique requirements.
                 </p>
+                
                 <div class="cta-buttons">
-                    <a href="/contact" class="btn-primary large">
-                        <i class="fas fa-calendar-alt"></i>
+                    <a href="contact.html" class="btn-primary">
+                        <i class="fas fa-calendar-check"></i>
                         Schedule Consultation
                     </a>
-                    <a href="tel:+18058051234" class="btn-secondary large">
+                    <a href="tel:+18058051234" class="btn-secondary">
                         <i class="fas fa-phone"></i>
                         Call (805) 805-1234
                     </a>
                 </div>
+                
                 <div class="response-time">
                     <i class="fas fa-clock"></i>
-                    <span>We respond to all inquiries within 4 business hours</span>
+                    <span>We typically respond to consultation requests within 4 business hours</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Enhanced JavaScript -->
-    <script src="js/luxury-app.js"></script>
-    <script>
-        // Mobile Navigation Handler
-        class MobileNavigation {
-            constructor() {
-                this.toggle = document.getElementById('mobileMenuToggle');
-                this.navLinks = document.getElementById('navLinks');
-                this.init();
-            }
-            
-            init() {
-                if (this.toggle && this.navLinks) {
-                    this.toggle.addEventListener('click', () => this.toggleMenu());
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section footer-brand">
+                    <div class="footer-logo">
+                        <img src="images/805-lifeguard-logo.png" alt="805 LifeGuard Logo" class="footer-logo-img">
+                        <div>
+                            <h3>805 LifeGuard</h3>
+                            <p>Premier Aquatic Services</p>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        Providing exceptional aquatic safety and instruction services to Southern California's 
+                        most distinguished estates since 2016. Licensed, bonded, and insured for your peace of mind.
+                    </p>
+                    <div class="footer-credentials">
+                        <div class="credential-badge">
+                            <i class="fas fa-certificate"></i>
+                            Red Cross Certified
+                        </div>
+                        <div class="credential-badge">
+                            <i class="fas fa-shield-alt"></i>
+                            Licensed & Bonded
+                        </div>
+                        <div class="credential-badge">
+                            <i class="fas fa-award"></i>
+                            7+ Years Experience
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4><i class="fas fa-water"></i> Services</h4>
+                    <ul>
+                        <li><a href="services.html#lifeguarding">Private Estate Lifeguarding</a></li>
+                        <li><a href="services.html#instruction">Bespoke Swimming Instruction</a></li>
+                        <li><a href="services.html#events">Luxury Event Management</a></li>
+                        <li><a href="services.html#safety">Water Safety Consulting</a></li>
+                        <li><a href="services.html#maintenance">Pool Maintenance Oversight</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4><i class="fas fa-building"></i> Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Jasper & Team</a></li>
+                        <li><a href="portfolio.html">Client Portfolio</a></li>
+                        <li><a href="faq.html">Frequently Asked Questions</a></li>
+                        <li><a href="contact.html">Contact & Consultation</a></li>
+                        <li><a href="testimonials.html">Client Testimonials</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4><i class="fas fa-map-marker-alt"></i> Service Areas</h4>
+                    <div class="service-areas">
+                        <div class="area-group">
+                            <strong>Primary Coverage:</strong>
+                            <ul>
+                                <li>Thousand Oaks</li>
+                                <li>Westlake Village</li>
+                                <li>Agoura Hills</li>
+                                <li>Newbury Park</li>
+                            </ul>
+                        </div>
+                        <div class="area-group">
+                            <strong>Extended Coverage:</strong>
+                            <ul>
+                                <li>Malibu & Calabasas</li>
+                                <li>Beverly Hills</li>
+                                <li>Manhattan Beach</li>
+                                <li>Newport Beach</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section footer-contact">
+                    <h4><i class="fas fa-concierge-bell"></i> Concierge Contact</h4>
+                    <div class="contact-methods">
+                        <a href="tel:+18058051234" class="contact-method priority">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>(805) 805-1234</strong>
+                                <span>24/7 Emergency Line</span>
+                            </div>
+                        </a>
+                        <a href="mailto:concierge@805lifeguard.com" class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>concierge@805lifeguard.com</strong>
+                                <span>Consultation Requests</span>
+                            </div>
+                        </a>
+                        <a href="https://client.805lifeguard.com" class="contact-method portal" target="_blank">
+                            <i class="fas fa-user-circle"></i>
+                            <div>
+                                <strong>Client Portal</strong>
+                                <span>Schedule & Account Access</span>
+                            </div>
+                        </a>
+                    </div>
                     
-                    this.navLinks.querySelectorAll('.nav-link').forEach(link => {
-                        link.addEventListener('click', () => this.closeMenu());
-                    });
+                    <div class="emergency-notice">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <div>
+                            <strong>Pool Emergency?</strong>
+                            <p>Call (805) 805-1234 immediately. Available 24/7 for existing clients.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <div class="footer-legal">
+                        <p>&copy; 2025 805 LifeGuard LLC. All rights reserved.</p>
+                        <div class="legal-links">
+                            <a href="privacy.html">Privacy Policy</a>
+                            <a href="terms.html">Terms of Service</a>
+                            <a href="insurance.html">Insurance & Bonding</a>
+                        </div>
+                    </div>
                     
-                    document.addEventListener('click', (e) => {
-                        if (!this.toggle.contains(e.target) && !this.navLinks.contains(e.target)) {
-                            this.closeMenu();
-                        }
-                    });
+                    <div class="footer-portals">
+                        <a href="https://client.805lifeguard.com" class="portal-link client" target="_blank">
+                            <i class="fas fa-user-circle"></i>
+                            Client Portal
+                        </a>
+                        <a href="https://admin.805lifeguard.com" class="portal-link admin" target="_blank">
+                            <i class="fas fa-shield-alt"></i>
+                            Admin Portal
+                        </a>
+                    </div>
                     
-                    window.addEventListener('resize', () => {
-                        if (window.innerWidth > 768) {
-                            this.closeMenu();
-                        }
-                    });
-                }
-            }
-            
-            toggleMenu() {
-                const isActive = this.navLinks.classList.contains('active');
-                if (isActive) {
-                    this.closeMenu();
-                } else {
-                    this.openMenu();
-                }
-            }
-            
-            openMenu() {
-                this.toggle.classList.add('active');
-                this.navLinks.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-            
-            closeMenu() {
-                this.toggle.classList.remove('active');
-                this.navLinks.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        }
-        
-        // FAQ Functionality
-        class FAQHandler {
-            constructor() {
-                this.faqItems = document.querySelectorAll('.faq-item');
-                this.searchInput = document.getElementById('faqSearch');
-                this.categoryBtns = document.querySelectorAll('.category-btn');
-                this.sidebarLinks = document.querySelectorAll('.category-link');
-                this.init();
-            }
-            
-            init() {
-                // FAQ accordion functionality
-                this.faqItems.forEach(item => {
-                    const question = item.querySelector('.faq-question');
-                    question.addEventListener('click', () => this.toggleFAQ(item));
-                });
-                
-                // Search functionality
-                if (this.searchInput) {
-                    this.searchInput.addEventListener('input', (e) => this.searchFAQs(e.target.value));
-                }
-                
-                // Category filtering
-                this.categoryBtns.forEach(btn => {
-                    btn.addEventListener('click', () => this.filterByCategory(btn));
-                });
-                
-                this.sidebarLinks.forEach(link => {
-                    link.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        this.filterByCategory(link);
-                        this.scrollToSection(link.dataset.category);
-                    });
-                });
-            }
-            
-            toggleFAQ(item) {
-                const isOpen = item.classList.contains('open');
-                
-                // Close all other FAQs
-                this.faqItems.forEach(faq => {
-                    if (faq !== item) {
-                        faq.classList.remove('open');
-                    }
-                });
-                
-                // Toggle current FAQ
-                item.classList.toggle('open', !isOpen);
-            }
-            
-            searchFAQs(searchTerm) {
-                const term = searchTerm.toLowerCase();
-                
-                this.faqItems.forEach(item => {
-                    const question = item.querySelector('.faq-question h3').textContent.toLowerCase();
-                    const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
-                    
-                    if (question.includes(term) || answer.includes(term)) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = term === '' ? 'block' : 'none';
-                    }
-                });
-                
-                // Show/hide sections based on visible items
-                document.querySelectorAll('.faq-section').forEach(section => {
-                    const visibleItems = section.querySelectorAll('.faq-item[style*="block"]');
-                    section.style.display = visibleItems.length > 0 ? 'block' : 'none';
-                });
-            }
-            
-            filterByCategory(activeBtn) {
-                const category = activeBtn.dataset.category;
-                
-                // Update active states
-                this.categoryBtns.forEach(btn => btn.classList.remove('active'));
-                this.sidebarLinks.forEach(link => link.classList.remove('active'));
-                activeBtn.classList.add('active');
-                
-                // Show/hide sections
-                document.querySelectorAll('.faq-section').forEach(section => {
-                    if (category === 'all' || section.dataset.category === category) {
-                        section.style.display = 'block';
-                    } else {
-                        section.style.display = 'none';
-                    }
-                });
-                
-                // Clear search when filtering
-                if (this.searchInput) {
-                    this.searchInput.value = '';
-                }
-                
-                // Reset FAQ items display
-                this.faqItems.forEach(item => {
-                    item.style.display = 'block';
-                });
-            }
-            
-            scrollToSection(category) {
-                const section = document.getElementById(category);
-                if (section) {
-                    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            }
-        }
-        
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            new MobileNavigation();
-            new FAQHandler();
-            
-            // Header scroll effects
-            let lastScrollY = window.scrollY;
-            const header = document.querySelector('.header');
-            
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 100) {
-                    header.style.background = 'rgba(248, 246, 240, 0.98)';
-                    header.style.boxShadow = '0 4px 20px rgba(10, 22, 40, 0.1)';
-                } else {
-                    header.style.background = 'rgba(248, 246, 240, 0.95)';
-                    header.style.boxShadow = 'none';
-                }
-                lastScrollY = window.scrollY;
-            });
-        });
-    </script>
+                    <div class="footer-credentials-compact">
+                        <span class="credential">CA Licensed</span>
+                        <span class="credential">Bonded & Insured</span>
+                        <span class="credential">Background Checked</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-    <style>
-        /* FAQ Page Specific Styles */
-        .faq-hero {
-            padding: 150px 0 80px;
-            background: var(--gradient-primary);
-            text-align: center;
-            color: var(--pearl-white);
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .faq-search {
-            padding: 40px 0;
-            background: var(--champagne);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-        }
-        
-        .search-wrapper {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .search-input-wrapper {
-            position: relative;
-            margin-bottom: 30px;
-        }
-        
-        .search-input-wrapper i {
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--warm-gray);
-        }
-        
-        .search-input {
-            width: 100%;
-            padding: 16px 20px 16px 50px;
-            border: 2px solid rgba(212, 175, 55, 0.3);
-            border-radius: 25px;
-            font-size: 1.1rem;
-            background: white;
-            transition: all 0.3s ease;
-        }
-        
-        .search-input:focus {
-            outline: none;
-            border-color: var(--luxury-gold);
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
-        }
-        
-        .search-categories {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .category-btn {
-            background: white;
-            border: 2px solid rgba(212, 175, 55, 0.3);
-            color: var(--deep-navy);
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .category-btn:hover,
-        .category-btn.active {
-            background: var(--luxury-gold);
-            border-color: var(--luxury-gold);
-            color: var(--deep-navy);
-        }
-        
-        .faq-content {
-            padding: 80px 0;
-            background: var(--pearl-white);
-        }
-        
-        .faq-layout {
-            max-width: var(--container-max);
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 60px;
-            padding: 0 20px;
-        }
-        
-        .faq-sidebar {
-            position: sticky;
-            top: 120px;
-            height: fit-content;
-        }
-        
-        .sidebar-header {
-            background: var(--gradient-primary);
-            color: var(--pearl-white);
-            padding: 20px;
-            border-radius: 15px 15px 0 0;
-        }
-        
-        .sidebar-header h3 {
-            color: var(--pearl-white);
-            margin: 0;
-        }
-        
-        .category-list {
-            background: white;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 0 0 15px 15px;
-            border-top: none;
-        }
-        
-        .category-link {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 16px 20px;
-            text-decoration: none;
-            color: var(--deep-navy);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .category-link:hover,
-        .category-link.active {
-            background: rgba(212, 175, 55, 0.1);
-            color: var(--luxury-gold);
-        }
-        
-        .category-link:last-child {
-            border-bottom: none;
-        }
-        
-        .question-count {
-            margin-left: auto;
-            background: var(--luxury-gold);
-            color: var(--deep-navy);
-            padding: 4px 8px;
-            border-radius: 10px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        
-        .contact-sidebar {
-            background: var(--champagne);
-            padding: 25px 20px;
-            border-radius: 15px;
-            margin-top: 30px;
-            text-align: center;
-        }
-        
-        .contact-sidebar h4 {
-            color: var(--deep-navy);
-            margin-bottom: 15px;
-        }
-        
-        .contact-sidebar p {
-            color: var(--warm-gray);
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-        }
-        
-        .btn-small {
-            padding: 10px 20px;
-            font-size: 0.9rem;
-        }
-        
-        .faq-section {
-            margin-bottom: 60px;
-        }
-        
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            color: var(--deep-navy);
-            margin-bottom: 40px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--luxury-gold);
-        }
-        
-        .section-title i {
-            color: var(--luxury-gold);
-        }
-        
-        .faq-item {
-            background: white;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 15px;
-            margin-bottom: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .faq-item:hover {
-            box-shadow: var(--shadow-card);
-        }
-        
-        .faq-question {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 25px 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .faq-question:hover {
-            background: rgba(212, 175, 55, 0.05);
-        }
-        
-        .faq-question h3 {
-            color: var(--deep-navy);
-            margin: 0;
-            font-size: 1.1rem;
-        }
-        
-        .faq-question i {
-            color: var(--luxury-gold);
-            font-size: 1.2rem;
-            transition: transform 0.3s ease;
-        }
-        
-        .faq-item.open .faq-question i {
-            transform: rotate(180deg);
-        }
-        
-        .faq-answer {
-            padding: 0 30px;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.5s ease;
-        }
-        
-        .faq-item.open .faq-answer {
-            max-height: 1000px;
-            padding: 0 30px 30px;
-        }
-        
-        .faq-answer p {
-            color: var(--warm-gray);
-            line-height: 1.7;
-            margin-bottom: 15px;
-        }
-        
-        .faq-answer ul {
-            margin: 15px 0;
-            padding-left: 20px;
-        }
-        
-        .faq-answer li {
-            color: var(--warm-gray);
-            margin-bottom: 8px;
-            line-height: 1.6;
-        }
-        
-        .faq-answer li strong {
-            color: var(--deep-navy);
-        }
-        
-        .faq-cta {
-            padding: var(--section-padding);
-            background: var(--gradient-primary);
-            text-align: center;
-            color: var(--pearl-white);
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin: 40px 0;
-            flex-wrap: wrap;
-        }
-        
-        .btn-large {
-            padding: 18px 40px;
-            font-size: 1.1rem;
-        }
-        
-        .response-time {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 30px;
-            opacity: 0.9;
-            font-size: 0.95rem;
-        }
-        
-        .response-time i {
-            color: var(--luxury-gold);
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .faq-layout {
-                grid-template-columns: 250px 1fr;
-                gap: 40px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .faq-layout {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .faq-sidebar {
-                position: static;
-                order: 2;
-            }
-            
-            .search-categories {
-                gap: 10px;
-            }
-            
-            .category-btn {
-                padding: 8px 16px;
-                font-size: 0.9rem;
-            }
-            
-            .faq-question {
-                padding: 20px;
-            }
-            
-            .faq-answer {
-                padding: 0 20px;
-            }
-            
-            .faq-item.open .faq-answer {
-                padding: 0 20px 20px;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .search-input {
-                font-size: 1rem;
-                padding: 14px 18px 14px 45px;
-            }
-            
-            .faq-question h3 {
-                font-size: 1rem;
-            }
-            
-            .section-title {
-                flex-direction: column;
-                align-items: start;
-                gap: 10px;
-            }
-        }
-    </style>
+    <!-- JavaScript -->
+    <script src="js/luxury-app.js"></script>
 </body>
 </html>
