@@ -1,7 +1,7 @@
 /**
  * 805 LifeGuard - Complete Luxury Frontend JavaScript
  * Handles all interactions, API calls, and luxury UX across all pages
- * Updated with comprehensive functionality and D1 database integration
+ * Updated with comprehensive functionality
  */
 
 // Configuration
@@ -51,7 +51,6 @@ class MobileNavigation {
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && this.navLinks.classList.contains('active')) {
                     this.closeMenu();
-                    this.toggle.focus();
                 }
             });
         }
@@ -74,22 +73,14 @@ class MobileNavigation {
         // Focus management for accessibility
         const firstLink = this.navLinks.querySelector('.nav-link');
         if (firstLink) {
-            setTimeout(() => firstLink.focus(), 100);
+            firstLink.focus();
         }
-        
-        // ARIA updates
-        this.toggle.setAttribute('aria-expanded', 'true');
-        this.navLinks.setAttribute('aria-hidden', 'false');
     }
     
     closeMenu() {
         this.toggle.classList.remove('active');
         this.navLinks.classList.remove('active');
         document.body.style.overflow = '';
-        
-        // ARIA updates
-        this.toggle.setAttribute('aria-expanded', 'false');
-        this.navLinks.setAttribute('aria-hidden', 'true');
     }
 }
 
@@ -100,22 +91,14 @@ class HeaderScrollEffects {
     constructor() {
         this.header = document.querySelector('.header');
         this.lastScrollY = window.scrollY;
-        this.ticking = false;
         this.init();
     }
     
     init() {
         if (!this.header) return;
         
-        window.addEventListener('scroll', () => this.requestTick(), { passive: true });
+        window.addEventListener('scroll', () => this.handleScroll(), { passive: true });
         this.handleScroll(); // Initial call
-    }
-    
-    requestTick() {
-        if (!this.ticking) {
-            requestAnimationFrame(() => this.handleScroll());
-            this.ticking = true;
-        }
     }
     
     handleScroll() {
@@ -130,7 +113,6 @@ class HeaderScrollEffects {
         }
         
         this.lastScrollY = currentScrollY;
-        this.ticking = false;
     }
 }
 
@@ -147,7 +129,6 @@ class LuxuryConsultationForm {
         
         this.isSubmitting = false;
         this.formData = {};
-        this.validationRules = {};
         
         if (this.form) {
             this.init();
@@ -161,7 +142,6 @@ class LuxuryConsultationForm {
         this.setupAutoSave();
         this.preloadServiceSelection();
         this.setupAccessibility();
-        console.log('🎯 Luxury Consultation Form initialized');
     }
     
     /**
@@ -179,7 +159,7 @@ class LuxuryConsultationForm {
         const validation = this.validateFormData(data);
         if (!validation.isValid) {
             this.showError(validation.message);
-            this.focusFirstError(validation.field);
+            this.focusFirstError();
             return;
         }
         
@@ -209,142 +189,27 @@ class LuxuryConsultationForm {
         const maxRetries = 3;
         
         try {
-            // Generate consultation ID
-            const consultationId = this.generateConsultationId();
-            data.consultation_id = consultationId;
-            
-            // Enhance data for luxury service
-            const enhancedData = this.enhanceSubmissionData(data);
-            
-            console.log('🚀 Submitting consultation request:', { id: consultationId, services: data.services });
-            
             const response = await fetch(`${CONFIG.API_BASE}${CONFIG.ENDPOINTS.consultation}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Accept': 'application/json',
                 },
-                body: JSON.stringify(enhancedData)
+                body: JSON.stringify(data)
             });
             
             if (!response.ok) {
-                const errorText = await response.text();
-                throw new Error(`HTTP ${response.status}: ${errorText || response.statusText}`);
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
             }
             
             return await response.json();
         } catch (error) {
-            if (retryCount < maxRetries && (error.name === 'TypeError' || error.message.includes('fetch'))) {
+            if (retryCount < maxRetries && error.name === 'TypeError') {
                 // Network error, retry after delay
-                console.log(`🔄 Retrying submission (${retryCount + 1}/${maxRetries})...`);
                 await new Promise(resolve => setTimeout(resolve, 1000 * (retryCount + 1)));
                 return this.submitToAPI(data, retryCount + 1);
             }
             throw error;
         }
-    }
-    
-    /**
-     * Generate unique consultation ID
-     */
-    generateConsultationId() {
-        const timestamp = Date.now();
-        const random = Math.random().toString(36).substr(2, 5).toUpperCase();
-        return `LUXURY-${timestamp}-${random}`;
-    }
-    
-    /**
-     * Enhance submission data for luxury service
-     */
-    enhanceSubmissionData(data) {
-        // Determine client tier based on location and services
-        const clientTier = this.determineClientTier(data);
-        const priority = this.determinePriority(data);
-        const estimatedValue = this.estimateServiceValue(data);
-        
-        return {
-            ...data,
-            client_tier: clientTier,
-            priority_level: priority,
-            estimated_value: estimatedValue,
-            submission_source: 'luxury-website',
-            user_agent: navigator.userAgent,
-            referrer: document.referrer || 'direct',
-            timestamp: new Date().toISOString(),
-            services: JSON.stringify(data.services || [])
-        };
-    }
-    
-    /**
-     * Determine client tier based on property location and services
-     */
-    determineClientTier(data) {
-        const luxuryLocations = [
-            'beverly-hills', 'manhattan-beach', 'newport-beach', 
-            'palos-verdes', 'laguna-beach', 'malibu', 'hidden-hills'
-        ];
-        
-        const premiumServices = ['corporate-events', 'special-needs'];
-        const hasLuxuryLocation = luxuryLocations.includes(data.estateLocation);
-        const hasPremiumServices = data.services?.some(service => premiumServices.includes(service));
-        
-        if (hasLuxuryLocation || hasPremiumServices) {
-            return 'platinum';
-        } else if (data.services?.length >= 3) {
-            return 'gold';
-        } else {
-            return 'standard';
-        }
-    }
-    
-    /**
-     * Determine priority level
-     */
-    determinePriority(data) {
-        const urgentTimeframes = ['immediate', '1-2-weeks'];
-        const highValueBudgets = ['5000-plus', 'monthly-retainer', 'custom-proposal'];
-        
-        if (urgentTimeframes.includes(data.timeframe) || highValueBudgets.includes(data.budget)) {
-            return 'high';
-        } else if (data.services?.length >= 2) {
-            return 'medium';
-        } else {
-            return 'normal';
-        }
-    }
-    
-    /**
-     * Estimate service value
-     */
-    estimateServiceValue(data) {
-        const baseValues = {
-            'private-lifeguarding': 1500,
-            'swim-instruction': 800,
-            'event-management': 2500,
-            'water-safety': 500,
-            'special-needs': 1200,
-            'corporate-events': 3500
-        };
-        
-        const locationMultipliers = {
-            'beverly-hills': 2.0,
-            'malibu': 1.8,
-            'manhattan-beach': 1.6,
-            'newport-beach': 1.6,
-            'hidden-hills': 1.5,
-            'calabasas': 1.3,
-            'westlake-village': 1.2
-        };
-        
-        let totalValue = 0;
-        if (data.services) {
-            data.services.forEach(service => {
-                totalValue += baseValues[service] || 500;
-            });
-        }
-        
-        const multiplier = locationMultipliers[data.estateLocation] || 1.0;
-        return Math.round(totalValue * multiplier);
     }
     
     /**
@@ -361,6 +226,12 @@ class LuxuryConsultationForm {
                 data[key] = value.trim();
             }
         }
+        
+        // Add metadata
+        data.timestamp = new Date().toISOString();
+        data.userAgent = navigator.userAgent;
+        data.referrer = document.referrer;
+        data.source = 'luxury-website';
         
         return data;
     }
@@ -408,7 +279,7 @@ class LuxuryConsultationForm {
             return {
                 isValid: false,
                 message: 'Please provide valid names using only letters, spaces, hyphens, and apostrophes.',
-                field: !nameRegex.test(data.firstName) ? 'firstName' : 'lastName'
+                field: data.firstName ? 'lastName' : 'firstName'
             };
         }
         
@@ -432,13 +303,10 @@ class LuxuryConsultationForm {
     /**
      * Focus first error field for accessibility
      */
-    focusFirstError(fieldName) {
-        if (fieldName) {
-            const field = document.getElementById(fieldName) || document.querySelector(`[name="${fieldName}"]`);
-            if (field) {
-                field.focus();
-                field.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
+    focusFirstError() {
+        const firstErrorField = this.form.querySelector('.error, [aria-invalid="true"]');
+        if (firstErrorField) {
+            firstErrorField.focus();
         }
     }
     
@@ -446,12 +314,10 @@ class LuxuryConsultationForm {
      * Handle successful form submission
      */
     handleSuccessfulSubmission(result) {
-        const consultationId = result.consultationId || result.consultation_id || this.formData.consultation_id;
-        
         const message = `
             <strong>Consultation Request Received</strong><br>
-            ${result.message || 'Thank you for your consultation request. Our concierge team will contact you within 4 business hours.'}<br>
-            <small>Consultation ID: ${consultationId}</small>
+            ${result.message || 'Thank you for your consultation request.'}<br>
+            <small>Consultation ID: ${result.consultationId || 'LUXURY-' + Date.now()}</small>
         `;
         
         this.showSuccess(message);
@@ -460,8 +326,8 @@ class LuxuryConsultationForm {
         this.clearFormData();
         
         // Store consultation ID
-        if (consultationId) {
-            localStorage.setItem('lastConsultationId', consultationId);
+        if (result.consultationId) {
+            localStorage.setItem('lastConsultationId', result.consultationId);
             localStorage.setItem('consultationTimestamp', new Date().toISOString());
         }
         
@@ -477,8 +343,6 @@ class LuxuryConsultationForm {
         setTimeout(() => {
             this.hideMessage();
         }, 10000);
-        
-        console.log('✅ Consultation submitted successfully:', consultationId);
     }
     
     /**
@@ -494,7 +358,7 @@ class LuxuryConsultationForm {
         }
         
         if (idEl) {
-            idEl.textContent = result.consultationId || result.consultation_id || 'LUXURY-' + Date.now();
+            idEl.textContent = result.consultationId || 'LUXURY-' + Date.now();
         }
         
         modal.style.display = 'flex';
@@ -503,7 +367,7 @@ class LuxuryConsultationForm {
         // Focus management
         const continueBtn = modal.querySelector('.btn-primary');
         if (continueBtn) {
-            setTimeout(() => continueBtn.focus(), 100);
+            continueBtn.focus();
         }
     }
     
@@ -524,7 +388,7 @@ class LuxuryConsultationForm {
         this.showError(message);
         
         // Log error for debugging
-        console.error('❌ Form submission error:', {
+        console.error('Form submission error:', {
             error: error.message,
             timestamp: new Date().toISOString(),
             formData: this.formData
@@ -612,11 +476,11 @@ class LuxuryConsultationForm {
         if (isChecked) {
             option.style.borderColor = 'var(--luxury-gold)';
             option.style.background = 'rgba(212, 175, 55, 0.1)';
-            option.setAttribute('aria-checked', 'true');
+            option.setAttribute('aria-selected', 'true');
         } else {
             option.style.borderColor = '#E5E7EB';
             option.style.background = 'white';
-            option.setAttribute('aria-checked', 'false');
+            option.setAttribute('aria-selected', 'false');
         }
     }
     
@@ -751,13 +615,13 @@ class LuxuryConsultationForm {
      */
     setFieldValidation(input, isValid, errorMessage) {
         if (isValid) {
-            input.classList.remove('is-invalid');
-            input.classList.add('is-valid');
+            input.style.borderColor = input.value ? '#10B981' : '#E5E7EB';
+            input.style.boxShadow = input.value ? '0 0 0 3px rgba(16, 185, 129, 0.1)' : '';
             input.setAttribute('aria-invalid', 'false');
             this.clearFieldError(input);
         } else {
-            input.classList.remove('is-valid');
-            input.classList.add('is-invalid');
+            input.style.borderColor = '#EF4444';
+            input.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.1)';
             input.setAttribute('aria-invalid', 'true');
             this.showFieldError(input, errorMessage);
         }
@@ -772,7 +636,9 @@ class LuxuryConsultationForm {
         const error = document.createElement('div');
         error.className = 'field-error';
         error.textContent = message;
-        error.setAttribute('role', 'alert');
+        error.style.color = '#EF4444';
+        error.style.fontSize = '0.9rem';
+        error.style.marginTop = '5px';
         
         input.parentElement.appendChild(error);
     }
@@ -785,7 +651,6 @@ class LuxuryConsultationForm {
         if (existingError) {
             existingError.remove();
         }
-        input.classList.remove('is-invalid', 'is-valid');
     }
     
     /**
@@ -931,7 +796,7 @@ class LuxuryConsultationForm {
         const form = this.form;
         if (form) {
             form.setAttribute('aria-label', 'Luxury consultation request form');
-            form.setAttribute('novalidate', 'true');
+            form.setAttribute('novalidate', 'true'); // We handle validation ourselves
         }
         
         // Service options accessibility
@@ -939,11 +804,7 @@ class LuxuryConsultationForm {
         serviceOptions.forEach((option, index) => {
             option.setAttribute('role', 'checkbox');
             option.setAttribute('tabindex', '0');
-            option.setAttribute('aria-checked', 'false');
-            const label = option.querySelector('label');
-            if (label) {
-                option.setAttribute('aria-label', label.textContent);
-            }
+            option.setAttribute('aria-label', option.querySelector('label').textContent);
         });
         
         // Form sections
@@ -968,7 +829,7 @@ class LuxuryConsultationForm {
         serviceOptions.forEach(option => {
             option.style.borderColor = '#E5E7EB';
             option.style.background = 'white';
-            option.setAttribute('aria-checked', 'false');
+            option.setAttribute('aria-selected', 'false');
         });
     }
     
@@ -979,7 +840,7 @@ class LuxuryConsultationForm {
         // Enhanced analytics tracking
         if (typeof gtag !== 'undefined') {
             gtag('event', 'luxury_consultation_submitted', {
-                consultation_id: result.consultationId || result.consultation_id,
+                consultation_id: result.consultationId,
                 client_tier: result.clientTier || 'standard',
                 priority: result.priority || 'normal',
                 services_selected: this.formData.services?.length || 0
@@ -989,11 +850,13 @@ class LuxuryConsultationForm {
         // Custom analytics
         if (window.luxuryAnalytics) {
             window.luxuryAnalytics.track('consultation_submitted', {
-                consultationId: result.consultationId || result.consultation_id,
+                consultationId: result.consultationId,
                 timestamp: new Date().toISOString(),
                 formData: this.formData
             });
         }
+        
+        console.log('Consultation submitted:', result);
     }
     
     /**
@@ -1075,8 +938,6 @@ class PortfolioFilter {
                 }
             });
         });
-        
-        console.log('🎨 Portfolio Filter initialized');
     }
     
     filterItems(activeBtn) {
@@ -1148,8 +1009,6 @@ class StatsCounter {
         this.counters.forEach(counter => {
             observer.observe(counter);
         });
-        
-        console.log('📊 Stats Counter initialized');
     }
     
     animateCounter(element) {
@@ -1218,23 +1077,16 @@ class FAQHandler {
                 this.scrollToSection(link.dataset.category);
             });
         });
-        
-        console.log('❓ FAQ Handler initialized');
     }
     
     toggleFAQ(item) {
         const isOpen = item.classList.contains('open');
         const answer = item.querySelector('.faq-answer');
-        const question = item.querySelector('.faq-question');
         
         // Close all other FAQs
         this.faqItems.forEach(faq => {
             if (faq !== item) {
                 faq.classList.remove('open');
-                const otherQuestion = faq.querySelector('.faq-question');
-                const otherAnswer = faq.querySelector('.faq-answer');
-                otherQuestion.setAttribute('aria-expanded', 'false');
-                otherAnswer.setAttribute('aria-hidden', 'true');
             }
         });
         
@@ -1242,6 +1094,7 @@ class FAQHandler {
         item.classList.toggle('open', !isOpen);
         
         // Accessibility
+        const question = item.querySelector('.faq-question');
         question.setAttribute('aria-expanded', !isOpen);
         answer.setAttribute('aria-hidden', isOpen);
     }
@@ -1365,8 +1218,6 @@ class PageNavigation {
                 this.updateActiveOnScroll();
             }, 100), { passive: true });
         }
-        
-        console.log('📄 Page Navigation initialized');
     }
     
     scrollToSection(sectionId) {
@@ -1444,8 +1295,6 @@ class SmoothScrollHandler {
                 }
             });
         });
-        
-        console.log('🔗 Smooth Scroll initialized');
     }
 }
 
@@ -1486,8 +1335,6 @@ class AnimationObserver {
             el.style.transition = 'all 0.6s ease';
             observer.observe(el);
         });
-        
-        console.log('🎬 Animation Observer initialized');
     }
 }
 
@@ -1561,8 +1408,6 @@ class VideoModalHandler {
         window.playServiceVideo = (serviceType) => {
             this.openVideo(serviceType);
         };
-        
-        console.log('🎥 Video Modal initialized');
     }
     
     openVideo(serviceType) {
@@ -1631,8 +1476,6 @@ class SuccessModalHandler {
                 window.closeSuccessModal();
             }
         });
-        
-        console.log('🎉 Success Modal initialized');
     }
 }
 
@@ -1710,8 +1553,6 @@ class ErrorHandler {
                 timestamp: new Date().toISOString()
             });
         });
-        
-        console.log('🛡️ Error Handler initialized');
     }
 }
 
@@ -1750,10 +1591,10 @@ if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js')
             .then(registration => {
-                console.log('📱 Service Worker registered:', registration);
+                console.log('Service Worker registered:', registration);
             })
             .catch(registrationError => {
-                console.log('📱 Service Worker registration failed:', registrationError);
+                console.log('Service Worker registration failed:', registrationError);
             });
     });
 }
