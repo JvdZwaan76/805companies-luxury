@@ -1,6 +1,6 @@
 /**
  * 805 LifeGuard - Enhanced Luxury Country Club Theme JavaScript
- * Version: 3.0
+ * Version: 3.1 - Production Ready
  * Comprehensive interactive functionality with perfect consistency
  */
 
@@ -180,16 +180,25 @@
         
         setupHeader() {
             if (!this.header) return;
-            this.headerHeight = this.header.offsetHeight;
             
-            // Add body padding to prevent content jumping
-            document.body.style.paddingTop = this.headerHeight + 'px';
-            
-            // Update header height on resize
-            window.addEventListener('resize', utils.debounce(() => {
+            // Calculate and set initial header height
+            const updateHeaderHeight = () => {
                 this.headerHeight = this.header.offsetHeight;
                 document.body.style.paddingTop = this.headerHeight + 'px';
+            };
+            
+            // Set initial height
+            updateHeaderHeight();
+            
+            // Update header height on resize with debounce
+            window.addEventListener('resize', utils.debounce(() => {
+                updateHeaderHeight();
             }, 100));
+            
+            // Update on orientation change (mobile)
+            window.addEventListener('orientationchange', () => {
+                setTimeout(updateHeaderHeight, 100);
+            });
         }
         
         setupScrollEffects() {
@@ -205,7 +214,7 @@
                     this.header.style.backdropFilter = 'blur(20px)';
                 } else {
                     this.header.style.background = 'rgba(254, 254, 254, 0.95)';
-                    this.header.style.boxShadow = 'none';
+                    this.header.style.boxShadow = '0 2px 12px rgba(10, 22, 40, 0.08)';
                     this.header.style.backdropFilter = 'blur(10px)';
                 }
                 
@@ -229,22 +238,28 @@
             
             this.mobileToggle.addEventListener('click', (e) => {
                 e.preventDefault();
+                e.stopPropagation();
                 this.toggleMobileMenu();
             });
             
-            // Close mobile menu when clicking links
+            // Close mobile menu when clicking navigation links
             const navLinkItems = this.navLinks.querySelectorAll('.nav-link');
             navLinkItems.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (window.innerWidth <= 768) {
-                        this.closeMobileMenu();
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768 && this.navLinks.classList.contains('active')) {
+                        // Add small delay for better UX
+                        setTimeout(() => {
+                            this.closeMobileMenu();
+                        }, 300);
                     }
                 });
             });
             
-            // Close mobile menu when clicking outside
+            // Close mobile menu when clicking outside (but not on toggle button)
             document.addEventListener('click', (e) => {
-                if (!this.header.contains(e.target) && this.navLinks.classList.contains('active')) {
+                if (!this.header.contains(e.target) && 
+                    !this.mobileToggle.contains(e.target) && 
+                    this.navLinks.classList.contains('active')) {
                     this.closeMobileMenu();
                 }
             });
@@ -253,13 +268,23 @@
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && this.navLinks.classList.contains('active')) {
                     this.closeMobileMenu();
+                    this.mobileToggle.focus(); // Return focus to toggle button
                 }
             });
             
-            // Close mobile menu on resize
-            window.addEventListener('resize', () => {
-                if (window.innerWidth > 768) {
+            // Close mobile menu on resize to desktop
+            window.addEventListener('resize', utils.debounce(() => {
+                if (window.innerWidth > 768 && this.navLinks.classList.contains('active')) {
                     this.closeMobileMenu();
+                }
+            }, 250));
+            
+            // Handle orientation change on mobile
+            window.addEventListener('orientationchange', () => {
+                if (this.navLinks.classList.contains('active')) {
+                    setTimeout(() => {
+                        this.closeMobileMenu();
+                    }, 100);
                 }
             });
         }
@@ -279,7 +304,17 @@
             this.mobileToggle.classList.add('active');
             this.mobileToggle.setAttribute('aria-expanded', 'true');
             this.navLinks.setAttribute('aria-hidden', 'false');
+            
+            // Prevent background scrolling
             document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+            
+            // Focus management for accessibility
+            const firstNavLink = this.navLinks.querySelector('.nav-link');
+            if (firstNavLink) {
+                setTimeout(() => firstNavLink.focus(), 100);
+            }
         }
         
         closeMobileMenu() {
@@ -287,7 +322,11 @@
             this.mobileToggle.classList.remove('active');
             this.mobileToggle.setAttribute('aria-expanded', 'false');
             this.navLinks.setAttribute('aria-hidden', 'true');
+            
+            // Restore background scrolling
             document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.width = '';
         }
         
         setupActiveLinks() {
@@ -821,7 +860,7 @@
                     const primaryServices = document.querySelectorAll('input[value="private-lifeguarding"], input[value="swim-instruction"]');
                     const hasPrimary = Array.from(primaryServices).some(service => service.checked);
                     
-                    if (!hasRequired) {
+                    if (!hasPrimary) {
                         alert('Pool cleaning services are exclusively available to clients who also utilize our lifeguarding or swimming instruction services. Please select one of these primary services as well.');
                         this.checked = false;
                         this.closest('.service-option')?.classList.remove('selected');
@@ -1651,7 +1690,7 @@
         
         // Public API methods
         getVersion() {
-            return '3.0';
+            return '3.1';
         }
         
         isReady() {
