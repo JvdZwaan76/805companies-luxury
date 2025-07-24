@@ -236,6 +236,10 @@
         setupMobileMenu() {
             if (!this.mobileToggle || !this.navLinks) return;
             
+            // Initialize mobile menu state
+            this.mobileToggle.setAttribute('aria-expanded', 'false');
+            this.navLinks.setAttribute('aria-hidden', 'true');
+            
             this.mobileToggle.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -247,19 +251,19 @@
             navLinkItems.forEach(link => {
                 link.addEventListener('click', (e) => {
                     if (window.innerWidth <= 768 && this.navLinks.classList.contains('active')) {
-                        // Add small delay for better UX
+                        // Small delay for better UX
                         setTimeout(() => {
                             this.closeMobileMenu();
-                        }, 300);
+                        }, 150);
                     }
                 });
             });
             
-            // Close mobile menu when clicking outside (but not on toggle button)
+            // Close mobile menu when clicking outside
             document.addEventListener('click', (e) => {
-                if (!this.header.contains(e.target) && 
-                    !this.mobileToggle.contains(e.target) && 
-                    this.navLinks.classList.contains('active')) {
+                if (this.navLinks.classList.contains('active') && 
+                    !this.navLinks.contains(e.target) && 
+                    !this.mobileToggle.contains(e.target)) {
                     this.closeMobileMenu();
                 }
             });
@@ -268,7 +272,7 @@
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && this.navLinks.classList.contains('active')) {
                     this.closeMobileMenu();
-                    this.mobileToggle.focus(); // Return focus to toggle button
+                    this.mobileToggle.focus();
                 }
             });
             
@@ -279,7 +283,7 @@
                 }
             }, 250));
             
-            // Handle orientation change on mobile
+            // Handle orientation change
             window.addEventListener('orientationchange', () => {
                 if (this.navLinks.classList.contains('active')) {
                     setTimeout(() => {
@@ -300,33 +304,50 @@
         }
         
         openMobileMenu() {
+            // Add classes
             this.navLinks.classList.add('active');
             this.mobileToggle.classList.add('active');
+            
+            // Update ARIA attributes
             this.mobileToggle.setAttribute('aria-expanded', 'true');
             this.navLinks.setAttribute('aria-hidden', 'false');
             
             // Prevent background scrolling
-            document.body.style.overflow = 'hidden';
+            const scrollY = window.scrollY;
             document.body.style.position = 'fixed';
+            document.body.style.top = `-${scrollY}px`;
             document.body.style.width = '100%';
+            document.body.style.overflow = 'hidden';
             
-            // Focus management for accessibility
+            // Store scroll position
+            this.scrollPosition = scrollY;
+            
+            // Focus management
             const firstNavLink = this.navLinks.querySelector('.nav-link');
             if (firstNavLink) {
-                setTimeout(() => firstNavLink.focus(), 100);
+                setTimeout(() => firstNavLink.focus(), 200);
             }
         }
         
         closeMobileMenu() {
+            // Remove classes
             this.navLinks.classList.remove('active');
             this.mobileToggle.classList.remove('active');
+            
+            // Update ARIA attributes
             this.mobileToggle.setAttribute('aria-expanded', 'false');
             this.navLinks.setAttribute('aria-hidden', 'true');
             
             // Restore background scrolling
-            document.body.style.overflow = '';
             document.body.style.position = '';
+            document.body.style.top = '';
             document.body.style.width = '';
+            document.body.style.overflow = '';
+            
+            // Restore scroll position
+            if (this.scrollPosition !== undefined) {
+                window.scrollTo(0, this.scrollPosition);
+            }
         }
         
         setupActiveLinks() {
@@ -1550,13 +1571,13 @@
             
             heroElements.forEach((element, index) => {
                 element.style.opacity = '0';
-                element.style.transform = 'translateY(30px)';
+                element.style.transform = 'translateY(10px)';
                 
                 setTimeout(() => {
-                    element.style.transition = 'opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                    element.style.transition = 'opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
                     element.style.opacity = '1';
                     element.style.transform = 'translateY(0)';
-                }, 300 + (index * 150));
+                }, 150 + (index * 75));
             });
         }
         
