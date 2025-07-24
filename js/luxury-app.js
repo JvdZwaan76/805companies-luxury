@@ -75,6 +75,15 @@
                 });
             }
             
+            // Mobile nav close button
+            const mobileClose = document.getElementById('mobileNavClose');
+            if (mobileClose) {
+                mobileClose.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.closeMobileNav();
+                });
+            }
+            
             // Mobile nav link clicks
             if (this.mobileNav) {
                 const mobileLinks = this.mobileNav.querySelectorAll('.mobile-nav-link');
@@ -132,6 +141,14 @@
             this.body.style.position = 'fixed';
             this.body.style.top = `-${this.scrollPosition}px`;
             this.body.style.width = '100%';
+            
+            // Focus first link
+            setTimeout(() => {
+                const firstLink = this.mobileNav.querySelector('.mobile-nav-link');
+                if (firstLink) {
+                    firstLink.focus();
+                }
+            }, 300);
             
             console.log('Mobile nav opened');
         }
@@ -277,7 +294,7 @@
         
         setupHeroAnimations() {
             const heroElements = document.querySelectorAll(
-                '.hero-logo, .hero-title, .hero-subtitle, .hero-buttons, .hero-notice'
+                '.hero-title, .hero-subtitle, .hero-buttons, .hero-notice'
             );
             
             heroElements.forEach((element, index) => {
