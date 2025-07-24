@@ -196,15 +196,17 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: var(--space-12);
 }
 
 /* Logo */
 .logo {
     display: flex;
     align-items: center;
-    gap: var(--space-3);
+    gap: var(--space-4);
     text-decoration: none;
     transition: var(--transition);
+    flex-shrink: 0;
 }
 
 .logo:hover {
@@ -212,7 +214,7 @@ p {
 }
 
 .logo-img {
-    height: 56px;
+    height: 64px;
     width: auto;
 }
 
@@ -223,14 +225,14 @@ p {
 
 .logo-name {
     font-family: var(--font-serif);
-    font-size: 1.75rem;
+    font-size: 1.875rem;
     font-weight: 700;
     color: var(--navy-dark);
     line-height: 1;
 }
 
 .logo-tagline {
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     color: var(--gray-medium);
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -614,6 +616,14 @@ p {
         font-size: 0.8125rem;
         padding: var(--space-2) var(--space-3);
     }
+    
+    .logo-img {
+        height: 58px;
+    }
+    
+    .logo-name {
+        font-size: 1.75rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -629,16 +639,20 @@ p {
         padding: var(--space-3) 0;
     }
     
+    .navbar-content {
+        gap: var(--space-6);
+    }
+    
     .logo-img {
-        height: 48px;
+        height: 52px;
     }
     
     .logo-name {
-        font-size: 1.5rem;
+        font-size: 1.625rem;
     }
     
     .logo-tagline {
-        font-size: 0.6875rem;
+        font-size: 0.75rem;
     }
 }
 
@@ -661,6 +675,12 @@ p {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+}
+
+@media (max-width: 768px) {
+    .hero-background {
+        background-attachment: scroll;
+    }
 }
 
 .hero-overlay {
@@ -726,6 +746,11 @@ p {
         background-attachment: scroll;
         padding-top: 80px;
         min-height: 90vh;
+    }
+    
+    .hero-background {
+        background-image: url('images/hero/805-lifeguard-mobile-hero-image-600x400.jpg') !important;
+        background-attachment: scroll;
     }
     
     .hero-buttons {
@@ -1335,7 +1360,6 @@ section {
 
 .footer-logo img {
     height: 48px;
-    filter: brightness(0) invert(1);
 }
 
 .footer-logo-text h3 {
@@ -1576,7 +1600,19 @@ section {
         text-align: center;
     }
     
+    .footer-section h4 {
+        color: var(--white-pure);
+        justify-content: center;
+        text-align: center;
+    }
+    
     .footer-contact {
+        text-align: center;
+    }
+    
+    .footer-contact h4 {
+        color: var(--white-pure);
+        justify-content: center;
         text-align: center;
     }
     
