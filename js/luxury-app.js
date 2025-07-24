@@ -15,13 +15,35 @@
             CLIENT: 'https://client.805companies.com',
             ADMIN: 'https://admin.805companies.com',
             STAFF: 'https://staff.805companies.com'
+        }
+        
+        setupWebPBackgrounds() {
+            // Add WebP classes to background elements if WebP is supported
+            if (CONFIG.WEBP_SUPPORT) {
+                const backgroundElements = [
+                    '.about-hero-background',
+                    '.services-hero-background', 
+                    '.values-background',
+                    '.mission-background',
+                    '.credentials-background',
+                    '.services-cta-background'
+                ];
+                
+                backgroundElements.forEach(selector => {
+                    const element = document.querySelector(selector);
+                    if (element) {
+                        element.classList.add('webp-bg');
+                    }
+                });
+            }
         },
         CAROUSEL: {
             AUTO_PLAY_INTERVAL: 6000, // 6 seconds
             TRANSITION_DURATION: 1500, // 1.5 seconds
             PAUSE_ON_HOVER: true,
             PAUSE_ON_FOCUS: true
-        }
+        },
+        WEBP_SUPPORT: null // Will be detected on load
     };
     
     // === UTILITIES ===
@@ -62,6 +84,57 @@
                 img.onerror = reject;
                 img.src = src;
             });
+        },
+
+        // WebP Support Detection
+        detectWebPSupport: function() {
+            return new Promise((resolve) => {
+                const webP = new Image();
+                webP.onload = webP.onerror = function () {
+                    const isSupported = webP.height === 2;
+                    CONFIG.WEBP_SUPPORT = isSupported;
+                    
+                    // Add CSS class to document for WebP support
+                    if (isSupported) {
+                        document.documentElement.classList.add('webp');
+                        document.documentElement.classList.remove('no-webp');
+                    } else {
+                        document.documentElement.classList.add('no-webp');
+                        document.documentElement.classList.remove('webp');
+                    }
+                    
+                    resolve(isSupported);
+                };
+                webP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+            });
+        },
+
+        // Get optimized image path (WebP or fallback)
+        getOptimizedImagePath: function(basePath) {
+            if (CONFIG.WEBP_SUPPORT) {
+                return basePath.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+            }
+            return basePath;
+        },
+
+        // Set background image with WebP support
+        setBackgroundImage: function(element, imagePath) {
+            const optimizedPath = this.getOptimizedImagePath(imagePath);
+            
+            if (CONFIG.WEBP_SUPPORT) {
+                // Try WebP first
+                const testImg = new Image();
+                testImg.onload = () => {
+                    element.style.backgroundImage = `url(${optimizedPath})`;
+                };
+                testImg.onerror = () => {
+                    // Fallback to original format
+                    element.style.backgroundImage = `url(${imagePath})`;
+                };
+                testImg.src = optimizedPath;
+            } else {
+                element.style.backgroundImage = `url(${imagePath})`;
+            }
         }
     };
     
@@ -143,10 +216,15 @@
             const desktopSrc = slide.dataset.bgDesktop;
             const mobileSrc = slide.dataset.bgMobile;
             
+            let selectedSrc;
             if (utils.isMobile() && mobileSrc) {
-                slide.style.backgroundImage = `url(${mobileSrc})`;
+                selectedSrc = mobileSrc;
             } else if (desktopSrc) {
-                slide.style.backgroundImage = `url(${desktopSrc})`;
+                selectedSrc = desktopSrc;
+            }
+            
+            if (selectedSrc) {
+                utils.setBackgroundImage(slide, selectedSrc);
             }
         }
         
@@ -849,33 +927,42 @@
             try {
                 console.log('🏊‍♂️ Initializing 805 LifeGuard Luxury App...');
                 
-                // Initialize components
-                this.navigation = new NavigationController();
-                this.forms = new FormHandler();
-                this.smoothScroll = new SmoothScroll();
-                this.contactUpdater = new ContactUpdater();
-                
-                // Initialize carousel if hero carousel exists
-                const heroCarousel = document.getElementById('heroCarousel');
-                if (heroCarousel) {
-                    this.carousel = new ElegantCarousel(heroCarousel);
-                }
-                
-                // Initialize animations (after carousel to prevent conflicts)
-                setTimeout(() => {
-                    this.animations = new AnimationController();
-                }, 100);
-                
-                console.log('✅ 805 LifeGuard Luxury App initialized successfully');
-                
-                // Dispatch ready event
-                window.dispatchEvent(new CustomEvent('luxuryAppReady', {
-                    detail: { 
-                        app: this,
-                        hasCarousel: !!this.carousel,
-                        version: '5.1'
+                // First detect WebP support
+                utils.detectWebPSupport().then(() => {
+                    console.log(`🖼️ WebP Support: ${CONFIG.WEBP_SUPPORT ? 'Enabled' : 'Disabled'}`);
+                    
+                    // Initialize components
+                    this.navigation = new NavigationController();
+                    this.forms = new FormHandler();
+                    this.smoothScroll = new SmoothScroll();
+                    this.contactUpdater = new ContactUpdater();
+                    
+                    // Apply WebP classes to background elements
+                    this.setupWebPBackgrounds();
+                    
+                    // Initialize carousel if hero carousel exists
+                    const heroCarousel = document.getElementById('heroCarousel');
+                    if (heroCarousel) {
+                        this.carousel = new ElegantCarousel(heroCarousel);
                     }
-                }));
+                    
+                    // Initialize animations (after carousel to prevent conflicts)
+                    setTimeout(() => {
+                        this.animations = new AnimationController();
+                    }, 100);
+                    
+                    console.log('✅ 805 LifeGuard Luxury App initialized successfully');
+                    
+                    // Dispatch ready event
+                    window.dispatchEvent(new CustomEvent('luxuryAppReady', {
+                        detail: { 
+                            app: this,
+                            hasCarousel: !!this.carousel,
+                            webpSupport: CONFIG.WEBP_SUPPORT,
+                            version: '5.1'
+                        }
+                    }));
+                });
                 
             } catch (error) {
                 console.error('❌ Error initializing app:', error);
