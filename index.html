@@ -31,23 +31,23 @@
         <div class="header-top">
             <div class="header-top-content">
                 <div class="header-top-left">
-                    <i class="fas fa-shield-alt"></i>
+                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
                     <span>Serving Southern California's Finest Clientele Since 2016</span>
                 </div>
                 <div class="header-top-contact">
                     <a href="tel:+18053676432" aria-label="Call us at 805-367-6432">
-                        <i class="fas fa-phone"></i>
+                        <i class="fas fa-phone" aria-hidden="true"></i>
                         (805) 367-6432
                     </a>
                     <a href="mailto:concierge@805lifeguard.com" aria-label="Email our concierge team">
-                        <i class="fas fa-envelope"></i>
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
                         concierge@805lifeguard.com
                     </a>
                 </div>
             </div>
         </div>
         
-        <nav class="navbar">
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
             <a href="/" class="logo" aria-label="805 LifeGuard Home">
                 <img src="images/logos/805-lifeguard-logo.png" alt="805 LifeGuard Premium Logo" class="logo-img" onerror="this.style.display='none'">
                 <div class="logo-text">
@@ -57,34 +57,43 @@
             </a>
             
             <!-- Mobile Menu Toggle -->
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu" aria-expanded="false">
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" 
+                    aria-label="Toggle mobile menu" 
+                    aria-expanded="false"
+                    aria-controls="navLinks">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             
-            <ul class="nav-links" id="navLinks" aria-hidden="true">
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="services.html" class="nav-link">Services</a></li>
-                <li><a href="pool-cleaning.html" class="nav-link">Pool Cleaning</a></li>
-                <li><a href="hoa.html" class="nav-link">HOA Services</a></li>
-                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
-                <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
-                <li><a href="faq.html" class="nav-link">FAQ</a></li>
-                <li class="nav-portals">
-                    <a href="https://client.805companies.com" class="nav-link portal-link" target="_blank">
-                        <i class="fas fa-user-circle"></i>
+            <ul class="nav-links" id="navLinks" role="menubar" aria-hidden="true">
+                <li role="none"><a href="about.html" class="nav-link" role="menuitem">About</a></li>
+                <li role="none"><a href="services.html" class="nav-link" role="menuitem">Services</a></li>
+                <li role="none"><a href="pool-cleaning.html" class="nav-link" role="menuitem">Pool Cleaning</a></li>
+                <li role="none"><a href="hoa.html" class="nav-link" role="menuitem">HOA Services</a></li>
+                <li role="none"><a href="portfolio.html" class="nav-link" role="menuitem">Portfolio</a></li>
+                <li role="none"><a href="testimonials.html" class="nav-link" role="menuitem">Testimonials</a></li>
+                <li role="none"><a href="faq.html" class="nav-link" role="menuitem">FAQ</a></li>
+                <li class="nav-portals" role="none">
+                    <a href="https://client.805companies.com" class="nav-link portal-link" 
+                       target="_blank" rel="noopener noreferrer" role="menuitem"
+                       aria-label="Client Portal - Opens in new window">
+                        <i class="fas fa-user-circle" aria-hidden="true"></i>
                         Client Portal
                     </a>
-                    <a href="https://admin.805companies.com" class="nav-link admin-link" target="_blank">
-                        <i class="fas fa-shield-alt"></i>
+                    <a href="https://admin.805companies.com" class="nav-link admin-link" 
+                       target="_blank" rel="noopener noreferrer" role="menuitem"
+                       aria-label="Admin Portal - Opens in new window">
+                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
                         Admin
                     </a>
                 </li>
-                <li><a href="contact.html" class="nav-link btn-consultation">
-                    <i class="fas fa-calendar-check"></i>
-                    Private Consultation
-                </a></li>
+                <li role="none">
+                    <a href="contact.html" class="nav-link btn-consultation" role="menuitem">
+                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                        Private Consultation
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>
@@ -105,17 +114,17 @@
             
             <div class="hero-cta">
                 <a href="contact.html" class="btn-primary">
-                    <i class="fas fa-calendar-check"></i>
+                    <i class="fas fa-calendar-check" aria-hidden="true"></i>
                     Request Private Consultation
                 </a>
                 <a href="services.html" class="btn-secondary">
-                    <i class="fas fa-water"></i>
+                    <i class="fas fa-water" aria-hidden="true"></i>
                     Our Services
                 </a>
             </div>
             
             <div class="discretion-notice">
-                <i class="fas fa-lock"></i>
+                <i class="fas fa-lock" aria-hidden="true"></i>
                 All consultations are confidential. Custom service packages tailored to your unique requirements.
             </div>
         </div>
@@ -142,7 +151,7 @@
                 <article class="service-card">
                     <div class="service-image" style="background-image: url('images/services/service-lifeguarding-800x600.jpg');">
                         <div class="service-icon">
-                            <i class="fas fa-shield-alt"></i>
+                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
                         </div>
                     </div>
                     <div class="service-content">
@@ -158,7 +167,7 @@
                             <span class="feature-tag">Discrete Service</span>
                         </div>
                         <a href="contact.html?service=lifeguarding" class="service-link" aria-label="Request consultation for private lifeguarding">
-                            Request Consultation <i class="fas fa-arrow-right"></i>
+                            Request Consultation <i class="fas fa-arrow-right" aria-hidden="true"></i>
                         </a>
                     </div>
                 </article>
@@ -166,7 +175,7 @@
                 <article class="service-card">
                     <div class="service-image" style="background-image: url('images/services/service-swim-lessons-800x600.jpg');">
                         <div class="service-icon">
-                            <i class="fas fa-swimming-pool"></i>
+                            <i class="fas fa-swimming-pool" aria-hidden="true"></i>
                         </div>
                     </div>
                     <div class="service-content">
@@ -182,7 +191,7 @@
                             <span class="feature-tag">Custom Programs</span>
                         </div>
                         <a href="contact.html?service=instruction" class="service-link" aria-label="Request consultation for swimming instruction">
-                            Request Consultation <i class="fas fa-arrow-right"></i>
+                            Request Consultation <i class="fas fa-arrow-right" aria-hidden="true"></i>
                         </a>
                     </div>
                 </article>
@@ -190,7 +199,7 @@
                 <article class="service-card">
                     <div class="service-image" style="background-image: url('images/services/service-events-800x600.jpg');">
                         <div class="service-icon">
-                            <i class="fas fa-champagne-glasses"></i>
+                            <i class="fas fa-champagne-glasses" aria-hidden="true"></i>
                         </div>
                     </div>
                     <div class="service-content">
@@ -206,7 +215,7 @@
                             <span class="feature-tag">White-Glove Service</span>
                         </div>
                         <a href="contact.html?service=events" class="service-link" aria-label="Request consultation for event management">
-                            Request Consultation <i class="fas fa-arrow-right"></i>
+                            Request Consultation <i class="fas fa-arrow-right" aria-hidden="true"></i>
                         </a>
                     </div>
                 </article>
@@ -214,10 +223,10 @@
                 <article class="service-card exclusive">
                     <div class="service-image" style="background-image: url('images/services/service-pool-cleaning-800x600.jpg');">
                         <div class="service-icon">
-                            <i class="fas fa-broom"></i>
+                            <i class="fas fa-broom" aria-hidden="true"></i>
                         </div>
                         <div class="exclusive-badge">
-                            <i class="fas fa-crown"></i>
+                            <i class="fas fa-crown" aria-hidden="true"></i>
                             Exclusive
                         </div>
                     </div>
@@ -234,7 +243,7 @@
                             <span class="feature-tag">Chemical Management</span>
                         </div>
                         <a href="pool-cleaning.html" class="service-link" aria-label="Learn about exclusive pool cleaning">
-                            Learn More <i class="fas fa-arrow-right"></i>
+                            Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i>
                         </a>
                     </div>
                 </article>
@@ -242,7 +251,7 @@
                 <article class="service-card">
                     <div class="service-image" style="background-image: url('images/hoa/hoa-community-pool-1600x1200.jpg');">
                         <div class="service-icon">
-                            <i class="fas fa-building"></i>
+                            <i class="fas fa-building" aria-hidden="true"></i>
                         </div>
                     </div>
                     <div class="service-content">
@@ -258,7 +267,7 @@
                             <span class="feature-tag">Board Presentations</span>
                         </div>
                         <a href="hoa.html" class="service-link" aria-label="Learn about HOA services">
-                            Learn More <i class="fas fa-arrow-right"></i>
+                            Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i>
                         </a>
                     </div>
                 </article>
@@ -287,7 +296,7 @@
                     <div class="about-features">
                         <div class="feature-item">
                             <div class="feature-icon">
-                                <i class="fas fa-certificate"></i>
+                                <i class="fas fa-certificate" aria-hidden="true"></i>
                             </div>
                             <div class="feature-content">
                                 <h4>American Red Cross Certified</h4>
@@ -297,7 +306,7 @@
                         
                         <div class="feature-item">
                             <div class="feature-icon">
-                                <i class="fas fa-heart"></i>
+                                <i class="fas fa-heart" aria-hidden="true"></i>
                             </div>
                             <div class="feature-content">
                                 <h4>Personalized Approach</h4>
@@ -307,7 +316,7 @@
                         
                         <div class="feature-item">
                             <div class="feature-icon">
-                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
                             </div>
                             <div class="feature-content">
                                 <h4>Excellence Commitment</h4>
@@ -317,7 +326,7 @@
                     </div>
                     
                     <a href="about.html" class="btn-primary">
-                        <i class="fas fa-user-tie"></i>
+                        <i class="fas fa-user-tie" aria-hidden="true"></i>
                         Learn More About Us
                     </a>
                 </div>
@@ -346,33 +355,33 @@
                 <div class="coverage-item featured">
                     <h3>Primary Service Areas</h3>
                     <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> Thousand Oaks</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Westlake Village</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Agoura Hills</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Newbury Park</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Oak Park</li>
+                        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Thousand Oaks</li>
+                        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Westlake Village</li>
+                        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Agoura Hills</li>
+                        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Newbury Park</li>
+                        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Oak Park</li>
                     </ul>
                 </div>
                 
                 <div class="coverage-item">
                     <h3>Extended Coverage</h3>
                     <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> Malibu</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Calabasas</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Hidden Hills</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Camarillo</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Ventura</li>
+                        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Malibu</li>
+                        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Calabasas</li>
+                        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Hidden Hills</li>
+                        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Camarillo</li>
+                        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Ventura</li>
                     </ul>
                 </div>
                 
                 <div class="coverage-item">
                     <h3>Premium Locations</h3>
                     <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> Beverly Hills</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Manhattan Beach</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Newport Beach</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Palos Verdes</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Laguna Beach</li>
+                        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Beverly Hills</li>
+                        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Manhattan Beach</li>
+                        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Newport Beach</li>
+                        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Palos Verdes</li>
+                        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Laguna Beach</li>
                     </ul>
                 </div>
             </div>
@@ -407,15 +416,15 @@
                         
                         <div class="member-credentials">
                             <div class="credential">
-                                <i class="fas fa-certificate"></i>
+                                <i class="fas fa-certificate" aria-hidden="true"></i>
                                 <span>Red Cross Certified</span>
                             </div>
                             <div class="credential">
-                                <i class="fas fa-heart"></i>
+                                <i class="fas fa-heart" aria-hidden="true"></i>
                                 <span>Special Needs Expert</span>
                             </div>
                             <div class="credential">
-                                <i class="fas fa-shield-alt"></i>
+                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
                                 <span>Licensed & Bonded</span>
                             </div>
                         </div>
@@ -447,11 +456,11 @@
                             <div class="author-location">Agoura Hills, CA</div>
                         </div>
                         <div class="testimonial-rating" aria-label="5 star rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
                         </div>
                     </div>
                 </article>
@@ -466,11 +475,11 @@
                             <div class="author-location">Newbury Park, CA</div>
                         </div>
                         <div class="testimonial-rating" aria-label="5 star rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
                         </div>
                     </div>
                 </article>
@@ -485,11 +494,11 @@
                             <div class="author-location">Thousand Oaks, CA</div>
                         </div>
                         <div class="testimonial-rating" aria-label="5 star rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
                         </div>
                     </div>
                 </article>
@@ -497,7 +506,7 @@
             
             <div class="testimonials-cta">
                 <a href="testimonials.html" class="btn-primary">
-                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
                     Read More Testimonials
                 </a>
             </div>
@@ -515,7 +524,7 @@
                     Our concierge team will create a bespoke service package tailored to your family's lifestyle.
                 </p>
                 <a href="contact.html" class="btn-primary" style="font-size: 1.1rem; padding: 20px 45px;">
-                    <i class="fas fa-calendar-alt"></i>
+                    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
                     Schedule Private Consultation
                 </a>
             </div>
@@ -540,22 +549,22 @@
                     </p>
                     <div class="footer-credentials">
                         <div class="credential-badge">
-                            <i class="fas fa-certificate"></i>
+                            <i class="fas fa-certificate" aria-hidden="true"></i>
                             Red Cross Certified
                         </div>
                         <div class="credential-badge">
-                            <i class="fas fa-shield-alt"></i>
+                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
                             Licensed & Bonded
                         </div>
                         <div class="credential-badge">
-                            <i class="fas fa-award"></i>
+                            <i class="fas fa-award" aria-hidden="true"></i>
                             7+ Years Experience
                         </div>
                     </div>
                 </div>
                 
                 <div class="footer-section">
-                    <h4><i class="fas fa-water"></i> Services</h4>
+                    <h4><i class="fas fa-water" aria-hidden="true"></i> Services</h4>
                     <ul>
                         <li><a href="services.html#lifeguarding">Private Lifeguarding</a></li>
                         <li><a href="services.html#instruction">Bespoke Swimming Instruction</a></li>
@@ -566,7 +575,7 @@
                 </div>
                 
                 <div class="footer-section">
-                    <h4><i class="fas fa-building"></i> Company</h4>
+                    <h4><i class="fas fa-building" aria-hidden="true"></i> Company</h4>
                     <ul>
                         <li><a href="about.html">About Jasper & Team</a></li>
                         <li><a href="portfolio.html">Client Portfolio</a></li>
@@ -577,7 +586,7 @@
                 </div>
                 
                 <div class="footer-section">
-                    <h4><i class="fas fa-map-marker-alt"></i> Service Areas</h4>
+                    <h4><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Service Areas</h4>
                     <div class="service-areas">
                         <div class="area-group">
                             <strong>Primary Coverage:</strong>
@@ -601,24 +610,24 @@
                 </div>
                 
                 <div class="footer-section footer-contact">
-                    <h4><i class="fas fa-concierge-bell"></i> Concierge Contact</h4>
+                    <h4><i class="fas fa-concierge-bell" aria-hidden="true"></i> Concierge Contact</h4>
                     <div class="contact-methods">
                         <a href="tel:+18053676432" class="contact-method priority">
-                            <i class="fas fa-phone"></i>
+                            <i class="fas fa-phone" aria-hidden="true"></i>
                             <div>
                                 <strong>(805) 367-6432</strong>
                                 <span>24/7 Emergency Line</span>
                             </div>
                         </a>
                         <a href="mailto:concierge@805lifeguard.com" class="contact-method">
-                            <i class="fas fa-envelope"></i>
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
                             <div>
                                 <strong>concierge@805lifeguard.com</strong>
                                 <span>Consultation Requests</span>
                             </div>
                         </a>
-                        <a href="https://client.805companies.com" class="contact-method portal" target="_blank">
-                            <i class="fas fa-user-circle"></i>
+                        <a href="https://client.805companies.com" class="contact-method portal" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-user-circle" aria-hidden="true"></i>
                             <div>
                                 <strong>Client Portal</strong>
                                 <span>Schedule & Account Access</span>
@@ -627,7 +636,7 @@
                     </div>
                     
                     <div class="emergency-notice">
-                        <i class="fas fa-exclamation-triangle"></i>
+                        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
                         <div>
                             <strong>Pool Emergency?</strong>
                             <p>Call (805) 367-6432 immediately. Available 24/7 for existing clients.</p>
@@ -648,12 +657,12 @@
                     </div>
                     
                     <div class="footer-portals">
-                        <a href="https://client.805companies.com" class="portal-link client" target="_blank">
-                            <i class="fas fa-user-circle"></i>
+                        <a href="https://client.805companies.com" class="portal-link client" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-user-circle" aria-hidden="true"></i>
                             Client Portal
                         </a>
-                        <a href="https://admin.805companies.com" class="portal-link admin" target="_blank">
-                            <i class="fas fa-shield-alt"></i>
+                        <a href="https://admin.805companies.com" class="portal-link admin" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
                             Admin Portal
                         </a>
                     </div>
