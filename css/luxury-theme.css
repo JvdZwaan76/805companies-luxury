@@ -247,7 +247,7 @@ p {
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: var(--space-6);
+    gap: var(--space-5);
     list-style: none;
     margin: 0;
     padding: 0;
@@ -258,33 +258,40 @@ p {
     text-decoration: none;
     font-weight: 500;
     font-size: 0.9375rem;
-    padding: var(--space-2) var(--space-3);
+    padding: var(--space-3) var(--space-4);
     border-radius: var(--border-radius);
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
+    letter-spacing: 0.01em;
 }
 
-.nav-link::after {
+.nav-link::before {
     content: '';
     position: absolute;
-    bottom: -2px;
+    bottom: 0;
     left: 50%;
     width: 0;
     height: 2px;
     background: var(--gold-medium);
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateX(-50%);
+    border-radius: 1px;
 }
 
-.nav-link:hover,
+.nav-link:hover {
+    color: var(--gold-dark);
+    background: rgba(184, 134, 11, 0.04);
+    transform: translateY(-1px);
+}
+
+.nav-link:hover::before,
+.nav-link.active::before {
+    width: 24px;
+}
+
 .nav-link.active {
     color: var(--gold-dark);
-    background: rgba(184, 134, 11, 0.05);
-}
-
-.nav-link:hover::after,
-.nav-link.active::after {
-    width: 20px;
+    background: rgba(184, 134, 11, 0.06);
 }
 
 .nav-actions {
@@ -311,7 +318,7 @@ p {
     border-radius: var(--border-radius);
     font-size: 0.8125rem;
     font-weight: 500;
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid var(--border-color);
 }
 
@@ -320,13 +327,14 @@ p {
     color: var(--white-pure);
     border-color: var(--gold-medium);
     transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
 }
 
 .consultation-btn {
     display: flex;
     align-items: center;
     gap: var(--space-2);
-    padding: var(--space-3) var(--space-5);
+    padding: var(--space-3) var(--space-6);
     background: linear-gradient(135deg, var(--gold-dark), var(--gold-medium));
     color: var(--white-pure);
     text-decoration: none;
@@ -334,13 +342,15 @@ p {
     font-weight: 600;
     font-size: 0.9375rem;
     box-shadow: var(--shadow-md);
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--gold-medium);
 }
 
 .consultation-btn:hover {
     background: linear-gradient(135deg, var(--navy-dark), var(--navy-medium));
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
+    border-color: var(--navy-medium);
 }
 
 /* Mobile Menu Toggle */
@@ -405,6 +415,9 @@ p {
 }
 
 .mobile-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding-bottom: var(--space-6);
     border-bottom: 1px solid var(--border-color);
     margin-bottom: var(--space-6);
@@ -424,6 +437,26 @@ p {
     font-family: var(--font-serif);
     font-size: 1.5rem;
     font-weight: 700;
+    color: var(--navy-dark);
+}
+
+.mobile-nav-close {
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    color: var(--gray-dark);
+    font-size: 1.25rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.mobile-nav-close:hover {
+    background: var(--gray-light);
     color: var(--navy-dark);
 }
 
@@ -529,18 +562,18 @@ p {
 }
 
 /* Responsive Navigation */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
     .nav-desktop {
-        gap: var(--space-4);
+        gap: var(--space-6);
     }
     
     .nav-menu {
-        gap: var(--space-3);
+        gap: var(--space-4);
     }
     
     .nav-link {
         font-size: 0.875rem;
-        padding: var(--space-2);
+        padding: var(--space-2) var(--space-3);
     }
     
     .portal-btn {
@@ -551,6 +584,35 @@ p {
     .consultation-btn {
         font-size: 0.875rem;
         padding: var(--space-2) var(--space-4);
+    }
+}
+
+@media (max-width: 1024px) {
+    .nav-desktop {
+        gap: var(--space-4);
+    }
+    
+    .nav-menu {
+        gap: var(--space-3);
+    }
+    
+    .nav-link {
+        font-size: 0.8125rem;
+        padding: var(--space-2);
+    }
+    
+    .portal-group {
+        gap: var(--space-1);
+    }
+    
+    .portal-btn {
+        font-size: 0.6875rem;
+        padding: var(--space-1);
+    }
+    
+    .consultation-btn {
+        font-size: 0.8125rem;
+        padding: var(--space-2) var(--space-3);
     }
 }
 
@@ -624,16 +686,6 @@ p {
     margin: 0 auto;
 }
 
-.hero-logo {
-    margin-bottom: var(--space-8);
-}
-
-.hero-logo-img {
-    height: 140px;
-    width: auto;
-    filter: brightness(0) invert(1);
-}
-
 .hero-title {
     color: var(--white-pure);
     margin-bottom: var(--space-6);
@@ -674,10 +726,6 @@ p {
         background-attachment: scroll;
         padding-top: 80px;
         min-height: 90vh;
-    }
-    
-    .hero-logo-img {
-        height: 100px;
     }
     
     .hero-buttons {
