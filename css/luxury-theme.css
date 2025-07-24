@@ -1,6 +1,6 @@
 /* 
  * 805 LifeGuard - Luxury Country Club Theme CSS
- * Version: 5.0 - Fully Functional Navigation & Perfect Mobile Experience
+ * Version: 5.1 - Enhanced with Elegant Carousel & SEO Optimization
  * Sophisticated design with flawless responsive functionality
  */
 
@@ -64,6 +64,7 @@
     
     /* Transitions */
     --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* === BASE STYLES === */
@@ -119,6 +120,53 @@ p {
 @media (min-width: 768px) {
     .container {
         padding: 0 var(--space-6);
+    }
+}
+
+/* === BREADCRUMBS === */
+.breadcrumbs {
+    background: var(--white-warm);
+    border-bottom: 1px solid var(--border-color);
+    padding: var(--space-3) 0;
+    margin-top: 100px;
+}
+
+.breadcrumb-list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.875rem;
+}
+
+.breadcrumb-list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.breadcrumb-list li:not(:last-child)::after {
+    content: '/';
+    color: var(--gray-medium);
+    opacity: 0.5;
+}
+
+.breadcrumb-list a {
+    color: var(--gray-medium);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.breadcrumb-list a:hover {
+    color: var(--gold-dark);
+}
+
+@media (max-width: 768px) {
+    .breadcrumbs {
+        margin-top: 70px;
+        padding: var(--space-2) 0;
     }
 }
 
@@ -656,7 +704,7 @@ p {
     }
 }
 
-/* === HERO SECTION === */
+/* === HERO SECTION WITH ELEGANT CAROUSEL === */
 .hero {
     position: relative;
     min-height: 100vh;
@@ -666,7 +714,17 @@ p {
     padding-top: 120px;
 }
 
-.hero-background {
+/* Carousel Container */
+.hero-carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.carousel-slide {
     position: absolute;
     top: 0;
     left: 0;
@@ -674,16 +732,18 @@ p {
     height: 100%;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity;
 }
 
-@media (max-width: 768px) {
-    .hero-background {
-        background-attachment: scroll;
-    }
+.carousel-slide.active {
+    opacity: 1;
 }
 
-.hero-overlay {
+.carousel-slide::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -695,11 +755,117 @@ p {
         rgba(27, 43, 66, 0.6) 50%,
         rgba(10, 22, 40, 0.7) 100%
     );
+    z-index: 1;
 }
 
+/* Carousel Controls */
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.carousel-prev,
+.carousel-next {
+    position: absolute;
+    top: 50%;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    color: var(--white-pure);
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    transform: translateY(-50%);
+}
+
+.carousel-prev {
+    left: var(--space-6);
+}
+
+.carousel-next {
+    right: var(--space-6);
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+    background: rgba(212, 175, 55, 0.2);
+    border-color: var(--gold-medium);
+    color: var(--gold-light);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+}
+
+.carousel-prev:active,
+.carousel-next:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+    position: absolute;
+    bottom: var(--space-8);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: var(--space-3);
+    z-index: 3;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(5px);
+}
+
+.indicator:hover {
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(1.2);
+}
+
+.indicator.active {
+    background: var(--gold-medium);
+    border-color: var(--white-pure);
+    transform: scale(1.3);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+}
+
+/* Hero Overlay */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(10, 22, 40, 0.2) 0%,
+        rgba(27, 43, 66, 0.3) 50%,
+        rgba(10, 22, 40, 0.4) 100%
+    );
+    z-index: 2;
+}
+
+/* Hero Content */
 .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     text-align: center;
     color: var(--white-pure);
     max-width: 800px;
@@ -741,16 +907,40 @@ p {
     font-style: italic;
 }
 
+/* Mobile Hero Responsive */
 @media (max-width: 768px) {
     .hero {
-        background-attachment: scroll;
         padding-top: 80px;
         min-height: 90vh;
     }
     
-    .hero-background {
-        background-image: url('images/hero/805-lifeguard-mobile-hero-image-600x400.jpg') !important;
-        background-attachment: scroll;
+    .carousel-controls {
+        display: none; /* Hide on mobile for cleaner look */
+    }
+    
+    .carousel-prev,
+    .carousel-next {
+        width: 50px;
+        height: 50px;
+        font-size: 1rem;
+    }
+    
+    .carousel-prev {
+        left: var(--space-4);
+    }
+    
+    .carousel-next {
+        right: var(--space-4);
+    }
+    
+    .carousel-indicators {
+        bottom: var(--space-6);
+        gap: var(--space-2);
+    }
+    
+    .indicator {
+        width: 10px;
+        height: 10px;
     }
     
     .hero-buttons {
@@ -761,6 +951,22 @@ p {
     .hero-subtitle {
         font-size: 1.125rem;
     }
+}
+
+@media (max-width: 480px) {
+    .carousel-indicators {
+        bottom: var(--space-4);
+    }
+    
+    .indicator {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+/* Auto-play pause on hover */
+.hero:hover .carousel-slide {
+    animation-play-state: paused;
 }
 
 /* === BUTTONS === */
@@ -1702,7 +1908,10 @@ section {
 /* === ACCESSIBILITY === */
 .nav-link:focus,
 .btn:focus,
-.mobile-toggle:focus {
+.mobile-toggle:focus,
+.carousel-prev:focus,
+.carousel-next:focus,
+.indicator:focus {
     outline: 2px solid var(--gold-medium);
     outline-offset: 2px;
 }
@@ -1715,6 +1924,10 @@ section {
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
+    
+    .carousel-slide {
+        transition: none !important;
+    }
 }
 
 /* === PRINT STYLES === */
@@ -1722,7 +1935,9 @@ section {
     .header,
     .footer,
     .hero,
-    .btn {
+    .btn,
+    .carousel-controls,
+    .carousel-indicators {
         display: none !important;
     }
     
