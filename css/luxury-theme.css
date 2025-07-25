@@ -1,6 +1,6 @@
 /* 
  * 805 LifeGuard - Luxury Country Club Theme CSS
- * Version: 5.2 - Enhanced with Pool Cleaning Page Styles
+ * Version: 5.3 - Enhanced with Pool Cleaning Page Styles & Footer Contrast Fix
  * Sophisticated design with flawless responsive functionality
  */
 
@@ -5085,4 +5085,131 @@ body.nav-open {
         height: 50px;
         font-size: 1.25rem;
     }
+}
+
+/* === FOOTER TEXT CONTRAST FIX === */
+/* Global fix to ensure all footer text is legible against dark background */
+
+.footer {
+    background: linear-gradient(135deg, var(--navy-dark), var(--navy-medium));
+    color: var(--white-pure);
+}
+
+/* Fix all text colors in footer */
+.footer,
+.footer * {
+    color: var(--white-pure) !important;
+}
+
+/* Specific footer text elements */
+.footer-description,
+.footer p,
+.footer span,
+.footer li {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Footer section headings */
+.footer-section h4,
+.footer-contact h4 {
+    color: var(--white-pure) !important;
+}
+
+/* Footer links with proper hover states */
+.footer-section a,
+.footer-contact a,
+.legal-links a {
+    color: rgba(255, 255, 255, 0.8) !important;
+    transition: var(--transition);
+}
+
+.footer-section a:hover,
+.footer-contact a:hover,
+.legal-links a:hover {
+    color: var(--gold-light) !important;
+    transform: translateX(4px);
+}
+
+/* Contact items specific styling */
+.contact-item {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.contact-item strong {
+    color: var(--white-pure) !important;
+}
+
+.contact-item span {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.contact-item:hover {
+    color: var(--gold-light) !important;
+}
+
+.contact-item:hover strong,
+.contact-item:hover span {
+    color: var(--gold-light) !important;
+}
+
+/* Service areas footer text */
+.service-areas-footer strong {
+    color: var(--gold-light) !important;
+}
+
+.service-areas-footer span {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Footer legal text */
+.footer-legal p {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Footer credentials */
+.footer-credentials span {
+    color: var(--gold-light) !important;
+    background: rgba(184, 134, 11, 0.15);
+}
+
+/* Portal buttons maintain their existing styles */
+.footer-portal-btn {
+    background: rgba(184, 134, 11, 0.2);
+    color: var(--gold-light) !important;
+    border: 1px solid rgba(184, 134, 11, 0.3);
+}
+
+.footer-portal-btn:hover {
+    background: var(--gold-medium);
+    color: var(--navy-dark) !important;
+}
+
+/* Footer badges */
+.footer-badge {
+    background: rgba(184, 134, 11, 0.2);
+    color: var(--gold-light) !important;
+    border: 1px solid rgba(184, 134, 11, 0.3);
+}
+
+/* Ensure icons maintain visibility */
+.footer i {
+    color: var(--gold-medium) !important;
+}
+
+/* Contact item icons */
+.contact-item i {
+    color: var(--gold-medium) !important;
+}
+
+.contact-item:hover i {
+    color: var(--gold-light) !important;
+}
+
+/* Footer logo text */
+.footer-logo-text h3 {
+    color: var(--white-pure) !important;
+}
+
+.footer-logo-text p {
+    color: rgba(255, 255, 255, 0.7) !important;
 }
