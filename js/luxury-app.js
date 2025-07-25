@@ -15,27 +15,6 @@
             CLIENT: 'https://client.805companies.com',
             ADMIN: 'https://admin.805companies.com',
             STAFF: 'https://staff.805companies.com'
-        }
-        
-        setupWebPBackgrounds() {
-            // Add WebP classes to background elements if WebP is supported
-            if (CONFIG.WEBP_SUPPORT) {
-                const backgroundElements = [
-                    '.about-hero-background',
-                    '.services-hero-background', 
-                    '.values-background',
-                    '.mission-background',
-                    '.credentials-background',
-                    '.services-cta-background'
-                ];
-                
-                backgroundElements.forEach(selector => {
-                    const element = document.querySelector(selector);
-                    if (element) {
-                        element.classList.add('webp-bg');
-                    }
-                });
-            }
         },
         CAROUSEL: {
             AUTO_PLAY_INTERVAL: 6000, // 6 seconds
@@ -111,7 +90,7 @@
 
         // Get optimized image path (WebP or fallback)
         getOptimizedImagePath: function(basePath) {
-            if (CONFIG.WEBP_SUPPORT) {
+            if (CONFIG.WEBP_SUPPORT && basePath) {
                 return basePath.replace(/\.(jpg|jpeg|png)$/i, '.webp');
             }
             return basePath;
@@ -119,9 +98,11 @@
 
         // Set background image with WebP support
         setBackgroundImage: function(element, imagePath) {
+            if (!element || !imagePath) return;
+            
             const optimizedPath = this.getOptimizedImagePath(imagePath);
             
-            if (CONFIG.WEBP_SUPPORT) {
+            if (CONFIG.WEBP_SUPPORT && optimizedPath !== imagePath) {
                 // Try WebP first
                 const testImg = new Image();
                 testImg.onload = () => {
@@ -134,6 +115,28 @@
                 testImg.src = optimizedPath;
             } else {
                 element.style.backgroundImage = `url(${imagePath})`;
+            }
+        },
+
+        // Setup WebP backgrounds
+        setupWebPBackgrounds: function() {
+            // Add WebP classes to background elements if WebP is supported
+            if (CONFIG.WEBP_SUPPORT) {
+                const backgroundElements = [
+                    '.about-hero-background',
+                    '.services-hero-background', 
+                    '.values-background',
+                    '.mission-background',
+                    '.credentials-background',
+                    '.services-cta-background'
+                ];
+                
+                backgroundElements.forEach(selector => {
+                    const element = document.querySelector(selector);
+                    if (element) {
+                        element.classList.add('webp-bg');
+                    }
+                });
             }
         }
     };
@@ -474,6 +477,7 @@
             this.header = document.getElementById('header');
             this.mobileToggle = document.getElementById('mobileToggle');
             this.mobileNav = document.getElementById('mobileNav');
+            this.mobileNavClose = document.getElementById('mobileNavClose');
             this.body = document.body;
             this.isOpen = false;
             this.scrollPosition = 0;
@@ -482,10 +486,12 @@
         }
         
         init() {
+            console.log('📱 Initializing Navigation Controller...');
             this.setupEventListeners();
             this.setupScrollEffects();
             this.updateActiveLinks();
             this.updatePortalLinks();
+            console.log('✅ Navigation Controller initialized');
         }
         
         setupEventListeners() {
@@ -493,36 +499,50 @@
             if (this.mobileToggle) {
                 this.mobileToggle.addEventListener('click', (e) => {
                     e.preventDefault();
+                    e.stopPropagation();
+                    console.log('📱 Mobile toggle clicked');
                     this.toggleMobileNav();
                 });
+            } else {
+                console.warn('⚠️ Mobile toggle not found');
             }
             
             // Mobile nav close button
-            const mobileClose = document.getElementById('mobileNavClose');
-            if (mobileClose) {
-                mobileClose.addEventListener('click', (e) => {
+            if (this.mobileNavClose) {
+                this.mobileNavClose.addEventListener('click', (e) => {
                     e.preventDefault();
+                    e.stopPropagation();
+                    console.log('📱 Mobile close clicked');
                     this.closeMobileNav();
                 });
+            } else {
+                console.warn('⚠️ Mobile nav close button not found');
             }
             
             // Mobile nav link clicks
             if (this.mobileNav) {
                 const mobileLinks = this.mobileNav.querySelectorAll('.mobile-nav-link');
+                console.log(`📱 Found ${mobileLinks.length} mobile nav links`);
                 mobileLinks.forEach(link => {
-                    link.addEventListener('click', () => {
+                    link.addEventListener('click', (e) => {
+                        console.log('📱 Mobile nav link clicked');
                         setTimeout(() => {
                             this.closeMobileNav();
                         }, 100);
                     });
                 });
+            } else {
+                console.warn('⚠️ Mobile nav not found');
             }
             
             // Close on outside click
             document.addEventListener('click', (e) => {
                 if (this.isOpen && 
+                    this.mobileNav && 
+                    this.mobileToggle &&
                     !this.mobileNav.contains(e.target) && 
                     !this.mobileToggle.contains(e.target)) {
+                    console.log('📱 Outside click detected, closing mobile nav');
                     this.closeMobileNav();
                 }
             });
@@ -530,6 +550,7 @@
             // Close on escape key
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && this.isOpen) {
+                    console.log('📱 Escape key pressed, closing mobile nav');
                     this.closeMobileNav();
                 }
             });
@@ -537,12 +558,14 @@
             // Handle resize
             window.addEventListener('resize', utils.debounce(() => {
                 if (window.innerWidth > 768 && this.isOpen) {
+                    console.log('📱 Window resized to desktop, closing mobile nav');
                     this.closeMobileNav();
                 }
             }, 250));
         }
         
         toggleMobileNav() {
+            console.log(`📱 Toggling mobile nav, current state: ${this.isOpen ? 'open' : 'closed'}`);
             if (this.isOpen) {
                 this.closeMobileNav();
             } else {
@@ -551,6 +574,12 @@
         }
         
         openMobileNav() {
+            if (!this.mobileToggle || !this.mobileNav) {
+                console.error('❌ Cannot open mobile nav - elements not found');
+                return;
+            }
+            
+            console.log('📱 Opening mobile nav...');
             this.isOpen = true;
             this.scrollPosition = window.pageYOffset;
             
@@ -574,10 +603,16 @@
                 }
             }, 300);
             
-            console.log('📱 Mobile nav opened');
+            console.log('✅ Mobile nav opened');
         }
         
         closeMobileNav() {
+            if (!this.mobileToggle || !this.mobileNav) {
+                console.error('❌ Cannot close mobile nav - elements not found');
+                return;
+            }
+            
+            console.log('📱 Closing mobile nav...');
             this.isOpen = false;
             
             // Remove classes
@@ -595,7 +630,7 @@
             // Restore scroll position
             window.scrollTo(0, this.scrollPosition);
             
-            console.log('📱 Mobile nav closed');
+            console.log('✅ Mobile nav closed');
         }
         
         setupScrollEffects() {
@@ -923,46 +958,45 @@
             }
         }
         
-        initializeApp() {
+        async initializeApp() {
             try {
                 console.log('🏊‍♂️ Initializing 805 LifeGuard Luxury App...');
                 
                 // First detect WebP support
-                utils.detectWebPSupport().then(() => {
-                    console.log(`🖼️ WebP Support: ${CONFIG.WEBP_SUPPORT ? 'Enabled' : 'Disabled'}`);
-                    
-                    // Initialize components
-                    this.navigation = new NavigationController();
-                    this.forms = new FormHandler();
-                    this.smoothScroll = new SmoothScroll();
-                    this.contactUpdater = new ContactUpdater();
-                    
-                    // Apply WebP classes to background elements
-                    this.setupWebPBackgrounds();
-                    
-                    // Initialize carousel if hero carousel exists
-                    const heroCarousel = document.getElementById('heroCarousel');
-                    if (heroCarousel) {
-                        this.carousel = new ElegantCarousel(heroCarousel);
+                await utils.detectWebPSupport();
+                console.log(`🖼️ WebP Support: ${CONFIG.WEBP_SUPPORT ? 'Enabled' : 'Disabled'}`);
+                
+                // Apply WebP classes to background elements
+                utils.setupWebPBackgrounds();
+                
+                // Initialize components
+                this.navigation = new NavigationController();
+                this.forms = new FormHandler();
+                this.smoothScroll = new SmoothScroll();
+                this.contactUpdater = new ContactUpdater();
+                
+                // Initialize carousel if hero carousel exists
+                const heroCarousel = document.getElementById('heroCarousel');
+                if (heroCarousel) {
+                    this.carousel = new ElegantCarousel(heroCarousel);
+                }
+                
+                // Initialize animations (after carousel to prevent conflicts)
+                setTimeout(() => {
+                    this.animations = new AnimationController();
+                }, 100);
+                
+                console.log('✅ 805 LifeGuard Luxury App initialized successfully');
+                
+                // Dispatch ready event
+                window.dispatchEvent(new CustomEvent('luxuryAppReady', {
+                    detail: { 
+                        app: this,
+                        hasCarousel: !!this.carousel,
+                        webpSupport: CONFIG.WEBP_SUPPORT,
+                        version: '5.1'
                     }
-                    
-                    // Initialize animations (after carousel to prevent conflicts)
-                    setTimeout(() => {
-                        this.animations = new AnimationController();
-                    }, 100);
-                    
-                    console.log('✅ 805 LifeGuard Luxury App initialized successfully');
-                    
-                    // Dispatch ready event
-                    window.dispatchEvent(new CustomEvent('luxuryAppReady', {
-                        detail: { 
-                            app: this,
-                            hasCarousel: !!this.carousel,
-                            webpSupport: CONFIG.WEBP_SUPPORT,
-                            version: '5.1'
-                        }
-                    }));
-                });
+                }));
                 
             } catch (error) {
                 console.error('❌ Error initializing app:', error);
@@ -978,11 +1012,29 @@
             const mobileNav = document.getElementById('mobileNav');
             
             if (mobileToggle && mobileNav) {
-                mobileToggle.addEventListener('click', () => {
+                mobileToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    console.log('📱 Fallback mobile toggle clicked');
                     mobileToggle.classList.toggle('active');
                     mobileNav.classList.toggle('active');
                     document.body.classList.toggle('nav-open');
                 });
+                
+                // Close button
+                const mobileClose = document.getElementById('mobileNavClose');
+                if (mobileClose) {
+                    mobileClose.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        console.log('📱 Fallback mobile close clicked');
+                        mobileToggle.classList.remove('active');
+                        mobileNav.classList.remove('active');
+                        document.body.classList.remove('nav-open');
+                    });
+                }
+                
+                console.log('✅ Fallback mobile navigation initialized');
+            } else {
+                console.error('❌ Mobile navigation elements not found');
             }
             
             // Basic smooth scroll
@@ -1040,7 +1092,9 @@
     const app = new LuxuryApp();
     
     // Export for debugging
-    if (window.location.hostname === 'localhost' || window.location.search.includes('debug=true')) {
+    if (window.location.hostname === 'localhost' || 
+        window.location.hostname.includes('luxury.805companies.com') ||
+        window.location.search.includes('debug=true')) {
         window.app = app;
         console.log('🔧 Debug mode active - app available as window.app');
         console.log('🎠 Carousel available as window.app.getCarousel()');
