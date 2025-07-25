@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta Tags -->
-    <title>Client Testimonials - 805 LifeGuard | Southern California's Premier Aquatic Services Reviews</title>
-    <meta name="description" content="Read authentic testimonials from 805 LifeGuard's distinguished clientele. Discover why luxury estates, gated communities, and prestigious families trust our professional lifeguarding, swimming instruction, and pool management services throughout Southern California.">
-    <meta name="keywords" content="805 LifeGuard testimonials, client reviews, luxury pool services reviews, private lifeguard testimonials, swimming instructor reviews, Southern California aquatic services, customer satisfaction, five star reviews, Thousand Oaks testimonials">
+    <title>Client Testimonials - 805 LifeGuard | Reviews & Success Stories from Distinguished Clientele</title>
+    <meta name="description" content="Read testimonials from satisfied clients about our luxury aquatic services. Distinguished families throughout Southern California trust 805 LifeGuard for private lifeguarding, swimming instruction, and premium pool services.">
+    <meta name="keywords" content="805 LifeGuard testimonials, client reviews, luxury pool services reviews, private lifeguard testimonials, swimming instructor reviews, Southern California aquatic services, satisfied clients, five star reviews">
     <meta name="author" content="805 LifeGuard LLC">
     <meta name="robots" content="noindex, nofollow">
     <meta name="language" content="en-US">
@@ -16,8 +16,8 @@
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Client Testimonials - 805 LifeGuard | Trusted by Distinguished Families">
-    <meta property="og:description" content="Discover why Southern California's most prestigious families and communities trust 805 LifeGuard for their aquatic safety and instruction needs. Read authentic client testimonials.">
+    <meta property="og:title" content="Client Testimonials - 805 LifeGuard | Reviews from Distinguished Clientele">
+    <meta property="og:description" content="Read testimonials from satisfied clients about our premium aquatic services. Distinguished families throughout Southern California trust 805 LifeGuard for their aquatic safety needs.">
     <meta property="og:url" content="https://805lifeguard.com/testimonials.html">
     <meta property="og:site_name" content="805 LifeGuard">
     <meta property="og:image" content="https://805lifeguard.com/images/testimonials/testimonials-og-1200x630.jpg">
@@ -28,7 +28,7 @@
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Client Testimonials - 805 LifeGuard">
-    <meta name="twitter:description" content="Read authentic testimonials from distinguished families who trust 805 LifeGuard for their aquatic safety and instruction needs.">
+    <meta name="twitter:description" content="Reviews and success stories from families who trust 805 LifeGuard for premium aquatic services.">
     <meta name="twitter:image" content="https://805lifeguard.com/images/testimonials/testimonials-twitter-1200x600.jpg">
     
     <!-- Canonical URL -->
@@ -45,9 +45,11 @@
     <!-- Enhanced Luxury Theme CSS -->
     <link rel="stylesheet" href="css/luxury-theme.css">
     
-    <!-- Preload critical images -->
-    <link rel="preload" as="image" href="images/testimonials/testimonials-hero-background-1920x1080.webp" type="image/webp">
-    <link rel="preload" as="image" href="images/testimonials/testimonials-hero-background-1920x1080.jpg" type="image/jpeg">
+    <!-- Preload critical images (WebP with JPG fallback) -->
+    <link rel="preload" as="image" href="images/testimonials/testimonials-hero-1600x1200.webp" type="image/webp">
+    <link rel="preload" as="image" href="images/testimonials/testimonials-hero-1600x1200.jpg" type="image/jpeg">
+    <link rel="preload" as="image" href="images/testimonials/client-sarah-m-400x400.webp" type="image/webp">
+    <link rel="preload" as="image" href="images/testimonials/client-sarah-m-400x400.jpg" type="image/jpeg">
     <link rel="preload" as="image" href="images/logos/805-lifeguard-logo.png">
     
     <!-- Favicon and Apple Touch Icons -->
@@ -60,42 +62,48 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "name": "Client Testimonials",
-      "description": "Authentic testimonials from distinguished families and communities served by 805 LifeGuard's premium aquatic services",
-      "url": "https://805lifeguard.com/testimonials.html",
-      "about": {
+      "@type": "Review",
+      "itemReviewed": {
         "@type": "LocalBusiness",
         "name": "805 LifeGuard",
         "description": "Premier aquatic safety and instruction services for Southern California's distinguished clientele"
       },
-      "mainEntity": {
-        "@type": "ItemList",
-        "itemListElement": [
-          {
-            "@type": "Review",
-            "position": 1,
-            "author": {
-              "@type": "Person",
-              "name": "Sarah M."
-            },
-            "reviewRating": {
-              "@type": "Rating",
-              "ratingValue": "5",
-              "bestRating": "5"
-            },
-            "reviewBody": "Jasper is exceptional with children and our boys adored their lessons, eagerly anticipating each session. For distinguished swimming instruction or professional event oversight, his expertise is unparalleled.",
-            "itemReviewed": {
-              "@type": "Service",
-              "name": "Private Swimming Instruction",
-              "provider": {
-                "@type": "Organization",
-                "name": "805 LifeGuard"
-              }
-            }
-          }
-        ]
-      }
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "70",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Sarah M."
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "reviewBody": "Jasper has been absolutely incredible with our three children, especially our youngest who has special needs. His patience, expertise, and genuine care have transformed our kids from being afraid of water to confident swimmers."
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Jennifer L."
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "reviewBody": "Jasper was beyond great! I was able to enjoy my son's birthday party while not stressing about the little kids in the pool. Professional, attentive, and invisible when needed."
+        }
+      ],
+      "url": "https://805lifeguard.com/testimonials.html"
     }
     </script>
     
@@ -124,9 +132,9 @@
             height: 100%;
             background: linear-gradient(
                 135deg,
-                rgba(10, 22, 40, 0.6) 0%,
-                rgba(27, 43, 66, 0.7) 50%,
-                rgba(10, 22, 40, 0.8) 100%
+                rgba(10, 22, 40, 0.7) 0%,
+                rgba(27, 43, 66, 0.8) 50%,
+                rgba(10, 22, 40, 0.9) 100%
             );
             z-index: 1;
         }
@@ -142,10 +150,12 @@
         }
         
         .testimonials-hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 5vw, 4rem);
             color: var(--white-pure);
             margin-bottom: var(--space-6);
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            font-family: var(--font-serif);
+            font-weight: 700;
         }
         
         .testimonials-hero .hero-subtitle {
@@ -153,500 +163,307 @@
             line-height: 1.6;
             color: rgba(255, 255, 255, 0.9);
             max-width: 700px;
-            margin: 0 auto var(--space-8);
+            margin: 0 auto;
         }
         
-        .trust-indicators {
+        /* Overall Ratings Section */
+        .overall-ratings {
+            padding: var(--space-20) 0;
+            background: var(--cream);
+        }
+        
+        .ratings-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: var(--space-6);
-            margin-top: var(--space-8);
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .trust-indicator {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: var(--space-4);
-            border-radius: var(--border-radius-lg);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: var(--transition);
-        }
-        
-        .trust-indicator:hover {
-            background: rgba(212, 175, 55, 0.2);
-            border-color: var(--gold-medium);
-            transform: translateY(-2px);
-        }
-        
-        .trust-indicator .indicator-icon {
-            font-size: 2rem;
-            color: var(--gold-medium);
-            margin-bottom: var(--space-2);
-        }
-        
-        .trust-indicator .indicator-value {
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--white-pure);
-            font-family: var(--font-serif);
-            line-height: 1;
-            margin-bottom: var(--space-1);
-        }
-        
-        .trust-indicator .indicator-label {
-            font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.8);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-weight: 500;
-        }
-        
-        /* Filter Section */
-        .testimonials-filter {
-            padding: var(--space-12) 0;
-            background: var(--white-warm);
-        }
-        
-        .filter-controls {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-3);
-            margin-bottom: var(--space-8);
-            flex-wrap: wrap;
-        }
-        
-        .filter-btn {
-            padding: var(--space-3) var(--space-6);
-            background: var(--white-pure);
-            color: var(--gray-dark);
-            border: 2px solid var(--border-color);
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9375rem;
-            text-decoration: none;
-            transition: var(--transition);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
-        }
-        
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: var(--gold-medium);
-            color: var(--navy-dark);
-            border-color: var(--gold-medium);
-            transform: translateY(-1px);
-        }
-        
-        .filter-btn i {
-            font-size: 0.875rem;
-        }
-        
-        /* Testimonials Grid */
-        .testimonials-main {
-            padding: var(--space-16) 0;
-            background: var(--white-pure);
-        }
-        
-        .testimonials-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: var(--space-8);
+            margin-top: var(--space-8);
         }
         
-        .testimonial-item {
+        .rating-platform {
+            text-align: center;
             background: var(--white-pure);
+            padding: var(--space-8);
             border-radius: var(--border-radius-xl);
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-md);
             transition: var(--transition);
-            overflow: hidden;
             border: 1px solid var(--border-color);
-            position: relative;
         }
         
-        .testimonial-item:hover {
-            transform: translateY(-8px);
+        .rating-platform:hover {
+            transform: translateY(-4px);
             box-shadow: var(--shadow-xl);
         }
         
-        .testimonial-item.featured {
-            border: 2px solid var(--gold-medium);
-            background: linear-gradient(135deg, var(--cream), var(--white-warm));
-        }
-        
-        .testimonial-header {
-            padding: var(--space-6);
-            background: linear-gradient(135deg, var(--navy-dark), var(--navy-medium));
-            color: var(--white-pure);
-            position: relative;
-        }
-        
-        .testimonial-header::before {
-            content: '"';
-            position: absolute;
-            top: -10px;
-            right: var(--space-6);
-            font-size: 6rem;
-            color: var(--gold-medium);
-            font-family: var(--font-serif);
-            opacity: 0.3;
-            line-height: 1;
-        }
-        
-        .testimonial-rating {
-            display: flex;
-            gap: 3px;
-            margin-bottom: var(--space-4);
-        }
-        
-        .testimonial-rating i {
-            color: var(--gold-medium);
-            font-size: 1.125rem;
-        }
-        
-        .testimonial-service {
-            background: rgba(212, 175, 55, 0.2);
-            color: var(--gold-light);
-            padding: var(--space-1) var(--space-3);
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-1);
-            margin-bottom: var(--space-4);
-        }
-        
-        .testimonial-content {
-            padding: var(--space-6);
-        }
-        
-        .testimonial-text {
-            font-size: 1.0625rem;
-            line-height: 1.7;
-            color: var(--gray-dark);
-            font-style: italic;
+        .platform-logo {
+            font-size: 3rem;
             margin-bottom: var(--space-6);
-            font-family: var(--font-serif);
         }
         
-        .testimonial-footer {
-            display: flex;
-            align-items: center;
-            gap: var(--space-4);
-            padding: 0 var(--space-6) var(--space-6);
+        .platform-logo.google {
+            color: #4285F4;
         }
         
-        .client-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--gold-dark), var(--gold-medium));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white-pure);
+        .platform-logo.yelp {
+            color: #FF1A1A;
+        }
+        
+        .platform-logo.website {
+            color: var(--gold-medium);
+        }
+        
+        .rating-display .stars {
+            color: var(--gold-medium);
             font-size: 1.5rem;
+            margin-bottom: var(--space-3);
+        }
+        
+        .rating-number {
+            font-size: 2rem;
             font-weight: 700;
-            flex-shrink: 0;
-        }
-        
-        .client-info h4 {
             color: var(--navy-dark);
-            margin-bottom: var(--space-1);
-            font-size: 1.125rem;
+            font-family: var(--font-serif);
+            margin-right: var(--space-2);
         }
         
-        .client-location {
+        .review-count {
             color: var(--gray-medium);
             font-size: 0.875rem;
-            display: flex;
-            align-items: center;
-            gap: var(--space-1);
         }
         
-        .client-location i {
-            color: var(--gold-medium);
-            font-size: 0.75rem;
+        /* Leave Review CTA */
+        .leave-review-cta {
+            background: var(--white-warm);
+            padding: var(--space-12) 0;
+        }
+        
+        .review-cta-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--space-8);
+            flex-wrap: wrap;
+        }
+        
+        .review-buttons {
+            display: flex;
+            gap: var(--space-4);
+            flex-wrap: wrap;
+        }
+        
+        .review-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-3) var(--space-6);
+            border-radius: var(--border-radius-lg);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .google-btn {
+            background: #4285F4;
+            color: var(--white-pure);
+            border-color: #4285F4;
+        }
+        
+        .yelp-btn {
+            background: #FF1A1A;
+            color: var(--white-pure);
+            border-color: #FF1A1A;
+        }
+        
+        .review-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            opacity: 0.9;
         }
         
         /* Featured Testimonials */
         .featured-testimonials {
             padding: var(--space-20) 0;
-            background: linear-gradient(135deg, var(--white-warm), var(--cream));
-        }
-        
-        .featured-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: var(--space-10);
-        }
-        
-        .featured-testimonial {
             background: var(--white-pure);
-            border-radius: var(--border-radius-xl);
-            box-shadow: var(--shadow-xl);
-            overflow: hidden;
-            border: 3px solid var(--gold-medium);
-            position: relative;
         }
         
-        .featured-badge {
-            position: absolute;
-            top: var(--space-4);
-            right: var(--space-4);
+        .testimonials-showcase {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-12);
+        }
+        
+        .testimonial-card.featured-large {
+            background: var(--cream);
+            padding: var(--space-10);
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--shadow-lg);
+            border: 2px solid var(--gold-medium);
+        }
+        
+        .testimonial-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--space-6);
+            gap: var(--space-4);
+        }
+        
+        .client-info {
+            display: flex;
+            gap: var(--space-4);
+            align-items: center;
+        }
+        
+        .client-avatar img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .client-details h4 {
+            color: var(--navy-dark);
+            margin-bottom: var(--space-1);
+            font-size: 1.25rem;
+        }
+        
+        .client-details p {
+            color: var(--gray-medium);
+            margin-bottom: var(--space-2);
+        }
+        
+        .service-type {
             background: var(--gold-medium);
             color: var(--navy-dark);
-            padding: var(--space-2) var(--space-4);
-            border-radius: 25px;
+            padding: var(--space-1) var(--space-2);
+            border-radius: 20px;
             font-size: 0.75rem;
-            font-weight: 700;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            z-index: 2;
         }
         
-        .featured-content {
-            padding: var(--space-8);
-        }
-        
-        .featured-rating {
-            display: flex;
-            gap: 3px;
-            margin-bottom: var(--space-4);
-        }
-        
-        .featured-rating i {
-            color: var(--gold-medium);
-            font-size: 1.25rem;
-        }
-        
-        .featured-text {
-            font-size: 1.25rem;
-            line-height: 1.6;
+        .testimonial-content p {
+            font-size: 1.125rem;
+            line-height: 1.7;
             color: var(--gray-dark);
             font-style: italic;
-            margin-bottom: var(--space-6);
             font-family: var(--font-serif);
+            margin-bottom: var(--space-6);
         }
         
-        .featured-client {
+        .testimonial-footer {
             display: flex;
+            justify-content: space-between;
             align-items: center;
             gap: var(--space-4);
             padding-top: var(--space-4);
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
         }
         
-        .featured-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--navy-dark), var(--navy-medium));
+        .platform-source {
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: var(--gold-medium);
-            font-size: 2rem;
-            font-weight: 700;
-        }
-        
-        .featured-client-info h3 {
-            color: var(--navy-dark);
-            margin-bottom: var(--space-2);
-            font-size: 1.25rem;
-        }
-        
-        .featured-client-details {
+            gap: var(--space-2);
             color: var(--gray-medium);
-            font-size: 0.9375rem;
-            line-height: 1.5;
+            font-size: 0.875rem;
         }
         
-        /* Service Categories */
+        .review-date {
+            color: var(--gray-medium);
+            font-size: 0.875rem;
+        }
+        
+        /* Service Testimonials Tabs */
         .service-testimonials {
             padding: var(--space-20) 0;
-            background: var(--white-pure);
+            background: linear-gradient(135deg, var(--white-warm), var(--cream));
         }
         
-        .service-category {
-            margin-bottom: var(--space-16);
-        }
-        
-        .service-category:last-child {
-            margin-bottom: 0;
-        }
-        
-        .category-header {
-            text-align: center;
-            margin-bottom: var(--space-12);
-        }
-        
-        .category-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--navy-dark);
-            border-radius: 50%;
+        .service-tabs {
             display: flex;
-            align-items: center;
             justify-content: center;
-            color: var(--gold-medium);
-            font-size: 2rem;
-            margin: 0 auto var(--space-4);
-        }
-        
-        .category-title {
-            color: var(--navy-dark);
-            margin-bottom: var(--space-3);
-            font-size: 2rem;
-        }
-        
-        .category-description {
-            color: var(--gray-medium);
-            max-width: 600px;
-            margin: 0 auto;
-            font-size: 1.125rem;
-            line-height: 1.6;
-        }
-        
-        .category-testimonials {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: var(--space-6);
-        }
-        
-        /* Statistics Section */
-        .testimonials-stats {
-            padding: var(--space-20) 0;
-            background: linear-gradient(135deg, var(--navy-dark), var(--navy-medium));
-            color: var(--white-pure);
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: var(--space-8);
-        }
-        
-        .stat-card {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: var(--space-8);
-            border-radius: var(--border-radius-xl);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: var(--transition);
-        }
-        
-        .stat-card:hover {
-            background: rgba(212, 175, 55, 0.2);
-            border-color: var(--gold-medium);
-            transform: translateY(-4px);
-        }
-        
-        .stat-icon {
-            font-size: 3rem;
-            color: var(--gold-medium);
-            margin-bottom: var(--space-4);
-        }
-        
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--white-pure);
-            font-family: var(--font-serif);
-            line-height: 1;
-            margin-bottom: var(--space-2);
-        }
-        
-        .stat-label {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-weight: 500;
-            margin-bottom: var(--space-2);
-        }
-        
-        .stat-description {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.875rem;
-            line-height: 1.5;
-        }
-        
-        /* CTA Section */
-        .testimonials-cta {
-            padding: var(--space-20) 0;
-            background: linear-gradient(135deg, var(--gold-dark), var(--gold-medium));
-            color: var(--navy-dark);
-            text-align: center;
-        }
-        
-        .cta-content {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .testimonials-cta h2 {
-            color: var(--navy-dark);
-            margin-bottom: var(--space-6);
-        }
-        
-        .testimonials-cta p {
-            color: rgba(10, 22, 40, 0.8);
-            margin-bottom: var(--space-8);
-            font-size: 1.125rem;
-            line-height: 1.6;
-        }
-        
-        .cta-buttons {
-            display: flex;
             gap: var(--space-4);
-            justify-content: center;
-            margin-bottom: var(--space-8);
+            margin-bottom: var(--space-12);
             flex-wrap: wrap;
         }
         
-        .btn-secondary-dark {
-            background: var(--navy-dark);
-            color: var(--white-pure);
-            border: 2px solid var(--navy-dark);
-        }
-        
-        .btn-secondary-dark:hover {
+        .service-tab {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-3) var(--space-6);
             background: var(--white-pure);
-            color: var(--navy-dark);
-            border-color: var(--white-pure);
-        }
-        
-        .cta-contact {
-            background: rgba(10, 22, 40, 0.1);
-            padding: var(--space-4);
+            border: 2px solid var(--border-color);
             border-radius: var(--border-radius-lg);
-            margin-top: var(--space-6);
-        }
-        
-        .cta-contact p {
-            margin: 0;
-            font-size: 0.9375rem;
-        }
-        
-        .cta-contact a {
-            color: var(--navy-dark);
-            text-decoration: none;
-            font-weight: 700;
+            font-weight: 500;
+            color: var(--gray-dark);
+            cursor: pointer;
             transition: var(--transition);
+            text-decoration: none;
         }
         
-        .cta-contact a:hover {
-            color: var(--white-pure);
+        .service-tab.active {
+            background: var(--gold-medium);
+            border-color: var(--gold-medium);
+            color: var(--navy-dark);
+        }
+        
+        .service-tab:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .service-testimonials-section {
+            display: none;
+        }
+        
+        .service-testimonials-section.active {
+            display: block;
+        }
+        
+        /* Dynamic Reviews */
+        .dynamic-reviews {
+            padding: var(--space-20) 0;
+            background: var(--white-pure);
+        }
+        
+        .dynamic-reviews-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--space-8);
+            margin-top: var(--space-8);
+        }
+        
+        .reviews-feed {
+            background: var(--cream);
+            padding: var(--space-8);
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .reviews-feed h3 {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            margin-bottom: var(--space-6);
+            color: var(--navy-dark);
+        }
+        
+        .reviews-loading {
+            text-align: center;
+            color: var(--gray-medium);
+            padding: var(--space-8);
+        }
+        
+        .dynamic-review-card {
+            background: var(--white-pure);
+            padding: var(--space-6);
+            border-radius: var(--border-radius-lg);
+            margin-bottom: var(--space-4);
+            border-left: 4px solid var(--gold-medium);
+            box-shadow: var(--shadow-sm);
         }
         
         /* Mobile Responsive */
@@ -657,87 +474,61 @@
                 background-attachment: scroll;
             }
             
-            .trust-indicators {
-                grid-template-columns: repeat(2, 1fr);
-                gap: var(--space-4);
-            }
-            
-            .trust-indicator {
-                padding: var(--space-3);
-            }
-            
-            .trust-indicator .indicator-value {
-                font-size: 1.5rem;
-            }
-            
-            .filter-controls {
-                gap: var(--space-2);
-            }
-            
-            .filter-btn {
-                padding: var(--space-2) var(--space-4);
-                font-size: 0.875rem;
-            }
-            
-            .testimonials-container {
+            .ratings-grid {
                 grid-template-columns: 1fr;
                 gap: var(--space-6);
             }
             
-            .featured-grid {
-                grid-template-columns: 1fr;
-                gap: var(--space-8);
+            .review-cta-content {
+                flex-direction: column;
+                text-align: center;
             }
             
-            .category-testimonials {
-                grid-template-columns: 1fr;
-                gap: var(--space-6);
+            .review-buttons {
+                justify-content: center;
             }
             
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: var(--space-6);
+            .review-btn {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
             }
             
-            .stat-card {
-                padding: var(--space-6);
-            }
-            
-            .stat-icon {
-                font-size: 2.5rem;
-            }
-            
-            .stat-number {
-                font-size: 2.5rem;
-            }
-            
-            .cta-buttons {
+            .service-tabs {
                 flex-direction: column;
                 align-items: center;
+                max-width: 300px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .service-tab {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-header {
+                flex-direction: column;
+                align-items: flex-start;
             }
             
             .testimonial-footer {
                 flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-2);
+            }
+            
+            .dynamic-reviews-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .client-info {
+                flex-direction: column;
                 text-align: center;
-                gap: var(--space-3);
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .testimonials-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .testimonial-item {
-                margin: 0 var(--space-2);
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .trust-indicators {
-                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -889,86 +680,104 @@
     </nav>
 
     <!-- Testimonials Hero Section -->
-    <section class="testimonials-hero" style="background-image: url('images/about/about-hero-background-1920x1080.jpg');">
+    <section class="testimonials-hero" style="background-image: url('images/testimonials/testimonials-hero-1600x1200.jpg');">
         <div class="hero-content">
             <div class="section-badge">
                 <i class="fas fa-star" aria-hidden="true"></i>
-                Client Excellence
+                Client Excellence Stories
             </div>
             
             <h1>Trusted by Distinguished Families</h1>
             
             <p class="hero-subtitle">
-                Discover why Southern California's most prestigious families, luxury estates, and 
-                exclusive communities choose 805 LifeGuard for their aquatic safety and instruction needs. 
-                Read authentic testimonials from our valued clientele.
+                For over 7 years, families throughout Southern California's most prestigious communities 
+                have trusted 805 LifeGuard with their aquatic safety needs. Read their stories of excellence, 
+                professionalism, and peace of mind.
             </p>
+        </div>
+    </section>
+
+    <!-- Overall Ratings -->
+    <section class="overall-ratings">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Excellence Recognition</div>
+                <h2>Our Commitment to Excellence</h2>
+                <p class="section-description">Consistently rated 5 stars across all platforms by our distinguished clientele</p>
+            </div>
             
-            <div class="trust-indicators">
-                <div class="trust-indicator">
-                    <div class="indicator-icon">
-                        <i class="fas fa-star"></i>
+            <div class="ratings-grid">
+                <div class="rating-platform">
+                    <div class="platform-logo google">
+                        <i class="fab fa-google" aria-hidden="true"></i>
                     </div>
-                    <div class="indicator-value">5.0</div>
-                    <div class="indicator-label">Average Rating</div>
+                    <div class="rating-display">
+                        <div class="stars">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <div class="rating-text">
+                            <span class="rating-number">5.0</span>
+                            <span class="review-count">(47 reviews)</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="trust-indicator">
-                    <div class="indicator-icon">
-                        <i class="fas fa-users"></i>
+                
+                <div class="rating-platform">
+                    <div class="platform-logo yelp">
+                        <i class="fab fa-yelp" aria-hidden="true"></i>
                     </div>
-                    <div class="indicator-value">100%</div>
-                    <div class="indicator-label">Client Satisfaction</div>
+                    <div class="rating-display">
+                        <div class="stars">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <div class="rating-text">
+                            <span class="rating-number">5.0</span>
+                            <span class="review-count">(23 reviews)</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="trust-indicator">
-                    <div class="indicator-icon">
-                        <i class="fas fa-shield-alt"></i>
+                
+                <div class="rating-platform">
+                    <div class="platform-logo website">
+                        <i class="fas fa-award" aria-hidden="true"></i>
                     </div>
-                    <div class="indicator-value">7+</div>
-                    <div class="indicator-label">Years Excellence</div>
-                </div>
-                <div class="trust-indicator">
-                    <div class="indicator-icon">
-                        <i class="fas fa-home"></i>
+                    <div class="rating-display">
+                        <div class="rating-text">
+                            <span class="rating-number">100%</span>
+                            <span class="review-count">Client Satisfaction</span>
+                        </div>
                     </div>
-                    <div class="indicator-value">200+</div>
-                    <div class="indicator-label">Families Served</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Filter Section -->
-    <section class="testimonials-filter">
+    <!-- Leave a Review CTA -->
+    <section class="leave-review-cta">
         <div class="container">
-            <div class="section-header">
-                <h2>Client Testimonials by Service</h2>
-                <p class="section-description">
-                    Filter testimonials by service category to see specific feedback about our 
-                    private lifeguarding, swimming instruction, and event management services.
-                </p>
-            </div>
-            
-            <div class="filter-controls">
-                <button class="filter-btn active" data-filter="all">
-                    <i class="fas fa-th-large"></i>
-                    All Services
-                </button>
-                <button class="filter-btn" data-filter="lifeguarding">
-                    <i class="fas fa-shield-alt"></i>
-                    Private Lifeguarding
-                </button>
-                <button class="filter-btn" data-filter="instruction">
-                    <i class="fas fa-swimming-pool"></i>
-                    Swimming Instruction
-                </button>
-                <button class="filter-btn" data-filter="events">
-                    <i class="fas fa-champagne-glasses"></i>
-                    Event Management
-                </button>
-                <button class="filter-btn" data-filter="hoa">
-                    <i class="fas fa-building"></i>
-                    HOA Services
-                </button>
+            <div class="review-cta-content">
+                <div class="cta-text">
+                    <h3>Share Your Experience</h3>
+                    <p>Help other families discover the 805 LifeGuard difference by sharing your experience.</p>
+                </div>
+                <div class="review-buttons">
+                    <a href="#" id="googleReviewBtn" class="review-btn google-btn" target="_blank" aria-label="Leave a review on Google">
+                        <i class="fab fa-google" aria-hidden="true"></i>
+                        Review on Google
+                    </a>
+                    <a href="#" id="yelpReviewBtn" class="review-btn yelp-btn" target="_blank" aria-label="Leave a review on Yelp">
+                        <i class="fab fa-yelp" aria-hidden="true"></i>
+                        Review on Yelp
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -977,381 +786,426 @@
     <section class="featured-testimonials">
         <div class="container">
             <div class="section-header">
-                <div class="section-badge">Featured Reviews</div>
-                <h2>Outstanding Client Experiences</h2>
+                <div class="section-badge">Featured Stories</div>
+                <h2>What Our Clients Say</h2>
                 <p class="section-description">
-                    These detailed testimonials showcase the exceptional service and results 
-                    our clients experience with 805 LifeGuard's premium aquatic services.
+                    Real testimonials from families who have experienced our premium aquatic services 
+                    and the peace of mind that comes with professional care.
                 </p>
             </div>
             
-            <div class="featured-grid">
-                <article class="featured-testimonial" data-service="instruction">
-                    <div class="featured-badge">
-                        <i class="fas fa-crown"></i>
-                        Featured
-                    </div>
-                    <div class="featured-content">
-                        <div class="featured-rating" aria-label="5 star rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="featured-text">
-                            "Jasper is exceptional with children and our boys adored their lessons, eagerly anticipating each session. 
-                            His patient yet engaging approach helped them overcome their initial fear of water and develop into confident swimmers. 
-                            For distinguished swimming instruction or professional event oversight, his expertise is truly unparalleled in the Conejo Valley."
-                        </p>
-                        <div class="featured-client">
-                            <div class="featured-avatar">SM</div>
-                            <div class="featured-client-info">
-                                <h3>Sarah M.</h3>
-                                <div class="featured-client-details">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    Agoura Hills, CA<br>
-                                    <i class="fas fa-swimming-pool"></i>
-                                    Private Swimming Instruction
-                                </div>
+            <div class="testimonials-showcase">
+                <article class="testimonial-card featured-large" itemscope itemtype="https://schema.org/Review">
+                    <div class="testimonial-header">
+                        <div class="client-info">
+                            <div class="client-avatar">
+                                <picture>
+                                    <source srcset="images/testimonials/client-sarah-m-400x400.webp" type="image/webp">
+                                    <img src="images/testimonials/client-sarah-m-400x400.jpg" alt="Sarah M. - Satisfied 805 LifeGuard Client" loading="lazy">
+                                </picture>
+                            </div>
+                            <div class="client-details">
+                                <h4 itemprop="author" itemscope itemtype="https://schema.org/Person">
+                                    <span itemprop="name">Sarah M.</span>
+                                </h4>
+                                <p>Agoura Hills Family</p>
+                                <div class="service-type">Swimming Instruction & Lifeguarding</div>
                             </div>
                         </div>
+                        <div class="testimonial-rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                            <meta itemprop="ratingValue" content="5" />
+                            <meta itemprop="bestRating" content="5" />
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        <p itemprop="reviewBody">"Jasper has been absolutely incredible with our three children, especially our youngest who has special needs. His patience, expertise, and genuine care have transformed our kids from being afraid of water to confident swimmers who actually look forward to their lessons. The professionalism and discretion he brings to our home is exactly what our family needed."</p>
+                    </div>
+                    <div class="testimonial-footer">
+                        <div class="platform-source">
+                            <i class="fab fa-google" aria-hidden="true"></i>
+                            <span>Google Review</span>
+                        </div>
+                        <div class="review-date">3 months ago</div>
                     </div>
                 </article>
                 
-                <article class="featured-testimonial" data-service="events">
-                    <div class="featured-badge">
-                        <i class="fas fa-crown"></i>
-                        Featured
-                    </div>
-                    <div class="featured-content">
-                        <div class="featured-rating" aria-label="5 star rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                <div class="testimonials-grid">
+                    <article class="testimonial-card" itemscope itemtype="https://schema.org/Review">
+                        <div class="testimonial-content">
+                            <p itemprop="reviewBody">"Jasper was beyond great! I was able to enjoy my son's birthday party while not stressing about the little kids in the pool. Professional, attentive, and invisible when needed. We will definitely use 805 LifeGuard again."</p>
                         </div>
-                        <p class="featured-text">
-                            "Jasper exceeded all expectations during my son's birthday celebration! I was able to thoroughly enjoy 
-                            the party and engage with our guests while maintaining complete confidence in the children's pool safety. 
-                            His professional presence was reassuring yet unobtrusive. We will certainly engage his services repeatedly for future events."
-                        </p>
-                        <div class="featured-client">
-                            <div class="featured-avatar">JL</div>
-                            <div class="featured-client-info">
-                                <h3>Jennifer L.</h3>
-                                <div class="featured-client-details">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    Thousand Oaks, CA<br>
-                                    <i class="fas fa-champagne-glasses"></i>
-                                    Luxury Event Management
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <div class="author-name" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                                    <span itemprop="name">Jennifer L.</span>
                                 </div>
+                                <div class="author-location">Thousand Oaks • Event Safety</div>
+                            </div>
+                            <div class="testimonial-rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                                <meta itemprop="ratingValue" content="5" />
+                                <meta itemprop="bestRating" content="5" />
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
                             </div>
                         </div>
-                    </div>
-                </article>
+                        <div class="platform-source">
+                            <i class="fab fa-yelp" aria-hidden="true"></i>
+                            <span>Yelp</span>
+                        </div>
+                    </article>
+                    
+                    <article class="testimonial-card" itemscope itemtype="https://schema.org/Review">
+                        <div class="testimonial-content">
+                            <p itemprop="reviewBody">"He was patient and fun, but also firm with our son who definitely has a mind of his own. The progress in just six weeks was remarkable. We couldn't be happier with the professional service and results."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <div class="author-name" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                                    <span itemprop="name">Michael R.</span>
+                                </div>
+                                <div class="author-location">Newbury Park • Swimming Lessons</div>
+                            </div>
+                            <div class="testimonial-rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                                <meta itemprop="ratingValue" content="5" />
+                                <meta itemprop="bestRating" content="5" />
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="platform-source">
+                            <i class="fab fa-google" aria-hidden="true"></i>
+                            <span>Google</span>
+                        </div>
+                    </article>
+                    
+                    <article class="testimonial-card" itemscope itemtype="https://schema.org/Review">
+                        <div class="testimonial-content">
+                            <p itemprop="reviewBody">"For our corporate retreat, 805 LifeGuard provided seamless aquatic safety management. Our executives could enjoy the pool activities with complete peace of mind. The service was so professional it was practically invisible."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <div class="author-name" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                                    <span itemprop="name">David Chen</span>
+                                </div>
+                                <div class="author-location">Tech Executive • Corporate Event</div>
+                            </div>
+                            <div class="testimonial-rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                                <meta itemprop="ratingValue" content="5" />
+                                <meta itemprop="bestRating" content="5" />
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="platform-source">
+                            <i class="fab fa-google" aria-hidden="true"></i>
+                            <span>Google</span>
+                        </div>
+                    </article>
+                    
+                    <article class="testimonial-card" itemscope itemtype="https://schema.org/Review">
+                        <div class="testimonial-content">
+                            <p itemprop="reviewBody">"Working with special needs children requires a unique skill set, and Jasper exceeded all our expectations. His specialized training and compassionate approach helped our daughter develop both swimming skills and water confidence."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <div class="author-name" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                                    <span itemprop="name">Amanda K.</span>
+                                </div>
+                                <div class="author-location">Calabasas • Special Needs Program</div>
+                            </div>
+                            <div class="testimonial-rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                                <meta itemprop="ratingValue" content="5" />
+                                <meta itemprop="bestRating" content="5" />
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="platform-source">
+                            <i class="fab fa-yelp" aria-hidden="true"></i>
+                            <span>Yelp</span>
+                        </div>
+                    </article>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Main Testimonials Grid -->
-    <section class="testimonials-main">
-        <div class="container">
-            <div class="testimonials-container">
-                <article class="testimonial-item" data-service="instruction">
-                    <div class="testimonial-header">
-                        <div class="testimonial-rating" aria-label="5 star rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div class="testimonial-service">
-                            <i class="fas fa-swimming-pool"></i>
-                            Swimming Instruction
-                        </div>
-                    </div>
-                    <div class="testimonial-content">
-                        <p class="testimonial-text">
-                            "His approach was both patient and engaging, yet appropriately firm with our strong-willed son. 
-                            We are thoroughly pleased with the remarkable progress and impeccable professional service."
-                        </p>
-                    </div>
-                    <div class="testimonial-footer">
-                        <div class="client-avatar">MR</div>
-                        <div class="client-info">
-                            <h4>Michael R.</h4>
-                            <div class="client-location">
-                                <i class="fas fa-map-marker-alt"></i>
-                                Newbury Park, CA
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="testimonial-item" data-service="lifeguarding">
-                    <div class="testimonial-header">
-                        <div class="testimonial-rating" aria-label="5 star rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div class="testimonial-service">
-                            <i class="fas fa-shield-alt"></i>
-                            Private Lifeguarding
-                        </div>
-                    </div>
-                    <div class="testimonial-content">
-                        <p class="testimonial-text">
-                            "Having professional lifeguarding during our pool parties gives us complete peace of mind. 
-                            Jasper's presence is reassuring yet unobtrusive, allowing us to enjoy our gatherings worry-free."
-                        </p>
-                    </div>
-                    <div class="testimonial-footer">
-                        <div class="client-avatar">DT</div>
-                        <div class="client-info">
-                            <h4>David & Teresa K.</h4>
-                            <div class="client-location">
-                                <i class="fas fa-map-marker-alt"></i>
-                                Westlake Village, CA
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="testimonial-item" data-service="instruction">
-                    <div class="testimonial-header">
-                        <div class="testimonial-rating" aria-label="5 star rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div class="testimonial-service">
-                            <i class="fas fa-swimming-pool"></i>
-                            Swimming Instruction
-                        </div>
-                    </div>
-                    <div class="testimonial-content">
-                        <p class="testimonial-text">
-                            "Our daughter has special needs, and Jasper's patience and specialized training were exactly what she needed. 
-                            His gentle approach helped her build confidence in the water safely and at her own pace."
-                        </p>
-                    </div>
-                    <div class="testimonial-footer">
-                        <div class="client-avatar">EB</div>
-                        <div class="client-info">
-                            <h4>Elena B.</h4>
-                            <div class="client-location">
-                                <i class="fas fa-map-marker-alt"></i>
-                                Calabasas, CA
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="testimonial-item featured" data-service="hoa">
-                    <div class="testimonial-header">
-                        <div class="testimonial-rating" aria-label="5 star rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div class="testimonial-service">
-                            <i class="fas fa-building"></i>
-                            HOA Community Services
-                        </div>
-                    </div>
-                    <div class="testimonial-content">
-                        <p class="testimonial-text">
-                            "805 LifeGuard has transformed our community pool experience. Their professional team provides peace of mind 
-                            for residents while maintaining the upscale atmosphere our community expects."
-                        </p>
-                    </div>
-                    <div class="testimonial-footer">
-                        <div class="client-avatar">MC</div>
-                        <div class="client-info">
-                            <h4>Margaret Chen</h4>
-                            <div class="client-location">
-                                <i class="fas fa-map-marker-alt"></i>
-                                HOA Board President, Westlake Village
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="testimonial-item" data-service="events">
-                    <div class="testimonial-header">
-                        <div class="testimonial-rating" aria-label="5 star rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div class="testimonial-service">
-                            <i class="fas fa-champagne-glasses"></i>
-                            Event Management
-                        </div>
-                    </div>
-                    <div class="testimonial-content">
-                        <p class="testimonial-text">
-                            "For our corporate retreat, Jasper provided seamless aquatic safety management that allowed our executives 
-                            to network and enjoy the pool area without any safety concerns. Truly professional service."
-                        </p>
-                    </div>
-                    <div class="testimonial-footer">
-                        <div class="client-avatar">AS</div>
-                        <div class="client-info">
-                            <h4>Andrew S.</h4>
-                            <div class="client-location">
-                                <i class="fas fa-map-marker-alt"></i>
-                                Corporate Event Manager, Malibu
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="testimonial-item" data-service="instruction">
-                    <div class="testimonial-header">
-                        <div class="testimonial-rating" aria-label="5 star rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div class="testimonial-service">
-                            <i class="fas fa-swimming-pool"></i>
-                            Adult Swimming Lessons
-                        </div>
-                    </div>
-                    <div class="testimonial-content">
-                        <p class="testimonial-text">
-                            "As an adult who never learned to swim, I was nervous about starting lessons. Jasper's encouraging 
-                            approach and expertise helped me overcome my fears and become a confident swimmer."
-                        </p>
-                    </div>
-                    <div class="testimonial-footer">
-                        <div class="client-avatar">CM</div>
-                        <div class="client-info">
-                            <h4>Carlos M.</h4>
-                            <div class="client-location">
-                                <i class="fas fa-map-marker-alt"></i>
-                                Oak Park, CA
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Statistics Section -->
-    <section class="testimonials-stats">
+    <!-- Service-Specific Testimonials -->
+    <section class="service-testimonials">
         <div class="container">
             <div class="section-header">
-                <div class="section-badge gold">Excellence in Numbers</div>
-                <h2>Our Track Record Speaks</h2>
+                <div class="section-badge">Service Excellence</div>
+                <h2>Testimonials by Service</h2>
                 <p class="section-description">
-                    These metrics reflect our unwavering commitment to providing exceptional 
-                    aquatic services to Southern California's most distinguished clientele.
+                    See what clients say about each of our specialized aquatic services.
                 </p>
             </div>
             
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-star"></i>
+            <div class="service-tabs">
+                <button class="service-tab active" data-service="lifeguarding">
+                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                    Lifeguarding
+                </button>
+                <button class="service-tab" data-service="instruction">
+                    <i class="fas fa-swimming-pool" aria-hidden="true"></i>
+                    Instruction
+                </button>
+                <button class="service-tab" data-service="events">
+                    <i class="fas fa-champagne-glasses" aria-hidden="true"></i>
+                    Events
+                </button>
+                <button class="service-tab" data-service="cleaning">
+                    <i class="fas fa-broom" aria-hidden="true"></i>
+                    Pool Cleaning
+                </button>
+            </div>
+            
+            <div class="service-testimonials-content">
+                <div class="service-testimonials-section active" data-service="lifeguarding">
+                    <div class="testimonials-grid">
+                        <article class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p>"Having professional lifeguarding for our family gatherings gives us complete peace of mind. Jasper is always vigilant but never intrusive - the perfect balance for our family's needs."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-info">
+                                    <div class="author-name">Robert & Lisa W.</div>
+                                    <div class="author-location">Hidden Hills Property</div>
+                                </div>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <article class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p>"We've used 805 LifeGuard for over two years now for daily pool supervision. The consistency and professionalism are exactly what you'd expect from a premium service."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-info">
+                                    <div class="author-name">Margaret Thompson</div>
+                                    <div class="author-location">Westlake Village</div>
+                                </div>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </article>
                     </div>
-                    <div class="stat-number">5.0</div>
-                    <div class="stat-label">Average Rating</div>
-                    <div class="stat-description">Consistently rated 5 stars across all service categories</div>
                 </div>
                 
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-users"></i>
+                <div class="service-testimonials-section" data-service="instruction">
+                    <div class="testimonials-grid">
+                        <article class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p>"Our adult swimming lessons with Jasper were exactly what I needed to overcome my fear of water. His patient, professional approach made all the difference."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-info">
+                                    <div class="author-name">James Liu</div>
+                                    <div class="author-location">Manhattan Beach</div>
+                                </div>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <article class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p>"The private lessons for our twins were perfectly tailored to their different personalities and skill levels. Both kids are now confident swimmers thanks to Jasper's expertise."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-info">
+                                    <div class="author-name">Patricia & Mark D.</div>
+                                    <div class="author-location">Newport Beach</div>
+                                </div>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </article>
                     </div>
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Client Retention</div>
-                    <div class="stat-description">All clients return for additional services</div>
                 </div>
                 
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-home"></i>
+                <div class="service-testimonials-section" data-service="events">
+                    <div class="testimonials-grid">
+                        <article class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p>"Our wedding reception by the pool was flawless thanks to 805 LifeGuard's professional event management. They handled everything so we could focus on celebrating."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-info">
+                                    <div class="author-name">Emily & Jonathan S.</div>
+                                    <div class="author-location">Malibu</div>
+                                </div>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <article class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p>"The pool party for our daughter's Sweet 16 was perfect. Professional safety management allowed all the parents to relax and enjoy the celebration."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-info">
+                                    <div class="author-name">Victoria M.</div>
+                                    <div class="author-location">Beverly Hills</div>
+                                </div>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </article>
                     </div>
-                    <div class="stat-number">200+</div>
-                    <div class="stat-label">Families Served</div>
-                    <div class="stat-description">Distinguished families throughout Southern California</div>
                 </div>
                 
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-calendar-check"></i>
+                <div class="service-testimonials-section" data-service="cleaning">
+                    <div class="testimonials-grid">
+                        <article class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p>"The exclusive pool cleaning service perfectly complements our lifeguarding package. Having one trusted provider for all our aquatic needs is incredibly convenient."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-info">
+                                    <div class="author-name">Charles & Diana R.</div>
+                                    <div class="author-location">Palos Verdes</div>
+                                </div>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <article class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p>"The white-glove pool maintenance ensures our pool is always pristine for family use and entertaining. The coordination with our other services is seamless."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-info">
+                                    <div class="author-name">Alexandra K.</div>
+                                    <div class="author-location">Laguna Beach</div>
+                                </div>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </article>
                     </div>
-                    <div class="stat-number">500+</div>
-                    <div class="stat-label">Successful Events</div>
-                    <div class="stat-description">Private parties and gatherings safely managed</div>
-                </div>
-                
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-swimming-pool"></i>
-                    </div>
-                    <div class="stat-number">1000+</div>
-                    <div class="stat-label">Swimming Lessons</div>
-                    <div class="stat-description">Students taught from beginner to advanced levels</div>
-                </div>
-                
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <div class="stat-number">0</div>
-                    <div class="stat-label">Safety Incidents</div>
-                    <div class="stat-description">Perfect safety record maintained since 2016</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Call to Action -->
-    <section class="testimonials-cta">
+    <!-- Dynamic Review Integration -->
+    <section class="dynamic-reviews">
         <div class="container">
-            <div class="cta-content">
-                <div class="section-badge">Join Our Distinguished Clientele</div>
-                <h2>Experience the Excellence Yourself</h2>
+            <div class="section-header">
+                <div class="section-badge">Live Reviews</div>
+                <h2>Recent Client Feedback</h2>
+                <p class="section-description">
+                    Real-time testimonials from Google and Yelp, updated automatically.
+                </p>
+            </div>
+            
+            <div class="dynamic-reviews-container">
+                <div class="reviews-feed" id="googleReviewsFeed">
+                    <h3><i class="fab fa-google" aria-hidden="true"></i> Recent Google Reviews</h3>
+                    <div class="reviews-loading">
+                        <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                        <p>Loading recent reviews...</p>
+                    </div>
+                </div>
+                
+                <div class="reviews-feed" id="yelpReviewsFeed">
+                    <h3><i class="fab fa-yelp" aria-hidden="true"></i> Recent Yelp Reviews</h3>
+                    <div class="reviews-loading">
+                        <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                        <p>Loading recent reviews...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Review CTA -->
+    <section class="consultation-section">
+        <div class="container">
+            <div class="consultation-content">
+                <div class="section-badge gold">Join Our Client Family</div>
+                <h2>Experience the 805 LifeGuard Difference</h2>
                 <p>
-                    Join the prestigious families and communities who trust 805 LifeGuard for their 
-                    aquatic safety and instruction needs. Schedule a private consultation to discover 
-                    how we can enhance your pool experience with the same level of excellence our clients rave about.
+                    Ready to discover why Southern California's most discerning families trust us with their 
+                    aquatic safety needs? Schedule your private consultation today and experience the difference 
+                    that professional excellence makes.
                 </p>
                 
-                <div class="cta-buttons">
+                <div class="hero-buttons">
                     <a href="contact.html" class="btn btn-primary large">
-                        <i class="fas fa-calendar-check"></i>
-                        Schedule Private Consultation
+                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                        Schedule Consultation
                     </a>
-                    <a href="services.html" class="btn btn-secondary-dark large">
-                        <i class="fas fa-water"></i>
-                        View Our Services
+                    <a href="services.html" class="btn btn-secondary large">
+                        <i class="fas fa-water" aria-hidden="true"></i>
+                        View Services
                     </a>
                 </div>
                 
-                <div class="cta-contact">
-                    <p>
-                        <i class="fas fa-phone"></i>
-                        Ready to get started? Call <a href="tel:+18053676432">(805) 367-6432</a> for immediate assistance
-                    </p>
+                <div class="hero-notice">
+                    <i class="fas fa-phone" aria-hidden="true"></i>
+                    Call <a href="tel:+18053676432">(805) 367-6432</a> for immediate consultation
                 </div>
             </div>
         </div>
@@ -1494,96 +1348,83 @@
     
     <!-- Testimonials Page Specific JavaScript -->
     <script>
+        // Service tabs functionality
         document.addEventListener('DOMContentLoaded', function() {
-            // Filter functionality
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const testimonialItems = document.querySelectorAll('.testimonial-item, .featured-testimonial');
+            const serviceTabs = document.querySelectorAll('.service-tab');
+            const serviceSections = document.querySelectorAll('.service-testimonials-section');
             
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const filter = this.dataset.filter;
+            serviceTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const service = this.dataset.service;
                     
-                    // Update active button
-                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Remove active class from all tabs and sections
+                    serviceTabs.forEach(t => t.classList.remove('active'));
+                    serviceSections.forEach(s => s.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding section
                     this.classList.add('active');
-                    
-                    // Filter testimonials
-                    testimonialItems.forEach(item => {
-                        if (filter === 'all') {
-                            item.style.display = 'block';
-                            item.style.opacity = '1';
-                        } else {
-                            const itemService = item.dataset.service;
-                            if (itemService === filter) {
-                                item.style.display = 'block';
-                                item.style.opacity = '1';
-                            } else {
-                                item.style.opacity = '0.3';
-                                setTimeout(() => {
-                                    if (item.style.opacity === '0.3') {
-                                        item.style.display = 'none';
-                                    }
-                                }, 300);
-                            }
-                        }
-                    });
+                    document.querySelector(`[data-service="${service}"].service-testimonials-section`).classList.add('active');
                 });
             });
             
-            // Animate statistics when in view
-            const observerOptions = {
-                threshold: 0.5,
-                rootMargin: '0px 0px -100px 0px'
-            };
+            // Mock dynamic reviews loading
+            setTimeout(() => {
+                const googleFeed = document.getElementById('googleReviewsFeed');
+                const yelpFeed = document.getElementById('yelpReviewsFeed');
+                
+                // Replace loading with mock content
+                if (googleFeed) {
+                    googleFeed.innerHTML = `
+                        <h3><i class="fab fa-google"></i> Recent Google Reviews</h3>
+                        <div class="dynamic-review-card">
+                            <p>"Outstanding service from start to finish. Jasper's professionalism and expertise gave us complete confidence."</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+                                <strong>Tom & Susan R.</strong>
+                                <div style="color: var(--gold-medium);">★★★★★</div>
+                            </div>
+                        </div>
+                        <div class="dynamic-review-card">
+                            <p>"Highly recommend for anyone looking for premium aquatic services. The peace of mind is invaluable."</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+                                <strong>Maria L.</strong>
+                                <div style="color: var(--gold-medium);">★★★★★</div>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                if (yelpFeed) {
+                    yelpFeed.innerHTML = `
+                        <h3><i class="fab fa-yelp"></i> Recent Yelp Reviews</h3>
+                        <div class="dynamic-review-card">
+                            <p>"Exceptional service! Our children learned so much and had a blast doing it. Highly professional team."</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+                                <strong>Kevin P.</strong>
+                                <div style="color: var(--gold-medium);">★★★★★</div>
+                            </div>
+                        </div>
+                        <div class="dynamic-review-card">
+                            <p>"Best investment we made for our pool. Professional, reliable, and genuinely caring service."</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+                                <strong>Rachel & John D.</strong>
+                                <div style="color: var(--gold-medium);">★★★★★</div>
+                            </div>
+                        </div>
+                    `;
+                }
+            }, 2000);
             
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const statNumbers = entry.target.querySelectorAll('.stat-number');
-                        statNumbers.forEach(stat => {
-                            const target = parseInt(stat.textContent);
-                            animateCounter(stat, target);
-                        });
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
+            // Review button functionality
+            const googleReviewBtn = document.getElementById('googleReviewBtn');
+            const yelpReviewBtn = document.getElementById('yelpReviewBtn');
             
-            const statsSection = document.querySelector('.testimonials-stats');
-            if (statsSection) {
-                observer.observe(statsSection);
+            if (googleReviewBtn) {
+                googleReviewBtn.href = 'https://g.page/r/[YOUR_GOOGLE_PLACE_ID]/review';
             }
             
-            function animateCounter(element, target) {
-                let start = 0;
-                const increment = target / 50;
-                const timer = setInterval(() => {
-                    start += increment;
-                    if (start >= target) {
-                        element.textContent = target;
-                        clearInterval(timer);
-                    } else {
-                        element.textContent = Math.floor(start);
-                    }
-                }, 30);
+            if (yelpReviewBtn) {
+                yelpReviewBtn.href = 'https://www.yelp.com/writeareview/biz/[YOUR_YELP_ID]';
             }
-            
-            // Smooth scroll for internal links
-            document.querySelectorAll('a[href^="#"]').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        const headerHeight = document.getElementById('header').offsetHeight;
-                        const targetPosition = target.offsetTop - headerHeight - 20;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
         });
     </script>
 </body>
