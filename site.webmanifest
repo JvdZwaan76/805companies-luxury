@@ -1,0 +1,42 @@
+{
+    "name": "805 LifeGuard - Premier Aquatic Services",
+    "short_name": "805 LifeGuard",
+    "description": "Premier aquatic safety and instruction services for Southern California's distinguished clientele",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#FFFFFF",
+    "theme_color": "#0A1628",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "en-US",
+    "categories": ["lifestyle", "health", "education"],
+    "icons": [
+        {
+            "src": "images/logos/805-lifeguard-favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        },
+        {
+            "src": "images/logos/805-lifeguard-favicon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "images/logos/805-lifeguard-apple-touch-icon-180x180.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        },
+        {
+            "src": "images/logos/805-lifeguard-logo-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "images/logos/805-lifeguard-logo-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}
