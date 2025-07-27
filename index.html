@@ -972,5 +972,175 @@
 
     <!-- Enhanced JavaScript -->
     <script src="js/luxury-app.js"></script>
+    <!-- Mobile Navigation Fix -->
+    <script>
+    (function() {
+        'use strict';
+        
+        // Ensure mobile navigation works regardless of main app initialization
+        function initializeMobileNavigation() {
+            console.log('🔧 Initializing Mobile Navigation Fix...');
+            
+            const mobileToggle = document.getElementById('mobileToggle');
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileNavClose = document.getElementById('mobileNavClose');
+            const body = document.body;
+            
+            if (!mobileToggle || !mobileNav) {
+                console.error('❌ Mobile navigation elements not found');
+                return;
+            }
+            
+            let isOpen = false;
+            let scrollPosition = 0;
+            
+            // Open mobile navigation
+            function openMobileNav() {
+                console.log('📱 Opening mobile navigation...');
+                isOpen = true;
+                scrollPosition = window.pageYOffset;
+                
+                // Add active classes
+                mobileToggle.classList.add('active');
+                mobileToggle.setAttribute('aria-expanded', 'true');
+                mobileNav.classList.add('active');
+                mobileNav.setAttribute('aria-hidden', 'false');
+                body.classList.add('nav-open');
+                
+                // Lock body scroll
+                body.style.position = 'fixed';
+                body.style.top = `-${scrollPosition}px`;
+                body.style.width = '100%';
+                body.style.overflow = 'hidden';
+                
+                // Focus management
+                setTimeout(() => {
+                    const firstLink = mobileNav.querySelector('.mobile-nav-link');
+                    if (firstLink) {
+                        firstLink.focus();
+                    }
+                }, 300);
+            }
+            
+            // Close mobile navigation
+            function closeMobileNav() {
+                console.log('📱 Closing mobile navigation...');
+                isOpen = false;
+                
+                // Remove active classes
+                mobileToggle.classList.remove('active');
+                mobileToggle.setAttribute('aria-expanded', 'false');
+                mobileNav.classList.remove('active');
+                mobileNav.setAttribute('aria-hidden', 'true');
+                body.classList.remove('nav-open');
+                
+                // Restore body scroll
+                body.style.position = '';
+                body.style.top = '';
+                body.style.width = '';
+                body.style.overflow = '';
+                
+                // Restore scroll position
+                window.scrollTo(0, scrollPosition);
+            }
+            
+            // Toggle mobile navigation
+            function toggleMobileNav() {
+                if (isOpen) {
+                    closeMobileNav();
+                } else {
+                    openMobileNav();
+                }
+            }
+            
+            // Remove any existing event listeners to prevent duplicates
+            const newMobileToggle = mobileToggle.cloneNode(true);
+            mobileToggle.parentNode.replaceChild(newMobileToggle, mobileToggle);
+            
+            // Add click event to mobile toggle
+            newMobileToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('📱 Mobile toggle clicked');
+                toggleMobileNav();
+            });
+            
+            // Add click event to close button
+            if (mobileNavClose) {
+                const newMobileNavClose = mobileNavClose.cloneNode(true);
+                mobileNavClose.parentNode.replaceChild(newMobileNavClose, mobileNavClose);
+                
+                newMobileNavClose.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('📱 Mobile close clicked');
+                    closeMobileNav();
+                });
+            }
+            
+            // Close on outside click
+            document.addEventListener('click', function(e) {
+                if (isOpen && 
+                    !mobileNav.contains(e.target) && 
+                    !newMobileToggle.contains(e.target)) {
+                    console.log('📱 Outside click - closing mobile nav');
+                    closeMobileNav();
+                }
+            });
+            
+            // Close on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && isOpen) {
+                    console.log('📱 Escape key - closing mobile nav');
+                    closeMobileNav();
+                }
+            });
+            
+            // Close on window resize to desktop
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && isOpen) {
+                    console.log('📱 Window resized to desktop - closing mobile nav');
+                    closeMobileNav();
+                }
+            });
+            
+            // Handle mobile nav links
+            const mobileLinks = mobileNav.querySelectorAll('.mobile-nav-link');
+            mobileLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    console.log('📱 Mobile nav link clicked');
+                    // Delay close to allow navigation
+                    setTimeout(function() {
+                        closeMobileNav();
+                    }, 100);
+                });
+            });
+            
+            console.log('✅ Mobile Navigation Fix initialized successfully');
+            
+            // Return public API
+            return {
+                open: openMobileNav,
+                close: closeMobileNav,
+                toggle: toggleMobileNav,
+                isOpen: function() { return isOpen; }
+            };
+        }
+        
+        // Initialize immediately if DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeMobileNavigation);
+        } else {
+            initializeMobileNavigation();
+        }
+        
+        // Also initialize after a short delay to ensure it works even if other scripts interfere
+        setTimeout(initializeMobileNavigation, 100);
+        
+        // Expose globally for debugging
+        window.mobileNavFix = initializeMobileNavigation;
+        
+    })();
+    </script>
 </body>
 </html>
