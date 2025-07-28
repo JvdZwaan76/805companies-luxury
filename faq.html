@@ -39,8 +39,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Awesome - Enhanced CDN link for better reliability -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     
     <!-- Enhanced Luxury Theme CSS -->
     <link rel="stylesheet" href="css/luxury-theme.css">
@@ -95,6 +95,117 @@
       "url": "https://805lifeguard.com/faq.html"
     }
     </script>
+    
+    <!-- FAQ Page Specific Styles -->
+    <style>
+        /* Icon loading fix */
+        .fas, .far, .fab, .fal {
+            font-family: "Font Awesome 6 Free", "Font Awesome 6 Pro", "Font Awesome 6 Brands";
+            font-weight: 900;
+        }
+        
+        .far {
+            font-weight: 400;
+        }
+        
+        /* Ensure icons display properly on slower connections */
+        i[class*="fa-"] {
+            display: inline-block;
+            width: 1em;
+            text-align: center;
+        }
+        
+        /* Fallback for missing icons */
+        i[class*="fa-"]:before {
+            content: attr(data-fallback);
+        }
+        
+        /* Enhanced FAQ interactions */
+        .faq-question:focus {
+            outline: 3px solid var(--gold-medium);
+            outline-offset: 2px;
+        }
+        
+        .category-btn:focus,
+        .category-link:focus {
+            outline: 3px solid var(--gold-medium);
+            outline-offset: 2px;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--gold-medium);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+        
+        /* Mobile FAQ improvements */
+        @media (max-width: 768px) {
+            .faq-layout {
+                grid-template-columns: 1fr;
+                gap: var(--space-6);
+            }
+            
+            .faq-sidebar {
+                position: static;
+                order: 2;
+                margin-top: var(--space-6);
+                max-height: none;
+            }
+            
+            .faq-main {
+                order: 1;
+                padding: var(--space-6);
+            }
+            
+            .faq-question {
+                padding: var(--space-4);
+                gap: var(--space-3);
+            }
+            
+            .faq-question h3 {
+                font-size: 1rem;
+                line-height: 1.4;
+            }
+            
+            .faq-answer > div {
+                padding: var(--space-4);
+                padding-top: 0;
+            }
+            
+            .search-categories {
+                flex-direction: column;
+                align-items: center;
+                gap: var(--space-2);
+            }
+            
+            .category-btn {
+                width: 100%;
+                max-width: 280px;
+                padding: var(--space-3);
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .faq-main {
+                padding: var(--space-4);
+            }
+            
+            .faq-question {
+                padding: var(--space-3);
+                gap: var(--space-2);
+            }
+            
+            .faq-question h3 {
+                font-size: 0.9375rem;
+            }
+            
+            .faq-answer > div {
+                padding: var(--space-3);
+                padding-top: 0;
+            }
+        }
+    </style>
 </head>
 <body itemscope itemtype="https://schema.org/FAQPage">
     <!-- Enhanced Header -->
@@ -104,16 +215,16 @@
             <div class="container">
                 <div class="header-top-content">
                     <div class="header-top-left">
-                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                        <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                         <span>Serving Southern California's Distinguished Clientele Since 2016</span>
                     </div>
                     <div class="header-top-right">
                         <a href="tel:+18053676432" class="header-contact" aria-label="Call 805 LifeGuard">
-                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <i class="fas fa-phone" aria-hidden="true" data-fallback="📞"></i>
                             (805) 367-6432
                         </a>
                         <a href="mailto:concierge@805lifeguard.com" class="header-contact" aria-label="Email 805 LifeGuard">
-                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <i class="fas fa-envelope" aria-hidden="true" data-fallback="✉️"></i>
                             concierge@805lifeguard.com
                         </a>
                     </div>
@@ -149,16 +260,16 @@
                         <div class="nav-actions">
                             <div class="portal-group">
                                 <a href="https://client.805companies.com" target="_blank" rel="noopener noreferrer" class="portal-btn client-portal" aria-label="Client Portal - Opens in new window">
-                                    <i class="fas fa-user-circle" aria-hidden="true"></i>
+                                    <i class="fas fa-user-circle" aria-hidden="true" data-fallback="👤"></i>
                                     Client
                                 </a>
                                 <a href="https://admin.805companies.com" target="_blank" rel="noopener noreferrer" class="portal-btn admin-portal" aria-label="Admin Portal - Opens in new window">
-                                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                    <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                                     Admin
                                 </a>
                             </div>
                             <a href="contact.html" class="consultation-btn" aria-label="Schedule Private Consultation">
-                                <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                                <i class="fas fa-calendar-check" aria-hidden="true" data-fallback="📅"></i>
                                 Private Consultation
                             </a>
                         </div>
@@ -183,7 +294,7 @@
                         <span>805 LifeGuard</span>
                     </div>
                     <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile navigation menu">
-                        <i class="fas fa-times" aria-hidden="true"></i>
+                        <i class="fas fa-times" aria-hidden="true" data-fallback="✕"></i>
                     </button>
                 </div>
                 
@@ -200,23 +311,23 @@
                 <div class="mobile-nav-actions">
                     <div class="mobile-portals">
                         <a href="https://client.805companies.com" target="_blank" rel="noopener noreferrer" class="mobile-portal-btn" aria-label="Client Portal - Opens in new window">
-                            <i class="fas fa-user-circle" aria-hidden="true"></i>
+                            <i class="fas fa-user-circle" aria-hidden="true" data-fallback="👤"></i>
                             Client Portal
                         </a>
                         <a href="https://admin.805companies.com" target="_blank" rel="noopener noreferrer" class="mobile-portal-btn" aria-label="Admin Portal - Opens in new window">
-                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                             Admin Portal
                         </a>
                     </div>
                     <a href="contact.html" class="mobile-consultation-btn" aria-label="Schedule Private Consultation">
-                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                        <i class="fas fa-calendar-check" aria-hidden="true" data-fallback="📅"></i>
                         Private Consultation
                     </a>
                 </div>
                 
                 <div class="mobile-nav-contact">
                     <a href="tel:+18053676432" class="mobile-contact-btn" aria-label="Call 805 LifeGuard">
-                        <i class="fas fa-phone" aria-hidden="true"></i>
+                        <i class="fas fa-phone" aria-hidden="true" data-fallback="📞"></i>
                         (805) 367-6432
                     </a>
                 </div>
@@ -247,7 +358,7 @@
         <div class="container">
             <div class="hero-content">
                 <div class="section-badge">
-                    <i class="fas fa-question-circle" aria-hidden="true"></i>
+                    <i class="fas fa-question-circle" aria-hidden="true" data-fallback="❓"></i>
                     Comprehensive FAQ Guide
                 </div>
                 
@@ -267,7 +378,7 @@
         <div class="container">
             <div class="search-wrapper">
                 <div class="search-input-wrapper">
-                    <i class="fas fa-search" aria-hidden="true"></i>
+                    <i class="fas fa-search" aria-hidden="true" data-fallback="🔍"></i>
                     <input type="text" id="faqSearch" class="search-input" placeholder="Search for answers about services, certifications, pool cleaning..." aria-label="Search FAQ">
                 </div>
                 
@@ -289,36 +400,36 @@
                 <!-- FAQ Sidebar -->
                 <aside class="faq-sidebar">
                     <div class="sidebar-header">
-                        <h3><i class="fas fa-list" aria-hidden="true"></i> FAQ Categories</h3>
+                        <h3><i class="fas fa-list" aria-hidden="true" data-fallback="📋"></i> FAQ Categories</h3>
                     </div>
                     <nav class="category-list">
                         <a href="#services" class="category-link active" data-category="services">
-                            <span><i class="fas fa-water" aria-hidden="true"></i> Services & Offerings</span>
+                            <span><i class="fas fa-water" aria-hidden="true" data-fallback="💧"></i> Services & Offerings</span>
                             <span class="question-count">8</span>
                         </a>
                         <a href="#pool-cleaning" class="category-link" data-category="pool-cleaning">
-                            <span><i class="fas fa-broom" aria-hidden="true"></i> Pool Cleaning Services</span>
+                            <span><i class="fas fa-broom" aria-hidden="true" data-fallback="🧹"></i> Pool Cleaning Services</span>
                             <span class="question-count">6</span>
                         </a>
                         <a href="#safety" class="category-link" data-category="safety">
-                            <span><i class="fas fa-shield-alt" aria-hidden="true"></i> Safety & Certifications</span>
+                            <span><i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i> Safety & Certifications</span>
                             <span class="question-count">7</span>
                         </a>
                         <a href="#booking" class="category-link" data-category="booking">
-                            <span><i class="fas fa-calendar-check" aria-hidden="true"></i> Booking & Scheduling</span>
+                            <span><i class="fas fa-calendar-check" aria-hidden="true" data-fallback="📅"></i> Booking & Scheduling</span>
                             <span class="question-count">5</span>
                         </a>
                         <a href="#estate" class="category-link" data-category="estate">
-                            <span><i class="fas fa-home" aria-hidden="true"></i> Estate Requirements</span>
+                            <span><i class="fas fa-home" aria-hidden="true" data-fallback="🏠"></i> Estate Requirements</span>
                             <span class="question-count">4</span>
                         </a>
                     </nav>
                     
                     <div class="contact-sidebar">
-                        <h4><i class="fas fa-headset" aria-hidden="true"></i> Still Have Questions?</h4>
+                        <h4><i class="fas fa-headset" aria-hidden="true" data-fallback="🎧"></i> Still Have Questions?</h4>
                         <p>Our concierge team is available to provide personalized answers and guidance.</p>
                         <a href="contact.html" class="btn btn-primary btn-small">
-                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <i class="fas fa-phone" aria-hidden="true" data-fallback="📞"></i>
                             Contact Us
                         </a>
                     </div>
@@ -329,14 +440,14 @@
                     <!-- Services & Offerings -->
                     <section id="services" class="faq-section" data-category="services">
                         <h2 class="section-title">
-                            <i class="fas fa-water" aria-hidden="true"></i>
+                            <i class="fas fa-water" aria-hidden="true" data-fallback="💧"></i>
                             Services & Offerings
                         </h2>
                         
                         <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                             <button class="faq-question" tabindex="0" role="button" aria-expanded="false">
                                 <h3 itemprop="name">What types of aquatic services do you provide?</h3>
-                                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                                <i class="fas fa-chevron-down" aria-hidden="true" data-fallback="⌄"></i>
                             </button>
                             <div class="faq-answer" aria-hidden="true" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                                 <div itemprop="text">
@@ -355,7 +466,7 @@
                         <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                             <button class="faq-question" tabindex="0" role="button" aria-expanded="false">
                                 <h3 itemprop="name">Do you work with special needs individuals?</h3>
-                                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                                <i class="fas fa-chevron-down" aria-hidden="true" data-fallback="⌄"></i>
                             </button>
                             <div class="faq-answer" aria-hidden="true" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                                 <div itemprop="text">
@@ -374,7 +485,7 @@
                         <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                             <button class="faq-question" tabindex="0" role="button" aria-expanded="false">
                                 <h3 itemprop="name">What areas do you serve?</h3>
-                                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                                <i class="fas fa-chevron-down" aria-hidden="true" data-fallback="⌄"></i>
                             </button>
                             <div class="faq-answer" aria-hidden="true" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                                 <div itemprop="text">
@@ -392,7 +503,7 @@
                         <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                             <button class="faq-question" tabindex="0" role="button" aria-expanded="false">
                                 <h3 itemprop="name">Can you provide services for corporate events?</h3>
-                                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                                <i class="fas fa-chevron-down" aria-hidden="true" data-fallback="⌄"></i>
                             </button>
                             <div class="faq-answer" aria-hidden="true" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                                 <div itemprop="text">
@@ -413,14 +524,14 @@
                     <!-- Pool Cleaning Services -->
                     <section id="pool-cleaning" class="faq-section" data-category="pool-cleaning">
                         <h2 class="section-title">
-                            <i class="fas fa-broom" aria-hidden="true"></i>
+                            <i class="fas fa-broom" aria-hidden="true" data-fallback="🧹"></i>
                             Pool Cleaning Services
                         </h2>
                         
                         <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                             <button class="faq-question" tabindex="0" role="button" aria-expanded="false">
                                 <h3 itemprop="name">Who can access your pool cleaning services?</h3>
-                                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                                <i class="fas fa-chevron-down" aria-hidden="true" data-fallback="⌄"></i>
                             </button>
                             <div class="faq-answer" aria-hidden="true" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                                 <div itemprop="text">
@@ -439,7 +550,7 @@
                         <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                             <button class="faq-question" tabindex="0" role="button" aria-expanded="false">
                                 <h3 itemprop="name">What does your pool cleaning service include?</h3>
-                                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                                <i class="fas fa-chevron-down" aria-hidden="true" data-fallback="⌄"></i>
                             </button>
                             <div class="faq-answer" aria-hidden="true" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                                 <div itemprop="text">
@@ -460,14 +571,14 @@
                     <!-- Safety & Certifications -->
                     <section id="safety" class="faq-section" data-category="safety">
                         <h2 class="section-title">
-                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                             Safety & Certifications
                         </h2>
                         
                         <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                             <button class="faq-question" tabindex="0" role="button" aria-expanded="false">
                                 <h3 itemprop="name">What certifications and training do you have?</h3>
-                                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                                <i class="fas fa-chevron-down" aria-hidden="true" data-fallback="⌄"></i>
                             </button>
                             <div class="faq-answer" aria-hidden="true" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                                 <div itemprop="text">
@@ -488,7 +599,7 @@
                         <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                             <button class="faq-question" tabindex="0" role="button" aria-expanded="false">
                                 <h3 itemprop="name">Are you insured and bonded?</h3>
-                                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                                <i class="fas fa-chevron-down" aria-hidden="true" data-fallback="⌄"></i>
                             </button>
                             <div class="faq-answer" aria-hidden="true" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                                 <div itemprop="text">
@@ -508,14 +619,14 @@
                     <!-- Booking & Scheduling -->
                     <section id="booking" class="faq-section" data-category="booking">
                         <h2 class="section-title">
-                            <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                            <i class="fas fa-calendar-check" aria-hidden="true" data-fallback="📅"></i>
                             Booking & Scheduling
                         </h2>
                         
                         <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                             <button class="faq-question" tabindex="0" role="button" aria-expanded="false">
                                 <h3 itemprop="name">How far in advance should I book services?</h3>
-                                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                                <i class="fas fa-chevron-down" aria-hidden="true" data-fallback="⌄"></i>
                             </button>
                             <div class="faq-answer" aria-hidden="true" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                                 <div itemprop="text">
@@ -537,14 +648,14 @@
                     <!-- Estate Requirements -->
                     <section id="estate" class="faq-section" data-category="estate">
                         <h2 class="section-title">
-                            <i class="fas fa-home" aria-hidden="true"></i>
+                            <i class="fas fa-home" aria-hidden="true" data-fallback="🏠"></i>
                             Estate Requirements
                         </h2>
                         
                         <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                             <button class="faq-question" tabindex="0" role="button" aria-expanded="false">
                                 <h3 itemprop="name">What do you need to know about our pool and estate?</h3>
-                                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                                <i class="fas fa-chevron-down" aria-hidden="true" data-fallback="⌄"></i>
                             </button>
                             <div class="faq-answer" aria-hidden="true" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                                 <div itemprop="text">
@@ -564,7 +675,7 @@
                         <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                             <button class="faq-question" tabindex="0" role="button" aria-expanded="false">
                                 <h3 itemprop="name">Do you work with estate management companies?</h3>
-                                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                                <i class="fas fa-chevron-down" aria-hidden="true" data-fallback="⌄"></i>
                             </button>
                             <div class="faq-answer" aria-hidden="true" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                                 <div itemprop="text">
@@ -598,17 +709,17 @@
                 
                 <div class="cta-buttons">
                     <a href="contact.html" class="btn btn-primary large">
-                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                        <i class="fas fa-calendar-check" aria-hidden="true" data-fallback="📅"></i>
                         Schedule Consultation
                     </a>
                     <a href="tel:+18053676432" class="btn btn-secondary large">
-                        <i class="fas fa-phone" aria-hidden="true"></i>
+                        <i class="fas fa-phone" aria-hidden="true" data-fallback="📞"></i>
                         Call (805) 367-6432
                     </a>
                 </div>
                 
                 <div class="response-time">
-                    <i class="fas fa-clock" aria-hidden="true"></i>
+                    <i class="fas fa-clock" aria-hidden="true" data-fallback="⏰"></i>
                     <span>We typically respond to consultation requests within 4 business hours</span>
                 </div>
             </div>
@@ -634,15 +745,15 @@
                     </p>
                     <div class="footer-badges">
                         <span class="footer-badge">
-                            <i class="fas fa-certificate" aria-hidden="true"></i>
+                            <i class="fas fa-certificate" aria-hidden="true" data-fallback="🏆"></i>
                             Red Cross Certified
                         </span>
                         <span class="footer-badge">
-                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                             Licensed & Bonded
                         </span>
                         <span class="footer-badge">
-                            <i class="fas fa-award" aria-hidden="true"></i>
+                            <i class="fas fa-award" aria-hidden="true" data-fallback="🏅"></i>
                             7+ Years Experience
                         </span>
                     </div>
@@ -651,7 +762,7 @@
                 <!-- Services Links -->
                 <div class="footer-section">
                     <h4>
-                        <i class="fas fa-water" aria-hidden="true"></i>
+                        <i class="fas fa-water" aria-hidden="true" data-fallback="💧"></i>
                         Services
                     </h4>
                     <ul>
@@ -666,7 +777,7 @@
                 <!-- Company Links -->
                 <div class="footer-section">
                     <h4>
-                        <i class="fas fa-building" aria-hidden="true"></i>
+                        <i class="fas fa-building" aria-hidden="true" data-fallback="🏢"></i>
                         Company
                     </h4>
                     <ul>
@@ -681,13 +792,13 @@
                 <!-- Contact Section -->
                 <div class="footer-contact">
                     <h4>
-                        <i class="fas fa-concierge-bell" aria-hidden="true"></i>
+                        <i class="fas fa-concierge-bell" aria-hidden="true" data-fallback="🛎️"></i>
                         Contact
                     </h4>
                     
                     <div class="contact-info">
                         <a href="tel:+18053676432" class="contact-item primary">
-                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <i class="fas fa-phone" aria-hidden="true" data-fallback="📞"></i>
                             <div>
                                 <strong>(805) 367-6432</strong>
                                 <span>24/7 Emergency Line</span>
@@ -695,7 +806,7 @@
                         </a>
                         
                         <a href="mailto:concierge@805lifeguard.com" class="contact-item">
-                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <i class="fas fa-envelope" aria-hidden="true" data-fallback="✉️"></i>
                             <div>
                                 <strong>concierge@805lifeguard.com</strong>
                                 <span>Consultation Requests</span>
@@ -710,15 +821,15 @@
                     
                     <div class="footer-portals">
                         <a href="https://client.805companies.com" target="_blank" class="footer-portal-btn">
-                            <i class="fas fa-user-circle" aria-hidden="true"></i>
+                            <i class="fas fa-user-circle" aria-hidden="true" data-fallback="👤"></i>
                             Client Portal
                         </a>
                         <a href="https://admin.805companies.com" target="_blank" class="footer-portal-btn">
-                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                             Admin Portal
                         </a>
                         <a href="https://staff.805companies.com" target="_blank" class="footer-portal-btn">
-                            <i class="fas fa-users" aria-hidden="true"></i>
+                            <i class="fas fa-users" aria-hidden="true" data-fallback="👥"></i>
                             Staff Portal
                         </a>
                     </div>
@@ -747,7 +858,178 @@
         </div>
     </footer>
 
-    <!-- Enhanced JavaScript - No inline script needed! -->
+    <!-- Enhanced JavaScript -->
     <script src="js/luxury-app.js"></script>
+    
+    <!-- Mobile Navigation Fix Script -->
+    <script>
+    (function() {
+        'use strict';
+        
+        // Ensure mobile navigation works regardless of main app initialization
+        function initializeMobileNavigation() {
+            console.log('🔧 Initializing Mobile Navigation Fix...');
+            
+            const mobileToggle = document.getElementById('mobileToggle');
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileNavClose = document.getElementById('mobileNavClose');
+            const body = document.body;
+            
+            if (!mobileToggle || !mobileNav) {
+                console.error('❌ Mobile navigation elements not found');
+                return;
+            }
+            
+            let isOpen = false;
+            let scrollPosition = 0;
+            
+            // Open mobile navigation
+            function openMobileNav() {
+                console.log('📱 Opening mobile navigation...');
+                isOpen = true;
+                scrollPosition = window.pageYOffset;
+                
+                // Add active classes
+                mobileToggle.classList.add('active');
+                mobileToggle.setAttribute('aria-expanded', 'true');
+                mobileNav.classList.add('active');
+                mobileNav.setAttribute('aria-hidden', 'false');
+                body.classList.add('nav-open');
+                
+                // Lock body scroll
+                body.style.position = 'fixed';
+                body.style.top = `-${scrollPosition}px`;
+                body.style.width = '100%';
+                body.style.overflow = 'hidden';
+                
+                // Focus management
+                setTimeout(() => {
+                    const firstLink = mobileNav.querySelector('.mobile-nav-link');
+                    if (firstLink) {
+                        firstLink.focus();
+                    }
+                }, 300);
+            }
+            
+            // Close mobile navigation
+            function closeMobileNav() {
+                console.log('📱 Closing mobile navigation...');
+                isOpen = false;
+                
+                // Remove active classes
+                mobileToggle.classList.remove('active');
+                mobileToggle.setAttribute('aria-expanded', 'false');
+                mobileNav.classList.remove('active');
+                mobileNav.setAttribute('aria-hidden', 'true');
+                body.classList.remove('nav-open');
+                
+                // Restore body scroll
+                body.style.position = '';
+                body.style.top = '';
+                body.style.width = '';
+                body.style.overflow = '';
+                
+                // Restore scroll position
+                window.scrollTo(0, scrollPosition);
+            }
+            
+            // Toggle mobile navigation
+            function toggleMobileNav() {
+                if (isOpen) {
+                    closeMobileNav();
+                } else {
+                    openMobileNav();
+                }
+            }
+            
+            // Remove any existing event listeners to prevent duplicates
+            const newMobileToggle = mobileToggle.cloneNode(true);
+            mobileToggle.parentNode.replaceChild(newMobileToggle, mobileToggle);
+            
+            // Add click event to mobile toggle
+            newMobileToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('📱 Mobile toggle clicked');
+                toggleMobileNav();
+            });
+            
+            // Add click event to close button
+            if (mobileNavClose) {
+                const newMobileNavClose = mobileNavClose.cloneNode(true);
+                mobileNavClose.parentNode.replaceChild(newMobileNavClose, mobileNavClose);
+                
+                newMobileNavClose.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('📱 Mobile close clicked');
+                    closeMobileNav();
+                });
+            }
+            
+            // Close on outside click
+            document.addEventListener('click', function(e) {
+                if (isOpen && 
+                    !mobileNav.contains(e.target) && 
+                    !newMobileToggle.contains(e.target)) {
+                    console.log('📱 Outside click - closing mobile nav');
+                    closeMobileNav();
+                }
+            });
+            
+            // Close on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && isOpen) {
+                    console.log('📱 Escape key - closing mobile nav');
+                    closeMobileNav();
+                }
+            });
+            
+            // Close on window resize to desktop
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && isOpen) {
+                    console.log('📱 Window resized to desktop - closing mobile nav');
+                    closeMobileNav();
+                }
+            });
+            
+            // Handle mobile nav links
+            const mobileLinks = mobileNav.querySelectorAll('.mobile-nav-link');
+            mobileLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    console.log('📱 Mobile nav link clicked');
+                    // Delay close to allow navigation
+                    setTimeout(function() {
+                        closeMobileNav();
+                    }, 100);
+                });
+            });
+            
+            console.log('✅ Mobile Navigation Fix initialized successfully');
+            
+            // Return public API
+            return {
+                open: openMobileNav,
+                close: closeMobileNav,
+                toggle: toggleMobileNav,
+                isOpen: function() { return isOpen; }
+            };
+        }
+        
+        // Initialize immediately if DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeMobileNavigation);
+        } else {
+            initializeMobileNavigation();
+        }
+        
+        // Also initialize after a short delay to ensure it works even if other scripts interfere
+        setTimeout(initializeMobileNavigation, 100);
+        
+        // Expose globally for debugging
+        window.mobileNavFix = initializeMobileNavigation;
+        
+    })();
+    </script>
 </body>
 </html>
