@@ -39,8 +39,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Awesome - Fixed CDN link for better reliability -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     
     <!-- Enhanced Luxury Theme CSS -->
     <link rel="stylesheet" href="css/luxury-theme.css">
@@ -545,6 +545,28 @@
                 gap: var(--space-2);
             }
         }
+        
+        /* Icon loading fix */
+        .fas, .far, .fab, .fal {
+            font-family: "Font Awesome 6 Free", "Font Awesome 6 Pro", "Font Awesome 6 Brands";
+            font-weight: 900;
+        }
+        
+        .far {
+            font-weight: 400;
+        }
+        
+        /* Ensure icons display properly on slower connections */
+        i[class*="fa-"] {
+            display: inline-block;
+            width: 1em;
+            text-align: center;
+        }
+        
+        /* Fallback for missing icons */
+        i[class*="fa-"]:before {
+            content: attr(data-fallback);
+        }
     </style>
 </head>
 <body itemscope itemtype="https://schema.org/WebPage">
@@ -555,16 +577,16 @@
             <div class="container">
                 <div class="header-top-content">
                     <div class="header-top-left">
-                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                        <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                         <span>Serving Southern California's Distinguished Clientele Since 2016</span>
                     </div>
                     <div class="header-top-right">
                         <a href="tel:+18053676432" class="header-contact" aria-label="Call 805 LifeGuard">
-                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <i class="fas fa-phone" aria-hidden="true" data-fallback="📞"></i>
                             (805) 367-6432
                         </a>
                         <a href="mailto:concierge@805lifeguard.com" class="header-contact" aria-label="Email 805 LifeGuard">
-                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <i class="fas fa-envelope" aria-hidden="true" data-fallback="✉️"></i>
                             concierge@805lifeguard.com
                         </a>
                     </div>
@@ -600,16 +622,16 @@
                         <div class="nav-actions">
                             <div class="portal-group">
                                 <a href="https://client.805companies.com" target="_blank" rel="noopener noreferrer" class="portal-btn client-portal" aria-label="Client Portal - Opens in new window">
-                                    <i class="fas fa-user-circle" aria-hidden="true"></i>
+                                    <i class="fas fa-user-circle" aria-hidden="true" data-fallback="👤"></i>
                                     Client
                                 </a>
                                 <a href="https://admin.805companies.com" target="_blank" rel="noopener noreferrer" class="portal-btn admin-portal" aria-label="Admin Portal - Opens in new window">
-                                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                    <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                                     Admin
                                 </a>
                             </div>
                             <a href="contact.html" class="consultation-btn" aria-label="Schedule Private Consultation">
-                                <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                                <i class="fas fa-calendar-check" aria-hidden="true" data-fallback="📅"></i>
                                 Private Consultation
                             </a>
                         </div>
@@ -634,7 +656,7 @@
                         <span>805 LifeGuard</span>
                     </div>
                     <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile navigation menu">
-                        <i class="fas fa-times" aria-hidden="true"></i>
+                        <i class="fas fa-times" aria-hidden="true" data-fallback="✕"></i>
                     </button>
                 </div>
                 
@@ -651,23 +673,23 @@
                 <div class="mobile-nav-actions">
                     <div class="mobile-portals">
                         <a href="https://client.805companies.com" target="_blank" rel="noopener noreferrer" class="mobile-portal-btn" aria-label="Client Portal - Opens in new window">
-                            <i class="fas fa-user-circle" aria-hidden="true"></i>
+                            <i class="fas fa-user-circle" aria-hidden="true" data-fallback="👤"></i>
                             Client Portal
                         </a>
                         <a href="https://admin.805companies.com" target="_blank" rel="noopener noreferrer" class="mobile-portal-btn" aria-label="Admin Portal - Opens in new window">
-                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                             Admin Portal
                         </a>
                     </div>
                     <a href="contact.html" class="mobile-consultation-btn" aria-label="Schedule Private Consultation">
-                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                        <i class="fas fa-calendar-check" aria-hidden="true" data-fallback="📅"></i>
                         Private Consultation
                     </a>
                 </div>
                 
                 <div class="mobile-nav-contact">
                     <a href="tel:+18053676432" class="mobile-contact-btn" aria-label="Call 805 LifeGuard">
-                        <i class="fas fa-phone" aria-hidden="true"></i>
+                        <i class="fas fa-phone" aria-hidden="true" data-fallback="📞"></i>
                         (805) 367-6432
                     </a>
                 </div>
@@ -697,7 +719,7 @@
     <section class="portfolio-hero" style="background-image: linear-gradient(rgba(10, 22, 40, 0.6), rgba(10, 22, 40, 0.7)), url('images/gallery/gallery-estate-pool-01-800x600.jpg');">
         <div class="hero-content">
             <div class="section-badge">
-                <i class="fas fa-crown" aria-hidden="true"></i>
+                <i class="fas fa-crown" aria-hidden="true" data-fallback="👑"></i>
                 Distinguished Estate Portfolio
             </div>
             
@@ -715,27 +737,27 @@
         <div class="container">
             <div class="filter-tabs">
                 <button class="filter-btn active" data-category="all">
-                    <i class="fas fa-th" aria-hidden="true"></i>
+                    <i class="fas fa-th" aria-hidden="true" data-fallback="⊞"></i>
                     All Projects
                 </button>
                 <button class="filter-btn" data-category="lifeguarding">
-                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                    <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                     Estate Lifeguarding
                 </button>
                 <button class="filter-btn" data-category="instruction">
-                    <i class="fas fa-swimming-pool" aria-hidden="true"></i>
+                    <i class="fas fa-swimming-pool" aria-hidden="true" data-fallback="🏊"></i>
                     Swimming Instruction
                 </button>
                 <button class="filter-btn" data-category="events">
-                    <i class="fas fa-champagne-glasses" aria-hidden="true"></i>
+                    <i class="fas fa-champagne-glasses" aria-hidden="true" data-fallback="🥂"></i>
                     Luxury Events
                 </button>
                 <button class="filter-btn" data-category="pool-cleaning">
-                    <i class="fas fa-broom" aria-hidden="true"></i>
+                    <i class="fas fa-broom" aria-hidden="true" data-fallback="🧹"></i>
                     Pool Cleaning
                 </button>
                 <button class="filter-btn" data-category="estates">
-                    <i class="fas fa-home" aria-hidden="true"></i>
+                    <i class="fas fa-home" aria-hidden="true" data-fallback="🏠"></i>
                     Featured Estates
                 </button>
             </div>
@@ -757,15 +779,15 @@
                                 <p>Providing discreet daily lifeguarding services for a distinguished family with young children, ensuring peace of mind during pool activities.</p>
                                 <div class="portfolio-details">
                                     <div class="detail-item">
-                                        <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                                        <i class="fas fa-calendar-alt" aria-hidden="true" data-fallback="📅"></i>
                                         <span>Daily Coverage</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-users" aria-hidden="true"></i>
+                                        <i class="fas fa-users" aria-hidden="true" data-fallback="👥"></i>
                                         <span>Family of 5</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-clock" aria-hidden="true"></i>
+                                        <i class="fas fa-clock" aria-hidden="true" data-fallback="⏰"></i>
                                         <span>2+ Years</span>
                                     </div>
                                 </div>
@@ -784,15 +806,15 @@
                                 <p>Customized swimming lessons for three children with varying skill levels, building confidence and technique in a private setting.</p>
                                 <div class="portfolio-details">
                                     <div class="detail-item">
-                                        <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                                        <i class="fas fa-graduation-cap" aria-hidden="true" data-fallback="🎓"></i>
                                         <span>All Skill Levels</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-heart" aria-hidden="true"></i>
+                                        <i class="fas fa-heart" aria-hidden="true" data-fallback="❤️"></i>
                                         <span>Special Needs</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-trophy" aria-hidden="true"></i>
+                                        <i class="fas fa-trophy" aria-hidden="true" data-fallback="🏆"></i>
                                         <span>Success Story</span>
                                     </div>
                                 </div>
@@ -811,15 +833,15 @@
                                 <p>Comprehensive aquatic safety management for a 50-person executive retreat featuring pool activities and entertainment.</p>
                                 <div class="portfolio-details">
                                     <div class="detail-item">
-                                        <i class="fas fa-building" aria-hidden="true"></i>
+                                        <i class="fas fa-building" aria-hidden="true" data-fallback="🏢"></i>
                                         <span>Corporate</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-users" aria-hidden="true"></i>
+                                        <i class="fas fa-users" aria-hidden="true" data-fallback="👥"></i>
                                         <span>50 Guests</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-star" aria-hidden="true"></i>
+                                        <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
                                         <span>Premium Service</span>
                                     </div>
                                 </div>
@@ -838,15 +860,15 @@
                                 <p>Exclusive pool cleaning services integrated with ongoing lifeguarding coverage, maintaining pristine water quality and aesthetic appeal.</p>
                                 <div class="portfolio-details">
                                     <div class="detail-item">
-                                        <i class="fas fa-crown" aria-hidden="true"></i>
+                                        <i class="fas fa-crown" aria-hidden="true" data-fallback="👑"></i>
                                         <span>Exclusive Client</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-calendar-week" aria-hidden="true"></i>
+                                        <i class="fas fa-calendar-week" aria-hidden="true" data-fallback="📅"></i>
                                         <span>Weekly Service</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-spa" aria-hidden="true"></i>
+                                        <i class="fas fa-spa" aria-hidden="true" data-fallback="🧘"></i>
                                         <span>Full Complex</span>
                                     </div>
                                 </div>
@@ -865,15 +887,15 @@
                                 <p>Multi-level pool complex requiring specialized safety protocols and discrete professional oversight for high-profile clientele.</p>
                                 <div class="portfolio-details">
                                     <div class="detail-item">
-                                        <i class="fas fa-water" aria-hidden="true"></i>
+                                        <i class="fas fa-water" aria-hidden="true" data-fallback="💧"></i>
                                         <span>Multi-Level Pool</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-user-secret" aria-hidden="true"></i>
+                                        <i class="fas fa-user-secret" aria-hidden="true" data-fallback="🤐"></i>
                                         <span>High Profile</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                        <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                                         <span>Security Cleared</span>
                                     </div>
                                 </div>
@@ -892,15 +914,15 @@
                                 <p>Confidence-building swimming lessons for a busy executive who wanted to overcome water anxiety and enjoy pool activities with family.</p>
                                 <div class="portfolio-details">
                                     <div class="detail-item">
-                                        <i class="fas fa-briefcase" aria-hidden="true"></i>
+                                        <i class="fas fa-briefcase" aria-hidden="true" data-fallback="💼"></i>
                                         <span>Executive</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-heart" aria-hidden="true"></i>
+                                        <i class="fas fa-heart" aria-hidden="true" data-fallback="❤️"></i>
                                         <span>Confidence Building</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-calendar" aria-hidden="true"></i>
+                                        <i class="fas fa-calendar" aria-hidden="true" data-fallback="📅"></i>
                                         <span>Flexible Schedule</span>
                                     </div>
                                 </div>
@@ -919,15 +941,15 @@
                                 <p>Elegant wedding reception with poolside ceremony requiring invisible safety management throughout the evening celebration.</p>
                                 <div class="portfolio-details">
                                     <div class="detail-item">
-                                        <i class="fas fa-heart" aria-hidden="true"></i>
+                                        <i class="fas fa-heart" aria-hidden="true" data-fallback="❤️"></i>
                                         <span>Wedding</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-users" aria-hidden="true"></i>
+                                        <i class="fas fa-users" aria-hidden="true" data-fallback="👥"></i>
                                         <span>100 Guests</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-moon" aria-hidden="true"></i>
+                                        <i class="fas fa-moon" aria-hidden="true" data-fallback="🌙"></i>
                                         <span>Evening Event</span>
                                     </div>
                                 </div>
@@ -946,15 +968,15 @@
                                 <p>Ongoing aquatic safety services for a celebrity family requiring the highest levels of discretion and professional security clearance.</p>
                                 <div class="portfolio-details">
                                     <div class="detail-item">
-                                        <i class="fas fa-user-secret" aria-hidden="true"></i>
+                                        <i class="fas fa-user-secret" aria-hidden="true" data-fallback="🤐"></i>
                                         <span>Celebrity Client</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-clock" aria-hidden="true"></i>
+                                        <i class="fas fa-clock" aria-hidden="true" data-fallback="⏰"></i>
                                         <span>On-Call 24/7</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                        <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                                         <span>Security Cleared</span>
                                     </div>
                                 </div>
@@ -973,15 +995,15 @@
                                 <p>Specialized aquatic therapy and swimming instruction for a child with autism, focusing on sensory integration and water confidence.</p>
                                 <div class="portfolio-details">
                                     <div class="detail-item">
-                                        <i class="fas fa-heart" aria-hidden="true"></i>
+                                        <i class="fas fa-heart" aria-hidden="true" data-fallback="❤️"></i>
                                         <span>Special Needs</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-medkit" aria-hidden="true"></i>
+                                        <i class="fas fa-medkit" aria-hidden="true" data-fallback="🏥"></i>
                                         <span>Therapeutic</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                                        <i class="fas fa-graduation-cap" aria-hidden="true" data-fallback="🎓"></i>
                                         <span>Certified Program</span>
                                     </div>
                                 </div>
@@ -1000,15 +1022,15 @@
                                 <p>Comprehensive aquatic services for a resort-style estate featuring multiple pools, spa, and water features requiring specialized expertise.</p>
                                 <div class="portfolio-details">
                                     <div class="detail-item">
-                                        <i class="fas fa-water" aria-hidden="true"></i>
+                                        <i class="fas fa-water" aria-hidden="true" data-fallback="💧"></i>
                                         <span>Multi-Pool Complex</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-spa" aria-hidden="true"></i>
+                                        <i class="fas fa-spa" aria-hidden="true" data-fallback="🧘"></i>
                                         <span>Spa Features</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-crown" aria-hidden="true"></i>
+                                        <i class="fas fa-crown" aria-hidden="true" data-fallback="👑"></i>
                                         <span>Ultra-Luxury</span>
                                     </div>
                                 </div>
@@ -1034,7 +1056,7 @@
             <div class="stats-grid">
                 <div class="stat-item">
                     <div class="stat-icon">
-                        <i class="fas fa-home" aria-hidden="true"></i>
+                        <i class="fas fa-home" aria-hidden="true" data-fallback="🏠"></i>
                     </div>
                     <div class="stat-number" data-target="150">0</div>
                     <div class="stat-label">Estates Served</div>
@@ -1042,7 +1064,7 @@
                 
                 <div class="stat-item">
                     <div class="stat-icon">
-                        <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                        <i class="fas fa-calendar-alt" aria-hidden="true" data-fallback="📅"></i>
                     </div>
                     <div class="stat-number" data-target="500">0</div>
                     <div class="stat-label">Events Managed</div>
@@ -1050,7 +1072,7 @@
                 
                 <div class="stat-item">
                     <div class="stat-icon">
-                        <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                        <i class="fas fa-graduation-cap" aria-hidden="true" data-fallback="🎓"></i>
                     </div>
                     <div class="stat-number" data-target="1000">0</div>
                     <div class="stat-label">Lessons Taught</div>
@@ -1058,7 +1080,7 @@
                 
                 <div class="stat-item">
                     <div class="stat-icon">
-                        <i class="fas fa-clock" aria-hidden="true"></i>
+                        <i class="fas fa-clock" aria-hidden="true" data-fallback="⏰"></i>
                     </div>
                     <div class="stat-number" data-target="10000">0</div>
                     <div class="stat-label">Service Hours</div>
@@ -1066,7 +1088,7 @@
                 
                 <div class="stat-item">
                     <div class="stat-icon">
-                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
                     </div>
                     <div class="stat-number" data-target="100">0</div>
                     <div class="stat-label">% Client Satisfaction</div>
@@ -1074,7 +1096,7 @@
                 
                 <div class="stat-item">
                     <div class="stat-icon">
-                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                        <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                     </div>
                     <div class="stat-number" data-target="7">0</div>
                     <div class="stat-label">Years Experience</div>
@@ -1106,11 +1128,11 @@
                             <div class="author-location">Westlake Village Estate</div>
                         </div>
                         <div class="testimonial-rating" aria-label="5 star rating">
-                            <i class="fas fa-star" aria-hidden="true"></i>
-                            <i class="fas fa-star" aria-hidden="true"></i>
-                            <i class="fas fa-star" aria-hidden="true"></i>
-                            <i class="fas fa-star" aria-hidden="true"></i>
-                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
+                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
+                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
+                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
+                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
                         </div>
                     </div>
                 </article>
@@ -1125,11 +1147,11 @@
                             <div class="author-location">Tech Executive, Thousand Oaks</div>
                         </div>
                         <div class="testimonial-rating" aria-label="5 star rating">
-                            <i class="fas fa-star" aria-hidden="true"></i>
-                            <i class="fas fa-star" aria-hidden="true"></i>
-                            <i class="fas fa-star" aria-hidden="true"></i>
-                            <i class="fas fa-star" aria-hidden="true"></i>
-                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
+                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
+                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
+                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
+                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
                         </div>
                     </div>
                 </article>
@@ -1144,11 +1166,11 @@
                             <div class="author-location">Agoura Hills, CA</div>
                         </div>
                         <div class="testimonial-rating" aria-label="5 star rating">
-                            <i class="fas fa-star" aria-hidden="true"></i>
-                            <i class="fas fa-star" aria-hidden="true"></i>
-                            <i class="fas fa-star" aria-hidden="true"></i>
-                            <i class="fas fa-star" aria-hidden="true"></i>
-                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
+                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
+                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
+                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
+                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
                         </div>
                     </div>
                 </article>
@@ -1169,18 +1191,18 @@
                 
                 <div class="cta-buttons">
                     <a href="contact.html" class="btn btn-primary large">
-                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                        <i class="fas fa-calendar-check" aria-hidden="true" data-fallback="📅"></i>
                         Schedule Private Consultation
                     </a>
                     <a href="services.html" class="btn btn-secondary large">
-                        <i class="fas fa-water" aria-hidden="true"></i>
+                        <i class="fas fa-water" aria-hidden="true" data-fallback="💧"></i>
                         Explore Services
                     </a>
                 </div>
                 
                 <div class="cta-contact">
                     <p>
-                        <i class="fas fa-phone" aria-hidden="true"></i>
+                        <i class="fas fa-phone" aria-hidden="true" data-fallback="📞"></i>
                         Call <a href="tel:+18053676432">(805) 367-6432</a> for immediate consultation
                     </p>
                 </div>
@@ -1207,15 +1229,15 @@
                     </p>
                     <div class="footer-badges">
                         <span class="footer-badge">
-                            <i class="fas fa-certificate" aria-hidden="true"></i>
+                            <i class="fas fa-certificate" aria-hidden="true" data-fallback="🏆"></i>
                             Red Cross Certified
                         </span>
                         <span class="footer-badge">
-                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                             Licensed & Bonded
                         </span>
                         <span class="footer-badge">
-                            <i class="fas fa-award" aria-hidden="true"></i>
+                            <i class="fas fa-award" aria-hidden="true" data-fallback="🏅"></i>
                             7+ Years Experience
                         </span>
                     </div>
@@ -1224,7 +1246,7 @@
                 <!-- Services Links -->
                 <div class="footer-section">
                     <h4>
-                        <i class="fas fa-water" aria-hidden="true"></i>
+                        <i class="fas fa-water" aria-hidden="true" data-fallback="💧"></i>
                         Services
                     </h4>
                     <ul>
@@ -1239,7 +1261,7 @@
                 <!-- Company Links -->
                 <div class="footer-section">
                     <h4>
-                        <i class="fas fa-building" aria-hidden="true"></i>
+                        <i class="fas fa-building" aria-hidden="true" data-fallback="🏢"></i>
                         Company
                     </h4>
                     <ul>
@@ -1254,13 +1276,13 @@
                 <!-- Contact Section -->
                 <div class="footer-contact">
                     <h4>
-                        <i class="fas fa-concierge-bell" aria-hidden="true"></i>
+                        <i class="fas fa-concierge-bell" aria-hidden="true" data-fallback="🛎️"></i>
                         Contact
                     </h4>
                     
                     <div class="contact-info">
                         <a href="tel:+18053676432" class="contact-item primary">
-                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <i class="fas fa-phone" aria-hidden="true" data-fallback="📞"></i>
                             <div>
                                 <strong>(805) 367-6432</strong>
                                 <span>24/7 Emergency Line</span>
@@ -1268,7 +1290,7 @@
                         </a>
                         
                         <a href="mailto:concierge@805lifeguard.com" class="contact-item">
-                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <i class="fas fa-envelope" aria-hidden="true" data-fallback="✉️"></i>
                             <div>
                                 <strong>concierge@805lifeguard.com</strong>
                                 <span>Consultation Requests</span>
@@ -1283,15 +1305,15 @@
                     
                     <div class="footer-portals">
                         <a href="https://client.805companies.com" target="_blank" class="footer-portal-btn">
-                            <i class="fas fa-user-circle" aria-hidden="true"></i>
+                            <i class="fas fa-user-circle" aria-hidden="true" data-fallback="👤"></i>
                             Client Portal
                         </a>
                         <a href="https://admin.805companies.com" target="_blank" class="footer-portal-btn">
-                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                             Admin Portal
                         </a>
                         <a href="https://staff.805companies.com" target="_blank" class="footer-portal-btn">
-                            <i class="fas fa-users" aria-hidden="true"></i>
+                            <i class="fas fa-users" aria-hidden="true" data-fallback="👥"></i>
                             Staff Portal
                         </a>
                     </div>
@@ -1413,6 +1435,177 @@
                 portfolioObserver.observe(item);
             });
         });
+    </script>
+    
+    <!-- Mobile Navigation Fix Script -->
+    <script>
+    (function() {
+        'use strict';
+        
+        // Ensure mobile navigation works regardless of main app initialization
+        function initializeMobileNavigation() {
+            console.log('🔧 Initializing Mobile Navigation Fix...');
+            
+            const mobileToggle = document.getElementById('mobileToggle');
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileNavClose = document.getElementById('mobileNavClose');
+            const body = document.body;
+            
+            if (!mobileToggle || !mobileNav) {
+                console.error('❌ Mobile navigation elements not found');
+                return;
+            }
+            
+            let isOpen = false;
+            let scrollPosition = 0;
+            
+            // Open mobile navigation
+            function openMobileNav() {
+                console.log('📱 Opening mobile navigation...');
+                isOpen = true;
+                scrollPosition = window.pageYOffset;
+                
+                // Add active classes
+                mobileToggle.classList.add('active');
+                mobileToggle.setAttribute('aria-expanded', 'true');
+                mobileNav.classList.add('active');
+                mobileNav.setAttribute('aria-hidden', 'false');
+                body.classList.add('nav-open');
+                
+                // Lock body scroll
+                body.style.position = 'fixed';
+                body.style.top = `-${scrollPosition}px`;
+                body.style.width = '100%';
+                body.style.overflow = 'hidden';
+                
+                // Focus management
+                setTimeout(() => {
+                    const firstLink = mobileNav.querySelector('.mobile-nav-link');
+                    if (firstLink) {
+                        firstLink.focus();
+                    }
+                }, 300);
+            }
+            
+            // Close mobile navigation
+            function closeMobileNav() {
+                console.log('📱 Closing mobile navigation...');
+                isOpen = false;
+                
+                // Remove active classes
+                mobileToggle.classList.remove('active');
+                mobileToggle.setAttribute('aria-expanded', 'false');
+                mobileNav.classList.remove('active');
+                mobileNav.setAttribute('aria-hidden', 'true');
+                body.classList.remove('nav-open');
+                
+                // Restore body scroll
+                body.style.position = '';
+                body.style.top = '';
+                body.style.width = '';
+                body.style.overflow = '';
+                
+                // Restore scroll position
+                window.scrollTo(0, scrollPosition);
+            }
+            
+            // Toggle mobile navigation
+            function toggleMobileNav() {
+                if (isOpen) {
+                    closeMobileNav();
+                } else {
+                    openMobileNav();
+                }
+            }
+            
+            // Remove any existing event listeners to prevent duplicates
+            const newMobileToggle = mobileToggle.cloneNode(true);
+            mobileToggle.parentNode.replaceChild(newMobileToggle, mobileToggle);
+            
+            // Add click event to mobile toggle
+            newMobileToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('📱 Mobile toggle clicked');
+                toggleMobileNav();
+            });
+            
+            // Add click event to close button
+            if (mobileNavClose) {
+                const newMobileNavClose = mobileNavClose.cloneNode(true);
+                mobileNavClose.parentNode.replaceChild(newMobileNavClose, mobileNavClose);
+                
+                newMobileNavClose.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('📱 Mobile close clicked');
+                    closeMobileNav();
+                });
+            }
+            
+            // Close on outside click
+            document.addEventListener('click', function(e) {
+                if (isOpen && 
+                    !mobileNav.contains(e.target) && 
+                    !newMobileToggle.contains(e.target)) {
+                    console.log('📱 Outside click - closing mobile nav');
+                    closeMobileNav();
+                }
+            });
+            
+            // Close on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && isOpen) {
+                    console.log('📱 Escape key - closing mobile nav');
+                    closeMobileNav();
+                }
+            });
+            
+            // Close on window resize to desktop
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && isOpen) {
+                    console.log('📱 Window resized to desktop - closing mobile nav');
+                    closeMobileNav();
+                }
+            });
+            
+            // Handle mobile nav links
+            const mobileLinks = mobileNav.querySelectorAll('.mobile-nav-link');
+            mobileLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    console.log('📱 Mobile nav link clicked');
+                    // Delay close to allow navigation
+                    setTimeout(function() {
+                        closeMobileNav();
+                    }, 100);
+                });
+            });
+            
+            console.log('✅ Mobile Navigation Fix initialized successfully');
+            
+            // Return public API
+            return {
+                open: openMobileNav,
+                close: closeMobileNav,
+                toggle: toggleMobileNav,
+                isOpen: function() { return isOpen; }
+            };
+        }
+        
+        // Initialize immediately if DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeMobileNavigation);
+        } else {
+            initializeMobileNavigation();
+        }
+        
+        // Also initialize after a short delay to ensure it works even if other scripts interfere
+        setTimeout(initializeMobileNavigation, 100);
+        
+        // Expose globally for debugging
+        window.mobileNavFix = initializeMobileNavigation;
+        
+    })();
     </script>
 </body>
 </html>
