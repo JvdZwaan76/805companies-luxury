@@ -48,6 +48,10 @@
     <!-- Preload critical images -->
     <link rel="preload" as="image" href="images/services/service-pool-cleaning-1920x1080.webp" type="image/webp">
     <link rel="preload" as="image" href="images/services/service-pool-cleaning-1920x1080.jpg" type="image/jpeg">
+    <link rel="preload" as="image" href="images/services/credentials-background-1600x900.webp" type="image/webp">
+    <link rel="preload" as="image" href="images/services/credentials-background-1600x900.jpg" type="image/jpeg">
+    <link rel="preload" as="image" href="images/about/mission-statement-background-1600x900.webp" type="image/webp">
+    <link rel="preload" as="image" href="images/about/mission-statement-background-1600x900.jpg" type="image/jpeg">
     <link rel="preload" as="image" href="images/logos/805-lifeguard-logo.png">
     
     <!-- Favicon and Apple Touch Icons -->
@@ -327,8 +331,8 @@
                 <div class="cleaning-feature" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
                     <div class="feature-image" style="position: relative; border-radius: var(--border-radius-xl); overflow: hidden; box-shadow: var(--shadow-lg);">
                         <picture>
-                            <source srcset="images/cleaning/weekly-maintenance-800x600.webp" type="image/webp">
-                            <img src="images/about/about-hero-background-1920x1080.jpg" alt="Weekly Pool Maintenance" loading="lazy" style="width: 100%; height: 400px; object-fit: cover;">
+                            <source srcset="images/about/mission-statement-background-1600x900.webp" type="image/webp">
+                            <img src="images/about/mission-statement-background-1600x900.jpg" alt="Weekly Pool Maintenance" loading="lazy" style="width: 100%; height: 400px; object-fit: cover;">
                         </picture>
                         <div class="feature-icon" style="position: absolute; top: 24px; left: 24px; width: 60px; height: 60px; background: var(--white-pure); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold-dark); font-size: 1.5rem; box-shadow: var(--shadow-md);">
                             <i class="fas fa-calendar-week"></i>
@@ -359,8 +363,8 @@
                     </div>
                     <div class="feature-image" style="position: relative; border-radius: var(--border-radius-xl); overflow: hidden; box-shadow: var(--shadow-lg); order: 2;">
                         <picture>
-                            <source srcset="images/cleaning/chemical-balancing-800x600.webp" type="image/webp">
-                            <img src="images/services/services-hero-background-1920x1080.jpg" alt="Expert Chemical Balancing" loading="lazy" style="width: 100%; height: 400px; object-fit: cover;">
+                            <source srcset="images/services/services-cta-background-1600x900.webp" type="image/webp">
+                            <img src="images/about/company-values-background-1600x900.jpg" alt="Expert Chemical Balancing" loading="lazy" style="width: 100%; height: 400px; object-fit: cover;">
                         </picture>
                         <div class="feature-icon" style="position: absolute; top: 24px; left: 24px; width: 60px; height: 60px; background: var(--white-pure); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold-dark); font-size: 1.5rem; box-shadow: var(--shadow-md);">
                             <i class="fas fa-flask"></i>
@@ -371,8 +375,8 @@
                 <div class="cleaning-feature" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
                     <div class="feature-image" style="position: relative; border-radius: var(--border-radius-xl); overflow: hidden; box-shadow: var(--shadow-lg);">
                         <picture>
-                            <source srcset="images/cleaning/equipment-maintenance-800x600.webp" type="image/webp">
-                            <img src="images/about/company-values-background-1600x900.jpg" alt="Equipment Care & Maintenance" loading="lazy" style="width: 100%; height: 400px; object-fit: cover;">
+                            <source srcset="images/services/credentials-background-1600x900.webp" type="image/webp">
+                            <img src="images/services/credentials-background-1600x900.jpg" alt="Equipment Care & Maintenance" loading="lazy" style="width: 100%; height: 400px; object-fit: cover;">
                         </picture>
                         <div class="feature-icon" style="position: absolute; top: 24px; left: 24px; width: 60px; height: 60px; background: var(--white-pure); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold-dark); font-size: 1.5rem; box-shadow: var(--shadow-md);">
                             <i class="fas fa-cogs"></i>
@@ -1042,8 +1046,22 @@
     })();
     </script>
     
-    <!-- CSS for mobile responsive adjustments -->
+    /* CSS for mobile responsive adjustments */
     <style>
+    /* Image fallback gradients for better loading experience */
+    .feature-image {
+        background: linear-gradient(135deg, var(--navy-light), var(--navy-medium)) !important;
+    }
+    
+    .feature-image img {
+        transition: opacity 0.3s ease;
+    }
+    
+    .feature-image img:not([src]),
+    .feature-image img[src=""] {
+        opacity: 0;
+    }
+    
     @media (max-width: 768px) {
         .cleaning-feature {
             grid-template-columns: 1fr !important;
