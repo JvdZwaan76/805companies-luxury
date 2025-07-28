@@ -39,8 +39,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Awesome - Enhanced CDN link for better reliability -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     
     <!-- Enhanced Luxury Theme CSS -->
     <link rel="stylesheet" href="css/luxury-theme.css">
@@ -80,6 +80,28 @@
     
     <!-- Contact Form Specific Styles -->
     <style>
+        /* Icon loading fix */
+        .fas, .far, .fab, .fal {
+            font-family: "Font Awesome 6 Free", "Font Awesome 6 Pro", "Font Awesome 6 Brands";
+            font-weight: 900;
+        }
+        
+        .far {
+            font-weight: 400;
+        }
+        
+        /* Ensure icons display properly on slower connections */
+        i[class*="fa-"] {
+            display: inline-block;
+            width: 1em;
+            text-align: center;
+        }
+        
+        /* Fallback for missing icons */
+        i[class*="fa-"]:before {
+            content: attr(data-fallback);
+        }
+        
         /* Contact Form Specific Styles */
         .consultation-container {
             padding: var(--space-24) 0 var(--space-20);
@@ -434,6 +456,20 @@
             color: #DC2626;
         }
         
+        /* Enhanced form focus and accessibility */
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus,
+        .service-option:focus {
+            outline: 3px solid var(--gold-medium);
+            outline-offset: 2px;
+        }
+        
+        .btn-submit:focus {
+            outline: 3px solid var(--gold-medium);
+            outline-offset: 2px;
+        }
+        
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .consultation-container {
@@ -453,6 +489,35 @@
             .service-options {
                 grid-template-columns: 1fr;
             }
+            
+            .form-badge {
+                padding: var(--space-2) var(--space-3);
+                font-size: 0.6875rem;
+            }
+            
+            .form-title {
+                font-size: clamp(1.75rem, 5vw, 2.5rem);
+            }
+            
+            .form-subtitle {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .consultation-form-wrapper {
+                padding: 0 var(--space-3);
+            }
+            
+            .form-content {
+                padding: var(--space-6);
+            }
+            
+            .btn-submit {
+                width: 100%;
+                padding: var(--space-3) var(--space-6);
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -464,16 +529,16 @@
             <div class="container">
                 <div class="header-top-content">
                     <div class="header-top-left">
-                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                        <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                         <span>Serving Southern California's Distinguished Clientele Since 2016</span>
                     </div>
                     <div class="header-top-right">
                         <a href="tel:+18053676432" class="header-contact" aria-label="Call 805 LifeGuard">
-                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <i class="fas fa-phone" aria-hidden="true" data-fallback="📞"></i>
                             (805) 367-6432
                         </a>
                         <a href="mailto:concierge@805lifeguard.com" class="header-contact" aria-label="Email 805 LifeGuard">
-                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <i class="fas fa-envelope" aria-hidden="true" data-fallback="✉️"></i>
                             concierge@805lifeguard.com
                         </a>
                     </div>
@@ -509,16 +574,16 @@
                         <div class="nav-actions">
                             <div class="portal-group">
                                 <a href="https://client.805companies.com" target="_blank" rel="noopener noreferrer" class="portal-btn client-portal" aria-label="Client Portal - Opens in new window">
-                                    <i class="fas fa-user-circle" aria-hidden="true"></i>
+                                    <i class="fas fa-user-circle" aria-hidden="true" data-fallback="👤"></i>
                                     Client
                                 </a>
                                 <a href="https://admin.805companies.com" target="_blank" rel="noopener noreferrer" class="portal-btn admin-portal" aria-label="Admin Portal - Opens in new window">
-                                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                    <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                                     Admin
                                 </a>
                             </div>
                             <a href="contact.html" class="consultation-btn active" aria-label="Schedule Private Consultation">
-                                <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                                <i class="fas fa-calendar-check" aria-hidden="true" data-fallback="📅"></i>
                                 Private Consultation
                             </a>
                         </div>
@@ -543,7 +608,7 @@
                         <span>805 LifeGuard</span>
                     </div>
                     <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile navigation menu">
-                        <i class="fas fa-times" aria-hidden="true"></i>
+                        <i class="fas fa-times" aria-hidden="true" data-fallback="✕"></i>
                     </button>
                 </div>
                 
@@ -560,23 +625,23 @@
                 <div class="mobile-nav-actions">
                     <div class="mobile-portals">
                         <a href="https://client.805companies.com" target="_blank" rel="noopener noreferrer" class="mobile-portal-btn" aria-label="Client Portal - Opens in new window">
-                            <i class="fas fa-user-circle" aria-hidden="true"></i>
+                            <i class="fas fa-user-circle" aria-hidden="true" data-fallback="👤"></i>
                             Client Portal
                         </a>
                         <a href="https://admin.805companies.com" target="_blank" rel="noopener noreferrer" class="mobile-portal-btn" aria-label="Admin Portal - Opens in new window">
-                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                             Admin Portal
                         </a>
                     </div>
                     <a href="contact.html" class="mobile-consultation-btn active" aria-label="Schedule Private Consultation">
-                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                        <i class="fas fa-calendar-check" aria-hidden="true" data-fallback="📅"></i>
                         Private Consultation
                     </a>
                 </div>
                 
                 <div class="mobile-nav-contact">
                     <a href="tel:+18053676432" class="mobile-contact-btn" aria-label="Call 805 LifeGuard">
-                        <i class="fas fa-phone" aria-hidden="true"></i>
+                        <i class="fas fa-phone" aria-hidden="true" data-fallback="📞"></i>
                         (805) 367-6432
                     </a>
                 </div>
@@ -609,7 +674,7 @@
             <div class="form-header">
                 <div class="form-header-content">
                     <div class="form-badge">
-                        <i class="fas fa-concierge-bell"></i>
+                        <i class="fas fa-concierge-bell" data-fallback="🛎️"></i>
                         Exclusive Consultation Request
                     </div>
                     
@@ -634,7 +699,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="firstName" class="form-label required">
-                                <i class="fas fa-user"></i>
+                                <i class="fas fa-user" data-fallback="👤"></i>
                                 First Name
                             </label>
                             <input type="text" id="firstName" name="firstName" class="form-input" required 
@@ -643,7 +708,7 @@
                         
                         <div class="form-group">
                             <label for="lastName" class="form-label required">
-                                <i class="fas fa-user"></i>
+                                <i class="fas fa-user" data-fallback="👤"></i>
                                 Last Name
                             </label>
                             <input type="text" id="lastName" name="lastName" class="form-input" required 
@@ -655,7 +720,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="email" class="form-label required">
-                                <i class="fas fa-envelope"></i>
+                                <i class="fas fa-envelope" data-fallback="✉️"></i>
                                 Email Address
                             </label>
                             <input type="email" id="email" name="email" class="form-input" required 
@@ -664,7 +729,7 @@
                         
                         <div class="form-group">
                             <label for="phone" class="form-label required">
-                                <i class="fas fa-phone"></i>
+                                <i class="fas fa-phone" data-fallback="📞"></i>
                                 Phone Number
                             </label>
                             <input type="tel" id="phone" name="phone" class="form-input" required 
@@ -676,7 +741,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="estateLocation" class="form-label required">
-                                <i class="fas fa-map-marker-alt"></i>
+                                <i class="fas fa-map-marker-alt" data-fallback="📍"></i>
                                 Estate Location
                             </label>
                             <select id="estateLocation" name="estateLocation" class="form-select" required>
@@ -708,14 +773,16 @@
                         
                         <div class="form-group">
                             <label for="propertyType" class="form-label">
-                                <i class="fas fa-home"></i>
+                                <i class="fas fa-home" data-fallback="🏠"></i>
                                 Property Type
                             </label>
                             <select id="propertyType" name="propertyType" class="form-select">
                                 <option value="">Select property type</option>
                                 <option value="private-estate">Private Estate</option>
+                                <option value="private-home">Private Home</option>
                                 <option value="gated-community">Gated Community</option>
                                 <option value="luxury-residence">Luxury Residence</option>
+                                <option value="apartment-condo-complex">Apartment/Condo Complex</option>
                                 <option value="vacation-property">Vacation Property</option>
                                 <option value="corporate-facility">Corporate Facility</option>
                                 <option value="event-venue">Event Venue</option>
@@ -726,7 +793,7 @@
                     <!-- Service Selection -->
                     <div class="form-group full-width service-selection">
                         <h3>
-                            <i class="fas fa-water"></i>
+                            <i class="fas fa-water" data-fallback="💧"></i>
                             Services of Interest
                             <span style="font-weight: normal; font-size: 0.9rem; color: var(--gray-medium);">(Select all that apply)</span>
                         </h3>
@@ -735,7 +802,7 @@
                             <div class="service-option" tabindex="0" role="checkbox" aria-checked="false">
                                 <input type="checkbox" name="services[]" value="private-lifeguarding" id="service-lifeguarding">
                                 <label for="service-lifeguarding">
-                                    <i class="fas fa-shield-alt"></i>
+                                    <i class="fas fa-shield-alt" data-fallback="🛡️"></i>
                                     Private Estate Lifeguarding
                                 </label>
                             </div>
@@ -743,7 +810,7 @@
                             <div class="service-option" tabindex="0" role="checkbox" aria-checked="false">
                                 <input type="checkbox" name="services[]" value="swim-instruction" id="service-instruction">
                                 <label for="service-instruction">
-                                    <i class="fas fa-swimming-pool"></i>
+                                    <i class="fas fa-swimming-pool" data-fallback="🏊"></i>
                                     Bespoke Swimming Instruction
                                 </label>
                             </div>
@@ -751,7 +818,7 @@
                             <div class="service-option" tabindex="0" role="checkbox" aria-checked="false">
                                 <input type="checkbox" name="services[]" value="event-management" id="service-events">
                                 <label for="service-events">
-                                    <i class="fas fa-champagne-glasses"></i>
+                                    <i class="fas fa-champagne-glasses" data-fallback="🥂"></i>
                                     Luxury Event Management
                                 </label>
                             </div>
@@ -759,7 +826,7 @@
                             <div class="service-option exclusive" tabindex="0" role="checkbox" aria-checked="false">
                                 <input type="checkbox" name="services[]" value="pool-cleaning" id="service-cleaning">
                                 <label for="service-cleaning">
-                                    <i class="fas fa-broom"></i>
+                                    <i class="fas fa-broom" data-fallback="🧹"></i>
                                     Exclusive Pool Cleaning
                                     <span class="service-note">Available to lifeguarding/instruction clients</span>
                                 </label>
@@ -768,7 +835,7 @@
                             <div class="service-option" tabindex="0" role="checkbox" aria-checked="false">
                                 <input type="checkbox" name="services[]" value="water-safety" id="service-safety">
                                 <label for="service-safety">
-                                    <i class="fas fa-life-ring"></i>
+                                    <i class="fas fa-life-ring" data-fallback="🛟"></i>
                                     Water Safety Consulting
                                 </label>
                             </div>
@@ -776,7 +843,7 @@
                             <div class="service-option" tabindex="0" role="checkbox" aria-checked="false">
                                 <input type="checkbox" name="services[]" value="special-needs" id="service-special">
                                 <label for="service-special">
-                                    <i class="fas fa-heart"></i>
+                                    <i class="fas fa-heart" data-fallback="❤️"></i>
                                     Special Needs Programs
                                 </label>
                             </div>
@@ -784,7 +851,7 @@
                             <div class="service-option" tabindex="0" role="checkbox" aria-checked="false">
                                 <input type="checkbox" name="services[]" value="ongoing-coverage" id="service-ongoing">
                                 <label for="service-ongoing">
-                                    <i class="fas fa-calendar-alt"></i>
+                                    <i class="fas fa-calendar-alt" data-fallback="📅"></i>
                                     Ongoing Coverage Plans
                                 </label>
                             </div>
@@ -795,7 +862,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="timeline" class="form-label">
-                                <i class="fas fa-clock"></i>
+                                <i class="fas fa-clock" data-fallback="⏰"></i>
                                 Desired Timeline
                             </label>
                             <select id="timeline" name="timeline" class="form-select">
@@ -810,7 +877,7 @@
                         
                         <div class="form-group">
                             <label for="urgency" class="form-label">
-                                <i class="fas fa-exclamation-circle"></i>
+                                <i class="fas fa-exclamation-circle" data-fallback="❗"></i>
                                 Priority Level
                             </label>
                             <select id="urgency" name="urgency" class="form-select">
@@ -826,7 +893,7 @@
                     <!-- Additional Details -->
                     <div class="form-group full-width">
                         <label for="details" class="form-label">
-                            <i class="fas fa-comment-alt"></i>
+                            <i class="fas fa-comment-alt" data-fallback="💬"></i>
                             Additional Details & Requirements
                         </label>
                         <textarea id="details" name="details" class="form-textarea" rows="4" maxlength="1000"
@@ -837,7 +904,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="contactMethod" class="form-label">
-                                <i class="fas fa-comments"></i>
+                                <i class="fas fa-comments" data-fallback="💬"></i>
                                 Preferred Contact Method
                             </label>
                             <select id="contactMethod" name="contactMethod" class="form-select">
@@ -850,7 +917,7 @@
                         
                         <div class="form-group">
                             <label for="contactTime" class="form-label">
-                                <i class="fas fa-clock"></i>
+                                <i class="fas fa-clock" data-fallback="⏰"></i>
                                 Best Time to Contact
                             </label>
                             <select id="contactTime" name="contactTime" class="form-select">
@@ -866,7 +933,7 @@
                     <!-- Privacy Notice -->
                     <div class="privacy-notice">
                         <h4>
-                            <i class="fas fa-lock"></i>
+                            <i class="fas fa-lock" data-fallback="🔒"></i>
                             Confidentiality & Privacy Commitment
                         </h4>
                         <p>
@@ -880,7 +947,7 @@
                     <!-- Submit Section -->
                     <div class="submit-section">
                         <button type="submit" id="submitBtn" class="btn-submit">
-                            <i class="fas fa-paper-plane"></i>
+                            <i class="fas fa-paper-plane" data-fallback="✈️"></i>
                             Submit Consultation Request
                         </button>
                         
@@ -894,7 +961,7 @@
                     <div class="alternative-contact">
                         <p><strong>Prefer to speak directly?</strong></p>
                         <a href="tel:+18053676432" class="phone-link">
-                            <i class="fas fa-phone"></i>
+                            <i class="fas fa-phone" data-fallback="📞"></i>
                             Call (805) 367-6432 Now
                         </a>
                         <p style="margin-top: 15px; font-size: 0.9rem; color: var(--gray-medium);">
@@ -919,7 +986,7 @@
     <div id="successModal" class="success-modal">
         <div class="success-modal-content">
             <div class="success-icon">
-                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-check-circle" data-fallback="✅"></i>
             </div>
             <h2>Consultation Request Received</h2>
             <p id="successMessage">Thank you for your consultation request. Our concierge team will contact you within 4 business hours.</p>
@@ -929,7 +996,7 @@
             </div>
             
             <a href="/" class="btn btn-primary" onclick="closeSuccessModal()">
-                <i class="fas fa-home"></i>
+                <i class="fas fa-home" data-fallback="🏠"></i>
                 Return to Home
             </a>
             
@@ -958,15 +1025,15 @@
                     </p>
                     <div class="footer-badges">
                         <span class="footer-badge">
-                            <i class="fas fa-certificate" aria-hidden="true"></i>
+                            <i class="fas fa-certificate" aria-hidden="true" data-fallback="🏆"></i>
                             Red Cross Certified
                         </span>
                         <span class="footer-badge">
-                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                             Licensed & Bonded
                         </span>
                         <span class="footer-badge">
-                            <i class="fas fa-award" aria-hidden="true"></i>
+                            <i class="fas fa-award" aria-hidden="true" data-fallback="🏅"></i>
                             7+ Years Experience
                         </span>
                     </div>
@@ -975,7 +1042,7 @@
                 <!-- Services Links -->
                 <div class="footer-section">
                     <h4>
-                        <i class="fas fa-water" aria-hidden="true"></i>
+                        <i class="fas fa-water" aria-hidden="true" data-fallback="💧"></i>
                         Services
                     </h4>
                     <ul>
@@ -990,7 +1057,7 @@
                 <!-- Company Links -->
                 <div class="footer-section">
                     <h4>
-                        <i class="fas fa-building" aria-hidden="true"></i>
+                        <i class="fas fa-building" aria-hidden="true" data-fallback="🏢"></i>
                         Company
                     </h4>
                     <ul>
@@ -1005,13 +1072,13 @@
                 <!-- Contact Section -->
                 <div class="footer-contact">
                     <h4>
-                        <i class="fas fa-concierge-bell" aria-hidden="true"></i>
+                        <i class="fas fa-concierge-bell" aria-hidden="true" data-fallback="🛎️"></i>
                         Contact
                     </h4>
                     
                     <div class="contact-info">
                         <a href="tel:+18053676432" class="contact-item primary">
-                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <i class="fas fa-phone" aria-hidden="true" data-fallback="📞"></i>
                             <div>
                                 <strong>(805) 367-6432</strong>
                                 <span>24/7 Emergency Line</span>
@@ -1019,7 +1086,7 @@
                         </a>
                         
                         <a href="mailto:concierge@805lifeguard.com" class="contact-item">
-                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <i class="fas fa-envelope" aria-hidden="true" data-fallback="✉️"></i>
                             <div>
                                 <strong>concierge@805lifeguard.com</strong>
                                 <span>Consultation Requests</span>
@@ -1034,15 +1101,15 @@
                     
                     <div class="footer-portals">
                         <a href="https://client.805companies.com" target="_blank" class="footer-portal-btn">
-                            <i class="fas fa-user-circle" aria-hidden="true"></i>
+                            <i class="fas fa-user-circle" aria-hidden="true" data-fallback="👤"></i>
                             Client Portal
                         </a>
                         <a href="https://admin.805companies.com" target="_blank" class="footer-portal-btn">
-                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                             Admin Portal
                         </a>
                         <a href="https://staff.805companies.com" target="_blank" class="footer-portal-btn">
-                            <i class="fas fa-users" aria-hidden="true"></i>
+                            <i class="fas fa-users" aria-hidden="true" data-fallback="👥"></i>
                             Staff Portal
                         </a>
                     </div>
@@ -1269,6 +1336,177 @@
             
             e.target.value = value;
         });
+    </script>
+    
+    <!-- Mobile Navigation Fix Script -->
+    <script>
+    (function() {
+        'use strict';
+        
+        // Ensure mobile navigation works regardless of main app initialization
+        function initializeMobileNavigation() {
+            console.log('🔧 Initializing Mobile Navigation Fix...');
+            
+            const mobileToggle = document.getElementById('mobileToggle');
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileNavClose = document.getElementById('mobileNavClose');
+            const body = document.body;
+            
+            if (!mobileToggle || !mobileNav) {
+                console.error('❌ Mobile navigation elements not found');
+                return;
+            }
+            
+            let isOpen = false;
+            let scrollPosition = 0;
+            
+            // Open mobile navigation
+            function openMobileNav() {
+                console.log('📱 Opening mobile navigation...');
+                isOpen = true;
+                scrollPosition = window.pageYOffset;
+                
+                // Add active classes
+                mobileToggle.classList.add('active');
+                mobileToggle.setAttribute('aria-expanded', 'true');
+                mobileNav.classList.add('active');
+                mobileNav.setAttribute('aria-hidden', 'false');
+                body.classList.add('nav-open');
+                
+                // Lock body scroll
+                body.style.position = 'fixed';
+                body.style.top = `-${scrollPosition}px`;
+                body.style.width = '100%';
+                body.style.overflow = 'hidden';
+                
+                // Focus management
+                setTimeout(() => {
+                    const firstLink = mobileNav.querySelector('.mobile-nav-link');
+                    if (firstLink) {
+                        firstLink.focus();
+                    }
+                }, 300);
+            }
+            
+            // Close mobile navigation
+            function closeMobileNav() {
+                console.log('📱 Closing mobile navigation...');
+                isOpen = false;
+                
+                // Remove active classes
+                mobileToggle.classList.remove('active');
+                mobileToggle.setAttribute('aria-expanded', 'false');
+                mobileNav.classList.remove('active');
+                mobileNav.setAttribute('aria-hidden', 'true');
+                body.classList.remove('nav-open');
+                
+                // Restore body scroll
+                body.style.position = '';
+                body.style.top = '';
+                body.style.width = '';
+                body.style.overflow = '';
+                
+                // Restore scroll position
+                window.scrollTo(0, scrollPosition);
+            }
+            
+            // Toggle mobile navigation
+            function toggleMobileNav() {
+                if (isOpen) {
+                    closeMobileNav();
+                } else {
+                    openMobileNav();
+                }
+            }
+            
+            // Remove any existing event listeners to prevent duplicates
+            const newMobileToggle = mobileToggle.cloneNode(true);
+            mobileToggle.parentNode.replaceChild(newMobileToggle, mobileToggle);
+            
+            // Add click event to mobile toggle
+            newMobileToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('📱 Mobile toggle clicked');
+                toggleMobileNav();
+            });
+            
+            // Add click event to close button
+            if (mobileNavClose) {
+                const newMobileNavClose = mobileNavClose.cloneNode(true);
+                mobileNavClose.parentNode.replaceChild(newMobileNavClose, mobileNavClose);
+                
+                newMobileNavClose.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('📱 Mobile close clicked');
+                    closeMobileNav();
+                });
+            }
+            
+            // Close on outside click
+            document.addEventListener('click', function(e) {
+                if (isOpen && 
+                    !mobileNav.contains(e.target) && 
+                    !newMobileToggle.contains(e.target)) {
+                    console.log('📱 Outside click - closing mobile nav');
+                    closeMobileNav();
+                }
+            });
+            
+            // Close on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && isOpen) {
+                    console.log('📱 Escape key - closing mobile nav');
+                    closeMobileNav();
+                }
+            });
+            
+            // Close on window resize to desktop
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && isOpen) {
+                    console.log('📱 Window resized to desktop - closing mobile nav');
+                    closeMobileNav();
+                }
+            });
+            
+            // Handle mobile nav links
+            const mobileLinks = mobileNav.querySelectorAll('.mobile-nav-link');
+            mobileLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    console.log('📱 Mobile nav link clicked');
+                    // Delay close to allow navigation
+                    setTimeout(function() {
+                        closeMobileNav();
+                    }, 100);
+                });
+            });
+            
+            console.log('✅ Mobile Navigation Fix initialized successfully');
+            
+            // Return public API
+            return {
+                open: openMobileNav,
+                close: closeMobileNav,
+                toggle: toggleMobileNav,
+                isOpen: function() { return isOpen; }
+            };
+        }
+        
+        // Initialize immediately if DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeMobileNavigation);
+        } else {
+            initializeMobileNavigation();
+        }
+        
+        // Also initialize after a short delay to ensure it works even if other scripts interfere
+        setTimeout(initializeMobileNavigation, 100);
+        
+        // Expose globally for debugging
+        window.mobileNavFix = initializeMobileNavigation;
+        
+    })();
     </script>
 </body>
 </html>
