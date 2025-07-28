@@ -35,8 +35,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Awesome - Fixed CDN link for better reliability -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     
     <!-- Enhanced Luxury Theme CSS -->
     <link rel="stylesheet" href="css/luxury-theme.css">
@@ -65,6 +65,831 @@
       }
     }
     </script>
+    
+    <!-- Terms Page Specific Styles -->
+    <style>
+        /* Privacy/Terms Hero Section */
+        .privacy-hero {
+            position: relative;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding-top: 120px;
+            padding-bottom: var(--space-20);
+            background: linear-gradient(135deg, var(--navy-dark), var(--navy-medium));
+        }
+        
+        .privacy-hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            z-index: 1;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(10, 22, 40, 0.7) 0%,
+                rgba(27, 43, 66, 0.8) 50%,
+                rgba(10, 22, 40, 0.9) 100%
+            );
+            z-index: 2;
+        }
+        
+        .privacy-hero .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            color: var(--white-pure);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 var(--space-4);
+        }
+        
+        .privacy-hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--white-pure);
+            margin-bottom: var(--space-6);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+        }
+        
+        .privacy-hero .hero-subtitle {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto var(--space-8);
+        }
+        
+        .last-updated {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            font-size: 0.9375rem;
+            color: var(--gold-light);
+            font-weight: 500;
+        }
+        
+        /* Privacy/Terms Content */
+        .privacy-content {
+            padding: var(--space-20) 0;
+            background: var(--white-warm);
+            min-height: 70vh;
+        }
+        
+        .content-layout {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: var(--space-16);
+            align-items: start;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* Privacy Sidebar */
+        .privacy-sidebar {
+            position: sticky;
+            top: 140px;
+            background: var(--white-pure);
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            height: fit-content;
+            max-height: calc(100vh - 160px);
+            overflow-y: auto;
+        }
+        
+        .sidebar-header {
+            background: linear-gradient(135deg, var(--navy-dark), var(--navy-medium));
+            color: var(--white-pure);
+            padding: var(--space-6);
+            text-align: center;
+        }
+        
+        .sidebar-header h3 {
+            color: var(--white-pure);
+            margin: 0;
+            font-size: 1.125rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+        }
+        
+        .policy-nav {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: var(--space-4) var(--space-5);
+            text-decoration: none;
+            color: var(--gray-dark);
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 0.9375rem;
+        }
+        
+        .nav-item:hover {
+            background: rgba(212, 175, 55, 0.08);
+            color: var(--gold-dark);
+            border-left: 4px solid var(--gold-medium);
+            padding-left: calc(var(--space-5) - 4px);
+        }
+        
+        .nav-item.active {
+            background: rgba(212, 175, 55, 0.12);
+            color: var(--gold-dark);
+            border-left: 4px solid var(--gold-medium);
+            padding-left: calc(var(--space-5) - 4px);
+            font-weight: 600;
+        }
+        
+        .nav-item:last-child {
+            border-bottom: none;
+        }
+        
+        .privacy-highlights {
+            background: var(--cream);
+            padding: var(--space-6);
+        }
+        
+        .privacy-highlights h4 {
+            color: var(--navy-dark);
+            margin-bottom: var(--space-4);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+        }
+        
+        .privacy-highlights ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .privacy-highlights li {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            margin-bottom: var(--space-2);
+            color: var(--gray-medium);
+            font-size: 0.875rem;
+        }
+        
+        .privacy-highlights i {
+            color: var(--gold-medium);
+            font-size: 0.75rem;
+        }
+        
+        /* Privacy Main Content */
+        .privacy-main {
+            background: var(--white-pure);
+            border-radius: var(--border-radius-xl);
+            padding: var(--space-12);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            min-height: 600px;
+        }
+        
+        .policy-section {
+            margin-bottom: var(--space-16);
+            scroll-margin-top: 140px;
+        }
+        
+        .policy-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .policy-section h2 {
+            color: var(--navy-dark);
+            margin-bottom: var(--space-8);
+            padding-bottom: var(--space-4);
+            border-bottom: 2px solid var(--gold-medium);
+            font-size: 1.75rem;
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+        
+        .policy-section h3 {
+            color: var(--navy-dark);
+            margin-bottom: var(--space-4);
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+        
+        .policy-section h3 i {
+            color: var(--gold-medium);
+            font-size: 1rem;
+        }
+        
+        .policy-section h4 {
+            color: var(--navy-dark);
+            margin-bottom: var(--space-3);
+            font-size: 1.125rem;
+        }
+        
+        .policy-section p {
+            color: var(--gray-dark);
+            line-height: 1.7;
+            margin-bottom: var(--space-4);
+        }
+        
+        .policy-section ul {
+            margin: var(--space-4) 0;
+            padding-left: var(--space-6);
+        }
+        
+        .policy-section li {
+            color: var(--gray-dark);
+            line-height: 1.6;
+            margin-bottom: var(--space-2);
+        }
+        
+        .policy-section strong {
+            color: var(--navy-dark);
+            font-weight: 600;
+        }
+        
+        /* Content Components */
+        .commitment-statement {
+            background: var(--cream);
+            padding: var(--space-6);
+            border-radius: var(--border-radius-lg);
+            border-left: 4px solid var(--gold-medium);
+            margin: var(--space-8) 0;
+        }
+        
+        .lead-text {
+            font-size: 1.25rem;
+            font-family: var(--font-serif);
+            color: var(--gray-dark);
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-6);
+            margin: var(--space-8) 0;
+        }
+        
+        .principle-item {
+            background: var(--white-warm);
+            padding: var(--space-6);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .principle-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .principle-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gold-medium);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white-pure);
+            font-size: 1.5rem;
+            margin: 0 auto var(--space-4);
+        }
+        
+        .principle-item h4 {
+            color: var(--navy-dark);
+            margin-bottom: var(--space-3);
+            font-size: 1.125rem;
+        }
+        
+        .principle-item p {
+            color: var(--gray-medium);
+            margin: 0;
+            font-size: 0.9375rem;
+            line-height: 1.5;
+        }
+        
+        .usage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-6);
+            margin: var(--space-8) 0;
+        }
+        
+        .usage-item {
+            background: var(--white-warm);
+            padding: var(--space-6);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        
+        .usage-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .usage-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--navy-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-medium);
+            font-size: 1.25rem;
+            margin-bottom: var(--space-4);
+        }
+        
+        .usage-item h4 {
+            color: var(--navy-dark);
+            margin-bottom: var(--space-3);
+            font-size: 1.125rem;
+        }
+        
+        .usage-item ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .usage-item li {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            margin-bottom: var(--space-2);
+            color: var(--gray-dark);
+            font-size: 0.9375rem;
+        }
+        
+        .usage-item li::before {
+            content: '•';
+            color: var(--gold-medium);
+            font-weight: bold;
+        }
+        
+        .info-category {
+            background: var(--white-warm);
+            padding: var(--space-6);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--border-color);
+            margin: var(--space-8) 0;
+        }
+        
+        .info-category h3 {
+            color: var(--navy-dark);
+            margin-bottom: var(--space-4);
+            font-size: 1.125rem;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+        
+        .info-category h3 i {
+            color: var(--gold-medium);
+        }
+        
+        .sharing-scenarios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-6);
+            margin: var(--space-8) 0;
+        }
+        
+        .scenario-item {
+            background: var(--white-warm);
+            padding: var(--space-6);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        
+        .scenario-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .scenario-item h4 {
+            color: var(--navy-dark);
+            margin-bottom: var(--space-3);
+            font-size: 1.125rem;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+        
+        .scenario-item h4 i {
+            color: var(--gold-medium);
+        }
+        
+        .scenario-item p {
+            color: var(--gray-medium);
+            margin: 0;
+        }
+        
+        .rights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-6);
+            margin: var(--space-8) 0;
+        }
+        
+        .right-item {
+            background: var(--white-warm);
+            padding: var(--space-6);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        
+        .right-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .right-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gold-medium);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white-pure);
+            font-size: 1.25rem;
+            margin-bottom: var(--space-4);
+        }
+        
+        .right-item h4 {
+            color: var(--navy-dark);
+            margin-bottom: var(--space-3);
+            font-size: 1.125rem;
+        }
+        
+        .right-item p {
+            color: var(--gray-medium);
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        .security-measures {
+            margin: var(--space-8) 0;
+        }
+        
+        .security-category {
+            margin-bottom: var(--space-8);
+        }
+        
+        .security-category h3 {
+            color: var(--navy-dark);
+            margin-bottom: var(--space-4);
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+        
+        .security-category h3 i {
+            color: var(--gold-medium);
+        }
+        
+        .security-category ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .security-category li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-3);
+            margin-bottom: var(--space-3);
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+        
+        .security-category li::before {
+            content: '✓';
+            color: var(--gold-medium);
+            font-weight: bold;
+            font-size: 1.125rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .sharing-commitment {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-medium));
+            color: var(--navy-dark);
+            padding: var(--space-6);
+            border-radius: var(--border-radius-lg);
+            margin: var(--space-8) 0;
+        }
+        
+        .commitment-badge {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin-bottom: var(--space-3);
+        }
+        
+        .commitment-badge i {
+            font-size: 1.25rem;
+        }
+        
+        .sharing-commitment p {
+            color: var(--navy-dark);
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        .retention-schedule {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-6);
+            margin: var(--space-8) 0;
+        }
+        
+        .retention-item {
+            background: var(--white-warm);
+            padding: var(--space-6);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        
+        .retention-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .retention-item h4 {
+            color: var(--navy-dark);
+            margin-bottom: var(--space-3);
+            font-size: 1.125rem;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+        
+        .retention-item h4 i {
+            color: var(--gold-medium);
+        }
+        
+        .retention-item p {
+            color: var(--gray-medium);
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        .retention-note {
+            background: var(--cream);
+            padding: var(--space-5);
+            border-radius: var(--border-radius-lg);
+            border-left: 4px solid var(--gold-medium);
+            margin: var(--space-8) 0;
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-3);
+        }
+        
+        .retention-note i {
+            color: var(--gold-medium);
+            font-size: 1.25rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .retention-note p {
+            color: var(--gray-dark);
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        .rights-contact {
+            background: var(--cream);
+            padding: var(--space-8);
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            margin: var(--space-8) 0;
+        }
+        
+        .rights-contact h3 {
+            color: var(--navy-dark);
+            margin-bottom: var(--space-4);
+            font-size: 1.5rem;
+        }
+        
+        .rights-contact p {
+            color: var(--gray-medium);
+            margin-bottom: var(--space-6);
+        }
+        
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-8);
+            margin: var(--space-6) 0;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            color: var(--gold-dark);
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+        
+        .contact-method i {
+            font-size: 1.25rem;
+        }
+        
+        .response-time {
+            color: var(--gray-medium);
+            font-size: 0.9375rem;
+            font-style: italic;
+            margin: 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1023px) {
+            .content-layout {
+                grid-template-columns: 1fr;
+                gap: var(--space-8);
+            }
+            
+            .privacy-sidebar {
+                position: static;
+                order: 2;
+                margin-top: var(--space-8);
+                max-height: none;
+            }
+            
+            .privacy-main {
+                order: 1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .privacy-hero {
+                min-height: 70vh;
+                padding-top: 80px;
+                padding-bottom: var(--space-12);
+                background-attachment: scroll;
+            }
+            
+            .privacy-hero h1 {
+                font-size: 2.5rem;
+                margin-bottom: var(--space-5);
+            }
+            
+            .privacy-hero .hero-subtitle {
+                font-size: 1.125rem;
+                margin-bottom: var(--space-6);
+            }
+            
+            .privacy-content {
+                padding: var(--space-16) 0;
+            }
+            
+            .privacy-main {
+                padding: var(--space-8);
+            }
+            
+            .principles-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-4);
+            }
+            
+            .usage-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-4);
+            }
+            
+            .sharing-scenarios {
+                grid-template-columns: 1fr;
+                gap: var(--space-4);
+            }
+            
+            .rights-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-4);
+            }
+            
+            .retention-schedule {
+                grid-template-columns: 1fr;
+                gap: var(--space-4);
+            }
+            
+            .contact-methods {
+                flex-direction: column;
+                gap: var(--space-4);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .privacy-main {
+                padding: var(--space-6);
+            }
+            
+            .policy-section h2 {
+                font-size: 1.5rem;
+                margin-bottom: var(--space-6);
+            }
+            
+            .principle-item,
+            .usage-item,
+            .scenario-item,
+            .right-item,
+            .retention-item {
+                padding: var(--space-5);
+            }
+            
+            .commitment-statement,
+            .info-category,
+            .sharing-commitment,
+            .retention-note,
+            .rights-contact {
+                padding: var(--space-5);
+            }
+        }
+        
+        /* Icon loading fix */
+        .fas, .far, .fab, .fal {
+            font-family: "Font Awesome 6 Free", "Font Awesome 6 Pro", "Font Awesome 6 Brands";
+            font-weight: 900;
+        }
+        
+        .far {
+            font-weight: 400;
+        }
+        
+        /* Ensure icons display properly on slower connections */
+        i[class*="fa-"] {
+            display: inline-block;
+            width: 1em;
+            text-align: center;
+        }
+        
+        /* Fallback for missing icons */
+        i[class*="fa-"]:before {
+            content: attr(data-fallback);
+        }
+        
+        /* Smooth scrolling for navigation */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Navigation active state management */
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            right: var(--space-4);
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: var(--gold-medium);
+            border-radius: 50%;
+        }
+    </style>
 </head>
 <body itemscope itemtype="https://schema.org/WebPage">
     <!-- Enhanced Header -->
@@ -74,16 +899,16 @@
             <div class="container">
                 <div class="header-top-content">
                     <div class="header-top-left">
-                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                        <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                         <span>Serving Southern California's Distinguished Clientele Since 2016</span>
                     </div>
                     <div class="header-top-right">
                         <a href="tel:+18053676432" class="header-contact" aria-label="Call 805 LifeGuard">
-                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <i class="fas fa-phone" aria-hidden="true" data-fallback="📞"></i>
                             (805) 367-6432
                         </a>
                         <a href="mailto:concierge@805lifeguard.com" class="header-contact" aria-label="Email 805 LifeGuard">
-                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <i class="fas fa-envelope" aria-hidden="true" data-fallback="✉️"></i>
                             concierge@805lifeguard.com
                         </a>
                     </div>
@@ -119,16 +944,16 @@
                         <div class="nav-actions">
                             <div class="portal-group">
                                 <a href="https://client.805companies.com" target="_blank" rel="noopener noreferrer" class="portal-btn client-portal" aria-label="Client Portal - Opens in new window">
-                                    <i class="fas fa-user-circle" aria-hidden="true"></i>
+                                    <i class="fas fa-user-circle" aria-hidden="true" data-fallback="👤"></i>
                                     Client
                                 </a>
                                 <a href="https://admin.805companies.com" target="_blank" rel="noopener noreferrer" class="portal-btn admin-portal" aria-label="Admin Portal - Opens in new window">
-                                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                    <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                                     Admin
                                 </a>
                             </div>
                             <a href="contact.html" class="consultation-btn" aria-label="Schedule Private Consultation">
-                                <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                                <i class="fas fa-calendar-check" aria-hidden="true" data-fallback="📅"></i>
                                 Private Consultation
                             </a>
                         </div>
@@ -153,7 +978,7 @@
                         <span>805 LifeGuard</span>
                     </div>
                     <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile navigation menu">
-                        <i class="fas fa-times" aria-hidden="true"></i>
+                        <i class="fas fa-times" aria-hidden="true" data-fallback="✕"></i>
                     </button>
                 </div>
                 
@@ -170,23 +995,23 @@
                 <div class="mobile-nav-actions">
                     <div class="mobile-portals">
                         <a href="https://client.805companies.com" target="_blank" rel="noopener noreferrer" class="mobile-portal-btn" aria-label="Client Portal - Opens in new window">
-                            <i class="fas fa-user-circle" aria-hidden="true"></i>
+                            <i class="fas fa-user-circle" aria-hidden="true" data-fallback="👤"></i>
                             Client Portal
                         </a>
                         <a href="https://admin.805companies.com" target="_blank" rel="noopener noreferrer" class="mobile-portal-btn" aria-label="Admin Portal - Opens in new window">
-                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                             Admin Portal
                         </a>
                     </div>
                     <a href="contact.html" class="mobile-consultation-btn" aria-label="Schedule Private Consultation">
-                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                        <i class="fas fa-calendar-check" aria-hidden="true" data-fallback="📅"></i>
                         Private Consultation
                     </a>
                 </div>
                 
                 <div class="mobile-nav-contact">
                     <a href="tel:+18053676432" class="mobile-contact-btn" aria-label="Call 805 LifeGuard">
-                        <i class="fas fa-phone" aria-hidden="true"></i>
+                        <i class="fas fa-phone" aria-hidden="true" data-fallback="📞"></i>
                         (805) 367-6432
                     </a>
                 </div>
@@ -220,7 +1045,7 @@
         <div class="container">
             <div class="hero-content">
                 <div class="section-badge">
-                    <i class="fas fa-file-contract" aria-hidden="true"></i>
+                    <i class="fas fa-file-contract" aria-hidden="true" data-fallback="📋"></i>
                     Professional Service Agreement
                 </div>
                 
@@ -233,7 +1058,7 @@
                 </p>
                 
                 <div class="last-updated">
-                    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                    <i class="fas fa-calendar-alt" aria-hidden="true" data-fallback="📅"></i>
                     Last Updated: January 15, 2025
                 </div>
             </div>
@@ -265,10 +1090,10 @@
                     <div class="privacy-highlights">
                         <h4>Legal Notice</h4>
                         <ul>
-                            <li><i class="fas fa-balance-scale" aria-hidden="true"></i> Legally binding agreement</li>
-                            <li><i class="fas fa-handshake" aria-hidden="true"></i> Fair and transparent terms</li>
-                            <li><i class="fas fa-shield-alt" aria-hidden="true"></i> Client protection</li>
-                            <li><i class="fas fa-phone" aria-hidden="true"></i> Questions welcome</li>
+                            <li><i class="fas fa-balance-scale" aria-hidden="true" data-fallback="⚖️"></i> Legally binding agreement</li>
+                            <li><i class="fas fa-handshake" aria-hidden="true" data-fallback="🤝"></i> Fair and transparent terms</li>
+                            <li><i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i> Client protection</li>
+                            <li><i class="fas fa-phone" aria-hidden="true" data-fallback="📞"></i> Questions welcome</li>
                         </ul>
                     </div>
                 </div>
@@ -290,7 +1115,7 @@
                         <div class="principles-grid">
                             <div class="principle-item">
                                 <div class="principle-icon">
-                                    <i class="fas fa-building" aria-hidden="true"></i>
+                                    <i class="fas fa-building" aria-hidden="true" data-fallback="🏢"></i>
                                 </div>
                                 <h4>Legal Entity</h4>
                                 <p>805 LifeGuard, LLC<br>California Limited Liability Company<br>Licensed, Bonded & Insured</p>
@@ -298,7 +1123,7 @@
                             
                             <div class="principle-item">
                                 <div class="principle-icon">
-                                    <i class="fas fa-certificate" aria-hidden="true"></i>
+                                    <i class="fas fa-certificate" aria-hidden="true" data-fallback="🏆"></i>
                                 </div>
                                 <h4>Professional Licensing</h4>
                                 <p>California State Licensed<br>American Red Cross Certified<br>Fully Bonded & Insured</p>
@@ -306,7 +1131,7 @@
                             
                             <div class="principle-item">
                                 <div class="principle-icon">
-                                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                    <i class="fas fa-map-marker-alt" aria-hidden="true" data-fallback="📍"></i>
                                 </div>
                                 <h4>Service Area</h4>
                                 <p>Thousand Oaks, California<br>Serving Southern California's<br>Distinguished Communities</p>
@@ -314,7 +1139,7 @@
                             
                             <div class="principle-item">
                                 <div class="principle-icon">
-                                    <i class="fas fa-phone" aria-hidden="true"></i>
+                                    <i class="fas fa-phone" aria-hidden="true" data-fallback="📞"></i>
                                 </div>
                                 <h4>Contact Information</h4>
                                 <p>(805) 367-6432<br>concierge@805lifeguard.com<br>24/7 Emergency Line</p>
@@ -332,7 +1157,7 @@
                         <div class="usage-grid">
                             <div class="usage-item">
                                 <div class="usage-icon">
-                                    <i class="fas fa-signature" aria-hidden="true"></i>
+                                    <i class="fas fa-signature" aria-hidden="true" data-fallback="✍️"></i>
                                 </div>
                                 <h4>Written Agreement</h4>
                                 <ul>
@@ -345,7 +1170,7 @@
                             
                             <div class="usage-item">
                                 <div class="usage-icon">
-                                    <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                                    <i class="fas fa-calendar-check" aria-hidden="true" data-fallback="📅"></i>
                                 </div>
                                 <h4>Service Booking</h4>
                                 <ul>
@@ -358,7 +1183,7 @@
                             
                             <div class="usage-item">
                                 <div class="usage-icon">
-                                    <i class="fas fa-credit-card" aria-hidden="true"></i>
+                                    <i class="fas fa-credit-card" aria-hidden="true" data-fallback="💳"></i>
                                 </div>
                                 <h4>Payment Processing</h4>
                                 <ul>
@@ -371,7 +1196,7 @@
                             
                             <div class="usage-item">
                                 <div class="usage-icon">
-                                    <i class="fas fa-handshake" aria-hidden="true"></i>
+                                    <i class="fas fa-handshake" aria-hidden="true" data-fallback="🤝"></i>
                                 </div>
                                 <h4>Service Commencement</h4>
                                 <ul>
@@ -384,7 +1209,7 @@
                         </div>
                         
                         <div class="info-category">
-                            <h3><i class="fas fa-edit" aria-hidden="true"></i> Changes to Terms</h3>
+                            <h3><i class="fas fa-edit" aria-hidden="true" data-fallback="✏️"></i> Changes to Terms</h3>
                             <p>We reserve the right to modify these terms at any time. Significant changes will be communicated to active clients via:</p>
                             <ul>
                                 <li><strong>Direct Email Notification:</strong> Written notice to your registered email address</li>
@@ -402,22 +1227,22 @@
                         
                         <div class="sharing-scenarios">
                             <div class="scenario-item">
-                                <h4><i class="fas fa-shield-alt" aria-hidden="true"></i> Private Estate Lifeguarding</h4>
+                                <h4><i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i> Private Estate Lifeguarding</h4>
                                 <p>Professional aquatic safety supervision, emergency response and first aid, pool safety assessments, event and party safety management, ongoing residential protection services.</p>
                             </div>
                             
                             <div class="scenario-item">
-                                <h4><i class="fas fa-swimming-pool" aria-hidden="true"></i> Swimming Instruction</h4>
+                                <h4><i class="fas fa-swimming-pool" aria-hidden="true" data-fallback="🏊"></i> Swimming Instruction</h4>
                                 <p>Private and group swimming lessons, stroke technique development, special needs adaptive instruction, water safety and confidence building, competitive training and coaching.</p>
                             </div>
                             
                             <div class="scenario-item">
-                                <h4><i class="fas fa-champagne-glasses" aria-hidden="true"></i> Event Management</h4>
+                                <h4><i class="fas fa-champagne-glasses" aria-hidden="true" data-fallback="🥂"></i> Event Management</h4>
                                 <p>Corporate event aquatic safety, wedding and celebration management, pool party supervision, risk assessment and safety planning, coordination with event vendors.</p>
                             </div>
                             
                             <div class="scenario-item">
-                                <h4><i class="fas fa-broom" aria-hidden="true"></i> Pool Cleaning Services</h4>
+                                <h4><i class="fas fa-broom" aria-hidden="true" data-fallback="🧹"></i> Pool Cleaning Services</h4>
                                 <p>Exclusive pool maintenance for existing clients, chemical balancing and equipment care, water quality management, seasonal preparation and maintenance.</p>
                             </div>
                         </div>
@@ -426,7 +1251,7 @@
                         <div class="rights-grid">
                             <div class="right-item">
                                 <div class="right-icon">
-                                    <i class="fas fa-certificate" aria-hidden="true"></i>
+                                    <i class="fas fa-certificate" aria-hidden="true" data-fallback="🏆"></i>
                                 </div>
                                 <h4>Professional Certification</h4>
                                 <p>All staff maintain current American Red Cross Lifeguard, CPR/AED, and Water Safety Instructor certifications.</p>
@@ -434,7 +1259,7 @@
                             
                             <div class="right-item">
                                 <div class="right-icon">
-                                    <i class="fas fa-user-check" aria-hidden="true"></i>
+                                    <i class="fas fa-user-check" aria-hidden="true" data-fallback="✅"></i>
                                 </div>
                                 <h4>Background Screening</h4>
                                 <p>Comprehensive background checks and professional references for all service personnel ensuring client safety.</p>
@@ -442,7 +1267,7 @@
                             
                             <div class="right-item">
                                 <div class="right-icon">
-                                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                    <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                                 </div>
                                 <h4>Insurance Coverage</h4>
                                 <p>Full liability insurance and bonding protection providing complete peace of mind for our clients.</p>
@@ -450,7 +1275,7 @@
                             
                             <div class="right-item">
                                 <div class="right-icon">
-                                    <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                                    <i class="fas fa-graduation-cap" aria-hidden="true" data-fallback="🎓"></i>
                                 </div>
                                 <h4>Continuing Education</h4>
                                 <p>Regular training updates in safety protocols, emergency response, and luxury service standards.</p>
@@ -465,7 +1290,7 @@
                         
                         <div class="security-measures">
                             <div class="security-category">
-                                <h3><i class="fas fa-home" aria-hidden="true"></i> Property & Access</h3>
+                                <h3><i class="fas fa-home" aria-hidden="true" data-fallback="🏠"></i> Property & Access</h3>
                                 <ul>
                                     <li>Provide safe, clear access to pool and service areas</li>
                                     <li>Maintain pool and equipment in safe, working condition</li>
@@ -476,7 +1301,7 @@
                             </div>
                             
                             <div class="security-category">
-                                <h3><i class="fas fa-info-circle" aria-hidden="true"></i> Information & Communication</h3>
+                                <h3><i class="fas fa-info-circle" aria-hidden="true" data-fallback="ℹ️"></i> Information & Communication</h3>
                                 <ul>
                                     <li>Provide truthful information about health conditions and swimming abilities</li>
                                     <li>Notify us promptly of schedule changes or cancellations</li>
@@ -487,7 +1312,7 @@
                             </div>
                             
                             <div class="security-category">
-                                <h3><i class="fas fa-users" aria-hidden="true"></i> Supervision & Cooperation</h3>
+                                <h3><i class="fas fa-users" aria-hidden="true" data-fallback="👥"></i> Supervision & Cooperation</h3>
                                 <ul>
                                     <li>Ensure appropriate adult supervision during instruction sessions</li>
                                     <li>Follow all safety rules and instructor guidance</li>
@@ -500,7 +1325,7 @@
                         
                         <div class="sharing-commitment">
                             <div class="commitment-badge">
-                                <i class="fas fa-handshake" aria-hidden="true"></i>
+                                <i class="fas fa-handshake" aria-hidden="true" data-fallback="🤝"></i>
                                 <span>Client Warranties</span>
                             </div>
                             <p>By engaging our services, you warrant that you have the authority to enter into this agreement, own or have permission to use the property, have disclosed all relevant health and safety information, your property meets basic safety standards, and you will comply with all applicable laws.</p>
@@ -516,7 +1341,7 @@
                         <div class="rights-grid">
                             <div class="right-item">
                                 <div class="right-icon">
-                                    <i class="fas fa-clock" aria-hidden="true"></i>
+                                    <i class="fas fa-clock" aria-hidden="true" data-fallback="⏰"></i>
                                 </div>
                                 <h4>Hourly Services</h4>
                                 <p>Lifeguarding and instruction services billed at agreed hourly rates with minimum service periods as specified.</p>
@@ -524,7 +1349,7 @@
                             
                             <div class="right-item">
                                 <div class="right-icon">
-                                    <i class="fas fa-calendar" aria-hidden="true"></i>
+                                    <i class="fas fa-calendar" aria-hidden="true" data-fallback="📅"></i>
                                 </div>
                                 <h4>Package Services</h4>
                                 <p>Lesson packages and ongoing services available with preferred rates and flexible payment schedules.</p>
@@ -532,7 +1357,7 @@
                             
                             <div class="right-item">
                                 <div class="right-icon">
-                                    <i class="fas fa-champagne-glasses" aria-hidden="true"></i>
+                                    <i class="fas fa-champagne-glasses" aria-hidden="true" data-fallback="🥂"></i>
                                 </div>
                                 <h4>Event Services</h4>
                                 <p>Special event services quoted based on duration, complexity, and specific requirements.</p>
@@ -540,7 +1365,7 @@
                             
                             <div class="right-item">
                                 <div class="right-icon">
-                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
                                 </div>
                                 <h4>Premium Services</h4>
                                 <p>Luxury and specialized services with custom pricing based on unique requirements.</p>
@@ -549,22 +1374,22 @@
                         
                         <div class="retention-schedule">
                             <div class="retention-item">
-                                <h4><i class="fas fa-credit-card" aria-hidden="true"></i> Payment Methods</h4>
+                                <h4><i class="fas fa-credit-card" aria-hidden="true" data-fallback="💳"></i> Payment Methods</h4>
                                 <p>Bank transfer/ACH (preferred), Credit cards (Visa, MasterCard, Amex), Personal or business checks, Cash (for individual sessions)</p>
                             </div>
                             
                             <div class="retention-item">
-                                <h4><i class="fas fa-calendar-check" aria-hidden="true"></i> Payment Timing</h4>
+                                <h4><i class="fas fa-calendar-check" aria-hidden="true" data-fallback="📅"></i> Payment Timing</h4>
                                 <p>Individual Services: Payment due at completion. Package Services: Payment due before first session. Event Services: 50% deposit required. Ongoing Services: Net 15 terms for established clients.</p>
                             </div>
                             
                             <div class="retention-item">
-                                <h4><i class="fas fa-clock" aria-hidden="true"></i> Late Payment</h4>
+                                <h4><i class="fas fa-clock" aria-hidden="true" data-fallback="⏰"></i> Late Payment</h4>
                                 <p>Late fee: 1.5% per month on overdue amounts. Service suspension after 30 days past due. No late fees for first-time 30-day extensions.</p>
                             </div>
                             
                             <div class="retention-item">
-                                <h4><i class="fas fa-undo" aria-hidden="true"></i> Refund Policy</h4>
+                                <h4><i class="fas fa-undo" aria-hidden="true" data-fallback="↩️"></i> Refund Policy</h4>
                                 <p>Unused lesson packages: Prorated refund available. Event cancellations: Per cancellation policy. Processing time: 5-10 business days.</p>
                             </div>
                         </div>
@@ -576,7 +1401,7 @@
                         <p>Professional scheduling policies designed to ensure reliable service while maintaining flexibility for our distinguished clients.</p>
                         
                         <div class="info-category">
-                            <h3><i class="fas fa-calendar-plus" aria-hidden="true"></i> Booking & Scheduling</h3>
+                            <h3><i class="fas fa-calendar-plus" aria-hidden="true" data-fallback="📅"></i> Booking & Scheduling</h3>
                             <ul>
                                 <li><strong>Advance Booking:</strong> Minimum 48 hours for regular services, 2 weeks for events</li>
                                 <li><strong>Peak Season:</strong> Early booking recommended for summer months (May-September)</li>
@@ -590,7 +1415,7 @@
                         <div class="rights-grid">
                             <div class="right-item">
                                 <div class="right-icon">
-                                    <i class="fas fa-check-circle" aria-hidden="true"></i>
+                                    <i class="fas fa-check-circle" aria-hidden="true" data-fallback="✅"></i>
                                 </div>
                                 <h4>48+ Hours Notice</h4>
                                 <p>Full refund or rescheduling at no charge for maximum flexibility.</p>
@@ -598,7 +1423,7 @@
                             
                             <div class="right-item">
                                 <div class="right-icon">
-                                    <i class="fas fa-clock" aria-hidden="true"></i>
+                                    <i class="fas fa-clock" aria-hidden="true" data-fallback="⏰"></i>
                                 </div>
                                 <h4>24-48 Hours Notice</h4>
                                 <p>50% service charge or reschedule with nominal fee to cover scheduling costs.</p>
@@ -606,7 +1431,7 @@
                             
                             <div class="right-item">
                                 <div class="right-icon">
-                                    <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                                    <i class="fas fa-exclamation-triangle" aria-hidden="true" data-fallback="⚠️"></i>
                                 </div>
                                 <h4>Less than 24 Hours</h4>
                                 <p>Full service charge applies due to staff commitment and lost scheduling opportunity.</p>
@@ -614,7 +1439,7 @@
                             
                             <div class="right-item">
                                 <div class="right-icon">
-                                    <i class="fas fa-cloud-rain" aria-hidden="true"></i>
+                                    <i class="fas fa-cloud-rain" aria-hidden="true" data-fallback="🌧️"></i>
                                 </div>
                                 <h4>Weather Cancellations</h4>
                                 <p>No charge for unsafe weather conditions - safety is our priority.</p>
@@ -622,7 +1447,7 @@
                         </div>
                         
                         <div class="info-category">
-                            <h3><i class="fas fa-heart" aria-hidden="true"></i> Special Circumstances</h3>
+                            <h3><i class="fas fa-heart" aria-hidden="true" data-fallback="❤️"></i> Special Circumstances</h3>
                             <ul>
                                 <li><strong>Medical Emergencies:</strong> Full flexibility with documentation</li>
                                 <li><strong>Family Emergencies:</strong> Case-by-case consideration with compassion</li>
@@ -639,7 +1464,7 @@
                         
                         <div class="sharing-commitment">
                             <div class="commitment-badge">
-                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                                 <span>Fully Insured & Bonded</span>
                             </div>
                             <p>Comprehensive liability protection and risk management providing complete peace of mind for our distinguished clientele.</p>
@@ -649,7 +1474,7 @@
                         <div class="rights-grid">
                             <div class="right-item">
                                 <div class="right-icon">
-                                    <i class="fas fa-umbrella" aria-hidden="true"></i>
+                                    <i class="fas fa-umbrella" aria-hidden="true" data-fallback="☂️"></i>
                                 </div>
                                 <h4>General Liability</h4>
                                 <p>$2 million comprehensive coverage for property damage and bodily injury protection.</p>
@@ -657,7 +1482,7 @@
                             
                             <div class="right-item">
                                 <div class="right-icon">
-                                    <i class="fas fa-user-shield" aria-hidden="true"></i>
+                                    <i class="fas fa-user-shield" aria-hidden="true" data-fallback="🛡️"></i>
                                 </div>
                                 <h4>Professional Liability</h4>
                                 <p>$1 million errors and omissions coverage for professional aquatic services.</p>
@@ -665,7 +1490,7 @@
                             
                             <div class="right-item">
                                 <div class="right-icon">
-                                    <i class="fas fa-hands-helping" aria-hidden="true"></i>
+                                    <i class="fas fa-hands-helping" aria-hidden="true" data-fallback="🤝"></i>
                                 </div>
                                 <h4>Bonding Protection</h4>
                                 <p>$500,000 bonding for client property and asset protection with surety backing.</p>
@@ -673,7 +1498,7 @@
                             
                             <div class="right-item">
                                 <div class="right-icon">
-                                    <i class="fas fa-car" aria-hidden="true"></i>
+                                    <i class="fas fa-car" aria-hidden="true" data-fallback="🚗"></i>
                                 </div>
                                 <h4>Auto Coverage</h4>
                                 <p>Commercial auto insurance for all service vehicles and transportation.</p>
@@ -681,7 +1506,7 @@
                         </div>
                         
                         <div class="info-category">
-                            <h3><i class="fas fa-info-circle" aria-hidden="true"></i> Liability Limitations</h3>
+                            <h3><i class="fas fa-info-circle" aria-hidden="true" data-fallback="ℹ️"></i> Liability Limitations</h3>
                             <p>While we maintain comprehensive insurance, please note the following limitations:</p>
                             <ul>
                                 <li><strong>Service Scope:</strong> Our liability is limited to services directly provided by our staff during scheduled service periods</li>
@@ -692,7 +1517,7 @@
                         </div>
                         
                         <div class="retention-note">
-                            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+                            <i class="fas fa-lightbulb" aria-hidden="true" data-fallback="💡"></i>
                             <p><strong>Client Insurance Recommendations:</strong> We recommend that clients maintain adequate homeowner's or property insurance, liability coverage for pool-related activities, medical insurance for all participants, and consideration of umbrella liability policies for enhanced protection.</p>
                         </div>
                     </section>
@@ -703,7 +1528,7 @@
                         
                         <div class="sharing-commitment">
                             <div class="commitment-badge">
-                                <i class="fas fa-lock" aria-hidden="true"></i>
+                                <i class="fas fa-lock" aria-hidden="true" data-fallback="🔒"></i>
                                 <span>Absolute Discretion Guaranteed</span>
                             </div>
                             <p>Your privacy and confidentiality are fundamental to our service excellence and the trust our distinguished clients place in us.</p>
@@ -713,7 +1538,7 @@
                         <div class="rights-grid">
                             <div class="right-item">
                                 <div class="right-icon">
-                                    <i class="fas fa-user-secret" aria-hidden="true"></i>
+                                    <i class="fas fa-user-secret" aria-hidden="true" data-fallback="🤐"></i>
                                 </div>
                                 <h4>Personal Information</h4>
                                 <p>All personal, family, and property information is kept strictly confidential and never shared without authorization.</p>
@@ -721,7 +1546,7 @@
                             
                             <div class="right-item">
                                 <div class="right-icon">
-                                    <i class="fas fa-home" aria-hidden="true"></i>
+                                    <i class="fas fa-home" aria-hidden="true" data-fallback="🏠"></i>
                                 </div>
                                 <h4>Property Details</h4>
                                 <p>Estate layouts, security features, and access information are protected with highest security standards.</p>
@@ -729,7 +1554,7 @@
                             
                             <div class="right-item">
                                 <div class="right-icon">
-                                    <i class="fas fa-calendar" aria-hidden="true"></i>
+                                    <i class="fas fa-calendar" aria-hidden="true" data-fallback="📅"></i>
                                 </div>
                                 <h4>Schedule Privacy</h4>
                                 <p>Your service schedules, travel plans, and family activities remain completely private and confidential.</p>
@@ -737,7 +1562,7 @@
                             
                             <div class="right-item">
                                 <div class="right-icon">
-                                    <i class="fas fa-camera" aria-hidden="true"></i>
+                                    <i class="fas fa-camera" aria-hidden="true" data-fallback="📷"></i>
                                 </div>
                                 <h4>Photography Policy</h4>
                                 <p>No photography, recordings, or social media posts without explicit written permission from clients.</p>
@@ -745,7 +1570,7 @@
                         </div>
                         
                         <div class="info-category">
-                            <h3><i class="fas fa-graduation-cap" aria-hidden="true"></i> Staff Confidentiality Training</h3>
+                            <h3><i class="fas fa-graduation-cap" aria-hidden="true" data-fallback="🎓"></i> Staff Confidentiality Training</h3>
                             <ul>
                                 <li><strong>Comprehensive Privacy Training:</strong> All personnel receive thorough confidentiality training</li>
                                 <li><strong>Signed Agreements:</strong> Confidentiality agreements and NDAs for all staff members</li>
@@ -763,22 +1588,22 @@
                         
                         <div class="sharing-scenarios">
                             <div class="scenario-item">
-                                <h4><i class="fas fa-handshake" aria-hidden="true"></i> Mutual Termination</h4>
+                                <h4><i class="fas fa-handshake" aria-hidden="true" data-fallback="🤝"></i> Mutual Termination</h4>
                                 <p>Natural completion of services, mutual agreement to end services, changed circumstances making services unnecessary, or client relocation outside service area.</p>
                             </div>
                             
                             <div class="scenario-item">
-                                <h4><i class="fas fa-user-times" aria-hidden="true"></i> Client-Initiated Termination</h4>
+                                <h4><i class="fas fa-user-times" aria-hidden="true" data-fallback="👤"></i> Client-Initiated Termination</h4>
                                 <p>48 hours notice for individual services, 1 week for ongoing arrangements. Prorated refunds for unused prepaid services, with final payment due within 30 days.</p>
                             </div>
                             
                             <div class="scenario-item">
-                                <h4><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Company-Initiated Termination</h4>
+                                <h4><i class="fas fa-exclamation-triangle" aria-hidden="true" data-fallback="⚠️"></i> Company-Initiated Termination</h4>
                                 <p>We may terminate for non-payment after 30 days, safety concerns that cannot be addressed, breach of terms, threats to staff safety, or changes in legal requirements.</p>
                             </div>
                             
                             <div class="scenario-item">
-                                <h4><i class="fas fa-arrow-right" aria-hidden="true"></i> Post-Termination Obligations</h4>
+                                <h4><i class="fas fa-arrow-right" aria-hidden="true" data-fallback="➡️"></i> Post-Termination Obligations</h4>
                                 <p>Continued confidentiality of client information, return of client property, final billing settlement, transition assistance, and referrals when appropriate.</p>
                             </div>
                         </div>
@@ -790,7 +1615,7 @@
                         
                         <div class="security-measures">
                             <div class="security-category">
-                                <h3><i class="fas fa-balance-scale" aria-hidden="true"></i> Governing Law</h3>
+                                <h3><i class="fas fa-balance-scale" aria-hidden="true" data-fallback="⚖️"></i> Governing Law</h3>
                                 <ul>
                                     <li>These terms are governed by California state law</li>
                                     <li>Disputes resolved in Ventura County, California courts</li>
@@ -800,7 +1625,7 @@
                             </div>
                             
                             <div class="security-category">
-                                <h3><i class="fas fa-file-alt" aria-hidden="true"></i> Entire Agreement</h3>
+                                <h3><i class="fas fa-file-alt" aria-hidden="true" data-fallback="📄"></i> Entire Agreement</h3>
                                 <ul>
                                     <li>Terms plus signed agreements constitute complete agreement</li>
                                     <li>Modifications must be in writing and signed</li>
@@ -810,7 +1635,7 @@
                             </div>
                             
                             <div class="security-category">
-                                <h3><i class="fas fa-puzzle-piece" aria-hidden="true"></i> Severability & Force Majeure</h3>
+                                <h3><i class="fas fa-puzzle-piece" aria-hidden="true" data-fallback="🧩"></i> Severability & Force Majeure</h3>
                                 <ul>
                                     <li>Unenforceable provisions modified minimally</li>
                                     <li>Remainder of agreement remains in effect</li>
@@ -825,11 +1650,11 @@
                             <p>For clarification on any provision in these Terms of Service, please contact our team:</p>
                             <div class="contact-methods">
                                 <div class="contact-method">
-                                    <i class="fas fa-phone" aria-hidden="true"></i>
+                                    <i class="fas fa-phone" aria-hidden="true" data-fallback="📞"></i>
                                     <span>(805) 367-6432</span>
                                 </div>
                                 <div class="contact-method">
-                                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                                    <i class="fas fa-envelope" aria-hidden="true" data-fallback="✉️"></i>
                                     <span>legal@805lifeguard.com</span>
                                 </div>
                             </div>
@@ -860,15 +1685,15 @@
                     </p>
                     <div class="footer-badges">
                         <span class="footer-badge">
-                            <i class="fas fa-certificate" aria-hidden="true"></i>
+                            <i class="fas fa-certificate" aria-hidden="true" data-fallback="🏆"></i>
                             Red Cross Certified
                         </span>
                         <span class="footer-badge">
-                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                             Licensed & Bonded
                         </span>
                         <span class="footer-badge">
-                            <i class="fas fa-award" aria-hidden="true"></i>
+                            <i class="fas fa-award" aria-hidden="true" data-fallback="🏅"></i>
                             7+ Years Experience
                         </span>
                     </div>
@@ -877,7 +1702,7 @@
                 <!-- Services Links -->
                 <div class="footer-section">
                     <h4>
-                        <i class="fas fa-water" aria-hidden="true"></i>
+                        <i class="fas fa-water" aria-hidden="true" data-fallback="💧"></i>
                         Services
                     </h4>
                     <ul>
@@ -892,7 +1717,7 @@
                 <!-- Company Links -->
                 <div class="footer-section">
                     <h4>
-                        <i class="fas fa-building" aria-hidden="true"></i>
+                        <i class="fas fa-building" aria-hidden="true" data-fallback="🏢"></i>
                         Company
                     </h4>
                     <ul>
@@ -907,13 +1732,13 @@
                 <!-- Contact Section -->
                 <div class="footer-contact">
                     <h4>
-                        <i class="fas fa-concierge-bell" aria-hidden="true"></i>
+                        <i class="fas fa-concierge-bell" aria-hidden="true" data-fallback="🛎️"></i>
                         Contact
                     </h4>
                     
                     <div class="contact-info">
                         <a href="tel:+18053676432" class="contact-item primary">
-                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <i class="fas fa-phone" aria-hidden="true" data-fallback="📞"></i>
                             <div>
                                 <strong>(805) 367-6432</strong>
                                 <span>24/7 Emergency Line</span>
@@ -921,7 +1746,7 @@
                         </a>
                         
                         <a href="mailto:concierge@805lifeguard.com" class="contact-item">
-                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <i class="fas fa-envelope" aria-hidden="true" data-fallback="✉️"></i>
                             <div>
                                 <strong>concierge@805lifeguard.com</strong>
                                 <span>Consultation Requests</span>
@@ -936,15 +1761,15 @@
                     
                     <div class="footer-portals">
                         <a href="https://client.805companies.com" target="_blank" class="footer-portal-btn">
-                            <i class="fas fa-user-circle" aria-hidden="true"></i>
+                            <i class="fas fa-user-circle" aria-hidden="true" data-fallback="👤"></i>
                             Client Portal
                         </a>
                         <a href="https://admin.805companies.com" target="_blank" class="footer-portal-btn">
-                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
                             Admin Portal
                         </a>
                         <a href="https://staff.805companies.com" target="_blank" class="footer-portal-btn">
-                            <i class="fas fa-users" aria-hidden="true"></i>
+                            <i class="fas fa-users" aria-hidden="true" data-fallback="👥"></i>
                             Staff Portal
                         </a>
                     </div>
@@ -975,5 +1800,267 @@
 
     <!-- Enhanced JavaScript -->
     <script src="js/luxury-app.js"></script>
+    
+    <!-- Terms Page Specific JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Terms navigation functionality
+            const navItems = document.querySelectorAll('.nav-item');
+            const sections = document.querySelectorAll('.policy-section');
+            
+            // Add click handlers for navigation items
+            navItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if (targetSection) {
+                        // Update active navigation item
+                        navItems.forEach(nav => nav.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        // Smooth scroll to section
+                        const headerHeight = document.getElementById('header')?.offsetHeight || 120;
+                        const targetPosition = targetSection.offsetTop - headerHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Update active navigation on scroll
+            function updateActiveNavigation() {
+                const headerHeight = document.getElementById('header')?.offsetHeight || 120;
+                const scrollPosition = window.scrollY + headerHeight + 100;
+                
+                let activeSection = null;
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition <= sectionBottom) {
+                        activeSection = section;
+                    }
+                });
+                
+                if (activeSection) {
+                    const targetId = activeSection.id;
+                    navItems.forEach(item => {
+                        const itemTarget = item.getAttribute('href').substring(1);
+                        if (itemTarget === targetId) {
+                            navItems.forEach(nav => nav.classList.remove('active'));
+                            item.classList.add('active');
+                        }
+                    });
+                }
+            }
+            
+            // Throttled scroll handler
+            let scrollTimeout;
+            window.addEventListener('scroll', function() {
+                if (scrollTimeout) {
+                    clearTimeout(scrollTimeout);
+                }
+                scrollTimeout = setTimeout(updateActiveNavigation, 100);
+            });
+            
+            // Handle initial page load with hash
+            if (window.location.hash) {
+                const targetId = window.location.hash.substring(1);
+                const targetSection = document.getElementById(targetId);
+                const targetNav = document.querySelector(`a[href="#${targetId}"]`);
+                
+                if (targetSection && targetNav) {
+                    setTimeout(() => {
+                        navItems.forEach(nav => nav.classList.remove('active'));
+                        targetNav.classList.add('active');
+                        
+                        const headerHeight = document.getElementById('header')?.offsetHeight || 120;
+                        const targetPosition = targetSection.offsetTop - headerHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }, 100);
+                }
+            }
+        });
+    </script>
+    
+    <!-- Mobile Navigation Fix Script -->
+    <script>
+    (function() {
+        'use strict';
+        
+        // Ensure mobile navigation works regardless of main app initialization
+        function initializeMobileNavigation() {
+            console.log('🔧 Initializing Mobile Navigation Fix...');
+            
+            const mobileToggle = document.getElementById('mobileToggle');
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileNavClose = document.getElementById('mobileNavClose');
+            const body = document.body;
+            
+            if (!mobileToggle || !mobileNav) {
+                console.error('❌ Mobile navigation elements not found');
+                return;
+            }
+            
+            let isOpen = false;
+            let scrollPosition = 0;
+            
+            // Open mobile navigation
+            function openMobileNav() {
+                console.log('📱 Opening mobile navigation...');
+                isOpen = true;
+                scrollPosition = window.pageYOffset;
+                
+                // Add active classes
+                mobileToggle.classList.add('active');
+                mobileToggle.setAttribute('aria-expanded', 'true');
+                mobileNav.classList.add('active');
+                mobileNav.setAttribute('aria-hidden', 'false');
+                body.classList.add('nav-open');
+                
+                // Lock body scroll
+                body.style.position = 'fixed';
+                body.style.top = `-${scrollPosition}px`;
+                body.style.width = '100%';
+                body.style.overflow = 'hidden';
+                
+                // Focus management
+                setTimeout(() => {
+                    const firstLink = mobileNav.querySelector('.mobile-nav-link');
+                    if (firstLink) {
+                        firstLink.focus();
+                    }
+                }, 300);
+            }
+            
+            // Close mobile navigation
+            function closeMobileNav() {
+                console.log('📱 Closing mobile navigation...');
+                isOpen = false;
+                
+                // Remove active classes
+                mobileToggle.classList.remove('active');
+                mobileToggle.setAttribute('aria-expanded', 'false');
+                mobileNav.classList.remove('active');
+                mobileNav.setAttribute('aria-hidden', 'true');
+                body.classList.remove('nav-open');
+                
+                // Restore body scroll
+                body.style.position = '';
+                body.style.top = '';
+                body.style.width = '';
+                body.style.overflow = '';
+                
+                // Restore scroll position
+                window.scrollTo(0, scrollPosition);
+            }
+            
+            // Toggle mobile navigation
+            function toggleMobileNav() {
+                if (isOpen) {
+                    closeMobileNav();
+                } else {
+                    openMobileNav();
+                }
+            }
+            
+            // Remove any existing event listeners to prevent duplicates
+            const newMobileToggle = mobileToggle.cloneNode(true);
+            mobileToggle.parentNode.replaceChild(newMobileToggle, mobileToggle);
+            
+            // Add click event to mobile toggle
+            newMobileToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('📱 Mobile toggle clicked');
+                toggleMobileNav();
+            });
+            
+            // Add click event to close button
+            if (mobileNavClose) {
+                const newMobileNavClose = mobileNavClose.cloneNode(true);
+                mobileNavClose.parentNode.replaceChild(newMobileNavClose, mobileNavClose);
+                
+                newMobileNavClose.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('📱 Mobile close clicked');
+                    closeMobileNav();
+                });
+            }
+            
+            // Close on outside click
+            document.addEventListener('click', function(e) {
+                if (isOpen && 
+                    !mobileNav.contains(e.target) && 
+                    !newMobileToggle.contains(e.target)) {
+                    console.log('📱 Outside click - closing mobile nav');
+                    closeMobileNav();
+                }
+            });
+            
+            // Close on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && isOpen) {
+                    console.log('📱 Escape key - closing mobile nav');
+                    closeMobileNav();
+                }
+            });
+            
+            // Close on window resize to desktop
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && isOpen) {
+                    console.log('📱 Window resized to desktop - closing mobile nav');
+                    closeMobileNav();
+                }
+            });
+            
+            // Handle mobile nav links
+            const mobileLinks = mobileNav.querySelectorAll('.mobile-nav-link');
+            mobileLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    console.log('📱 Mobile nav link clicked');
+                    // Delay close to allow navigation
+                    setTimeout(function() {
+                        closeMobileNav();
+                    }, 100);
+                });
+            });
+            
+            console.log('✅ Mobile Navigation Fix initialized successfully');
+            
+            // Return public API
+            return {
+                open: openMobileNav,
+                close: closeMobileNav,
+                toggle: toggleMobileNav,
+                isOpen: function() { return isOpen; }
+            };
+        }
+        
+        // Initialize immediately if DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeMobileNavigation);
+        } else {
+            initializeMobileNavigation();
+        }
+        
+        // Also initialize after a short delay to ensure it works even if other scripts interfere
+        setTimeout(initializeMobileNavigation, 100);
+        
+        // Expose globally for debugging
+        window.mobileNavFix = initializeMobileNavigation;
+        
+    })();
+    </script>
 </body>
 </html>
