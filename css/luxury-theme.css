@@ -5,12 +5,16 @@
     box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
 }/* 
  * 805 LifeGuard - Luxury Country Club Theme CSS
- * Version: 6.0 - Clean Production Architecture
- * Enterprise-level styling with unified responsive design
+ * Version: 6.1 - Enterprise Design System with Robust Font Controls
+ * Sophisticated typography with guaranteed non-italic enforcement
  */
 
-/* === NUCLEAR FONT STYLE RESET === */
-/* This will override ANY italic fonts from ANY source */
+/* === ENTERPRISE FONT SYSTEM === */
+/* Import luxury fonts - ONLY normal variants for ultimate control */
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Lato:wght@300;400;700;900&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+
+/* === ROBUST FONT STYLE ENFORCEMENT === */
+/* This system ensures NO italic fonts can ever appear */
 *, *::before, *::after,
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -28,11 +32,9 @@ button, input, select, textarea {
     padding: 0;
     box-sizing: border-box;
     font-style: normal !important;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !important;
 }
 
-/* === WEB SAFE FONTS ONLY (NO GOOGLE FONTS) === */
-/* Using only system fonts to eliminate any font loading issues */
+/* === LUXURY FONT STACK === */
 :root {
     /* Country Club Colors */
     --navy-dark: #0A1628;
@@ -49,10 +51,10 @@ button, input, select, textarea {
     --gray-light: #F3F4F6;
     --border-color: #E5E7EB;
     
-    /* Typography - Using System Fonts Only */
-    --font-serif: Georgia, 'Times New Roman', Times, serif;
-    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    --font-display: Georgia, 'Times New Roman', Times, serif;
+    /* Luxury Typography System */
+    --font-serif: 'Crimson Text', Georgia, 'Times New Roman', serif;
+    --font-sans: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    --font-display: 'Playfair Display', 'Crimson Text', Georgia, serif;
     
     /* Spacing System */
     --space-1: 0.25rem;   /* 4px */
@@ -378,7 +380,7 @@ body.no-fontawesome .fab {
     font-weight: 500;
     font-size: 0.9375rem;
     font-style: normal !important;
-    font-family: var(--font-sans) !important;
+    font-family: var(--font-sans);
     padding: var(--space-3) var(--space-4);
     border-radius: var(--border-radius);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -651,7 +653,7 @@ body.no-fontawesome .fab {
     font-size: 1.1875rem;
     font-weight: 500;
     font-style: normal !important;
-    font-family: var(--font-sans) !important;
+    font-family: var(--font-sans);
     border-radius: var(--border-radius-lg);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid transparent;
