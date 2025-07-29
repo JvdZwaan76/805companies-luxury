@@ -1108,6 +1108,619 @@
         }
     }
     
+    // === ENTERPRISE ENHANCEMENTS CONTROLLER ===
+    class EnterpriseEnhancementsController {
+        constructor() {
+            this.intersectionObserver = null;
+            this.performanceMonitor = null;
+            this.imageLoadingObserver = null;
+            this.touchGestureHandlers = new Map();
+            this.init();
+        }
+        
+        init() {
+            console.log('🚀 Initializing Enterprise Enhancements...');
+            this.setupScrollRevealAnimations();
+            this.setupImageLoadingStates();
+            this.setupEnhancedForms();
+            this.setupTouchGestures();
+            this.setupPerformanceMonitoring();
+            this.setupAccessibilityEnhancements();
+            this.setupKeyboardNavigation();
+            console.log('✅ Enterprise Enhancements initialized');
+        }
+        
+        setupScrollRevealAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            this.intersectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        
+                        // Only observe once for .observe-once elements
+                        if (entry.target.classList.contains('observe-once')) {
+                            this.intersectionObserver.unobserve(entry.target);
+                        }
+                    } else if (entry.target.classList.contains('observe-repeat')) {
+                        entry.target.classList.remove('revealed');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe scroll reveal elements
+            const scrollElements = document.querySelectorAll(
+                '.scroll-reveal, .scroll-slide-left, .scroll-slide-right'
+            );
+            
+            scrollElements.forEach(el => {
+                this.intersectionObserver.observe(el);
+            });
+        }
+        
+        setupImageLoadingStates() {
+            this.imageLoadingObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        const container = img.closest('.image-loading');
+                        
+                        if (img.complete) {
+                            this.handleImageLoaded(container, img);
+                        } else {
+                            img.addEventListener('load', () => {
+                                this.handleImageLoaded(container, img);
+                            });
+                            
+                            img.addEventListener('error', () => {
+                                this.handleImageError(container, img);
+                            });
+                        }
+                        
+                        this.imageLoadingObserver.unobserve(img);
+                    }
+                });
+            });
+            
+            const lazyImages = document.querySelectorAll('.image-loading img');
+            lazyImages.forEach(img => {
+                this.imageLoadingObserver.observe(img);
+            });
+        }
+        
+        handleImageLoaded(container, img) {
+            if (container) {
+                container.classList.remove('image-loading');
+                container.classList.add('image-loaded');
+            }
+            img.style.opacity = '1';
+        }
+        
+        handleImageError(container, img) {
+            if (container) {
+                container.classList.remove('image-loading');
+                container.classList.add('image-error');
+            }
+            console.warn('Image failed to load:', img.src);
+        }
+        
+        setupEnhancedForms() {
+            const formFields = document.querySelectorAll('.form-field');
+            
+            formFields.forEach(field => {
+                const input = field.querySelector('input, textarea, select');
+                if (!input) return;
+                
+                // Real-time validation
+                input.addEventListener('blur', () => {
+                    this.validateField(field, input);
+                });
+                
+                input.addEventListener('input', utils.debounce(() => {
+                    this.validateField(field, input);
+                }, 300));
+                
+                // Enhanced focus states
+                input.addEventListener('focus', () => {
+                    field.classList.add('focused');
+                });
+                
+                input.addEventListener('blur', () => {
+                    field.classList.remove('focused');
+                });
+            });
+            
+            // Enhanced form submission
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.addEventListener('submit', (e) => {
+                    const submitBtn = form.querySelector('button[type="submit"], input[type="submit"]');
+                    if (submitBtn) {
+                        this.showLoadingState(submitBtn);
+                    }
+                });
+            });
+        }
+        
+        validateField(field, input) {
+            const value = input.value.trim();
+            const type = input.type;
+            const required = input.hasAttribute('required');
+            
+            // Reset states
+            field.classList.remove('error', 'success');
+            
+            if (required && !value) {
+                field.classList.add('error');
+                return false;
+            }
+            
+            // Email validation
+            if (type === 'email' && value) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(value)) {
+                    field.classList.add('error');
+                    return false;
+                }
+            }
+            
+            // Phone validation
+            if (type === 'tel' && value) {
+                const phoneRegex = /^\(\d{3}\)\s\d{3}-\d{4}$/;
+                if (!phoneRegex.test(value)) {
+                    field.classList.add('error');
+                    return false;
+                }
+            }
+            
+            if (value) {
+                field.classList.add('success');
+            }
+            
+            return true;
+        }
+        
+        showLoadingState(button) {
+            button.classList.add('loading');
+            button.disabled = true;
+            
+            // Auto-remove loading state after 30 seconds
+            setTimeout(() => {
+                this.hideLoadingState(button);
+            }, 30000);
+        }
+        
+        hideLoadingState(button) {
+            button.classList.remove('loading');
+            button.disabled = false;
+        }
+        
+        setupTouchGestures() {
+            const touchContainers = document.querySelectorAll('.touch-container');
+            
+            touchContainers.forEach(container => {
+                let startX = 0;
+                let startY = 0;
+                let currentX = 0;
+                let currentY = 0;
+                let isDragging = false;
+                
+                const gestureHandler = {
+                    touchStart: (e) => {
+                        startX = e.touches[0].clientX;
+                        startY = e.touches[0].clientY;
+                        currentX = startX;
+                        currentY = startY;
+                        isDragging = true;
+                        
+                        container.dispatchEvent(new CustomEvent('gestureStart', {
+                            detail: { startX, startY }
+                        }));
+                    },
+                    
+                    touchMove: (e) => {
+                        if (!isDragging) return;
+                        
+                        currentX = e.touches[0].clientX;
+                        currentY = e.touches[0].clientY;
+                        
+                        const deltaX = currentX - startX;
+                        const deltaY = currentY - startY;
+                        
+                        container.dispatchEvent(new CustomEvent('gestureMove', {
+                            detail: { deltaX, deltaY, currentX, currentY }
+                        }));
+                    },
+                    
+                    touchEnd: (e) => {
+                        if (!isDragging) return;
+                        
+                        const endX = e.changedTouches[0].clientX;
+                        const endY = e.changedTouches[0].clientY;
+                        const deltaX = endX - startX;
+                        const deltaY = endY - startY;
+                        
+                        // Detect swipe gestures
+                        const threshold = 50;
+                        const velocity = Math.abs(deltaX) / Math.abs(deltaY);
+                        
+                        if (Math.abs(deltaX) > threshold && velocity > 0.5) {
+                            const direction = deltaX > 0 ? 'right' : 'left';
+                            container.dispatchEvent(new CustomEvent('swipe', {
+                                detail: { direction, deltaX, deltaY }
+                            }));
+                        }
+                        
+                        if (Math.abs(deltaY) > threshold && velocity < 2) {
+                            const direction = deltaY > 0 ? 'down' : 'up';
+                            container.dispatchEvent(new CustomEvent('swipe', {
+                                detail: { direction, deltaX, deltaY }
+                            }));
+                        }
+                        
+                        container.dispatchEvent(new CustomEvent('gestureEnd', {
+                            detail: { endX, endY, deltaX, deltaY }
+                        }));
+                        
+                        isDragging = false;
+                    }
+                };
+                
+                container.addEventListener('touchstart', gestureHandler.touchStart, { passive: true });
+                container.addEventListener('touchmove', gestureHandler.touchMove, { passive: true });
+                container.addEventListener('touchend', gestureHandler.touchEnd, { passive: true });
+                
+                this.touchGestureHandlers.set(container, gestureHandler);
+            });
+        }
+        
+        setupPerformanceMonitoring() {
+            if (window.location.search.includes('debug=true')) {
+                this.createPerformanceMonitor();
+            }
+            
+            // Monitor page load performance
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    this.logPerformanceMetrics();
+                }, 1000);
+            });
+        }
+        
+        createPerformanceMonitor() {
+            const monitor = document.createElement('div');
+            monitor.className = 'perf-monitor';
+            monitor.innerHTML = `
+                <div>FPS: <span id="fps">0</span></div>
+                <div>Memory: <span id="memory">0</span>MB</div>
+                <div>Load: <span id="load-time">0</span>ms</div>
+            `;
+            document.body.appendChild(monitor);
+            
+            this.performanceMonitor = monitor;
+            this.startFPSMonitoring();
+        }
+        
+        startFPSMonitoring() {
+            let frames = 0;
+            let lastTime = performance.now();
+            
+            const countFPS = () => {
+                frames++;
+                const currentTime = performance.now();
+                
+                if (currentTime >= lastTime + 1000) {
+                    const fps = Math.round((frames * 1000) / (currentTime - lastTime));
+                    const fpsElement = document.getElementById('fps');
+                    if (fpsElement) {
+                        fpsElement.textContent = fps;
+                    }
+                    
+                    frames = 0;
+                    lastTime = currentTime;
+                }
+                
+                requestAnimationFrame(countFPS);
+            };
+            
+            requestAnimationFrame(countFPS);
+            
+            // Update memory usage
+            setInterval(() => {
+                if (performance.memory) {
+                    const memoryElement = document.getElementById('memory');
+                    if (memoryElement) {
+                        const used = Math.round(performance.memory.usedJSHeapSize / 1048576);
+                        memoryElement.textContent = used;
+                    }
+                }
+            }, 2000);
+        }
+        
+        logPerformanceMetrics() {
+            const navigation = performance.getEntriesByType('navigation')[0];
+            const loadTime = navigation.loadEventEnd - navigation.loadEventStart;
+            
+            console.log('📊 Performance Metrics:', {
+                loadTime: `${loadTime}ms`,
+                domContentLoaded: `${navigation.domContentLoadedEventEnd - navigation.loadEventStart}ms`,
+                firstPaint: this.getFirstPaint(),
+                largestContentfulPaint: this.getLCP()
+            });
+            
+            const loadElement = document.getElementById('load-time');
+            if (loadElement) {
+                loadElement.textContent = Math.round(loadTime);
+            }
+        }
+        
+        getFirstPaint() {
+            const paintEntries = performance.getEntriesByType('paint');
+            const firstPaint = paintEntries.find(entry => entry.name === 'first-paint');
+            return firstPaint ? `${Math.round(firstPaint.startTime)}ms` : 'N/A';
+        }
+        
+        getLCP() {
+            return new Promise((resolve) => {
+                new PerformanceObserver((entryList) => {
+                    const entries = entryList.getEntries();
+                    const lastEntry = entries[entries.length - 1];
+                    resolve(`${Math.round(lastEntry.startTime)}ms`);
+                }).observe({ entryTypes: ['largest-contentful-paint'] });
+            });
+        }
+        
+        setupAccessibilityEnhancements() {
+            // Skip links
+            this.createSkipLinks();
+            
+            // Focus management
+            this.setupFocusManagement();
+            
+            // ARIA live regions
+            this.setupLiveRegions();
+            
+            // Keyboard shortcuts
+            this.setupKeyboardShortcuts();
+        }
+        
+        createSkipLinks() {
+            const skipLink = document.createElement('a');
+            skipLink.href = '#main-content';
+            skipLink.className = 'skip-link';
+            skipLink.textContent = 'Skip to main content';
+            
+            document.body.insertBefore(skipLink, document.body.firstChild);
+            
+            // Ensure main content has id
+            const main = document.querySelector('main, [role="main"], .hero');
+            if (main && !main.id) {
+                main.id = 'main-content';
+            }
+        }
+        
+        setupFocusManagement() {
+            // Focus trap for modals and mobile nav
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Tab') {
+                    const focusableElements = this.getFocusableElements();
+                    const firstFocusable = focusableElements[0];
+                    const lastFocusable = focusableElements[focusableElements.length - 1];
+                    
+                    if (e.shiftKey) {
+                        if (document.activeElement === firstFocusable) {
+                            e.preventDefault();
+                            lastFocusable.focus();
+                        }
+                    } else {
+                        if (document.activeElement === lastFocusable) {
+                            e.preventDefault();
+                            firstFocusable.focus();
+                        }
+                    }
+                }
+            });
+        }
+        
+        getFocusableElements() {
+            const selector = 'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+            return Array.from(document.querySelectorAll(selector)).filter(el => {
+                return el.offsetWidth > 0 && el.offsetHeight > 0;
+            });
+        }
+        
+        setupLiveRegions() {
+            // Create global live region for announcements
+            if (!document.getElementById('live-region')) {
+                const liveRegion = document.createElement('div');
+                liveRegion.id = 'live-region';
+                liveRegion.setAttribute('aria-live', 'polite');
+                liveRegion.setAttribute('aria-atomic', 'true');
+                liveRegion.className = 'sr-only';
+                document.body.appendChild(liveRegion);
+            }
+        }
+        
+        announce(message) {
+            const liveRegion = document.getElementById('live-region');
+            if (liveRegion) {
+                liveRegion.textContent = message;
+                setTimeout(() => {
+                    liveRegion.textContent = '';
+                }, 1000);
+            }
+        }
+        
+        setupKeyboardShortcuts() {
+            document.addEventListener('keydown', (e) => {
+                // Alt + M: Go to main content
+                if (e.altKey && e.key === 'm') {
+                    e.preventDefault();
+                    const main = document.getElementById('main-content');
+                    if (main) {
+                        main.focus();
+                        main.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+                
+                // Alt + H: Go to header
+                if (e.altKey && e.key === 'h') {
+                    e.preventDefault();
+                    const header = document.querySelector('header');
+                    if (header) {
+                        header.scrollIntoView({ behavior: 'smooth' });
+                        const firstLink = header.querySelector('a, button');
+                        if (firstLink) firstLink.focus();
+                    }
+                }
+                
+                // Alt + F: Go to footer
+                if (e.altKey && e.key === 'f') {
+                    e.preventDefault();
+                    const footer = document.querySelector('footer');
+                    if (footer) {
+                        footer.scrollIntoView({ behavior: 'smooth' });
+                        const firstLink = footer.querySelector('a, button');
+                        if (firstLink) firstLink.focus();
+                    }
+                }
+            });
+        }
+        
+        setupKeyboardNavigation() {
+            // Enhanced keyboard navigation for custom components
+            document.addEventListener('keydown', (e) => {
+                const activeElement = document.activeElement;
+                
+                // Card navigation
+                if (activeElement.classList.contains('service-card') || 
+                    activeElement.classList.contains('testimonial-card') ||
+                    activeElement.classList.contains('portfolio-item')) {
+                    
+                    this.handleCardNavigation(e, activeElement);
+                }
+                
+                // Button group navigation
+                if (activeElement.classList.contains('filter-btn') ||
+                    activeElement.classList.contains('category-btn')) {
+                    
+                    this.handleButtonGroupNavigation(e, activeElement);
+                }
+            });
+        }
+        
+        handleCardNavigation(e, card) {
+            const cards = Array.from(document.querySelectorAll(`.${card.className.split(' ')[0]}`));
+            const currentIndex = cards.indexOf(card);
+            
+            switch (e.key) {
+                case 'ArrowRight':
+                case 'ArrowDown':
+                    e.preventDefault();
+                    const nextIndex = (currentIndex + 1) % cards.length;
+                    cards[nextIndex].focus();
+                    break;
+                    
+                case 'ArrowLeft':
+                case 'ArrowUp':
+                    e.preventDefault();
+                    const prevIndex = (currentIndex - 1 + cards.length) % cards.length;
+                    cards[prevIndex].focus();
+                    break;
+                    
+                case 'Home':
+                    e.preventDefault();
+                    cards[0].focus();
+                    break;
+                    
+                case 'End':
+                    e.preventDefault();
+                    cards[cards.length - 1].focus();
+                    break;
+            }
+        }
+        
+        handleButtonGroupNavigation(e, button) {
+            const buttons = Array.from(button.parentElement.querySelectorAll('button'));
+            const currentIndex = buttons.indexOf(button);
+            
+            switch (e.key) {
+                case 'ArrowRight':
+                    e.preventDefault();
+                    const nextIndex = (currentIndex + 1) % buttons.length;
+                    buttons[nextIndex].focus();
+                    break;
+                    
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    const prevIndex = (currentIndex - 1 + buttons.length) % buttons.length;
+                    buttons[prevIndex].focus();
+                    break;
+                    
+                case 'Home':
+                    e.preventDefault();
+                    buttons[0].focus();
+                    break;
+                    
+                case 'End':
+                    e.preventDefault();
+                    buttons[buttons.length - 1].focus();
+                    break;
+            }
+        }
+        
+        // Public API methods
+        revealElement(element) {
+            element.classList.add('revealed');
+        }
+        
+        hideElement(element) {
+            element.classList.remove('revealed');
+        }
+        
+        showLoading(element) {
+            element.classList.add('loading');
+        }
+        
+        hideLoading(element) {
+            element.classList.remove('loading');
+        }
+        
+        validateForm(form) {
+            const fields = form.querySelectorAll('.form-field');
+            let isValid = true;
+            
+            fields.forEach(field => {
+                const input = field.querySelector('input, textarea, select');
+                if (input && !this.validateField(field, input)) {
+                    isValid = false;
+                }
+            });
+            
+            return isValid;
+        }
+        
+        destroy() {
+            if (this.intersectionObserver) {
+                this.intersectionObserver.disconnect();
+            }
+            
+            if (this.imageLoadingObserver) {
+                this.imageLoadingObserver.disconnect();
+            }
+            
+            if (this.performanceMonitor) {
+                this.performanceMonitor.remove();
+            }
+            
+            this.touchGestureHandlers.clear();
+            console.log('🚀 Enterprise Enhancements destroyed');
+        }
+    }
+    
     // === MAIN APPLICATION CLASS ===
     class LuxuryApp {
         constructor() {
