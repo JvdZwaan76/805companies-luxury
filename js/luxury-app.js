@@ -1,1601 +1,2094 @@
-/**
- * 805 LifeGuard - 
- * Version: 6.0 - Complete Rewrite with Professional Architecture
- * Clean, lightweight, and enterprise-level functionality
+/* 
+ * 805 LifeGuard - Luxury Theme CSS (Enterprise Design System)
+ * Version: 6.0 - Complete Rewrite with Professional Country Club Aesthetic
+ * Inspired by premium golf tournament and country club design standards
  */
 
-(function() {
-    'use strict';
+/* === CSS RESET === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* === DESIGN TOKENS (Enterprise Color Palette) === */
+:root {
+    /* Primary Brand Colors - Professional Country Club Palette */
+    --color-primary-darkest: #0B2922;     /* Deep Forest Green */
+    --color-primary-dark: #1B4B43;        /* Forest Green */
+    --color-primary: #2D6B64;             /* Country Club Green */
+    --color-primary-light: #4A8B85;       /* Sage Green */
+    --color-primary-lightest: #E8F5F3;    /* Mint Cream */
     
-    // === ENTERPRISE CONFIGURATION ===
-    const CONFIG = {
-        // Contact Information
-        PHONE_NUMBER: '(805) 367-6432',
-        EMAIL: 'concierge@805lifeguard.com',
-        
-        // Portal URLs
-        PORTAL_DOMAINS: {
-            CLIENT: 'https://client.805companies.com',
-            ADMIN: 'https://admin.805companies.com',
-            STAFF: 'https://staff.805companies.com'
-        },
-        
-        // Carousel Settings
-        CAROUSEL: {
-            AUTO_PLAY_INTERVAL: 6000,
-            TRANSITION_DURATION: 1500,
-            PAUSE_ON_HOVER: true,
-            PAUSE_ON_FOCUS: true
-        },
-        
-        // Performance Settings
-        PERFORMANCE: {
-            DEBOUNCE_DELAY: 250,
-            THROTTLE_DELAY: 16,
-            INTERSECTION_THRESHOLD: 0.1,
-            INTERSECTION_ROOT_MARGIN: '0px 0px -50px 0px'
-        },
-        
-        // Breakpoints (matches CSS)
-        BREAKPOINTS: {
-            SM: 640,
-            MD: 768,
-            LG: 1024,
-            XL: 1280,
-            XXL: 1536
-        }
-    };
+    /* Secondary Colors - Elegant Gold Accents */
+    --color-secondary-darkest: #8B6914;   /* Dark Gold */
+    --color-secondary-dark: #B8860B;      /* Deep Gold */
+    --color-secondary: #D4AF37;           /* Classic Gold */
+    --color-secondary-light: #E8C547;     /* Light Gold */
+    --color-secondary-lightest: #FDF8E8;  /* Cream Gold */
     
-    // === UTILITY FUNCTIONS ===
-    const Utils = {
-        /**
-         * Debounce function execution
-         * @param {Function} func - Function to debounce
-         * @param {number} wait - Wait time in milliseconds
-         * @returns {Function} Debounced function
-         */
-        debounce(func, wait = CONFIG.PERFORMANCE.DEBOUNCE_DELAY) {
-            let timeout;
-            return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func.apply(this, args);
-                };
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
-            };
-        },
+    /* Neutral Colors - Sophisticated Grays */
+    --color-neutral-darkest: #1C1C1E;     /* Charcoal */
+    --color-neutral-dark: #2C2C2E;        /* Dark Gray */
+    --color-neutral: #48484A;             /* Medium Gray */
+    --color-neutral-light: #8E8E93;       /* Light Gray */
+    --color-neutral-lighter: #C7C7CC;     /* Lighter Gray */
+    --color-neutral-lightest: #F2F2F7;    /* Whisper Gray */
+    
+    /* Semantic Colors */
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+    --color-success: #28A745;
+    --color-warning: #FFC107;
+    --color-danger: #DC3545;
+    --color-info: #17A2B8;
+    
+    /* Background Colors */
+    --color-bg-primary: var(--color-white);
+    --color-bg-secondary: var(--color-neutral-lightest);
+    --color-bg-tertiary: var(--color-primary-lightest);
+    --color-bg-accent: var(--color-secondary-lightest);
+    
+    /* Text Colors */
+    --color-text-primary: var(--color-neutral-darkest);
+    --color-text-secondary: var(--color-neutral);
+    --color-text-tertiary: var(--color-neutral-light);
+    --color-text-inverse: var(--color-white);
+    --color-text-accent: var(--color-primary);
+    
+    /* Border Colors */
+    --color-border-primary: var(--color-neutral-lighter);
+    --color-border-secondary: var(--color-neutral-lightest);
+    --color-border-accent: var(--color-primary);
+    
+    /* Typography - Premium Font Stack */
+    --font-family-serif: 'Playfair Display', 'Times New Roman', serif;
+    --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    
+    /* Font Weights */
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+    
+    /* Font Sizes - Type Scale */
+    --font-size-xs: 0.75rem;      /* 12px */
+    --font-size-sm: 0.875rem;     /* 14px */
+    --font-size-base: 1rem;       /* 16px */
+    --font-size-lg: 1.125rem;     /* 18px */
+    --font-size-xl: 1.25rem;      /* 20px */
+    --font-size-2xl: 1.5rem;      /* 24px */
+    --font-size-3xl: 1.875rem;    /* 30px */
+    --font-size-4xl: 2.25rem;     /* 36px */
+    --font-size-5xl: 3rem;        /* 48px */
+    --font-size-6xl: 3.75rem;     /* 60px */
+    --font-size-7xl: 4.5rem;      /* 72px */
+    
+    /* Line Heights */
+    --line-height-tight: 1.25;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.625;
+    --line-height-loose: 2;
+    
+    /* Spacing Scale - 8px Grid System */
+    --spacing-0: 0;
+    --spacing-1: 0.25rem;   /* 4px */
+    --spacing-2: 0.5rem;    /* 8px */
+    --spacing-3: 0.75rem;   /* 12px */
+    --spacing-4: 1rem;      /* 16px */
+    --spacing-5: 1.25rem;   /* 20px */
+    --spacing-6: 1.5rem;    /* 24px */
+    --spacing-8: 2rem;      /* 32px */
+    --spacing-10: 2.5rem;   /* 40px */
+    --spacing-12: 3rem;     /* 48px */
+    --spacing-16: 4rem;     /* 64px */
+    --spacing-20: 5rem;     /* 80px */
+    --spacing-24: 6rem;     /* 96px */
+    --spacing-32: 8rem;     /* 128px */
+    --spacing-40: 10rem;    /* 160px */
+    
+    /* Border Radius */
+    --radius-none: 0;
+    --radius-sm: 0.125rem;   /* 2px */
+    --radius-base: 0.25rem;  /* 4px */
+    --radius-md: 0.375rem;   /* 6px */
+    --radius-lg: 0.5rem;     /* 8px */
+    --radius-xl: 0.75rem;    /* 12px */
+    --radius-2xl: 1rem;      /* 16px */
+    --radius-3xl: 1.5rem;    /* 24px */
+    --radius-full: 9999px;
+    
+    /* Shadows - Elevation System */
+    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-base: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+    
+    /* Transitions */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Z-Index Scale */
+    --z-index-hide: -1;
+    --z-index-auto: auto;
+    --z-index-base: 0;
+    --z-index-docked: 10;
+    --z-index-dropdown: 1000;
+    --z-index-sticky: 1020;
+    --z-index-banner: 1030;
+    --z-index-overlay: 1040;
+    --z-index-modal: 1050;
+    --z-index-popover: 1060;
+    --z-index-skipLink: 1070;
+    --z-index-toast: 1080;
+    --z-index-tooltip: 1090;
+    
+    /* Breakpoints */
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+    --breakpoint-2xl: 1536px;
+    
+    /* Container Max Widths */
+    --container-sm: 640px;
+    --container-md: 768px;
+    --container-lg: 1024px;
+    --container-xl: 1280px;
+    --container-2xl: 1400px;
+}
 
-        /**
-         * Throttle function execution
-         * @param {Function} func - Function to throttle
-         * @param {number} limit - Limit in milliseconds
-         * @returns {Function} Throttled function
-         */
-        throttle(func, limit = CONFIG.PERFORMANCE.THROTTLE_DELAY) {
-            let inThrottle;
-            return function(...args) {
-                if (!inThrottle) {
-                    func.apply(this, args);
-                    inThrottle = true;
-                    setTimeout(() => inThrottle = false, limit);
-                }
-            };
-        },
+/* === BASE STYLES === */
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+}
 
-        /**
-         * Check if device is mobile
-         * @returns {boolean} True if mobile
-         */
-        isMobile() {
-            return window.innerWidth <= CONFIG.BREAKPOINTS.MD;
-        },
+body {
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    min-height: 100%;
+}
 
-        /**
-         * Check if device is tablet
-         * @returns {boolean} True if tablet
-         */
-        isTablet() {
-            return window.innerWidth > CONFIG.BREAKPOINTS.MD && window.innerWidth <= CONFIG.BREAKPOINTS.LG;
-        },
+/* === TYPOGRAPHY SYSTEM === */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-serif);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-4);
+    letter-spacing: -0.025em;
+}
 
-        /**
-         * Check if device is desktop
-         * @returns {boolean} True if desktop
-         */
-        isDesktop() {
-            return window.innerWidth > CONFIG.BREAKPOINTS.LG;
-        },
+h1 {
+    font-size: clamp(var(--font-size-4xl), 5vw, var(--font-size-6xl));
+    font-weight: var(--font-weight-extrabold);
+}
 
-        /**
-         * Get current breakpoint
-         * @returns {string} Current breakpoint
-         */
-        getCurrentBreakpoint() {
-            const width = window.innerWidth;
-            if (width < CONFIG.BREAKPOINTS.SM) return 'xs';
-            if (width < CONFIG.BREAKPOINTS.MD) return 'sm';
-            if (width < CONFIG.BREAKPOINTS.LG) return 'md';
-            if (width < CONFIG.BREAKPOINTS.XL) return 'lg';
-            if (width < CONFIG.BREAKPOINTS.XXL) return 'xl';
-            return 'xxl';
-        },
+h2 {
+    font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-5xl));
+    font-weight: var(--font-weight-bold);
+}
 
-        /**
-         * Preload image
-         * @param {string} src - Image source
-         * @returns {Promise} Promise that resolves when image loads
-         */
-        preloadImage(src) {
-            return new Promise((resolve, reject) => {
-                const img = new Image();
-                img.onload = () => resolve(img);
-                img.onerror = () => reject(new Error(`Failed to load image: ${src}`));
-                img.src = src;
-            });
-        },
+h3 {
+    font-size: clamp(var(--font-size-2xl), 3vw, var(--font-size-4xl));
+    font-weight: var(--font-weight-bold);
+}
 
-        /**
-         * Check if element is in viewport
-         * @param {Element} element - Element to check
-         * @param {number} threshold - Threshold percentage
-         * @returns {boolean} True if in viewport
-         */
-        isInViewport(element, threshold = 0.1) {
-            const rect = element.getBoundingClientRect();
-            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-            const windowWidth = window.innerWidth || document.documentElement.clientWidth;
-            
-            const vertInView = (rect.top <= windowHeight * (1 - threshold)) && ((rect.top + rect.height) >= windowHeight * threshold);
-            const horInView = (rect.left <= windowWidth * (1 - threshold)) && ((rect.left + rect.width) >= windowWidth * threshold);
-            
-            return vertInView && horInView;
-        },
+h4 {
+    font-size: clamp(var(--font-size-xl), 2.5vw, var(--font-size-3xl));
+    font-weight: var(--font-weight-semibold);
+}
 
-        /**
-         * Smooth scroll to element
-         * @param {Element} element - Target element
-         * @param {number} offset - Offset from top
-         */
-        scrollToElement(element, offset = 0) {
-            const headerHeight = document.getElementById('header')?.offsetHeight || 120;
-            const targetPosition = element.offsetTop - headerHeight - offset;
-            
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        },
+h5 {
+    font-size: clamp(var(--font-size-lg), 2vw, var(--font-size-2xl));
+    font-weight: var(--font-weight-semibold);
+}
 
-        /**
-         * Add event listener with cleanup tracking
-         * @param {Element} element - Target element
-         * @param {string} event - Event type
-         * @param {Function} handler - Event handler
-         * @param {Object} options - Event options
-         * @returns {Function} Cleanup function
-         */
-        addEventListenerWithCleanup(element, event, handler, options = {}) {
-            element.addEventListener(event, handler, options);
-            return () => element.removeEventListener(event, handler, options);
-        },
+h6 {
+    font-size: clamp(var(--font-size-base), 1.5vw, var(--font-size-xl));
+    font-weight: var(--font-weight-medium);
+}
 
-        /**
-         * Log with timestamp and context
-         * @param {string} level - Log level
-         * @param {string} message - Log message
-         * @param {*} data - Additional data
-         */
-        log(level, message, data = null) {
-            if (process?.env?.NODE_ENV === 'production') return;
-            
-            const timestamp = new Date().toISOString();
-            const logMessage = `[${timestamp}] [${level.toUpperCase()}] 805 LifeGuard: ${message}`;
-            
-            switch (level) {
-                case 'error':
-                    console.error(logMessage, data);
-                    break;
-                case 'warn':
-                    console.warn(logMessage, data);
-                    break;
-                case 'info':
-                    console.info(logMessage, data);
-                    break;
-                default:
-                    console.log(logMessage, data);
-            }
-        }
-    };
+p {
+    margin-bottom: var(--spacing-4);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
+}
 
-    // === WEBP DETECTION SERVICE ===
-    class WebPDetectionService {
-        constructor() {
-            this.isSupported = null;
-            this.detectionPromise = null;
-        }
+.lead-text {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-primary);
+}
 
-        /**
-         * Detect WebP support
-         * @returns {Promise<boolean>} WebP support status
-         */
-        async detect() {
-            if (this.detectionPromise) {
-                return this.detectionPromise;
-            }
+/* === LAYOUT COMPONENTS === */
+.container {
+    width: 100%;
+    max-width: var(--container-xl);
+    margin: 0 auto;
+    padding-left: var(--spacing-4);
+    padding-right: var(--spacing-4);
+}
 
-            this.detectionPromise = new Promise((resolve) => {
-                const webP = new Image();
-                webP.onload = webP.onerror = () => {
-                    this.isSupported = webP.height === 2;
-                    this.updateDocumentClasses();
-                    Utils.log('info', `WebP Support: ${this.isSupported ? 'Enabled' : 'Disabled'}`);
-                    resolve(this.isSupported);
-                };
-                webP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
-            });
-
-            return this.detectionPromise;
-        }
-
-        /**
-         * Update document classes based on WebP support
-         */
-        updateDocumentClasses() {
-            const { documentElement } = document;
-            if (this.isSupported) {
-                documentElement.classList.add('webp');
-                documentElement.classList.remove('no-webp');
-            } else {
-                documentElement.classList.add('no-webp');
-                documentElement.classList.remove('webp');
-            }
-        }
-
-        /**
-         * Get optimized image path
-         * @param {string} imagePath - Original image path
-         * @returns {string} Optimized image path
-         */
-        getOptimizedImagePath(imagePath) {
-            if (this.isSupported && imagePath && /\.(jpg|jpeg|png)$/i.test(imagePath)) {
-                return imagePath.replace(/\.(jpg|jpeg|png)$/i, '.webp');
-            }
-            return imagePath;
-        }
+@media (min-width: 640px) {
+    .container {
+        padding-left: var(--spacing-6);
+        padding-right: var(--spacing-6);
     }
+}
 
-    // === CAROUSEL CONTROLLER ===
-    class CarouselController {
-        constructor(container) {
-            this.container = container;
-            this.slides = container.querySelectorAll('.carousel-slide');
-            this.indicators = container.querySelectorAll('.indicator');
-            this.prevBtn = document.getElementById('carouselPrev');
-            this.nextBtn = document.getElementById('carouselNext');
-            
-            this.currentSlide = 0;
-            this.totalSlides = this.slides.length;
-            this.autoPlayTimer = null;
-            this.isPlaying = true;
-            this.isPaused = false;
-            this.isTransitioning = false;
-            this.cleanupFunctions = [];
-            
-            this.init();
-        }
-
-        /**
-         * Initialize carousel
-         */
-        async init() {
-            if (this.totalSlides === 0) {
-                Utils.log('warn', 'No carousel slides found');
-                return;
-            }
-
-            Utils.log('info', 'Initializing Carousel Controller...');
-
-            try {
-                await this.preloadImages();
-                this.setupResponsiveBackgrounds();
-                this.setupEventListeners();
-                this.setupIntersectionObserver();
-                this.startAutoPlay();
-                this.handleResize();
-                
-                Utils.log('info', 'Carousel Controller initialized successfully');
-            } catch (error) {
-                Utils.log('error', 'Failed to initialize carousel', error);
-            }
-        }
-
-        /**
-         * Preload carousel images
-         */
-        async preloadImages() {
-            const imagePromises = [];
-            
-            this.slides.forEach(slide => {
-                const desktopSrc = slide.dataset.bgDesktop;
-                const mobileSrc = slide.dataset.bgMobile;
-                
-                if (desktopSrc) {
-                    imagePromises.push(Utils.preloadImage(desktopSrc));
-                }
-                if (mobileSrc && mobileSrc !== desktopSrc) {
-                    imagePromises.push(Utils.preloadImage(mobileSrc));
-                }
-            });
-
-            try {
-                await Promise.allSettled(imagePromises);
-                Utils.log('info', 'Carousel images preloaded');
-            } catch (error) {
-                Utils.log('warn', 'Some carousel images failed to preload', error);
-            }
-        }
-
-        /**
-         * Setup responsive backgrounds
-         */
-        setupResponsiveBackgrounds() {
-            this.slides.forEach(slide => {
-                this.updateSlideBackground(slide);
-            });
-        }
-
-        /**
-         * Update individual slide background
-         * @param {Element} slide - Slide element
-         */
-        updateSlideBackground(slide) {
-            const desktopSrc = slide.dataset.bgDesktop;
-            const mobileSrc = slide.dataset.bgMobile;
-            
-            let selectedSrc;
-            if (Utils.isMobile() && mobileSrc) {
-                selectedSrc = mobileSrc;
-            } else if (desktopSrc) {
-                selectedSrc = desktopSrc;
-            }
-
-            if (selectedSrc) {
-                slide.style.backgroundImage = `url(${selectedSrc})`;
-            }
-        }
-
-        /**
-         * Setup event listeners
-         */
-        setupEventListeners() {
-            // Navigation buttons
-            if (this.prevBtn) {
-                const cleanup = Utils.addEventListenerWithCleanup(
-                    this.prevBtn, 'click', () => this.prevSlide()
-                );
-                this.cleanupFunctions.push(cleanup);
-            }
-
-            if (this.nextBtn) {
-                const cleanup = Utils.addEventListenerWithCleanup(
-                    this.nextBtn, 'click', () => this.nextSlide()
-                );
-                this.cleanupFunctions.push(cleanup);
-            }
-
-            // Indicators
-            this.indicators.forEach((indicator, index) => {
-                const clickCleanup = Utils.addEventListenerWithCleanup(
-                    indicator, 'click', () => this.goToSlide(index)
-                );
-                this.cleanupFunctions.push(clickCleanup);
-
-                const keyCleanup = Utils.addEventListenerWithCleanup(
-                    indicator, 'keydown', (e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            this.goToSlide(index);
-                        }
-                    }
-                );
-                this.cleanupFunctions.push(keyCleanup);
-            });
-
-            // Pause on hover and focus
-            if (CONFIG.CAROUSEL.PAUSE_ON_HOVER) {
-                const enterCleanup = Utils.addEventListenerWithCleanup(
-                    this.container, 'mouseenter', () => this.pauseAutoPlay()
-                );
-                const leaveCleanup = Utils.addEventListenerWithCleanup(
-                    this.container, 'mouseleave', () => this.resumeAutoPlay()
-                );
-                this.cleanupFunctions.push(enterCleanup, leaveCleanup);
-            }
-
-            if (CONFIG.CAROUSEL.PAUSE_ON_FOCUS) {
-                const focusCleanup = Utils.addEventListenerWithCleanup(
-                    this.container, 'focusin', () => this.pauseAutoPlay()
-                );
-                const blurCleanup = Utils.addEventListenerWithCleanup(
-                    this.container, 'focusout', () => this.resumeAutoPlay()
-                );
-                this.cleanupFunctions.push(focusCleanup, blurCleanup);
-            }
-
-            // Keyboard navigation
-            const keyboardCleanup = Utils.addEventListenerWithCleanup(
-                document, 'keydown', (e) => {
-                    if (!Utils.isInViewport(this.container)) return;
-
-                    switch (e.key) {
-                        case 'ArrowLeft':
-                            e.preventDefault();
-                            this.prevSlide();
-                            break;
-                        case 'ArrowRight':
-                            e.preventDefault();
-                            this.nextSlide();
-                            break;
-                        case ' ':
-                            e.preventDefault();
-                            this.toggleAutoPlay();
-                            break;
-                    }
-                }
-            );
-            this.cleanupFunctions.push(keyboardCleanup);
-
-            // Touch/swipe support
-            this.setupTouchEvents();
-
-            // Window resize
-            const resizeCleanup = Utils.addEventListenerWithCleanup(
-                window, 'resize', Utils.debounce(() => this.handleResize())
-            );
-            this.cleanupFunctions.push(resizeCleanup);
-
-            // Visibility change
-            const visibilityCleanup = Utils.addEventListenerWithCleanup(
-                document, 'visibilitychange', () => {
-                    if (document.hidden) {
-                        this.pauseAutoPlay();
-                    } else {
-                        this.resumeAutoPlay();
-                    }
-                }
-            );
-            this.cleanupFunctions.push(visibilityCleanup);
-        }
-
-        /**
-         * Setup touch events for swipe support
-         */
-        setupTouchEvents() {
-            let startX = 0;
-            let startY = 0;
-            let isDragging = false;
-
-            const touchStartCleanup = Utils.addEventListenerWithCleanup(
-                this.container, 'touchstart', (e) => {
-                    startX = e.touches[0].clientX;
-                    startY = e.touches[0].clientY;
-                    isDragging = true;
-                    this.pauseAutoPlay();
-                }, { passive: true }
-            );
-
-            const touchMoveCleanup = Utils.addEventListenerWithCleanup(
-                this.container, 'touchmove', (e) => {
-                    if (!isDragging) return;
-
-                    const deltaX = Math.abs(e.touches[0].clientX - startX);
-                    const deltaY = Math.abs(e.touches[0].clientY - startY);
-
-                    if (deltaX > deltaY) {
-                        e.preventDefault();
-                    }
-                }, { passive: false }
-            );
-
-            const touchEndCleanup = Utils.addEventListenerWithCleanup(
-                this.container, 'touchend', (e) => {
-                    if (!isDragging) return;
-
-                    const endX = e.changedTouches[0].clientX;
-                    const deltaX = startX - endX;
-                    const threshold = 50;
-
-                    if (Math.abs(deltaX) > threshold) {
-                        if (deltaX > 0) {
-                            this.nextSlide();
-                        } else {
-                            this.prevSlide();
-                        }
-                    }
-
-                    isDragging = false;
-                    this.resumeAutoPlay();
-                }, { passive: true }
-            );
-
-            this.cleanupFunctions.push(touchStartCleanup, touchMoveCleanup, touchEndCleanup);
-        }
-
-        /**
-         * Setup intersection observer for auto-play
-         */
-        setupIntersectionObserver() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        this.resumeAutoPlay();
-                    } else {
-                        this.pauseAutoPlay();
-                    }
-                });
-            }, {
-                threshold: CONFIG.PERFORMANCE.INTERSECTION_THRESHOLD
-            });
-
-            observer.observe(this.container);
-        }
-
-        /**
-         * Handle window resize
-         */
-        handleResize() {
-            this.setupResponsiveBackgrounds();
-        }
-
-        /**
-         * Go to specific slide
-         * @param {number} index - Slide index
-         * @param {string} direction - Direction of transition
-         */
-        goToSlide(index, direction = 'auto') {
-            if (this.isTransitioning || index === this.currentSlide) return;
-
-            const previousSlide = this.currentSlide;
-            this.currentSlide = index;
-            this.isTransitioning = true;
-
-            // Update slides
-            this.slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-            });
-
-            // Update indicators
-            this.indicators.forEach((indicator, i) => {
-                indicator.classList.toggle('active', i === index);
-                indicator.setAttribute('aria-selected', i === index);
-            });
-
-            // Update ARIA labels
-            this.updateAriaLabels();
-
-            // Reset transition flag
-            setTimeout(() => {
-                this.isTransitioning = false;
-            }, CONFIG.CAROUSEL.TRANSITION_DURATION);
-
-            // Dispatch custom event
-            this.container.dispatchEvent(new CustomEvent('carouselSlideChange', {
-                detail: {
-                    currentSlide: this.currentSlide,
-                    previousSlide: previousSlide,
-                    direction: direction,
-                    totalSlides: this.totalSlides
-                }
-            }));
-        }
-
-        /**
-         * Go to next slide
-         */
-        nextSlide() {
-            const nextIndex = (this.currentSlide + 1) % this.totalSlides;
-            this.goToSlide(nextIndex, 'next');
-        }
-
-        /**
-         * Go to previous slide
-         */
-        prevSlide() {
-            const prevIndex = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
-            this.goToSlide(prevIndex, 'prev');
-        }
-
-        /**
-         * Start auto-play
-         */
-        startAutoPlay() {
-            if (!this.isPlaying || this.totalSlides <= 1) return;
-
-            this.autoPlayTimer = setInterval(() => {
-                if (!this.isPaused && !this.isTransitioning) {
-                    this.nextSlide();
-                }
-            }, CONFIG.CAROUSEL.AUTO_PLAY_INTERVAL);
-        }
-
-        /**
-         * Stop auto-play
-         */
-        stopAutoPlay() {
-            if (this.autoPlayTimer) {
-                clearInterval(this.autoPlayTimer);
-                this.autoPlayTimer = null;
-            }
-        }
-
-        /**
-         * Pause auto-play
-         */
-        pauseAutoPlay() {
-            this.isPaused = true;
-        }
-
-        /**
-         * Resume auto-play
-         */
-        resumeAutoPlay() {
-            if (Utils.isInViewport(this.container) && !document.hidden) {
-                this.isPaused = false;
-            }
-        }
-
-        /**
-         * Toggle auto-play
-         */
-        toggleAutoPlay() {
-            if (this.isPlaying) {
-                this.stopAutoPlay();
-                this.isPlaying = false;
-            } else {
-                this.startAutoPlay();
-                this.isPlaying = true;
-            }
-        }
-
-        /**
-         * Update ARIA labels
-         */
-        updateAriaLabels() {
-            this.slides.forEach((slide, i) => {
-                slide.setAttribute('aria-hidden', i !== this.currentSlide);
-            });
-        }
-
-        /**
-         * Destroy carousel
-         */
-        destroy() {
-            this.stopAutoPlay();
-            this.cleanupFunctions.forEach(cleanup => cleanup());
-            this.cleanupFunctions = [];
-            Utils.log('info', 'Carousel destroyed');
-        }
+@media (min-width: 1024px) {
+    .container {
+        padding-left: var(--spacing-8);
+        padding-right: var(--spacing-8);
     }
+}
 
-    // === NAVIGATION CONTROLLER ===
-    class NavigationController {
-        constructor() {
-            this.header = document.getElementById('header');
-            this.mobileToggle = document.getElementById('mobileToggle');
-            this.mobileNav = document.getElementById('mobileNav');
-            this.mobileNavClose = document.getElementById('mobileNavClose');
-            this.body = document.body;
-            this.isOpen = false;
-            this.scrollPosition = 0;
-            this.cleanupFunctions = [];
+/* === HEADER SYSTEM === */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-index-sticky);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--color-border-primary);
+    transition: var(--transition-normal);
+}
 
-            this.init();
-        }
+.header.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: var(--shadow-base);
+}
 
-        /**
-         * Initialize navigation
-         */
-        init() {
-            Utils.log('info', 'Initializing Navigation Controller...');
+/* Header Top Bar */
+.header-top {
+    background: linear-gradient(135deg, #0A1628, #1B2B42);
+    color: var(--color-text-inverse);
+    padding: var(--spacing-2) 0;
+    font-size: var(--font-size-sm);
+}
 
-            try {
-                this.setupEventListeners();
-                this.setupScrollEffects();
-                this.updateActiveLinks();
-                this.updatePortalLinks();
-                
-                Utils.log('info', 'Navigation Controller initialized successfully');
-            } catch (error) {
-                Utils.log('error', 'Failed to initialize navigation', error);
-            }
-        }
+.header-top-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-4);
+}
 
-        /**
-         * Setup event listeners
-         */
-        setupEventListeners() {
-            if (!this.mobileToggle || !this.mobileNav) {
-                Utils.log('warn', 'Mobile navigation elements not found');
-                return;
-            }
+.header-top-left {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    font-weight: var(--font-weight-medium);
+}
 
-            // Mobile toggle
-            const toggleCleanup = Utils.addEventListenerWithCleanup(
-                this.mobileToggle, 'click', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    this.toggleMobileNav();
-                }
-            );
-            this.cleanupFunctions.push(toggleCleanup);
+.header-top-right {
+    display: flex;
+    gap: var(--spacing-6);
+}
 
-            // Mobile nav close
-            if (this.mobileNavClose) {
-                const closeCleanup = Utils.addEventListenerWithCleanup(
-                    this.mobileNavClose, 'click', (e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        this.closeMobileNav();
-                    }
-                );
-                this.cleanupFunctions.push(closeCleanup);
-            }
+.header-contact {
+    color: var(--color-text-inverse);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    transition: var(--transition-fast);
+    font-weight: var(--font-weight-medium);
+    padding: var(--spacing-1) var(--spacing-2);
+    border-radius: var(--radius-base);
+}
 
-            // Mobile nav links
-            const mobileLinks = this.mobileNav.querySelectorAll('.mobile-nav-link');
-            mobileLinks.forEach(link => {
-                const linkCleanup = Utils.addEventListenerWithCleanup(
-                    link, 'click', () => {
-                        setTimeout(() => this.closeMobileNav(), 100);
-                    }
-                );
-                this.cleanupFunctions.push(linkCleanup);
-            });
+.header-contact:hover {
+    color: var(--color-secondary-light);
+    background: rgba(255, 255, 255, 0.1);
+}
 
-            // Close on outside click
-            const outsideClickCleanup = Utils.addEventListenerWithCleanup(
-                document, 'click', (e) => {
-                    if (this.isOpen && 
-                        !this.mobileNav.contains(e.target) && 
-                        !this.mobileToggle.contains(e.target)) {
-                        this.closeMobileNav();
-                    }
-                }
-            );
-            this.cleanupFunctions.push(outsideClickCleanup);
-
-            // Close on escape key
-            const escapeCleanup = Utils.addEventListenerWithCleanup(
-                document, 'keydown', (e) => {
-                    if (e.key === 'Escape' && this.isOpen) {
-                        this.closeMobileNav();
-                    }
-                }
-            );
-            this.cleanupFunctions.push(escapeCleanup);
-
-            // Close on window resize
-            const resizeCleanup = Utils.addEventListenerWithCleanup(
-                window, 'resize', Utils.debounce(() => {
-                    if (window.innerWidth > CONFIG.BREAKPOINTS.MD && this.isOpen) {
-                        this.closeMobileNav();
-                    }
-                })
-            );
-            this.cleanupFunctions.push(resizeCleanup);
-        }
-
-        /**
-         * Toggle mobile navigation
-         */
-        toggleMobileNav() {
-            if (this.isOpen) {
-                this.closeMobileNav();
-            } else {
-                this.openMobileNav();
-            }
-        }
-
-        /**
-         * Open mobile navigation
-         */
-        openMobileNav() {
-            Utils.log('info', 'Opening mobile navigation');
-            
-            this.isOpen = true;
-            this.scrollPosition = window.pageYOffset;
-
-            // Add classes
-            this.mobileToggle.classList.add('active');
-            this.mobileToggle.setAttribute('aria-expanded', 'true');
-            this.mobileNav.classList.add('active');
-            this.mobileNav.setAttribute('aria-hidden', 'false');
-            this.body.classList.add('nav-open');
-
-            // Lock body scroll
-            this.body.style.position = 'fixed';
-            this.body.style.top = `-${this.scrollPosition}px`;
-            this.body.style.width = '100%';
-
-            // Focus management
-            setTimeout(() => {
-                const firstLink = this.mobileNav.querySelector('.mobile-nav-link');
-                if (firstLink) {
-                    firstLink.focus();
-                }
-            }, 300);
-        }
-
-        /**
-         * Close mobile navigation
-         */
-        closeMobileNav() {
-            Utils.log('info', 'Closing mobile navigation');
-            
-            this.isOpen = false;
-
-            // Remove classes
-            this.mobileToggle.classList.remove('active');
-            this.mobileToggle.setAttribute('aria-expanded', 'false');
-            this.mobileNav.classList.remove('active');
-            this.mobileNav.setAttribute('aria-hidden', 'true');
-            this.body.classList.remove('nav-open');
-
-            // Restore body scroll
-            this.body.style.position = '';
-            this.body.style.top = '';
-            this.body.style.width = '';
-
-            // Restore scroll position
-            window.scrollTo(0, this.scrollPosition);
-        }
-
-        /**
-         * Setup scroll effects
-         */
-        setupScrollEffects() {
-            if (!this.header) return;
-
-            const handleScroll = Utils.throttle(() => {
-                const scrollY = window.pageYOffset;
-                
-                if (scrollY > 50) {
-                    this.header.classList.add('scrolled');
-                } else {
-                    this.header.classList.remove('scrolled');
-                }
-            });
-
-            const scrollCleanup = Utils.addEventListenerWithCleanup(
-                window, 'scroll', handleScroll, { passive: true }
-            );
-            this.cleanupFunctions.push(scrollCleanup);
-        }
-
-        /**
-         * Update active navigation links
-         */
-        updateActiveLinks() {
-            const currentPath = window.location.pathname;
-            const currentPage = currentPath.split('/').pop() || 'index.html';
-
-            const allLinks = [
-                ...document.querySelectorAll('.nav-link'),
-                ...document.querySelectorAll('.mobile-nav-link')
-            ];
-
-            allLinks.forEach(link => {
-                const href = link.getAttribute('href');
-                if (href) {
-                    const isActive = (href === '/' && (currentPage === '' || currentPage === 'index.html')) ||
-                                   (href !== '/' && href.includes(currentPage.replace('.html', '')));
-                    
-                    if (isActive) {
-                        link.classList.add('active');
-                    }
-                }
-            });
-        }
-
-        /**
-         * Update portal links
-         */
-        updatePortalLinks() {
-            const portalLinks = document.querySelectorAll(
-                '.portal-btn, .mobile-portal-btn, .footer-portal-btn, [href*="portal"]'
-            );
-
-            portalLinks.forEach(link => {
-                const text = link.textContent.toLowerCase();
-
-                if (text.includes('client')) {
-                    link.href = CONFIG.PORTAL_DOMAINS.CLIENT;
-                } else if (text.includes('admin')) {
-                    link.href = CONFIG.PORTAL_DOMAINS.ADMIN;
-                } else if (text.includes('staff')) {
-                    link.href = CONFIG.PORTAL_DOMAINS.STAFF;
-                }
-
-                link.setAttribute('target', '_blank');
-                link.setAttribute('rel', 'noopener noreferrer');
-            });
-        }
-
-        /**
-         * Destroy navigation
-         */
-        destroy() {
-            this.cleanupFunctions.forEach(cleanup => cleanup());
-            this.cleanupFunctions = [];
-            Utils.log('info', 'Navigation destroyed');
-        }
+@media (max-width: 768px) {
+    .header-top {
+        display: none;
     }
+}
 
-    // === ANIMATION CONTROLLER ===
-    class AnimationController {
-        constructor() {
-            this.observers = [];
-            this.init();
-        }
+/* Main Navigation */
+.navbar {
+    padding: var(--spacing-4) 0;
+}
 
-        /**
-         * Initialize animations
-         */
-        init() {
-            Utils.log('info', 'Initializing Animation Controller...');
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-8);
+}
 
-            try {
-                this.setupScrollAnimations();
-                this.setupHoverEffects();
-                this.setupHeroAnimations();
-                
-                Utils.log('info', 'Animation Controller initialized successfully');
-            } catch (error) {
-                Utils.log('error', 'Failed to initialize animations', error);
-            }
-        }
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    text-decoration: none;
+    transition: var(--transition-fast);
+    flex-shrink: 0;
+}
 
-        /**
-         * Setup scroll-triggered animations
-         */
-        setupScrollAnimations() {
-            const observerOptions = {
-                threshold: CONFIG.PERFORMANCE.INTERSECTION_THRESHOLD,
-                rootMargin: CONFIG.PERFORMANCE.INTERSECTION_ROOT_MARGIN
-            };
+.logo:hover {
+    transform: translateY(-1px);
+}
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('fade-in-up');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
+.logo-img {
+    height: 64px;
+    width: auto;
+    border-radius: var(--radius-lg);
+}
 
-            // Observe elements
-            const elements = document.querySelectorAll(
-                '.service-card, .testimonial-card, .team-member, .coverage-card, .feature-item'
-            );
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
 
-            elements.forEach(el => observer.observe(el));
-            this.observers.push(observer);
-        }
+.logo-name {
+    font-family: var(--font-family-serif);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    line-height: 1;
+    letter-spacing: -0.025em;
+}
 
-        /**
-         * Setup hover effects
-         */
-        setupHoverEffects() {
-            // Service cards
-            this.setupCardHoverEffects('.service-card', -8);
-            
-            // Team members
-            this.setupCardHoverEffects('.team-member', -8);
-            
-            // Buttons
-            this.setupButtonHoverEffects();
-        }
+.logo-tagline {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
 
-        /**
-         * Setup card hover effects
-         * @param {string} selector - Card selector
-         * @param {number} translateY - Transform Y value
-         */
-        setupCardHoverEffects(selector, translateY) {
-            const cards = document.querySelectorAll(selector);
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = `translateY(${translateY}px)`;
-                });
+/* Desktop Navigation */
+.nav-desktop {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-8);
+}
 
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
-            });
-        }
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-1);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 
-        /**
-         * Setup button hover effects
-         */
-        setupButtonHoverEffects() {
-            const buttons = document.querySelectorAll('.btn');
-            buttons.forEach(button => {
-                button.addEventListener('mouseenter', function() {
-                    if (!this.classList.contains('btn-secondary')) {
-                        this.style.transform = 'translateY(-2px)';
-                    }
-                });
+.nav-link {
+    color: var(--color-text-primary);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-3) var(--spacing-4);
+    border-radius: var(--radius-lg);
+    transition: var(--transition-fast);
+    position: relative;
+    letter-spacing: 0.01em;
+}
 
-                button.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
-            });
-        }
+.nav-link:hover,
+.nav-link.active {
+    color: var(--color-primary);
+    background: var(--color-primary-lightest);
+}
 
-        /**
-         * Setup hero animations
-         */
-        setupHeroAnimations() {
-            const heroElements = document.querySelectorAll(
-                '.hero-title, .hero-subtitle, .hero-buttons, .hero-notice'
-            );
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+}
 
-            heroElements.forEach((element, index) => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(30px)';
+.portal-group {
+    display: flex;
+    gap: var(--spacing-2);
+    padding-right: var(--spacing-4);
+    border-right: 1px solid var(--color-border-primary);
+}
 
-                setTimeout(() => {
-                    element.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }, 500 + (index * 150));
-            });
-        }
+.portal-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    padding: var(--spacing-2) var(--spacing-3);
+    background: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+    text-decoration: none;
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    transition: var(--transition-fast);
+    border: 1px solid var(--color-border-primary);
+}
 
-        /**
-         * Destroy animations
-         */
-        destroy() {
-            this.observers.forEach(observer => observer.disconnect());
-            this.observers = [];
-            Utils.log('info', 'Animation Controller destroyed');
-        }
+.portal-btn:hover {
+    background: var(--color-secondary);
+    color: var(--color-text-inverse);
+    border-color: var(--color-secondary);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+.consultation-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    padding: var(--spacing-3) var(--spacing-6);
+    background: linear-gradient(135deg, var(--color-secondary-dark), var(--color-secondary));
+    color: var(--color-text-inverse);
+    text-decoration: none;
+    border-radius: var(--radius-xl);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-fast);
+    border: 1px solid transparent;
+}
+
+.consultation-btn:hover {
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-base);
+}
+
+/* Mobile Navigation */
+.mobile-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: calc(var(--z-index-modal) + 1);
+    transition: var(--transition-fast);
+    position: relative;
+}
+
+.mobile-toggle .bar {
+    width: 24px;
+    height: 2px;
+    background: var(--color-primary);
+    margin: 3px 0;
+    transition: var(--transition-fast);
+    border-radius: var(--radius-full);
+    transform-origin: center;
+}
+
+.mobile-toggle.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.mobile-toggle.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.nav-mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: var(--z-index-modal);
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+}
+
+.nav-mobile.active {
+    transform: translateX(0) !important;
+}
+
+.mobile-nav-content {
+    padding: var(--spacing-6) var(--spacing-4);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: var(--spacing-6);
+    border-bottom: 1px solid var(--color-border-primary);
+    margin-bottom: var(--spacing-6);
+}
+
+.mobile-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+}
+
+.mobile-logo img {
+    height: 40px;
+    width: 40px;
+    border-radius: var(--radius-lg);
+}
+
+.mobile-logo span {
+    font-family: var(--font-family-serif);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+}
+
+.mobile-nav-close {
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-lg);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    transition: var(--transition-fast);
+}
+
+.mobile-nav-close:hover {
+    background: var(--color-bg-secondary);
+    color: var(--color-primary);
+}
+
+.mobile-nav-menu {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-1);
+    margin-bottom: var(--spacing-8);
+}
+
+.mobile-nav-link {
+    padding: var(--spacing-4);
+    color: var(--color-text-primary);
+    text-decoration: none;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--radius-lg);
+    transition: var(--transition-fast);
+    border: 1px solid transparent;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link.active {
+    background: var(--color-primary-lightest);
+    color: var(--color-primary);
+    border-color: var(--color-primary-light);
+}
+
+.mobile-nav-actions {
+    padding-top: var(--spacing-6);
+    border-top: 1px solid var(--color-border-primary);
+}
+
+.mobile-portals {
+    display: flex;
+    gap: var(--spacing-3);
+    margin-bottom: var(--spacing-4);
+}
+
+.mobile-portal-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-2);
+    padding: var(--spacing-3);
+    background: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+    text-decoration: none;
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    transition: var(--transition-fast);
+    border: 1px solid var(--color-border-primary);
+}
+
+.mobile-portal-btn:hover {
+    background: var(--color-secondary);
+    color: var(--color-text-inverse);
+    border-color: var(--color-secondary);
+}
+
+.mobile-consultation-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-2);
+    padding: var(--spacing-4);
+    background: linear-gradient(135deg, var(--color-secondary-dark), var(--color-secondary));
+    color: var(--color-text-inverse);
+    text-decoration: none;
+    border-radius: var(--radius-xl);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-4);
+    transition: var(--transition-fast);
+}
+
+.mobile-consultation-btn:hover {
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+}
+
+.mobile-nav-contact {
+    text-align: center;
+}
+
+.mobile-contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    padding: var(--spacing-3) var(--spacing-5);
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+    text-decoration: none;
+    border-radius: var(--radius-xl);
+    font-weight: var(--font-weight-semibold);
+    transition: var(--transition-fast);
+}
+
+.mobile-contact-btn:hover {
+    background: var(--color-primary-dark);
+}
+
+/* Body lock when mobile nav is open */
+body.nav-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+    .nav-desktop {
+        display: none;
     }
-
-    // === FORM HANDLER ===
-    class FormHandler {
-        constructor() {
-            this.cleanupFunctions = [];
-            this.init();
-        }
-
-        /**
-         * Initialize form handling
-         */
-        init() {
-            Utils.log('info', 'Initializing Form Handler...');
-
-            try {
-                this.setupFormValidation();
-                this.setupPhoneFormatting();
-                this.handleURLParameters();
-                
-                Utils.log('info', 'Form Handler initialized successfully');
-            } catch (error) {
-                Utils.log('error', 'Failed to initialize form handler', error);
-            }
-        }
-
-        /**
-         * Setup form validation
-         */
-        setupFormValidation() {
-            const forms = document.querySelectorAll('form');
-
-            forms.forEach(form => {
-                const submitCleanup = Utils.addEventListenerWithCleanup(
-                    form, 'submit', (e) => {
-                        if (!this.validateForm(form)) {
-                            e.preventDefault();
-                            this.showFormError('Please fill in all required fields correctly.');
-                        }
-                    }
-                );
-                this.cleanupFunctions.push(submitCleanup);
-            });
-        }
-
-        /**
-         * Validate form
-         * @param {Element} form - Form element
-         * @returns {boolean} Validation result
-         */
-        validateForm(form) {
-            const requiredFields = form.querySelectorAll('[required]');
-            let isValid = true;
-
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    isValid = false;
-                    field.style.borderColor = 'var(--color-danger)';
-                    field.setAttribute('aria-invalid', 'true');
-                } else {
-                    field.style.borderColor = '';
-                    field.setAttribute('aria-invalid', 'false');
-                }
-            });
-
-            return isValid;
-        }
-
-        /**
-         * Setup phone number formatting
-         */
-        setupPhoneFormatting() {
-            const phoneInputs = document.querySelectorAll('input[type="tel"]');
-
-            phoneInputs.forEach(input => {
-                const inputCleanup = Utils.addEventListenerWithCleanup(
-                    input, 'input', (e) => {
-                        let value = e.target.value.replace(/\D/g, '');
-
-                        if (value.length >= 6) {
-                            value = value.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
-                        } else if (value.length >= 3) {
-                            value = value.replace(/(\d{3})(\d{0,3})/, '($1) $2');
-                        }
-
-                        e.target.value = value;
-                    }
-                );
-                this.cleanupFunctions.push(inputCleanup);
-            });
-        }
-
-        /**
-         * Handle URL parameters
-         */
-        handleURLParameters() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const service = urlParams.get('service');
-
-            if (service) {
-                const serviceCheckbox = document.querySelector(`input[value*="${service}"]`);
-                if (serviceCheckbox) {
-                    serviceCheckbox.checked = true;
-                    serviceCheckbox.closest('.service-option')?.classList.add('selected');
-                }
-            }
-        }
-
-        /**
-         * Show form error
-         * @param {string} message - Error message
-         */
-        showFormError(message) {
-            // Create a more sophisticated error display in the future
-            alert(message);
-        }
-
-        /**
-         * Destroy form handler
-         */
-        destroy() {
-            this.cleanupFunctions.forEach(cleanup => cleanup());
-            this.cleanupFunctions = [];
-            Utils.log('info', 'Form Handler destroyed');
-        }
+    
+    .mobile-toggle {
+        display: flex;
     }
-
-    // === SMOOTH SCROLL CONTROLLER ===
-    class SmoothScrollController {
-        constructor() {
-            this.cleanupFunctions = [];
-            this.init();
-        }
-
-        /**
-         * Initialize smooth scroll
-         */
-        init() {
-            Utils.log('info', 'Initializing Smooth Scroll Controller...');
-
-            try {
-                this.setupSmoothScrolling();
-                Utils.log('info', 'Smooth Scroll Controller initialized successfully');
-            } catch (error) {
-                Utils.log('error', 'Failed to initialize smooth scroll', error);
-            }
-        }
-
-        /**
-         * Setup smooth scrolling for anchor links
-         */
-        setupSmoothScrolling() {
-            const scrollLinks = document.querySelectorAll('a[href^="#"]');
-
-            scrollLinks.forEach(link => {
-                const clickCleanup = Utils.addEventListenerWithCleanup(
-                    link, 'click', (e) => {
-                        const targetId = link.getAttribute('href');
-                        const target = document.querySelector(targetId);
-
-                        if (target) {
-                            e.preventDefault();
-                            Utils.scrollToElement(target);
-                        }
-                    }
-                );
-                this.cleanupFunctions.push(clickCleanup);
-            });
-        }
-
-        /**
-         * Destroy smooth scroll controller
-         */
-        destroy() {
-            this.cleanupFunctions.forEach(cleanup => cleanup());
-            this.cleanupFunctions = [];
-            Utils.log('info', 'Smooth Scroll Controller destroyed');
-        }
+    
+    .navbar {
+        padding: var(--spacing-3) 0;
     }
-
-    // === CONTACT UPDATER ===
-    class ContactUpdater {
-        constructor() {
-            this.init();
-        }
-
-        /**
-         * Initialize contact updater
-         */
-        init() {
-            Utils.log('info', 'Initializing Contact Updater...');
-
-            try {
-                this.updateAllContacts();
-                Utils.log('info', 'Contact Updater initialized successfully');
-            } catch (error) {
-                Utils.log('error', 'Failed to initialize contact updater', error);
-            }
-        }
-
-        /**
-         * Update all contact information
-         */
-        updateAllContacts() {
-            this.updatePhoneNumbers();
-            this.updateEmailAddresses();
-            this.updatePortalLinks();
-        }
-
-        /**
-         * Update phone numbers
-         */
-        updatePhoneNumbers() {
-            const phoneElements = document.querySelectorAll(
-                'a[href*="tel:"], .phone-number, [data-phone]'
-            );
-
-            phoneElements.forEach(element => {
-                if (element.tagName === 'A') {
-                    element.href = 'tel:+18053676432';
-                }
-                if (element.textContent.includes('(') || element.textContent.includes('-')) {
-                    element.textContent = CONFIG.PHONE_NUMBER;
-                }
-            });
-        }
-
-        /**
-         * Update email addresses
-         */
-        updateEmailAddresses() {
-            const emailElements = document.querySelectorAll(
-                'a[href*="mailto:"], .email-address, [data-email]'
-            );
-
-            emailElements.forEach(element => {
-                if (element.tagName === 'A') {
-                    element.href = `mailto:${CONFIG.EMAIL}`;
-                }
-                if (element.textContent.includes('@')) {
-                    element.textContent = CONFIG.EMAIL;
-                }
-            });
-        }
-
-        /**
-         * Update portal links
-         */
-        updatePortalLinks() {
-            const portalLinks = document.querySelectorAll(
-                '.portal-btn, .mobile-portal-btn, .footer-portal-btn'
-            );
-
-            portalLinks.forEach(link => {
-                const text = link.textContent.toLowerCase();
-
-                if (text.includes('client')) {
-                    link.href = CONFIG.PORTAL_DOMAINS.CLIENT;
-                } else if (text.includes('admin')) {
-                    link.href = CONFIG.PORTAL_DOMAINS.ADMIN;
-                } else if (text.includes('staff')) {
-                    link.href = CONFIG.PORTAL_DOMAINS.STAFF;
-                }
-
-                link.setAttribute('target', '_blank');
-                link.setAttribute('rel', 'noopener noreferrer');
-            });
-        }
+    
+    .logo-img {
+        height: 52px;
     }
-
-    // === MAIN APPLICATION CLASS ===
-    class LuxuryApp {
-        constructor() {
-            this.webpService = new WebPDetectionService();
-            this.navigation = null;
-            this.carousel = null;
-            this.animations = null;
-            this.forms = null;
-            this.smoothScroll = null;
-            this.contactUpdater = null;
-            this.isInitialized = false;
-
-            this.init();
-        }
-
-        /**
-         * Initialize application
-         */
-        init() {
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', () => this.initializeApp());
-            } else {
-                this.initializeApp();
-            }
-        }
-
-        /**
-         * Initialize application components
-         */
-        async initializeApp() {
-            try {
-                Utils.log('info', 'Initializing 805 LifeGuard Luxury Application...');
-
-                // Detect WebP support first
-                await this.webpService.detect();
-
-                // Initialize core components
-                this.navigation = new NavigationController();
-                this.forms = new FormHandler();
-                this.smoothScroll = new SmoothScrollController();
-                this.contactUpdater = new ContactUpdater();
-
-                // Initialize carousel if hero carousel exists
-                const heroCarousel = document.getElementById('heroCarousel');
-                if (heroCarousel) {
-                    this.carousel = new CarouselController(heroCarousel);
-                }
-
-                // Initialize animations after a short delay to prevent conflicts
-                setTimeout(() => {
-                    this.animations = new AnimationController();
-                }, 100);
-
-                this.isInitialized = true;
-
-                Utils.log('info', '805 LifeGuard Luxury Application initialized successfully');
-
-                // Dispatch ready event
-                this.dispatchReadyEvent();
-
-            } catch (error) {
-                Utils.log('error', 'Failed to initialize application', error);
-                this.initializeFallback();
-            }
-        }
-
-        /**
-         * Dispatch application ready event
-         */
-        dispatchReadyEvent() {
-            window.dispatchEvent(new CustomEvent('luxuryAppReady', {
-                detail: {
-                    app: this,
-                    hasCarousel: !!this.carousel,
-                    webpSupport: this.webpService.isSupported,
-                    version: '6.0',
-                    timestamp: new Date().toISOString()
-                }
-            }));
-        }
-
-        /**
-         * Initialize fallback functionality
-         */
-        initializeFallback() {
-            Utils.log('info', 'Initializing fallback functionality...');
-
-            // Basic mobile navigation
-            const mobileToggle = document.getElementById('mobileToggle');
-            const mobileNav = document.getElementById('mobileNav');
-
-            if (mobileToggle && mobileNav) {
-                mobileToggle.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    mobileToggle.classList.toggle('active');
-                    mobileNav.classList.toggle('active');
-                    document.body.classList.toggle('nav-open');
-                });
-
-                const mobileClose = document.getElementById('mobileNavClose');
-                if (mobileClose) {
-                    mobileClose.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        mobileToggle.classList.remove('active');
-                        mobileNav.classList.remove('active');
-                        document.body.classList.remove('nav-open');
-                    });
-                }
-
-                Utils.log('info', 'Fallback mobile navigation initialized');
-            }
-
-            // Basic smooth scroll
-            const smoothLinks = document.querySelectorAll('a[href^="#"]');
-            smoothLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    const target = document.querySelector(link.getAttribute('href'));
-                    if (target) {
-                        e.preventDefault();
-                        target.scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
-            });
-
-            // Basic carousel fallback
-            const heroCarousel = document.getElementById('heroCarousel');
-            if (heroCarousel) {
-                const slides = heroCarousel.querySelectorAll('.carousel-slide');
-                if (slides.length > 0) {
-                    slides[0].classList.add('active');
-                }
-            }
-
-            Utils.log('info', 'Fallback functionality initialized');
-        }
-
-        // === PUBLIC API METHODS ===
-
-        /**
-         * Get application version
-         * @returns {string} Version number
-         */
-        getVersion() {
-            return '6.0';
-        }
-
-        /**
-         * Check if application is initialized
-         * @returns {boolean} Initialization status
-         */
-        isReady() {
-            return this.isInitialized;
-        }
-
-        /**
-         * Get carousel instance
-         * @returns {CarouselController|null} Carousel instance
-         */
-        getCarousel() {
-            return this.carousel;
-        }
-
-        /**
-         * Get navigation instance
-         * @returns {NavigationController|null} Navigation instance
-         */
-        getNavigation() {
-            return this.navigation;
-        }
-
-        /**
-         * Close mobile navigation
-         */
-        closeMobileNav() {
-            if (this.navigation) {
-                this.navigation.closeMobileNav();
-            }
-        }
-
-        /**
-         * Pause carousel
-         */
-        pauseCarousel() {
-            if (this.carousel) {
-                this.carousel.pauseAutoPlay();
-            }
-        }
-
-        /**
-         * Resume carousel
-         */
-        resumeCarousel() {
-            if (this.carousel) {
-                this.carousel.resumeAutoPlay();
-            }
-        }
-
-        /**
-         * Get WebP support status
-         * @returns {boolean|null} WebP support status
-         */
-        getWebPSupport() {
-            return this.webpService.isSupported;
-        }
-
-        /**
-         * Get current breakpoint
-         * @returns {string} Current breakpoint
-         */
-        getCurrentBreakpoint() {
-            return Utils.getCurrentBreakpoint();
-        }
-
-        /**
-         * Destroy application
-         */
-        destroy() {
-            Utils.log('info', 'Destroying Luxury Application...');
-
-            if (this.carousel) this.carousel.destroy();
-            if (this.navigation) this.navigation.destroy();
-            if (this.animations) this.animations.destroy();
-            if (this.forms) this.forms.destroy();
-            if (this.smoothScroll) this.smoothScroll.destroy();
-
-            this.isInitialized = false;
-
-            Utils.log('info', 'Luxury Application destroyed');
-        }
+    
+    .logo-name {
+        font-size: var(--font-size-xl);
     }
-
-    // === ERROR HANDLING ===
-    window.addEventListener('error', (e) => {
-        Utils.log('error', 'Global JavaScript error', {
-            message: e.message,
-            filename: e.filename,
-            lineno: e.lineno,
-            colno: e.colno,
-            error: e.error
-        });
-    });
-
-    window.addEventListener('unhandledrejection', (e) => {
-        Utils.log('error', 'Unhandled promise rejection', {
-            reason: e.reason,
-            promise: e.promise
-        });
-    });
-
-    // === INITIALIZE APPLICATION ===
-    const app = new LuxuryApp();
-
-    // Export for global access and debugging
-    window.LuxuryApp = LuxuryApp;
-    window.app = app;
-
-    // Development/debug mode
-    if (window.location.hostname === 'localhost' || 
-        window.location.hostname.includes('805lifeguard.com') ||
-        window.location.search.includes('debug=true')) {
-        
-        window.Utils = Utils;
-        Utils.log('info', 'Debug mode active - Enhanced debugging available');
-        Utils.log('info', 'Access app instance via window.app');
-        Utils.log('info', 'Access utilities via window.Utils');
+    
+    .logo-tagline {
+        font-size: var(--font-size-xs);
     }
+}
 
-})();
+/* === BREADCRUMBS === */
+.breadcrumbs {
+    background: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border-primary);
+    padding: var(--spacing-3) 0;
+    margin-top: 140px;
+    position: relative;
+    z-index: var(--z-index-base);
+}
+
+.breadcrumb-list {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: var(--font-size-sm);
+}
+
+.breadcrumb-list li {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+}
+
+.breadcrumb-list li:not(:last-child)::after {
+    content: '/';
+    color: var(--color-text-tertiary);
+}
+
+.breadcrumb-list a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: var(--transition-fast);
+    padding: var(--spacing-1) var(--spacing-2);
+    border-radius: var(--radius-base);
+}
+
+.breadcrumb-list a:hover {
+    color: var(--color-primary);
+    background: var(--color-primary-lightest);
+}
+
+@media (max-width: 768px) {
+    .breadcrumbs {
+        margin-top: 90px;
+    }
+}
+
+/* === HERO SECTION === */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-top: 120px;
+}
+
+/* Carousel */
+.hero-carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: var(--z-index-base);
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.carousel-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(11, 41, 34, 0.4) 0%,
+        rgba(27, 75, 67, 0.6) 50%,
+        rgba(11, 41, 34, 0.7) 100%
+    );
+    z-index: 1;
+}
+
+/* Carousel Controls */
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    z-index: var(--z-index-docked);
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.carousel-prev,
+.carousel-next {
+    position: absolute;
+    top: 50%;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-full);
+    color: var(--color-text-inverse);
+    font-size: var(--font-size-lg);
+    cursor: pointer;
+    transition: var(--transition-normal);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    transform: translateY(-50%);
+}
+
+.carousel-prev {
+    left: var(--spacing-6);
+}
+
+.carousel-next {
+    right: var(--spacing-6);
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+    background: rgba(212, 175, 55, 0.2);
+    border-color: var(--color-secondary);
+    color: var(--color-secondary-light);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+    position: absolute;
+    bottom: var(--spacing-8);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: var(--spacing-3);
+    z-index: var(--z-index-docked);
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.4);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    backdrop-filter: blur(5px);
+}
+
+.indicator:hover {
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(1.2);
+}
+
+.indicator.active {
+    background: var(--color-secondary);
+    border-color: var(--color-text-inverse);
+    transform: scale(1.3);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+}
+
+/* Hero Overlay */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(11, 41, 34, 0.2) 0%,
+        rgba(27, 75, 67, 0.3) 50%,
+        rgba(11, 41, 34, 0.4) 100%
+    );
+    z-index: 2;
+}
+
+/* Hero Content */
+.hero-content {
+    position: relative;
+    z-index: var(--z-index-docked);
+    text-align: center;
+    color: var(--color-text-inverse);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    color: var(--color-text-inverse);
+    margin-bottom: var(--spacing-6);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    font-family: var(--font-family-serif);
+}
+
+.hero-subtitle {
+    font-size: var(--font-size-xl);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-8);
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: var(--spacing-4);
+    justify-content: center;
+    margin-bottom: var(--spacing-8);
+    flex-wrap: wrap;
+}
+
+.hero-notice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-2);
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.8);
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding-top: 80px;
+        min-height: 90vh;
+    }
+    
+    .carousel-controls {
+        display: none;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-subtitle {
+        font-size: var(--font-size-lg);
+    }
+}
+
+/* === BUTTON SYSTEM === */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    padding: var(--spacing-3) var(--spacing-6);
+    border-radius: var(--radius-xl);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-base);
+    text-decoration: none;
+    transition: var(--transition-fast);
+    border: 2px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: var(--font-family-sans);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-secondary-dark), var(--color-secondary));
+    color: var(--color-text-inverse);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-base);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--color-text-inverse);
+    border-color: var(--color-text-inverse);
+}
+
+.btn-secondary:hover {
+    background: var(--color-text-inverse);
+    color: var(--color-primary);
+}
+
+.btn.large {
+    padding: var(--spacing-4) var(--spacing-8);
+    font-size: var(--font-size-lg);
+}
+
+@media (max-width: 768px) {
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+}
+
+/* === SECTION SYSTEM === */
+section {
+    padding: var(--spacing-20) 0;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto var(--spacing-16);
+}
+
+.section-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--color-secondary-dark), var(--color-secondary));
+    color: var(--color-text-inverse);
+    padding: var(--spacing-2) var(--spacing-4);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--spacing-4);
+}
+
+.section-badge.gold {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+.section-title {
+    margin-bottom: var(--spacing-4);
+}
+
+.section-description {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+}
+
+.section-cta {
+    text-align: center;
+    margin-top: var(--spacing-12);
+}
+
+/* === SERVICES SECTION === */
+.services-section {
+    background: var(--color-bg-primary);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-8);
+}
+
+.service-card {
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-base);
+    transition: var(--transition-normal);
+    border: 1px solid var(--color-border-primary);
+    position: relative;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.service-card.exclusive {
+    border: 2px solid var(--color-secondary);
+}
+
+.service-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-normal);
+}
+
+.service-card:hover .service-image img {
+    transform: scale(1.05);
+}
+
+.service-icon {
+    position: absolute;
+    top: var(--spacing-4);
+    left: var(--spacing-4);
+    width: 60px;
+    height: 60px;
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-secondary-dark);
+    font-size: var(--font-size-2xl);
+    box-shadow: var(--shadow-base);
+    transition: var(--transition-fast);
+}
+
+.service-card:hover .service-icon {
+    background: var(--color-secondary);
+    color: var(--color-text-inverse);
+    transform: scale(1.1);
+}
+
+.exclusive-badge {
+    position: absolute;
+    top: var(--spacing-4);
+    right: var(--spacing-4);
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    padding: var(--spacing-1) var(--spacing-3);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.service-content {
+    padding: var(--spacing-6);
+}
+
+.service-title {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-3);
+    color: var(--color-primary);
+}
+
+.service-description {
+    margin-bottom: var(--spacing-4);
+    line-height: var(--line-height-relaxed);
+}
+
+.service-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-2);
+    margin-bottom: var(--spacing-5);
+}
+
+.feature-tag {
+    background: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+    padding: var(--spacing-1) var(--spacing-2);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    border: 1px solid var(--color-border-primary);
+}
+
+.service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    color: var(--color-secondary-dark);
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.service-link:hover {
+    color: var(--color-primary);
+    transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-6);
+    }
+}
+
+/* === ABOUT SECTION === */
+.about-section {
+    background: var(--color-bg-tertiary);
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-16);
+    align-items: start;
+}
+
+.about-images {
+    display: grid;
+    gap: var(--spacing-4);
+}
+
+.about-img {
+    width: 100%;
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition-normal);
+}
+
+.about-img.primary {
+    aspect-ratio: 4/3;
+}
+
+.about-img.secondary {
+    aspect-ratio: 16/10;
+}
+
+.about-img:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+.about-features {
+    margin: var(--spacing-8) 0;
+}
+
+.feature-item {
+    display: flex;
+    gap: var(--spacing-4);
+    padding: var(--spacing-5);
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-xl);
+    margin-bottom: var(--spacing-4);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-fast);
+}
+
+.feature-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-base);
+}
+
+.feature-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--color-secondary);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-inverse);
+    font-size: var(--font-size-xl);
+    flex-shrink: 0;
+}
+
+.feature-content h4 {
+    margin-bottom: var(--spacing-2);
+    color: var(--color-primary);
+}
+
+.feature-content p {
+    margin: 0;
+    font-size: var(--font-size-sm);
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-8);
+    }
+    
+    .about-images {
+        order: -1;
+    }
+}
+
+/* === COVERAGE SECTION === */
+.coverage-section {
+    background: var(--color-bg-primary);
+}
+
+.coverage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-6);
+}
+
+.coverage-card {
+    background: var(--color-bg-secondary);
+    padding: var(--spacing-6);
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--color-border-primary);
+    transition: var(--transition-fast);
+}
+
+.coverage-card.featured {
+    background: var(--color-bg-tertiary);
+    border: 2px solid var(--color-secondary);
+    transform: translateY(-4px);
+}
+
+.coverage-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-base);
+}
+
+.coverage-card h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-4);
+    font-size: var(--font-size-xl);
+}
+
+.coverage-card ul {
+    list-style: none;
+}
+
+.coverage-card li {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    margin-bottom: var(--spacing-2);
+    color: var(--color-text-secondary);
+}
+
+.coverage-card li i {
+    color: var(--color-secondary);
+    font-size: var(--font-size-sm);
+}
+
+/* === TEAM SECTION === */
+.team-section {
+    background: var(--color-bg-tertiary);
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-8);
+    justify-items: center;
+}
+
+.team-member {
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition-normal);
+    max-width: 400px;
+}
+
+.team-member:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.member-image {
+    height: 300px;
+    overflow: hidden;
+}
+
+.member-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-normal);
+}
+
+.team-member:hover .member-image img {
+    transform: scale(1.05);
+}
+
+.member-content {
+    padding: var(--spacing-6);
+}
+
+.member-content h3 {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-1);
+}
+
+.member-title {
+    color: var(--color-secondary-dark);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-4);
+}
+
+.member-description {
+    margin-bottom: var(--spacing-4);
+    line-height: var(--line-height-relaxed);
+}
+
+.member-credentials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-2);
+}
+
+.credential {
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--color-secondary-dark);
+    padding: var(--spacing-1) var(--spacing-2);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-1);
+}
+
+/* === TESTIMONIALS SECTION === */
+.testimonials-section {
+    background: var(--color-bg-primary);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-6);
+}
+
+.testimonial-card {
+    background: var(--color-bg-primary);
+    padding: var(--spacing-6);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-base);
+    transition: var(--transition-fast);
+    position: relative;
+    border: 1px solid var(--color-border-primary);
+}
+
+.testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: var(--spacing-4);
+    font-size: var(--font-size-6xl);
+    color: var(--color-secondary-light);
+    font-family: var(--font-family-serif);
+    opacity: 0.3;
+}
+
+.testimonial-card.featured {
+    border: 2px solid var(--color-secondary);
+    background: var(--color-bg-tertiary);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.testimonial-content p {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-primary);
+    font-style: italic;
+    margin-bottom: var(--spacing-5);
+    font-family: var(--font-family-serif);
+}
+
+.testimonial-author {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.author-name {
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-1);
+}
+
+.author-location {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.testimonial-rating {
+    display: flex;
+    gap: 2px;
+    color: var(--color-secondary);
+}
+
+@media (max-width: 768px) {
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .testimonial-author {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-2);
+    }
+}
+
+/* === CONSULTATION SECTION === */
+.consultation-section {
+    background: linear-gradient(135deg, #0A1628, #1B2B42);
+    color: var(--color-text-inverse);
+    text-align: center;
+}
+
+.consultation-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.consultation-section h2 {
+    color: var(--color-text-inverse);
+    margin-bottom: var(--spacing-4);
+}
+
+.consultation-section p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--spacing-8);
+    font-size: var(--font-size-lg);
+}
+
+/* === FOOTER === */
+.footer {
+    background: linear-gradient(135deg, #0A1628, #1B2B42);
+    color: var(--color-text-inverse);
+    padding: var(--spacing-16) 0 var(--spacing-4);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: var(--spacing-8);
+    margin-bottom: var(--spacing-8);
+}
+
+.footer-brand {
+    max-width: 100%;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    margin-bottom: var(--spacing-4);
+}
+
+.footer-logo img {
+    height: 48px;
+    border-radius: var(--radius-lg);
+}
+
+.footer-logo-text h3 {
+    color: var(--color-text-inverse);
+    font-size: var(--font-size-2xl);
+    margin-bottom: 0;
+}
+
+.footer-logo-text p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: var(--font-size-sm);
+    margin: 0;
+}
+
+.footer-description {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-5);
+}
+
+.footer-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-2);
+}
+
+.footer-badge {
+    background: rgba(212, 175, 55, 0.2);
+    color: var(--color-secondary-light);
+    padding: var(--spacing-1) var(--spacing-2);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-1);
+}
+
+.footer-section h4 {
+    color: var(--color-text-inverse);
+    margin-bottom: var(--spacing-4);
+    font-size: var(--font-size-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+}
+
+.footer-section h4 i {
+    color: var(--color-secondary-light);
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section li {
+    margin-bottom: var(--spacing-2);
+}
+
+.footer-section a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: var(--transition-fast);
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-1) var(--spacing-2);
+    border-radius: var(--radius-base);
+    display: inline-block;
+}
+
+.footer-section a:hover {
+    color: var(--color-secondary-light);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.footer-contact h4 {
+    margin-bottom: var(--spacing-4);
+    color: var(--color-text-inverse);
+    font-size: var(--font-size-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+}
+
+.footer-contact h4 i {
+    color: var(--color-secondary-light);
+}
+
+.contact-info {
+    margin-bottom: var(--spacing-5);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    margin-bottom: var(--spacing-3);
+    padding: var(--spacing-2);
+    border-radius: var(--radius-lg);
+    transition: var(--transition-fast);
+}
+
+.contact-item:hover {
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--color-secondary-light);
+}
+
+.contact-item.primary {
+    background: rgba(212, 175, 55, 0.15);
+}
+
+.contact-item i {
+    font-size: var(--font-size-xl);
+    color: var(--color-secondary-light);
+}
+
+.contact-item strong {
+    display: block;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-inverse);
+}
+
+.contact-item span {
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.service-areas-footer {
+    background: rgba(255, 255, 255, 0.05);
+    padding: var(--spacing-3);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-4);
+}
+
+.service-areas-footer strong {
+    color: var(--color-secondary-light);
+    display: block;
+    margin-bottom: var(--spacing-1);
+    font-size: var(--font-size-sm);
+}
+
+.service-areas-footer span {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-normal);
+}
+
+.footer-portals {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-2);
+}
+
+.footer-portal-btn {
+    background: rgba(212, 175, 55, 0.2);
+    color: var(--color-secondary-light);
+    padding: var(--spacing-2) var(--spacing-3);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-1);
+    transition: var(--transition-fast);
+    flex: 1;
+    justify-content: center;
+    min-width: 0;
+}
+
+.footer-portal-btn:hover {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    transform: translateY(-1px);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: var(--spacing-4);
+}
+
+.footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-4);
+}
+
+.footer-legal {
+    color: var(--color-text-inverse);
+}
+
+.legal-links {
+    display: flex;
+    gap: var(--spacing-4);
+    margin-top: var(--spacing-2);
+}
+
+.legal-links a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    transition: var(--transition-fast);
+    padding: var(--spacing-1) var(--spacing-2);
+    border-radius: var(--radius-base);
+}
+
+.legal-links a:hover {
+    color: var(--color-secondary-light);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.footer-credentials {
+    display: flex;
+    gap: var(--spacing-3);
+    flex-wrap: wrap;
+}
+
+.footer-credentials span {
+    background: rgba(212, 175, 55, 0.15);
+    color: var(--color-secondary-light);
+    padding: var(--spacing-1) var(--spacing-2);
+    border-radius: var(--radius-xl);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+}
+
+/* === MOBILE FOOTER OPTIMIZATION === */
+@media (max-width: 768px) {
+    .footer {
+        padding: var(--spacing-12) 0 var(--spacing-4);
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-8);
+        text-align: center;
+    }
+    
+    .breadcrumbs {
+        margin-top: 90px;
+    }
+    
+    .footer-brand {
+        text-align: center;
+    }
+    
+    .footer-logo {
+        justify-content: center;
+    }
+    
+    .footer-badges {
+        justify-content: center;
+    }
+    
+    .footer-section {
+        text-align: center;
+    }
+    
+    .footer-section h4 {
+        justify-content: center;
+    }
+    
+    .footer-contact {
+        text-align: center;
+    }
+    
+    .footer-contact h4 {
+        justify-content: center;
+    }
+    
+    .contact-info {
+        max-width: 300px;
+        margin: 0 auto var(--spacing-5);
+    }
+    
+    .contact-item {
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .footer-portals {
+        justify-content: center;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .footer-portal-btn {
+        min-width: 90px;
+        font-size: var(--font-size-xs);
+        padding: var(--spacing-1) var(--spacing-2);
+    }
+    
+    .footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-3);
+    }
+    
+    .legal-links {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .footer-credentials {
+        justify-content: center;
+    }
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* === ACCESSIBILITY === */
+.nav-link:focus,
+.btn:focus,
+.mobile-toggle:focus,
+.carousel-prev:focus,
+.carousel-next:focus,
+.indicator:focus {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+}
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .carousel-slide {
+        transition: none !important;
+    }
+    
+    .nav-mobile {
+        transition: none;
+    }
+    
+    .mobile-toggle .bar {
+        transition: none;
+    }
+    
+    .mobile-nav-link {
+        transition: none;
+    }
+}
+
+/* === PRINT STYLES === */
+@media print {
+    .header,
+    .footer,
+    .hero,
+    .btn,
+    .carousel-controls,
+    .carousel-indicators {
+        display: none !important;
+    }
+    
+    body {
+        color: var(--color-black);
+        background: var(--color-white);
+    }
+}
+
+/* === UTILITY CLASSES === */
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: var(--spacing-1); }
+.mb-2 { margin-bottom: var(--spacing-2); }
+.mb-3 { margin-bottom: var(--spacing-3); }
+.mb-4 { margin-bottom: var(--spacing-4); }
+.mb-6 { margin-bottom: var(--spacing-6); }
+.mb-8 { margin-bottom: var(--spacing-8); }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: var(--spacing-1); }
+.mt-2 { margin-top: var(--spacing-2); }
+.mt-3 { margin-top: var(--spacing-3); }
+.mt-4 { margin-top: var(--spacing-4); }
+.mt-6 { margin-top: var(--spacing-6); }
+.mt-8 { margin-top: var(--spacing-8); }
+
+/* === HIGH CONTRAST MODE SUPPORT === */
+@media (prefers-contrast: high) {
+    :root {
+        --color-border-primary: #000000;
+        --color-border-secondary: #000000;
+    }
+    
+    .btn,
+    .nav-link,
+    .mobile-nav-link {
+        border: 2px solid;
+    }
+}
+
+/* === DARK MODE SUPPORT (Future Enhancement) === */
+@media (prefers-color-scheme: dark) {
+    /* Dark mode styles can be added here for future enhancement */
+}
+
+/* === ENTERPRISE GRID SYSTEM === */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: calc(var(--spacing-2) * -1);
+    margin-right: calc(var(--spacing-2) * -1);
+}
+
+.col {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+    padding-left: var(--spacing-2);
+    padding-right: var(--spacing-2);
+}
+
+.col-auto {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: 100%;
+}
+
+.col-1 { flex: 0 0 8.333333%; max-width: 8.333333%; }
+.col-2 { flex: 0 0 16.666667%; max-width: 16.666667%; }
+.col-3 { flex: 0 0 25%; max-width: 25%; }
+.col-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
+.col-6 { flex: 0 0 50%; max-width: 50%; }
+.col-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
+.col-9 { flex: 0 0 75%; max-width: 75%; }
+.col-12 { flex: 0 0 100%; max-width: 100%; }
+
+/* === RESPONSIVE GRID === */
+@media (min-width: 768px) {
+    .col-md-1 { flex: 0 0 8.333333%; max-width: 8.333333%; }
+    .col-md-2 { flex: 0 0 16.666667%; max-width: 16.666667%; }
+    .col-md-3 { flex: 0 0 25%; max-width: 25%; }
+    .col-md-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
+    .col-md-6 { flex: 0 0 50%; max-width: 50%; }
+    .col-md-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
+    .col-md-9 { flex: 0 0 75%; max-width: 75%; }
+    .col-md-12 { flex: 0 0 100%; max-width: 100%; }
+}
+
+@media (min-width: 1024px) {
+    .col-lg-1 { flex: 0 0 8.333333%; max-width: 8.333333%; }
+    .col-lg-2 { flex: 0 0 16.666667%; max-width: 16.666667%; }
+    .col-lg-3 { flex: 0 0 25%; max-width: 25%; }
+    .col-lg-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
+    .col-lg-6 { flex: 0 0 50%; max-width: 50%; }
+    .col-lg-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
+    .col-lg-9 { flex: 0 0 75%; max-width: 75%; }
+    .col-lg-12 { flex: 0 0 100%; max-width: 100%; }
+}
