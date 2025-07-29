@@ -563,15 +563,30 @@
                 });
             }
             
-            // Mobile logo click (navigate to homepage)
+            // Mobile logo click (navigate to homepage with elegant transition)
             if (this.mobileLogo) {
                 this.mobileLogo.addEventListener('click', (e) => {
                     e.preventDefault();
                     console.log('📱 Mobile logo clicked - navigating to homepage');
-                    this.closeMobileNav();
-                    // Delay navigation to allow close animation
+                    
+                    // Add visual feedback
+                    this.mobileLogo.style.transform = 'translateY(-4px) scale(0.98)';
+                    
+                    // Close mobile nav with elegant timing
                     setTimeout(() => {
-                        window.location.href = '/';
+                        this.closeMobileNav();
+                    }, 150);
+                    
+                    // Navigate after animation completes
+                    setTimeout(() => {
+                        if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') {
+                            window.location.href = '/';
+                        }
+                    }, 400);
+                    
+                    // Reset transform
+                    setTimeout(() => {
+                        this.mobileLogo.style.transform = '';
                     }, 300);
                 });
             }
@@ -664,32 +679,43 @@
                 return;
             }
             
-            console.log('📱 Opening mobile nav...');
+            console.log('📱 Opening elegant mobile nav...');
             this.isOpen = true;
             this.scrollPosition = window.pageYOffset;
             
-            // Add classes
+            // Add classes with timing for smooth animation
             this.mobileToggle.classList.add('active');
             this.mobileToggle.setAttribute('aria-expanded', 'true');
-            this.mobileNav.classList.add('active');
-            this.mobileNav.setAttribute('aria-hidden', 'false');
             this.body.classList.add('nav-open');
             
-            // Lock body scroll with position fix
+            // Enhanced body scroll lock
             this.body.style.position = 'fixed';
             this.body.style.top = `-${this.scrollPosition}px`;
             this.body.style.width = '100%';
+            this.body.style.height = '100%';
             this.body.style.overflow = 'hidden';
+            this.body.style.touchAction = 'none'; // Prevent iOS scroll bounce
             
-            // Focus management
+            // Add mobile nav classes after a tiny delay for smoother transition
+            requestAnimationFrame(() => {
+                this.mobileNav.classList.add('active');
+                this.mobileNav.setAttribute('aria-hidden', 'false');
+            });
+            
+            // Enhanced focus management with proper timing
             setTimeout(() => {
-                const firstLink = this.mobileNav.querySelector('.mobile-nav-link');
-                if (firstLink) {
-                    firstLink.focus();
+                const mobileLogo = this.mobileNav.querySelector('.mobile-logo');
+                if (mobileLogo) {
+                    mobileLogo.focus();
+                } else {
+                    const firstLink = this.mobileNav.querySelector('.mobile-nav-link');
+                    if (firstLink) {
+                        firstLink.focus();
+                    }
                 }
-            }, 300);
+            }, 500); // Wait for animation to complete
             
-            console.log('✅ Mobile nav opened');
+            console.log('✅ Elegant mobile nav opened');
         }
         
         closeMobileNav() {
@@ -698,26 +724,33 @@
                 return;
             }
             
-            console.log('📱 Closing mobile nav...');
+            console.log('📱 Closing elegant mobile nav...');
             this.isOpen = false;
             
-            // Remove classes
+            // Remove mobile nav classes first for smooth transition
             this.mobileToggle.classList.remove('active');
             this.mobileToggle.setAttribute('aria-expanded', 'false');
             this.mobileNav.classList.remove('active');
             this.mobileNav.setAttribute('aria-hidden', 'true');
-            this.body.classList.remove('nav-open');
             
-            // Restore body scroll
-            this.body.style.position = '';
-            this.body.style.top = '';
-            this.body.style.width = '';
-            this.body.style.overflow = '';
+            // Restore body scroll after animation completes
+            setTimeout(() => {
+                this.body.classList.remove('nav-open');
+                this.body.style.position = '';
+                this.body.style.top = '';
+                this.body.style.width = '';
+                this.body.style.height = '';
+                this.body.style.overflow = '';
+                this.body.style.touchAction = '';
+                
+                // Restore scroll position smoothly
+                window.scrollTo({
+                    top: this.scrollPosition,
+                    behavior: 'instant'
+                });
+            }, 100); // Short delay for smooth transition
             
-            // Restore scroll position
-            window.scrollTo(0, this.scrollPosition);
-            
-            console.log('✅ Mobile nav closed');
+            console.log('✅ Elegant mobile nav closed');
         }
 
         preventBodyScroll() {
