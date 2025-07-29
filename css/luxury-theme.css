@@ -88,6 +88,35 @@ body {
     overflow-x: hidden;
 }
 
+/* === NAVIGATION FONT STYLE OVERRIDE === */
+/* Ensure ALL navigation elements use normal (non-italic) fonts */
+.nav-link,
+.mobile-nav-link,
+.portal-btn,
+.mobile-portal-btn,
+.consultation-btn,
+.mobile-consultation-btn,
+.mobile-contact-btn,
+.header-contact,
+.footer-section a,
+.footer-portal-btn,
+.legal-links a,
+.contact-item,
+.service-link,
+.breadcrumb-list a,
+.btn,
+.hero-notice,
+.nav-mobile a,
+.nav-mobile button,
+.mobile-nav-menu a,
+.mobile-nav-actions a,
+.mobile-nav-actions button,
+.navbar a,
+.navbar button {
+    font-style: normal !important;
+    font-family: var(--font-sans) !important;
+}
+
 /* === TYPOGRAPHY === */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-serif);
@@ -331,7 +360,8 @@ body.no-fontawesome .fab {
     text-decoration: none;
     font-weight: 500;
     font-size: 0.9375rem;
-    font-style: normal;
+    font-style: normal !important;
+    font-family: var(--font-sans) !important;
     padding: var(--space-3) var(--space-4);
     border-radius: var(--border-radius);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -603,14 +633,14 @@ body.no-fontawesome .fab {
     text-decoration: none;
     font-size: 1.1875rem;
     font-weight: 500;
-    font-style: normal;
+    font-style: normal !important;
+    font-family: var(--font-sans) !important;
     border-radius: var(--border-radius-lg);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid transparent;
     display: flex;
     align-items: center;
     position: relative;
-    font-family: var(--font-sans);
     letter-spacing: 0.01em;
 }
 
