@@ -618,7 +618,6 @@
         this.header = document.getElementById('header');
         this.mobileToggle = document.getElementById('mobileToggle');
         this.mobileNav = document.getElementById('mobileNav');
-        this.mobileNavClose = document.getElementById('mobileNavClose');
         this.body = document.body;
         this.isOpen = false;
         this.scrollPosition = 0;
@@ -659,18 +658,6 @@
             }
         );
         this.cleanupFunctions.push(toggleCleanup);
-
-        // Mobile nav close
-        if (this.mobileNavClose) {
-            const closeCleanup = Utils.addEventListenerWithCleanup(
-                this.mobileNavClose, 'click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    self.closeMobileNav();
-                }
-            );
-            this.cleanupFunctions.push(closeCleanup);
-        }
 
         // Mobile nav links
         const mobileLinks = this.mobileNav.querySelectorAll('.mobile-nav-link');
@@ -1262,16 +1249,6 @@
                 mobileNav.classList.toggle('active');
                 document.body.classList.toggle('nav-open');
             });
-
-            const mobileClose = document.getElementById('mobileNavClose');
-            if (mobileClose) {
-                mobileClose.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    mobileToggle.classList.remove('active');
-                    mobileNav.classList.remove('active');
-                    document.body.classList.remove('nav-open');
-                });
-            }
 
             Utils.log('info', 'Fallback mobile navigation initialized');
         }
