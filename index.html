@@ -47,20 +47,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     
-    <!-- Font Awesome - Clean Implementation -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- Font Awesome - Load with error handling -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onerror="document.body.classList.add('no-fontawesome')">
     
-    <!-- External Clean CSS -->
+    <!-- Luxury Theme CSS -->
     <link rel="stylesheet" href="css/luxury-theme.css">
     
-    <!-- Preload Critical Images -->
+    <!-- Preload critical images for carousel -->
     <link rel="preload" as="image" href="images/about/about-hero-background-1920x1080.webp" type="image/webp">
     <link rel="preload" as="image" href="images/about/about-hero-background-1920x1080.jpg" type="image/jpeg">
     <link rel="preload" as="image" href="images/services/services-hero-background-1920x1080.webp" type="image/webp">
     <link rel="preload" as="image" href="images/services/services-hero-background-1920x1080.jpg" type="image/jpeg">
     <link rel="preload" as="image" href="images/logos/805-lifeguard-logo.png">
     
-    <!-- Favicon and Icons -->
+    <!-- Favicon and Apple Touch Icons -->
     <link rel="icon" type="image/x-icon" href="images/logos/805-lifeguard-favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="images/logos/805-lifeguard-apple-touch-icon-180x180.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/logos/805-lifeguard-favicon-32x32.png">
@@ -219,15 +219,18 @@
                 <div class="header-top-content">
                     <div class="header-top-left">
                         <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                        <span class="icon-fallback">🛡️</span>
                         <span>Serving Southern California's Distinguished Clientele Since 2016</span>
                     </div>
                     <div class="header-top-right">
                         <a href="tel:+18053676432" class="header-contact" aria-label="Call 805 LifeGuard">
                             <i class="fas fa-phone" aria-hidden="true"></i>
+                            <span class="icon-fallback">📞</span>
                             (805) 367-6432
                         </a>
                         <a href="mailto:concierge@805lifeguard.com" class="header-contact" aria-label="Email 805 LifeGuard">
                             <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <span class="icon-fallback">✉️</span>
                             concierge@805lifeguard.com
                         </a>
                     </div>
@@ -264,15 +267,18 @@
                             <div class="portal-group">
                                 <a href="https://client.805companies.com" target="_blank" rel="noopener noreferrer" class="portal-btn client-portal" aria-label="Client Portal - Opens in new window">
                                     <i class="fas fa-user-circle" aria-hidden="true"></i>
+                                    <span class="icon-fallback">👤</span>
                                     Client
                                 </a>
                                 <a href="https://admin.805companies.com" target="_blank" rel="noopener noreferrer" class="portal-btn admin-portal" aria-label="Admin Portal - Opens in new window">
                                     <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                    <span class="icon-fallback">🛡️</span>
                                     Admin
                                 </a>
                             </div>
                             <a href="contact.html" class="consultation-btn" aria-label="Schedule Private Consultation">
                                 <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                                <span class="icon-fallback">📅</span>
                                 Private Consultation
                             </a>
                         </div>
@@ -298,6 +304,7 @@
                     </a>
                     <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile navigation menu">
                         <i class="fas fa-times" aria-hidden="true"></i>
+                        <span class="icon-fallback">✕</span>
                     </button>
                 </div>
                 
@@ -315,15 +322,18 @@
                     <div class="mobile-portals">
                         <a href="https://client.805companies.com" target="_blank" rel="noopener noreferrer" class="mobile-portal-btn" aria-label="Client Portal - Opens in new window">
                             <i class="fas fa-user-circle" aria-hidden="true"></i>
+                            <span class="icon-fallback">👤</span>
                             Client Portal
                         </a>
                         <a href="https://admin.805companies.com" target="_blank" rel="noopener noreferrer" class="mobile-portal-btn" aria-label="Admin Portal - Opens in new window">
                             <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            <span class="icon-fallback">🛡️</span>
                             Admin Portal
                         </a>
                     </div>
                     <a href="contact.html" class="mobile-consultation-btn" aria-label="Schedule Private Consultation">
                         <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                        <span class="icon-fallback">📅</span>
                         Private Consultation
                     </a>
                 </div>
@@ -331,6 +341,7 @@
                 <div class="mobile-nav-contact">
                     <a href="tel:+18053676432" class="mobile-contact-btn" aria-label="Call 805 LifeGuard">
                         <i class="fas fa-phone" aria-hidden="true"></i>
+                        <span class="icon-fallback">📞</span>
                         (805) 367-6432
                     </a>
                 </div>
@@ -370,9 +381,11 @@
         <div class="carousel-controls">
             <button class="carousel-prev" id="carouselPrev" aria-label="Previous image">
                 <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                <span class="icon-fallback">‹</span>
             </button>
             <button class="carousel-next" id="carouselNext" aria-label="Next image">
                 <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                <span class="icon-fallback">›</span>
             </button>
         </div>
         
@@ -397,16 +410,19 @@
                 <div class="hero-buttons">
                     <a href="contact.html" class="btn btn-primary" aria-label="Request private consultation">
                         <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                        <span class="icon-fallback">📅</span>
                         Request Private Consultation
                     </a>
                     <a href="services.html" class="btn btn-secondary" aria-label="View our services">
                         <i class="fas fa-water" aria-hidden="true"></i>
+                        <span class="icon-fallback">💧</span>
                         Our Services
                     </a>
                 </div>
                 
                 <div class="hero-notice">
                     <i class="fas fa-lock" aria-hidden="true"></i>
+                    <span class="icon-fallback">🔒</span>
                     All consultations are confidential. Custom service packages tailored to your unique requirements.
                 </div>
             </div>
@@ -434,6 +450,7 @@
                         </picture>
                         <div class="service-icon">
                             <i class="fas fa-shield-alt"></i>
+                            <span class="icon-fallback">🛡️</span>
                         </div>
                     </div>
                     <div class="service-content">
@@ -449,7 +466,9 @@
                             <span class="feature-tag">Discrete Service</span>
                         </div>
                         <a href="contact.html?service=lifeguarding" class="service-link">
-                            Request Consultation <i class="fas fa-arrow-right"></i>
+                            Request Consultation 
+                            <i class="fas fa-arrow-right"></i>
+                            <span class="icon-fallback">→</span>
                         </a>
                     </div>
                 </div>
@@ -462,6 +481,7 @@
                         </picture>
                         <div class="service-icon">
                             <i class="fas fa-swimming-pool"></i>
+                            <span class="icon-fallback">🏊</span>
                         </div>
                     </div>
                     <div class="service-content">
@@ -477,7 +497,9 @@
                             <span class="feature-tag">Custom Programs</span>
                         </div>
                         <a href="contact.html?service=instruction" class="service-link">
-                            Request Consultation <i class="fas fa-arrow-right"></i>
+                            Request Consultation 
+                            <i class="fas fa-arrow-right"></i>
+                            <span class="icon-fallback">→</span>
                         </a>
                     </div>
                 </div>
@@ -490,6 +512,7 @@
                         </picture>
                         <div class="service-icon">
                             <i class="fas fa-champagne-glasses"></i>
+                            <span class="icon-fallback">🥂</span>
                         </div>
                     </div>
                     <div class="service-content">
@@ -505,7 +528,9 @@
                             <span class="feature-tag">White-Glove Service</span>
                         </div>
                         <a href="contact.html?service=events" class="service-link">
-                            Request Consultation <i class="fas fa-arrow-right"></i>
+                            Request Consultation 
+                            <i class="fas fa-arrow-right"></i>
+                            <span class="icon-fallback">→</span>
                         </a>
                     </div>
                 </div>
@@ -518,9 +543,11 @@
                         </picture>
                         <div class="service-icon">
                             <i class="fas fa-broom"></i>
+                            <span class="icon-fallback">🧹</span>
                         </div>
                         <div class="exclusive-badge">
                             <i class="fas fa-crown"></i>
+                            <span class="icon-fallback">👑</span>
                             Exclusive
                         </div>
                     </div>
@@ -537,7 +564,9 @@
                             <span class="feature-tag">Chemical Management</span>
                         </div>
                         <a href="pool-cleaning.html" class="service-link">
-                            Learn More <i class="fas fa-arrow-right"></i>
+                            Learn More 
+                            <i class="fas fa-arrow-right"></i>
+                            <span class="icon-fallback">→</span>
                         </a>
                     </div>
                 </div>
@@ -550,6 +579,7 @@
                         </picture>
                         <div class="service-icon">
                             <i class="fas fa-building"></i>
+                            <span class="icon-fallback">🏢</span>
                         </div>
                     </div>
                     <div class="service-content">
@@ -565,7 +595,9 @@
                             <span class="feature-tag">Board Presentations</span>
                         </div>
                         <a href="hoa.html" class="service-link">
-                            Learn More <i class="fas fa-arrow-right"></i>
+                            Learn More 
+                            <i class="fas fa-arrow-right"></i>
+                            <span class="icon-fallback">→</span>
                         </a>
                     </div>
                 </div>
@@ -595,6 +627,7 @@
                         <div class="feature-item">
                             <div class="feature-icon">
                                 <i class="fas fa-certificate"></i>
+                                <span class="icon-fallback">📜</span>
                             </div>
                             <div class="feature-content">
                                 <h4>American Red Cross Certified</h4>
@@ -605,6 +638,7 @@
                         <div class="feature-item">
                             <div class="feature-icon">
                                 <i class="fas fa-heart"></i>
+                                <span class="icon-fallback">❤️</span>
                             </div>
                             <div class="feature-content">
                                 <h4>Personalized Approach</h4>
@@ -615,6 +649,7 @@
                         <div class="feature-item">
                             <div class="feature-icon">
                                 <i class="fas fa-star"></i>
+                                <span class="icon-fallback">⭐</span>
                             </div>
                             <div class="feature-content">
                                 <h4>Excellence Commitment</h4>
@@ -625,6 +660,7 @@
                     
                     <a href="about.html" class="btn btn-primary">
                         <i class="fas fa-user-tie"></i>
+                        <span class="icon-fallback">👤</span>
                         Learn More About Us
                     </a>
                 </div>
@@ -659,33 +695,93 @@
                 <div class="coverage-card featured">
                     <h3>Primary Service Areas</h3>
                     <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> Thousand Oaks</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Westlake Village</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Agoura Hills</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Newbury Park</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Oak Park</li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="icon-fallback">📍</span>
+                            Thousand Oaks
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="icon-fallback">📍</span>
+                            Westlake Village
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="icon-fallback">📍</span>
+                            Agoura Hills
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="icon-fallback">📍</span>
+                            Newbury Park
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="icon-fallback">📍</span>
+                            Oak Park
+                        </li>
                     </ul>
                 </div>
                 
                 <div class="coverage-card">
                     <h3>Extended Coverage</h3>
                     <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> Malibu</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Calabasas</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Hidden Hills</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Camarillo</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Ventura</li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="icon-fallback">📍</span>
+                            Malibu
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="icon-fallback">📍</span>
+                            Calabasas
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="icon-fallback">📍</span>
+                            Hidden Hills
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="icon-fallback">📍</span>
+                            Camarillo
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="icon-fallback">📍</span>
+                            Ventura
+                        </li>
                     </ul>
                 </div>
                 
                 <div class="coverage-card">
                     <h3>Premium Locations</h3>
                     <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> Beverly Hills</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Manhattan Beach</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Newport Beach</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Palos Verdes</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Laguna Beach</li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="icon-fallback">📍</span>
+                            Beverly Hills
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="icon-fallback">📍</span>
+                            Manhattan Beach
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="icon-fallback">📍</span>
+                            Newport Beach
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="icon-fallback">📍</span>
+                            Palos Verdes
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="icon-fallback">📍</span>
+                            Laguna Beach
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -724,14 +820,17 @@
                         <div class="member-credentials">
                             <span class="credential">
                                 <i class="fas fa-certificate"></i>
+                                <span class="icon-fallback">📜</span>
                                 Red Cross Certified
                             </span>
                             <span class="credential">
                                 <i class="fas fa-heart"></i>
+                                <span class="icon-fallback">❤️</span>
                                 Special Needs Expert
                             </span>
                             <span class="credential">
                                 <i class="fas fa-shield-alt"></i>
+                                <span class="icon-fallback">🛡️</span>
                                 Licensed & Bonded
                             </span>
                         </div>
@@ -768,6 +867,7 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
+                            <span class="icon-fallback">⭐⭐⭐⭐⭐</span>
                         </div>
                     </div>
                 </div>
@@ -787,6 +887,7 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
+                            <span class="icon-fallback">⭐⭐⭐⭐⭐</span>
                         </div>
                     </div>
                 </div>
@@ -806,6 +907,7 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
+                            <span class="icon-fallback">⭐⭐⭐⭐⭐</span>
                         </div>
                     </div>
                 </div>
@@ -814,6 +916,7 @@
             <div class="section-cta">
                 <a href="testimonials.html" class="btn btn-primary">
                     <i class="fas fa-star"></i>
+                    <span class="icon-fallback">⭐</span>
                     Read More Testimonials
                 </a>
             </div>
@@ -832,6 +935,7 @@
                 </p>
                 <a href="contact.html" class="btn btn-primary large">
                     <i class="fas fa-calendar-alt"></i>
+                    <span class="icon-fallback">📅</span>
                     Schedule Private Consultation
                 </a>
             </div>
@@ -858,14 +962,17 @@
                     <div class="footer-badges">
                         <span class="footer-badge">
                             <i class="fas fa-certificate"></i>
+                            <span class="icon-fallback">📜</span>
                             Red Cross Certified
                         </span>
                         <span class="footer-badge">
                             <i class="fas fa-shield-alt"></i>
+                            <span class="icon-fallback">🛡️</span>
                             Licensed & Bonded
                         </span>
                         <span class="footer-badge">
                             <i class="fas fa-award"></i>
+                            <span class="icon-fallback">🏆</span>
                             7+ Years Experience
                         </span>
                     </div>
@@ -875,6 +982,7 @@
                 <div class="footer-section">
                     <h4>
                         <i class="fas fa-water"></i>
+                        <span class="icon-fallback">💧</span>
                         Services
                     </h4>
                     <ul>
@@ -890,6 +998,7 @@
                 <div class="footer-section">
                     <h4>
                         <i class="fas fa-building"></i>
+                        <span class="icon-fallback">🏢</span>
                         Company
                     </h4>
                     <ul>
@@ -905,12 +1014,14 @@
                 <div class="footer-contact">
                     <h4>
                         <i class="fas fa-concierge-bell"></i>
+                        <span class="icon-fallback">🛎️</span>
                         Contact
                     </h4>
                     
                     <div class="contact-info">
                         <a href="tel:+18053676432" class="contact-item primary">
                             <i class="fas fa-phone"></i>
+                            <span class="icon-fallback">📞</span>
                             <div>
                                 <strong>(805) 367-6432</strong>
                                 <span>24/7 Emergency Line</span>
@@ -919,6 +1030,7 @@
                         
                         <a href="mailto:concierge@805lifeguard.com" class="contact-item">
                             <i class="fas fa-envelope"></i>
+                            <span class="icon-fallback">✉️</span>
                             <div>
                                 <strong>concierge@805lifeguard.com</strong>
                                 <span>Consultation Requests</span>
@@ -934,14 +1046,17 @@
                     <div class="footer-portals">
                         <a href="https://client.805companies.com" target="_blank" class="footer-portal-btn">
                             <i class="fas fa-user-circle"></i>
+                            <span class="icon-fallback">👤</span>
                             Client Portal
                         </a>
                         <a href="https://admin.805companies.com" target="_blank" class="footer-portal-btn">
                             <i class="fas fa-shield-alt"></i>
+                            <span class="icon-fallback">🛡️</span>
                             Admin Portal
                         </a>
                         <a href="https://staff.805companies.com" target="_blank" class="footer-portal-btn">
                             <i class="fas fa-users"></i>
+                            <span class="icon-fallback">👥</span>
                             Staff Portal
                         </a>
                     </div>
@@ -970,7 +1085,7 @@
         </div>
     </footer>
 
-    <!-- External Clean JavaScript -->
+    <!-- Load JavaScript -->
     <script src="js/luxury-app.js"></script>
 </body>
 </html>
