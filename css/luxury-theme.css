@@ -9,39 +9,30 @@
  * Enterprise-level styling with unified responsive design
  */
 
-/* === CSS RESET === */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* === LUXURY COUNTRY CLUB FONTS === */
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Lato:wght@300;400;700;900&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
-
-/* === GLOBAL FONT STYLE RESET === */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-style: normal !important;
-}
-
+/* === NUCLEAR FONT STYLE RESET === */
+/* This will override ANY italic fonts from ANY source */
+*, *::before, *::after,
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption,
+tbody, tfoot, thead, tr, th, td, article, aside,
+canvas, details, embed, figure, figcaption,
+footer, header, hgroup, menu, nav, output,
+ruby, section, summary, time, mark, audio, video,
+button, input, select, textarea {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-style: normal !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !important;
 }
+
+/* === WEB SAFE FONTS ONLY (NO GOOGLE FONTS) === */
+/* Using only system fonts to eliminate any font loading issues */
 :root {
     /* Country Club Colors */
     --navy-dark: #0A1628;
@@ -58,10 +49,10 @@ time, mark, audio, video {
     --gray-light: #F3F4F6;
     --border-color: #E5E7EB;
     
-    /* Typography */
-    --font-serif: 'Crimson Text', Georgia, serif;
-    --font-sans: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-display: 'Playfair Display', Georgia, serif;
+    /* Typography - Using System Fonts Only */
+    --font-serif: Georgia, 'Times New Roman', Times, serif;
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    --font-display: Georgia, 'Times New Roman', Times, serif;
     
     /* Spacing System */
     --space-1: 0.25rem;   /* 4px */
@@ -2264,4 +2255,40 @@ section {
 
 .mobile-nav-close {
     z-index: 1002;
+}
+
+/* === FINAL NUCLEAR ITALIC OVERRIDE === */
+/* This is the most aggressive override possible */
+* {
+    font-style: normal !important;
+}
+
+/* Specific override for any elements that might still be italic */
+body *, 
+html *,
+.container *,
+.header *,
+.navbar *,
+.nav-mobile *,
+.hero *,
+section *,
+.footer * {
+    font-style: normal !important;
+}
+
+/* Override any potential CSS that might be making things italic */
+em, i, cite, dfn, var, address {
+    font-style: normal !important;
+}
+
+/* Override any font shorthand that might include italic */
+body, body * {
+    font: inherit !important;
+    font-style: normal !important;
+    font-family: var(--font-sans) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif) !important;
+    font-style: normal !important;
 }
