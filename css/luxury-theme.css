@@ -534,10 +534,12 @@ body.no-fontawesome .fab {
 }
 
 .mobile-logo img {
-    height: 48px;
-    width: 48px;
-    border-radius: 50%;
+    height: 56px;
+    width: auto;
+    max-width: 56px;
+    border-radius: var(--border-radius);
     box-shadow: 0 4px 12px rgba(10, 22, 40, 0.1);
+    object-fit: contain;
 }
 
 .mobile-logo span {
