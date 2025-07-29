@@ -548,6 +548,8 @@ p {
     height: 100%;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
 }
 
 .mobile-nav-header {
@@ -557,6 +559,7 @@ p {
     padding-bottom: var(--spacing-6);
     border-bottom: 1px solid var(--color-border-primary);
     margin-bottom: var(--spacing-6);
+    flex-shrink: 0;
 }
 
 .mobile-logo {
@@ -604,6 +607,7 @@ p {
     flex-direction: column;
     gap: var(--spacing-1);
     margin-bottom: var(--spacing-8);
+    overflow-y: auto;
 }
 
 .mobile-nav-link {
@@ -615,9 +619,11 @@ p {
     border-radius: var(--radius-lg);
     transition: var(--transition-fast);
     border: 1px solid transparent;
+    display: block;
 }
 
 .mobile-nav-link:hover,
+.mobile-nav-link:focus,
 .mobile-nav-link.active {
     background: var(--color-primary-lightest);
     color: var(--color-primary);
@@ -627,6 +633,7 @@ p {
 .mobile-nav-actions {
     padding-top: var(--spacing-6);
     border-top: 1px solid var(--color-border-primary);
+    flex-shrink: 0;
 }
 
 .mobile-portals {
@@ -652,7 +659,8 @@ p {
     border: 1px solid var(--color-border-primary);
 }
 
-.mobile-portal-btn:hover {
+.mobile-portal-btn:hover,
+.mobile-portal-btn:focus {
     background: var(--color-secondary);
     color: var(--color-text-inverse);
     border-color: var(--color-secondary);
@@ -674,12 +682,14 @@ p {
     transition: var(--transition-fast);
 }
 
-.mobile-consultation-btn:hover {
+.mobile-consultation-btn:hover,
+.mobile-consultation-btn:focus {
     background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
 }
 
 .mobile-nav-contact {
     text-align: center;
+    flex-shrink: 0;
 }
 
 .mobile-contact-btn {
@@ -695,29 +705,34 @@ p {
     transition: var(--transition-fast);
 }
 
-.mobile-contact-btn:hover {
+.mobile-contact-btn:hover,
+.mobile-contact-btn:focus {
     background: var(--color-primary-dark);
 }
 
 /* Body lock when mobile nav is open */
 body.nav-open {
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
+    overflow: hidden !important;
+    position: fixed !important;
+    width: 100% !important;
 }
 
 /* Responsive Navigation */
 @media (max-width: 768px) {
     .nav-desktop {
-        display: none;
+        display: none !important;
     }
     
     .mobile-toggle {
-        display: flex;
+        display: flex !important;
     }
     
     .navbar {
         padding: var(--spacing-3) 0;
+    }
+    
+    .navbar-content {
+        gap: var(--spacing-6);
     }
     
     .logo-img {
@@ -730,6 +745,34 @@ body.nav-open {
     
     .logo-tagline {
         font-size: var(--font-size-xs);
+    }
+}
+
+/* Fix for iOS Safari viewport height issues */
+@supports (-webkit-touch-callout: none) {
+    .nav-mobile {
+        height: -webkit-fill-available;
+    }
+    
+    .mobile-nav-content {
+        min-height: -webkit-fill-available;
+    }
+}
+
+/* Ensure mobile nav works on very small screens */
+@media (max-width: 320px) {
+    .mobile-nav-content {
+        padding: var(--spacing-4) var(--spacing-3);
+    }
+    
+    .mobile-nav-link {
+        font-size: 1rem;
+        padding: var(--spacing-3);
+    }
+    
+    .mobile-portals {
+        flex-direction: column;
+        gap: var(--spacing-2);
     }
 }
 
@@ -814,6 +857,7 @@ body.nav-open {
     background-repeat: no-repeat;
     opacity: 0;
     transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity;
 }
 
 .carousel-slide.active {
@@ -829,9 +873,9 @@ body.nav-open {
     height: 100%;
     background: linear-gradient(
         135deg,
-        rgba(11, 41, 34, 0.4) 0%,
-        rgba(27, 75, 67, 0.6) 50%,
-        rgba(11, 41, 34, 0.7) 100%
+        rgba(10, 22, 40, 0.4) 0%,
+        rgba(27, 43, 66, 0.6) 50%,
+        rgba(10, 22, 40, 0.7) 100%
     );
     z-index: 1;
 }
@@ -928,9 +972,9 @@ body.nav-open {
     height: 100%;
     background: linear-gradient(
         135deg,
-        rgba(11, 41, 34, 0.2) 0%,
-        rgba(27, 75, 67, 0.3) 50%,
-        rgba(11, 41, 34, 0.4) 100%
+        rgba(10, 22, 40, 0.2) 0%,
+        rgba(27, 43, 66, 0.3) 50%,
+        rgba(10, 22, 40, 0.4) 100%
     );
     z-index: 2;
 }
@@ -1906,6 +1950,35 @@ section {
     
     .footer-credentials {
         justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-content {
+        gap: var(--spacing-6);
+    }
+    
+    .footer-section h4 {
+        font-size: 1rem;
+    }
+    
+    .footer-section a {
+        font-size: 0.875rem;
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-2);
+    }
+    
+    .footer-portals {
+        flex-direction: column;
+        gap: var(--spacing-2);
+    }
+    
+    .footer-portal-btn {
+        width: 100%;
     }
 }
 
