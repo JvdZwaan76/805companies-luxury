@@ -177,6 +177,7 @@ body.no-fontawesome .fab {
 .breadcrumb-list a {
     color: var(--gray-medium);
     text-decoration: none;
+    font-style: normal;
     transition: var(--transition);
 }
 
@@ -243,6 +244,7 @@ body.no-fontawesome .fab {
     gap: var(--space-2);
     transition: var(--transition);
     font-weight: 500;
+    font-style: normal;
 }
 
 .header-contact:hover {
@@ -1131,6 +1133,7 @@ body.nav-open {
     border-radius: var(--border-radius-lg);
     font-weight: 600;
     font-size: 1rem;
+    font-style: normal;
     text-decoration: none;
     transition: var(--transition);
     border: 2px solid transparent;
@@ -1345,6 +1348,7 @@ section {
     gap: var(--space-2);
     color: var(--gold-dark);
     font-weight: 600;
+    font-style: normal;
     text-decoration: none;
     transition: var(--transition);
 }
@@ -1788,6 +1792,7 @@ section {
     text-decoration: none;
     transition: var(--transition);
     font-size: 0.9375rem;
+    font-style: normal;
 }
 
 .footer-section a:hover {
@@ -1812,6 +1817,7 @@ section {
     margin-bottom: var(--space-3);
     padding: var(--space-2);
     border-radius: var(--border-radius);
+    font-style: normal;
     transition: var(--transition);
 }
 
@@ -1872,6 +1878,7 @@ section {
     text-decoration: none;
     font-size: 0.8125rem;
     font-weight: 500;
+    font-style: normal;
     display: flex;
     align-items: center;
     gap: var(--space-1);
@@ -1914,6 +1921,7 @@ section {
     color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
     font-size: 0.875rem;
+    font-style: normal;
     transition: var(--transition);
 }
 
