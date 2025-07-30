@@ -134,281 +134,6 @@
       "url": "https://805lifeguard.com/services.html"
     }
     </script>
-
-    <!-- Enhanced Services Page Styles -->
-    <style>
-    /* Service Navigation Enhancements */
-    .services-nav {
-        display: flex;
-        justify-content: center;
-        gap: var(--spacing-6);
-        flex-wrap: wrap;
-        margin-bottom: var(--spacing-4);
-    }
-    
-    .service-nav-link {
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-3);
-        padding: var(--spacing-4) var(--spacing-8);
-        background: var(--color-bg-primary);
-        color: var(--color-text-primary);
-        text-decoration: none;
-        border-radius: var(--radius-2xl);
-        font-weight: var(--font-weight-semibold);
-        font-size: var(--font-size-base);
-        transition: all var(--transition-fast);
-        border: 2px solid var(--color-border-primary);
-        box-shadow: var(--shadow-base);
-        min-width: 200px;
-        justify-content: center;
-    }
-    
-    .service-nav-link:hover,
-    .service-nav-link.active {
-        background: linear-gradient(135deg, var(--color-secondary-dark), var(--color-secondary));
-        color: var(--color-text-inverse);
-        border-color: var(--color-secondary);
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-lg);
-    }
-    
-    .service-nav-link i {
-        font-size: var(--font-size-xl);
-    }
-    
-    /* Enhanced Section Badges */
-    .section-badge.ultra-luxury {
-        background: linear-gradient(135deg, var(--color-secondary-dark), var(--color-secondary));
-        color: var(--color-text-inverse);
-        border: 1px solid var(--color-secondary-light);
-        box-shadow: var(--shadow-sm);
-    }
-    
-    .section-badge.luxury {
-        background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
-        color: var(--color-text-inverse);
-        box-shadow: var(--shadow-sm);
-    }
-    
-    .section-badge.premium {
-        background: linear-gradient(135deg, var(--color-neutral-dark), var(--color-neutral));
-        color: var(--color-text-inverse);
-        box-shadow: var(--shadow-sm);
-    }
-    
-    /* Enhanced Service Stats */
-    .service-stats {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: var(--spacing-6);
-        padding: var(--spacing-8);
-        background: linear-gradient(135deg, var(--color-bg-tertiary), var(--color-primary-lightest));
-        border-radius: var(--radius-2xl);
-        text-align: center;
-        border: 1px solid var(--color-border-primary);
-        box-shadow: var(--shadow-base);
-    }
-    
-    .stat-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: var(--spacing-2);
-    }
-    
-    .stat-number {
-        font-size: var(--font-size-4xl);
-        font-weight: var(--font-weight-extrabold);
-        color: var(--color-secondary-dark);
-        font-family: var(--font-family-serif);
-        line-height: 1;
-    }
-    
-    .stat-label {
-        font-size: var(--font-size-sm);
-        color: var(--color-text-secondary);
-        font-weight: var(--font-weight-semibold);
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-    }
-    
-    /* Enhanced Instruction Service Cards */
-    .instruction-services {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: var(--spacing-6);
-        margin: var(--spacing-8) 0;
-    }
-    
-    .instruction-card {
-        background: var(--color-bg-primary);
-        padding: var(--spacing-8);
-        border-radius: var(--radius-2xl);
-        text-align: center;
-        border: 1px solid var(--color-border-primary);
-        box-shadow: var(--shadow-base);
-        transition: all var(--transition-fast);
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .instruction-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(135deg, var(--color-secondary-dark), var(--color-secondary));
-    }
-    
-    .instruction-card:hover {
-        transform: translateY(-8px);
-        box-shadow: var(--shadow-xl);
-        border-color: var(--color-secondary-light);
-    }
-    
-    .instruction-card .service-icon-standalone {
-        margin-bottom: var(--spacing-4);
-    }
-    
-    .instruction-card h4 {
-        color: var(--color-primary);
-        margin-bottom: var(--spacing-3);
-        font-size: var(--font-size-xl);
-    }
-    
-    /* Enhanced Event Service Cards */
-    .event-services {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: var(--spacing-8);
-        margin: var(--spacing-8) 0;
-    }
-    
-    .event-card {
-        background: var(--color-bg-primary);
-        padding: var(--spacing-8);
-        border-radius: var(--radius-2xl);
-        border: 1px solid var(--color-border-primary);
-        box-shadow: var(--shadow-base);
-        transition: all var(--transition-fast);
-        position: relative;
-    }
-    
-    .event-card::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: var(--spacing-4);
-        right: var(--spacing-4);
-        height: 2px;
-        background: var(--color-secondary);
-        border-radius: var(--radius-full);
-    }
-    
-    .event-card:hover {
-        transform: translateY(-6px);
-        box-shadow: var(--shadow-lg);
-        border-color: var(--color-secondary-light);
-    }
-    
-    .event-card .service-icon-standalone {
-        margin-bottom: var(--spacing-4);
-    }
-    
-    .event-card h4 {
-        color: var(--color-primary);
-        margin-bottom: var(--spacing-3);
-        font-size: var(--font-size-xl);
-    }
-    
-    /* Enhanced Features List */
-    .features-list {
-        background: var(--color-bg-tertiary);
-        padding: var(--spacing-8);
-        border-radius: var(--radius-2xl);
-        border-left: 4px solid var(--color-secondary);
-        margin: var(--spacing-8) 0;
-    }
-    
-    .features-list h4 {
-        color: var(--color-primary);
-        margin-bottom: var(--spacing-6);
-        font-size: var(--font-size-2xl);
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-3);
-    }
-    
-    .features-list ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-    
-    .features-list li {
-        display: flex;
-        align-items: flex-start;
-        gap: var(--spacing-3);
-        margin-bottom: var(--spacing-4);
-        padding: var(--spacing-3);
-        background: var(--color-bg-primary);
-        border-radius: var(--radius-lg);
-        transition: var(--transition-fast);
-    }
-    
-    .features-list li:hover {
-        background: var(--color-primary-lightest);
-        transform: translateX(8px);
-    }
-    
-    .features-list li::before {
-        content: '✓';
-        color: var(--color-secondary-dark);
-        font-weight: var(--font-weight-bold);
-        font-size: var(--font-size-lg);
-        flex-shrink: 0;
-        width: 24px;
-        height: 24px;
-        background: var(--color-secondary-lightest);
-        border-radius: var(--radius-full);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 2px solid var(--color-secondary-light);
-    }
-    
-    /* Mobile Optimizations */
-    @media (max-width: 768px) {
-        .services-nav {
-            flex-direction: column;
-            align-items: center;
-            gap: var(--spacing-4);
-        }
-        
-        .service-nav-link {
-            width: 100%;
-            max-width: 320px;
-        }
-        
-        .instruction-services,
-        .event-services {
-            grid-template-columns: 1fr;
-        }
-        
-        .service-stats {
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: var(--spacing-4);
-            padding: var(--spacing-6);
-        }
-        
-        .stat-number {
-            font-size: var(--font-size-3xl);
-        }
-    }
-    </style>
 </head>
 <body itemscope itemtype="https://schema.org/WebPage">
     <!-- Enterprise Header -->
@@ -615,44 +340,112 @@
         </div>
     </section>
 
-    <!-- Services Navigation -->
+    <!-- Services Preview -->
     <section id="services-overview" class="services-section">
         <div class="container">
             <div class="section-header">
-                <div class="section-badge">Service Portfolio</div>
-                <h2>Comprehensive Aquatic Excellence</h2>
+                <div class="section-badge">Bespoke Aquatic Excellence</div>
+                <h2 class="section-title">Services Crafted for Discerning Clientele</h2>
                 <p class="section-description">
-                    Three core service areas designed to provide complete aquatic safety and luxury for your estate, 
-                    events, and family's swimming education needs.
+                    Each service offering is meticulously designed to meet the exacting standards 
+                    of Southern California's most prestigious communities, with absolute discretion and uncompromising quality.
                 </p>
             </div>
             
-            <div class="services-nav">
-                <a href="#lifeguarding" class="service-nav-link">
-                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
-                    <span>Private Lifeguarding</span>
-                </a>
-                <a href="#instruction" class="service-nav-link">
-                    <i class="fas fa-swimming-pool" aria-hidden="true"></i>
-                    <span>Swimming Instruction</span>
-                </a>
-                <a href="#events" class="service-nav-link">
-                    <i class="fas fa-champagne-glasses" aria-hidden="true"></i>
-                    <span>Event Management</span>
-                </a>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <picture>
+                            <source srcset="images/services/service-lifeguarding-professional-800x600.webp" type="image/webp">
+                            <img src="images/services/service-lifeguarding-professional-800x600.jpg" alt="Private Lifeguarding Services" loading="lazy">
+                        </picture>
+                        <div class="service-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Private Estate Lifeguarding</h3>
+                        <p class="service-description">
+                            Discreet, professional aquatic safety specialists who seamlessly integrate into your 
+                            estate's daily operations while providing uncompromising protection for your family and guests.
+                        </p>
+                        <div class="service-features">
+                            <span class="feature-tag">Complete Discretion</span>
+                            <span class="feature-tag">Advanced Certifications</span>
+                            <span class="feature-tag">24/7 Availability</span>
+                            <span class="feature-tag">Multi-Language Support</span>
+                        </div>
+                        <a href="#lifeguarding" class="service-link">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <picture>
+                            <source srcset="images/services/service-swim-lessons-private-800x600.webp" type="image/webp">
+                            <img src="images/services/service-swim-lessons-private-800x600.jpg" alt="Bespoke Swimming Instruction" loading="lazy">
+                        </picture>
+                        <div class="service-icon">
+                            <i class="fas fa-swimming-pool"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Bespoke Swimming Instruction</h3>
+                        <p class="service-description">
+                            Personalized aquatic excellence programs designed for your family's specific goals, 
+                            from gentle confidence building to Olympic-level technique refinement—all in complete privacy.
+                        </p>
+                        <div class="service-features">
+                            <span class="feature-tag">Private Sessions</span>
+                            <span class="feature-tag">Family Groups</span>
+                            <span class="feature-tag">Special Needs</span>
+                            <span class="feature-tag">Adult Lessons</span>
+                        </div>
+                        <a href="#instruction" class="service-link">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <picture>
+                            <source srcset="images/services/service-events-luxury-800x600.webp" type="image/webp">
+                            <img src="images/services/service-events-luxury-800x600.jpg" alt="Luxury Event Management" loading="lazy">
+                        </picture>
+                        <div class="service-icon">
+                            <i class="fas fa-champagne-glasses"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Luxury Event Management</h3>
+                        <p class="service-description">
+                            Invisible excellence in aquatic environment management for your most important gatherings. 
+                            Our teams ensure pristine safety without disrupting your sophisticated events.
+                        </p>
+                        <div class="service-features">
+                            <span class="feature-tag">Private Pool Parties</span>
+                            <span class="feature-tag">Corporate Events</span>
+                            <span class="feature-tag">Special Occasions</span>
+                            <span class="feature-tag">Seasonal Parties</span>
+                        </div>
+                        <a href="#events" class="service-link">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Private Estate Lifeguarding -->
-    <section id="lifeguarding" class="content-section" itemscope itemtype="https://schema.org/Service">
+    <section id="lifeguarding" class="about-section" itemscope itemtype="https://schema.org/Service">
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <div class="section-badge ultra-luxury">
-                        <i class="fas fa-crown" aria-hidden="true"></i>
-                        Ultra-Luxury Service
-                    </div>
+                    <div class="section-badge">Ultra-Luxury Service</div>
                     <h2 itemprop="name">Private Estate Lifeguarding</h2>
                     <p class="lead-text" itemprop="description">
                         Discreet, professional aquatic safety specialists who seamlessly integrate into your 
@@ -706,12 +499,6 @@
                         </div>
                     </div>
                     
-                    <div class="callout-box">
-                        <i class="fas fa-concierge-bell"></i>
-                        <strong>Custom Service Packages:</strong> Each estate service plan is tailored to your specific requirements, 
-                        family needs, and security protocols. All consultations are confidential and comprehensive.
-                    </div>
-                    
                     <a href="contact.html?service=lifeguarding" class="btn btn-primary">
                         <i class="fas fa-calendar-check"></i>
                         Request Consultation
@@ -726,20 +513,16 @@
                     
                     <div class="image-gallery">
                         <div class="gallery-item">
-                            <div class="service-stats">
-                                <div class="stat-item">
-                                    <div class="stat-number">100+</div>
-                                    <div class="stat-label">Events Protected</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-number">7+</div>
-                                    <div class="stat-label">Years Experience</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-number">24/7</div>
-                                    <div class="stat-label">Availability</div>
-                                </div>
-                            </div>
+                            <picture>
+                                <source srcset="images/services/service-lifeguarding-action-800x600.webp" type="image/webp">
+                                <img src="images/services/service-lifeguarding-action-800x600.jpg" alt="Lifeguard in action at luxury estate" loading="lazy">
+                            </picture>
+                        </div>
+                        <div class="gallery-item">
+                            <picture>
+                                <source srcset="images/services/service-lifeguarding-training-800x600.webp" type="image/webp">
+                                <img src="images/services/service-lifeguarding-training-800x600.jpg" alt="Professional lifeguard training" loading="lazy">
+                            </picture>
                         </div>
                     </div>
                 </div>
@@ -748,7 +531,7 @@
     </section>
 
     <!-- Bespoke Swimming Instruction -->
-    <section id="instruction" class="content-section" style="background: var(--color-bg-secondary);" itemscope itemtype="https://schema.org/Service">
+    <section id="instruction" class="services-section" itemscope itemtype="https://schema.org/Service">
         <div class="container">
             <div class="about-content">
                 <div class="about-images">
@@ -764,14 +547,17 @@
                                 <img src="images/services/service-swim-lessons-family-800x600.jpg" alt="Family swimming lessons" loading="lazy">
                             </picture>
                         </div>
+                        <div class="gallery-item">
+                            <picture>
+                                <source srcset="images/services/service-swim-lessons-adult-800x600.webp" type="image/webp">
+                                <img src="images/services/service-swim-lessons-adult-800x600.jpg" alt="Adult swimming lessons" loading="lazy">
+                            </picture>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="about-text">
-                    <div class="section-badge luxury">
-                        <i class="fas fa-star" aria-hidden="true"></i>
-                        Luxury Instruction
-                    </div>
+                    <div class="section-badge">Luxury Instruction</div>
                     <h2 itemprop="name">Bespoke Swimming Instruction</h2>
                     <p class="lead-text" itemprop="description">
                         Personalized aquatic excellence programs designed for your family's specific goals, 
@@ -783,44 +569,46 @@
                         children or adults, each program is thoughtfully designed to build skills, confidence, and joy in the water.
                     </p>
                     
-                    <div class="instruction-services">
-                        <div class="instruction-card">
-                            <div class="service-icon-standalone">
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
                                 <i class="fas fa-user"></i>
                             </div>
-                            <h4>Private Sessions</h4>
-                            <p>One-on-one instruction tailored to individual goals, learning pace, and comfort levels with dedicated attention to technique and safety.</p>
+                            <div class="feature-content">
+                                <h4>Private Sessions</h4>
+                                <p>One-on-one instruction tailored to individual goals, learning pace, and comfort levels.</p>
+                            </div>
                         </div>
                         
-                        <div class="instruction-card">
-                            <div class="service-icon-standalone">
+                        <div class="feature-item">
+                            <div class="feature-icon">
                                 <i class="fas fa-users"></i>
                             </div>
-                            <h4>Family Groups</h4>
-                            <p>Customized programs designed for multiple family members with age-appropriate instruction and family bonding activities.</p>
+                            <div class="feature-content">
+                                <h4>Family Groups</h4>
+                                <p>Customized programs designed for multiple family members with age-appropriate instruction.</p>
+                            </div>
                         </div>
                         
-                        <div class="instruction-card">
-                            <div class="service-icon-standalone">
+                        <div class="feature-item">
+                            <div class="feature-icon">
                                 <i class="fas fa-heart"></i>
                             </div>
-                            <h4>Special Needs</h4>
-                            <p>Adaptive instruction for individuals with special needs, physical challenges, or learning differences with specialized techniques.</p>
+                            <div class="feature-content">
+                                <h4>Special Needs</h4>
+                                <p>Adaptive instruction for individuals with special needs, physical challenges, or learning differences.</p>
+                            </div>
                         </div>
                         
-                        <div class="instruction-card">
-                            <div class="service-icon-standalone">
+                        <div class="feature-item">
+                            <div class="feature-icon">
                                 <i class="fas fa-graduation-cap"></i>
                             </div>
-                            <h4>Adult Lessons</h4>
-                            <p>Confidence building and technique improvement for adult learners in a comfortable, judgment-free environment.</p>
+                            <div class="feature-content">
+                                <h4>Adult Lessons</h4>
+                                <p>Confidence building and technique improvement for adult learners in a comfortable environment.</p>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="callout-box">
-                        <i class="fas fa-graduation-cap"></i>
-                        <strong>Lesson Programs:</strong> All instruction is customized for individual goals with flexible 
-                        scheduling and comprehensive progress tracking. Packages available for all skill levels.
                     </div>
                     
                     <a href="contact.html?service=instruction" class="btn btn-primary">
@@ -833,14 +621,11 @@
     </section>
 
     <!-- Luxury Event Management -->
-    <section id="events" class="content-section" itemscope itemtype="https://schema.org/Service">
+    <section id="events" class="about-section" itemscope itemtype="https://schema.org/Service">
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <div class="section-badge premium">
-                        <i class="fas fa-champagne-glasses" aria-hidden="true"></i>
-                        Premium Events
-                    </div>
+                    <div class="section-badge">Premium Events</div>
                     <h2 itemprop="name">Luxury Pool & Event Management</h2>
                     <p class="lead-text" itemprop="description">
                         Invisible excellence in aquatic environment management for your most important gatherings. 
@@ -851,53 +636,46 @@
                         provide professional oversight that allows you and your guests to enjoy the event with complete peace of mind.
                     </p>
                     
-                    <div class="event-services">
-                        <div class="event-card">
-                            <div class="service-icon-standalone">
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
                                 <i class="fas fa-users"></i>
                             </div>
-                            <h4>Private Pool Parties</h4>
-                            <p>Elegant safety management for intimate gatherings and family celebrations with discrete professional oversight and emergency preparedness.</p>
+                            <div class="feature-content">
+                                <h4>Private Pool Parties</h4>
+                                <p>Elegant safety management for intimate gatherings and family celebrations.</p>
+                            </div>
                         </div>
                         
-                        <div class="event-card">
-                            <div class="service-icon-standalone">
+                        <div class="feature-item">
+                            <div class="feature-icon">
                                 <i class="fas fa-building"></i>
                             </div>
-                            <h4>Corporate Events</h4>
-                            <p>Professional aquatic safety for business gatherings and executive entertainment with comprehensive liability management.</p>
+                            <div class="feature-content">
+                                <h4>Corporate Events</h4>
+                                <p>Professional aquatic safety for business gatherings and executive entertainment.</p>
+                            </div>
                         </div>
                         
-                        <div class="event-card">
-                            <div class="service-icon-standalone">
+                        <div class="feature-item">
+                            <div class="feature-icon">
                                 <i class="fas fa-heart"></i>
                             </div>
-                            <h4>Special Occasions</h4>
-                            <p>Weddings, anniversaries, and milestone celebrations with dedicated safety oversight tailored to your special day.</p>
+                            <div class="feature-content">
+                                <h4>Special Occasions</h4>
+                                <p>Weddings, anniversaries, and milestone celebrations with dedicated safety oversight.</p>
+                            </div>
                         </div>
                         
-                        <div class="event-card">
-                            <div class="service-icon-standalone">
+                        <div class="feature-item">
+                            <div class="feature-icon">
                                 <i class="fas fa-calendar-alt"></i>
                             </div>
-                            <h4>Seasonal Parties</h4>
-                            <p>Holiday gatherings and seasonal celebrations with professional aquatic management and festive safety protocols.</p>
+                            <div class="feature-content">
+                                <h4>Seasonal Parties</h4>
+                                <p>Holiday gatherings and seasonal celebrations with professional aquatic management.</p>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="features-list">
-                        <h4>
-                            <i class="fas fa-clipboard-check"></i>
-                            Event Safety Features
-                        </h4>
-                        <ul>
-                            <li>Pre-event safety assessment and comprehensive planning consultation</li>
-                            <li>Discrete professional oversight during events with invisible integration</li>
-                            <li>Emergency response protocols and state-of-the-art safety equipment</li>
-                            <li>Coordination with event planners, caterers, and venue management</li>
-                            <li>Post-event safety equipment security and area inspection</li>
-                            <li>Flexible scheduling for day or evening events with 24/7 availability</li>
-                        </ul>
                     </div>
                     
                     <a href="contact.html?service=events" class="btn btn-primary">
@@ -914,20 +692,16 @@
                     
                     <div class="image-gallery">
                         <div class="gallery-item">
-                            <div class="service-stats">
-                                <div class="stat-item">
-                                    <div class="stat-number">500+</div>
-                                    <div class="stat-label">Events Managed</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-number">100%</div>
-                                    <div class="stat-label">Safety Record</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-number">50+</div>
-                                    <div class="stat-label">Max Guests</div>
-                                </div>
-                            </div>
+                            <picture>
+                                <source srcset="images/services/service-events-corporate-800x600.webp" type="image/webp">
+                                <img src="images/services/service-events-corporate-800x600.jpg" alt="Corporate pool event management" loading="lazy">
+                            </picture>
+                        </div>
+                        <div class="gallery-item">
+                            <picture>
+                                <source srcset="images/services/service-events-wedding-800x600.webp" type="image/webp">
+                                <img src="images/services/service-events-wedding-800x600.jpg" alt="Wedding pool safety management" loading="lazy">
+                            </picture>
                         </div>
                     </div>
                 </div>
@@ -936,7 +710,7 @@
     </section>
 
     <!-- Professional Credentials -->
-    <section class="content-section bg-credentials background-overlay">
+    <section class="services-section bg-credentials background-overlay">
         <div class="container">
             <div class="section-header">
                 <div class="section-badge">Professional Excellence</div>
@@ -1234,7 +1008,7 @@
                     <div class="footer-credentials">
                         <span>CA Licensed</span>
                         <span>Bonded & Insured</span>
-                        <span>Background Checked</span>
+                        <span class="feature-tag">Background Checked</span>
                     </div>
                 </div>
             </div>
