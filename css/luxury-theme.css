@@ -418,12 +418,15 @@ p {
 }
 
 .nav-link:hover,
-.nav-link.active {
+.nav-link.active,
+.nav-link:focus {
     color: var(--color-primary);
+    outline: none;
 }
 
 .nav-link:hover::after,
-.nav-link.active::after {
+.nav-link.active::after,
+.nav-link:focus::after {
     content: '';
     position: absolute;
     bottom: 8px;
@@ -2041,8 +2044,22 @@ body {
 .carousel-prev:focus,
 .carousel-next:focus,
 .indicator:focus {
-    outline: 2px solid var(--color-secondary);
-    outline-offset: 2px;
+    outline: none;
+}
+
+/* Custom focus styles for luxury brand */
+.btn:focus {
+    box-shadow: 0 0 0 2px var(--color-secondary-light);
+}
+
+.mobile-toggle:focus,
+.carousel-prev:focus,
+.carousel-next:focus {
+    box-shadow: 0 0 0 2px var(--color-secondary-light);
+}
+
+.indicator:focus {
+    box-shadow: 0 0 0 2px var(--color-text-inverse);
 }
 
 /* === REDUCED MOTION === */
