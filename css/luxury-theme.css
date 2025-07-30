@@ -393,13 +393,13 @@ p {
 .nav-desktop {
     display: flex;
     align-items: center;
-    gap: var(--spacing-8);
+    gap: var(--spacing-10);
 }
 
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: var(--spacing-2);
+    gap: var(--spacing-4);
     list-style: none;
     margin: 0;
     padding: 0;
@@ -410,7 +410,7 @@ p {
     text-decoration: none;
     font-weight: var(--font-weight-medium);
     font-size: var(--font-size-sm);
-    padding: var(--spacing-3) var(--spacing-4);
+    padding: var(--spacing-3) var(--spacing-5);
     border-radius: var(--radius-lg);
     transition: var(--transition-fast);
     position: relative;
@@ -427,8 +427,8 @@ p {
     content: '';
     position: absolute;
     bottom: 8px;
-    left: var(--spacing-4);
-    right: var(--spacing-4);
+    left: var(--spacing-5);
+    right: var(--spacing-5);
     height: 2px;
     background: var(--color-primary);
     transform: scaleX(1);
@@ -438,8 +438,8 @@ p {
     content: '';
     position: absolute;
     bottom: 8px;
-    left: var(--spacing-4);
-    right: var(--spacing-4);
+    left: var(--spacing-5);
+    right: var(--spacing-5);
     height: 2px;
     background: var(--color-primary);
     transform: scaleX(0);
