@@ -1239,6 +1239,27 @@ section {
     color: rgba(255, 255, 255, 0.9);
 }
 
+/* Hero Background Variants */
+.hero-background.about-hero {
+    background-image: url('images/about/about-hero-background-1920x1080.jpg');
+}
+
+.hero-background.services-hero {
+    background-image: url('images/services/services-hero-background-1920x1080.jpg');
+}
+
+.hero-background.cleaning-hero {
+    background-image: url('images/cleaning/pool-cleaning-hero-1920x1080.jpg');
+}
+
+.hero-background.hoa-hero {
+    background-image: url('images/hoa/hoa-community-pool-1600x1200.jpg');
+}
+
+.hero-background.testimonials-hero {
+    background-image: url('images/testimonials/testimonials-hero-1600x1200.jpg');
+}
+
 /* Background Image Classes */
 .bg-company-values {
     background-image: url('images/about/company-values-background-1600x900.jpg');
