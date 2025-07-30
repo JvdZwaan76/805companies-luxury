@@ -1,6 +1,6 @@
 /* 
  * 805 LifeGuard - Luxury Theme CSS (Enterprise Design System)
- * Version: 6.0 - Complete Rewrite with Professional Navy Blue Aesthetic
+ * Version: 6.1 - Complete Rewrite with Professional Navy Blue Aesthetic + Background System
  * Inspired by premium corporate and luxury business design standards
  */
 
@@ -2173,25 +2173,183 @@ body {
     margin-top: 140px;
 }
 
-.page-title {
-    margin-bottom: var(--spacing-4);
-    color: var(--color-primary);
+.page-header.hero-background {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--color-text-inverse);
+    position: relative;
 }
 
-.page-subtitle {
-    font-size: var(--font-size-xl);
-    color: var(--color-text-secondary);
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: var(--line-height-relaxed);
+.page-header.hero-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        rgba(10, 22, 40, 0.6), 
+        rgba(27, 43, 66, 0.6)
+    );
+    z-index: 1;
 }
 
-.content-section {
-    padding: var(--spacing-16) 0;
+.page-header.hero-background .container {
+    position: relative;
+    z-index: 2;
 }
 
-.content-section:nth-child(even) {
-    background: var(--color-bg-secondary);
+.page-header.hero-background .page-title,
+.page-header.hero-background .section-badge {
+    color: var(--color-text-inverse);
+}
+
+.page-header.hero-background .page-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Hero Background Variants */
+.hero-background.about-hero {
+    background-image: url('images/about/about-hero-background-1920x1080.jpg');
+}
+
+.hero-background.services-hero {
+    background-image: url('images/services/services-hero-background-1920x1080.jpg');
+}
+
+.hero-background.cleaning-hero {
+    background-image: url('images/cleaning/pool-cleaning-hero-1920x1080.jpg');
+}
+
+.hero-background.hoa-hero {
+    background-image: url('images/hoa/hoa-community-pool-1600x1200.jpg');
+}
+
+.hero-background.testimonials-hero {
+    background-image: url('images/testimonials/testimonials-hero-1600x1200.jpg');
+}
+
+/* Content Section Background Variants */
+.content-section.background-overlay {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--color-text-inverse);
+    position: relative;
+}
+
+.content-section.background-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        rgba(10, 22, 40, 0.8), 
+        rgba(27, 43, 66, 0.8)
+    );
+    z-index: 1;
+}
+
+.content-section.background-overlay .container {
+    position: relative;
+    z-index: 2;
+}
+
+.content-section.background-overlay h2,
+.content-section.background-overlay h3,
+.content-section.background-overlay h4 {
+    color: var(--color-text-inverse);
+}
+
+.content-section.background-overlay .section-description {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Consultation Section Background Support */
+.consultation-section.background-overlay {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.consultation-section.background-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        rgba(10, 22, 40, 0.7), 
+        rgba(27, 43, 66, 0.7)
+    );
+    z-index: 1;
+}
+
+.consultation-section.background-overlay .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Background Image Variants */
+.bg-company-values {
+    background-image: url('images/about/company-values-background-1600x900.jpg');
+}
+
+.bg-mission-statement {
+    background-image: url('images/about/mission-statement-background-1600x900.jpg');
+}
+
+.bg-awards-certifications {
+    background-image: url('images/about/awards-certifications-800x600.jpg');
+}
+
+.bg-credentials {
+    background-image: url('images/services/credentials-background-1600x900.jpg');
+}
+
+.bg-services-cta {
+    background-image: url('images/services/services-cta-background-1600x900.jpg');
+}
+
+.bg-pool-cleaning-hero {
+    background-image: url('images/cleaning/pool-cleaning-hero-1920x1080.jpg');
+}
+
+.bg-pool-maintenance {
+    background-image: url('images/cleaning/weekly-maintenance-800x600.jpg');
+}
+
+.bg-chemical-balancing {
+    background-image: url('images/cleaning/chemical-balancing-800x600.jpg');
+}
+
+.bg-equipment-maintenance {
+    background-image: url('images/cleaning/equipment-maintenance-800x600.jpg');
+}
+
+.bg-hoa-community {
+    background-image: url('images/hoa/hoa-community-pool-1600x1200.jpg');
+}
+
+.bg-hoa-maintenance {
+    background-image: url('images/hoa/hoa-maintenance-800x600.jpg');
+}
+
+.bg-hoa-training {
+    background-image: url('images/hoa/hoa-training-800x600.jpg');
+}
+
+.bg-hoa-events {
+    background-image: url('images/hoa/hoa-events-800x600.jpg');
+}
+
+.bg-testimonials-hero {
+    background-image: url('images/testimonials/testimonials-hero-1600x1200.jpg');
 }
 
 /* === CONTENT COMPONENTS === */
