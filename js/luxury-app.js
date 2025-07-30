@@ -744,6 +744,12 @@
         
         this.isOpen = false;
 
+        // Remove focus from any focused elements inside mobile nav
+        const focusedElement = this.mobileNav.querySelector(':focus');
+        if (focusedElement) {
+            focusedElement.blur();
+        }
+
         // Remove classes
         this.mobileToggle.classList.remove('active');
         this.mobileToggle.setAttribute('aria-expanded', 'false');
@@ -758,6 +764,11 @@
 
         // Restore scroll position
         window.scrollTo(0, this.scrollPosition);
+        
+        // Return focus to the mobile toggle button
+        setTimeout(() => {
+            this.mobileToggle.focus();
+        }, 100);
     };
 
     NavigationController.prototype.setupScrollEffects = function() {
