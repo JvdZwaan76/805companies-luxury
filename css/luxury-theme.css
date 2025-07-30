@@ -1,6 +1,6 @@
 /* 
  * 805 LifeGuard - Luxury Theme CSS (Enterprise Design System)
- * Version: 6.2 - Fixed Hover States & Background System
+ * Version: 6.3 - Enhanced Footer Separator
  * Inspired by premium corporate and luxury business design standards
  */
 
@@ -1309,6 +1309,11 @@ section {
     
     .page-header.hero-background {
         min-height: 400px;
+        padding-top: 95px;
+    }
+    
+    .breadcrumbs.hero-page {
+        top: 95px;
     }
 }
 
@@ -2032,6 +2037,20 @@ section {
     background: linear-gradient(135deg, #0A1628, #0F1B2E);
     color: var(--color-text-inverse);
     padding: var(--spacing-16) 0 var(--spacing-4);
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--color-secondary), transparent);
+    border-radius: var(--radius-full);
 }
 
 .footer-content {
