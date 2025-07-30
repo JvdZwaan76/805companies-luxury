@@ -1178,6 +1178,63 @@ section {
     margin-top: 140px;
 }
 
+.page-header.hero-background {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--color-text-inverse);
+    position: relative;
+}
+
+.page-header.hero-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        rgba(10, 22, 40, 0.6), 
+        rgba(27, 43, 66, 0.6)
+    );
+    z-index: 1;
+}
+
+.page-header.hero-background .container {
+    position: relative;
+    z-index: 2;
+}
+
+.page-header.hero-background .page-title,
+.page-header.hero-background .section-badge {
+    color: var(--color-text-inverse);
+}
+
+.page-header.hero-background .page-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Hero Background Variants */
+.page-header.hero-background.about-hero {
+    background-image: url('images/about/about-hero-background-1920x1080.jpg');
+}
+
+.page-header.hero-background.services-hero {
+    background-image: url('images/services/services-hero-background-1920x1080.jpg');
+}
+
+.page-header.hero-background.cleaning-hero {
+    background-image: url('images/cleaning/pool-cleaning-hero-1920x1080.jpg');
+}
+
+.page-header.hero-background.hoa-hero {
+    background-image: url('images/hoa/hoa-community-pool-1600x1200.jpg');
+}
+
+.page-header.hero-background.testimonials-hero {
+    background-image: url('images/testimonials/testimonials-hero-1600x1200.jpg');
+}
+
 .page-title {
     margin-bottom: var(--spacing-4);
 }
