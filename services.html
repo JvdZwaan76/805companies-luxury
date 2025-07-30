@@ -13,6 +13,8 @@
     <meta name="language" content="en-US">
     <meta name="geo.region" content="US-CA">
     <meta name="geo.placename" content="Thousand Oaks, California">
+    <meta name="geo.position" content="34.1706;-118.8376">
+    <meta name="ICBM" content="34.1706, -118.8376">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website">
@@ -23,6 +25,7 @@
     <meta property="og:image" content="https://805lifeguard.com/images/services/services-og-1200x630.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="805 LifeGuard Premium Aquatic Services">
     <meta property="og:locale" content="en_US">
     
     <!-- Twitter Card Meta Tags -->
@@ -30,22 +33,23 @@
     <meta name="twitter:title" content="Premium Aquatic Services - 805 LifeGuard">
     <meta name="twitter:description" content="Professional aquatic safety and instruction services for Southern California's luxury estates and distinguished clientele.">
     <meta name="twitter:image" content="https://805lifeguard.com/images/services/services-twitter-1200x600.jpg">
+    <meta name="twitter:image:alt" content="805 LifeGuard Professional Services">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://805lifeguard.com/services.html">
     
-    <!-- Sophisticated Country Club Fonts -->
+    <!-- Enterprise Typography - Premium Font Stack -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
     
-    <!-- Enhanced Luxury Theme CSS -->
+    <!-- Luxury Theme CSS -->
     <link rel="stylesheet" href="css/luxury-theme.css">
     
-    <!-- Preload critical images (WebP with JPG fallback) -->
+    <!-- Preload critical images -->
     <link rel="preload" as="image" href="images/services/services-hero-background-1920x1080.webp" type="image/webp">
     <link rel="preload" as="image" href="images/services/services-hero-background-1920x1080.jpg" type="image/jpeg">
     <link rel="preload" as="image" href="images/services/service-lifeguarding-professional-800x600.webp" type="image/webp">
@@ -57,6 +61,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="images/logos/805-lifeguard-apple-touch-icon-180x180.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/logos/805-lifeguard-favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/logos/805-lifeguard-favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
@@ -131,7 +136,7 @@
     </script>
 </head>
 <body itemscope itemtype="https://schema.org/WebPage">
-    <!-- Enhanced Header -->
+    <!-- Enterprise Header -->
     <header class="header" id="header" role="banner">
         <!-- Top Bar -->
         <div class="header-top">
@@ -212,13 +217,10 @@
         <div class="nav-mobile" id="mobileNav" role="dialog" aria-label="Mobile navigation menu" aria-hidden="true">
             <div class="mobile-nav-content">
                 <div class="mobile-nav-header">
-                    <div class="mobile-logo">
-                        <img src="images/logos/805-lifeguard-logo.png" alt="805 LifeGuard" width="40" height="40">
+                    <a href="/" class="mobile-logo">
+                        <img src="images/logos/805-lifeguard-logo.png" alt="805 LifeGuard" width="48" height="48">
                         <span>805 LifeGuard</span>
-                    </div>
-                    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile navigation menu">
-                        <i class="fas fa-times" aria-hidden="true"></i>
-                    </button>
+                    </a>
                 </div>
                 
                 <nav class="mobile-nav-menu" role="navigation" aria-label="Mobile menu">
@@ -276,51 +278,45 @@
         </div>
     </nav>
 
-    <!-- Services Hero Section -->
-    <section class="services-hero" role="banner">
-        <div class="services-hero-background" style="background-image: url('images/services/services-hero-background-1920x1080.jpg');"></div>
-        <div class="hero-overlay"></div>
-        
+    <!-- Page Header -->
+    <section class="page-header">
         <div class="container">
-            <div class="hero-content">
-                <div class="section-badge">
-                    <i class="fas fa-water" aria-hidden="true"></i>
-                    Bespoke Aquatic Excellence
-                </div>
-                
-                <h1 itemprop="name">Premium Services for Distinguished Estates</h1>
-                
-                <p class="hero-subtitle" itemprop="description">
-                    From private lifeguarding to luxury event management, our comprehensive aquatic services 
-                    are designed to meet the exacting standards of Southern California's finest estates. 
-                    Every service is delivered with discretion, professionalism, and uncompromising quality.
-                </p>
-                
-                <div class="services-nav">
-                    <a href="#lifeguarding" class="service-nav-link">
-                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
-                        Private Lifeguarding
-                    </a>
-                    <a href="#instruction" class="service-nav-link">
-                        <i class="fas fa-swimming-pool" aria-hidden="true"></i>
-                        Swimming Instruction
-                    </a>
-                    <a href="#events" class="service-nav-link">
-                        <i class="fas fa-champagne-glasses" aria-hidden="true"></i>
-                        Event Management
-                    </a>
-                </div>
+            <div class="section-badge">Bespoke Aquatic Excellence</div>
+            <h1 class="page-title" itemprop="name">Premium Services for Distinguished Estates</h1>
+            <p class="page-subtitle" itemprop="description">
+                From private lifeguarding to luxury event management, our comprehensive aquatic services 
+                are designed to meet the exacting standards of Southern California's finest estates. 
+                Every service is delivered with discretion, professionalism, and uncompromising quality.
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Navigation -->
+    <section class="content-section" style="padding: var(--spacing-8) 0; background: var(--color-bg-secondary);">
+        <div class="container">
+            <div class="services-nav">
+                <a href="#lifeguarding" class="service-nav-link">
+                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                    <span>Private Lifeguarding</span>
+                </a>
+                <a href="#instruction" class="service-nav-link">
+                    <i class="fas fa-swimming-pool" aria-hidden="true"></i>
+                    <span>Swimming Instruction</span>
+                </a>
+                <a href="#events" class="service-nav-link">
+                    <i class="fas fa-champagne-glasses" aria-hidden="true"></i>
+                    <span>Event Management</span>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Service Categories -->
-    <section class="service-categories">
+    <!-- Private Estate Lifeguarding -->
+    <section id="lifeguarding" class="content-section" itemscope itemtype="https://schema.org/Service">
         <div class="container">
-            <!-- Private Estate Lifeguarding -->
-            <div id="lifeguarding" class="service-showcase" itemscope itemtype="https://schema.org/Service">
-                <div class="service-content">
-                    <div class="service-badge ultra-luxury">
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="section-badge ultra-luxury">
                         <i class="fas fa-crown" aria-hidden="true"></i>
                         Ultra-Luxury Service
                     </div>
@@ -335,10 +331,10 @@
                         capabilities, and the ability to maintain the sophisticated atmosphere of luxury estates.
                     </p>
                     
-                    <div class="service-features-grid">
+                    <div class="about-features">
                         <div class="feature-item">
                             <div class="feature-icon">
-                                <i class="fas fa-user-secret" aria-hidden="true"></i>
+                                <i class="fas fa-user-secret"></i>
                             </div>
                             <div class="feature-content">
                                 <h4>Complete Discretion</h4>
@@ -348,7 +344,7 @@
                         
                         <div class="feature-item">
                             <div class="feature-icon">
-                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                <i class="fas fa-shield-alt"></i>
                             </div>
                             <div class="feature-content">
                                 <h4>Advanced Certifications</h4>
@@ -358,7 +354,7 @@
                         
                         <div class="feature-item">
                             <div class="feature-icon">
-                                <i class="fas fa-clock" aria-hidden="true"></i>
+                                <i class="fas fa-clock"></i>
                             </div>
                             <div class="feature-content">
                                 <h4>Flexible Scheduling</h4>
@@ -368,7 +364,7 @@
                         
                         <div class="feature-item">
                             <div class="feature-icon">
-                                <i class="fas fa-users" aria-hidden="true"></i>
+                                <i class="fas fa-users"></i>
                             </div>
                             <div class="feature-content">
                                 <h4>Multi-Language Support</h4>
@@ -377,63 +373,69 @@
                         </div>
                     </div>
                     
-                    <div class="service-consultation">
-                        <div class="consultation-note">
-                            <i class="fas fa-concierge-bell" aria-hidden="true"></i>
-                            <span>Custom service packages tailored to your estate's specific requirements and family needs</span>
-                        </div>
+                    <div class="callout-box">
+                        <i class="fas fa-concierge-bell"></i>
+                        <strong>Custom Service Packages:</strong> Each estate service plan is tailored to your specific requirements, 
+                        family needs, and security protocols. All consultations are confidential and comprehensive.
                     </div>
                     
                     <a href="contact.html?service=lifeguarding" class="btn btn-primary">
-                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                        <i class="fas fa-calendar-check"></i>
                         Request Consultation
                     </a>
                 </div>
                 
-                <div class="service-media">
-                    <div class="media-showcase">
-                        <picture>
-                            <source srcset="images/services/service-lifeguarding-professional-800x600.webp" type="image/webp">
-                            <img src="images/services/service-lifeguarding-professional-800x600.jpg" alt="Professional estate lifeguarding service" class="service-hero-img" loading="lazy">
-                        </picture>
-                        
-                        <div class="service-highlights">
-                            <div class="highlight-item">
-                                <i class="fas fa-certificate" aria-hidden="true"></i>
-                                Red Cross Certified
-                            </div>
-                            <div class="highlight-item">
-                                <i class="fas fa-user-check" aria-hidden="true"></i>
-                                Background Verified
-                            </div>
-                            <div class="highlight-item">
-                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
-                                Fully Bonded
-                            </div>
-                        </div>
-                        
-                        <div class="service-stats">
-                            <div class="stat-item">
-                                <div class="stat-number" data-target="100">0</div>
-                                <div class="stat-label">Events Protected</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number" data-target="7">0</div>
-                                <div class="stat-label">Years Experience</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number" data-target="24">0</div>
-                                <div class="stat-label">Hour Availability</div>
+                <div class="about-images">
+                    <picture>
+                        <source srcset="images/services/service-lifeguarding-professional-800x600.webp" type="image/webp">
+                        <img src="images/services/service-lifeguarding-professional-800x600.jpg" alt="Professional estate lifeguarding service" class="about-img primary" loading="lazy">
+                    </picture>
+                    
+                    <div class="image-gallery">
+                        <div class="gallery-item">
+                            <div class="service-stats">
+                                <div class="stat-item">
+                                    <div class="stat-number">100+</div>
+                                    <div class="stat-label">Events Protected</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">7+</div>
+                                    <div class="stat-label">Years Experience</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">24/7</div>
+                                    <div class="stat-label">Availability</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Bespoke Swimming Instruction -->
-            <div id="instruction" class="service-showcase reverse" itemscope itemtype="https://schema.org/Service">
-                <div class="service-content">
-                    <div class="service-badge luxury">
+        </div>
+    </section>
+
+    <!-- Bespoke Swimming Instruction -->
+    <section id="instruction" class="content-section" style="background: var(--color-bg-secondary);" itemscope itemtype="https://schema.org/Service">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-images">
+                    <picture>
+                        <source srcset="images/services/service-swim-lessons-private-800x600.webp" type="image/webp">
+                        <img src="images/services/service-swim-lessons-private-800x600.jpg" alt="Private swimming instruction" class="about-img primary" loading="lazy">
+                    </picture>
+                    
+                    <div class="image-gallery">
+                        <div class="gallery-item">
+                            <picture>
+                                <source srcset="images/services/service-swim-lessons-family-800x600.webp" type="image/webp">
+                                <img src="images/services/service-swim-lessons-family-800x600.jpg" alt="Family swimming lessons" loading="lazy">
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-text">
+                    <div class="section-badge luxury">
                         <i class="fas fa-star" aria-hidden="true"></i>
                         Luxury Instruction
                     </div>
@@ -448,111 +450,69 @@
                         children or adults, each program is thoughtfully designed to build skills, confidence, and joy in the water.
                     </p>
                     
-                    <div class="lesson-packages">
-                        <h4>Available Lesson Packages</h4>
-                        <div class="package-grid">
-                            <div class="package-item">
-                                <div class="package-icon">
-                                    <i class="fas fa-user" aria-hidden="true"></i>
+                    <div class="services-grid" style="margin: var(--spacing-6) 0;">
+                        <div class="service-card">
+                            <div class="service-content">
+                                <div class="service-icon" style="position: relative; margin-bottom: var(--spacing-3);">
+                                    <i class="fas fa-user"></i>
                                 </div>
-                                <div class="package-name">Private Sessions</div>
-                                <div class="package-duration">1-on-1 Instruction</div>
-                            </div>
-                            <div class="package-item">
-                                <div class="package-icon">
-                                    <i class="fas fa-users" aria-hidden="true"></i>
-                                </div>
-                                <div class="package-name">Family Groups</div>
-                                <div class="package-duration">Customized for Family</div>
-                            </div>
-                            <div class="package-item">
-                                <div class="package-icon">
-                                    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                                </div>
-                                <div class="package-name">Intensive Programs</div>
-                                <div class="package-duration">Multi-week Courses</div>
-                            </div>
-                            <div class="package-item">
-                                <div class="package-icon">
-                                    <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-                                </div>
-                                <div class="package-name">Adult Lessons</div>
-                                <div class="package-duration">Confidence Building</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="service-features-grid">
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-heart" aria-hidden="true"></i>
-                            </div>
-                            <div class="feature-content">
-                                <h4>Special Needs Expertise</h4>
-                                <p>Certified in adaptive aquatic instruction for individuals with special needs and challenges.</p>
+                                <h4>Private Sessions</h4>
+                                <p>1-on-1 instruction tailored to individual goals and comfort levels</p>
                             </div>
                         </div>
                         
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-users" aria-hidden="true"></i>
+                        <div class="service-card">
+                            <div class="service-content">
+                                <div class="service-icon" style="position: relative; margin-bottom: var(--spacing-3);">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h4>Family Groups</h4>
+                                <p>Customized programs designed for multiple family members</p>
                             </div>
-                            <div class="feature-content">
-                                <h4>All Ages & Abilities</h4>
-                                <p>From toddlers to adults, beginner to advanced—personalized programs for every skill level.</p>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-content">
+                                <div class="service-icon" style="position: relative; margin-bottom: var(--spacing-3);">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <h4>Special Needs</h4>
+                                <p>Adaptive instruction for individuals with special needs and challenges</p>
+                            </div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-content">
+                                <div class="service-icon" style="position: relative; margin-bottom: var(--spacing-3);">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <h4>Adult Lessons</h4>
+                                <p>Confidence building and technique improvement for adult learners</p>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="service-consultation">
-                        <div class="consultation-note">
-                            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-                            <span>Lesson programs customized for individual goals with flexible scheduling and package options</span>
-                        </div>
+                    <div class="callout-box">
+                        <i class="fas fa-graduation-cap"></i>
+                        <strong>Lesson Programs:</strong> All instruction is customized for individual goals with flexible 
+                        scheduling and comprehensive progress tracking. Packages available for all skill levels.
                     </div>
                     
                     <a href="contact.html?service=instruction" class="btn btn-primary">
-                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                        <i class="fas fa-calendar-check"></i>
                         Schedule Lessons
                     </a>
                 </div>
-                
-                <div class="service-media">
-                    <div class="media-showcase">
-                        <picture>
-                            <source srcset="images/services/service-swim-lessons-private-800x600.webp" type="image/webp">
-                            <img src="images/services/service-swim-lessons-private-800x600.jpg" alt="Private swimming instruction" class="service-hero-img" loading="lazy">
-                        </picture>
-                        
-                        <div class="service-highlights">
-                            <div class="highlight-item">
-                                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-                                WSI Certified
-                            </div>
-                            <div class="highlight-item">
-                                <i class="fas fa-heart" aria-hidden="true"></i>
-                                Special Needs
-                            </div>
-                            <div class="highlight-item">
-                                <i class="fas fa-users" aria-hidden="true"></i>
-                                All Ages
-                            </div>
-                        </div>
-                        
-                        <div class="service-gallery">
-                            <picture>
-                                <source srcset="images/services/service-swim-lessons-family-800x600.webp" type="image/webp">
-                                <img src="images/services/service-swim-lessons-family-800x600.jpg" alt="Family swimming lessons" class="gallery-img" loading="lazy">
-                            </picture>
-                        </div>
-                    </div>
-                </div>
             </div>
-            
-            <!-- Luxury Event Management -->
-            <div id="events" class="service-showcase" itemscope itemtype="https://schema.org/Service">
-                <div class="service-content">
-                    <div class="service-badge premium">
+        </div>
+    </section>
+
+    <!-- Luxury Event Management -->
+    <section id="events" class="content-section" itemscope itemtype="https://schema.org/Service">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="section-badge premium">
                         <i class="fas fa-champagne-glasses" aria-hidden="true"></i>
                         Premium Events
                     </div>
@@ -566,107 +526,87 @@
                         provide professional oversight that allows you and your guests to enjoy the event with complete peace of mind.
                     </p>
                     
-                    <div class="event-types">
-                        <div class="event-type">
-                            <div class="event-icon">
-                                <i class="fas fa-users" aria-hidden="true"></i>
-                            </div>
-                            <div class="event-content">
+                    <div class="services-grid" style="margin: var(--spacing-6) 0;">
+                        <div class="service-card">
+                            <div class="service-content">
+                                <div class="service-icon" style="position: relative; margin-bottom: var(--spacing-3);">
+                                    <i class="fas fa-users"></i>
+                                </div>
                                 <h4>Private Pool Parties</h4>
                                 <p>Elegant safety management for intimate gatherings and family celebrations.</p>
                             </div>
                         </div>
                         
-                        <div class="event-type">
-                            <div class="event-icon">
-                                <i class="fas fa-building" aria-hidden="true"></i>
-                            </div>
-                            <div class="event-content">
+                        <div class="service-card">
+                            <div class="service-content">
+                                <div class="service-icon" style="position: relative; margin-bottom: var(--spacing-3);">
+                                    <i class="fas fa-building"></i>
+                                </div>
                                 <h4>Corporate Events</h4>
                                 <p>Professional aquatic safety for business gatherings and executive entertainment.</p>
                             </div>
                         </div>
                         
-                        <div class="event-type">
-                            <div class="event-icon">
-                                <i class="fas fa-heart" aria-hidden="true"></i>
-                            </div>
-                            <div class="event-content">
+                        <div class="service-card">
+                            <div class="service-content">
+                                <div class="service-icon" style="position: relative; margin-bottom: var(--spacing-3);">
+                                    <i class="fas fa-heart"></i>
+                                </div>
                                 <h4>Special Occasions</h4>
                                 <p>Weddings, anniversaries, and milestone celebrations with dedicated safety oversight.</p>
                             </div>
                         </div>
                         
-                        <div class="event-type">
-                            <div class="event-icon">
-                                <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                            </div>
-                            <div class="event-content">
+                        <div class="service-card">
+                            <div class="service-content">
+                                <div class="service-icon" style="position: relative; margin-bottom: var(--spacing-3);">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
                                 <h4>Seasonal Parties</h4>
                                 <p>Holiday gatherings and seasonal celebrations with professional aquatic management.</p>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="event-features">
+                    <div class="callout-box info">
                         <h4>Event Safety Features</h4>
-                        <ul class="feature-list">
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Pre-event safety assessment and planning</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Discrete professional oversight during events</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Emergency response protocols and equipment</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Coordination with event planners and caterers</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Post-event safety equipment security</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Flexible scheduling for day or evening events</li>
+                        <ul style="margin: var(--spacing-3) 0 0 var(--spacing-4); line-height: var(--line-height-relaxed);">
+                            <li>Pre-event safety assessment and planning</li>
+                            <li>Discrete professional oversight during events</li>
+                            <li>Emergency response protocols and equipment</li>
+                            <li>Coordination with event planners and caterers</li>
+                            <li>Post-event safety equipment security</li>
+                            <li>Flexible scheduling for day or evening events</li>
                         </ul>
                     </div>
                     
-                    <div class="service-consultation">
-                        <div class="consultation-note">
-                            <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                            <span>Event packages customized based on duration, guest count, and specific event requirements</span>
-                        </div>
-                    </div>
-                    
                     <a href="contact.html?service=events" class="btn btn-primary">
-                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                        <i class="fas fa-calendar-check"></i>
                         Plan Event Safety
                     </a>
                 </div>
                 
-                <div class="service-media">
-                    <div class="media-showcase">
-                        <picture>
-                            <source srcset="images/services/service-events-luxury-800x600.webp" type="image/webp">
-                            <img src="images/services/service-events-luxury-800x600.jpg" alt="Luxury event aquatic management" class="service-hero-img" loading="lazy">
-                        </picture>
-                        
-                        <div class="service-highlights">
-                            <div class="highlight-item">
-                                <i class="fas fa-eye-slash" aria-hidden="true"></i>
-                                Discrete Service
-                            </div>
-                            <div class="highlight-item">
-                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
-                                Event Protection
-                            </div>
-                            <div class="highlight-item">
-                                <i class="fas fa-clock" aria-hidden="true"></i>
-                                Flexible Hours
-                            </div>
-                        </div>
-                        
-                        <div class="service-stats">
-                            <div class="stat-item">
-                                <div class="stat-number" data-target="500">0</div>
-                                <div class="stat-label">Events Managed</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number" data-target="100">0</div>
-                                <div class="stat-label">% Safety Record</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number" data-target="50">0</div>
-                                <div class="stat-label">Max Guests</div>
+                <div class="about-images">
+                    <picture>
+                        <source srcset="images/services/service-events-luxury-800x600.webp" type="image/webp">
+                        <img src="images/services/service-events-luxury-800x600.jpg" alt="Luxury event aquatic management" class="about-img primary" loading="lazy">
+                    </picture>
+                    
+                    <div class="image-gallery">
+                        <div class="gallery-item">
+                            <div class="service-stats">
+                                <div class="stat-item">
+                                    <div class="stat-number">500+</div>
+                                    <div class="stat-label">Events Managed</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">100%</div>
+                                    <div class="stat-label">Safety Record</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">50+</div>
+                                    <div class="stat-label">Max Guests</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -676,93 +616,153 @@
     </section>
 
     <!-- Professional Credentials -->
-    <section class="credentials">
-        <div class="credentials-background" style="background-image: url('images/services/credentials-background-1600x900.jpg');"></div>
-        <div class="credentials-overlay"></div>
-        
+    <section class="content-section" style="background: var(--color-bg-secondary);">
         <div class="container">
-            <div class="credentials-content">
-                <div class="section-header">
-                    <div class="section-badge">Professional Excellence</div>
-                    <h2>Certifications & Credentials</h2>
-                    <p class="section-description">
-                        Our commitment to professional excellence is demonstrated through comprehensive certifications, 
-                        ongoing training, and adherence to the highest industry standards.
-                    </p>
+            <div class="section-header">
+                <div class="section-badge">Professional Excellence</div>
+                <h2>Certifications & Credentials</h2>
+                <p class="section-description">
+                    Our commitment to professional excellence is demonstrated through comprehensive certifications, 
+                    ongoing training, and adherence to the highest industry standards.
+                </p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon" style="position: relative; margin-bottom: var(--spacing-4);">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3 class="service-title">American Red Cross Lifeguard</h3>
+                        <p class="service-description">
+                            Current certification with regular recertification and advanced training in water rescue techniques.
+                        </p>
+                    </div>
                 </div>
                 
-                <div class="credentials-grid">
-                    <div class="credential-item">
-                        <div class="credential-icon">
-                            <i class="fas fa-certificate" aria-hidden="true"></i>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon" style="position: relative; margin-bottom: var(--spacing-4);">
+                            <i class="fas fa-heart"></i>
                         </div>
-                        <div class="credential-content">
-                            <h4>American Red Cross Lifeguard</h4>
-                            <p>Current certification with regular recertification and advanced training in water rescue techniques.</p>
-                        </div>
+                        <h3 class="service-title">CPR/AED Professional Rescuer</h3>
+                        <p class="service-description">
+                            Advanced life support certification for emergency cardiac and respiratory situations.
+                        </p>
                     </div>
-                    
-                    <div class="credential-item">
-                        <div class="credential-icon">
-                            <i class="fas fa-heart" aria-hidden="true"></i>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon" style="position: relative; margin-bottom: var(--spacing-4);">
+                            <i class="fas fa-graduation-cap"></i>
                         </div>
-                        <div class="credential-content">
-                            <h4>CPR/AED Professional Rescuer</h4>
-                            <p>Advanced life support certification for emergency cardiac and respiratory situations.</p>
-                        </div>
+                        <h3 class="service-title">Water Safety Instructor (WSI)</h3>
+                        <p class="service-description">
+                            Certified to teach all levels of swimming and water safety from beginner to advanced.
+                        </p>
                     </div>
-                    
-                    <div class="credential-item">
-                        <div class="credential-icon">
-                            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon" style="position: relative; margin-bottom: var(--spacing-4);">
+                            <i class="fas fa-shield-alt"></i>
                         </div>
-                        <div class="credential-content">
-                            <h4>Water Safety Instructor (WSI)</h4>
-                            <p>Certified to teach all levels of swimming and water safety from beginner to advanced.</p>
-                        </div>
+                        <h3 class="service-title">Licensed & Bonded</h3>
+                        <p class="service-description">
+                            Fully licensed for private estate services with comprehensive insurance and bonding coverage.
+                        </p>
                     </div>
-                    
-                    <div class="credential-item">
-                        <div class="credential-icon">
-                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon" style="position: relative; margin-bottom: var(--spacing-4);">
+                            <i class="fas fa-user-check"></i>
                         </div>
-                        <div class="credential-content">
-                            <h4>Licensed & Bonded</h4>
-                            <p>Fully licensed for private estate services with comprehensive insurance and bonding coverage.</p>
-                        </div>
+                        <h3 class="service-title">Background Verified</h3>
+                        <p class="service-description">
+                            Complete background checks and security clearance for working with high-profile clientele.
+                        </p>
                     </div>
-                    
-                    <div class="credential-item">
-                        <div class="credential-icon">
-                            <i class="fas fa-user-check" aria-hidden="true"></i>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon" style="position: relative; margin-bottom: var(--spacing-4);">
+                            <i class="fas fa-hands-helping"></i>
                         </div>
-                        <div class="credential-content">
-                            <h4>Background Verified</h4>
-                            <p>Complete background checks and security clearance for working with high-profile clientele.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="credential-item">
-                        <div class="credential-icon">
-                            <i class="fas fa-hands-helping" aria-hidden="true"></i>
-                        </div>
-                        <div class="credential-content">
-                            <h4>Special Needs Certified</h4>
-                            <p>Advanced training in adaptive aquatic instruction for individuals with special needs.</p>
-                        </div>
+                        <h3 class="service-title">Special Needs Certified</h3>
+                        <p class="service-description">
+                            Advanced training in adaptive aquatic instruction for individuals with special needs.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services CTA -->
-    <section class="services-cta">
-        <div class="services-cta-background" style="background-image: url('images/services/services-cta-background-1600x900.jpg');"></div>
-        <div class="cta-overlay"></div>
-        
+    <!-- Service Statistics -->
+    <section class="content-section">
         <div class="container">
-            <div class="cta-content">
+            <div class="section-header">
+                <div class="section-badge">Track Record</div>
+                <h2>Professional Excellence by the Numbers</h2>
+                <p class="section-description">
+                    Our commitment to excellence is reflected in our consistent track record 
+                    of safety, satisfaction, and professional service delivery.
+                </p>
+            </div>
+            
+            <div class="coverage-grid">
+                <div class="coverage-card featured">
+                    <h3><i class="fas fa-calendar-alt"></i> 7+ Years</h3>
+                    <p>Professional Experience</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Established 2016</li>
+                        <li><i class="fas fa-check"></i> Continuous Service</li>
+                        <li><i class="fas fa-check"></i> Zero Safety Incidents</li>
+                    </ul>
+                </div>
+                
+                <div class="coverage-card">
+                    <h3><i class="fas fa-users"></i> 500+</h3>
+                    <p>Swimming Lessons Provided</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> All Ages & Abilities</li>
+                        <li><i class="fas fa-check"></i> Special Needs Expertise</li>
+                        <li><i class="fas fa-check"></i> Private & Group Sessions</li>
+                    </ul>
+                </div>
+                
+                <div class="coverage-card">
+                    <h3><i class="fas fa-champagne-glasses"></i> 100+</h3>
+                    <p>Private Events Secured</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Luxury Pool Parties</li>
+                        <li><i class="fas fa-check"></i> Corporate Events</li>
+                        <li><i class="fas fa-check"></i> Family Gatherings</li>
+                    </ul>
+                </div>
+                
+                <div class="coverage-card">
+                    <h3><i class="fas fa-star"></i> 100%</h3>
+                    <p>Client Satisfaction Rate</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 5-Star Reviews</li>
+                        <li><i class="fas fa-check"></i> Repeat Clients</li>
+                        <li><i class="fas fa-check"></i> Referral Rate</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="consultation-section">
+        <div class="container">
+            <div class="consultation-content">
                 <div class="section-badge gold">Experience Excellence</div>
                 <h2>Schedule Your Private Consultation</h2>
                 <p>
@@ -770,22 +770,20 @@
                     and your family's lifestyle. Every consultation is confidential and tailored to your specific needs.
                 </p>
                 
-                <div class="cta-buttons">
+                <div class="hero-buttons">
                     <a href="contact.html" class="btn btn-primary large">
-                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                        <i class="fas fa-calendar-check"></i>
                         Schedule Consultation
                     </a>
                     <a href="portfolio.html" class="btn btn-secondary large">
-                        <i class="fas fa-eye" aria-hidden="true"></i>
+                        <i class="fas fa-eye"></i>
                         View Portfolio
                     </a>
                 </div>
                 
-                <div class="cta-contact">
-                    <p>
-                        <i class="fas fa-phone" aria-hidden="true"></i>
-                        Need immediate assistance? Call <a href="tel:+18053676432">(805) 367-6432</a>
-                    </p>
+                <div class="hero-notice">
+                    <i class="fas fa-phone"></i>
+                    Need immediate assistance? Call <a href="tel:+18053676432" style="color: rgba(255, 255, 255, 0.9); text-decoration: none;">(805) 367-6432</a>
                 </div>
             </div>
         </div>
@@ -810,15 +808,15 @@
                     </p>
                     <div class="footer-badges">
                         <span class="footer-badge">
-                            <i class="fas fa-certificate" aria-hidden="true"></i>
+                            <i class="fas fa-certificate"></i>
                             Red Cross Certified
                         </span>
                         <span class="footer-badge">
-                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            <i class="fas fa-shield-alt"></i>
                             Licensed & Bonded
                         </span>
                         <span class="footer-badge">
-                            <i class="fas fa-award" aria-hidden="true"></i>
+                            <i class="fas fa-award"></i>
                             7+ Years Experience
                         </span>
                     </div>
@@ -827,7 +825,7 @@
                 <!-- Services Links -->
                 <div class="footer-section">
                     <h4>
-                        <i class="fas fa-water" aria-hidden="true"></i>
+                        <i class="fas fa-water"></i>
                         Services
                     </h4>
                     <ul>
@@ -842,7 +840,7 @@
                 <!-- Company Links -->
                 <div class="footer-section">
                     <h4>
-                        <i class="fas fa-building" aria-hidden="true"></i>
+                        <i class="fas fa-building"></i>
                         Company
                     </h4>
                     <ul>
@@ -857,13 +855,13 @@
                 <!-- Contact Section -->
                 <div class="footer-contact">
                     <h4>
-                        <i class="fas fa-concierge-bell" aria-hidden="true"></i>
+                        <i class="fas fa-concierge-bell"></i>
                         Contact
                     </h4>
                     
                     <div class="contact-info">
                         <a href="tel:+18053676432" class="contact-item primary">
-                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <i class="fas fa-phone"></i>
                             <div>
                                 <strong>(805) 367-6432</strong>
                                 <span>24/7 Emergency Line</span>
@@ -871,7 +869,7 @@
                         </a>
                         
                         <a href="mailto:concierge@805lifeguard.com" class="contact-item">
-                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <i class="fas fa-envelope"></i>
                             <div>
                                 <strong>concierge@805lifeguard.com</strong>
                                 <span>Consultation Requests</span>
@@ -886,15 +884,15 @@
                     
                     <div class="footer-portals">
                         <a href="https://client.805companies.com" target="_blank" class="footer-portal-btn">
-                            <i class="fas fa-user-circle" aria-hidden="true"></i>
+                            <i class="fas fa-user-circle"></i>
                             Client Portal
                         </a>
                         <a href="https://admin.805companies.com" target="_blank" class="footer-portal-btn">
-                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            <i class="fas fa-shield-alt"></i>
                             Admin Portal
                         </a>
                         <a href="https://staff.805companies.com" target="_blank" class="footer-portal-btn">
-                            <i class="fas fa-users" aria-hidden="true"></i>
+                            <i class="fas fa-users"></i>
                             Staff Portal
                         </a>
                     </div>
@@ -923,53 +921,270 @@
         </div>
     </footer>
 
-    <!-- Enhanced JavaScript -->
+    <!-- Luxury JavaScript -->
     <script src="js/luxury-app.js"></script>
     
-    <!-- Service Page Specific JavaScript -->
+    <!-- Service Page Enhancements -->
     <script>
-        // Animate statistics when in view
-        function animateStats() {
-            const stats = document.querySelectorAll('.stat-number');
+    (function() {
+        'use strict';
+        
+        // Smooth scroll for service navigation
+        function initServiceNavigation() {
+            const serviceNavLinks = document.querySelectorAll('.service-nav-link');
             
-            stats.forEach(stat => {
-                const target = parseInt(stat.dataset.target);
-                const increment = target / 100;
-                let current = 0;
-                
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        stat.textContent = target;
-                        clearInterval(timer);
-                    } else {
-                        stat.textContent = Math.floor(current);
+            serviceNavLinks.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const target = document.querySelector(targetId);
+                    
+                    if (target) {
+                        const headerHeight = document.getElementById('header').offsetHeight;
+                        const targetPosition = target.offsetTop - headerHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update active state
+                        serviceNavLinks.forEach(function(l) { l.classList.remove('active'); });
+                        link.classList.add('active');
                     }
-                }, 20);
+                });
             });
         }
         
-        // Smooth scroll for service navigation
-        document.querySelectorAll('.service-nav-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const headerHeight = document.getElementById('header').offsetHeight;
-                    const targetPosition = target.offsetTop - headerHeight - 20;
+        // Add styles for service navigation
+        function addServiceNavStyles() {
+            const style = document.createElement('style');
+            style.textContent = `
+                .services-nav {
+                    display: flex;
+                    justify-content: center;
+                    gap: var(--spacing-4);
+                    flex-wrap: wrap;
+                }
+                
+                .service-nav-link {
+                    display: flex;
+                    align-items: center;
+                    gap: var(--spacing-2);
+                    padding: var(--spacing-3) var(--spacing-6);
+                    background: var(--color-bg-primary);
+                    color: var(--color-text-primary);
+                    text-decoration: none;
+                    border-radius: var(--radius-xl);
+                    font-weight: var(--font-weight-medium);
+                    transition: var(--transition-fast);
+                    border: 2px solid var(--color-border-primary);
+                    box-shadow: var(--shadow-sm);
+                }
+                
+                .service-nav-link:hover,
+                .service-nav-link.active {
+                    background: var(--color-secondary);
+                    color: var(--color-text-inverse);
+                    border-color: var(--color-secondary);
+                    transform: translateY(-2px);
+                    box-shadow: var(--shadow-base);
+                }
+                
+                .service-nav-link i {
+                    font-size: var(--font-size-lg);
+                }
+                
+                .section-badge.ultra-luxury {
+                    background: linear-gradient(135deg, var(--color-secondary-dark), var(--color-secondary));
+                    color: var(--color-text-inverse);
+                    border: 1px solid var(--color-secondary-light);
+                }
+                
+                .section-badge.luxury {
+                    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+                    color: var(--color-text-inverse);
+                }
+                
+                .section-badge.premium {
+                    background: linear-gradient(135deg, var(--color-neutral-dark), var(--color-neutral));
+                    color: var(--color-text-inverse);
+                }
+                
+                .service-stats {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                    gap: var(--spacing-4);
+                    padding: var(--spacing-6);
+                    background: var(--color-bg-tertiary);
+                    border-radius: var(--radius-xl);
+                    text-align: center;
+                }
+                
+                .stat-item {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+                
+                .stat-number {
+                    font-size: var(--font-size-3xl);
+                    font-weight: var(--font-weight-bold);
+                    color: var(--color-secondary-dark);
+                    font-family: var(--font-family-serif);
+                }
+                
+                .stat-label {
+                    font-size: var(--font-size-xs);
+                    color: var(--color-text-secondary);
+                    font-weight: var(--font-weight-medium);
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                }
+                
+                @media (max-width: 768px) {
+                    .services-nav {
+                        flex-direction: column;
+                        align-items: center;
+                    }
                     
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
+                    .service-nav-link {
+                        width: 100%;
+                        max-width: 300px;
+                        justify-content: center;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        // Initialize when DOM is ready
+        function initServices() {
+            addServiceNavStyles();
+            initServiceNavigation();
+        }
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initServices);
+        } else {
+            initServices();
+        }
+        
+    })();
+    </script>
+    
+    <!-- Mobile Navigation Fallback -->
+    <script>
+    (function() {
+        'use strict';
+        
+        // Ensure mobile navigation works as a fallback
+        function initMobileNavFallback() {
+            const mobileToggle = document.getElementById('mobileToggle');
+            const mobileNav = document.getElementById('mobileNav');
+            const body = document.body;
+            
+            if (!mobileToggle || !mobileNav) return;
+            
+            let isOpen = false;
+            let scrollPosition = 0;
+            
+            function openMobileNav() {
+                isOpen = true;
+                scrollPosition = window.pageYOffset;
+                
+                mobileToggle.classList.add('active');
+                mobileToggle.setAttribute('aria-expanded', 'true');
+                mobileNav.classList.add('active');
+                mobileNav.setAttribute('aria-hidden', 'false');
+                body.classList.add('nav-open');
+                
+                body.style.position = 'fixed';
+                body.style.top = `-${scrollPosition}px`;
+                body.style.width = '100%';
+                body.style.overflow = 'hidden';
+            }
+            
+            function closeMobileNav() {
+                isOpen = false;
+                
+                mobileToggle.classList.remove('active');
+                mobileToggle.setAttribute('aria-expanded', 'false');
+                mobileNav.classList.remove('active');
+                mobileNav.setAttribute('aria-hidden', 'true');
+                body.classList.remove('nav-open');
+                
+                body.style.position = '';
+                body.style.top = '';
+                body.style.width = '';
+                body.style.overflow = '';
+                
+                window.scrollTo(0, scrollPosition);
+            }
+            
+            function toggleMobileNav() {
+                if (isOpen) {
+                    closeMobileNav();
+                } else {
+                    openMobileNav();
+                }
+            }
+            
+            // Remove any existing event listeners to prevent duplicates
+            const newMobileToggle = mobileToggle.cloneNode(true);
+            mobileToggle.parentNode.replaceChild(newMobileToggle, mobileToggle);
+            
+            newMobileToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleMobileNav();
+            });
+            
+            // Close on outside click
+            document.addEventListener('click', function(e) {
+                if (isOpen && 
+                    !mobileNav.contains(e.target) && 
+                    !newMobileToggle.contains(e.target)) {
+                    closeMobileNav();
                 }
             });
-        });
+            
+            // Close on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && isOpen) {
+                    closeMobileNav();
+                }
+            });
+            
+            // Close on window resize to desktop
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && isOpen) {
+                    closeMobileNav();
+                }
+            });
+            
+            // Handle mobile nav links
+            const mobileLinks = mobileNav.querySelectorAll('.mobile-nav-link');
+            mobileLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    setTimeout(function() {
+                        closeMobileNav();
+                    }, 100);
+                });
+            });
+        }
         
-        // Initialize stats animation when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(animateStats, 1000);
-        });
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initMobileNavFallback);
+        } else {
+            initMobileNavFallback();
+        }
+        
+        // Also initialize after a short delay to ensure it works
+        setTimeout(initMobileNavFallback, 100);
+        
+    })();
     </script>
 </body>
 </html>
