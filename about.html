@@ -50,11 +50,11 @@
     <link rel="stylesheet" href="css/luxury-theme.css">
     
     <!-- Preload critical images -->
-    <link rel="preload" as="image" href="/images/about/about-hero-background-1920x1080.webp" type="image/webp">
-    <link rel="preload" as="image" href="/images/about/about-hero-background-1920x1080.jpg" type="image/jpeg">
-    <link rel="preload" as="image" href="/images/about/about-founder-jasper-professional-800x600.webp" type="image/webp">
-    <link rel="preload" as="image" href="/images/about/about-founder-jasper-professional-800x600.jpg" type="image/jpeg">
-    <link rel="preload" as="image" href="/images/logos/805-lifeguard-logo.png">
+    <link rel="preload" as="image" href="images/about/about-hero-background-1920x1080.webp" type="image/webp">
+    <link rel="preload" as="image" href="images/about/about-hero-background-1920x1080.jpg" type="image/jpeg">
+    <link rel="preload" as="image" href="images/about/about-founder-jasper-professional-800x600.webp" type="image/webp">
+    <link rel="preload" as="image" href="images/about/about-founder-jasper-professional-800x600.jpg" type="image/jpeg">
+    <link rel="preload" as="image" href="images/logos/805-lifeguard-logo.png">
     
     <!-- Favicon and Apple Touch Icons -->
     <link rel="icon" type="image/x-icon" href="images/logos/805-lifeguard-favicon.ico">
@@ -137,10 +137,7 @@
                 <div class="navbar-content">
                     <!-- Logo -->
                     <a href="/" class="logo" aria-label="805 LifeGuard Homepage">
-                        <picture>
-                            <source srcset="/images/logos/805-lifeguard-logo.webp" type="image/webp">
-                            <img src="/images/logos/805-lifeguard-logo.png" alt="805 LifeGuard - Premier Aquatic Services" class="logo-img" width="64" height="64">
-                        </picture>
+                        <img src="images/logos/805-lifeguard-logo.png" alt="805 LifeGuard - Premier Aquatic Services" class="logo-img" width="64" height="64">
                         <div class="logo-text">
                             <div class="logo-name">805 LifeGuard</div>
                             <div class="logo-tagline">Premier Aquatic Services</div>
@@ -192,10 +189,7 @@
             <div class="mobile-nav-content">
                 <div class="mobile-nav-header">
                     <a href="/" class="mobile-logo">
-                        <picture>
-                            <source srcset="/images/logos/805-lifeguard-logo.webp" type="image/webp">
-                            <img src="/images/logos/805-lifeguard-logo.png" alt="805 LifeGuard" width="48" height="48">
-                        </picture>
+                        <img src="images/logos/805-lifeguard-logo.png" alt="805 LifeGuard" width="48" height="48">
                         <span>805 LifeGuard</span>
                     </a>
                 </div>
@@ -255,26 +249,14 @@
         </div>
     </nav>
 
-    <!-- Hero Section with Carousel -->
-    <section class="hero page-header hero-background about-hero" role="banner" aria-label="About 805 LifeGuard">
+    <!-- Hero Section with Elegant Carousel -->
+    <section class="hero" role="banner" aria-label="About 805 LifeGuard">
         <!-- Background Carousel -->
-        <div class="hero-carousel" id="aboutHeroCarousel">
-            <div class="carousel-slide active" 
-                 data-bg-desktop="/images/about/about-hero-background-1920x1080.jpg" 
-                 data-bg-mobile="/images/about/about-hero-background-mobile-800x600.jpg" 
-                 aria-label="Professional lifeguard team"></div>
-            <div class="carousel-slide" 
-                 data-bg-desktop="/images/about/company-values-background-1600x900.jpg" 
-                 data-bg-mobile="/images/about/company-values-background-mobile-800x600.jpg" 
-                 aria-label="Company values and mission"></div>
-            <div class="carousel-slide" 
-                 data-bg-desktop="/images/about/mission-statement-background-1600x900.jpg" 
-                 data-bg-mobile="/images/about/mission-statement-background-mobile-800x600.jpg" 
-                 aria-label="Professional training and certification"></div>
-            <div class="carousel-slide" 
-                 data-bg-desktop="/images/about/awards-certifications-800x600.jpg" 
-                 data-bg-mobile="/images/about/awards-certifications-mobile-800x600.jpg" 
-                 aria-label="Awards and professional achievements"></div>
+        <div class="hero-carousel" id="heroCarousel">
+            <div class="carousel-slide active" style="background-image: url('images/about/about-hero-background-1920x1080.jpg')" data-bg-desktop="images/about/about-hero-background-1920x1080.jpg" data-bg-mobile="images/about/about-hero-background-mobile-800x600.jpg" aria-label="Professional lifeguard team"></div>
+            <div class="carousel-slide" style="background-image: url('images/about/company-values-background-1600x900.jpg')" data-bg-desktop="images/about/company-values-background-1600x900.jpg" data-bg-mobile="images/about/company-values-background-mobile-800x600.jpg" aria-label="Company values and mission"></div>
+            <div class="carousel-slide" style="background-image: url('images/about/mission-statement-background-1600x900.jpg')" data-bg-desktop="images/about/mission-statement-background-1600x900.jpg" data-bg-mobile="images/about/mission-statement-background-mobile-800x600.jpg" aria-label="Professional training and certification"></div>
+            <div class="carousel-slide" style="background-image: url('images/about/awards-certifications-800x600.jpg')" data-bg-desktop="images/about/awards-certifications-800x600.jpg" data-bg-mobile="images/about/awards-certifications-mobile-800x600.jpg" aria-label="Awards and professional achievements"></div>
         </div>
         
         <!-- Carousel Overlay -->
@@ -282,10 +264,10 @@
         
         <!-- Carousel Controls -->
         <div class="carousel-controls">
-            <button class="carousel-prev" id="aboutCarouselPrev" aria-label="Previous image">
+            <button class="carousel-prev" id="carouselPrev" aria-label="Previous image">
                 <i class="fas fa-chevron-left" aria-hidden="true"></i>
             </button>
-            <button class="carousel-next" id="aboutCarouselNext" aria-label="Next image">
+            <button class="carousel-next" id="carouselNext" aria-label="Next image">
                 <i class="fas fa-chevron-right" aria-hidden="true"></i>
             </button>
         </div>
@@ -299,14 +281,30 @@
         </div>
         
         <div class="container">
-            <div class="hero-content">
+            <div class="hero-content" itemscope itemtype="https://schema.org/Organization">
                 <div class="section-badge">Professional Excellence</div>
-                <h1 class="page-title" itemprop="name">Meet Jasper & Our Distinguished Team</h1>
-                <p class="page-subtitle" itemprop="description">
+                <h1 class="hero-title" itemprop="slogan">Meet Jasper & Our Distinguished Team</h1>
+                <p class="hero-subtitle" itemprop="description">
                     Led by founder Jasper van der Zwaan, our team brings over 7 years of American Red Cross certified 
                     aquatic safety expertise to Southern California's most prestigious clientele. Every member is 
                     carefully vetted, extensively trained, and committed to the highest standards of discretion and service.
                 </p>
+                
+                <div class="hero-buttons">
+                    <a href="contact.html" class="btn btn-primary" aria-label="Schedule private consultation">
+                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                        Schedule Consultation
+                    </a>
+                    <a href="services.html" class="btn btn-secondary" aria-label="View our services">
+                        <i class="fas fa-water" aria-hidden="true"></i>
+                        Our Services
+                    </a>
+                </div>
+                
+                <div class="hero-notice">
+                    <i class="fas fa-phone" aria-hidden="true"></i>
+                    Call <a href="tel:+18053676432" class="phone-link">(805) 367-6432</a> for immediate assistance or questions
+                </div>
             </div>
         </div>
     </section>
@@ -390,21 +388,21 @@
                 
                 <div class="about-images">
                     <picture>
-                        <source srcset="/images/about/about-founder-jasper-professional-800x600.webp" type="image/webp">
-                        <img src="/images/about/about-founder-jasper-professional-800x600.jpg" alt="Jasper van der Zwaan - Founder & Lead Instructor of 805 LifeGuard" class="about-img primary" loading="lazy">
+                        <source srcset="images/about/about-founder-jasper-professional-800x600.webp" type="image/webp">
+                        <img src="images/about/about-founder-jasper-professional-800x600.jpg" alt="Jasper van der Zwaan - Founder & Lead Instructor of 805 LifeGuard" class="about-img primary" loading="lazy">
                     </picture>
                     
                     <div class="image-gallery">
                         <div class="gallery-item">
                             <picture>
-                                <source srcset="/images/about/about-founder-jasper-action-800x600.webp" type="image/webp">
-                                <img src="/images/about/about-founder-jasper-action-800x600.jpg" alt="Jasper providing professional swimming instruction" loading="lazy">
+                                <source srcset="images/about/about-founder-jasper-action-800x600.webp" type="image/webp">
+                                <img src="images/about/about-founder-jasper-action-800x600.jpg" alt="Jasper providing professional swimming instruction" loading="lazy">
                             </picture>
                         </div>
                         <div class="gallery-item">
                             <picture>
-                                <source srcset="/images/about/about-founder-training-800x600.webp" type="image/webp">
-                                <img src="/images/about/about-founder-training-800x600.jpg" alt="Jasper during professional lifeguard training" loading="lazy">
+                                <source srcset="images/about/about-founder-training-800x600.webp" type="image/webp">
+                                <img src="images/about/about-founder-training-800x600.jpg" alt="Jasper during professional lifeguard training" loading="lazy">
                             </picture>
                         </div>
                     </div>
@@ -726,7 +724,7 @@
                 <!-- Brand Section -->
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <img src="/images/logos/805-lifeguard-logo.png" alt="805 LifeGuard">
+                        <img src="images/logos/805-lifeguard-logo.png" alt="805 LifeGuard">
                         <div class="footer-logo-text">
                             <h3>805 LifeGuard</h3>
                             <p>Premier Aquatic Services</p>
@@ -853,112 +851,6 @@
 
     <!-- Luxury JavaScript -->
     <script src="js/luxury-app.js"></script>
-    
-    <!-- About Page Carousel Initialization -->
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Initialize About Hero Carousel
-        const aboutCarousel = document.getElementById('aboutHeroCarousel');
-        if (aboutCarousel && window.app && window.app.isReady && window.app.isReady()) {
-            // Create carousel instance for about page
-            const CarouselController = window.CarouselController || function(container) {
-                return window.app.getCarousel ? window.app.getCarousel() : null;
-            };
-            
-            // Initialize if carousel controller is available
-            if (typeof CarouselController === 'function') {
-                const aboutCarouselInstance = new CarouselController(aboutCarousel);
-                window.aboutCarousel = aboutCarouselInstance;
-            }
-        }
-        
-        // Fallback carousel initialization
-        setTimeout(function() {
-            const aboutCarousel = document.getElementById('aboutHeroCarousel');
-            if (aboutCarousel && !window.aboutCarousel) {
-                initFallbackCarousel();
-            }
-        }, 500);
-        
-        function initFallbackCarousel() {
-            const carousel = document.getElementById('aboutHeroCarousel');
-            const slides = carousel.querySelectorAll('.carousel-slide');
-            const indicators = document.querySelectorAll('.indicator');
-            const prevBtn = document.getElementById('aboutCarouselPrev');
-            const nextBtn = document.getElementById('aboutCarouselNext');
-            
-            let currentSlide = 0;
-            let autoPlayTimer;
-            
-            function updateSlideBackgrounds() {
-                slides.forEach(function(slide) {
-                    const isMobile = window.innerWidth <= 768;
-                    const desktopSrc = slide.dataset.bgDesktop;
-                    const mobileSrc = slide.dataset.bgMobile;
-                    const selectedSrc = (isMobile && mobileSrc) ? mobileSrc : desktopSrc;
-                    
-                    if (selectedSrc) {
-                        slide.style.backgroundImage = 'url(' + selectedSrc + ')';
-                        slide.style.backgroundSize = 'cover';
-                        slide.style.backgroundPosition = 'center';
-                        slide.style.backgroundRepeat = 'no-repeat';
-                    }
-                });
-            }
-            
-            function goToSlide(index) {
-                slides[currentSlide].classList.remove('active');
-                indicators[currentSlide].classList.remove('active');
-                indicators[currentSlide].setAttribute('aria-selected', 'false');
-                
-                currentSlide = index;
-                
-                slides[currentSlide].classList.add('active');
-                indicators[currentSlide].classList.add('active');
-                indicators[currentSlide].setAttribute('aria-selected', 'true');
-            }
-            
-            function nextSlide() {
-                const next = (currentSlide + 1) % slides.length;
-                goToSlide(next);
-            }
-            
-            function prevSlide() {
-                const prev = (currentSlide - 1 + slides.length) % slides.length;
-                goToSlide(prev);
-            }
-            
-            function startAutoPlay() {
-                autoPlayTimer = setInterval(nextSlide, 6000);
-            }
-            
-            function stopAutoPlay() {
-                clearInterval(autoPlayTimer);
-            }
-            
-            // Event listeners
-            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-            
-            indicators.forEach(function(indicator, index) {
-                indicator.addEventListener('click', function() {
-                    goToSlide(index);
-                });
-            });
-            
-            // Pause on hover
-            carousel.addEventListener('mouseenter', stopAutoPlay);
-            carousel.addEventListener('mouseleave', startAutoPlay);
-            
-            // Responsive background update
-            window.addEventListener('resize', updateSlideBackgrounds);
-            
-            // Initialize
-            updateSlideBackgrounds();
-            startAutoPlay();
-        }
-    });
-    </script>
     
     <!-- Mobile Navigation Fallback -->
     <script>
