@@ -1309,11 +1309,6 @@ section {
     
     .page-header.hero-background {
         min-height: 400px;
-        padding-top: 95px;
-    }
-    
-    .breadcrumbs.hero-page {
-        top: 95px;
     }
 }
 
