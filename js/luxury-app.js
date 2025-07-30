@@ -1,7 +1,7 @@
 /*
- * 805 LifeGuard - Luxury App JS (Enterprise JavaScript Application)
- * Version: 6.0 - Complete Rewrite with Professional Architecture
- * Clean, lightweight, and enterprise-level functionality
+ * 805 LifeGuard - Enhanced Luxury App JS (Enterprise JavaScript Application)
+ * Version: 6.1 - Enhanced Responsive Image System
+ * Clean, lightweight, and enterprise-level functionality with 3-tier responsive images
  */
 
 (function() {
@@ -87,21 +87,31 @@
          * Check if device is mobile
          */
         isMobile: function() {
-            return window.innerWidth <= CONFIG.BREAKPOINTS.MD;
+            return window.innerWidth < CONFIG.BREAKPOINTS.MD;
         },
 
         /*
          * Check if device is tablet
          */
         isTablet: function() {
-            return window.innerWidth > CONFIG.BREAKPOINTS.MD && window.innerWidth <= CONFIG.BREAKPOINTS.LG;
+            return window.innerWidth >= CONFIG.BREAKPOINTS.MD && window.innerWidth < CONFIG.BREAKPOINTS.LG;
         },
 
         /*
          * Check if device is desktop
          */
         isDesktop: function() {
-            return window.innerWidth > CONFIG.BREAKPOINTS.LG;
+            return window.innerWidth >= CONFIG.BREAKPOINTS.LG;
+        },
+
+        /*
+         * Get current device type for responsive images
+         */
+        getDeviceType: function() {
+            const width = window.innerWidth;
+            if (width < CONFIG.BREAKPOINTS.MD) return 'mobile';
+            if (width < CONFIG.BREAKPOINTS.LG) return 'tablet';
+            return 'desktop';
         },
 
         /*
@@ -238,7 +248,7 @@
         return imagePath;
     };
 
-    // === CAROUSEL CONTROLLER ===
+    // === ENHANCED CAROUSEL CONTROLLER ===
     function CarouselController(container) {
         this.container = container;
         this.slides = container.querySelectorAll('.carousel-slide');
@@ -253,6 +263,7 @@
         this.isPaused = false;
         this.isTransitioning = false;
         this.cleanupFunctions = [];
+        this.currentDeviceType = Utils.getDeviceType();
         
         this.init();
     }
@@ -263,7 +274,7 @@
             return;
         }
 
-        Utils.log('info', 'Initializing Carousel Controller...');
+        Utils.log('info', 'Initializing Enhanced Carousel Controller...');
 
         try {
             this.preloadImages();
@@ -273,7 +284,7 @@
             this.startAutoPlay();
             this.handleResize();
             
-            Utils.log('info', 'Carousel Controller initialized successfully');
+            Utils.log('info', 'Enhanced Carousel Controller initialized successfully');
         } catch (error) {
             Utils.log('error', 'Failed to initialize carousel', error);
         }
@@ -285,19 +296,23 @@
         
         this.slides.forEach(function(slide) {
             const desktopSrc = slide.dataset.bgDesktop;
+            const tabletSrc = slide.dataset.bgTablet;
             const mobileSrc = slide.dataset.bgMobile;
             
             if (desktopSrc) {
                 imagePromises.push(Utils.preloadImage(desktopSrc));
             }
-            if (mobileSrc && mobileSrc !== desktopSrc) {
+            if (tabletSrc && tabletSrc !== desktopSrc) {
+                imagePromises.push(Utils.preloadImage(tabletSrc));
+            }
+            if (mobileSrc && mobileSrc !== desktopSrc && mobileSrc !== tabletSrc) {
                 imagePromises.push(Utils.preloadImage(mobileSrc));
             }
         });
 
         if (imagePromises.length > 0) {
             Promise.allSettled(imagePromises).then(function() {
-                Utils.log('info', 'Carousel images preloaded');
+                Utils.log('info', 'Enhanced carousel images preloaded');
             }).catch(function(error) {
                 Utils.log('warn', 'Some carousel images failed to preload', error);
             });
@@ -312,18 +327,36 @@
     };
 
     CarouselController.prototype.updateSlideBackground = function(slide) {
+        const deviceType = Utils.getDeviceType();
         const desktopSrc = slide.dataset.bgDesktop;
+        const tabletSrc = slide.dataset.bgTablet;
         const mobileSrc = slide.dataset.bgMobile;
         
         let selectedSrc;
-        if (Utils.isMobile() && mobileSrc) {
-            selectedSrc = mobileSrc;
-        } else if (desktopSrc) {
-            selectedSrc = desktopSrc;
+        
+        // Select appropriate image based on device type
+        switch (deviceType) {
+            case 'mobile':
+                selectedSrc = mobileSrc || tabletSrc || desktopSrc;
+                break;
+            case 'tablet':
+                selectedSrc = tabletSrc || desktopSrc || mobileSrc;
+                break;
+            case 'desktop':
+            default:
+                selectedSrc = desktopSrc || tabletSrc || mobileSrc;
+                break;
         }
 
-        if (selectedSrc && !slide.style.backgroundImage) {
-            slide.style.backgroundImage = 'url(' + selectedSrc + ')';
+        if (selectedSrc) {
+            // Check if we need to update the background (device type changed)
+            const currentBg = slide.style.backgroundImage;
+            const newBg = 'url(' + selectedSrc + ')';
+            
+            if (currentBg !== newBg) {
+                slide.style.backgroundImage = newBg;
+                Utils.log('info', 'Updated slide background for ' + deviceType + ': ' + selectedSrc);
+            }
         }
     };
 
@@ -410,7 +443,7 @@
         // Touch/swipe support
         this.setupTouchEvents();
 
-        // Window resize
+        // Enhanced window resize with device type detection
         const resizeCleanup = Utils.addEventListenerWithCleanup(
             window, 'resize', Utils.debounce(function() { self.handleResize(); })
         );
@@ -499,7 +532,14 @@
     };
 
     CarouselController.prototype.handleResize = function() {
-        this.setupResponsiveBackgrounds();
+        const newDeviceType = Utils.getDeviceType();
+        
+        // Only update backgrounds if device type changed
+        if (newDeviceType !== this.currentDeviceType) {
+            Utils.log('info', 'Device type changed from ' + this.currentDeviceType + ' to ' + newDeviceType);
+            this.currentDeviceType = newDeviceType;
+            this.setupResponsiveBackgrounds();
+        }
     };
 
     CarouselController.prototype.goToSlide = function(index, direction) {
@@ -545,7 +585,8 @@
                 currentSlide: this.currentSlide,
                 previousSlide: previousSlide,
                 direction: direction,
-                totalSlides: this.totalSlides
+                totalSlides: this.totalSlides,
+                deviceType: this.currentDeviceType
             }
         });
         this.container.dispatchEvent(event);
@@ -610,7 +651,7 @@
         this.stopAutoPlay();
         this.cleanupFunctions.forEach(function(cleanup) { cleanup(); });
         this.cleanupFunctions = [];
-        Utils.log('info', 'Carousel destroyed');
+        Utils.log('info', 'Enhanced Carousel destroyed');
     };
 
     // === NAVIGATION CONTROLLER ===
@@ -1198,7 +1239,7 @@
     LuxuryApp.prototype.initializeApp = function() {
         const self = this;
         try {
-            Utils.log('info', 'Initializing 805 LifeGuard Luxury Application...');
+            Utils.log('info', 'Initializing 805 LifeGuard Enhanced Luxury Application...');
 
             // Detect WebP support first
             this.webpService.detect().then(function() {
@@ -1221,7 +1262,7 @@
 
                 self.isInitialized = true;
 
-                Utils.log('info', '805 LifeGuard Luxury Application initialized successfully');
+                Utils.log('info', '805 LifeGuard Enhanced Luxury Application initialized successfully');
 
                 // Dispatch ready event
                 self.dispatchReadyEvent();
@@ -1239,8 +1280,9 @@
                 app: this,
                 hasCarousel: !!this.carousel,
                 webpSupport: this.webpService.isSupported,
-                version: '6.0',
-                timestamp: new Date().toISOString()
+                version: '6.1',
+                timestamp: new Date().toISOString(),
+                deviceType: Utils.getDeviceType()
             }
         });
         window.dispatchEvent(event);
@@ -1291,7 +1333,7 @@
     // === PUBLIC API METHODS ===
 
     LuxuryApp.prototype.getVersion = function() {
-        return '6.0';
+        return '6.1';
     };
 
     LuxuryApp.prototype.isReady = function() {
@@ -1332,8 +1374,12 @@
         return Utils.getCurrentBreakpoint();
     };
 
+    LuxuryApp.prototype.getDeviceType = function() {
+        return Utils.getDeviceType();
+    };
+
     LuxuryApp.prototype.destroy = function() {
-        Utils.log('info', 'Destroying Luxury Application...');
+        Utils.log('info', 'Destroying Enhanced Luxury Application...');
 
         if (this.carousel) this.carousel.destroy();
         if (this.navigation) this.navigation.destroy();
@@ -1343,7 +1389,7 @@
 
         this.isInitialized = false;
 
-        Utils.log('info', 'Luxury Application destroyed');
+        Utils.log('info', 'Enhanced Luxury Application destroyed');
     };
 
     // === ERROR HANDLING ===
@@ -1370,6 +1416,7 @@
     // Export for global access and debugging
     window.LuxuryApp = LuxuryApp;
     window.app = app;
+    window.CarouselController = CarouselController;
 
     // Development/debug mode
     if (window.location.hostname === 'localhost' || 
@@ -1377,9 +1424,10 @@
         window.location.search.indexOf('debug=true') !== -1) {
         
         window.Utils = Utils;
-        Utils.log('info', 'Debug mode active - Enhanced debugging available');
+        Utils.log('info', 'Enhanced debug mode active - Advanced debugging available');
         Utils.log('info', 'Access app instance via window.app');
         Utils.log('info', 'Access utilities via window.Utils');
+        Utils.log('info', 'Current device type: ' + Utils.getDeviceType());
     }
 
 })();
