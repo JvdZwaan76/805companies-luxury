@@ -1176,6 +1176,7 @@ section {
     background: var(--color-bg-tertiary);
     text-align: center;
     margin-top: 140px;
+    min-height: 400px;
 }
 
 .page-header.hero-background {
@@ -1184,6 +1185,9 @@ section {
     background-repeat: no-repeat;
     color: var(--color-text-inverse);
     position: relative;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
 }
 
 .page-header.hero-background::before {
@@ -1203,20 +1207,25 @@ section {
 .page-header.hero-background .container {
     position: relative;
     z-index: 2;
+    width: 100%;
 }
 
 .page-header.hero-background .page-title,
 .page-header.hero-background .section-badge {
-    color: var(--color-text-inverse);
+    color: var(--color-text-inverse) !important;
 }
 
 .page-header.hero-background .page-subtitle {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.9) !important;
 }
 
 /* Hero Background Variants */
 .page-header.hero-background.about-hero {
-    background-image: url('images/about/about-hero-background-1920x1080.jpg');
+    background-image: url('images/about/about-hero-background-1920x1080.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: scroll !important;
 }
 
 .page-header.hero-background.services-hero {
@@ -1235,6 +1244,18 @@ section {
     background-image: url('images/testimonials/testimonials-hero-1600x1200.jpg');
 }
 
+@media (max-width: 768px) {
+    .page-header {
+        margin-top: 95px;
+        padding: var(--spacing-12) 0 var(--spacing-8);
+        min-height: 350px;
+    }
+    
+    .page-header.hero-background {
+        min-height: 400px;
+    }
+}
+
 .page-title {
     margin-bottom: var(--spacing-4);
 }
@@ -1245,13 +1266,6 @@ section {
     line-height: var(--line-height-relaxed);
     max-width: 800px;
     margin: 0 auto;
-}
-
-@media (max-width: 768px) {
-    .page-header {
-        margin-top: 95px;
-        padding: var(--spacing-12) 0 var(--spacing-8);
-    }
 }
 
 /* === CONTENT SECTION === */
@@ -2316,7 +2330,7 @@ section {
 
 .image-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: var(--spacing-4);
     margin: var(--spacing-8) 0;
 }
@@ -2326,6 +2340,11 @@ section {
     overflow: hidden;
     box-shadow: var(--shadow-base);
     transition: var(--transition-fast);
+    background: var(--color-bg-primary);
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .gallery-item:hover {
@@ -2336,6 +2355,22 @@ section {
 .gallery-item img {
     width: 100%;
     height: auto;
+    display: block;
+    max-width: 100%;
+    min-height: 150px;
+    object-fit: cover;
+}
+
+.gallery-item picture {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.gallery-item picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
 }
 
