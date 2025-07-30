@@ -1221,7 +1221,7 @@ section {
 
 /* Hero Background Variants */
 .page-header.hero-background.about-hero {
-    background-image: url('images/about/about-hero-background-1920x1080.jpg') !important;
+    background-image: url('/images/about/about-hero-background-1920x1080.jpg') !important;
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
@@ -1229,19 +1229,19 @@ section {
 }
 
 .page-header.hero-background.services-hero {
-    background-image: url('images/services/services-hero-background-1920x1080.jpg');
+    background-image: url('/images/services/services-hero-background-1920x1080.jpg');
 }
 
 .page-header.hero-background.cleaning-hero {
-    background-image: url('images/cleaning/pool-cleaning-hero-1920x1080.jpg');
+    background-image: url('/images/cleaning/pool-cleaning-hero-1920x1080.jpg');
 }
 
 .page-header.hero-background.hoa-hero {
-    background-image: url('images/hoa/hoa-community-pool-1600x1200.jpg');
+    background-image: url('/images/hoa/hoa-community-pool-1600x1200.jpg');
 }
 
 .page-header.hero-background.testimonials-hero {
-    background-image: url('images/testimonials/testimonials-hero-1600x1200.jpg');
+    background-image: url('/images/testimonials/testimonials-hero-1600x1200.jpg');
 }
 
 @media (max-width: 768px) {
@@ -1333,59 +1333,59 @@ section {
 
 /* Background Image Classes */
 .bg-company-values {
-    background-image: url('images/about/company-values-background-1600x900.jpg');
+    background-image: url('/images/about/company-values-background-1600x900.jpg');
 }
 
 .bg-mission-statement {
-    background-image: url('images/about/mission-statement-background-1600x900.jpg');
+    background-image: url('/images/about/mission-statement-background-1600x900.jpg');
 }
 
 .bg-awards-certifications {
-    background-image: url('images/about/awards-certifications-800x600.jpg');
+    background-image: url('/images/about/awards-certifications-800x600.jpg');
 }
 
 .bg-credentials {
-    background-image: url('images/services/credentials-background-1600x900.jpg');
+    background-image: url('/images/services/credentials-background-1600x900.jpg');
 }
 
 .bg-services-cta {
-    background-image: url('images/services/services-cta-background-1600x900.jpg');
+    background-image: url('/images/services/services-cta-background-1600x900.jpg');
 }
 
 .bg-pool-cleaning-hero {
-    background-image: url('images/cleaning/pool-cleaning-hero-1920x1080.jpg');
+    background-image: url('/images/cleaning/pool-cleaning-hero-1920x1080.jpg');
 }
 
 .bg-pool-maintenance {
-    background-image: url('images/cleaning/weekly-maintenance-800x600.jpg');
+    background-image: url('/images/cleaning/weekly-maintenance-800x600.jpg');
 }
 
 .bg-chemical-balancing {
-    background-image: url('images/cleaning/chemical-balancing-800x600.jpg');
+    background-image: url('/images/cleaning/chemical-balancing-800x600.jpg');
 }
 
 .bg-equipment-maintenance {
-    background-image: url('images/cleaning/equipment-maintenance-800x600.jpg');
+    background-image: url('/images/cleaning/equipment-maintenance-800x600.jpg');
 }
 
 .bg-hoa-community {
-    background-image: url('images/hoa/hoa-community-pool-1600x1200.jpg');
+    background-image: url('/images/hoa/hoa-community-pool-1600x1200.jpg');
 }
 
 .bg-hoa-maintenance {
-    background-image: url('images/hoa/hoa-maintenance-800x600.jpg');
+    background-image: url('/images/hoa/hoa-maintenance-800x600.jpg');
 }
 
 .bg-hoa-training {
-    background-image: url('images/hoa/hoa-training-800x600.jpg');
+    background-image: url('/images/hoa/hoa-training-800x600.jpg');
 }
 
 .bg-hoa-events {
-    background-image: url('images/hoa/hoa-events-800x600.jpg');
+    background-image: url('/images/hoa/hoa-events-800x600.jpg');
 }
 
 .bg-testimonials-hero {
-    background-image: url('images/testimonials/testimonials-hero-1600x1200.jpg');
+    background-image: url('/images/testimonials/testimonials-hero-1600x1200.jpg');
 }
 
 /* === SERVICES SECTION === */
