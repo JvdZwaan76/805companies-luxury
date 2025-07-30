@@ -137,7 +137,10 @@
                 <div class="navbar-content">
                     <!-- Logo -->
                     <a href="/" class="logo" aria-label="805 LifeGuard Homepage">
-                        <img src="/images/logos/805-lifeguard-logo.png" alt="805 LifeGuard - Premier Aquatic Services" class="logo-img" width="64" height="64">
+                        <picture>
+                            <source srcset="/images/logos/805-lifeguard-logo.webp" type="image/webp">
+                            <img src="/images/logos/805-lifeguard-logo.png" alt="805 LifeGuard - Premier Aquatic Services" class="logo-img" width="64" height="64">
+                        </picture>
                         <div class="logo-text">
                             <div class="logo-name">805 LifeGuard</div>
                             <div class="logo-tagline">Premier Aquatic Services</div>
@@ -189,7 +192,10 @@
             <div class="mobile-nav-content">
                 <div class="mobile-nav-header">
                     <a href="/" class="mobile-logo">
-                        <img src="/images/logos/805-lifeguard-logo.png" alt="805 LifeGuard" width="48" height="48">
+                        <picture>
+                            <source srcset="/images/logos/805-lifeguard-logo.webp" type="image/webp">
+                            <img src="/images/logos/805-lifeguard-logo.png" alt="805 LifeGuard" width="48" height="48">
+                        </picture>
                         <span>805 LifeGuard</span>
                     </a>
                 </div>
@@ -232,7 +238,7 @@
     </header>
 
     <!-- Breadcrumbs -->
-    <nav class="breadcrumbs" aria-label="Breadcrumb navigation" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <nav class="breadcrumbs hero-page" aria-label="Breadcrumb navigation" itemscope itemtype="https://schema.org/BreadcrumbList">
         <div class="container">
             <ol class="breadcrumb-list">
                 <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
@@ -249,16 +255,59 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <section class="page-header hero-background about-hero">
+    <!-- Hero Section with Carousel -->
+    <section class="hero page-header hero-background about-hero" role="banner" aria-label="About 805 LifeGuard">
+        <!-- Background Carousel -->
+        <div class="hero-carousel" id="aboutHeroCarousel">
+            <div class="carousel-slide active" 
+                 data-bg-desktop="/images/about/about-hero-background-1920x1080.jpg" 
+                 data-bg-mobile="/images/about/about-hero-background-mobile-800x600.jpg" 
+                 aria-label="Professional lifeguard team"></div>
+            <div class="carousel-slide" 
+                 data-bg-desktop="/images/about/company-values-background-1600x900.jpg" 
+                 data-bg-mobile="/images/about/company-values-background-mobile-800x600.jpg" 
+                 aria-label="Company values and mission"></div>
+            <div class="carousel-slide" 
+                 data-bg-desktop="/images/about/mission-statement-background-1600x900.jpg" 
+                 data-bg-mobile="/images/about/mission-statement-background-mobile-800x600.jpg" 
+                 aria-label="Professional training and certification"></div>
+            <div class="carousel-slide" 
+                 data-bg-desktop="/images/about/awards-certifications-800x600.jpg" 
+                 data-bg-mobile="/images/about/awards-certifications-mobile-800x600.jpg" 
+                 aria-label="Awards and professional achievements"></div>
+        </div>
+        
+        <!-- Carousel Overlay -->
+        <div class="hero-overlay"></div>
+        
+        <!-- Carousel Controls -->
+        <div class="carousel-controls">
+            <button class="carousel-prev" id="aboutCarouselPrev" aria-label="Previous image">
+                <i class="fas fa-chevron-left" aria-hidden="true"></i>
+            </button>
+            <button class="carousel-next" id="aboutCarouselNext" aria-label="Next image">
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </button>
+        </div>
+        
+        <!-- Carousel Indicators -->
+        <div class="carousel-indicators" role="tablist" aria-label="About image carousel">
+            <button class="indicator active" data-slide="0" role="tab" aria-label="View image 1" aria-selected="true"></button>
+            <button class="indicator" data-slide="1" role="tab" aria-label="View image 2" aria-selected="false"></button>
+            <button class="indicator" data-slide="2" role="tab" aria-label="View image 3" aria-selected="false"></button>
+            <button class="indicator" data-slide="3" role="tab" aria-label="View image 4" aria-selected="false"></button>
+        </div>
+        
         <div class="container">
-            <div class="section-badge">Professional Excellence</div>
-            <h1 class="page-title" itemprop="name">Meet Jasper & Our Distinguished Team</h1>
-            <p class="page-subtitle" itemprop="description">
-                Led by founder Jasper van der Zwaan, our team brings over 7 years of American Red Cross certified 
-                aquatic safety expertise to Southern California's most prestigious clientele. Every member is 
-                carefully vetted, extensively trained, and committed to the highest standards of discretion and service.
-            </p>
+            <div class="hero-content">
+                <div class="section-badge">Professional Excellence</div>
+                <h1 class="page-title" itemprop="name">Meet Jasper & Our Distinguished Team</h1>
+                <p class="page-subtitle" itemprop="description">
+                    Led by founder Jasper van der Zwaan, our team brings over 7 years of American Red Cross certified 
+                    aquatic safety expertise to Southern California's most prestigious clientele. Every member is 
+                    carefully vetted, extensively trained, and committed to the highest standards of discretion and service.
+                </p>
+            </div>
         </div>
     </section>
 
@@ -677,7 +726,10 @@
                 <!-- Brand Section -->
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <img src="/images/logos/805-lifeguard-logo.png" alt="805 LifeGuard">
+                        <picture>
+                            <source srcset="/images/logos/805-lifeguard-logo.webp" type="image/webp">
+                            <img src="/images/logos/805-lifeguard-logo.png" alt="805 LifeGuard">
+                        </picture>
                         <div class="footer-logo-text">
                             <h3>805 LifeGuard</h3>
                             <p>Premier Aquatic Services</p>
@@ -804,6 +856,112 @@
 
     <!-- Luxury JavaScript -->
     <script src="js/luxury-app.js"></script>
+    
+    <!-- About Page Carousel Initialization -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize About Hero Carousel
+        const aboutCarousel = document.getElementById('aboutHeroCarousel');
+        if (aboutCarousel && window.app && window.app.isReady && window.app.isReady()) {
+            // Create carousel instance for about page
+            const CarouselController = window.CarouselController || function(container) {
+                return window.app.getCarousel ? window.app.getCarousel() : null;
+            };
+            
+            // Initialize if carousel controller is available
+            if (typeof CarouselController === 'function') {
+                const aboutCarouselInstance = new CarouselController(aboutCarousel);
+                window.aboutCarousel = aboutCarouselInstance;
+            }
+        }
+        
+        // Fallback carousel initialization
+        setTimeout(function() {
+            const aboutCarousel = document.getElementById('aboutHeroCarousel');
+            if (aboutCarousel && !window.aboutCarousel) {
+                initFallbackCarousel();
+            }
+        }, 500);
+        
+        function initFallbackCarousel() {
+            const carousel = document.getElementById('aboutHeroCarousel');
+            const slides = carousel.querySelectorAll('.carousel-slide');
+            const indicators = document.querySelectorAll('.indicator');
+            const prevBtn = document.getElementById('aboutCarouselPrev');
+            const nextBtn = document.getElementById('aboutCarouselNext');
+            
+            let currentSlide = 0;
+            let autoPlayTimer;
+            
+            function updateSlideBackgrounds() {
+                slides.forEach(function(slide) {
+                    const isMobile = window.innerWidth <= 768;
+                    const desktopSrc = slide.dataset.bgDesktop;
+                    const mobileSrc = slide.dataset.bgMobile;
+                    const selectedSrc = (isMobile && mobileSrc) ? mobileSrc : desktopSrc;
+                    
+                    if (selectedSrc) {
+                        slide.style.backgroundImage = 'url(' + selectedSrc + ')';
+                        slide.style.backgroundSize = 'cover';
+                        slide.style.backgroundPosition = 'center';
+                        slide.style.backgroundRepeat = 'no-repeat';
+                    }
+                });
+            }
+            
+            function goToSlide(index) {
+                slides[currentSlide].classList.remove('active');
+                indicators[currentSlide].classList.remove('active');
+                indicators[currentSlide].setAttribute('aria-selected', 'false');
+                
+                currentSlide = index;
+                
+                slides[currentSlide].classList.add('active');
+                indicators[currentSlide].classList.add('active');
+                indicators[currentSlide].setAttribute('aria-selected', 'true');
+            }
+            
+            function nextSlide() {
+                const next = (currentSlide + 1) % slides.length;
+                goToSlide(next);
+            }
+            
+            function prevSlide() {
+                const prev = (currentSlide - 1 + slides.length) % slides.length;
+                goToSlide(prev);
+            }
+            
+            function startAutoPlay() {
+                autoPlayTimer = setInterval(nextSlide, 6000);
+            }
+            
+            function stopAutoPlay() {
+                clearInterval(autoPlayTimer);
+            }
+            
+            // Event listeners
+            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+            
+            indicators.forEach(function(indicator, index) {
+                indicator.addEventListener('click', function() {
+                    goToSlide(index);
+                });
+            });
+            
+            // Pause on hover
+            carousel.addEventListener('mouseenter', stopAutoPlay);
+            carousel.addEventListener('mouseleave', startAutoPlay);
+            
+            // Responsive background update
+            window.addEventListener('resize', updateSlideBackgrounds);
+            
+            // Initialize
+            updateSlideBackgrounds();
+            startAutoPlay();
+        }
+    });
+    </script>
     
     <!-- Mobile Navigation Fallback -->
     <script>
