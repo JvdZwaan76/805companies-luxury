@@ -805,6 +805,35 @@ body.nav-open {
     z-index: var(--z-index-base);
 }
 
+.breadcrumbs.hero-page {
+    position: absolute;
+    top: 140px;
+    left: 0;
+    right: 0;
+    z-index: var(--z-index-docked);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 0;
+}
+
+.breadcrumbs.hero-page .breadcrumb-list a {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.breadcrumbs.hero-page .breadcrumb-list a:hover {
+    color: var(--color-secondary-light);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.breadcrumbs.hero-page .breadcrumb-list li:not(:last-child)::after {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.breadcrumbs.hero-page .breadcrumb-list span {
+    color: rgba(255, 255, 255, 0.9);
+}
+
 .breadcrumb-list {
     display: flex;
     align-items: center;
@@ -1188,6 +1217,8 @@ section {
     min-height: 500px;
     display: flex;
     align-items: center;
+    margin-top: 0;
+    padding-top: 140px;
 }
 
 .page-header.hero-background::before {
@@ -1219,7 +1250,12 @@ section {
     color: rgba(255, 255, 255, 0.9) !important;
 }
 
-/* Hero Background Variants */
+/* Hero Background Variants - With WebP Support */
+.webp .page-header.hero-background.about-hero {
+    background-image: url('/images/about/about-hero-background-1920x1080.webp') !important;
+}
+
+.no-webp .page-header.hero-background.about-hero,
 .page-header.hero-background.about-hero {
     background-image: url('/images/about/about-hero-background-1920x1080.jpg') !important;
     background-size: cover !important;
@@ -1228,18 +1264,38 @@ section {
     background-attachment: scroll !important;
 }
 
+.webp .page-header.hero-background.services-hero {
+    background-image: url('/images/services/services-hero-background-1920x1080.webp');
+}
+
+.no-webp .page-header.hero-background.services-hero,
 .page-header.hero-background.services-hero {
     background-image: url('/images/services/services-hero-background-1920x1080.jpg');
 }
 
+.webp .page-header.hero-background.cleaning-hero {
+    background-image: url('/images/cleaning/pool-cleaning-hero-1920x1080.webp');
+}
+
+.no-webp .page-header.hero-background.cleaning-hero,
 .page-header.hero-background.cleaning-hero {
     background-image: url('/images/cleaning/pool-cleaning-hero-1920x1080.jpg');
 }
 
+.webp .page-header.hero-background.hoa-hero {
+    background-image: url('/images/hoa/hoa-community-pool-1600x1200.webp');
+}
+
+.no-webp .page-header.hero-background.hoa-hero,
 .page-header.hero-background.hoa-hero {
     background-image: url('/images/hoa/hoa-community-pool-1600x1200.jpg');
 }
 
+.webp .page-header.hero-background.testimonials-hero {
+    background-image: url('/images/testimonials/testimonials-hero-1600x1200.webp');
+}
+
+.no-webp .page-header.hero-background.testimonials-hero,
 .page-header.hero-background.testimonials-hero {
     background-image: url('/images/testimonials/testimonials-hero-1600x1200.jpg');
 }
@@ -1253,6 +1309,11 @@ section {
     
     .page-header.hero-background {
         min-height: 400px;
+        padding-top: 95px;
+    }
+    
+    .breadcrumbs.hero-page {
+        top: 95px;
     }
 }
 
@@ -1331,59 +1392,115 @@ section {
     background-image: url('images/testimonials/testimonials-hero-1600x1200.jpg');
 }
 
-/* Background Image Classes */
+/* Background Image Classes - With WebP Support */
+.webp .bg-company-values {
+    background-image: url('/images/about/company-values-background-1600x900.webp');
+}
+.no-webp .bg-company-values,
 .bg-company-values {
     background-image: url('/images/about/company-values-background-1600x900.jpg');
 }
 
+.webp .bg-mission-statement {
+    background-image: url('/images/about/mission-statement-background-1600x900.webp');
+}
+.no-webp .bg-mission-statement,
 .bg-mission-statement {
     background-image: url('/images/about/mission-statement-background-1600x900.jpg');
 }
 
+.webp .bg-awards-certifications {
+    background-image: url('/images/about/awards-certifications-800x600.webp');
+}
+.no-webp .bg-awards-certifications,
 .bg-awards-certifications {
     background-image: url('/images/about/awards-certifications-800x600.jpg');
 }
 
+.webp .bg-credentials {
+    background-image: url('/images/services/credentials-background-1600x900.webp');
+}
+.no-webp .bg-credentials,
 .bg-credentials {
     background-image: url('/images/services/credentials-background-1600x900.jpg');
 }
 
+.webp .bg-services-cta {
+    background-image: url('/images/services/services-cta-background-1600x900.webp');
+}
+.no-webp .bg-services-cta,
 .bg-services-cta {
     background-image: url('/images/services/services-cta-background-1600x900.jpg');
 }
 
+.webp .bg-pool-cleaning-hero {
+    background-image: url('/images/cleaning/pool-cleaning-hero-1920x1080.webp');
+}
+.no-webp .bg-pool-cleaning-hero,
 .bg-pool-cleaning-hero {
     background-image: url('/images/cleaning/pool-cleaning-hero-1920x1080.jpg');
 }
 
+.webp .bg-pool-maintenance {
+    background-image: url('/images/cleaning/weekly-maintenance-800x600.webp');
+}
+.no-webp .bg-pool-maintenance,
 .bg-pool-maintenance {
     background-image: url('/images/cleaning/weekly-maintenance-800x600.jpg');
 }
 
+.webp .bg-chemical-balancing {
+    background-image: url('/images/cleaning/chemical-balancing-800x600.webp');
+}
+.no-webp .bg-chemical-balancing,
 .bg-chemical-balancing {
     background-image: url('/images/cleaning/chemical-balancing-800x600.jpg');
 }
 
+.webp .bg-equipment-maintenance {
+    background-image: url('/images/cleaning/equipment-maintenance-800x600.webp');
+}
+.no-webp .bg-equipment-maintenance,
 .bg-equipment-maintenance {
     background-image: url('/images/cleaning/equipment-maintenance-800x600.jpg');
 }
 
+.webp .bg-hoa-community {
+    background-image: url('/images/hoa/hoa-community-pool-1600x1200.webp');
+}
+.no-webp .bg-hoa-community,
 .bg-hoa-community {
     background-image: url('/images/hoa/hoa-community-pool-1600x1200.jpg');
 }
 
+.webp .bg-hoa-maintenance {
+    background-image: url('/images/hoa/hoa-maintenance-800x600.webp');
+}
+.no-webp .bg-hoa-maintenance,
 .bg-hoa-maintenance {
     background-image: url('/images/hoa/hoa-maintenance-800x600.jpg');
 }
 
+.webp .bg-hoa-training {
+    background-image: url('/images/hoa/hoa-training-800x600.webp');
+}
+.no-webp .bg-hoa-training,
 .bg-hoa-training {
     background-image: url('/images/hoa/hoa-training-800x600.jpg');
 }
 
+.webp .bg-hoa-events {
+    background-image: url('/images/hoa/hoa-events-800x600.webp');
+}
+.no-webp .bg-hoa-events,
 .bg-hoa-events {
     background-image: url('/images/hoa/hoa-events-800x600.jpg');
 }
 
+.webp .bg-testimonials-hero {
+    background-image: url('/images/testimonials/testimonials-hero-1600x1200.webp');
+}
+.no-webp .bg-testimonials-hero,
 .bg-testimonials-hero {
     background-image: url('/images/testimonials/testimonials-hero-1600x1200.jpg');
 }
