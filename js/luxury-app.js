@@ -679,6 +679,7 @@
             this.setupEventListeners();
             this.setupScrollEffects();
             this.setupDynamicLogo();
+            this.initializeLogoEntrance();
             this.updateActiveLinks();
             this.updatePortalLinks();
             this.enhanceAccessibility();
@@ -862,17 +863,36 @@
         this.cleanupFunctions.push(scrollCleanup);
     };
 
-    // === DYNAMIC LOGO SCALING (NEW FEATURE) ===
+    // === LOGO ENTRANCE ANIMATION (NEW FEATURE) ===
+    NavigationController.prototype.initializeLogoEntrance = function() {
+        if (!this.logo) return;
+
+        const self = this;
+        
+        // Start entrance animation after a brief delay
+        setTimeout(function() {
+            self.logo.classList.add('loaded');
+            Utils.log('info', 'Logo entrance animation started');
+            
+            // After entrance animation, set to large state
+            setTimeout(function() {
+                self.setLogoLarge();
+            }, 1200); // Match animation duration
+            
+        }, 300); // Small delay for smooth page load
+    };
+
+    // === DYNAMIC LOGO SCALING (UPDATED) ===
     NavigationController.prototype.setupDynamicLogo = function() {
         if (!this.logo) return;
 
         const self = this;
         
-        // Set initial large state
-        this.setLogoLarge();
-        
         const handleScroll = Utils.throttle(function() {
             const scrollY = window.pageYOffset;
+            
+            // Only start scaling after logo entrance is complete
+            if (!self.logo.classList.contains('loaded')) return;
             
             if (scrollY > CONFIG.LOGO.SCALE_THRESHOLD && self.isLogoLarge) {
                 self.setLogoSmall();
@@ -890,7 +910,7 @@
     };
 
     NavigationController.prototype.setLogoLarge = function() {
-        if (!this.logo || !this.isLogoLarge === false) return;
+        if (!this.logo || this.isLogoLarge === true) return;
         
         this.logo.classList.remove('logo-small', 'scrolled');
         this.logo.classList.add('logo-large');
