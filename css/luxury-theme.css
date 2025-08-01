@@ -289,6 +289,12 @@ p {
     box-shadow: var(--shadow-sm);
 }
 
+/* Maintain white background when navigation is active */
+.nav-open .header {
+    background: var(--color-white);
+    box-shadow: var(--shadow-sm);
+}
+
 /* Header Top Bar */
 .header-top {
     background: linear-gradient(135deg, #1A1A1A, #2F2F2F);
@@ -430,8 +436,8 @@ p {
     
     /* Initial Hidden State for Elegant Entrance */
     opacity: 0;
-    transform: scale(1.5) translateY(-10px);
-    filter: blur(1px);
+    transform: scale(1.2) translateY(-8px);
+    filter: blur(0.5px);
     
     /* Enhanced Transition Properties */
     transition: all var(--transition-entrance) ease-out;
@@ -452,27 +458,27 @@ p {
 /* Elegant Entrance Animation States */
 .logo.loading {
     opacity: 0;
-    transform: scale(1.5) translateY(-10px);
-    filter: blur(1px);
+    transform: scale(1.2) translateY(-8px);
+    filter: blur(0.5px);
 }
 
 .logo.entering {
-    opacity: 1;
-    transform: scale(1.3) translateY(-5px);
+    opacity: 0.8;
+    transform: scale(1.1) translateY(-3px);
     filter: blur(0px);
     transition: all var(--transition-entrance) ease-out;
 }
 
 .logo.loaded {
     opacity: 1;
-    transform: scale(1.15) translateY(0);
+    transform: scale(1.08) translateY(0);
     filter: blur(0px);
     transition: all var(--transition-entrance) ease-out;
 }
 
 /* Dynamic Logo Scaling States */
 .logo.logo-large {
-    transform: scale(1.15) translateY(0);
+    transform: scale(1.08) translateY(0);
     transition: all var(--transition-elegant) ease-out;
 }
 
@@ -486,27 +492,37 @@ p {
     transition: all var(--transition-elegant) ease-out;
 }
 
-/* Sophisticated Hover Effect */
+/* Sophisticated Hover Effect with Gentle Floating */
 .logo:hover {
-    transform: scale(1.05) translateY(-2px);
+    transform: scale(1.05) translateY(-1px);
     transition: all var(--transition-normal) ease-out;
-    filter: brightness(1.05);
+    filter: brightness(1.02);
 }
 
 .logo.logo-large:hover {
-    transform: scale(1.2) translateY(-2px);
+    transform: scale(1.12) translateY(-1px);
 }
 
 .logo.logo-small:hover {
-    transform: scale(1.05) translateY(-2px);
+    transform: scale(1.03) translateY(-1px);
 }
 
-/* Hide main logo when navigation is active */
+/* Maintain logo visibility when navigation is active on desktop */
 .nav-open .logo {
-    opacity: 0;
-    transform: scale(0.8) translateY(5px);
-    pointer-events: none;
+    opacity: 1;
+    transform: scale(1.08) translateY(0);
+    pointer-events: auto;
     transition: all var(--transition-normal) ease-out;
+}
+
+/* Hide logo only on mobile when nav is active */
+@media (max-width: 768px) {
+    .nav-open .logo {
+        opacity: 0;
+        transform: scale(0.9) translateY(3px);
+        pointer-events: none;
+        transition: all var(--transition-normal) ease-out;
+    }
 }
 
 /* Logo Image - Clean and Borderless */
@@ -564,7 +580,7 @@ p {
     transition: all var(--transition-elegant) ease-out;
 }
 
-/* Logo Tagline */
+/* Logo Tagline - Hidden on Mobile for Clean Layout */
 .logo-tagline {
     font-size: var(--font-size-xs);
     color: var(--color-text-secondary);
@@ -583,6 +599,13 @@ p {
 .logo.logo-small .logo-tagline {
     font-size: var(--font-size-xs);
     transition: all var(--transition-elegant) ease-out;
+}
+
+/* Hide tagline on mobile for cleaner, less crowded header */
+@media (max-width: 768px) {
+    .logo-tagline {
+        display: none;
+    }
 }
 
 /* === ELEGANT ENTRANCE KEYFRAMES === */
@@ -740,12 +763,12 @@ p {
     transform: translateX(0);
 }
 
-/* Sidebar Header */
+/* Sidebar Header - Simplified without close button */
 .nav-overlay-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: var(--spacing-6) var(--spacing-6) var(--spacing-6);
+    padding: var(--spacing-6);
     border-bottom: 1px solid var(--color-border-primary);
     flex-shrink: 0;
     min-height: 88px;
@@ -758,7 +781,6 @@ p {
     gap: var(--spacing-3);
     text-decoration: none;
     transition: var(--transition-fast);
-    flex: 1;
     
     /* Remove borders from overlay logo too */
     border: none !important;
@@ -796,28 +818,6 @@ p {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-.nav-overlay-close {
-    width: 40px;
-    height: 40px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--radius-full);
-    transition: var(--transition-fast);
-    color: var(--color-text-secondary);
-    padding: 8px;
-    z-index: calc(var(--z-index-modal) + 3);
-}
-
-.nav-overlay-close:hover {
-    background: var(--color-bg-secondary);
-    color: var(--color-text-primary);
-    transform: rotate(90deg);
 }
 
 .nav-overlay-menu {
@@ -947,7 +947,7 @@ body.nav-open {
     }
     
     .navbar-content {
-        gap: var(--spacing-3);
+        gap: var(--spacing-2);
     }
     
     .menu-toggle {
@@ -969,24 +969,21 @@ body.nav-open {
         transform: rotate(-45deg) translate(5px, -5px);
     }
     
+    /* Mobile logo sizing - more compact */
     .logo-img {
-        height: 48px;
+        height: 44px;
     }
     
     .logo.logo-large .logo-img {
-        height: 56px;
+        height: 48px;
     }
     
     .logo-name {
-        font-size: var(--font-size-lg);
+        font-size: var(--font-size-base);
     }
     
     .logo.logo-large .logo-name {
-        font-size: var(--font-size-xl);
-    }
-    
-    .logo-tagline {
-        font-size: var(--font-size-xs);
+        font-size: var(--font-size-lg);
     }
     
     .portal-group {
@@ -994,7 +991,7 @@ body.nav-open {
     }
     
     .consultation-btn {
-        padding: var(--spacing-2) var(--spacing-4);
+        padding: var(--spacing-2) var(--spacing-3);
         font-size: var(--font-size-xs);
     }
     
@@ -1004,7 +1001,7 @@ body.nav-open {
     }
     
     .nav-overlay-header {
-        padding: var(--spacing-4) var(--spacing-4) var(--spacing-3);
+        padding: var(--spacing-4);
         min-height: 70px;
     }
     
