@@ -1,7 +1,7 @@
 /* 
  * 805 LifeGuard - Caruso-Inspired Luxury Theme CSS (Enterprise Design System)
- * Version: 7.0 - Caruso-Inspired Minimalist Luxury Design
- * Sophisticated, minimalist aesthetic inspired by caruso.com
+ * Version: 7.1 - Mobile Optimized with Centered Logo Focus
+ * Sophisticated, minimalist aesthetic with perfect mobile experience
  */
 
 /* === CSS RESET === */
@@ -395,7 +395,7 @@ p {
     transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* Logo - Centered */
+/* Logo - Centered (Primary Focal Point) */
 .logo {
     display: flex;
     align-items: center;
@@ -496,7 +496,7 @@ p {
     box-shadow: var(--shadow-md);
 }
 
-/* Full-Screen Navigation Overlay */
+/* Elegant Caruso-Style Sidebar Navigation */
 .nav-overlay {
     position: fixed;
     top: 0;
@@ -504,38 +504,67 @@ p {
     width: 100vw;
     height: 100vh;
     height: 100dvh;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
     z-index: var(--z-index-modal);
-    transform: translateX(-100%);
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .nav-overlay.active {
-    transform: translateX(0) !important;
+    pointer-events: auto;
+    visibility: visible;
+    opacity: 1;
 }
 
-.nav-overlay-content {
-    padding: var(--spacing-8) var(--spacing-6);
+/* Dark backdrop overlay */
+.nav-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.nav-overlay.active::before {
+    opacity: 1;
+}
+
+/* Elegant sidebar */
+.nav-overlay-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 420px;
+    height: 100%;
+    background: var(--color-white);
+    box-shadow: var(--shadow-2xl);
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    min-height: 100dvh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    padding: 0;
+}
+
+.nav-overlay.active .nav-overlay-content {
+    transform: translateX(0);
 }
 
 .nav-overlay-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: var(--spacing-8);
+    padding: var(--spacing-6) var(--spacing-6) var(--spacing-4);
     border-bottom: 1px solid var(--color-border-primary);
-    margin-bottom: var(--spacing-8);
     flex-shrink: 0;
+    min-height: 80px;
 }
 
 .overlay-logo {
@@ -551,21 +580,21 @@ p {
 }
 
 .overlay-logo img {
-    height: 48px;
-    width: 48px;
+    height: 40px;
+    width: 40px;
     border-radius: var(--radius-lg);
 }
 
 .overlay-logo span {
     font-family: var(--font-family-serif);
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-lg);
     font-weight: var(--font-weight-light);
     color: var(--color-text-primary);
 }
 
 .nav-overlay-close {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     background: none;
     border: none;
     cursor: pointer;
@@ -574,32 +603,31 @@ p {
     justify-content: center;
     border-radius: var(--radius-full);
     transition: var(--transition-fast);
+    color: var(--color-text-secondary);
 }
 
 .nav-overlay-close:hover {
     background: var(--color-bg-secondary);
+    color: var(--color-text-primary);
 }
 
 .nav-overlay-menu {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-2);
-    margin-bottom: var(--spacing-8);
+    padding: var(--spacing-4) 0;
     overflow-y: auto;
 }
 
 .overlay-nav-link {
-    padding: var(--spacing-5) var(--spacing-6);
+    display: block;
+    padding: var(--spacing-4) var(--spacing-6);
     color: var(--color-text-primary);
     text-decoration: none;
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-lg);
     font-weight: var(--font-weight-light);
     font-family: var(--font-family-serif);
-    border-radius: var(--radius-lg);
     transition: var(--transition-fast);
-    border: 1px solid transparent;
-    display: block;
+    border-left: 3px solid transparent;
+    position: relative;
 }
 
 .overlay-nav-link:hover,
@@ -607,23 +635,23 @@ p {
 .overlay-nav-link.active {
     background: var(--color-bg-secondary);
     color: var(--color-text-accent);
-    border-color: var(--color-border-accent);
+    border-left-color: var(--color-secondary);
 }
 
 .nav-overlay-actions {
-    padding-top: var(--spacing-6);
+    padding: var(--spacing-6);
     border-top: 1px solid var(--color-border-primary);
     flex-shrink: 0;
 }
 
 .overlay-portals {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: var(--spacing-3);
     margin-bottom: var(--spacing-4);
 }
 
 .overlay-portal-btn {
-    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -637,6 +665,7 @@ p {
     font-weight: var(--font-weight-medium);
     transition: var(--transition-fast);
     border: 1px solid var(--color-border-primary);
+    text-align: center;
 }
 
 .overlay-portal-btn:hover,
@@ -669,7 +698,6 @@ p {
 
 .overlay-nav-contact {
     text-align: center;
-    flex-shrink: 0;
 }
 
 .overlay-contact-btn {
@@ -683,6 +711,7 @@ p {
     border-radius: var(--radius-xl);
     font-weight: var(--font-weight-medium);
     transition: var(--transition-fast);
+    font-size: var(--font-size-sm);
 }
 
 .overlay-contact-btn:hover,
@@ -707,7 +736,7 @@ body.nav-open {
     width: 100% !important;
 }
 
-/* Responsive Navigation - Maintains hamburger menu across all screen sizes */
+/* Responsive Navigation - Mobile Optimized */
 @media (max-width: 768px) {
     .navbar {
         padding: var(--spacing-3) 0;
@@ -738,18 +767,54 @@ body.nav-open {
         font-size: var(--font-size-xs);
     }
     
+    /* Mobile sidebar adjustments */
     .nav-overlay-content {
-        padding: var(--spacing-6) var(--spacing-4);
+        width: 320px;
+    }
+    
+    .nav-overlay-header {
+        padding: var(--spacing-4) var(--spacing-4) var(--spacing-3);
+        min-height: 70px;
+    }
+    
+    .overlay-logo span {
+        font-size: var(--font-size-base);
+    }
+    
+    .overlay-logo img {
+        height: 36px;
+        width: 36px;
     }
     
     .overlay-nav-link {
-        font-size: var(--font-size-xl);
+        font-size: var(--font-size-base);
+        padding: var(--spacing-3) var(--spacing-4);
+        font-family: var(--font-family-sans);
+        font-weight: var(--font-weight-regular);
+    }
+    
+    .nav-overlay-actions {
         padding: var(--spacing-4);
     }
     
     .overlay-portals {
-        flex-direction: column;
+        grid-template-columns: 1fr;
         gap: var(--spacing-2);
+    }
+    
+    .overlay-portal-btn {
+        padding: var(--spacing-2) var(--spacing-3);
+        font-size: var(--font-size-xs);
+    }
+    
+    .overlay-consultation-btn {
+        padding: var(--spacing-3);
+        font-size: var(--font-size-sm);
+    }
+    
+    .overlay-contact-btn {
+        padding: var(--spacing-2) var(--spacing-4);
+        font-size: var(--font-size-xs);
     }
 }
 
@@ -760,114 +825,39 @@ body.nav-open {
     }
     
     .nav-overlay-content {
-        min-height: -webkit-fill-available;
+        height: -webkit-fill-available;
     }
 }
 
-/* Ensure mobile nav works on very small screens */
+/* Ensure sidebar works on very small screens */
 @media (max-width: 320px) {
     .nav-overlay-content {
-        padding: var(--spacing-4) var(--spacing-3);
+        width: 280px;
+    }
+    
+    .nav-overlay-header {
+        padding: var(--spacing-3);
+        min-height: 60px;
     }
     
     .overlay-nav-link {
-        font-size: 1rem;
-        padding: var(--spacing-3);
+        font-size: var(--font-size-sm);
+        padding: var(--spacing-2) var(--spacing-3);
     }
     
-    .overlay-portals {
-        flex-direction: column;
-        gap: var(--spacing-2);
+    .nav-overlay-actions {
+        padding: var(--spacing-3);
     }
 }
 
-/* === BREADCRUMBS === */
-.breadcrumbs {
-    background: var(--color-bg-secondary);
-    border-bottom: 1px solid var(--color-border-primary);
-    padding: var(--spacing-4) 0;
-    margin-top: 120px;
-    position: relative;
-    z-index: var(--z-index-base);
-}
-
-.breadcrumbs.hero-page {
-    position: absolute;
-    top: 120px;
-    left: 0;
-    right: 0;
-    z-index: var(--z-index-docked);
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    margin-top: 0;
-}
-
-.breadcrumbs.hero-page .breadcrumb-list a {
-    color: rgba(0, 0, 0, 0.8);
-}
-
-.breadcrumbs.hero-page .breadcrumb-list a:hover {
-    color: var(--color-secondary-dark);
-    background: rgba(255, 255, 255, 0.8);
-}
-
-.breadcrumbs.hero-page .breadcrumb-list li:not(:last-child)::after {
-    color: rgba(0, 0, 0, 0.6);
-}
-
-.breadcrumbs.hero-page .breadcrumb-list span {
-    color: rgba(0, 0, 0, 0.9);
-}
-
-.breadcrumb-list {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-2);
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    font-size: var(--font-size-sm);
-}
-
-.breadcrumb-list li {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-2);
-}
-
-.breadcrumb-list li:not(:last-child)::after {
-    content: '/';
-    color: var(--color-text-tertiary);
-}
-
-.breadcrumb-list a {
-    color: var(--color-text-secondary);
-    text-decoration: none;
-    transition: var(--transition-fast);
-    padding: var(--spacing-1) var(--spacing-2);
-    border-radius: var(--radius-base);
-}
-
-.breadcrumb-list a:hover {
-    color: var(--color-text-primary);
-    background: var(--color-bg-accent);
-}
-
-@media (max-width: 768px) {
-    .breadcrumbs {
-        margin-top: 80px;
-    }
-}
-
-/* === HERO SECTION === */
+/* === HERO SECTION (No Breadcrumbs - Clean Focal Point) === */
 .hero {
     position: relative;
     min-height: 100vh;
     display: flex;
     align-items: center;
     overflow: hidden;
-    padding-top: 100px;
+    padding-top: 120px; /* Account for header height */
 }
 
 /* Carousel */
@@ -1069,10 +1059,12 @@ body.nav-open {
     color: var(--color-secondary-light);
 }
 
+/* Mobile Optimized Hero */
 @media (max-width: 768px) {
     .hero {
-        padding-top: 80px;
-        min-height: 90vh;
+        padding-top: 90px; /* Reduced for mobile to maximize above-fold content */
+        min-height: 100vh;
+        min-height: 100dvh; /* Better mobile viewport handling */
     }
     
     .carousel-controls {
@@ -1082,25 +1074,45 @@ body.nav-open {
     .hero-buttons {
         flex-direction: column;
         align-items: center;
+        gap: var(--spacing-3);
     }
     
     .hero-subtitle {
         font-size: var(--font-size-lg);
+        margin-bottom: var(--spacing-8);
     }
     
-    .breadcrumbs {
-        margin-top: 80px;
+    .hero-title {
+        margin-bottom: var(--spacing-6);
     }
     
-    .page-header {
-        margin-top: 80px;
-        padding: var(--spacing-16) 0 var(--spacing-12);
-        min-height: 350px;
+    .hero-notice {
+        font-size: var(--font-size-xs);
+        padding: 0 var(--spacing-4);
     }
     
-    .page-header.hero-background {
-        min-height: 400px;
-        padding-top: 80px;
+    .carousel-indicators {
+        bottom: var(--spacing-6);
+        gap: var(--spacing-2);
+    }
+    
+    .indicator {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding-top: 85px;
+    }
+    
+    .hero-content {
+        padding: 0 var(--spacing-3);
+    }
+    
+    .hero-buttons {
+        gap: var(--spacing-2);
     }
 }
 
@@ -1203,7 +1215,7 @@ section {
     margin-top: var(--spacing-16);
 }
 
-/* === PAGE TEMPLATES === */
+/* === PAGE TEMPLATES (Updated without breadcrumbs) === */
 .page-header {
     padding: var(--spacing-20) 0 var(--spacing-16);
     background: var(--color-bg-secondary);
@@ -1297,6 +1309,19 @@ section {
     max-width: 800px;
     margin: 0 auto;
     font-weight: var(--font-weight-light);
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        margin-top: 90px;
+        padding: var(--spacing-16) 0 var(--spacing-12);
+        min-height: 300px;
+    }
+    
+    .page-header.hero-background {
+        min-height: 400px;
+        padding-top: 90px;
+    }
 }
 
 /* === CONTENT SECTION === */
