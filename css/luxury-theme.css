@@ -434,10 +434,10 @@ p {
     position: relative;
     transform-origin: center;
     
-    /* Initial Hidden State for Elegant Entrance */
+    /* Initial Hidden State for Elegant Entrance (Desktop Only) */
     opacity: 0;
-    transform: scale(1.2) translateY(-8px);
-    filter: blur(0.5px);
+    transform: scale(1.15) translateY(-6px);
+    filter: blur(0.3px);
     
     /* Enhanced Transition Properties */
     transition: all var(--transition-entrance) ease-out;
@@ -449,73 +449,87 @@ p {
     box-shadow: none !important;
 }
 
+/* Mobile: Start visible without animation */
+@media (max-width: 768px) {
+    .logo {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: blur(0px);
+        transition: all var(--transition-normal) ease-out;
+    }
+}
+
 .logo:focus {
     outline: none !important;
     border: none !important;
     box-shadow: none !important;
 }
 
-/* Elegant Entrance Animation States */
-.logo.loading {
-    opacity: 0;
-    transform: scale(1.2) translateY(-8px);
-    filter: blur(0.5px);
+/* Elegant Entrance Animation States (Desktop Only) */
+@media (min-width: 769px) {
+    .logo.loading {
+        opacity: 0;
+        transform: scale(1.15) translateY(-6px);
+        filter: blur(0.3px);
+    }
+
+    .logo.entering {
+        opacity: 0.9;
+        transform: scale(1.06) translateY(-2px);
+        filter: blur(0px);
+        transition: all var(--transition-entrance) ease-out;
+    }
+
+    .logo.loaded {
+        opacity: 1;
+        transform: scale(1.05) translateY(0);
+        filter: blur(0px);
+        transition: all var(--transition-entrance) ease-out;
+    }
+
+    /* Dynamic Logo Scaling States (Desktop Only) */
+    .logo.logo-large {
+        transform: scale(1.05) translateY(0);
+        transition: all var(--transition-elegant) ease-out;
+    }
+
+    .logo.logo-small {
+        transform: scale(1) translateY(0);
+        transition: all var(--transition-elegant) ease-out;
+    }
+
+    .logo.scrolled {
+        transform: scale(1) translateY(0);
+        transition: all var(--transition-elegant) ease-out;
+    }
+
+    /* Sophisticated Hover Effect with Gentle Floating (Desktop Only) */
+    .logo:hover {
+        transform: scale(1.08) translateY(-1px);
+        transition: all var(--transition-normal) ease-out;
+        filter: brightness(1.02);
+    }
+
+    .logo.logo-large:hover {
+        transform: scale(1.08) translateY(-1px);
+    }
+
+    .logo.logo-small:hover {
+        transform: scale(1.03) translateY(-1px);
+    }
 }
 
-.logo.entering {
-    opacity: 0.8;
-    transform: scale(1.1) translateY(-3px);
-    filter: blur(0px);
-    transition: all var(--transition-entrance) ease-out;
+/* Desktop: Maintain logo visibility when navigation is active */
+@media (min-width: 769px) {
+    .nav-open .logo {
+        opacity: 1 !important;
+        transform: scale(1.05) translateY(0) !important;
+        pointer-events: auto !important;
+        transition: all var(--transition-normal) ease-out;
+    }
 }
 
-.logo.loaded {
-    opacity: 1;
-    transform: scale(1.08) translateY(0);
-    filter: blur(0px);
-    transition: all var(--transition-entrance) ease-out;
-}
-
-/* Dynamic Logo Scaling States */
-.logo.logo-large {
-    transform: scale(1.08) translateY(0);
-    transition: all var(--transition-elegant) ease-out;
-}
-
-.logo.logo-small {
-    transform: scale(1) translateY(0);
-    transition: all var(--transition-elegant) ease-out;
-}
-
-.logo.scrolled {
-    transform: scale(1) translateY(0);
-    transition: all var(--transition-elegant) ease-out;
-}
-
-/* Sophisticated Hover Effect with Gentle Floating */
-.logo:hover {
-    transform: scale(1.05) translateY(-1px);
-    transition: all var(--transition-normal) ease-out;
-    filter: brightness(1.02);
-}
-
-.logo.logo-large:hover {
-    transform: scale(1.12) translateY(-1px);
-}
-
-.logo.logo-small:hover {
-    transform: scale(1.03) translateY(-1px);
-}
-
-/* Maintain logo visibility when navigation is active on desktop */
-.nav-open .logo {
-    opacity: 1;
-    transform: scale(1.08) translateY(0);
-    pointer-events: auto;
-    transition: all var(--transition-normal) ease-out;
-}
-
-/* Hide logo only on mobile when nav is active */
+/* Mobile: Hide logo only on mobile when nav is active */
 @media (max-width: 768px) {
     .nav-open .logo {
         opacity: 0;
@@ -951,31 +965,32 @@ body.nav-open {
     }
     
     .menu-toggle {
-        width: 40px;
-        height: 40px;
-        padding: 6px;
+        width: 36px;
+        height: 36px;
+        padding: 4px;
     }
     
     .menu-toggle .bar {
-        width: 24px;
+        width: 20px;
+        margin: 2px 0;
     }
     
     /* Fixed X transformation for mobile */
     .menu-toggle.active .bar:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
+        transform: rotate(45deg) translate(4px, 4px);
     }
     
     .menu-toggle.active .bar:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
+        transform: rotate(-45deg) translate(4px, -4px);
     }
     
     /* Mobile logo sizing - more compact */
     .logo-img {
-        height: 44px;
+        height: 40px;
     }
     
     .logo.logo-large .logo-img {
-        height: 48px;
+        height: 40px;
     }
     
     .logo-name {
@@ -983,15 +998,22 @@ body.nav-open {
     }
     
     .logo.logo-large .logo-name {
-        font-size: var(--font-size-lg);
+        font-size: var(--font-size-base);
     }
     
     .portal-group {
         display: none;
     }
     
+    /* Much smaller consultation button for mobile balance */
     .consultation-btn {
-        padding: var(--spacing-2) var(--spacing-3);
+        padding: var(--spacing-1) var(--spacing-2);
+        font-size: var(--font-size-xs);
+        border-radius: var(--radius-lg);
+        gap: var(--spacing-1);
+    }
+    
+    .consultation-btn i {
         font-size: var(--font-size-xs);
     }
     
