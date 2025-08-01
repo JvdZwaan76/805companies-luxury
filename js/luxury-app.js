@@ -1,6 +1,6 @@
 /*
  * 805 LifeGuard - Enhanced Luxury App JS (Enterprise JavaScript Application)
- * Version: 6.1 - Enhanced Responsive Image System
+ * Version: 6.1 - Enhanced Responsive Image System with Caruso-Style Navigation
  * Clean, lightweight, and enterprise-level functionality with 3-tier responsive images
  */
 
@@ -654,11 +654,11 @@
         Utils.log('info', 'Enhanced Carousel destroyed');
     };
 
-    // === NAVIGATION CONTROLLER ===
+    // === NAVIGATION CONTROLLER (Enhanced with Caruso-Style Sidebar) ===
     function NavigationController() {
         this.header = document.getElementById('header');
-        this.mobileToggle = document.getElementById('mobileToggle');
-        this.mobileNav = document.getElementById('mobileNav');
+        this.mobileToggle = document.getElementById('menuToggle');
+        this.mobileNav = document.getElementById('navOverlay');
         this.body = document.body;
         this.isOpen = false;
         this.scrollPosition = 0;
@@ -701,7 +701,7 @@
         this.cleanupFunctions.push(toggleCleanup);
 
         // Mobile nav links
-        const mobileLinks = this.mobileNav.querySelectorAll('.mobile-nav-link');
+        const mobileLinks = this.mobileNav.querySelectorAll('.overlay-nav-link');
         mobileLinks.forEach(function(link) {
             const linkCleanup = Utils.addEventListenerWithCleanup(
                 link, 'click', function() {
@@ -711,17 +711,29 @@
             self.cleanupFunctions.push(linkCleanup);
         });
 
-        // Close on outside click
+        // Close on backdrop click (clicking outside the sidebar)
         const outsideClickCleanup = Utils.addEventListenerWithCleanup(
-            document, 'click', function(e) {
-                if (self.isOpen && 
-                    !self.mobileNav.contains(e.target) && 
-                    !self.mobileToggle.contains(e.target)) {
+            this.mobileNav, 'click', function(e) {
+                // Check if click is on the backdrop (nav-overlay element) but not on the sidebar content
+                if (e.target === self.mobileNav && self.isOpen) {
                     self.closeMobileNav();
                 }
             }
         );
         this.cleanupFunctions.push(outsideClickCleanup);
+
+        // Close button
+        const closeButton = this.mobileNav.querySelector('#navOverlayClose, .nav-overlay-close');
+        if (closeButton) {
+            const closeCleanup = Utils.addEventListenerWithCleanup(
+                closeButton, 'click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    self.closeMobileNav();
+                }
+            );
+            self.cleanupFunctions.push(closeCleanup);
+        }
 
         // Close on escape key
         const escapeCleanup = Utils.addEventListenerWithCleanup(
@@ -753,7 +765,7 @@
     };
 
     NavigationController.prototype.openMobileNav = function() {
-        Utils.log('info', 'Opening mobile navigation');
+        Utils.log('info', 'Opening elegant sidebar navigation');
         
         this.isOpen = true;
         this.scrollPosition = window.pageYOffset;
@@ -769,19 +781,20 @@
         this.body.style.position = 'fixed';
         this.body.style.top = '-' + this.scrollPosition + 'px';
         this.body.style.width = '100%';
+        this.body.style.overflow = 'hidden';
 
-        // Focus management
+        // Focus management for sidebar
         const self = this;
         setTimeout(function() {
-            const firstLink = self.mobileNav.querySelector('.mobile-nav-link');
+            const firstLink = self.mobileNav.querySelector('.overlay-nav-link');
             if (firstLink) {
                 firstLink.focus();
             }
-        }, 300);
+        }, 400); // Wait for transition to complete
     };
 
     NavigationController.prototype.closeMobileNav = function() {
-        Utils.log('info', 'Closing mobile navigation');
+        Utils.log('info', 'Closing elegant sidebar navigation');
         
         this.isOpen = false;
 
@@ -802,6 +815,7 @@
         this.body.style.position = '';
         this.body.style.top = '';
         this.body.style.width = '';
+        this.body.style.overflow = '';
 
         // Restore scroll position
         window.scrollTo(0, this.scrollPosition);
@@ -838,7 +852,7 @@
 
         const allLinks = [];
         const desktopLinks = document.querySelectorAll('.nav-link');
-        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+        const mobileLinks = document.querySelectorAll('.overlay-nav-link');
         
         for (let i = 0; i < desktopLinks.length; i++) {
             allLinks.push(desktopLinks[i]);
@@ -862,7 +876,7 @@
 
     NavigationController.prototype.updatePortalLinks = function() {
         const portalLinks = document.querySelectorAll(
-            '.portal-btn, .mobile-portal-btn, .footer-portal-btn, [href*="portal"]'
+            '.portal-btn, .overlay-portal-btn, .footer-portal-btn, [href*="portal"]'
         );
 
         portalLinks.forEach(function(link) {
@@ -1194,7 +1208,7 @@
 
     ContactUpdater.prototype.updatePortalLinks = function() {
         const portalLinks = document.querySelectorAll(
-            '.portal-btn, .mobile-portal-btn, .footer-portal-btn'
+            '.portal-btn, .overlay-portal-btn, .footer-portal-btn'
         );
 
         portalLinks.forEach(function(link) {
@@ -1292,8 +1306,8 @@
         Utils.log('info', 'Initializing fallback functionality...');
 
         // Basic mobile navigation
-        const mobileToggle = document.getElementById('mobileToggle');
-        const mobileNav = document.getElementById('mobileNav');
+        const mobileToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('navOverlay');
 
         if (mobileToggle && mobileNav) {
             mobileToggle.addEventListener('click', function(e) {
