@@ -33,21 +33,21 @@
         
         // Elegant Logo Entrance Animation
         LOGO: {
-            ENTRANCE_DELAY: 400,             // Delay before starting entrance
-            ENTRANCE_DURATION: 1200,         // Duration of entrance animation
+            ENTRANCE_DELAY: 300,             // Delay before starting entrance
+            ENTRANCE_DURATION: 1000,         // Duration of entrance animation
             ENTRANCE_TRANSITION: 'cubic-bezier(0.23, 1, 0.32, 1)', // Elegant easing
             
-            INITIAL_SCALE: 1.5,              // Starting scale for dramatic entrance
-            ENTERING_SCALE: 1.3,             // Mid-entrance scale
-            LARGE_SCALE: 1.15,               // Final large scale
+            INITIAL_SCALE: 1.2,              // Starting scale for subtle entrance
+            ENTERING_SCALE: 1.1,             // Mid-entrance scale
+            LARGE_SCALE: 1.08,               // Final large scale (more subtle)
             NORMAL_SCALE: 1.0,               // Normal scrolled scale
             
-            SCALE_THRESHOLD: 100,            // Scroll threshold for scaling
+            SCALE_THRESHOLD: 80,             // Scroll threshold for scaling
             SCROLL_TRANSITION: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)', // Scroll easing
-            SCROLL_DURATION: 800,            // Scroll transition duration
+            SCROLL_DURATION: 600,            // Scroll transition duration
             
-            HOVER_SCALE_BONUS: 0.05,         // Additional scale on hover
-            HOVER_DURATION: 350              // Hover transition duration
+            HOVER_SCALE_BONUS: 0.03,         // Additional scale on hover (subtle)
+            HOVER_DURATION: 300              // Hover transition duration
         },
         
         // Performance Settings
@@ -741,18 +741,8 @@
         );
         this.cleanupFunctions.push(outsideClickCleanup);
 
-        // Enhanced close button
-        const closeButton = this.mobileNav.querySelector('#navOverlayClose, .nav-overlay-close');
-        if (closeButton) {
-            const closeCleanup = Utils.addEventListenerWithCleanup(
-                closeButton, 'click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    self.closeMobileNav();
-                }
-            );
-            self.cleanupFunctions.push(closeCleanup);
-        }
+        // Enhanced close button - removed since we don't have a close button anymore
+        // Users can close by clicking the hamburger menu or clicking outside
 
         // Enhanced escape key handling
         const escapeCleanup = Utils.addEventListenerWithCleanup(
@@ -881,11 +871,11 @@
 
         const self = this;
 
-        // Start with hidden state
+        // Start with hidden state - more subtle initial scale
         this.logo.classList.add('loading');
         this.logo.style.opacity = '0';
-        this.logo.style.transform = 'scale(' + CONFIG.LOGO.INITIAL_SCALE + ') translateY(-10px)';
-        this.logo.style.filter = 'blur(1px)';
+        this.logo.style.transform = 'scale(' + CONFIG.LOGO.INITIAL_SCALE + ') translateY(-8px)';
+        this.logo.style.filter = 'blur(0.5px)';
 
         // Begin the elegant entrance sequence after a brief delay
         this.logoEntranceTimer = setTimeout(function() {
@@ -902,26 +892,27 @@
 
         Utils.log('info', 'Executing elegant logo entrance animation');
 
-        // Stage 1: Begin entrance
+        // Stage 1: Begin entrance with gentle transition
         this.logo.classList.remove('loading');
         this.logo.classList.add('entering');
 
         // Smooth transition to entering state
         this.logo.style.transition = 'all ' + CONFIG.LOGO.ENTRANCE_DURATION + 'ms ' + CONFIG.LOGO.ENTRANCE_TRANSITION;
-        this.logo.style.opacity = '1';
-        this.logo.style.transform = 'scale(' + CONFIG.LOGO.ENTERING_SCALE + ') translateY(-5px)';
+        this.logo.style.opacity = '0.8';
+        this.logo.style.transform = 'scale(' + CONFIG.LOGO.ENTERING_SCALE + ') translateY(-3px)';
         this.logo.style.filter = 'blur(0px)';
 
-        // Stage 2: Complete entrance to large state
+        // Stage 2: Complete entrance to large state with elegant finish
         setTimeout(function() {
             self.logo.classList.remove('entering');
             self.logo.classList.add('loaded', 'logo-large');
             
+            self.logo.style.opacity = '1';
             self.logo.style.transform = 'scale(' + CONFIG.LOGO.LARGE_SCALE + ') translateY(0)';
             self.isLogoLarge = true;
             self.logoEntranceComplete = true;
             
-            Utils.log('info', 'Logo entrance animation completed - Brand focus achieved');
+            Utils.log('info', 'Elegant logo entrance animation completed - Sophisticated brand focus achieved');
             
             // Setup hover effects after entrance is complete
             self.setupLogoHoverEffects();
@@ -929,7 +920,7 @@
             // Dispatch entrance complete event
             self.dispatchLogoEntranceEvent();
             
-        }, CONFIG.LOGO.ENTRANCE_DURATION);
+        }, CONFIG.LOGO.ENTRANCE_DURATION * 0.7); // Complete entrance earlier for smoother feel
     };
 
     NavigationController.prototype.setupLogoHoverEffects = function() {
@@ -1243,7 +1234,7 @@
                 element.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
                 element.style.opacity = '1';
                 element.style.transform = 'translateY(0)';
-            }, 800 + (index * 150)); // Delayed to allow logo entrance to complete first
+            }, 600 + (index * 150)); // Slightly reduced delay to coordinate with faster logo entrance
         });
     };
 
@@ -1661,14 +1652,14 @@
             Utils.log('info', 'Enhanced fallback mobile navigation initialized');
         }
 
-        // Logo fallback entrance
+        // Logo fallback entrance - more subtle
         const logo = document.getElementById('mainLogo');
         if (logo) {
             setTimeout(function() {
                 logo.style.opacity = '1';
-                logo.style.transform = 'scale(1.15)';
-                logo.style.transition = 'all 800ms ease-out';
-            }, 400);
+                logo.style.transform = 'scale(1.08)';
+                logo.style.transition = 'all 600ms ease-out';
+            }, 300);
         }
 
         // Enhanced smooth scroll fallback
