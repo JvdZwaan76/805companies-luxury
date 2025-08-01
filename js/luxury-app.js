@@ -31,23 +31,23 @@
             CLEAN_MODE: true                  // Pure clean mode
         },
         
-        // Elegant Logo Entrance Animation
+        // Elegant Logo Entrance Animation (Desktop Only)
         LOGO: {
-            ENTRANCE_DELAY: 300,             // Delay before starting entrance
-            ENTRANCE_DURATION: 1000,         // Duration of entrance animation
+            ENTRANCE_DELAY: 250,             // Delay before starting entrance
+            ENTRANCE_DURATION: 900,          // Duration of entrance animation
             ENTRANCE_TRANSITION: 'cubic-bezier(0.23, 1, 0.32, 1)', // Elegant easing
             
-            INITIAL_SCALE: 1.2,              // Starting scale for subtle entrance
-            ENTERING_SCALE: 1.1,             // Mid-entrance scale
-            LARGE_SCALE: 1.08,               // Final large scale (more subtle)
+            INITIAL_SCALE: 1.15,             // Starting scale for refined entrance
+            ENTERING_SCALE: 1.06,            // Mid-entrance scale
+            LARGE_SCALE: 1.05,               // Final large scale (very refined)
             NORMAL_SCALE: 1.0,               // Normal scrolled scale
             
-            SCALE_THRESHOLD: 80,             // Scroll threshold for scaling
+            SCALE_THRESHOLD: 60,             // Scroll threshold for scaling
             SCROLL_TRANSITION: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)', // Scroll easing
-            SCROLL_DURATION: 600,            // Scroll transition duration
+            SCROLL_DURATION: 500,            // Scroll transition duration
             
             HOVER_SCALE_BONUS: 0.03,         // Additional scale on hover (subtle)
-            HOVER_DURATION: 300              // Hover transition duration
+            HOVER_DURATION: 250              // Hover transition duration
         },
         
         // Performance Settings
@@ -860,49 +860,59 @@
         this.cleanupFunctions.push(scrollCleanup);
     };
 
-    // === ELEGANT LOGO ENTRANCE ANIMATION SYSTEM ===
+    // === ELEGANT LOGO ENTRANCE ANIMATION SYSTEM (Desktop Only) ===
     NavigationController.prototype.initializeElegantLogoEntrance = function() {
         if (!this.logo) {
             Utils.log('warn', 'Logo element not found for entrance animation');
             return;
         }
 
-        Utils.log('info', 'Initializing elegant logo entrance animation...');
+        // Only run entrance animation on desktop viewports
+        if (Utils.isMobile()) {
+            Utils.log('info', 'Skipping logo entrance animation on mobile viewport');
+            this.logo.style.opacity = '1';
+            this.logo.style.transform = 'scale(1) translateY(0)';
+            this.logo.style.filter = 'blur(0px)';
+            this.logoEntranceComplete = true;
+            return;
+        }
+
+        Utils.log('info', 'Initializing elegant logo entrance animation for desktop...');
 
         const self = this;
 
-        // Start with hidden state - more subtle initial scale
+        // Start with hidden state - refined initial scale for desktop
         this.logo.classList.add('loading');
         this.logo.style.opacity = '0';
-        this.logo.style.transform = 'scale(' + CONFIG.LOGO.INITIAL_SCALE + ') translateY(-8px)';
-        this.logo.style.filter = 'blur(0.5px)';
+        this.logo.style.transform = 'scale(' + CONFIG.LOGO.INITIAL_SCALE + ') translateY(-6px)';
+        this.logo.style.filter = 'blur(0.3px)';
 
         // Begin the elegant entrance sequence after a brief delay
         this.logoEntranceTimer = setTimeout(function() {
             self.executeElegantEntrance();
         }, CONFIG.LOGO.ENTRANCE_DELAY);
 
-        Utils.log('info', 'Logo entrance animation scheduled');
+        Utils.log('info', 'Desktop logo entrance animation scheduled');
     };
 
     NavigationController.prototype.executeElegantEntrance = function() {
-        if (!this.logo) return;
+        if (!this.logo || Utils.isMobile()) return;
 
         const self = this;
 
-        Utils.log('info', 'Executing elegant logo entrance animation');
+        Utils.log('info', 'Executing refined elegant logo entrance animation');
 
-        // Stage 1: Begin entrance with gentle transition
+        // Stage 1: Begin entrance with ultra-smooth transition
         this.logo.classList.remove('loading');
         this.logo.classList.add('entering');
 
-        // Smooth transition to entering state
+        // Smooth transition to entering state with refined movement
         this.logo.style.transition = 'all ' + CONFIG.LOGO.ENTRANCE_DURATION + 'ms ' + CONFIG.LOGO.ENTRANCE_TRANSITION;
-        this.logo.style.opacity = '0.8';
-        this.logo.style.transform = 'scale(' + CONFIG.LOGO.ENTERING_SCALE + ') translateY(-3px)';
+        this.logo.style.opacity = '0.92';
+        this.logo.style.transform = 'scale(' + CONFIG.LOGO.ENTERING_SCALE + ') translateY(-2px)';
         this.logo.style.filter = 'blur(0px)';
 
-        // Stage 2: Complete entrance to large state with elegant finish
+        // Stage 2: Complete entrance to refined large state with perfect finish
         setTimeout(function() {
             self.logo.classList.remove('entering');
             self.logo.classList.add('loaded', 'logo-large');
@@ -912,7 +922,7 @@
             self.isLogoLarge = true;
             self.logoEntranceComplete = true;
             
-            Utils.log('info', 'Elegant logo entrance animation completed - Sophisticated brand focus achieved');
+            Utils.log('info', 'Refined elegant logo entrance completed - Sophisticated brand prominence achieved');
             
             // Setup hover effects after entrance is complete
             self.setupLogoHoverEffects();
@@ -920,7 +930,7 @@
             // Dispatch entrance complete event
             self.dispatchLogoEntranceEvent();
             
-        }, CONFIG.LOGO.ENTRANCE_DURATION * 0.7); // Complete entrance earlier for smoother feel
+        }, CONFIG.LOGO.ENTRANCE_DURATION * 0.65); // Complete entrance smoothly
     };
 
     NavigationController.prototype.setupLogoHoverEffects = function() {
@@ -957,7 +967,7 @@
     };
 
     NavigationController.prototype.handleLogoScaling = function(scrollY) {
-        if (!this.logo || !this.logoEntranceComplete) return;
+        if (!this.logo || !this.logoEntranceComplete || Utils.isMobile()) return;
 
         if (scrollY > CONFIG.LOGO.SCALE_THRESHOLD && this.isLogoLarge) {
             this.setLogoSmall();
@@ -967,7 +977,7 @@
     };
 
     NavigationController.prototype.setLogoLarge = function() {
-        if (!this.logo || !this.logoEntranceComplete || this.isLogoLarge === true) return;
+        if (!this.logo || !this.logoEntranceComplete || this.isLogoLarge === true || Utils.isMobile()) return;
         
         this.logo.classList.remove('logo-small', 'scrolled');
         this.logo.classList.add('logo-large');
@@ -976,11 +986,11 @@
         this.logo.style.transform = 'scale(' + CONFIG.LOGO.LARGE_SCALE + ') translateY(0)';
         
         this.isLogoLarge = true;
-        Utils.log('info', 'Logo scaled to large size');
+        Utils.log('info', 'Logo scaled to refined large size');
     };
 
     NavigationController.prototype.setLogoSmall = function() {
-        if (!this.logo || !this.logoEntranceComplete || this.isLogoLarge === false) return;
+        if (!this.logo || !this.logoEntranceComplete || this.isLogoLarge === false || Utils.isMobile()) return;
         
         this.logo.classList.remove('logo-large');
         this.logo.classList.add('logo-small', 'scrolled');
@@ -999,11 +1009,13 @@
                 entranceDuration: CONFIG.LOGO.ENTRANCE_DURATION,
                 currentScale: CONFIG.LOGO.LARGE_SCALE,
                 timestamp: Date.now(),
-                brandFocused: true
+                brandFocused: true,
+                refined: true,
+                desktopOnly: true
             }
         });
         window.dispatchEvent(event);
-        Utils.log('info', 'Logo entrance complete event dispatched');
+        Utils.log('info', 'Refined elegant logo entrance complete event dispatched');
     };
 
     NavigationController.prototype.updateActiveLinks = function() {
@@ -1652,14 +1664,19 @@
             Utils.log('info', 'Enhanced fallback mobile navigation initialized');
         }
 
-        // Logo fallback entrance - more subtle
+        // Logo fallback entrance - desktop only
         const logo = document.getElementById('mainLogo');
-        if (logo) {
+        if (logo && !Utils.isMobile()) {
             setTimeout(function() {
                 logo.style.opacity = '1';
-                logo.style.transform = 'scale(1.08)';
-                logo.style.transition = 'all 600ms ease-out';
-            }, 300);
+                logo.style.transform = 'scale(1.05)';
+                logo.style.transition = 'all 500ms ease-out';
+            }, 250);
+        } else if (logo && Utils.isMobile()) {
+            // Mobile fallback - no animation
+            logo.style.opacity = '1';
+            logo.style.transform = 'scale(1)';
+            logo.style.transition = 'none';
         }
 
         // Enhanced smooth scroll fallback
@@ -1755,13 +1772,16 @@
 
     LuxuryApp.prototype.getFeatures = function() {
         return {
-            elegantLogoEntrance: true,
-            brandFocusedDesign: true,
+            refinedLogoEntrance: true,
+            desktopOnlyAnimation: true,
+            brandProminenceDesktop: true,
+            cleanMobileHeader: true,
             cleanCarouselMode: CONFIG.CAROUSEL.CLEAN_MODE,
             noCarouselIndicators: CONFIG.CAROUSEL.HIDE_INDICATORS,
-            enhancedMobileSpacing: true,
+            optimizedMobileSpacing: true,
             carusoAesthetic: true,
             noBorders: true,
+            ultraSmooth: true,
             version: this.version
         };
     };
@@ -1813,12 +1833,12 @@
         
         window.Utils = Utils;
         window.CONFIG = CONFIG;
-        Utils.log('info', 'Enhanced debug mode active - Elegant logo entrance enabled');
+        Utils.log('info', 'Enhanced debug mode active - Refined logo entrance with desktop/mobile optimization');
         Utils.log('info', 'Access app instance via window.app');
         Utils.log('info', 'Access utilities via window.Utils');
         Utils.log('info', 'Access config via window.CONFIG');
         Utils.log('info', 'Current device type: ' + Utils.getDeviceType());
-        Utils.log('info', 'Features: Elegant logo entrance, brand-focused design, clean carousel mode, no borders');
+        Utils.log('info', 'Features: Refined logo entrance (desktop only), brand prominence, ultra-clean mobile, no borders, ultra-smooth');
     }
 
 })();
