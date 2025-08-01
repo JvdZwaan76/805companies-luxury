@@ -1,13 +1,54 @@
 /*
  * 805 LifeGuard - Enhanced Luxury App JS (Enterprise JavaScript Application)
- * Version: 9.0 - Elegant Logo Entrance Animation & Clean Caruso Aesthetic
- * Sophisticated brand-focused entrance with no logo borders
+ * Version: 9.1 - Fixed Header Visibility & Mobile Balance
+ * Sophisticated brand-focused design with perfect header visibility
  */
 
 (function() {
     'use strict';
     
-    // === ENTERPRISE CONFIGURATION ===
+    // === ERROR HANDLING ===
+    window.addEventListener('error', function(e) {
+        Utils.log('error', 'Global JavaScript error', {
+            message: e.message,
+            filename: e.filename,
+            lineno: e.lineno,
+            colno: e.colno,
+            error: e.error
+        });
+    });
+
+    window.addEventListener('unhandledrejection', function(e) {
+        Utils.log('error', 'Unhandled promise rejection', {
+            reason: e.reason,
+            promise: e.promise
+        });
+    });
+
+    // === INITIALIZE APPLICATION ===
+    const app = new LuxuryApp();
+
+    // Export for global access and debugging
+    window.LuxuryApp = LuxuryApp;
+    window.app = app;
+    window.CarouselController = CarouselController;
+
+    // Enhanced development/debug mode
+    if (window.location.hostname === 'localhost' || 
+        window.location.hostname.indexOf('805lifeguard.com') !== -1 ||
+        window.location.search.indexOf('debug=true') !== -1) {
+        
+        window.Utils = Utils;
+        window.CONFIG = CONFIG;
+        Utils.log('info', 'Enhanced debug mode active - Fixed header visibility with desktop/mobile optimization');
+        Utils.log('info', 'Access app instance via window.app');
+        Utils.log('info', 'Access utilities via window.Utils');
+        Utils.log('info', 'Access config via window.CONFIG');
+        Utils.log('info', 'Current device type: ' + Utils.getDeviceType());
+        Utils.log('info', 'Features: Fixed header visibility, refined logo entrance (desktop only), brand prominence, ultra-clean mobile, no borders, ultra-smooth');
+    }
+
+})(); ENTERPRISE CONFIGURATION ===
     const CONFIG = {
         // Contact Information
         PHONE_NUMBER: '(805) 367-6432',
@@ -109,7 +150,7 @@
          * Check if device is mobile
          */
         isMobile: function() {
-            return window.innerWidth < CONFIG.BREAKPOINTS.MD;
+            return window.innerWidth <= CONFIG.BREAKPOINTS.MD;
         },
 
         /*
@@ -131,7 +172,7 @@
          */
         getDeviceType: function() {
             const width = window.innerWidth;
-            if (width < CONFIG.BREAKPOINTS.MD) return 'mobile';
+            if (width <= CONFIG.BREAKPOINTS.MD) return 'mobile';
             if (width < CONFIG.BREAKPOINTS.LG) return 'tablet';
             return 'desktop';
         },
@@ -668,7 +709,7 @@
         Utils.log('info', 'Clean Carousel destroyed');
     };
 
-    // === ENHANCED NAVIGATION CONTROLLER (Elegant Logo Entrance) ===
+    // === ENHANCED NAVIGATION CONTROLLER (Fixed Header Visibility) ===
     function NavigationController() {
         this.header = document.getElementById('header');
         this.mobileToggle = document.getElementById('menuToggle');
@@ -686,7 +727,7 @@
     }
 
     NavigationController.prototype.init = function() {
-        Utils.log('info', 'Initializing Enhanced Navigation Controller with Elegant Logo Entrance...');
+        Utils.log('info', 'Initializing Enhanced Navigation Controller with Fixed Header Visibility...');
 
         try {
             this.setupEventListeners();
@@ -740,9 +781,6 @@
             }
         );
         this.cleanupFunctions.push(outsideClickCleanup);
-
-        // Enhanced close button - removed since we don't have a close button anymore
-        // Users can close by clicking the hamburger menu or clicking outside
 
         // Enhanced escape key handling
         const escapeCleanup = Utils.addEventListenerWithCleanup(
@@ -1549,7 +1587,7 @@
         this.smoothScroll = null;
         this.contactUpdater = null;
         this.isInitialized = false;
-        this.version = '9.0';
+        this.version = '9.1';
 
         this.init();
     }
@@ -1566,7 +1604,7 @@
     LuxuryApp.prototype.initializeApp = function() {
         const self = this;
         try {
-            Utils.log('info', 'Initializing 805 LifeGuard Enhanced Luxury Application v' + this.version + ' with Elegant Logo Entrance...');
+            Utils.log('info', 'Initializing 805 LifeGuard Enhanced Luxury Application v' + this.version + ' with Fixed Header Visibility...');
 
             // Detect WebP support first
             this.webpService.detect().then(function() {
@@ -1589,7 +1627,7 @@
 
                 self.isInitialized = true;
 
-                Utils.log('info', '805 LifeGuard Enhanced Luxury Application v' + self.version + ' initialized successfully with elegant brand focus');
+                Utils.log('info', '805 LifeGuard Enhanced Luxury Application v' + self.version + ' initialized successfully with fixed header visibility');
 
                 // Dispatch ready event
                 self.dispatchReadyEvent();
@@ -1612,10 +1650,11 @@
                 deviceType: Utils.getDeviceType(),
                 features: {
                     elegantLogoEntrance: true,
+                    fixedHeaderVisibility: true,
                     brandFocusedDesign: true,
                     cleanCarouselMode: CONFIG.CAROUSEL.CLEAN_MODE,
                     noCarouselIndicators: CONFIG.CAROUSEL.HIDE_INDICATORS,
-                    enhancedMobileSpacing: true,
+                    optimizedMobileBalance: true,
                     carusoAesthetic: true,
                     noBorders: true
                 }
@@ -1649,17 +1688,6 @@
                     document.body.classList.add('nav-open');
                 }
             });
-
-            // Close button fallback
-            const closeButton = mobileNav.querySelector('#navOverlayClose, .nav-overlay-close');
-            if (closeButton) {
-                closeButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    mobileToggle.classList.remove('active');
-                    mobileNav.classList.remove('active');
-                    document.body.classList.remove('nav-open');
-                });
-            }
 
             Utils.log('info', 'Enhanced fallback mobile navigation initialized');
         }
@@ -1773,12 +1801,13 @@
     LuxuryApp.prototype.getFeatures = function() {
         return {
             refinedLogoEntrance: true,
+            fixedHeaderVisibility: true,
             desktopOnlyAnimation: true,
             brandProminenceDesktop: true,
             cleanMobileHeader: true,
             cleanCarouselMode: CONFIG.CAROUSEL.CLEAN_MODE,
             noCarouselIndicators: CONFIG.CAROUSEL.HIDE_INDICATORS,
-            optimizedMobileSpacing: true,
+            optimizedMobileBalance: true,
             carusoAesthetic: true,
             noBorders: true,
             ultraSmooth: true,
@@ -1800,45 +1829,4 @@
         Utils.log('info', 'Enhanced Luxury Application destroyed');
     };
 
-    // === ERROR HANDLING ===
-    window.addEventListener('error', function(e) {
-        Utils.log('error', 'Global JavaScript error', {
-            message: e.message,
-            filename: e.filename,
-            lineno: e.lineno,
-            colno: e.colno,
-            error: e.error
-        });
-    });
-
-    window.addEventListener('unhandledrejection', function(e) {
-        Utils.log('error', 'Unhandled promise rejection', {
-            reason: e.reason,
-            promise: e.promise
-        });
-    });
-
-    // === INITIALIZE APPLICATION ===
-    const app = new LuxuryApp();
-
-    // Export for global access and debugging
-    window.LuxuryApp = LuxuryApp;
-    window.app = app;
-    window.CarouselController = CarouselController;
-
-    // Enhanced development/debug mode
-    if (window.location.hostname === 'localhost' || 
-        window.location.hostname.indexOf('805lifeguard.com') !== -1 ||
-        window.location.search.indexOf('debug=true') !== -1) {
-        
-        window.Utils = Utils;
-        window.CONFIG = CONFIG;
-        Utils.log('info', 'Enhanced debug mode active - Refined logo entrance with desktop/mobile optimization');
-        Utils.log('info', 'Access app instance via window.app');
-        Utils.log('info', 'Access utilities via window.Utils');
-        Utils.log('info', 'Access config via window.CONFIG');
-        Utils.log('info', 'Current device type: ' + Utils.getDeviceType());
-        Utils.log('info', 'Features: Refined logo entrance (desktop only), brand prominence, ultra-clean mobile, no borders, ultra-smooth');
-    }
-
-})();
+    // ===
