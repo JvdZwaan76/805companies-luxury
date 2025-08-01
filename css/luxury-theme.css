@@ -1,7 +1,7 @@
 /* 
  * 805 LifeGuard - Enhanced Caruso-Inspired Luxury Theme CSS (Enterprise Design System)
- * Version: 9.0 - Elegant Logo Entrance Animation & Clean Caruso Aesthetic
- * Sophisticated brand-focused entrance with no logo borders
+ * Version: 9.1 - Fixed Header Visibility & Mobile Balance
+ * Sophisticated brand-focused design with perfect header visibility
  */
 
 /* === CSS RESET === */
@@ -272,13 +272,13 @@ p {
     }
 }
 
-/* === ENHANCED HEADER SYSTEM === */
+/* === ENHANCED HEADER SYSTEM WITH FIXED VISIBILITY === */
 .header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: var(--z-index-sticky);
+    z-index: calc(var(--z-index-modal) + 20); /* Much higher than navigation overlay */
     background: var(--color-white);
     border-bottom: 1px solid var(--color-border-primary);
     transition: var(--transition-normal);
@@ -289,10 +289,13 @@ p {
     box-shadow: var(--shadow-sm);
 }
 
-/* Maintain white background when navigation is active */
+/* Ensure header ALWAYS stays visible above navigation */
 .nav-open .header {
-    background: var(--color-white);
-    box-shadow: var(--shadow-sm);
+    background: var(--color-white) !important;
+    box-shadow: var(--shadow-md) !important;
+    z-index: calc(var(--z-index-modal) + 20) !important;
+    position: fixed !important;
+    top: 0 !important;
 }
 
 /* Header Top Bar */
@@ -347,7 +350,7 @@ p {
 
 /* Enhanced Main Navigation - Caruso Style with Perfect Balance */
 .navbar {
-    padding: var(--spacing-4) 0;
+    padding: var(--spacing-3) 0; /* Reduced padding for mobile balance */
     background: var(--color-white);
     position: relative;
 }
@@ -356,8 +359,19 @@ p {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    gap: var(--spacing-4);
+    gap: var(--spacing-3); /* Reduced gap for better mobile balance */
     position: relative;
+}
+
+/* Mobile optimization for better balance */
+@media (min-width: 769px) {
+    .navbar {
+        padding: var(--spacing-4) 0; /* Normal padding on desktop */
+    }
+    
+    .navbar-content {
+        gap: var(--spacing-4); /* Normal gap on desktop */
+    }
 }
 
 /* Hamburger Menu - Enhanced Balance and Perfect X Transformation */
@@ -365,7 +379,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    z-index: calc(var(--z-index-modal) + 2);
+    z-index: calc(var(--z-index-modal) + 22);
     position: relative;
 }
 
@@ -374,16 +388,25 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 44px;
-    height: 44px;
+    width: 40px; /* Slightly smaller for mobile balance */
+    height: 40px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 8px;
-    z-index: calc(var(--z-index-modal) + 2);
+    padding: 6px;
+    z-index: calc(var(--z-index-modal) + 22);
     transition: var(--transition-normal);
     position: relative;
     border-radius: var(--radius-lg);
+}
+
+/* Desktop sizing */
+@media (min-width: 769px) {
+    .menu-toggle {
+        width: 44px;
+        height: 44px;
+        padding: 8px;
+    }
 }
 
 .menu-toggle:hover {
@@ -397,19 +420,27 @@ p {
 
 /* Enhanced Hamburger Bars with Perfect X Transformation */
 .menu-toggle .bar {
-    width: 28px;
+    width: 24px; /* Slightly smaller for mobile */
     height: 2px;
     background: var(--color-text-primary);
-    margin: 3px 0;
+    margin: 2.5px 0;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     border-radius: var(--radius-full);
     transform-origin: center;
     position: relative;
 }
 
+/* Desktop sizing */
+@media (min-width: 769px) {
+    .menu-toggle .bar {
+        width: 28px;
+        margin: 3px 0;
+    }
+}
+
 /* Perfect X Transformation */
 .menu-toggle.active .bar:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
+    transform: rotate(45deg) translate(5px, 5px);
     background: var(--color-text-primary);
 }
 
@@ -419,18 +450,29 @@ p {
 }
 
 .menu-toggle.active .bar:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
+    transform: rotate(-45deg) translate(5px, -5px);
     background: var(--color-text-primary);
+}
+
+/* Desktop X transformation adjustment */
+@media (min-width: 769px) {
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+    
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
 }
 
 /* === ELEGANT LOGO WITH SOPHISTICATED ENTRANCE ANIMATION === */
 .logo {
     display: flex;
     align-items: center;
-    gap: var(--spacing-4);
+    gap: var(--spacing-3); /* Reduced gap for mobile balance */
     text-decoration: none;
     justify-self: center;
-    z-index: calc(var(--z-index-modal) + 1);
+    z-index: calc(var(--z-index-modal) + 21);
     position: relative;
     transform-origin: center;
     
@@ -447,6 +489,13 @@ p {
     border: none !important;
     outline: none !important;
     box-shadow: none !important;
+}
+
+/* Desktop gap */
+@media (min-width: 769px) {
+    .logo {
+        gap: var(--spacing-4);
+    }
 }
 
 /* Mobile: Start visible without animation */
@@ -519,7 +568,7 @@ p {
     }
 }
 
-/* Desktop: Maintain logo visibility when navigation is active */
+/* Desktop: Always maintain logo visibility when navigation is active */
 @media (min-width: 769px) {
     .nav-open .logo {
         opacity: 1 !important;
@@ -541,7 +590,7 @@ p {
 
 /* Logo Image - Clean and Borderless */
 .logo-img {
-    height: 56px;
+    height: 48px; /* Smaller for mobile balance */
     width: auto;
     border-radius: var(--radius-lg);
     transition: all var(--transition-elegant) ease-out;
@@ -556,14 +605,21 @@ p {
     image-rendering: crisp-edges;
 }
 
-.logo.logo-large .logo-img {
-    height: 64px;
-    transition: all var(--transition-elegant) ease-out;
-}
+/* Desktop logo sizing */
+@media (min-width: 769px) {
+    .logo-img {
+        height: 56px;
+    }
+    
+    .logo.logo-large .logo-img {
+        height: 64px;
+        transition: all var(--transition-elegant) ease-out;
+    }
 
-.logo.logo-small .logo-img {
-    height: 56px;
-    transition: all var(--transition-elegant) ease-out;
+    .logo.logo-small .logo-img {
+        height: 56px;
+        transition: all var(--transition-elegant) ease-out;
+    }
 }
 
 /* Logo Text Container */
@@ -576,7 +632,7 @@ p {
 /* Logo Brand Name */
 .logo-name {
     font-family: var(--font-family-serif);
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-lg); /* Smaller for mobile balance */
     font-weight: var(--font-weight-light);
     color: var(--color-text-primary);
     line-height: 1;
@@ -584,14 +640,21 @@ p {
     transition: all var(--transition-elegant) ease-out;
 }
 
-.logo.logo-large .logo-name {
-    font-size: var(--font-size-2xl);
-    transition: all var(--transition-elegant) ease-out;
-}
+/* Desktop logo name sizing */
+@media (min-width: 769px) {
+    .logo-name {
+        font-size: var(--font-size-xl);
+    }
+    
+    .logo.logo-large .logo-name {
+        font-size: var(--font-size-2xl);
+        transition: all var(--transition-elegant) ease-out;
+    }
 
-.logo.logo-small .logo-name {
-    font-size: var(--font-size-xl);
-    transition: all var(--transition-elegant) ease-out;
+    .logo.logo-small .logo-name {
+        font-size: var(--font-size-xl);
+        transition: all var(--transition-elegant) ease-out;
+    }
 }
 
 /* Logo Tagline - Hidden on Mobile for Clean Layout */
@@ -605,14 +668,17 @@ p {
     transition: all var(--transition-elegant) ease-out;
 }
 
-.logo.logo-large .logo-tagline {
-    font-size: var(--font-size-sm);
-    transition: all var(--transition-elegant) ease-out;
-}
+/* Desktop tagline sizing */
+@media (min-width: 769px) {
+    .logo.logo-large .logo-tagline {
+        font-size: var(--font-size-sm);
+        transition: all var(--transition-elegant) ease-out;
+    }
 
-.logo.logo-small .logo-tagline {
-    font-size: var(--font-size-xs);
-    transition: all var(--transition-elegant) ease-out;
+    .logo.logo-small .logo-tagline {
+        font-size: var(--font-size-xs);
+        transition: all var(--transition-elegant) ease-out;
+    }
 }
 
 /* Hide tagline on mobile for cleaner, less crowded header */
@@ -660,8 +726,15 @@ p {
 .nav-actions {
     display: flex;
     align-items: center;
-    gap: var(--spacing-3);
+    gap: var(--spacing-2); /* Reduced gap for mobile balance */
     justify-self: end;
+}
+
+/* Desktop gap */
+@media (min-width: 769px) {
+    .nav-actions {
+        gap: var(--spacing-3);
+    }
 }
 
 .portal-group {
@@ -695,17 +768,28 @@ p {
 .consultation-btn {
     display: flex;
     align-items: center;
-    gap: var(--spacing-2);
-    padding: var(--spacing-3) var(--spacing-5);
+    gap: var(--spacing-1); /* Reduced gap for mobile */
+    padding: var(--spacing-2) var(--spacing-3); /* Much smaller padding for mobile balance */
     background: var(--color-text-primary);
     color: var(--color-text-inverse);
     text-decoration: none;
-    border-radius: var(--radius-xl);
+    border-radius: var(--radius-lg); /* Smaller radius for mobile */
     font-weight: var(--font-weight-medium);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs); /* Much smaller font for mobile balance */
     box-shadow: var(--shadow-sm);
     transition: var(--transition-fast);
     border: 1px solid transparent;
+    white-space: nowrap;
+}
+
+/* Desktop consultation button sizing */
+@media (min-width: 769px) {
+    .consultation-btn {
+        gap: var(--spacing-2);
+        padding: var(--spacing-3) var(--spacing-5);
+        border-radius: var(--radius-xl);
+        font-size: var(--font-size-sm);
+    }
 }
 
 .consultation-btn:hover {
@@ -722,7 +806,7 @@ p {
     width: 100vw;
     height: 100vh;
     height: 100dvh;
-    z-index: var(--z-index-modal);
+    z-index: var(--z-index-modal); /* Lower than header */
     pointer-events: none;
     visibility: hidden;
     opacity: 0;
@@ -753,13 +837,29 @@ p {
     opacity: 1;
 }
 
+/* Desktop: backdrop starts below header */
+@media (min-width: 769px) {
+    .nav-overlay::before {
+        top: 88px; /* Start below header */
+        height: calc(100% - 88px);
+    }
+}
+
+/* Mobile: backdrop starts below mobile header */
+@media (max-width: 768px) {
+    .nav-overlay::before {
+        top: 72px; /* Start below mobile header */
+        height: calc(100% - 72px);
+    }
+}
+
 /* Enhanced elegant sidebar */
 .nav-overlay-content {
     position: absolute;
-    top: 0;
+    top: 88px; /* Start below header on desktop */
     left: 0;
     width: 420px;
-    height: 100%;
+    height: calc(100% - 88px); /* Adjust height to account for header */
     background: var(--color-white);
     box-shadow: var(--shadow-2xl);
     transform: translateX(-100%);
@@ -773,70 +873,27 @@ p {
     border-right: 1px solid var(--color-border-primary);
 }
 
+/* Mobile: start below mobile header and no duplicate logo */
+@media (max-width: 768px) {
+    .nav-overlay-content {
+        top: 72px; /* Start below mobile header */
+        height: calc(100% - 72px);
+        width: 320px;
+    }
+}
+
 .nav-overlay.active .nav-overlay-content {
     transform: translateX(0);
 }
 
-/* Sidebar Header - Simplified without close button */
+/* Sidebar Header - Hidden completely since main header stays visible */
 .nav-overlay-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: var(--spacing-6);
-    border-bottom: 1px solid var(--color-border-primary);
-    flex-shrink: 0;
-    min-height: 88px;
-    background: var(--color-white);
-}
-
-.overlay-logo {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-3);
-    text-decoration: none;
-    transition: var(--transition-fast);
-    
-    /* Remove borders from overlay logo too */
-    border: none !important;
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-.overlay-logo:hover {
-    transform: translateY(-1px);
-}
-
-.overlay-logo:focus {
-    outline: none !important;
-    border: none !important;
-    box-shadow: none !important;
-}
-
-.overlay-logo img {
-    height: 40px;
-    width: 40px;
-    border-radius: var(--radius-lg);
-    flex-shrink: 0;
-    
-    /* Remove borders */
-    border: none !important;
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-.overlay-logo span {
-    font-family: var(--font-family-serif);
-    font-size: var(--font-size-lg);
-    font-weight: var(--font-weight-light);
-    color: var(--color-text-primary);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    display: none !important; /* Hide on all viewports since main header remains visible */
 }
 
 .nav-overlay-menu {
     flex: 1;
-    padding: var(--spacing-4) 0;
+    padding: var(--spacing-6) 0 var(--spacing-4); /* Start with more padding since no header */
     overflow-y: auto;
 }
 
@@ -869,11 +926,33 @@ p {
     background: var(--color-bg-secondary);
 }
 
+/* Mobile adjustments for overlay actions */
+@media (max-width: 768px) {
+    .nav-overlay-actions {
+        padding: var(--spacing-4);
+    }
+    
+    .overlay-nav-link {
+        font-size: var(--font-size-base);
+        padding: var(--spacing-3) var(--spacing-4);
+        font-family: var(--font-family-sans);
+        font-weight: var(--font-weight-regular);
+    }
+}
+
 .overlay-portals {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-3);
     margin-bottom: var(--spacing-4);
+}
+
+/* Mobile: single column layout */
+@media (max-width: 768px) {
+    .overlay-portals {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-2);
+    }
 }
 
 .overlay-portal-btn {
@@ -891,6 +970,14 @@ p {
     transition: var(--transition-fast);
     border: 1px solid var(--color-border-primary);
     text-align: center;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .overlay-portal-btn {
+        padding: var(--spacing-2) var(--spacing-3);
+        font-size: var(--font-size-xs);
+    }
 }
 
 .overlay-portal-btn:hover,
@@ -917,6 +1004,14 @@ p {
     transition: var(--transition-fast);
 }
 
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .overlay-consultation-btn {
+        padding: var(--spacing-3);
+        font-size: var(--font-size-sm);
+    }
+}
+
 .overlay-consultation-btn:hover,
 .overlay-consultation-btn:focus {
     background: var(--color-neutral-dark);
@@ -941,6 +1036,14 @@ p {
     font-size: var(--font-size-sm);
 }
 
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .overlay-contact-btn {
+        padding: var(--spacing-2) var(--spacing-4);
+        font-size: var(--font-size-xs);
+    }
+}
+
 .overlay-contact-btn:hover,
 .overlay-contact-btn:focus {
     background: var(--color-secondary-dark);
@@ -952,133 +1055,6 @@ body.nav-open {
     overflow: hidden !important;
     position: fixed !important;
     width: 100% !important;
-}
-
-/* Responsive Navigation - Mobile Optimized */
-@media (max-width: 768px) {
-    .navbar {
-        padding: var(--spacing-3) 0;
-    }
-    
-    .navbar-content {
-        gap: var(--spacing-2);
-    }
-    
-    .menu-toggle {
-        width: 36px;
-        height: 36px;
-        padding: 4px;
-    }
-    
-    .menu-toggle .bar {
-        width: 20px;
-        margin: 2px 0;
-    }
-    
-    /* Fixed X transformation for mobile */
-    .menu-toggle.active .bar:nth-child(1) {
-        transform: rotate(45deg) translate(4px, 4px);
-    }
-    
-    .menu-toggle.active .bar:nth-child(3) {
-        transform: rotate(-45deg) translate(4px, -4px);
-    }
-    
-    /* Mobile logo sizing - more compact */
-    .logo-img {
-        height: 40px;
-    }
-    
-    .logo.logo-large .logo-img {
-        height: 40px;
-    }
-    
-    .logo-name {
-        font-size: var(--font-size-base);
-    }
-    
-    .logo.logo-large .logo-name {
-        font-size: var(--font-size-base);
-    }
-    
-    .portal-group {
-        display: none;
-    }
-    
-    /* Much smaller consultation button for mobile balance */
-    .consultation-btn {
-        padding: var(--spacing-1) var(--spacing-2);
-        font-size: var(--font-size-xs);
-        border-radius: var(--radius-lg);
-        gap: var(--spacing-1);
-    }
-    
-    .consultation-btn i {
-        font-size: var(--font-size-xs);
-    }
-    
-    /* Mobile sidebar adjustments */
-    .nav-overlay-content {
-        width: 320px;
-    }
-    
-    .nav-overlay-header {
-        padding: var(--spacing-4);
-        min-height: 70px;
-    }
-    
-    .overlay-nav-link {
-        font-size: var(--font-size-base);
-        padding: var(--spacing-3) var(--spacing-4);
-        font-family: var(--font-family-sans);
-        font-weight: var(--font-weight-regular);
-    }
-    
-    .nav-overlay-actions {
-        padding: var(--spacing-4);
-    }
-    
-    .overlay-portals {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-2);
-    }
-    
-    .overlay-portal-btn {
-        padding: var(--spacing-2) var(--spacing-3);
-        font-size: var(--font-size-xs);
-    }
-    
-    .overlay-consultation-btn {
-        padding: var(--spacing-3);
-        font-size: var(--font-size-sm);
-    }
-    
-    .overlay-contact-btn {
-        padding: var(--spacing-2) var(--spacing-4);
-        font-size: var(--font-size-xs);
-    }
-}
-
-/* Enhanced Mobile Balance */
-@media (max-width: 480px) {
-    .menu-toggle {
-        width: 36px;
-        height: 36px;
-        padding: 4px;
-    }
-    
-    .menu-toggle .bar {
-        width: 20px;
-        margin: 2px 0;
-    }
-    
-    .menu-toggle.active .bar:nth-child(1) {
-        transform: rotate(45deg) translate(4px, 4px);
-    }
-    
-    .menu-toggle.active .bar:nth-child(3) {
-        transform: rotate(-45deg) translate(4px, -4px);
-    }
 }
 
 /* === ENHANCED HERO SECTION (Clean Caruso Aesthetic) === */
@@ -1219,7 +1195,7 @@ body.nav-open {
 /* Enhanced Mobile Hero with More Breathing Room */
 @media (max-width: 768px) {
     .hero {
-        padding-top: 140px;
+        padding-top: 100px; /* Adjusted for smaller mobile header */
         min-height: 100vh;
         min-height: 100dvh;
     }
@@ -1247,7 +1223,7 @@ body.nav-open {
 
 @media (max-width: 480px) {
     .hero {
-        padding-top: 130px;
+        padding-top: 90px;
     }
     
     .hero-content {
@@ -1424,14 +1400,14 @@ section {
 
 @media (max-width: 768px) {
     .page-header {
-        margin-top: 90px;
+        margin-top: 72px; /* Adjusted for smaller mobile header */
         padding: var(--spacing-16) 0 var(--spacing-12);
         min-height: 300px;
     }
     
     .page-header.hero-background {
         min-height: 400px;
-        padding-top: 140px;
+        padding-top: 100px;
     }
 }
 
