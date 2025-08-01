@@ -1,7 +1,7 @@
 /* 
  * 805 LifeGuard - Enhanced Caruso-Inspired Luxury Theme CSS (Enterprise Design System)
- * Version: 8.0 - Perfect Hamburger Balance & Dynamic Logo Scaling
- * Clean Caruso aesthetic with refined navigation and enterprise optimizations
+ * Version: 9.0 - Elegant Logo Entrance Animation & Clean Caruso Aesthetic
+ * Sophisticated brand-focused entrance with no logo borders
  */
 
 /* === CSS RESET === */
@@ -140,6 +140,8 @@
     --transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
     --transition-normal: 350ms cubic-bezier(0.4, 0, 0.2, 1);
     --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-elegant: 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-entrance: 1200ms cubic-bezier(0.23, 1, 0.32, 1);
     
     /* Z-Index Scale */
     --z-index-hide: -1;
@@ -399,7 +401,7 @@ p {
     position: relative;
 }
 
-/* Perfect X Transformation - Fixed */
+/* Perfect X Transformation */
 .menu-toggle.active .bar:nth-child(1) {
     transform: rotate(45deg) translate(6px, 6px);
     background: var(--color-text-primary);
@@ -415,87 +417,133 @@ p {
     background: var(--color-text-primary);
 }
 
-/* Logo - Centered with Dynamic Scaling & Clean Design */
+/* === ELEGANT LOGO WITH SOPHISTICATED ENTRANCE ANIMATION === */
 .logo {
     display: flex;
     align-items: center;
     gap: var(--spacing-4);
     text-decoration: none;
-    transition: all var(--transition-normal) ease-out;
     justify-self: center;
     z-index: calc(var(--z-index-modal) + 1);
     position: relative;
     transform-origin: center;
+    
+    /* Initial Hidden State for Elegant Entrance */
     opacity: 0;
-    transform: scale(1.3);
+    transform: scale(1.5) translateY(-10px);
+    filter: blur(1px);
+    
+    /* Enhanced Transition Properties */
+    transition: all var(--transition-entrance) ease-out;
+    will-change: transform, opacity, filter;
+    
+    /* Remove ALL borders and outlines */
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
-.logo:hover {
-    transform: translateY(-1px);
+.logo:focus {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
-/* Logo entrance animation */
+/* Elegant Entrance Animation States */
+.logo.loading {
+    opacity: 0;
+    transform: scale(1.5) translateY(-10px);
+    filter: blur(1px);
+}
+
+.logo.entering {
+    opacity: 1;
+    transform: scale(1.3) translateY(-5px);
+    filter: blur(0px);
+    transition: all var(--transition-entrance) ease-out;
+}
+
 .logo.loaded {
     opacity: 1;
-    animation: logoEntrance 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-@keyframes logoEntrance {
-    0% {
-        opacity: 0;
-        transform: scale(1.3);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.15);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1.15);
-    }
+    transform: scale(1.15) translateY(0);
+    filter: blur(0px);
+    transition: all var(--transition-entrance) ease-out;
 }
 
 /* Dynamic Logo Scaling States */
 .logo.logo-large {
-    transform: scale(1.15);
+    transform: scale(1.15) translateY(0);
+    transition: all var(--transition-elegant) ease-out;
 }
 
 .logo.logo-small {
-    transform: scale(1);
+    transform: scale(1) translateY(0);
+    transition: all var(--transition-elegant) ease-out;
 }
 
 .logo.scrolled {
-    transform: scale(1);
+    transform: scale(1) translateY(0);
+    transition: all var(--transition-elegant) ease-out;
+}
+
+/* Sophisticated Hover Effect */
+.logo:hover {
+    transform: scale(1.05) translateY(-2px);
+    transition: all var(--transition-normal) ease-out;
+    filter: brightness(1.05);
+}
+
+.logo.logo-large:hover {
+    transform: scale(1.2) translateY(-2px);
+}
+
+.logo.logo-small:hover {
+    transform: scale(1.05) translateY(-2px);
 }
 
 /* Hide main logo when navigation is active */
 .nav-open .logo {
     opacity: 0;
-    transform: scale(0.8);
+    transform: scale(0.8) translateY(5px);
     pointer-events: none;
+    transition: all var(--transition-normal) ease-out;
 }
 
+/* Logo Image - Clean and Borderless */
 .logo-img {
     height: 56px;
     width: auto;
     border-radius: var(--radius-lg);
-    transition: all var(--transition-normal) ease-out;
+    transition: all var(--transition-elegant) ease-out;
+    
+    /* Ensure NO borders or outlines */
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    
+    /* Enhance image quality */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
 
 .logo.logo-large .logo-img {
     height: 64px;
+    transition: all var(--transition-elegant) ease-out;
 }
 
 .logo.logo-small .logo-img {
     height: 56px;
+    transition: all var(--transition-elegant) ease-out;
 }
 
+/* Logo Text Container */
 .logo-text {
     display: flex;
     flex-direction: column;
-    transition: all var(--transition-normal) ease-out;
+    transition: all var(--transition-elegant) ease-out;
 }
 
+/* Logo Brand Name */
 .logo-name {
     font-family: var(--font-family-serif);
     font-size: var(--font-size-xl);
@@ -503,13 +551,20 @@ p {
     color: var(--color-text-primary);
     line-height: 1;
     letter-spacing: -0.02em;
-    transition: all var(--transition-normal) ease-out;
+    transition: all var(--transition-elegant) ease-out;
 }
 
 .logo.logo-large .logo-name {
     font-size: var(--font-size-2xl);
+    transition: all var(--transition-elegant) ease-out;
 }
 
+.logo.logo-small .logo-name {
+    font-size: var(--font-size-xl);
+    transition: all var(--transition-elegant) ease-out;
+}
+
+/* Logo Tagline */
 .logo-tagline {
     font-size: var(--font-size-xs);
     color: var(--color-text-secondary);
@@ -517,11 +572,51 @@ p {
     letter-spacing: 0.05em;
     text-transform: uppercase;
     margin-top: var(--spacing-1);
-    transition: all var(--transition-normal) ease-out;
+    transition: all var(--transition-elegant) ease-out;
 }
 
 .logo.logo-large .logo-tagline {
     font-size: var(--font-size-sm);
+    transition: all var(--transition-elegant) ease-out;
+}
+
+.logo.logo-small .logo-tagline {
+    font-size: var(--font-size-xs);
+    transition: all var(--transition-elegant) ease-out;
+}
+
+/* === ELEGANT ENTRANCE KEYFRAMES === */
+@keyframes logoGrandEntrance {
+    0% {
+        opacity: 0;
+        transform: scale(1.8) translateY(-20px) rotate(-2deg);
+        filter: blur(3px);
+    }
+    25% {
+        opacity: 0.3;
+        transform: scale(1.6) translateY(-15px) rotate(-1deg);
+        filter: blur(2px);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.4) translateY(-8px) rotate(0deg);
+        filter: blur(1px);
+    }
+    75% {
+        opacity: 0.9;
+        transform: scale(1.25) translateY(-3px);
+        filter: blur(0px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.15) translateY(0);
+        filter: blur(0px);
+    }
+}
+
+/* Apply the grand entrance animation */
+.logo.grand-entrance {
+    animation: logoGrandEntrance var(--transition-entrance) cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
 /* Actions - Right Side */
@@ -582,7 +677,7 @@ p {
     box-shadow: var(--shadow-md);
 }
 
-/* Enhanced Caruso-Style Sidebar Navigation (Cleaned Up) */
+/* Enhanced Caruso-Style Sidebar Navigation */
 .nav-overlay {
     position: fixed;
     top: 0;
@@ -621,7 +716,7 @@ p {
     opacity: 1;
 }
 
-/* Enhanced elegant sidebar (No Duplicate Logo) */
+/* Enhanced elegant sidebar */
 .nav-overlay-content {
     position: absolute;
     top: 0;
@@ -645,7 +740,7 @@ p {
     transform: translateX(0);
 }
 
-/* Cleaned Up Header - With Logo & Proper Mobile Spacing */
+/* Sidebar Header */
 .nav-overlay-header {
     display: flex;
     justify-content: space-between;
@@ -664,10 +759,21 @@ p {
     text-decoration: none;
     transition: var(--transition-fast);
     flex: 1;
+    
+    /* Remove borders from overlay logo too */
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 .overlay-logo:hover {
     transform: translateY(-1px);
+}
+
+.overlay-logo:focus {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
 .overlay-logo img {
@@ -675,6 +781,11 @@ p {
     width: 40px;
     border-radius: var(--radius-lg);
     flex-shrink: 0;
+    
+    /* Remove borders */
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 .overlay-logo span {
@@ -951,7 +1062,7 @@ body.nav-open {
     }
 }
 
-/* === ENHANCED HERO SECTION (Clean Caruso Aesthetic - No Indicators) === */
+/* === ENHANCED HERO SECTION (Clean Caruso Aesthetic) === */
 .hero {
     position: relative;
     min-height: 100vh;
@@ -1089,7 +1200,7 @@ body.nav-open {
 /* Enhanced Mobile Hero with More Breathing Room */
 @media (max-width: 768px) {
     .hero {
-        padding-top: 140px; /* Increased from 90px for more breathing room */
+        padding-top: 140px;
         min-height: 100vh;
         min-height: 100dvh;
     }
@@ -1117,7 +1228,7 @@ body.nav-open {
 
 @media (max-width: 480px) {
     .hero {
-        padding-top: 130px; /* Increased for better mobile spacing */
+        padding-top: 130px;
     }
     
     .hero-content {
@@ -1228,7 +1339,7 @@ section {
     margin-top: var(--spacing-16);
 }
 
-/* === PAGE TEMPLATES (Updated without breadcrumbs) === */
+/* === PAGE TEMPLATES === */
 .page-header {
     padding: var(--spacing-20) 0 var(--spacing-16);
     background: var(--color-bg-secondary);
@@ -1301,7 +1412,7 @@ section {
     
     .page-header.hero-background {
         min-height: 400px;
-        padding-top: 140px; /* Increased for mobile breathing room */
+        padding-top: 140px;
     }
 }
 
@@ -1929,6 +2040,11 @@ section {
 .footer-logo img {
     height: 48px;
     border-radius: var(--radius-lg);
+    
+    /* Remove borders from footer logo */
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 .footer-logo-text h3 {
@@ -2240,6 +2356,72 @@ section {
     }
 }
 
+/* === CALLOUT BOX === */
+.callout-box {
+    background: var(--color-secondary-lightest);
+    border-left: 4px solid var(--color-secondary);
+    padding: var(--spacing-8);
+    margin: var(--spacing-10) 0;
+    border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+    position: relative;
+}
+
+.callout-box blockquote {
+    margin: 0;
+    font-style: italic;
+    color: var(--color-text-primary);
+    font-family: var(--font-family-serif);
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-relaxed);
+}
+
+.callout-box blockquote .fas.fa-quote-left {
+    color: var(--color-secondary);
+    font-size: var(--font-size-2xl);
+    margin-right: var(--spacing-2);
+    vertical-align: top;
+}
+
+.callout-box cite {
+    display: block;
+    margin-top: var(--spacing-4);
+    font-style: normal;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-secondary-dark);
+    text-align: right;
+}
+
+/* === IMAGE GALLERY === */
+.image-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-4);
+    margin-top: var(--spacing-6);
+}
+
+.gallery-item {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-normal);
+}
+
+.gallery-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: var(--transition-slow);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
 /* === ANIMATIONS === */
 @keyframes fadeInUp {
     from {
@@ -2289,6 +2471,13 @@ body {
     box-shadow: 0 0 0 2px var(--color-secondary-light);
 }
 
+/* Remove focus outline from logo */
+.logo:focus,
+.overlay-logo:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
 /* === REDUCED MOTION === */
 @media (prefers-reduced-motion: reduce) {
     * {
@@ -2316,6 +2505,7 @@ body {
     
     .logo {
         transition: none;
+        animation: none !important;
     }
 }
 
