@@ -415,7 +415,7 @@ p {
     background: var(--color-text-primary);
 }
 
-/* Logo - Centered with Dynamic Scaling */
+/* Logo - Centered with Dynamic Scaling & White Background */
 .logo {
     display: flex;
     align-items: center;
@@ -426,10 +426,16 @@ p {
     z-index: calc(var(--z-index-modal) + 1);
     position: relative;
     transform-origin: center;
+    background: var(--color-white);
+    padding: var(--spacing-2) var(--spacing-4);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border-primary);
 }
 
 .logo:hover {
     transform: translateY(-1px) scale(1.02);
+    box-shadow: var(--shadow-md);
 }
 
 /* Dynamic Logo Scaling States */
@@ -615,20 +621,46 @@ p {
     transform: translateX(0);
 }
 
-/* Cleaned Up Header - No Duplicate Logo */
+/* Cleaned Up Header - With Logo & Proper Mobile Spacing */
 .nav-overlay-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--spacing-6) var(--spacing-6) var(--spacing-4);
+    padding: var(--spacing-6) var(--spacing-6) var(--spacing-6);
     border-bottom: 1px solid var(--color-border-primary);
     flex-shrink: 0;
-    min-height: 80px;
+    min-height: 88px;
     background: var(--color-white);
 }
 
-.overlay-header-spacer {
-    width: 40px; /* Same width as close button for balance */
+.overlay-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    text-decoration: none;
+    transition: var(--transition-fast);
+    flex: 1;
+}
+
+.overlay-logo:hover {
+    transform: translateY(-1px);
+}
+
+.overlay-logo img {
+    height: 40px;
+    width: 40px;
+    border-radius: var(--radius-lg);
+    flex-shrink: 0;
+}
+
+.overlay-logo span {
+    font-family: var(--font-family-serif);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-light);
+    color: var(--color-text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .nav-overlay-close {
