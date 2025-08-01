@@ -1,7 +1,7 @@
 /*
  * 805 LifeGuard - Enhanced Luxury App JS (Enterprise JavaScript Application)
- * Version: 7.2 - Refined Caruso-Style Navigation with Hidden Carousel Controls
- * Clean, lightweight, and enterprise-level functionality with enhanced responsive image system
+ * Version: 8.0 - Perfect Hamburger Balance & Dynamic Logo Scaling
+ * Clean Caruso aesthetic with refined navigation and no carousel indicators
  */
 
 (function() {
@@ -20,14 +20,23 @@
             STAFF: 'https://staff.805companies.com'
         },
         
-        // Enhanced Carousel Settings (Controls Hidden)
+        // Enhanced Carousel Settings (No Indicators - Clean Caruso Aesthetic)
         CAROUSEL: {
-            AUTO_PLAY_INTERVAL: 7000,        // Slightly longer for relaxed experience
-            TRANSITION_DURATION: 1800,       // Smoother transitions
+            AUTO_PLAY_INTERVAL: 8000,        // Slower for relaxed Caruso feel
+            TRANSITION_DURATION: 2000,       // Smoother, longer transitions
             PAUSE_ON_HOVER: true,
             PAUSE_ON_FOCUS: true,
-            HIDE_CONTROLS: true,              // NEW: Controls hidden for Caruso aesthetic
-            INDICATOR_ONLY_MODE: true         // NEW: Only indicators visible
+            HIDE_INDICATORS: true,            // NEW: No indicators for clean look
+            HIDE_CONTROLS: true,              // Controls hidden for Caruso aesthetic
+            CLEAN_MODE: true                  // NEW: Pure clean mode
+        },
+        
+        // Dynamic Logo Scaling
+        LOGO: {
+            INITIAL_SCALE: 1.15,             // Larger on page load
+            SCROLLED_SCALE: 1.0,             // Normal size when scrolled
+            SCALE_THRESHOLD: 100,            // Scroll threshold for scaling
+            ANIMATION_DURATION: 400          // Smooth scaling transition
         },
         
         // Performance Settings
@@ -255,13 +264,13 @@
         return imagePath;
     };
 
-    // === ENHANCED CAROUSEL CONTROLLER (Controls Hidden) ===
+    // === ENHANCED CAROUSEL CONTROLLER (Clean Caruso Mode - No Indicators) ===
     function CarouselController(container) {
         this.container = container;
         this.slides = container.querySelectorAll('.carousel-slide');
-        this.indicators = container.querySelectorAll('.indicator');
         
-        // Controls are hidden in Caruso-inspired design
+        // Remove all indicators and controls for clean Caruso aesthetic
+        this.indicators = [];
         this.prevBtn = null;
         this.nextBtn = null;
         
@@ -283,10 +292,10 @@
             return;
         }
 
-        Utils.log('info', 'Initializing Enhanced Carousel Controller (Caruso Mode)...');
+        Utils.log('info', 'Initializing Clean Caruso Carousel Controller (No Indicators)...');
 
         try {
-            this.hideCarouselControls();
+            this.removeAllNavigationElements();
             this.preloadImages();
             this.setupResponsiveBackgrounds();
             this.setupEventListeners();
@@ -294,20 +303,31 @@
             this.startAutoPlay();
             this.handleResize();
             
-            Utils.log('info', 'Enhanced Carousel Controller initialized successfully');
+            Utils.log('info', 'Clean Caruso Carousel Controller initialized successfully');
         } catch (error) {
             Utils.log('error', 'Failed to initialize carousel', error);
         }
     };
 
-    CarouselController.prototype.hideCarouselControls = function() {
-        // Hide controls for clean Caruso aesthetic
-        const controls = this.container.querySelectorAll('.carousel-controls, .carousel-prev, .carousel-next');
-        controls.forEach(function(control) {
-            control.style.display = 'none';
+    CarouselController.prototype.removeAllNavigationElements = function() {
+        // Remove all navigation elements for ultra-clean Caruso aesthetic
+        const elementsToRemove = [
+            '.carousel-indicators',
+            '.carousel-controls', 
+            '.carousel-prev', 
+            '.carousel-next',
+            '.indicator'
+        ];
+        
+        elementsToRemove.forEach(function(selector) {
+            const elements = document.querySelectorAll(selector);
+            elements.forEach(function(element) {
+                element.style.display = 'none';
+                element.remove();
+            });
         });
         
-        Utils.log('info', 'Carousel controls hidden for Caruso aesthetic');
+        Utils.log('info', 'All carousel navigation elements removed for clean Caruso aesthetic');
     };
 
     CarouselController.prototype.preloadImages = function() {
@@ -333,7 +353,7 @@
         if (imagePromises.length > 0) {
             Promise.allSettled(imagePromises).then(function(results) {
                 const successCount = results.filter(r => r.status === 'fulfilled').length;
-                Utils.log('info', 'Enhanced carousel images preloaded: ' + successCount + '/' + imagePromises.length);
+                Utils.log('info', 'Clean carousel images preloaded: ' + successCount + '/' + imagePromises.length);
             }).catch(function(error) {
                 Utils.log('warn', 'Some carousel images failed to preload', error);
             });
@@ -384,25 +404,7 @@
     CarouselController.prototype.setupEventListeners = function() {
         const self = this;
         
-        // Enhanced Indicators (Primary Navigation Method)
-        this.indicators.forEach(function(indicator, index) {
-            const clickCleanup = Utils.addEventListenerWithCleanup(
-                indicator, 'click', function() { self.goToSlide(index); }
-            );
-            self.cleanupFunctions.push(clickCleanup);
-
-            const keyCleanup = Utils.addEventListenerWithCleanup(
-                indicator, 'keydown', function(e) {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        self.goToSlide(index);
-                    }
-                }
-            );
-            self.cleanupFunctions.push(keyCleanup);
-        });
-
-        // Pause on hover and focus
+        // Pause on hover and focus (minimal interaction for clean aesthetic)
         if (CONFIG.CAROUSEL.PAUSE_ON_HOVER) {
             const enterCleanup = Utils.addEventListenerWithCleanup(
                 this.container, 'mouseenter', function() { self.pauseAutoPlay(); }
@@ -423,7 +425,7 @@
             this.cleanupFunctions.push(focusCleanup, blurCleanup);
         }
 
-        // Enhanced Keyboard navigation (Indicators only)
+        // Minimal keyboard navigation (optional)
         const keyboardCleanup = Utils.addEventListenerWithCleanup(
             document, 'keydown', function(e) {
                 if (!Utils.isInViewport(self.container)) return;
@@ -436,18 +438,6 @@
                     case 'ArrowRight':
                         e.preventDefault();
                         self.nextSlide();
-                        break;
-                    case ' ':
-                        e.preventDefault();
-                        self.toggleAutoPlay();
-                        break;
-                    case 'Home':
-                        e.preventDefault();
-                        self.goToSlide(0);
-                        break;
-                    case 'End':
-                        e.preventDefault();
-                        self.goToSlide(self.totalSlides - 1);
                         break;
                 }
             }
@@ -515,7 +505,7 @@
                 const deltaX = startX - endX;
                 const deltaTime = Date.now() - startTime;
                 const threshold = 50;
-                const maxTime = 300; // Maximum time for swipe gesture
+                const maxTime = 300;
 
                 if (Math.abs(deltaX) > threshold && deltaTime < maxTime) {
                     if (deltaX > 0) {
@@ -579,17 +569,6 @@
             }
         });
 
-        // Update indicators with enhanced styling
-        this.indicators.forEach(function(indicator, i) {
-            if (i === index) {
-                indicator.classList.add('active');
-                indicator.setAttribute('aria-selected', 'true');
-            } else {
-                indicator.classList.remove('active');
-                indicator.setAttribute('aria-selected', 'false');
-            }
-        });
-
         // Update ARIA labels
         this.updateAriaLabels();
 
@@ -606,6 +585,7 @@
                 direction: direction,
                 totalSlides: this.totalSlides,
                 deviceType: this.currentDeviceType,
+                cleanMode: CONFIG.CAROUSEL.CLEAN_MODE,
                 timestamp: Date.now()
             }
         });
@@ -632,14 +612,14 @@
             }
         }, CONFIG.CAROUSEL.AUTO_PLAY_INTERVAL);
         
-        Utils.log('info', 'Carousel autoplay started with ' + CONFIG.CAROUSEL.AUTO_PLAY_INTERVAL + 'ms interval');
+        Utils.log('info', 'Clean carousel autoplay started with ' + CONFIG.CAROUSEL.AUTO_PLAY_INTERVAL + 'ms interval');
     };
 
     CarouselController.prototype.stopAutoPlay = function() {
         if (this.autoPlayTimer) {
             clearInterval(this.autoPlayTimer);
             this.autoPlayTimer = null;
-            Utils.log('info', 'Carousel autoplay stopped');
+            Utils.log('info', 'Clean carousel autoplay stopped');
         }
     };
 
@@ -674,28 +654,31 @@
         this.stopAutoPlay();
         this.cleanupFunctions.forEach(function(cleanup) { cleanup(); });
         this.cleanupFunctions = [];
-        Utils.log('info', 'Enhanced Carousel destroyed');
+        Utils.log('info', 'Clean Carousel destroyed');
     };
 
-    // === ENHANCED NAVIGATION CONTROLLER (Perfect Hamburger Balance) ===
+    // === ENHANCED NAVIGATION CONTROLLER (Perfect Hamburger & Dynamic Logo) ===
     function NavigationController() {
         this.header = document.getElementById('header');
         this.mobileToggle = document.getElementById('menuToggle');
         this.mobileNav = document.getElementById('navOverlay');
+        this.logo = document.getElementById('mainLogo');
         this.body = document.body;
         this.isOpen = false;
         this.scrollPosition = 0;
         this.cleanupFunctions = [];
+        this.isLogoLarge = true; // Start with large logo
 
         this.init();
     }
 
     NavigationController.prototype.init = function() {
-        Utils.log('info', 'Initializing Enhanced Navigation Controller...');
+        Utils.log('info', 'Initializing Enhanced Navigation Controller with Dynamic Logo...');
 
         try {
             this.setupEventListeners();
             this.setupScrollEffects();
+            this.setupDynamicLogo();
             this.updateActiveLinks();
             this.updatePortalLinks();
             this.enhanceAccessibility();
@@ -867,6 +850,53 @@
             window, 'scroll', handleScroll, { passive: true }
         );
         this.cleanupFunctions.push(scrollCleanup);
+    };
+
+    // === DYNAMIC LOGO SCALING (NEW FEATURE) ===
+    NavigationController.prototype.setupDynamicLogo = function() {
+        if (!this.logo) return;
+
+        const self = this;
+        
+        // Set initial large state
+        this.setLogoLarge();
+        
+        const handleScroll = Utils.throttle(function() {
+            const scrollY = window.pageYOffset;
+            
+            if (scrollY > CONFIG.LOGO.SCALE_THRESHOLD && self.isLogoLarge) {
+                self.setLogoSmall();
+            } else if (scrollY <= CONFIG.LOGO.SCALE_THRESHOLD && !self.isLogoLarge) {
+                self.setLogoLarge();
+            }
+        });
+
+        const scrollCleanup = Utils.addEventListenerWithCleanup(
+            window, 'scroll', handleScroll, { passive: true }
+        );
+        this.cleanupFunctions.push(scrollCleanup);
+
+        Utils.log('info', 'Dynamic logo scaling initialized');
+    };
+
+    NavigationController.prototype.setLogoLarge = function() {
+        if (!this.logo || !this.isLogoLarge === false) return;
+        
+        this.logo.classList.remove('logo-small', 'scrolled');
+        this.logo.classList.add('logo-large');
+        this.isLogoLarge = true;
+        
+        Utils.log('info', 'Logo set to large scale');
+    };
+
+    NavigationController.prototype.setLogoSmall = function() {
+        if (!this.logo || this.isLogoLarge === false) return;
+        
+        this.logo.classList.remove('logo-large');
+        this.logo.classList.add('logo-small', 'scrolled');
+        this.isLogoLarge = false;
+        
+        Utils.log('info', 'Logo set to small scale');
     };
 
     NavigationController.prototype.updateActiveLinks = function() {
@@ -1101,7 +1131,7 @@
     AnimationController.prototype.setupPerformanceOptimizations = function() {
         // Enhanced performance for animated elements
         const animatedElements = document.querySelectorAll(
-            '.service-card, .team-member, .btn, .overlay-nav-link'
+            '.service-card, .team-member, .btn, .overlay-nav-link, .logo'
         );
 
         animatedElements.forEach(function(element) {
@@ -1397,7 +1427,7 @@
         this.smoothScroll = null;
         this.contactUpdater = null;
         this.isInitialized = false;
-        this.version = '7.2';
+        this.version = '8.0';
 
         this.init();
     }
@@ -1459,11 +1489,12 @@
                 timestamp: new Date().toISOString(),
                 deviceType: Utils.getDeviceType(),
                 features: {
-                    carouselControlsHidden: CONFIG.CAROUSEL.HIDE_CONTROLS,
-                    indicatorOnlyMode: CONFIG.CAROUSEL.INDICATOR_ONLY_MODE,
-                    enhancedAccessibility: true,
-                    responsiveImages: true,
-                    carusoStyling: true
+                    dynamicLogoScaling: true,
+                    perfectHamburgerMenu: true,
+                    cleanCarouselMode: CONFIG.CAROUSEL.CLEAN_MODE,
+                    noCarouselIndicators: CONFIG.CAROUSEL.HIDE_INDICATORS,
+                    enhancedMobileSpacing: true,
+                    carusoAesthetic: true
                 }
             }
         });
@@ -1500,17 +1531,18 @@
             });
         });
 
-        // Enhanced carousel fallback
+        // Enhanced carousel fallback (Clean mode)
         const heroCarousel = document.getElementById('heroCarousel');
         if (heroCarousel) {
             const slides = heroCarousel.querySelectorAll('.carousel-slide');
             if (slides.length > 0) {
                 slides[0].classList.add('active');
                 
-                // Hide controls even in fallback mode
-                const controls = heroCarousel.querySelectorAll('.carousel-controls, .carousel-prev, .carousel-next');
-                controls.forEach(function(control) {
-                    control.style.display = 'none';
+                // Remove all navigation elements in fallback mode too
+                const navElements = document.querySelectorAll('.carousel-indicators, .carousel-controls, .carousel-prev, .carousel-next, .indicator');
+                navElements.forEach(function(element) {
+                    element.style.display = 'none';
+                    element.remove();
                 });
             }
         }
@@ -1554,6 +1586,18 @@
         }
     };
 
+    LuxuryApp.prototype.setLogoLarge = function() {
+        if (this.navigation) {
+            this.navigation.setLogoLarge();
+        }
+    };
+
+    LuxuryApp.prototype.setLogoSmall = function() {
+        if (this.navigation) {
+            this.navigation.setLogoSmall();
+        }
+    };
+
     LuxuryApp.prototype.getWebPSupport = function() {
         return this.webpService.isSupported;
     };
@@ -1568,11 +1612,12 @@
 
     LuxuryApp.prototype.getFeatures = function() {
         return {
-            carouselControlsHidden: CONFIG.CAROUSEL.HIDE_CONTROLS,
-            indicatorOnlyMode: CONFIG.CAROUSEL.INDICATOR_ONLY_MODE,
-            enhancedAccessibility: true,
-            responsiveImages: true,
-            carusoStyling: true,
+            dynamicLogoScaling: true,
+            perfectHamburgerMenu: true,
+            cleanCarouselMode: CONFIG.CAROUSEL.CLEAN_MODE,
+            noCarouselIndicators: CONFIG.CAROUSEL.HIDE_INDICATORS,
+            enhancedMobileSpacing: true,
+            carusoAesthetic: true,
             version: this.version
         };
     };
@@ -1629,7 +1674,7 @@
         Utils.log('info', 'Access utilities via window.Utils');
         Utils.log('info', 'Access config via window.CONFIG');
         Utils.log('info', 'Current device type: ' + Utils.getDeviceType());
-        Utils.log('info', 'Features: Caruso-style navigation, hidden carousel controls, enhanced accessibility');
+        Utils.log('info', 'Features: Dynamic logo scaling, perfect hamburger menu, clean carousel mode');
     }
 
 })();
