@@ -1,7 +1,7 @@
 /* 
- * 805 LifeGuard - Caruso-Inspired Luxury Theme CSS (Enterprise Design System)
- * Version: 7.1 - Mobile Optimized with Centered Logo Focus
- * Sophisticated, minimalist aesthetic with perfect mobile experience
+ * 805 LifeGuard - Enhanced Caruso-Inspired Luxury Theme CSS (Enterprise Design System)
+ * Version: 7.2 - Refined Balance & Sophisticated Minimalism
+ * Sophisticated, minimalist aesthetic with perfect mobile experience and Caruso-level refinement
  */
 
 /* === CSS RESET === */
@@ -16,7 +16,7 @@
     box-sizing: border-box;
 }
 
-/* === DESIGN TOKENS (Caruso-Inspired Sophisticated Palette) === */
+/* === DESIGN TOKENS (Enhanced Caruso-Inspired Sophisticated Palette) === */
 :root {
     /* Primary Brand Colors - Sophisticated Neutrals */
     --color-primary-darkest: #1A1A1A;     /* Charcoal Black */
@@ -270,7 +270,7 @@ p {
     }
 }
 
-/* === HEADER SYSTEM === */
+/* === ENHANCED HEADER SYSTEM === */
 .header {
     position: fixed;
     top: 0;
@@ -337,9 +337,11 @@ p {
     }
 }
 
-/* Main Navigation - Caruso Style */
+/* Enhanced Main Navigation - Caruso Style with Perfect Balance */
 .navbar {
     padding: var(--spacing-4) 0;
+    background: var(--color-white);
+    position: relative;
 }
 
 .navbar-content {
@@ -347,13 +349,16 @@ p {
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     gap: var(--spacing-4);
+    position: relative;
 }
 
-/* Hamburger Menu - Left Side */
+/* Hamburger Menu - Enhanced Balance and Precision */
 .desktop-menu-toggle {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    z-index: calc(var(--z-index-modal) + 2);
+    position: relative;
 }
 
 .menu-toggle {
@@ -361,38 +366,53 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0;
-    z-index: calc(var(--z-index-modal) + 1);
-    transition: var(--transition-fast);
+    padding: 8px;
+    z-index: calc(var(--z-index-modal) + 2);
+    transition: var(--transition-normal);
     position: relative;
+    border-radius: var(--radius-lg);
 }
 
+.menu-toggle:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.menu-toggle:focus {
+    outline: none;
+    background: rgba(0, 0, 0, 0.08);
+}
+
+/* Enhanced Hamburger Bars with Perfect Balance */
 .menu-toggle .bar {
-    width: 24px;
+    width: 28px;
     height: 2px;
     background: var(--color-text-primary);
     margin: 3px 0;
-    transition: var(--transition-fast);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     border-radius: var(--radius-full);
     transform-origin: center;
+    position: relative;
 }
 
+/* Enhanced Active State - Perfectly Balanced X */
 .menu-toggle.active .bar:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: rotate(45deg) translate(6px, 6px);
+    background: var(--color-text-primary);
 }
 
 .menu-toggle.active .bar:nth-child(2) {
     opacity: 0;
-    transform: scale(0);
+    transform: scale(0.1);
 }
 
 .menu-toggle.active .bar:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
+    transform: rotate(-45deg) translate(6px, -6px);
+    background: var(--color-text-primary);
 }
 
 /* Logo - Centered (Primary Focal Point) */
@@ -403,6 +423,8 @@ p {
     text-decoration: none;
     transition: var(--transition-fast);
     justify-self: center;
+    z-index: calc(var(--z-index-modal) + 1);
+    position: relative;
 }
 
 .logo:hover {
@@ -496,7 +518,7 @@ p {
     box-shadow: var(--shadow-md);
 }
 
-/* Elegant Caruso-Style Sidebar Navigation */
+/* Enhanced Caruso-Style Sidebar Navigation */
 .nav-overlay {
     position: fixed;
     top: 0;
@@ -517,7 +539,7 @@ p {
     opacity: 1;
 }
 
-/* Dark backdrop overlay */
+/* Enhanced backdrop overlay */
 .nav-overlay::before {
     content: '';
     position: absolute;
@@ -525,16 +547,17 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
     opacity: 0;
-    transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .nav-overlay.active::before {
     opacity: 1;
 }
 
-/* Elegant sidebar */
+/* Enhanced elegant sidebar */
 .nav-overlay-content {
     position: absolute;
     top: 0;
@@ -551,6 +574,7 @@ p {
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
     padding: 0;
+    border-right: 1px solid var(--color-border-primary);
 }
 
 .nav-overlay.active .nav-overlay-content {
@@ -565,6 +589,7 @@ p {
     border-bottom: 1px solid var(--color-border-primary);
     flex-shrink: 0;
     min-height: 80px;
+    background: var(--color-white);
 }
 
 .overlay-logo {
@@ -593,8 +618,8 @@ p {
 }
 
 .nav-overlay-close {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     background: none;
     border: none;
     cursor: pointer;
@@ -604,11 +629,13 @@ p {
     border-radius: var(--radius-full);
     transition: var(--transition-fast);
     color: var(--color-text-secondary);
+    padding: 8px;
 }
 
 .nav-overlay-close:hover {
     background: var(--color-bg-secondary);
     color: var(--color-text-primary);
+    transform: rotate(90deg);
 }
 
 .nav-overlay-menu {
@@ -636,12 +663,14 @@ p {
     background: var(--color-bg-secondary);
     color: var(--color-text-accent);
     border-left-color: var(--color-secondary);
+    padding-left: calc(var(--spacing-6) + 4px);
 }
 
 .nav-overlay-actions {
     padding: var(--spacing-6);
     border-top: 1px solid var(--color-border-primary);
     flex-shrink: 0;
+    background: var(--color-bg-secondary);
 }
 
 .overlay-portals {
@@ -657,7 +686,7 @@ p {
     justify-content: center;
     gap: var(--spacing-2);
     padding: var(--spacing-3);
-    background: var(--color-bg-secondary);
+    background: var(--color-bg-primary);
     color: var(--color-text-primary);
     text-decoration: none;
     border-radius: var(--radius-lg);
@@ -673,6 +702,7 @@ p {
     background: var(--color-secondary);
     color: var(--color-text-inverse);
     border-color: var(--color-secondary);
+    transform: translateY(-2px);
 }
 
 .overlay-consultation-btn {
@@ -694,6 +724,7 @@ p {
 .overlay-consultation-btn:hover,
 .overlay-consultation-btn:focus {
     background: var(--color-neutral-dark);
+    transform: translateY(-2px);
 }
 
 .overlay-nav-contact {
@@ -717,16 +748,7 @@ p {
 .overlay-contact-btn:hover,
 .overlay-contact-btn:focus {
     background: var(--color-secondary-dark);
-}
-
-/* Hide Desktop Navigation */
-.nav-desktop {
-    display: none;
-}
-
-/* Hide Original Mobile Toggle */
-.mobile-toggle {
-    display: none !important;
+    transform: translateY(-2px);
 }
 
 /* Body lock when nav is open */
@@ -744,6 +766,16 @@ body.nav-open {
     
     .navbar-content {
         gap: var(--spacing-3);
+    }
+    
+    .menu-toggle {
+        width: 40px;
+        height: 40px;
+        padding: 6px;
+    }
+    
+    .menu-toggle .bar {
+        width: 24px;
     }
     
     .logo-img {
@@ -818,6 +850,28 @@ body.nav-open {
     }
 }
 
+/* Enhanced Mobile Balance */
+@media (max-width: 480px) {
+    .menu-toggle {
+        width: 36px;
+        height: 36px;
+        padding: 4px;
+    }
+    
+    .menu-toggle .bar {
+        width: 20px;
+        margin: 2px 0;
+    }
+    
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: rotate(45deg) translate(4px, 4px);
+    }
+    
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: rotate(-45deg) translate(4px, -4px);
+    }
+}
+
 /* Fix for iOS Safari viewport height issues */
 @supports (-webkit-touch-callout: none) {
     .nav-overlay {
@@ -850,14 +904,14 @@ body.nav-open {
     }
 }
 
-/* === HERO SECTION (No Breadcrumbs - Clean Focal Point) === */
+/* === ENHANCED HERO SECTION (Refined with Hidden Controls) === */
 .hero {
     position: relative;
     min-height: 100vh;
     display: flex;
     align-items: center;
     overflow: hidden;
-    padding-top: 120px; /* Account for header height */
+    padding-top: 120px;
 }
 
 /* Carousel */
@@ -904,56 +958,17 @@ body.nav-open {
     z-index: 1;
 }
 
-/* Carousel Controls */
+/* REMOVED: Carousel Controls - Hidden for Clean Caruso Aesthetic */
 .carousel-controls {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    z-index: var(--z-index-docked);
-    transform: translateY(-50%);
-    pointer-events: none;
+    display: none !important;
 }
 
 .carousel-prev,
 .carousel-next {
-    position: absolute;
-    top: 50%;
-    width: 60px;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: var(--radius-full);
-    color: var(--color-text-primary);
-    font-size: var(--font-size-lg);
-    cursor: pointer;
-    transition: var(--transition-normal);
-    backdrop-filter: blur(10px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: auto;
-    transform: translateY(-50%);
+    display: none !important;
 }
 
-.carousel-prev {
-    left: var(--spacing-6);
-}
-
-.carousel-next {
-    right: var(--spacing-6);
-}
-
-.carousel-prev:hover,
-.carousel-next:hover {
-    background: var(--color-secondary);
-    border-color: var(--color-secondary);
-    color: var(--color-text-inverse);
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: var(--shadow-lg);
-}
-
-/* Carousel Indicators */
+/* Enhanced Carousel Indicators - Refined and Minimalist */
 .carousel-indicators {
     position: absolute;
     bottom: var(--spacing-8);
@@ -968,23 +983,23 @@ body.nav-open {
     width: 12px;
     height: 12px;
     border-radius: var(--radius-full);
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.4);
     border: 2px solid transparent;
     cursor: pointer;
-    transition: var(--transition-normal);
+    transition: all var(--transition-normal);
     backdrop-filter: blur(5px);
 }
 
 .indicator:hover {
-    background: rgba(255, 255, 255, 0.7);
-    transform: scale(1.2);
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(1.1);
 }
 
 .indicator.active {
     background: var(--color-secondary);
-    border-color: var(--color-text-inverse);
-    transform: scale(1.3);
-    box-shadow: 0 0 20px rgba(184, 160, 130, 0.6);
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(184, 160, 130, 0.5);
 }
 
 /* Hero Overlay */
@@ -1062,13 +1077,9 @@ body.nav-open {
 /* Mobile Optimized Hero */
 @media (max-width: 768px) {
     .hero {
-        padding-top: 90px; /* Reduced for mobile to maximize above-fold content */
+        padding-top: 90px;
         min-height: 100vh;
-        min-height: 100dvh; /* Better mobile viewport handling */
-    }
-    
-    .carousel-controls {
-        display: none;
+        min-height: 100dvh;
     }
     
     .hero-buttons {
@@ -2731,3 +2742,208 @@ body {
     .col-md-9 { flex: 0 0 75%; max-width: 75%; }
     .col-md-12 { flex: 0 0 100%; max-width: 100%; }
 }
+
+/* === BREADCRUMBS SYSTEM (Optional - Hidden by Default for Clean Caruso Look) === */
+.breadcrumbs {
+    background: var(--color-bg-secondary);
+    padding: var(--spacing-3) 0;
+    border-bottom: 1px solid var(--color-border-primary);
+    margin-top: 100px;
+    display: none; /* Hidden for cleaner Caruso aesthetic */
+}
+
+.breadcrumb-list {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    list-style: none;
+    font-size: var(--font-size-sm);
+}
+
+.breadcrumb-list li {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+}
+
+.breadcrumb-list li:not(:last-child)::after {
+    content: '/';
+    color: var(--color-text-tertiary);
+    font-weight: var(--font-weight-light);
+}
+
+.breadcrumb-list a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.breadcrumb-list a:hover {
+    color: var(--color-text-primary);
+}
+
+.breadcrumb-list [aria-current="page"] {
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-medium);
+}
+
+/* === ENHANCED TOUCH TARGETS === */
+@media (any-hover: none) {
+    .btn,
+    .menu-toggle,
+    .nav-link,
+    .overlay-nav-link,
+    .service-link,
+    .footer-section a {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* === CARUSO-INSPIRED REFINEMENTS === */
+
+/* Enhanced Typography Hierarchy */
+.display-1 {
+    font-size: clamp(var(--font-size-6xl), 8vw, var(--font-size-7xl));
+    font-weight: var(--font-weight-light);
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    font-family: var(--font-family-serif);
+}
+
+.display-2 {
+    font-size: clamp(var(--font-size-5xl), 6vw, var(--font-size-6xl));
+    font-weight: var(--font-weight-light);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    font-family: var(--font-family-serif);
+}
+
+/* Refined Text Styles */
+.text-subtle {
+    color: var(--color-text-tertiary);
+    font-weight: var(--font-weight-light);
+}
+
+.text-refined {
+    font-family: var(--font-family-serif);
+    font-weight: var(--font-weight-light);
+    font-style: italic;
+}
+
+/* Enhanced Spacing for Visual Hierarchy */
+.section-spacing-sm { padding: var(--spacing-16) 0; }
+.section-spacing-md { padding: var(--spacing-24) 0; }
+.section-spacing-lg { padding: var(--spacing-32) 0; }
+.section-spacing-xl { padding: var(--spacing-40) 0; }
+
+/* Caruso-Style Dividers */
+.section-divider {
+    position: relative;
+    margin: var(--spacing-20) 0;
+}
+
+.section-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-secondary), transparent);
+}
+
+/* Enhanced Performance Optimizations */
+.will-change-transform {
+    will-change: transform;
+}
+
+.will-change-opacity {
+    will-change: opacity;
+}
+
+.gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* === FINAL TOUCH-UPS === */
+
+/* Enhanced Focus Management */
+.focus-visible:focus {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+    border-radius: var(--radius-base);
+}
+
+/* Refined Selection Styling */
+::selection {
+    background: var(--color-secondary-light);
+    color: var(--color-text-primary);
+}
+
+::-moz-selection {
+    background: var(--color-secondary-light);
+    color: var(--color-text-primary);
+}
+
+/* Enhanced Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-secondary);
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-secondary-dark);
+}
+
+/* Enhanced Smooth Scrolling for Safari */
+html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Final Performance Optimizations */
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+img {
+    height: auto;
+}
+
+/* Enhanced Container Queries Support (Future-Proofing) */
+@supports (container-type: inline-size) {
+    .container-responsive {
+        container-type: inline-size;
+    }
+    
+    @container (min-width: 400px) {
+        .service-card {
+            padding: var(--spacing-6);
+        }
+    }
+    
+    @container (min-width: 600px) {
+        .service-card {
+            padding: var(--spacing-8);
+        }
+    }
+}
+
+/* === END OF ENHANCED LUXURY THEME === */
