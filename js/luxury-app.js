@@ -1,7 +1,7 @@
 /*
  * 805 LifeGuard - Enhanced Luxury App JS (Enterprise JavaScript Application)
- * Version: 8.0 - Perfect Hamburger Balance & Dynamic Logo Scaling
- * Clean Caruso aesthetic with refined navigation and no carousel indicators
+ * Version: 9.0 - Elegant Logo Entrance Animation & Clean Caruso Aesthetic
+ * Sophisticated brand-focused entrance with no logo borders
  */
 
 (function() {
@@ -20,23 +20,34 @@
             STAFF: 'https://staff.805companies.com'
         },
         
-        // Enhanced Carousel Settings (No Indicators - Clean Caruso Aesthetic)
+        // Enhanced Carousel Settings (Clean Caruso Aesthetic)
         CAROUSEL: {
             AUTO_PLAY_INTERVAL: 8000,        // Slower for relaxed Caruso feel
             TRANSITION_DURATION: 2000,       // Smoother, longer transitions
             PAUSE_ON_HOVER: true,
             PAUSE_ON_FOCUS: true,
-            HIDE_INDICATORS: true,            // NEW: No indicators for clean look
+            HIDE_INDICATORS: true,            // No indicators for clean look
             HIDE_CONTROLS: true,              // Controls hidden for Caruso aesthetic
-            CLEAN_MODE: true                  // NEW: Pure clean mode
+            CLEAN_MODE: true                  // Pure clean mode
         },
         
-        // Dynamic Logo Scaling
+        // Elegant Logo Entrance Animation
         LOGO: {
-            INITIAL_SCALE: 1.15,             // Larger on page load
-            SCROLLED_SCALE: 1.0,             // Normal size when scrolled
+            ENTRANCE_DELAY: 400,             // Delay before starting entrance
+            ENTRANCE_DURATION: 1200,         // Duration of entrance animation
+            ENTRANCE_TRANSITION: 'cubic-bezier(0.23, 1, 0.32, 1)', // Elegant easing
+            
+            INITIAL_SCALE: 1.5,              // Starting scale for dramatic entrance
+            ENTERING_SCALE: 1.3,             // Mid-entrance scale
+            LARGE_SCALE: 1.15,               // Final large scale
+            NORMAL_SCALE: 1.0,               // Normal scrolled scale
+            
             SCALE_THRESHOLD: 100,            // Scroll threshold for scaling
-            ANIMATION_DURATION: 400          // Smooth scaling transition
+            SCROLL_TRANSITION: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)', // Scroll easing
+            SCROLL_DURATION: 800,            // Scroll transition duration
+            
+            HOVER_SCALE_BONUS: 0.05,         // Additional scale on hover
+            HOVER_DURATION: 350              // Hover transition duration
         },
         
         // Performance Settings
@@ -264,7 +275,7 @@
         return imagePath;
     };
 
-    // === ENHANCED CAROUSEL CONTROLLER (Clean Caruso Mode - No Indicators) ===
+    // === ENHANCED CAROUSEL CONTROLLER (Clean Caruso Mode) ===
     function CarouselController(container) {
         this.container = container;
         this.slides = container.querySelectorAll('.carousel-slide');
@@ -292,7 +303,7 @@
             return;
         }
 
-        Utils.log('info', 'Initializing Clean Caruso Carousel Controller (No Indicators)...');
+        Utils.log('info', 'Initializing Clean Caruso Carousel Controller...');
 
         try {
             this.removeAllNavigationElements();
@@ -657,7 +668,7 @@
         Utils.log('info', 'Clean Carousel destroyed');
     };
 
-    // === ENHANCED NAVIGATION CONTROLLER (Perfect Hamburger & Dynamic Logo) ===
+    // === ENHANCED NAVIGATION CONTROLLER (Elegant Logo Entrance) ===
     function NavigationController() {
         this.header = document.getElementById('header');
         this.mobileToggle = document.getElementById('menuToggle');
@@ -668,18 +679,19 @@
         this.scrollPosition = 0;
         this.cleanupFunctions = [];
         this.isLogoLarge = true; // Start with large logo
+        this.logoEntranceComplete = false;
+        this.logoEntranceTimer = null;
 
         this.init();
     }
 
     NavigationController.prototype.init = function() {
-        Utils.log('info', 'Initializing Enhanced Navigation Controller with Dynamic Logo...');
+        Utils.log('info', 'Initializing Enhanced Navigation Controller with Elegant Logo Entrance...');
 
         try {
             this.setupEventListeners();
             this.setupScrollEffects();
-            this.setupDynamicLogo();
-            this.initializeLogoEntrance();
+            this.initializeElegantLogoEntrance();
             this.updateActiveLinks();
             this.updatePortalLinks();
             this.enhanceAccessibility();
@@ -790,11 +802,6 @@
         this.body.style.width = '100%';
         this.body.style.overflow = 'hidden';
 
-        // Hide hamburger menu when sidebar is active
-        this.mobileToggle.style.opacity = '0';
-        this.mobileToggle.style.pointerEvents = 'none';
-        this.mobileToggle.style.transform = 'scale(0.8)';
-
         // Enhanced focus management for sidebar
         const self = this;
         setTimeout(function() {
@@ -823,11 +830,6 @@
         this.mobileNav.setAttribute('aria-hidden', 'true');
         this.body.classList.remove('nav-open');
 
-        // Restore hamburger menu visibility
-        this.mobileToggle.style.opacity = '1';
-        this.mobileToggle.style.pointerEvents = 'auto';
-        this.mobileToggle.style.transform = 'scale(1)';
-
         // Enhanced body scroll restoration
         this.body.style.position = '';
         this.body.style.top = '';
@@ -855,49 +857,10 @@
             } else {
                 self.header.classList.remove('scrolled');
             }
-        });
 
-        const scrollCleanup = Utils.addEventListenerWithCleanup(
-            window, 'scroll', handleScroll, { passive: true }
-        );
-        this.cleanupFunctions.push(scrollCleanup);
-    };
-
-    // === LOGO ENTRANCE ANIMATION (NEW FEATURE) ===
-    NavigationController.prototype.initializeLogoEntrance = function() {
-        if (!this.logo) return;
-
-        const self = this;
-        
-        // Start entrance animation after a brief delay
-        setTimeout(function() {
-            self.logo.classList.add('loaded');
-            Utils.log('info', 'Logo entrance animation started');
-            
-            // After entrance animation, set to large state
-            setTimeout(function() {
-                self.setLogoLarge();
-            }, 1200); // Match animation duration
-            
-        }, 300); // Small delay for smooth page load
-    };
-
-    // === DYNAMIC LOGO SCALING (UPDATED) ===
-    NavigationController.prototype.setupDynamicLogo = function() {
-        if (!this.logo) return;
-
-        const self = this;
-        
-        const handleScroll = Utils.throttle(function() {
-            const scrollY = window.pageYOffset;
-            
-            // Only start scaling after logo entrance is complete
-            if (!self.logo.classList.contains('loaded')) return;
-            
-            if (scrollY > CONFIG.LOGO.SCALE_THRESHOLD && self.isLogoLarge) {
-                self.setLogoSmall();
-            } else if (scrollY <= CONFIG.LOGO.SCALE_THRESHOLD && !self.isLogoLarge) {
-                self.setLogoLarge();
+            // Handle dynamic logo scaling after entrance is complete
+            if (self.logoEntranceComplete) {
+                self.handleLogoScaling(scrollY);
             }
         });
 
@@ -905,28 +868,151 @@
             window, 'scroll', handleScroll, { passive: true }
         );
         this.cleanupFunctions.push(scrollCleanup);
+    };
 
-        Utils.log('info', 'Dynamic logo scaling initialized');
+    // === ELEGANT LOGO ENTRANCE ANIMATION SYSTEM ===
+    NavigationController.prototype.initializeElegantLogoEntrance = function() {
+        if (!this.logo) {
+            Utils.log('warn', 'Logo element not found for entrance animation');
+            return;
+        }
+
+        Utils.log('info', 'Initializing elegant logo entrance animation...');
+
+        const self = this;
+
+        // Start with hidden state
+        this.logo.classList.add('loading');
+        this.logo.style.opacity = '0';
+        this.logo.style.transform = 'scale(' + CONFIG.LOGO.INITIAL_SCALE + ') translateY(-10px)';
+        this.logo.style.filter = 'blur(1px)';
+
+        // Begin the elegant entrance sequence after a brief delay
+        this.logoEntranceTimer = setTimeout(function() {
+            self.executeElegantEntrance();
+        }, CONFIG.LOGO.ENTRANCE_DELAY);
+
+        Utils.log('info', 'Logo entrance animation scheduled');
+    };
+
+    NavigationController.prototype.executeElegantEntrance = function() {
+        if (!this.logo) return;
+
+        const self = this;
+
+        Utils.log('info', 'Executing elegant logo entrance animation');
+
+        // Stage 1: Begin entrance
+        this.logo.classList.remove('loading');
+        this.logo.classList.add('entering');
+
+        // Smooth transition to entering state
+        this.logo.style.transition = 'all ' + CONFIG.LOGO.ENTRANCE_DURATION + 'ms ' + CONFIG.LOGO.ENTRANCE_TRANSITION;
+        this.logo.style.opacity = '1';
+        this.logo.style.transform = 'scale(' + CONFIG.LOGO.ENTERING_SCALE + ') translateY(-5px)';
+        this.logo.style.filter = 'blur(0px)';
+
+        // Stage 2: Complete entrance to large state
+        setTimeout(function() {
+            self.logo.classList.remove('entering');
+            self.logo.classList.add('loaded', 'logo-large');
+            
+            self.logo.style.transform = 'scale(' + CONFIG.LOGO.LARGE_SCALE + ') translateY(0)';
+            self.isLogoLarge = true;
+            self.logoEntranceComplete = true;
+            
+            Utils.log('info', 'Logo entrance animation completed - Brand focus achieved');
+            
+            // Setup hover effects after entrance is complete
+            self.setupLogoHoverEffects();
+            
+            // Dispatch entrance complete event
+            self.dispatchLogoEntranceEvent();
+            
+        }, CONFIG.LOGO.ENTRANCE_DURATION);
+    };
+
+    NavigationController.prototype.setupLogoHoverEffects = function() {
+        if (!this.logo || !this.logoEntranceComplete) return;
+
+        const self = this;
+
+        const hoverInCleanup = Utils.addEventListenerWithCleanup(
+            this.logo, 'mouseenter', function() {
+                if (self.isLogoLarge) {
+                    self.logo.style.transform = 'scale(' + (CONFIG.LOGO.LARGE_SCALE + CONFIG.LOGO.HOVER_SCALE_BONUS) + ') translateY(-2px)';
+                } else {
+                    self.logo.style.transform = 'scale(' + (CONFIG.LOGO.NORMAL_SCALE + CONFIG.LOGO.HOVER_SCALE_BONUS) + ') translateY(-2px)';
+                }
+                self.logo.style.transition = 'all ' + CONFIG.LOGO.HOVER_DURATION + 'ms ease-out';
+                self.logo.style.filter = 'brightness(1.05)';
+            }
+        );
+
+        const hoverOutCleanup = Utils.addEventListenerWithCleanup(
+            this.logo, 'mouseleave', function() {
+                if (self.isLogoLarge) {
+                    self.logo.style.transform = 'scale(' + CONFIG.LOGO.LARGE_SCALE + ') translateY(0)';
+                } else {
+                    self.logo.style.transform = 'scale(' + CONFIG.LOGO.NORMAL_SCALE + ') translateY(0)';
+                }
+                self.logo.style.transition = 'all ' + CONFIG.LOGO.HOVER_DURATION + 'ms ease-out';
+                self.logo.style.filter = 'brightness(1)';
+            }
+        );
+
+        this.cleanupFunctions.push(hoverInCleanup, hoverOutCleanup);
+        Utils.log('info', 'Logo hover effects initialized');
+    };
+
+    NavigationController.prototype.handleLogoScaling = function(scrollY) {
+        if (!this.logo || !this.logoEntranceComplete) return;
+
+        if (scrollY > CONFIG.LOGO.SCALE_THRESHOLD && this.isLogoLarge) {
+            this.setLogoSmall();
+        } else if (scrollY <= CONFIG.LOGO.SCALE_THRESHOLD && !this.isLogoLarge) {
+            this.setLogoLarge();
+        }
     };
 
     NavigationController.prototype.setLogoLarge = function() {
-        if (!this.logo || this.isLogoLarge === true) return;
+        if (!this.logo || !this.logoEntranceComplete || this.isLogoLarge === true) return;
         
         this.logo.classList.remove('logo-small', 'scrolled');
         this.logo.classList.add('logo-large');
-        this.isLogoLarge = true;
         
-        Utils.log('info', 'Logo set to large scale');
+        this.logo.style.transition = 'all ' + CONFIG.LOGO.SCROLL_DURATION + 'ms ' + CONFIG.LOGO.SCROLL_TRANSITION;
+        this.logo.style.transform = 'scale(' + CONFIG.LOGO.LARGE_SCALE + ') translateY(0)';
+        
+        this.isLogoLarge = true;
+        Utils.log('info', 'Logo scaled to large size');
     };
 
     NavigationController.prototype.setLogoSmall = function() {
-        if (!this.logo || this.isLogoLarge === false) return;
+        if (!this.logo || !this.logoEntranceComplete || this.isLogoLarge === false) return;
         
         this.logo.classList.remove('logo-large');
         this.logo.classList.add('logo-small', 'scrolled');
-        this.isLogoLarge = false;
         
-        Utils.log('info', 'Logo set to small scale');
+        this.logo.style.transition = 'all ' + CONFIG.LOGO.SCROLL_DURATION + 'ms ' + CONFIG.LOGO.SCROLL_TRANSITION;
+        this.logo.style.transform = 'scale(' + CONFIG.LOGO.NORMAL_SCALE + ') translateY(0)';
+        
+        this.isLogoLarge = false;
+        Utils.log('info', 'Logo scaled to normal size');
+    };
+
+    NavigationController.prototype.dispatchLogoEntranceEvent = function() {
+        const event = new CustomEvent('logoEntranceComplete', {
+            detail: {
+                logo: this.logo,
+                entranceDuration: CONFIG.LOGO.ENTRANCE_DURATION,
+                currentScale: CONFIG.LOGO.LARGE_SCALE,
+                timestamp: Date.now(),
+                brandFocused: true
+            }
+        });
+        window.dispatchEvent(event);
+        Utils.log('info', 'Logo entrance complete event dispatched');
     };
 
     NavigationController.prototype.updateActiveLinks = function() {
@@ -1028,9 +1114,12 @@
     };
 
     NavigationController.prototype.destroy = function() {
+        if (this.logoEntranceTimer) {
+            clearTimeout(this.logoEntranceTimer);
+        }
         this.cleanupFunctions.forEach(function(cleanup) { cleanup(); });
         this.cleanupFunctions = [];
-        Utils.log('info', 'Enhanced Navigation destroyed');
+        Utils.log('info', 'Enhanced Navigation with Logo Entrance destroyed');
     };
 
     // === ENHANCED ANIMATION CONTROLLER ===
@@ -1154,7 +1243,7 @@
                 element.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
                 element.style.opacity = '1';
                 element.style.transform = 'translateY(0)';
-            }, 500 + (index * 150));
+            }, 800 + (index * 150)); // Delayed to allow logo entrance to complete first
         });
     };
 
@@ -1457,7 +1546,7 @@
         this.smoothScroll = null;
         this.contactUpdater = null;
         this.isInitialized = false;
-        this.version = '8.0';
+        this.version = '9.0';
 
         this.init();
     }
@@ -1474,7 +1563,7 @@
     LuxuryApp.prototype.initializeApp = function() {
         const self = this;
         try {
-            Utils.log('info', 'Initializing 805 LifeGuard Enhanced Luxury Application v' + this.version + '...');
+            Utils.log('info', 'Initializing 805 LifeGuard Enhanced Luxury Application v' + this.version + ' with Elegant Logo Entrance...');
 
             // Detect WebP support first
             this.webpService.detect().then(function() {
@@ -1490,14 +1579,14 @@
                     self.carousel = new CarouselController(heroCarousel);
                 }
 
-                // Initialize animations after a short delay to prevent conflicts
+                // Initialize animations after logo entrance begins
                 setTimeout(function() {
                     self.animations = new AnimationController();
-                }, 100);
+                }, 200);
 
                 self.isInitialized = true;
 
-                Utils.log('info', '805 LifeGuard Enhanced Luxury Application v' + self.version + ' initialized successfully');
+                Utils.log('info', '805 LifeGuard Enhanced Luxury Application v' + self.version + ' initialized successfully with elegant brand focus');
 
                 // Dispatch ready event
                 self.dispatchReadyEvent();
@@ -1519,12 +1608,13 @@
                 timestamp: new Date().toISOString(),
                 deviceType: Utils.getDeviceType(),
                 features: {
-                    dynamicLogoScaling: true,
-                    perfectHamburgerMenu: true,
+                    elegantLogoEntrance: true,
+                    brandFocusedDesign: true,
                     cleanCarouselMode: CONFIG.CAROUSEL.CLEAN_MODE,
                     noCarouselIndicators: CONFIG.CAROUSEL.HIDE_INDICATORS,
                     enhancedMobileSpacing: true,
-                    carusoAesthetic: true
+                    carusoAesthetic: true,
+                    noBorders: true
                 }
             }
         });
@@ -1549,17 +1639,11 @@
                     mobileToggle.classList.remove('active');
                     mobileNav.classList.remove('active');
                     document.body.classList.remove('nav-open');
-                    mobileToggle.style.opacity = '1';
-                    mobileToggle.style.pointerEvents = 'auto';
-                    mobileToggle.style.transform = 'scale(1)';
                 } else {
                     // Open navigation
                     mobileToggle.classList.add('active');
                     mobileNav.classList.add('active');
                     document.body.classList.add('nav-open');
-                    mobileToggle.style.opacity = '0';
-                    mobileToggle.style.pointerEvents = 'none';
-                    mobileToggle.style.transform = 'scale(0.8)';
                 }
             });
 
@@ -1571,13 +1655,20 @@
                     mobileToggle.classList.remove('active');
                     mobileNav.classList.remove('active');
                     document.body.classList.remove('nav-open');
-                    mobileToggle.style.opacity = '1';
-                    mobileToggle.style.pointerEvents = 'auto';
-                    mobileToggle.style.transform = 'scale(1)';
                 });
             }
 
             Utils.log('info', 'Enhanced fallback mobile navigation initialized');
+        }
+
+        // Logo fallback entrance
+        const logo = document.getElementById('mainLogo');
+        if (logo) {
+            setTimeout(function() {
+                logo.style.opacity = '1';
+                logo.style.transform = 'scale(1.15)';
+                logo.style.transition = 'all 800ms ease-out';
+            }, 400);
         }
 
         // Enhanced smooth scroll fallback
@@ -1673,12 +1764,13 @@
 
     LuxuryApp.prototype.getFeatures = function() {
         return {
-            dynamicLogoScaling: true,
-            perfectHamburgerMenu: true,
+            elegantLogoEntrance: true,
+            brandFocusedDesign: true,
             cleanCarouselMode: CONFIG.CAROUSEL.CLEAN_MODE,
             noCarouselIndicators: CONFIG.CAROUSEL.HIDE_INDICATORS,
             enhancedMobileSpacing: true,
             carusoAesthetic: true,
+            noBorders: true,
             version: this.version
         };
     };
@@ -1730,12 +1822,12 @@
         
         window.Utils = Utils;
         window.CONFIG = CONFIG;
-        Utils.log('info', 'Enhanced debug mode active - Advanced debugging available');
+        Utils.log('info', 'Enhanced debug mode active - Elegant logo entrance enabled');
         Utils.log('info', 'Access app instance via window.app');
         Utils.log('info', 'Access utilities via window.Utils');
         Utils.log('info', 'Access config via window.CONFIG');
         Utils.log('info', 'Current device type: ' + Utils.getDeviceType());
-        Utils.log('info', 'Features: Dynamic logo scaling, perfect hamburger menu, clean carousel mode');
+        Utils.log('info', 'Features: Elegant logo entrance, brand-focused design, clean carousel mode, no borders');
     }
 
 })();
