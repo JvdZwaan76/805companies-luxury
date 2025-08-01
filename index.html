@@ -46,7 +46,7 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
     
-    <!-- Caruso-Inspired Luxury Theme CSS -->
+    <!-- Enhanced Caruso-Inspired Luxury Theme CSS -->
     <link rel="stylesheet" href="css/luxury-theme.css">
     
     <!-- Preload critical images -->
@@ -160,7 +160,7 @@
     </script>
 </head>
 <body itemscope itemtype="https://schema.org/WebPage">
-    <!-- Enterprise Header -->
+    <!-- Enhanced Enterprise Header -->
     <header class="header" id="header" role="banner">
         <!-- Top Bar -->
         <div class="header-top">
@@ -184,11 +184,11 @@
             </div>
         </div>
         
-        <!-- Main Navigation -->
+        <!-- Enhanced Main Navigation -->
         <nav class="navbar" role="navigation" aria-label="Main navigation">
             <div class="container">
                 <div class="navbar-content">
-                    <!-- Hamburger Menu - Left -->
+                    <!-- Enhanced Hamburger Menu - Left -->
                     <div class="desktop-menu-toggle">
                         <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navOverlay">
                             <span class="bar"></span>
@@ -227,7 +227,7 @@
             </div>
         </nav>
         
-        <!-- Full-Screen Navigation Overlay -->
+        <!-- Enhanced Full-Screen Navigation Overlay -->
         <div class="nav-overlay" id="navOverlay" role="dialog" aria-label="Navigation menu" aria-hidden="true">
             <div class="nav-overlay-content">
                 <div class="nav-overlay-header">
@@ -277,21 +277,7 @@
         </div>
     </header>
 
-    <!-- Breadcrumbs -->
-    <nav class="breadcrumbs" aria-label="Breadcrumb navigation" itemscope itemtype="https://schema.org/BreadcrumbList">
-        <div class="container">
-            <ol class="breadcrumb-list">
-                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a href="/" itemprop="item" aria-current="page">
-                        <span itemprop="name">Home</span>
-                    </a>
-                    <meta itemprop="position" content="1" />
-                </li>
-            </ol>
-        </div>
-    </nav>
-
-    <!-- Hero Section with Elegant Carousel -->
+    <!-- Enhanced Hero Section with Elegant Carousel (No Controls) -->
     <section class="hero" role="banner" aria-label="Welcome to 805 LifeGuard">
         <!-- Background Carousel -->
         <div class="hero-carousel" id="heroCarousel">
@@ -305,17 +291,7 @@
         <!-- Carousel Overlay -->
         <div class="hero-overlay"></div>
         
-        <!-- Carousel Controls -->
-        <div class="carousel-controls">
-            <button class="carousel-prev" id="carouselPrev" aria-label="Previous image">
-                <i class="fas fa-chevron-left" aria-hidden="true"></i>
-            </button>
-            <button class="carousel-next" id="carouselNext" aria-label="Next image">
-                <i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </button>
-        </div>
-        
-        <!-- Carousel Indicators -->
+        <!-- Enhanced Carousel Indicators (Primary Navigation) -->
         <div class="carousel-indicators" role="tablist" aria-label="Hero image carousel">
             <button class="indicator active" data-slide="0" role="tab" aria-label="View image 1" aria-selected="true"></button>
             <button class="indicator" data-slide="1" role="tab" aria-label="View image 2" aria-selected="false"></button>
@@ -910,13 +886,13 @@
     <!-- Enhanced Luxury JavaScript -->
     <script src="js/luxury-app.js"></script>
     
-    <!-- Navigation Fallback -->
+    <!-- Enhanced Navigation Fallback -->
     <script>
     (function() {
         'use strict';
         
-        // Ensure navigation works as a fallback
-        function initNavFallback() {
+        // Enhanced fallback navigation with perfect hamburger balance
+        function initEnhancedNavFallback() {
             const menuToggle = document.getElementById('menuToggle');
             const navOverlay = document.getElementById('navOverlay');
             const navOverlayClose = document.getElementById('navOverlayClose');
@@ -968,7 +944,7 @@
                 }
             }
             
-            // Remove any existing event listeners to prevent duplicates
+            // Enhanced event handling
             const newMenuToggle = menuToggle.cloneNode(true);
             menuToggle.parentNode.replaceChild(newMenuToggle, menuToggle);
             
@@ -978,7 +954,7 @@
                 toggleNav();
             });
             
-            // Close button
+            // Enhanced close button
             if (navOverlayClose) {
                 navOverlayClose.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -987,7 +963,7 @@
                 });
             }
             
-            // Close on outside click
+            // Enhanced outside click
             document.addEventListener('click', function(e) {
                 if (isOpen && 
                     !navOverlay.contains(e.target) && 
@@ -996,14 +972,14 @@
                 }
             });
             
-            // Close on escape key
+            // Enhanced escape key
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && isOpen) {
                     closeNav();
                 }
             });
             
-            // Handle nav links
+            // Enhanced nav links
             const navLinks = navOverlay.querySelectorAll('.overlay-nav-link');
             navLinks.forEach(function(link) {
                 link.addEventListener('click', function() {
@@ -1016,13 +992,13 @@
         
         // Initialize when DOM is ready
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initNavFallback);
+            document.addEventListener('DOMContentLoaded', initEnhancedNavFallback);
         } else {
-            initNavFallback();
+            initEnhancedNavFallback();
         }
         
-        // Also initialize after a short delay to ensure it works
-        setTimeout(initNavFallback, 100);
+        // Enhanced initialization timing
+        setTimeout(initEnhancedNavFallback, 100);
         
     })();
     </script>
