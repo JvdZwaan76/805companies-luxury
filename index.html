@@ -227,10 +227,16 @@
             </div>
         </nav>
         
-        <!-- Enhanced Full-Screen Navigation Overlay (No Duplicate Logo) -->
+        <!-- Enhanced Full-Screen Navigation Overlay (Mobile Logo Header) -->
         <div class="nav-overlay" id="navOverlay" role="dialog" aria-label="Navigation menu" aria-hidden="true">
             <div class="nav-overlay-content">
-                <!-- Removed nav-overlay-header completely since main header stays visible -->
+                <!-- Mobile Branding Header - Shows only on mobile for optimal branding -->
+                <div class="nav-overlay-header">
+                    <a href="/" class="overlay-logo" onclick="document.getElementById('menuToggle').click();">
+                        <img src="images/logos/805-lifeguard-logo.png" alt="805 LifeGuard" width="48" height="48">
+                        <span>805 LifeGuard</span>
+                    </a>
+                </div>
                 
                 <nav class="nav-overlay-menu" role="navigation" aria-label="Main menu">
                     <a href="about.html" class="overlay-nav-link">About</a>
