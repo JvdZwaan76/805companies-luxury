@@ -1,7 +1,7 @@
 /*
  * 805 LifeGuard - Enhanced Luxury App JS (Enterprise JavaScript Application)
- * Version: 6.1 - Enhanced Responsive Image System with Caruso-Style Navigation
- * Clean, lightweight, and enterprise-level functionality with 3-tier responsive images
+ * Version: 7.2 - Refined Caruso-Style Navigation with Hidden Carousel Controls
+ * Clean, lightweight, and enterprise-level functionality with enhanced responsive image system
  */
 
 (function() {
@@ -20,12 +20,14 @@
             STAFF: 'https://staff.805companies.com'
         },
         
-        // Carousel Settings
+        // Enhanced Carousel Settings (Controls Hidden)
         CAROUSEL: {
-            AUTO_PLAY_INTERVAL: 6000,
-            TRANSITION_DURATION: 1500,
+            AUTO_PLAY_INTERVAL: 7000,        // Slightly longer for relaxed experience
+            TRANSITION_DURATION: 1800,       // Smoother transitions
             PAUSE_ON_HOVER: true,
-            PAUSE_ON_FOCUS: true
+            PAUSE_ON_FOCUS: true,
+            HIDE_CONTROLS: true,              // NEW: Controls hidden for Caruso aesthetic
+            INDICATOR_ONLY_MODE: true         // NEW: Only indicators visible
         },
         
         // Performance Settings
@@ -128,10 +130,15 @@
         },
 
         /*
-         * Preload image
+         * Preload image with enhanced error handling
          */
         preloadImage: function(src) {
             return new Promise(function(resolve, reject) {
+                if (!src) {
+                    reject(new Error('No image source provided'));
+                    return;
+                }
+                
                 const img = new Image();
                 img.onload = function() { resolve(img); };
                 img.onerror = function() { reject(new Error('Failed to load image: ' + src)); };
@@ -180,13 +187,13 @@
         },
 
         /*
-         * Log with timestamp and context
+         * Enhanced logging with context
          */
         log: function(level, message, data) {
             if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'production') return;
             
             const timestamp = new Date().toISOString();
-            const logMessage = '[' + timestamp + '] [' + level.toUpperCase() + '] 805 LifeGuard: ' + message;
+            const logMessage = '[' + timestamp + '] [' + level.toUpperCase() + '] 805 LifeGuard Enhanced: ' + message;
             
             switch (level) {
                 case 'error':
@@ -248,13 +255,15 @@
         return imagePath;
     };
 
-    // === ENHANCED CAROUSEL CONTROLLER ===
+    // === ENHANCED CAROUSEL CONTROLLER (Controls Hidden) ===
     function CarouselController(container) {
         this.container = container;
         this.slides = container.querySelectorAll('.carousel-slide');
         this.indicators = container.querySelectorAll('.indicator');
-        this.prevBtn = document.getElementById('carouselPrev');
-        this.nextBtn = document.getElementById('carouselNext');
+        
+        // Controls are hidden in Caruso-inspired design
+        this.prevBtn = null;
+        this.nextBtn = null;
         
         this.currentSlide = 0;
         this.totalSlides = this.slides.length;
@@ -274,9 +283,10 @@
             return;
         }
 
-        Utils.log('info', 'Initializing Enhanced Carousel Controller...');
+        Utils.log('info', 'Initializing Enhanced Carousel Controller (Caruso Mode)...');
 
         try {
+            this.hideCarouselControls();
             this.preloadImages();
             this.setupResponsiveBackgrounds();
             this.setupEventListeners();
@@ -288,6 +298,16 @@
         } catch (error) {
             Utils.log('error', 'Failed to initialize carousel', error);
         }
+    };
+
+    CarouselController.prototype.hideCarouselControls = function() {
+        // Hide controls for clean Caruso aesthetic
+        const controls = this.container.querySelectorAll('.carousel-controls, .carousel-prev, .carousel-next');
+        controls.forEach(function(control) {
+            control.style.display = 'none';
+        });
+        
+        Utils.log('info', 'Carousel controls hidden for Caruso aesthetic');
     };
 
     CarouselController.prototype.preloadImages = function() {
@@ -311,8 +331,9 @@
         });
 
         if (imagePromises.length > 0) {
-            Promise.allSettled(imagePromises).then(function() {
-                Utils.log('info', 'Enhanced carousel images preloaded');
+            Promise.allSettled(imagePromises).then(function(results) {
+                const successCount = results.filter(r => r.status === 'fulfilled').length;
+                Utils.log('info', 'Enhanced carousel images preloaded: ' + successCount + '/' + imagePromises.length);
             }).catch(function(error) {
                 Utils.log('warn', 'Some carousel images failed to preload', error);
             });
@@ -363,22 +384,7 @@
     CarouselController.prototype.setupEventListeners = function() {
         const self = this;
         
-        // Navigation buttons
-        if (this.prevBtn) {
-            const cleanup = Utils.addEventListenerWithCleanup(
-                this.prevBtn, 'click', function() { self.prevSlide(); }
-            );
-            this.cleanupFunctions.push(cleanup);
-        }
-
-        if (this.nextBtn) {
-            const cleanup = Utils.addEventListenerWithCleanup(
-                this.nextBtn, 'click', function() { self.nextSlide(); }
-            );
-            this.cleanupFunctions.push(cleanup);
-        }
-
-        // Indicators
+        // Enhanced Indicators (Primary Navigation Method)
         this.indicators.forEach(function(indicator, index) {
             const clickCleanup = Utils.addEventListenerWithCleanup(
                 indicator, 'click', function() { self.goToSlide(index); }
@@ -417,7 +423,7 @@
             this.cleanupFunctions.push(focusCleanup, blurCleanup);
         }
 
-        // Keyboard navigation
+        // Enhanced Keyboard navigation (Indicators only)
         const keyboardCleanup = Utils.addEventListenerWithCleanup(
             document, 'keydown', function(e) {
                 if (!Utils.isInViewport(self.container)) return;
@@ -435,12 +441,20 @@
                         e.preventDefault();
                         self.toggleAutoPlay();
                         break;
+                    case 'Home':
+                        e.preventDefault();
+                        self.goToSlide(0);
+                        break;
+                    case 'End':
+                        e.preventDefault();
+                        self.goToSlide(self.totalSlides - 1);
+                        break;
                 }
             }
         );
         this.cleanupFunctions.push(keyboardCleanup);
 
-        // Touch/swipe support
+        // Enhanced Touch/swipe support
         this.setupTouchEvents();
 
         // Enhanced window resize with device type detection
@@ -449,7 +463,7 @@
         );
         this.cleanupFunctions.push(resizeCleanup);
 
-        // Visibility change
+        // Enhanced visibility change
         const visibilityCleanup = Utils.addEventListenerWithCleanup(
             document, 'visibilitychange', function() {
                 if (document.hidden) {
@@ -467,11 +481,13 @@
         let startX = 0;
         let startY = 0;
         let isDragging = false;
+        let startTime = 0;
 
         const touchStartCleanup = Utils.addEventListenerWithCleanup(
             this.container, 'touchstart', function(e) {
                 startX = e.touches[0].clientX;
                 startY = e.touches[0].clientY;
+                startTime = Date.now();
                 isDragging = true;
                 self.pauseAutoPlay();
             }, { passive: true }
@@ -484,6 +500,7 @@
                 const deltaX = Math.abs(e.touches[0].clientX - startX);
                 const deltaY = Math.abs(e.touches[0].clientY - startY);
 
+                // If horizontal swipe is detected, prevent vertical scrolling
                 if (deltaX > deltaY) {
                     e.preventDefault();
                 }
@@ -496,9 +513,11 @@
 
                 const endX = e.changedTouches[0].clientX;
                 const deltaX = startX - endX;
+                const deltaTime = Date.now() - startTime;
                 const threshold = 50;
+                const maxTime = 300; // Maximum time for swipe gesture
 
-                if (Math.abs(deltaX) > threshold) {
+                if (Math.abs(deltaX) > threshold && deltaTime < maxTime) {
                     if (deltaX > 0) {
                         self.nextSlide();
                     } else {
@@ -544,13 +563,13 @@
 
     CarouselController.prototype.goToSlide = function(index, direction) {
         direction = direction || 'auto';
-        if (this.isTransitioning || index === this.currentSlide) return;
+        if (this.isTransitioning || index === this.currentSlide || index < 0 || index >= this.totalSlides) return;
 
         const previousSlide = this.currentSlide;
         this.currentSlide = index;
         this.isTransitioning = true;
 
-        // Update slides
+        // Update slides with enhanced transition
         const self = this;
         this.slides.forEach(function(slide, i) {
             if (i === index) {
@@ -560,7 +579,7 @@
             }
         });
 
-        // Update indicators
+        // Update indicators with enhanced styling
         this.indicators.forEach(function(indicator, i) {
             if (i === index) {
                 indicator.classList.add('active');
@@ -579,14 +598,15 @@
             self.isTransitioning = false;
         }, CONFIG.CAROUSEL.TRANSITION_DURATION);
 
-        // Dispatch custom event
+        // Dispatch custom event with enhanced data
         const event = new CustomEvent('carouselSlideChange', {
             detail: {
                 currentSlide: this.currentSlide,
                 previousSlide: previousSlide,
                 direction: direction,
                 totalSlides: this.totalSlides,
-                deviceType: this.currentDeviceType
+                deviceType: this.currentDeviceType,
+                timestamp: Date.now()
             }
         });
         this.container.dispatchEvent(event);
@@ -611,12 +631,15 @@
                 self.nextSlide();
             }
         }, CONFIG.CAROUSEL.AUTO_PLAY_INTERVAL);
+        
+        Utils.log('info', 'Carousel autoplay started with ' + CONFIG.CAROUSEL.AUTO_PLAY_INTERVAL + 'ms interval');
     };
 
     CarouselController.prototype.stopAutoPlay = function() {
         if (this.autoPlayTimer) {
             clearInterval(this.autoPlayTimer);
             this.autoPlayTimer = null;
+            Utils.log('info', 'Carousel autoplay stopped');
         }
     };
 
@@ -654,7 +677,7 @@
         Utils.log('info', 'Enhanced Carousel destroyed');
     };
 
-    // === NAVIGATION CONTROLLER (Enhanced with Caruso-Style Sidebar) ===
+    // === ENHANCED NAVIGATION CONTROLLER (Perfect Hamburger Balance) ===
     function NavigationController() {
         this.header = document.getElementById('header');
         this.mobileToggle = document.getElementById('menuToggle');
@@ -668,15 +691,16 @@
     }
 
     NavigationController.prototype.init = function() {
-        Utils.log('info', 'Initializing Navigation Controller...');
+        Utils.log('info', 'Initializing Enhanced Navigation Controller...');
 
         try {
             this.setupEventListeners();
             this.setupScrollEffects();
             this.updateActiveLinks();
             this.updatePortalLinks();
+            this.enhanceAccessibility();
             
-            Utils.log('info', 'Navigation Controller initialized successfully');
+            Utils.log('info', 'Enhanced Navigation Controller initialized successfully');
         } catch (error) {
             Utils.log('error', 'Failed to initialize navigation', error);
         }
@@ -690,7 +714,7 @@
 
         const self = this;
 
-        // Mobile toggle
+        // Enhanced mobile toggle with perfect hamburger animation
         const toggleCleanup = Utils.addEventListenerWithCleanup(
             this.mobileToggle, 'click', function(e) {
                 e.preventDefault();
@@ -700,21 +724,20 @@
         );
         this.cleanupFunctions.push(toggleCleanup);
 
-        // Mobile nav links
+        // Enhanced mobile nav links
         const mobileLinks = this.mobileNav.querySelectorAll('.overlay-nav-link');
         mobileLinks.forEach(function(link) {
             const linkCleanup = Utils.addEventListenerWithCleanup(
                 link, 'click', function() {
-                    setTimeout(function() { self.closeMobileNav(); }, 100);
+                    setTimeout(function() { self.closeMobileNav(); }, 150);
                 }
             );
             self.cleanupFunctions.push(linkCleanup);
         });
 
-        // Close on backdrop click (clicking outside the sidebar)
+        // Enhanced backdrop click (clicking outside the sidebar)
         const outsideClickCleanup = Utils.addEventListenerWithCleanup(
             this.mobileNav, 'click', function(e) {
-                // Check if click is on the backdrop (nav-overlay element) but not on the sidebar content
                 if (e.target === self.mobileNav && self.isOpen) {
                     self.closeMobileNav();
                 }
@@ -722,7 +745,7 @@
         );
         this.cleanupFunctions.push(outsideClickCleanup);
 
-        // Close button
+        // Enhanced close button
         const closeButton = this.mobileNav.querySelector('#navOverlayClose, .nav-overlay-close');
         if (closeButton) {
             const closeCleanup = Utils.addEventListenerWithCleanup(
@@ -735,7 +758,7 @@
             self.cleanupFunctions.push(closeCleanup);
         }
 
-        // Close on escape key
+        // Enhanced escape key handling
         const escapeCleanup = Utils.addEventListenerWithCleanup(
             document, 'keydown', function(e) {
                 if (e.key === 'Escape' && self.isOpen) {
@@ -745,7 +768,7 @@
         );
         this.cleanupFunctions.push(escapeCleanup);
 
-        // Close on window resize
+        // Enhanced resize handling
         const resizeCleanup = Utils.addEventListenerWithCleanup(
             window, 'resize', Utils.debounce(function() {
                 if (window.innerWidth > CONFIG.BREAKPOINTS.MD && self.isOpen) {
@@ -765,62 +788,62 @@
     };
 
     NavigationController.prototype.openMobileNav = function() {
-        Utils.log('info', 'Opening elegant sidebar navigation');
+        Utils.log('info', 'Opening enhanced Caruso-style sidebar navigation');
         
         this.isOpen = true;
         this.scrollPosition = window.pageYOffset;
 
-        // Add classes
+        // Enhanced classes and attributes
         this.mobileToggle.classList.add('active');
         this.mobileToggle.setAttribute('aria-expanded', 'true');
         this.mobileNav.classList.add('active');
         this.mobileNav.setAttribute('aria-hidden', 'false');
         this.body.classList.add('nav-open');
 
-        // Lock body scroll
+        // Enhanced body scroll lock
         this.body.style.position = 'fixed';
         this.body.style.top = '-' + this.scrollPosition + 'px';
         this.body.style.width = '100%';
         this.body.style.overflow = 'hidden';
 
-        // Focus management for sidebar
+        // Enhanced focus management for sidebar
         const self = this;
         setTimeout(function() {
-            const firstLink = self.mobileNav.querySelector('.overlay-nav-link');
-            if (firstLink) {
-                firstLink.focus();
+            const firstFocusable = self.mobileNav.querySelector('.overlay-nav-link, .overlay-portal-btn, .overlay-consultation-btn');
+            if (firstFocusable) {
+                firstFocusable.focus();
             }
-        }, 400); // Wait for transition to complete
+        }, 450); // Wait for transition to complete
     };
 
     NavigationController.prototype.closeMobileNav = function() {
-        Utils.log('info', 'Closing elegant sidebar navigation');
+        Utils.log('info', 'Closing enhanced Caruso-style sidebar navigation');
         
         this.isOpen = false;
 
-        // Remove focus from any focused elements inside mobile nav
+        // Enhanced focus management
         const focusedElement = this.mobileNav.querySelector(':focus');
         if (focusedElement) {
             focusedElement.blur();
         }
 
-        // Remove classes
+        // Enhanced classes and attributes
         this.mobileToggle.classList.remove('active');
         this.mobileToggle.setAttribute('aria-expanded', 'false');
         this.mobileNav.classList.remove('active');
         this.mobileNav.setAttribute('aria-hidden', 'true');
         this.body.classList.remove('nav-open');
 
-        // Restore body scroll
+        // Enhanced body scroll restoration
         this.body.style.position = '';
         this.body.style.top = '';
         this.body.style.width = '';
         this.body.style.overflow = '';
 
-        // Restore scroll position
+        // Enhanced scroll position restoration
         window.scrollTo(0, this.scrollPosition);
         
-        // Return focus to the mobile toggle button
+        // Enhanced focus return
         setTimeout(() => {
             this.mobileToggle.focus();
         }, 100);
@@ -869,6 +892,7 @@
                 
                 if (isActive) {
                     link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
                 }
             }
         });
@@ -895,27 +919,76 @@
         });
     };
 
+    NavigationController.prototype.enhanceAccessibility = function() {
+        // Enhanced ARIA labels and roles
+        if (this.mobileToggle) {
+            this.mobileToggle.setAttribute('role', 'button');
+            this.mobileToggle.setAttribute('aria-label', 'Toggle navigation menu');
+        }
+
+        if (this.mobileNav) {
+            this.mobileNav.setAttribute('role', 'dialog');
+            this.mobileNav.setAttribute('aria-label', 'Navigation menu');
+        }
+
+        // Enhanced keyboard navigation
+        const focusableElements = this.mobileNav ? this.mobileNav.querySelectorAll(
+            'a, button, [tabindex]:not([tabindex="-1"])'
+        ) : [];
+
+        if (focusableElements.length > 0) {
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+
+            // Enhanced focus trap
+            const self = this;
+            const trapFocus = function(e) {
+                if (!self.isOpen) return;
+
+                if (e.key === 'Tab') {
+                    if (e.shiftKey) {
+                        if (document.activeElement === firstElement) {
+                            e.preventDefault();
+                            lastElement.focus();
+                        }
+                    } else {
+                        if (document.activeElement === lastElement) {
+                            e.preventDefault();
+                            firstElement.focus();
+                        }
+                    }
+                }
+            };
+
+            const trapCleanup = Utils.addEventListenerWithCleanup(
+                document, 'keydown', trapFocus
+            );
+            this.cleanupFunctions.push(trapCleanup);
+        }
+    };
+
     NavigationController.prototype.destroy = function() {
         this.cleanupFunctions.forEach(function(cleanup) { cleanup(); });
         this.cleanupFunctions = [];
-        Utils.log('info', 'Navigation destroyed');
+        Utils.log('info', 'Enhanced Navigation destroyed');
     };
 
-    // === ANIMATION CONTROLLER ===
+    // === ENHANCED ANIMATION CONTROLLER ===
     function AnimationController() {
         this.observers = [];
         this.init();
     }
 
     AnimationController.prototype.init = function() {
-        Utils.log('info', 'Initializing Animation Controller...');
+        Utils.log('info', 'Initializing Enhanced Animation Controller...');
 
         try {
             this.setupScrollAnimations();
             this.setupHoverEffects();
             this.setupHeroAnimations();
+            this.setupPerformanceOptimizations();
             
-            Utils.log('info', 'Animation Controller initialized successfully');
+            Utils.log('info', 'Enhanced Animation Controller initialized successfully');
         } catch (error) {
             Utils.log('error', 'Failed to initialize animations', error);
         }
@@ -937,9 +1010,9 @@
             });
         }, observerOptions);
 
-        // Observe elements
+        // Enhanced element selection
         const elements = document.querySelectorAll(
-            '.service-card, .testimonial-card, .team-member, .coverage-card, .feature-item'
+            '.service-card, .testimonial-card, .team-member, .coverage-card, .feature-item, .about-img'
         );
 
         elements.forEach(function(el) { observer.observe(el); });
@@ -947,14 +1020,17 @@
     };
 
     AnimationController.prototype.setupHoverEffects = function() {
-        // Service cards
+        // Enhanced service cards
         this.setupCardHoverEffects('.service-card', -8);
         
-        // Team members
+        // Enhanced team members
         this.setupCardHoverEffects('.team-member', -8);
         
-        // Buttons
+        // Enhanced buttons
         this.setupButtonHoverEffects();
+        
+        // Enhanced navigation effects
+        this.setupNavigationHoverEffects();
     };
 
     AnimationController.prototype.setupCardHoverEffects = function(selector, translateY) {
@@ -962,10 +1038,12 @@
         cards.forEach(function(card) {
             card.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(' + translateY + 'px)';
+                this.style.willChange = 'transform';
             });
 
             card.addEventListener('mouseleave', function() {
                 this.style.transform = 'translateY(0)';
+                this.style.willChange = 'auto';
             });
         });
     };
@@ -976,11 +1054,29 @@
             button.addEventListener('mouseenter', function() {
                 if (!this.classList.contains('btn-secondary')) {
                     this.style.transform = 'translateY(-2px)';
+                    this.style.willChange = 'transform';
                 }
             });
 
             button.addEventListener('mouseleave', function() {
                 this.style.transform = 'translateY(0)';
+                this.style.willChange = 'auto';
+            });
+        });
+    };
+
+    AnimationController.prototype.setupNavigationHoverEffects = function() {
+        // Enhanced overlay navigation links
+        const overlayLinks = document.querySelectorAll('.overlay-nav-link');
+        overlayLinks.forEach(function(link) {
+            link.addEventListener('mouseenter', function() {
+                this.style.paddingLeft = 'calc(var(--spacing-6) + 8px)';
+            });
+
+            link.addEventListener('mouseleave', function() {
+                if (!this.classList.contains('active')) {
+                    this.style.paddingLeft = '';
+                }
             });
         });
     };
@@ -1002,27 +1098,40 @@
         });
     };
 
+    AnimationController.prototype.setupPerformanceOptimizations = function() {
+        // Enhanced performance for animated elements
+        const animatedElements = document.querySelectorAll(
+            '.service-card, .team-member, .btn, .overlay-nav-link'
+        );
+
+        animatedElements.forEach(function(element) {
+            element.style.backfaceVisibility = 'hidden';
+            element.style.transform = 'translateZ(0)';
+        });
+    };
+
     AnimationController.prototype.destroy = function() {
         this.observers.forEach(function(observer) { observer.disconnect(); });
         this.observers = [];
-        Utils.log('info', 'Animation Controller destroyed');
+        Utils.log('info', 'Enhanced Animation Controller destroyed');
     };
 
-    // === FORM HANDLER ===
+    // === ENHANCED FORM HANDLER ===
     function FormHandler() {
         this.cleanupFunctions = [];
         this.init();
     }
 
     FormHandler.prototype.init = function() {
-        Utils.log('info', 'Initializing Form Handler...');
+        Utils.log('info', 'Initializing Enhanced Form Handler...');
 
         try {
             this.setupFormValidation();
             this.setupPhoneFormatting();
             this.handleURLParameters();
+            this.setupEnhancedInteractions();
             
-            Utils.log('info', 'Form Handler initialized successfully');
+            Utils.log('info', 'Enhanced Form Handler initialized successfully');
         } catch (error) {
             Utils.log('error', 'Failed to initialize form handler', error);
         }
@@ -1054,9 +1163,11 @@
                 isValid = false;
                 field.style.borderColor = 'var(--color-danger)';
                 field.setAttribute('aria-invalid', 'true');
+                field.classList.add('invalid');
             } else {
                 field.style.borderColor = '';
                 field.setAttribute('aria-invalid', 'false');
+                field.classList.remove('invalid');
             }
         });
 
@@ -1101,28 +1212,72 @@
         }
     };
 
+    FormHandler.prototype.setupEnhancedInteractions = function() {
+        // Enhanced form field interactions
+        const formFields = document.querySelectorAll('.form-input, .form-textarea, .form-select');
+        
+        formFields.forEach(function(field) {
+            field.addEventListener('focus', function() {
+                this.style.transform = 'scale(1.02)';
+                this.style.transition = 'transform 0.2s ease';
+            });
+
+            field.addEventListener('blur', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    };
+
     FormHandler.prototype.showFormError = function(message) {
-        alert(message);
+        // Enhanced error display
+        const existingError = document.querySelector('.form-error-message');
+        if (existingError) {
+            existingError.remove();
+        }
+
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'form-error-message';
+        errorDiv.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--color-danger);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            z-index: 10000;
+            animation: slideInRight 0.3s ease;
+        `;
+        errorDiv.textContent = message;
+
+        document.body.appendChild(errorDiv);
+
+        setTimeout(function() {
+            if (errorDiv && errorDiv.parentNode) {
+                errorDiv.parentNode.removeChild(errorDiv);
+            }
+        }, 5000);
     };
 
     FormHandler.prototype.destroy = function() {
         this.cleanupFunctions.forEach(function(cleanup) { cleanup(); });
         this.cleanupFunctions = [];
-        Utils.log('info', 'Form Handler destroyed');
+        Utils.log('info', 'Enhanced Form Handler destroyed');
     };
 
-    // === SMOOTH SCROLL CONTROLLER ===
+    // === ENHANCED SMOOTH SCROLL CONTROLLER ===
     function SmoothScrollController() {
         this.cleanupFunctions = [];
         this.init();
     }
 
     SmoothScrollController.prototype.init = function() {
-        Utils.log('info', 'Initializing Smooth Scroll Controller...');
+        Utils.log('info', 'Initializing Enhanced Smooth Scroll Controller...');
 
         try {
             this.setupSmoothScrolling();
-            Utils.log('info', 'Smooth Scroll Controller initialized successfully');
+            Utils.log('info', 'Enhanced Smooth Scroll Controller initialized successfully');
         } catch (error) {
             Utils.log('error', 'Failed to initialize smooth scroll', error);
         }
@@ -1141,6 +1296,11 @@
                     if (target) {
                         e.preventDefault();
                         Utils.scrollToElement(target);
+                        
+                        // Enhanced focus management
+                        target.setAttribute('tabindex', '-1');
+                        target.focus();
+                        target.style.outline = 'none';
                     }
                 }
             );
@@ -1151,20 +1311,20 @@
     SmoothScrollController.prototype.destroy = function() {
         this.cleanupFunctions.forEach(function(cleanup) { cleanup(); });
         this.cleanupFunctions = [];
-        Utils.log('info', 'Smooth Scroll Controller destroyed');
+        Utils.log('info', 'Enhanced Smooth Scroll Controller destroyed');
     };
 
-    // === CONTACT UPDATER ===
+    // === ENHANCED CONTACT UPDATER ===
     function ContactUpdater() {
         this.init();
     }
 
     ContactUpdater.prototype.init = function() {
-        Utils.log('info', 'Initializing Contact Updater...');
+        Utils.log('info', 'Initializing Enhanced Contact Updater...');
 
         try {
             this.updateAllContacts();
-            Utils.log('info', 'Contact Updater initialized successfully');
+            Utils.log('info', 'Enhanced Contact Updater initialized successfully');
         } catch (error) {
             Utils.log('error', 'Failed to initialize contact updater', error);
         }
@@ -1237,6 +1397,7 @@
         this.smoothScroll = null;
         this.contactUpdater = null;
         this.isInitialized = false;
+        this.version = '7.2';
 
         this.init();
     }
@@ -1253,7 +1414,7 @@
     LuxuryApp.prototype.initializeApp = function() {
         const self = this;
         try {
-            Utils.log('info', 'Initializing 805 LifeGuard Enhanced Luxury Application...');
+            Utils.log('info', 'Initializing 805 LifeGuard Enhanced Luxury Application v' + this.version + '...');
 
             // Detect WebP support first
             this.webpService.detect().then(function() {
@@ -1276,7 +1437,7 @@
 
                 self.isInitialized = true;
 
-                Utils.log('info', '805 LifeGuard Enhanced Luxury Application initialized successfully');
+                Utils.log('info', '805 LifeGuard Enhanced Luxury Application v' + self.version + ' initialized successfully');
 
                 // Dispatch ready event
                 self.dispatchReadyEvent();
@@ -1294,18 +1455,25 @@
                 app: this,
                 hasCarousel: !!this.carousel,
                 webpSupport: this.webpService.isSupported,
-                version: '6.1',
+                version: this.version,
                 timestamp: new Date().toISOString(),
-                deviceType: Utils.getDeviceType()
+                deviceType: Utils.getDeviceType(),
+                features: {
+                    carouselControlsHidden: CONFIG.CAROUSEL.HIDE_CONTROLS,
+                    indicatorOnlyMode: CONFIG.CAROUSEL.INDICATOR_ONLY_MODE,
+                    enhancedAccessibility: true,
+                    responsiveImages: true,
+                    carusoStyling: true
+                }
             }
         });
         window.dispatchEvent(event);
     };
 
     LuxuryApp.prototype.initializeFallback = function() {
-        Utils.log('info', 'Initializing fallback functionality...');
+        Utils.log('info', 'Initializing enhanced fallback functionality...');
 
-        // Basic mobile navigation
+        // Enhanced mobile navigation fallback
         const mobileToggle = document.getElementById('menuToggle');
         const mobileNav = document.getElementById('navOverlay');
 
@@ -1317,10 +1485,10 @@
                 document.body.classList.toggle('nav-open');
             });
 
-            Utils.log('info', 'Fallback mobile navigation initialized');
+            Utils.log('info', 'Enhanced fallback mobile navigation initialized');
         }
 
-        // Basic smooth scroll
+        // Enhanced smooth scroll fallback
         const smoothLinks = document.querySelectorAll('a[href^="#"]');
         smoothLinks.forEach(function(link) {
             link.addEventListener('click', function(e) {
@@ -1332,22 +1500,28 @@
             });
         });
 
-        // Basic carousel fallback
+        // Enhanced carousel fallback
         const heroCarousel = document.getElementById('heroCarousel');
         if (heroCarousel) {
             const slides = heroCarousel.querySelectorAll('.carousel-slide');
             if (slides.length > 0) {
                 slides[0].classList.add('active');
+                
+                // Hide controls even in fallback mode
+                const controls = heroCarousel.querySelectorAll('.carousel-controls, .carousel-prev, .carousel-next');
+                controls.forEach(function(control) {
+                    control.style.display = 'none';
+                });
             }
         }
 
-        Utils.log('info', 'Fallback functionality initialized');
+        Utils.log('info', 'Enhanced fallback functionality initialized');
     };
 
     // === PUBLIC API METHODS ===
 
     LuxuryApp.prototype.getVersion = function() {
-        return '6.1';
+        return this.version;
     };
 
     LuxuryApp.prototype.isReady = function() {
@@ -1392,6 +1566,17 @@
         return Utils.getDeviceType();
     };
 
+    LuxuryApp.prototype.getFeatures = function() {
+        return {
+            carouselControlsHidden: CONFIG.CAROUSEL.HIDE_CONTROLS,
+            indicatorOnlyMode: CONFIG.CAROUSEL.INDICATOR_ONLY_MODE,
+            enhancedAccessibility: true,
+            responsiveImages: true,
+            carusoStyling: true,
+            version: this.version
+        };
+    };
+
     LuxuryApp.prototype.destroy = function() {
         Utils.log('info', 'Destroying Enhanced Luxury Application...');
 
@@ -1432,16 +1617,19 @@
     window.app = app;
     window.CarouselController = CarouselController;
 
-    // Development/debug mode
+    // Enhanced development/debug mode
     if (window.location.hostname === 'localhost' || 
         window.location.hostname.indexOf('805lifeguard.com') !== -1 ||
         window.location.search.indexOf('debug=true') !== -1) {
         
         window.Utils = Utils;
+        window.CONFIG = CONFIG;
         Utils.log('info', 'Enhanced debug mode active - Advanced debugging available');
         Utils.log('info', 'Access app instance via window.app');
         Utils.log('info', 'Access utilities via window.Utils');
+        Utils.log('info', 'Access config via window.CONFIG');
         Utils.log('info', 'Current device type: ' + Utils.getDeviceType());
+        Utils.log('info', 'Features: Caruso-style navigation, hidden carousel controls, enhanced accessibility');
     }
 
 })();
