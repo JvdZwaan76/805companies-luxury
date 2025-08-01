@@ -772,6 +772,19 @@
             self.cleanupFunctions.push(linkCleanup);
         });
 
+        // Enhanced mobile logo click handling
+        const mobileLogo = this.mobileNav.querySelector('.overlay-logo');
+        if (mobileLogo) {
+            const logoCleanup = Utils.addEventListenerWithCleanup(
+                mobileLogo, 'click', function(e) {
+                    // Don't prevent default since we want navigation to occur
+                    // Just close the nav after a brief delay
+                    setTimeout(function() { self.closeMobileNav(); }, 100);
+                }
+            );
+            self.cleanupFunctions.push(logoCleanup);
+        }
+
         // Enhanced backdrop click (clicking outside the sidebar)
         const outsideClickCleanup = Utils.addEventListenerWithCleanup(
             this.mobileNav, 'click', function(e) {
