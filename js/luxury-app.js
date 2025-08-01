@@ -789,6 +789,11 @@
         this.body.style.width = '100%';
         this.body.style.overflow = 'hidden';
 
+        // Hide hamburger menu when sidebar is active
+        this.mobileToggle.style.opacity = '0';
+        this.mobileToggle.style.pointerEvents = 'none';
+        this.mobileToggle.style.transform = 'scale(0.8)';
+
         // Enhanced focus management for sidebar
         const self = this;
         setTimeout(function() {
@@ -816,6 +821,11 @@
         this.mobileNav.classList.remove('active');
         this.mobileNav.setAttribute('aria-hidden', 'true');
         this.body.classList.remove('nav-open');
+
+        // Restore hamburger menu visibility
+        this.mobileToggle.style.opacity = '1';
+        this.mobileToggle.style.pointerEvents = 'auto';
+        this.mobileToggle.style.transform = 'scale(1)';
 
         // Enhanced body scroll restoration
         this.body.style.position = '';
@@ -1511,10 +1521,41 @@
         if (mobileToggle && mobileNav) {
             mobileToggle.addEventListener('click', function(e) {
                 e.preventDefault();
-                mobileToggle.classList.toggle('active');
-                mobileNav.classList.toggle('active');
-                document.body.classList.toggle('nav-open');
+                
+                const isOpen = mobileNav.classList.contains('active');
+                
+                if (isOpen) {
+                    // Close navigation
+                    mobileToggle.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                    document.body.classList.remove('nav-open');
+                    mobileToggle.style.opacity = '1';
+                    mobileToggle.style.pointerEvents = 'auto';
+                    mobileToggle.style.transform = 'scale(1)';
+                } else {
+                    // Open navigation
+                    mobileToggle.classList.add('active');
+                    mobileNav.classList.add('active');
+                    document.body.classList.add('nav-open');
+                    mobileToggle.style.opacity = '0';
+                    mobileToggle.style.pointerEvents = 'none';
+                    mobileToggle.style.transform = 'scale(0.8)';
+                }
             });
+
+            // Close button fallback
+            const closeButton = mobileNav.querySelector('#navOverlayClose, .nav-overlay-close');
+            if (closeButton) {
+                closeButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    mobileToggle.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                    document.body.classList.remove('nav-open');
+                    mobileToggle.style.opacity = '1';
+                    mobileToggle.style.pointerEvents = 'auto';
+                    mobileToggle.style.transform = 'scale(1)';
+                });
+            }
 
             Utils.log('info', 'Enhanced fallback mobile navigation initialized');
         }
