@@ -278,7 +278,7 @@ p {
     top: 0;
     left: 0;
     right: 0;
-    z-index: calc(var(--z-index-modal) + 20); /* Much higher than navigation overlay */
+    z-index: calc(var(--z-index-modal) + 50); /* Even higher than navigation overlay */
     background: var(--color-white);
     border-bottom: 1px solid var(--color-border-primary);
     transition: var(--transition-normal);
@@ -293,7 +293,7 @@ p {
 .nav-open .header {
     background: var(--color-white) !important;
     box-shadow: var(--shadow-md) !important;
-    z-index: calc(var(--z-index-modal) + 20) !important;
+    z-index: calc(var(--z-index-modal) + 50) !important;
     position: fixed !important;
     top: 0 !important;
 }
@@ -379,7 +379,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    z-index: calc(var(--z-index-modal) + 22);
+    z-index: calc(var(--z-index-modal) + 52);
     position: relative;
 }
 
@@ -394,7 +394,7 @@ p {
     border: none;
     cursor: pointer;
     padding: 6px;
-    z-index: calc(var(--z-index-modal) + 22);
+    z-index: calc(var(--z-index-modal) + 52);
     transition: var(--transition-normal);
     position: relative;
     border-radius: var(--radius-lg);
@@ -472,7 +472,7 @@ p {
     gap: var(--spacing-3); /* Reduced gap for mobile balance */
     text-decoration: none;
     justify-self: center;
-    z-index: calc(var(--z-index-modal) + 21);
+    z-index: calc(var(--z-index-modal) + 51);
     position: relative;
     transform-origin: center;
     
@@ -798,6 +798,21 @@ p {
     box-shadow: var(--shadow-md);
 }
 
+/* Hide consultation text on smaller mobile screens for better balance */
+@media (max-width: 480px) {
+    .consultation-btn .consultation-text {
+        display: none;
+    }
+    
+    .consultation-btn {
+        padding: var(--spacing-2);
+        width: 36px;
+        height: 36px;
+        border-radius: var(--radius-full);
+        justify-content: center;
+    }
+}
+
 /* Enhanced Caruso-Style Sidebar Navigation */
 .nav-overlay {
     position: fixed;
@@ -837,29 +852,29 @@ p {
     opacity: 1;
 }
 
-/* Desktop: backdrop starts below header */
+/* Desktop: backdrop starts well below full header */
 @media (min-width: 769px) {
     .nav-overlay::before {
-        top: 88px; /* Start below header */
-        height: calc(100% - 88px);
+        top: 120px; /* Start well below full header (top bar + navbar) */
+        height: calc(100% - 120px);
     }
 }
 
 /* Mobile: backdrop starts below mobile header */
 @media (max-width: 768px) {
     .nav-overlay::before {
-        top: 72px; /* Start below mobile header */
-        height: calc(100% - 72px);
+        top: 0; /* Full coverage on mobile */
+        height: 100%;
     }
 }
 
 /* Enhanced elegant sidebar */
 .nav-overlay-content {
     position: absolute;
-    top: 88px; /* Start below header on desktop */
+    top: 120px; /* Start well below full header on desktop */
     left: 0;
     width: 420px;
-    height: calc(100% - 88px); /* Adjust height to account for header */
+    height: calc(100% - 120px); /* Adjust height to account for full header */
     background: var(--color-white);
     box-shadow: var(--shadow-2xl);
     transform: translateX(-100%);
@@ -873,11 +888,11 @@ p {
     border-right: 1px solid var(--color-border-primary);
 }
 
-/* Mobile: start below mobile header and no duplicate logo */
+/* Mobile: full height with logo header */
 @media (max-width: 768px) {
     .nav-overlay-content {
-        top: 72px; /* Start below mobile header */
-        height: calc(100% - 72px);
+        top: 0; /* Full height on mobile */
+        height: 100%;
         width: 320px;
     }
 }
@@ -886,15 +901,81 @@ p {
     transform: translateX(0);
 }
 
-/* Sidebar Header - Hidden completely since main header stays visible */
+/* Sidebar Header - Show ONLY on mobile for branding, hidden on desktop */
 .nav-overlay-header {
-    display: none !important; /* Hide on all viewports since main header remains visible */
+    display: none; /* Hidden on desktop since main header stays visible */
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-4);
+    border-bottom: 1px solid var(--color-border-primary);
+    flex-shrink: 0;
+    min-height: 80px;
+    background: var(--color-white);
+}
+
+/* Mobile: Show sidebar header with prominent logo branding */
+@media (max-width: 768px) {
+    .nav-overlay-header {
+        display: flex !important; /* Show on mobile for branding */
+    }
+}
+
+.overlay-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    text-decoration: none;
+    transition: var(--transition-fast);
+    
+    /* Remove borders from overlay logo */
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.overlay-logo:hover {
+    transform: translateY(-1px);
+}
+
+.overlay-logo:focus {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.overlay-logo img {
+    height: 48px;
+    width: 48px;
+    border-radius: var(--radius-lg);
+    flex-shrink: 0;
+    
+    /* Remove borders */
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.overlay-logo span {
+    font-family: var(--font-family-serif);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-light);
+    color: var(--color-text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .nav-overlay-menu {
     flex: 1;
-    padding: var(--spacing-6) 0 var(--spacing-4); /* Start with more padding since no header */
+    padding: var(--spacing-6) 0 var(--spacing-4); /* Desktop: start with more padding since no header */
     overflow-y: auto;
+}
+
+/* Mobile: Adjust padding since header is present */
+@media (max-width: 768px) {
+    .nav-overlay-menu {
+        padding: var(--spacing-4) 0; /* Less top padding since header is present */
+    }
 }
 
 .overlay-nav-link {
