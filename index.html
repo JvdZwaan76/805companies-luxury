@@ -197,8 +197,8 @@
                         </button>
                     </div>
                     
-                    <!-- Logo - Centered -->
-                    <a href="/" class="logo" aria-label="805 LifeGuard Homepage">
+                    <!-- Logo - Centered with Dynamic Scaling -->
+                    <a href="/" class="logo" id="mainLogo" aria-label="805 LifeGuard Homepage">
                         <img src="images/logos/805-lifeguard-logo.png" alt="805 LifeGuard - Aquatic Services" class="logo-img" width="56" height="56">
                         <div class="logo-text">
                             <div class="logo-name">805 LifeGuard</div>
@@ -227,14 +227,11 @@
             </div>
         </nav>
         
-        <!-- Enhanced Full-Screen Navigation Overlay -->
+        <!-- Enhanced Full-Screen Navigation Overlay (Removed Duplicate Logo) -->
         <div class="nav-overlay" id="navOverlay" role="dialog" aria-label="Navigation menu" aria-hidden="true">
             <div class="nav-overlay-content">
                 <div class="nav-overlay-header">
-                    <a href="/" class="overlay-logo">
-                        <img src="images/logos/805-lifeguard-logo.png" alt="805 LifeGuard" width="48" height="48">
-                        <span>805 LifeGuard</span>
-                    </a>
+                    <div class="overlay-header-spacer"></div>
                     <button class="nav-overlay-close" id="navOverlayClose" aria-label="Close navigation menu">
                         <i class="fas fa-times" aria-hidden="true"></i>
                     </button>
@@ -277,7 +274,7 @@
         </div>
     </header>
 
-    <!-- Enhanced Hero Section with Elegant Carousel (No Controls) -->
+    <!-- Enhanced Hero Section (Indicators Removed for Clean Caruso Aesthetic) -->
     <section class="hero" role="banner" aria-label="Welcome to 805 LifeGuard">
         <!-- Background Carousel -->
         <div class="hero-carousel" id="heroCarousel">
@@ -290,15 +287,6 @@
         
         <!-- Carousel Overlay -->
         <div class="hero-overlay"></div>
-        
-        <!-- Enhanced Carousel Indicators (Primary Navigation) -->
-        <div class="carousel-indicators" role="tablist" aria-label="Hero image carousel">
-            <button class="indicator active" data-slide="0" role="tab" aria-label="View image 1" aria-selected="true"></button>
-            <button class="indicator" data-slide="1" role="tab" aria-label="View image 2" aria-selected="false"></button>
-            <button class="indicator" data-slide="2" role="tab" aria-label="View image 3" aria-selected="false"></button>
-            <button class="indicator" data-slide="3" role="tab" aria-label="View image 4" aria-selected="false"></button>
-            <button class="indicator" data-slide="4" role="tab" aria-label="View image 5" aria-selected="false"></button>
-        </div>
         
         <div class="container">
             <div class="hero-content" itemscope itemtype="https://schema.org/Organization">
@@ -751,7 +739,7 @@
         </div>
     </section>
 
-    <!-- Footer (Original Design Preserved) -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -885,122 +873,5 @@
 
     <!-- Enhanced Luxury JavaScript -->
     <script src="js/luxury-app.js"></script>
-    
-    <!-- Enhanced Navigation Fallback -->
-    <script>
-    (function() {
-        'use strict';
-        
-        // Enhanced fallback navigation with perfect hamburger balance
-        function initEnhancedNavFallback() {
-            const menuToggle = document.getElementById('menuToggle');
-            const navOverlay = document.getElementById('navOverlay');
-            const navOverlayClose = document.getElementById('navOverlayClose');
-            const body = document.body;
-            
-            if (!menuToggle || !navOverlay) return;
-            
-            let isOpen = false;
-            let scrollPosition = 0;
-            
-            function openNav() {
-                isOpen = true;
-                scrollPosition = window.pageYOffset;
-                
-                menuToggle.classList.add('active');
-                menuToggle.setAttribute('aria-expanded', 'true');
-                navOverlay.classList.add('active');
-                navOverlay.setAttribute('aria-hidden', 'false');
-                body.classList.add('nav-open');
-                
-                body.style.position = 'fixed';
-                body.style.top = `-${scrollPosition}px`;
-                body.style.width = '100%';
-                body.style.overflow = 'hidden';
-            }
-            
-            function closeNav() {
-                isOpen = false;
-                
-                menuToggle.classList.remove('active');
-                menuToggle.setAttribute('aria-expanded', 'false');
-                navOverlay.classList.remove('active');
-                navOverlay.setAttribute('aria-hidden', 'true');
-                body.classList.remove('nav-open');
-                
-                body.style.position = '';
-                body.style.top = '';
-                body.style.width = '';
-                body.style.overflow = '';
-                
-                window.scrollTo(0, scrollPosition);
-            }
-            
-            function toggleNav() {
-                if (isOpen) {
-                    closeNav();
-                } else {
-                    openNav();
-                }
-            }
-            
-            // Enhanced event handling
-            const newMenuToggle = menuToggle.cloneNode(true);
-            menuToggle.parentNode.replaceChild(newMenuToggle, menuToggle);
-            
-            newMenuToggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                toggleNav();
-            });
-            
-            // Enhanced close button
-            if (navOverlayClose) {
-                navOverlayClose.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    closeNav();
-                });
-            }
-            
-            // Enhanced outside click
-            document.addEventListener('click', function(e) {
-                if (isOpen && 
-                    !navOverlay.contains(e.target) && 
-                    !newMenuToggle.contains(e.target)) {
-                    closeNav();
-                }
-            });
-            
-            // Enhanced escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && isOpen) {
-                    closeNav();
-                }
-            });
-            
-            // Enhanced nav links
-            const navLinks = navOverlay.querySelectorAll('.overlay-nav-link');
-            navLinks.forEach(function(link) {
-                link.addEventListener('click', function() {
-                    setTimeout(function() {
-                        closeNav();
-                    }, 100);
-                });
-            });
-        }
-        
-        // Initialize when DOM is ready
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initEnhancedNavFallback);
-        } else {
-            initEnhancedNavFallback();
-        }
-        
-        // Enhanced initialization timing
-        setTimeout(initEnhancedNavFallback, 100);
-        
-    })();
-    </script>
 </body>
 </html>
