@@ -1,6 +1,6 @@
 /* 
  * 805 LifeGuard - OPTIMIZED Caruso-Inspired Luxury Theme CSS (Enterprise Design System)
- * Version: 11.0 - PERFORMANCE OPTIMIZED while maintaining perfect functionality
+ * Version: 11.1 - PERFORMANCE OPTIMIZED with enhanced About page support
  * Sophisticated brand-focused design with fast loading and perfect header visibility
  */
 
@@ -1339,119 +1339,6 @@ section {
 .section-cta {
     text-align: center;
     margin-top: var(--spacing-16);
-}
-
-/* === OPTIMIZED PAGE TEMPLATES === */
-.page-header {
-    padding: var(--spacing-20) 0 var(--spacing-16);
-    background: var(--color-bg-secondary);
-    text-align: center;
-    margin-top: var(--header-total-height);
-    min-height: 400px;
-}
-
-.page-header.hero-background {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: var(--color-text-inverse);
-    position: relative;
-    min-height: 500px;
-    display: flex;
-    align-items: center;
-    margin-top: 0;
-    padding-top: var(--header-total-height);
-}
-
-.page-header.hero-background::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.4));
-    z-index: 1;
-}
-
-.page-header.hero-background .container {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-}
-
-.page-header.hero-background .page-title,
-.page-header.hero-background .section-badge {
-    color: var(--color-text-inverse) !important;
-}
-
-.page-header.hero-background .page-subtitle {
-    color: rgba(255, 255, 255, 0.9) !important;
-}
-
-.page-title {
-    margin-bottom: var(--spacing-6);
-}
-
-.page-subtitle {
-    font-size: var(--font-size-lg);
-    color: var(--color-text-secondary);
-    line-height: var(--line-height-relaxed);
-    max-width: 800px;
-    margin: 0 auto;
-    font-weight: var(--font-weight-light);
-}
-
-@media (max-width: 768px) {
-    .page-header {
-        margin-top: var(--header-navbar-height);
-        padding: var(--spacing-16) 0 var(--spacing-12);
-        min-height: 300px;
-    }
-    
-    .page-header.hero-background {
-        min-height: 400px;
-        padding-top: calc(var(--header-navbar-height) + var(--spacing-8));
-    }
-}
-
-/* === OPTIMIZED CONTENT SECTIONS === */
-.content-section {
-    padding: var(--spacing-32) 0;
-}
-
-.content-section.background-overlay {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: var(--color-text-inverse);
-    position: relative;
-}
-
-.content-section.background-overlay::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.7));
-    z-index: 1;
-}
-
-.content-section.background-overlay .container {
-    position: relative;
-    z-index: 2;
-}
-
-.content-section.background-overlay h2,
-.content-section.background-overlay h3,
-.content-section.background-overlay h4 {
-    color: var(--color-text-inverse);
-}
-
-.content-section.background-overlay .section-description {
-    color: rgba(255, 255, 255, 0.9);
 }
 
 /* === OPTIMIZED SERVICES SECTION === */
