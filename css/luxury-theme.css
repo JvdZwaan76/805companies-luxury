@@ -1,7 +1,7 @@
 /* 
  * 805 LifeGuard - Enhanced Caruso-Inspired Luxury Theme CSS (Enterprise Design System)
- * Version: 9.1 - Fixed Header Visibility & Mobile Balance
- * Sophisticated brand-focused design with perfect header visibility
+ * Version: 10.0 - OPTIMIZED with Perfect Header Visibility & Performance
+ * Sophisticated brand-focused design with perfect header visibility and fast loading
  */
 
 /* === CSS RESET === */
@@ -143,7 +143,7 @@
     --transition-elegant: 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
     --transition-entrance: 1200ms cubic-bezier(0.23, 1, 0.32, 1);
     
-    /* Z-Index Scale */
+    /* Z-Index Scale - OPTIMIZED for Perfect Header Visibility */
     --z-index-hide: -1;
     --z-index-auto: auto;
     --z-index-base: 0;
@@ -153,6 +153,8 @@
     --z-index-banner: 1030;
     --z-index-overlay: 1040;
     --z-index-modal: 1050;
+    --z-index-header: 1070;        /* NEW: Dedicated header layer */
+    --z-index-hamburger: 1080;     /* NEW: Hamburger always on top */
     --z-index-popover: 1060;
     --z-index-skipLink: 1070;
     --z-index-toast: 1080;
@@ -171,6 +173,11 @@
     --container-lg: 1024px;
     --container-xl: 1280px;
     --container-2xl: 1400px;
+    
+    /* Header Height Constants */
+    --header-top-height: 44px;
+    --header-navbar-height: 76px;
+    --header-total-height: 120px;
 }
 
 /* === BASE STYLES === */
@@ -272,16 +279,19 @@ p {
     }
 }
 
-/* === ENHANCED HEADER SYSTEM WITH FIXED VISIBILITY === */
+/* === ENHANCED HEADER SYSTEM WITH PERFECT VISIBILITY === */
 .header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: calc(var(--z-index-modal) + 50); /* Even higher than navigation overlay */
+    z-index: var(--z-index-header);
     background: var(--color-white);
     border-bottom: 1px solid var(--color-border-primary);
     transition: var(--transition-normal);
+    
+    /* Ensure header always stays on top */
+    isolation: isolate;
 }
 
 .header.scrolled {
@@ -289,13 +299,16 @@ p {
     box-shadow: var(--shadow-sm);
 }
 
-/* Ensure header ALWAYS stays visible above navigation */
+/* CRITICAL FIX: Ensure header ALWAYS stays visible above navigation */
 .nav-open .header {
     background: var(--color-white) !important;
     box-shadow: var(--shadow-md) !important;
-    z-index: calc(var(--z-index-modal) + 50) !important;
+    z-index: var(--z-index-header) !important;
     position: fixed !important;
     top: 0 !important;
+    
+    /* Force highest stacking context */
+    isolation: isolate !important;
 }
 
 /* Header Top Bar */
@@ -304,6 +317,9 @@ p {
     color: var(--color-text-inverse);
     padding: var(--spacing-2) 0;
     font-size: var(--font-size-sm);
+    height: var(--header-top-height);
+    display: flex;
+    align-items: center;
 }
 
 .header-top-content {
@@ -350,27 +366,31 @@ p {
 
 /* Enhanced Main Navigation - Caruso Style with Perfect Balance */
 .navbar {
-    padding: var(--spacing-3) 0; /* Reduced padding for mobile balance */
+    padding: var(--spacing-3) 0;
     background: var(--color-white);
     position: relative;
+    height: var(--header-navbar-height);
+    display: flex;
+    align-items: center;
 }
 
 .navbar-content {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    gap: var(--spacing-3); /* Reduced gap for better mobile balance */
+    gap: var(--spacing-3);
     position: relative;
+    height: 100%;
 }
 
 /* Mobile optimization for better balance */
 @media (min-width: 769px) {
     .navbar {
-        padding: var(--spacing-4) 0; /* Normal padding on desktop */
+        padding: var(--spacing-4) 0;
     }
     
     .navbar-content {
-        gap: var(--spacing-4); /* Normal gap on desktop */
+        gap: var(--spacing-4);
     }
 }
 
@@ -379,7 +399,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    z-index: calc(var(--z-index-modal) + 60); /* Highest z-index for always clickable */
+    z-index: var(--z-index-hamburger); /* Highest z-index for always clickable */
     position: relative;
 }
 
@@ -388,16 +408,19 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 40px; /* Slightly smaller for mobile balance */
+    width: 40px;
     height: 40px;
     background: none;
     border: none;
     cursor: pointer;
     padding: 6px;
-    z-index: calc(var(--z-index-modal) + 60); /* Highest z-index for always clickable */
+    z-index: var(--z-index-hamburger); /* Highest z-index for always clickable */
     transition: var(--transition-normal);
     position: relative;
     border-radius: var(--radius-lg);
+    
+    /* Ensure clickability */
+    isolation: isolate;
 }
 
 /* Desktop sizing */
@@ -420,7 +443,7 @@ p {
 
 /* Enhanced Hamburger Bars with Perfect X Transformation */
 .menu-toggle .bar {
-    width: 24px; /* Slightly smaller for mobile */
+    width: 24px;
     height: 2px;
     background: var(--color-text-primary);
     margin: 2.5px 0;
@@ -469,10 +492,10 @@ p {
 .logo {
     display: flex;
     align-items: center;
-    gap: var(--spacing-3); /* Reduced gap for mobile balance */
+    gap: var(--spacing-3);
     text-decoration: none;
     justify-self: center;
-    z-index: calc(var(--z-index-modal) + 55); /* Below hamburger but above navigation */
+    z-index: calc(var(--z-index-header) - 5); /* Below hamburger but above navigation */
     position: relative;
     transform-origin: center;
     
@@ -489,6 +512,9 @@ p {
     border: none !important;
     outline: none !important;
     box-shadow: none !important;
+    
+    /* Ensure proper stacking */
+    isolation: isolate;
 }
 
 /* Desktop gap */
@@ -579,6 +605,7 @@ p {
         transform: scale(1.05) translateY(0) !important;
         pointer-events: auto !important;
         transition: all var(--transition-normal) ease-out;
+        z-index: calc(var(--z-index-header) - 5) !important;
     }
 }
 
@@ -594,7 +621,7 @@ p {
 
 /* Logo Image - Clean and Borderless */
 .logo-img {
-    height: 48px; /* Smaller for mobile balance */
+    height: 48px;
     width: auto;
     border-radius: var(--radius-lg);
     transition: all var(--transition-elegant) ease-out;
@@ -636,7 +663,7 @@ p {
 /* Logo Brand Name */
 .logo-name {
     font-family: var(--font-family-serif);
-    font-size: var(--font-size-lg); /* Smaller for mobile balance */
+    font-size: var(--font-size-lg);
     font-weight: var(--font-weight-light);
     color: var(--color-text-primary);
     line-height: 1;
@@ -692,45 +719,11 @@ p {
     }
 }
 
-/* === ELEGANT ENTRANCE KEYFRAMES === */
-@keyframes logoGrandEntrance {
-    0% {
-        opacity: 0;
-        transform: scale(1.8) translateY(-20px) rotate(-2deg);
-        filter: blur(3px);
-    }
-    25% {
-        opacity: 0.3;
-        transform: scale(1.6) translateY(-15px) rotate(-1deg);
-        filter: blur(2px);
-    }
-    50% {
-        opacity: 0.7;
-        transform: scale(1.4) translateY(-8px) rotate(0deg);
-        filter: blur(1px);
-    }
-    75% {
-        opacity: 0.9;
-        transform: scale(1.25) translateY(-3px);
-        filter: blur(0px);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1.15) translateY(0);
-        filter: blur(0px);
-    }
-}
-
-/* Apply the grand entrance animation */
-.logo.grand-entrance {
-    animation: logoGrandEntrance var(--transition-entrance) cubic-bezier(0.23, 1, 0.32, 1) forwards;
-}
-
 /* Actions - Right Side with Mobile-First Balance */
 .nav-actions {
     display: flex;
     align-items: center;
-    gap: var(--spacing-2); /* Reduced gap for mobile balance */
+    gap: var(--spacing-2);
     justify-self: end;
 }
 
@@ -779,14 +772,14 @@ p {
 .consultation-btn {
     display: flex;
     align-items: center;
-    gap: var(--spacing-1); /* Reduced gap for mobile */
-    padding: var(--spacing-2) var(--spacing-3); /* Much smaller padding for mobile balance */
+    gap: var(--spacing-1);
+    padding: var(--spacing-2) var(--spacing-3);
     background: var(--color-text-primary);
     color: var(--color-text-inverse);
     text-decoration: none;
-    border-radius: var(--radius-lg); /* Smaller radius for mobile */
+    border-radius: var(--radius-lg);
     font-weight: var(--font-weight-medium);
-    font-size: var(--font-size-xs); /* Much smaller font for mobile balance */
+    font-size: var(--font-size-xs);
     box-shadow: var(--shadow-sm);
     transition: var(--transition-fast);
     border: 1px solid transparent;
@@ -825,7 +818,7 @@ p {
     }
 }
 
-/* Enhanced Caruso-Style Sidebar Navigation */
+/* Enhanced Caruso-Style Sidebar Navigation with PERFECT Header Clearance */
 .nav-overlay {
     position: fixed;
     top: 0;
@@ -833,7 +826,7 @@ p {
     width: 100vw;
     height: 100vh;
     height: 100dvh;
-    z-index: var(--z-index-modal); /* Lower than header */
+    z-index: var(--z-index-modal); /* Below header */
     pointer-events: none;
     visibility: hidden;
     opacity: 0;
@@ -846,7 +839,7 @@ p {
     opacity: 1;
 }
 
-/* Enhanced backdrop overlay */
+/* CRITICAL FIX: Enhanced backdrop overlay with perfect header clearance */
 .nav-overlay::before {
     content: '';
     position: absolute;
@@ -864,29 +857,29 @@ p {
     opacity: 1;
 }
 
-/* Desktop: backdrop starts well below full header */
+/* Desktop: backdrop starts BELOW the full header */
 @media (min-width: 769px) {
     .nav-overlay::before {
-        top: 120px; /* Start well below full header (top bar + navbar) */
-        height: calc(100% - 120px);
+        top: var(--header-total-height) !important; /* Start below full header */
+        height: calc(100% - var(--header-total-height)) !important;
     }
 }
 
-/* Mobile: backdrop starts below mobile header */
+/* Mobile: backdrop covers full screen since header logo is hidden */
 @media (max-width: 768px) {
     .nav-overlay::before {
-        top: 0; /* Full coverage on mobile */
+        top: 0;
         height: 100%;
     }
 }
 
-/* Enhanced elegant sidebar */
+/* Enhanced elegant sidebar with proper header clearance */
 .nav-overlay-content {
     position: absolute;
-    top: 120px; /* Start well below full header on desktop */
+    top: var(--header-total-height); /* Start below full header on desktop */
     left: 0;
     width: 420px;
-    height: calc(100% - 120px); /* Adjust height to account for full header */
+    height: calc(100% - var(--header-total-height)); /* Adjust height for full header */
     background: var(--color-white);
     box-shadow: var(--shadow-2xl);
     transform: translateX(-100%);
@@ -1157,7 +1150,14 @@ body.nav-open {
     display: flex;
     align-items: center;
     overflow: hidden;
-    padding-top: 120px;
+    padding-top: var(--header-total-height);
+}
+
+/* Mobile hero adjustments */
+@media (max-width: 768px) {
+    .hero {
+        padding-top: calc(var(--header-navbar-height) + var(--spacing-4)); /* Adjusted for smaller mobile header */
+    }
 }
 
 /* Carousel */
@@ -1288,7 +1288,6 @@ body.nav-open {
 /* Enhanced Mobile Hero with More Breathing Room */
 @media (max-width: 768px) {
     .hero {
-        padding-top: 100px; /* Adjusted for smaller mobile header */
         min-height: 100vh;
         min-height: 100dvh;
     }
@@ -1315,10 +1314,6 @@ body.nav-open {
 }
 
 @media (max-width: 480px) {
-    .hero {
-        padding-top: 90px;
-    }
-    
     .hero-content {
         padding: 0 var(--spacing-3);
     }
@@ -1432,7 +1427,7 @@ section {
     padding: var(--spacing-20) 0 var(--spacing-16);
     background: var(--color-bg-secondary);
     text-align: center;
-    margin-top: 120px;
+    margin-top: var(--header-total-height);
     min-height: 400px;
 }
 
@@ -1446,7 +1441,7 @@ section {
     display: flex;
     align-items: center;
     margin-top: 0;
-    padding-top: 120px;
+    padding-top: var(--header-total-height);
 }
 
 .page-header.hero-background::before {
@@ -1493,14 +1488,14 @@ section {
 
 @media (max-width: 768px) {
     .page-header {
-        margin-top: 72px; /* Adjusted for smaller mobile header */
+        margin-top: var(--header-navbar-height);
         padding: var(--spacing-16) 0 var(--spacing-12);
         min-height: 300px;
     }
     
     .page-header.hero-background {
         min-height: 400px;
-        padding-top: 100px;
+        padding-top: calc(var(--header-navbar-height) + var(--spacing-8));
     }
 }
 
@@ -2597,6 +2592,35 @@ body {
     }
 }
 
+/* === PERFORMANCE OPTIMIZATIONS === */
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+img {
+    height: auto;
+}
+
+/* === ENHANCED SCROLLBAR STYLING === */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-secondary);
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-secondary-dark);
+}
+
 /* === UTILITY CLASSES === */
 .text-primary { color: var(--color-text-primary); }
 .text-secondary { color: var(--color-text-secondary); }
@@ -2647,33 +2671,4 @@ body {
     }
 }
 
-/* === ENHANCED SCROLLBAR STYLING === */
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--color-bg-secondary);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--color-secondary);
-    border-radius: var(--radius-full);
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--color-secondary-dark);
-}
-
-/* === ENHANCED PERFORMANCE OPTIMIZATIONS === */
-img, picture, video, canvas, svg {
-    display: block;
-    max-width: 100%;
-}
-
-img {
-    height: auto;
-}
-
-/* === END OF ENHANCED LUXURY THEME === */
+/* === END OF OPTIMIZED LUXURY THEME === */
