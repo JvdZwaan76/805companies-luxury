@@ -1,54 +1,13 @@
 /*
  * 805 LifeGuard - Enhanced Luxury App JS (Enterprise JavaScript Application)
- * Version: 9.1 - Fixed Header Visibility & Mobile Balance
+ * Version: 9.2 - Fixed Header Visibility, Mobile Balance & Syntax Errors
  * Sophisticated brand-focused design with perfect header visibility
  */
 
 (function() {
     'use strict';
     
-    // === ERROR HANDLING ===
-    window.addEventListener('error', function(e) {
-        Utils.log('error', 'Global JavaScript error', {
-            message: e.message,
-            filename: e.filename,
-            lineno: e.lineno,
-            colno: e.colno,
-            error: e.error
-        });
-    });
-
-    window.addEventListener('unhandledrejection', function(e) {
-        Utils.log('error', 'Unhandled promise rejection', {
-            reason: e.reason,
-            promise: e.promise
-        });
-    });
-
-    // === INITIALIZE APPLICATION ===
-    const app = new LuxuryApp();
-
-    // Export for global access and debugging
-    window.LuxuryApp = LuxuryApp;
-    window.app = app;
-    window.CarouselController = CarouselController;
-
-    // Enhanced development/debug mode
-    if (window.location.hostname === 'localhost' || 
-        window.location.hostname.indexOf('805lifeguard.com') !== -1 ||
-        window.location.search.indexOf('debug=true') !== -1) {
-        
-        window.Utils = Utils;
-        window.CONFIG = CONFIG;
-        Utils.log('info', 'Enhanced debug mode active - Fixed header visibility with desktop/mobile optimization');
-        Utils.log('info', 'Access app instance via window.app');
-        Utils.log('info', 'Access utilities via window.Utils');
-        Utils.log('info', 'Access config via window.CONFIG');
-        Utils.log('info', 'Current device type: ' + Utils.getDeviceType());
-        Utils.log('info', 'Features: Fixed header visibility, refined logo entrance (desktop only), brand prominence, ultra-clean mobile, no borders, ultra-smooth');
-    }
-
-})(); ENTERPRISE CONFIGURATION ===
+    // === ENTERPRISE CONFIGURATION ===
     const CONFIG = {
         // Contact Information
         PHONE_NUMBER: '(805) 367-6432',
@@ -1440,18 +1399,17 @@
 
         const errorDiv = document.createElement('div');
         errorDiv.className = 'form-error-message';
-        errorDiv.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--color-danger);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg);
-            z-index: 10000;
-            animation: slideInRight 0.3s ease;
-        `;
+        errorDiv.style.cssText = 
+            'position: fixed;' +
+            'top: 20px;' +
+            'right: 20px;' +
+            'background: var(--color-danger);' +
+            'color: white;' +
+            'padding: 1rem 2rem;' +
+            'border-radius: var(--radius-lg);' +
+            'box-shadow: var(--shadow-lg);' +
+            'z-index: 10000;' +
+            'animation: slideInRight 0.3s ease;';
         errorDiv.textContent = message;
 
         document.body.appendChild(errorDiv);
@@ -1600,7 +1558,7 @@
         this.smoothScroll = null;
         this.contactUpdater = null;
         this.isInitialized = false;
-        this.version = '9.1';
+        this.version = '9.2';
 
         this.init();
     }
@@ -1842,4 +1800,45 @@
         Utils.log('info', 'Enhanced Luxury Application destroyed');
     };
 
-    // ===
+    // === ERROR HANDLING ===
+    window.addEventListener('error', function(e) {
+        Utils.log('error', 'Global JavaScript error', {
+            message: e.message,
+            filename: e.filename,
+            lineno: e.lineno,
+            colno: e.colno,
+            error: e.error
+        });
+    });
+
+    window.addEventListener('unhandledrejection', function(e) {
+        Utils.log('error', 'Unhandled promise rejection', {
+            reason: e.reason,
+            promise: e.promise
+        });
+    });
+
+    // === INITIALIZE APPLICATION ===
+    const app = new LuxuryApp();
+
+    // Export for global access and debugging
+    window.LuxuryApp = LuxuryApp;
+    window.app = app;
+    window.CarouselController = CarouselController;
+
+    // Enhanced development/debug mode
+    if (window.location.hostname === 'localhost' || 
+        window.location.hostname.indexOf('805lifeguard.com') !== -1 ||
+        window.location.search.indexOf('debug=true') !== -1) {
+        
+        window.Utils = Utils;
+        window.CONFIG = CONFIG;
+        Utils.log('info', 'Enhanced debug mode active - Fixed header visibility with desktop/mobile optimization');
+        Utils.log('info', 'Access app instance via window.app');
+        Utils.log('info', 'Access utilities via window.Utils');
+        Utils.log('info', 'Access config via window.CONFIG');
+        Utils.log('info', 'Current device type: ' + Utils.getDeviceType());
+        Utils.log('info', 'Features: Fixed header visibility, refined logo entrance (desktop only), brand prominence, ultra-clean mobile, no borders, ultra-smooth');
+    }
+
+})();
