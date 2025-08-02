@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta Tags -->
-    <title>Exclusive Pool Cleaning Services - 805 LifeGuard | White-Glove Pool Maintenance for Southern California</title>
+    <title>Exclusive Pool Cleaning Services - 805 LifeGuard | White-Glove Pool Maintenance for Distinguished Clientele</title>
     <meta name="description" content="Exclusive pool cleaning and maintenance services available only to 805 LifeGuard clients. Professional weekly maintenance, chemical balancing, and equipment care for distinguished properties in Southern California.">
     <meta name="keywords" content="exclusive pool cleaning, luxury pool maintenance, pool chemical balancing, equipment maintenance, Southern California pool cleaning, Thousand Oaks pool service, Westlake Village pool maintenance, premium pool care">
     <meta name="author" content="805 LifeGuard LLC">
@@ -13,6 +13,8 @@
     <meta name="language" content="en-US">
     <meta name="geo.region" content="US-CA">
     <meta name="geo.placename" content="Thousand Oaks, California">
+    <meta name="geo.position" content="34.1706;-118.8376">
+    <meta name="ICBM" content="34.1706, -118.8376">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website">
@@ -20,45 +22,192 @@
     <meta property="og:description" content="White-glove pool cleaning and maintenance services exclusively for 805 LifeGuard clients. Professional aquatic environment management in Southern California.">
     <meta property="og:url" content="https://805lifeguard.com/pool-cleaning.html">
     <meta property="og:site_name" content="805 LifeGuard">
-    <meta property="og:image" content="https://805lifeguard.com/images/services/pool-cleaning-og-1200x630.jpg">
+    <meta property="og:image" content="https://805lifeguard.com/images/cleaning/pool-cleaning-og-1200x630.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="805 LifeGuard Exclusive Pool Cleaning Services">
     <meta property="og:locale" content="en_US">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Exclusive Pool Cleaning - 805 LifeGuard">
     <meta name="twitter:description" content="White-glove pool maintenance exclusively for distinguished 805 LifeGuard clients.">
-    <meta name="twitter:image" content="https://805lifeguard.com/images/services/pool-cleaning-twitter-1200x600.jpg">
+    <meta name="twitter:image" content="https://805lifeguard.com/images/cleaning/pool-cleaning-twitter-1200x600.jpg">
+    <meta name="twitter:image:alt" content="805 LifeGuard Pool Cleaning Services">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://805lifeguard.com/pool-cleaning.html">
     
-    <!-- Sophisticated Country Club Fonts -->
+    <!-- Critical CSS - Inlined for fastest loading -->
+    <style>
+        /* Critical path CSS for immediate rendering */
+        :root {
+            --color-primary-darkest: #1A1A1A;
+            --color-primary: #4A4A4A;
+            --color-secondary: #B8A082;
+            --color-white: #FFFFFF;
+            --color-text-primary: #0F0F0F;
+            --color-text-inverse: #FFFFFF;
+            --color-bg-primary: #FFFFFF;
+            --font-family-serif: 'Playfair Display', Georgia, serif;
+            --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            --header-total-height: 132px;
+            --header-navbar-height: 88px;
+            --z-index-header: 1070;
+            --z-index-hamburger: 1080;
+            --z-index-modal: 1050;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: var(--font-family-sans);
+            color: var(--color-text-primary);
+            background: var(--color-bg-primary);
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: var(--z-index-header);
+            background: var(--color-white);
+            border-bottom: 1px solid #E8E8E8;
+        }
+        
+        .header-top {
+            background: linear-gradient(135deg, #1A1A1A, #2F2F2F);
+            color: var(--color-text-inverse);
+            padding: 0.5rem 0;
+            height: 44px;
+            display: flex;
+            align-items: center;
+        }
+        
+        @media (max-width: 768px) {
+            .header-top { display: none; }
+        }
+        
+        .navbar {
+            padding: 1.25rem 0;
+            height: var(--header-navbar-height);
+            display: flex;
+            align-items: center;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: var(--header-total-height);
+            overflow: hidden;
+        }
+        
+        .hero-carousel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .carousel-slide.active {
+            opacity: 1;
+        }
+        
+        .carousel-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg,rgba(0, 0, 0, 0.3) 0%,rgba(0, 0, 0, 0.4) 50%,rgba(0, 0, 0, 0.5) 100%);
+            z-index: 1;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg,rgba(0, 0, 0, 0.2) 0%,rgba(0, 0, 0, 0.3) 50%,rgba(0, 0, 0, 0.4) 100%);
+            z-index: 2;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: var(--color-text-inverse);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .hero { 
+                padding-top: calc(var(--header-navbar-height) + 1rem);
+            }
+        }
+    </style>
+    
+    <!-- Enhanced Performance: DNS Prefetch and Preconnect -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Enhanced Luxury Theme CSS -->
-    <link rel="stylesheet" href="css/luxury-theme.css">
-    
-    <!-- Preload critical images -->
-    <link rel="preload" as="image" href="images/services/service-pool-cleaning-1920x1080.webp" type="image/webp">
-    <link rel="preload" as="image" href="images/services/service-pool-cleaning-1920x1080.jpg" type="image/jpeg">
-    <link rel="preload" as="image" href="images/services/credentials-background-1600x900.webp" type="image/webp">
-    <link rel="preload" as="image" href="images/services/credentials-background-1600x900.jpg" type="image/jpeg">
-    <link rel="preload" as="image" href="images/about/mission-statement-background-1600x900.webp" type="image/webp">
-    <link rel="preload" as="image" href="images/about/mission-statement-background-1600x900.jpg" type="image/jpeg">
+    <!-- Critical Resource Preloading -->
+    <link rel="preload" as="image" href="images/cleaning/pool-cleaning-hero-1920x1080.webp" type="image/webp">
+    <link rel="preload" as="image" href="images/cleaning/pool-cleaning-hero-1920x1080.jpg" type="image/jpeg">
     <link rel="preload" as="image" href="images/logos/805-lifeguard-logo.png">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- Optimized Typography - Async Loading -->
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap"></noscript>
+    
+    <!-- Font Awesome Icons - Deferred -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+    
+    <!-- Main CSS - Deferred -->
+    <link rel="preload" href="css/luxury-theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/luxury-theme.css"></noscript>
     
     <!-- Favicon and Apple Touch Icons -->
     <link rel="icon" type="image/x-icon" href="images/logos/805-lifeguard-favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="images/logos/805-lifeguard-apple-touch-icon-180x180.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/logos/805-lifeguard-favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/logos/805-lifeguard-favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
@@ -81,56 +230,16 @@
         },
         {
           "@type": "City",
-          "name": "Westlake Village",
-          "addressRegion": "CA"
-        },
-        {
-          "@type": "City",
-          "name": "Agoura Hills",
-          "addressRegion": "CA"
-        },
-        {
-          "@type": "City",
-          "name": "Malibu",
+          "name": "Westlake Village", 
           "addressRegion": "CA"
         }
       ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Pool Cleaning Services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Weekly Pool Maintenance",
-              "description": "Comprehensive weekly cleaning including water testing, chemical balancing, and equipment inspection"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Chemical Balancing",
-              "description": "Expert water chemistry management using professional-grade equipment and premium chemicals"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Equipment Maintenance",
-              "description": "Proactive maintenance of pumps, filters, heaters, and automated systems"
-            }
-          }
-        ]
-      },
       "url": "https://805lifeguard.com/pool-cleaning.html"
     }
     </script>
 </head>
 <body itemscope itemtype="https://schema.org/WebPage">
-    <!-- Enhanced Header -->
+    <!-- Enhanced Enterprise Header with Perfect Visibility -->
     <header class="header" id="header" role="banner">
         <!-- Top Bar -->
         <div class="header-top">
@@ -154,169 +263,213 @@
             </div>
         </div>
         
-        <!-- Main Navigation -->
+        <!-- Enhanced Main Navigation with Perfect Mobile Balance -->
         <nav class="navbar" role="navigation" aria-label="Main navigation">
             <div class="container">
                 <div class="navbar-content">
-                    <!-- Logo -->
-                    <a href="/" class="logo" aria-label="805 LifeGuard Homepage">
-                        <img src="images/logos/805-lifeguard-logo.png" alt="805 LifeGuard - Premier Aquatic Services" class="logo-img" width="64" height="64">
+                    <!-- Enhanced Hamburger Menu - Left -->
+                    <div class="desktop-menu-toggle">
+                        <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navOverlay">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </button>
+                    </div>
+                    
+                    <!-- Logo - Centered with Elegant Entrance Animation -->
+                    <a href="/" class="logo" id="mainLogo" aria-label="805 LifeGuard Homepage">
+                        <img src="images/logos/805-lifeguard-logo.png" alt="805 LifeGuard - Aquatic Services" class="logo-img" width="48" height="48">
                         <div class="logo-text">
                             <div class="logo-name">805 LifeGuard</div>
-                            <div class="logo-tagline">Premier Aquatic Services</div>
+                            <div class="logo-tagline">Aquatic Services</div>
                         </div>
                     </a>
                     
-                    <!-- Desktop Navigation -->
-                    <div class="nav-desktop">
-                        <ul class="nav-menu" role="menubar">
-                            <li role="none"><a href="about.html" class="nav-link" role="menuitem">About</a></li>
-                            <li role="none"><a href="services.html" class="nav-link" role="menuitem">Services</a></li>
-                            <li role="none"><a href="pool-cleaning.html" class="nav-link active" role="menuitem">Pool Cleaning</a></li>
-                            <li role="none"><a href="hoa.html" class="nav-link" role="menuitem">HOA Services</a></li>
-                            <li role="none"><a href="portfolio.html" class="nav-link" role="menuitem">Portfolio</a></li>
-                            <li role="none"><a href="testimonials.html" class="nav-link" role="menuitem">Testimonials</a></li>
-                            <li role="none"><a href="faq.html" class="nav-link" role="menuitem">FAQ</a></li>
-                        </ul>
-                        
-                        <div class="nav-actions">
-                            <div class="portal-group">
-                                <a href="https://client.805companies.com" target="_blank" rel="noopener noreferrer" class="portal-btn client-portal" aria-label="Client Portal - Opens in new window">
-                                    <i class="fas fa-user-circle" aria-hidden="true"></i>
-                                    Client
-                                </a>
-                                <a href="https://admin.805companies.com" target="_blank" rel="noopener noreferrer" class="portal-btn admin-portal" aria-label="Admin Portal - Opens in new window">
-                                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
-                                    Admin
-                                </a>
-                            </div>
-                            <a href="contact.html" class="consultation-btn" aria-label="Schedule Private Consultation">
-                                <i class="fas fa-calendar-check" aria-hidden="true"></i>
-                                Private Consultation
+                    <!-- Actions - Right with Mobile-First Branding Focus -->
+                    <div class="nav-actions">
+                        <!-- Portal buttons hidden on mobile for cleaner branding -->
+                        <div class="portal-group">
+                            <a href="https://client.805companies.com" target="_blank" rel="noopener noreferrer" class="portal-btn client-portal" aria-label="Client Portal - Opens in new window">
+                                <i class="fas fa-user-circle" aria-hidden="true"></i>
+                                Client
+                            </a>
+                            <a href="https://admin.805companies.com" target="_blank" rel="noopener noreferrer" class="portal-btn admin-portal" aria-label="Admin Portal - Opens in new window">
+                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                Admin
                             </a>
                         </div>
+                        <a href="contact.html" class="consultation-btn" aria-label="Schedule Private Consultation">
+                            <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                            <span class="consultation-text">Consultation</span>
+                        </a>
                     </div>
-                    
-                    <!-- Mobile Menu Button -->
-                    <button class="mobile-toggle" id="mobileToggle" aria-label="Open mobile navigation menu" aria-expanded="false" aria-controls="mobileNav">
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                    </button>
                 </div>
             </div>
         </nav>
         
-        <!-- Mobile Navigation -->
-        <div class="nav-mobile" id="mobileNav" role="dialog" aria-label="Mobile navigation menu" aria-hidden="true">
-            <div class="mobile-nav-content">
-                <div class="mobile-nav-header">
-                    <div class="mobile-logo">
-                        <img src="images/logos/805-lifeguard-logo.png" alt="805 LifeGuard" width="40" height="40">
+        <!-- Enhanced Full-Screen Navigation Overlay -->
+        <div class="nav-overlay" id="navOverlay" role="dialog" aria-label="Navigation menu" aria-hidden="true">
+            <div class="nav-overlay-content">
+                <!-- Mobile Branding Header - Shows only on mobile for optimal branding -->
+                <div class="nav-overlay-header">
+                    <a href="/" class="overlay-logo" onclick="document.getElementById('menuToggle').click();">
+                        <img src="images/logos/805-lifeguard-logo.png" alt="805 LifeGuard" width="48" height="48">
                         <span>805 LifeGuard</span>
-                    </div>
-                    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile navigation menu">
-                        <i class="fas fa-times" aria-hidden="true"></i>
-                    </button>
+                    </a>
                 </div>
                 
-                <nav class="mobile-nav-menu" role="navigation" aria-label="Mobile menu">
-                    <a href="about.html" class="mobile-nav-link">About</a>
-                    <a href="services.html" class="mobile-nav-link">Services</a>
-                    <a href="pool-cleaning.html" class="mobile-nav-link active">Pool Cleaning</a>
-                    <a href="hoa.html" class="mobile-nav-link">HOA Services</a>
-                    <a href="portfolio.html" class="mobile-nav-link">Portfolio</a>
-                    <a href="testimonials.html" class="mobile-nav-link">Testimonials</a>
-                    <a href="faq.html" class="mobile-nav-link">FAQ</a>
+                <nav class="nav-overlay-menu" role="navigation" aria-label="Main menu">
+                    <a href="about.html" class="overlay-nav-link">About</a>
+                    <a href="services.html" class="overlay-nav-link">Services</a>
+                    <a href="pool-cleaning.html" class="overlay-nav-link active">Pool Cleaning</a>
+                    <a href="hoa.html" class="overlay-nav-link">HOA Services</a>
+                    <a href="portfolio.html" class="overlay-nav-link">Portfolio</a>
+                    <a href="testimonials.html" class="overlay-nav-link">Testimonials</a>
+                    <a href="faq.html" class="overlay-nav-link">FAQ</a>
                 </nav>
                 
-                <div class="mobile-nav-actions">
-                    <div class="mobile-portals">
-                        <a href="https://client.805companies.com" target="_blank" rel="noopener noreferrer" class="mobile-portal-btn" aria-label="Client Portal - Opens in new window">
+                <div class="nav-overlay-actions">
+                    <div class="overlay-portals">
+                        <a href="https://client.805companies.com" target="_blank" rel="noopener noreferrer" class="overlay-portal-btn" aria-label="Client Portal - Opens in new window">
                             <i class="fas fa-user-circle" aria-hidden="true"></i>
                             Client Portal
                         </a>
-                        <a href="https://admin.805companies.com" target="_blank" rel="noopener noreferrer" class="mobile-portal-btn" aria-label="Admin Portal - Opens in new window">
+                        <a href="https://admin.805companies.com" target="_blank" rel="noopener noreferrer" class="overlay-portal-btn" aria-label="Admin Portal - Opens in new window">
                             <i class="fas fa-shield-alt" aria-hidden="true"></i>
                             Admin Portal
                         </a>
                     </div>
-                    <a href="contact.html" class="mobile-consultation-btn" aria-label="Schedule Private Consultation">
+                    <a href="contact.html" class="overlay-consultation-btn" aria-label="Schedule Private Consultation">
                         <i class="fas fa-calendar-check" aria-hidden="true"></i>
                         Private Consultation
                     </a>
-                </div>
-                
-                <div class="mobile-nav-contact">
-                    <a href="tel:+18053676432" class="mobile-contact-btn" aria-label="Call 805 LifeGuard">
-                        <i class="fas fa-phone" aria-hidden="true"></i>
-                        (805) 367-6432
-                    </a>
+                    
+                    <div class="overlay-nav-contact">
+                        <a href="tel:+18053676432" class="overlay-contact-btn" aria-label="Call 805 LifeGuard">
+                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            (805) 367-6432
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Breadcrumbs -->
-    <nav class="breadcrumbs" aria-label="Breadcrumb navigation" itemscope itemtype="https://schema.org/BreadcrumbList">
-        <div class="container">
-            <ol class="breadcrumb-list">
-                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a href="/" itemprop="item">
-                        <span itemprop="name">Home</span>
-                    </a>
-                    <meta itemprop="position" content="1" />
-                </li>
-                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <span itemprop="name" aria-current="page">Pool Cleaning</span>
-                    <meta itemprop="position" content="2" />
-                </li>
-            </ol>
+    <!-- Enhanced Hero Section (Clean Caruso Aesthetic) -->
+    <section class="hero" role="banner" aria-label="Exclusive Pool Cleaning Services">
+        <!-- Background Carousel -->
+        <div class="hero-carousel" id="heroCarousel">
+            <div class="carousel-slide active" style="background-image: url('images/cleaning/pool-cleaning-hero-1920x1080.jpg')" data-bg-desktop="images/cleaning/pool-cleaning-hero-1920x1080.jpg" data-bg-tablet="images/cleaning/pool-cleaning-hero-1024x576.jpg" data-bg-mobile="images/cleaning/pool-cleaning-hero-768x432.jpg" aria-label="Luxury pool cleaning and maintenance"></div>
+            <div class="carousel-slide" data-bg-desktop="images/cleaning/pool-maintenance-service-1920x1080.jpg" data-bg-tablet="images/cleaning/pool-maintenance-service-1024x576.jpg" data-bg-mobile="images/cleaning/pool-maintenance-service-768x432.jpg" aria-label="Professional pool maintenance service"></div>
+            <div class="carousel-slide" data-bg-desktop="images/cleaning/pool-chemical-balancing-1920x1080.jpg" data-bg-tablet="images/cleaning/pool-chemical-balancing-1024x576.jpg" data-bg-mobile="images/cleaning/pool-chemical-balancing-768x432.jpg" aria-label="Expert pool chemical balancing"></div>
+            <div class="carousel-slide" data-bg-desktop="images/cleaning/pool-equipment-care-1920x1080.jpg" data-bg-tablet="images/cleaning/pool-equipment-care-1024x576.jpg" data-bg-mobile="images/cleaning/pool-equipment-care-768x432.jpg" aria-label="Pool equipment care and maintenance"></div>
+            <div class="carousel-slide" data-bg-desktop="images/cleaning/pool-cleaning-excellence-1920x1080.jpg" data-bg-tablet="images/cleaning/pool-cleaning-excellence-1024x576.jpg" data-bg-mobile="images/cleaning/pool-cleaning-excellence-768x432.jpg" aria-label="Pool cleaning excellence and white-glove service"></div>
         </div>
-    </nav>
-
-    <!-- Pool Cleaning Hero Section -->
-    <section class="pool-cleaning-hero" role="banner">
-        <div class="pool-cleaning-hero-background" style="background-image: url('images/services/service-pool-cleaning-1920x1080.jpg');"></div>
+        
+        <!-- Carousel Overlay -->
         <div class="hero-overlay"></div>
         
         <div class="container">
-            <div class="hero-content">
+            <div class="hero-content" itemscope itemtype="https://schema.org/Organization">
                 <div class="section-badge">
                     <i class="fas fa-crown" aria-hidden="true"></i>
                     Exclusive Client Service
                 </div>
-                
-                <h1 itemprop="name">White-Glove Pool Cleaning & Maintenance</h1>
-                
+                <h1 class="hero-title" itemprop="slogan">White-Glove Pool Cleaning & Maintenance</h1>
                 <p class="hero-subtitle" itemprop="description">
                     Exclusively available to our valued lifeguarding and instruction clients, our comprehensive 
                     pool cleaning services ensure your aquatic environment maintains the pristine standards 
                     worthy of your distinguished property.
                 </p>
+                
+                <div class="hero-buttons">
+                    <a href="contact.html?service=pool-cleaning" class="btn btn-primary" aria-label="Request pool cleaning service">
+                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                        Request Service
+                    </a>
+                    <a href="https://client.805companies.com" class="btn btn-secondary" aria-label="Access client portal" target="_blank">
+                        <i class="fas fa-user-circle" aria-hidden="true"></i>
+                        Client Portal
+                    </a>
+                </div>
+                
+                <div class="hero-notice">
+                    <i class="fas fa-key" aria-hidden="true"></i>
+                    Available exclusively to current 805 LifeGuard clients with lifeguarding or instruction services.
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Exclusive Service Notice -->
-    <section class="exclusive-notice" style="padding: 80px 0; background: linear-gradient(135deg, var(--white-warm), var(--cream));">
+    <section class="about-section">
         <div class="container">
-            <div class="notice-content" style="display: flex; align-items: center; gap: 40px; max-width: 800px; margin: 0 auto; padding: 40px; background: var(--white-pure); border-radius: var(--border-radius-xl); box-shadow: var(--shadow-lg); border: 2px solid var(--gold-medium);">
-                <div class="notice-icon" style="flex-shrink: 0;">
-                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--gold-dark), var(--gold-medium)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white-pure); font-size: 2rem;">
-                        <i class="fas fa-key" aria-hidden="true"></i>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="section-badge">Exclusive Privilege</div>
+                    <h2>Client-Only Pool Cleaning Services</h2>
+                    <p class="lead-text">
+                        Our pool cleaning services are exclusively available to current 805 LifeGuard clients 
+                        who utilize our lifeguarding or instruction services. This ensures the highest level 
+                        of care and maintains our commitment to comprehensive aquatic excellence.
+                    </p>
+                    <p>
+                        By limiting our pool cleaning services to existing clients, we can provide an integrated 
+                        approach to aquatic environment management that seamlessly coordinates with your safety 
+                        and instruction schedules while maintaining the sophisticated standards expected by our 
+                        distinguished clientele.
+                    </p>
+                    
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-key"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Exclusive Access</h4>
+                                <p>Available only to current clients with lifeguarding or swimming instruction services</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Integrated Services</h4>
+                                <p>Seamless coordination with your existing aquatic safety and instruction schedules</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Premium Standards</h4>
+                                <p>White-glove service that maintains the same luxury standards as our other offerings</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="notice-text">
-                    <h3 style="color: var(--navy-dark); margin-bottom: 16px; font-size: 1.5rem;">Exclusive Client Privilege</h3>
-                    <p style="color: var(--gray-medium); margin: 0; line-height: 1.6;">Our pool cleaning services are exclusively available to current 805 LifeGuard clients who utilize our lifeguarding or instruction services. This ensures the highest level of care and maintains our commitment to comprehensive aquatic excellence.</p>
+                
+                <div class="about-images">
+                    <picture>
+                        <source srcset="images/cleaning/exclusive-service-notice-800x600.webp" type="image/webp">
+                        <img src="images/cleaning/exclusive-service-notice-800x600.jpg" alt="Exclusive pool cleaning service for 805 LifeGuard clients" class="about-img primary" loading="lazy">
+                    </picture>
+                    
+                    <picture>
+                        <source srcset="images/cleaning/integrated-aquatic-services-800x600.webp" type="image/webp">
+                        <img src="images/cleaning/integrated-aquatic-services-800x600.jpg" alt="Integrated aquatic services coordination" class="about-img secondary" loading="lazy">
+                    </picture>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Service Overview -->
-    <section class="cleaning-services-overview" style="padding: 80px 0; background: var(--white-pure);">
+    <section class="services-section">
         <div class="container">
             <div class="section-header">
                 <div class="section-badge">Comprehensive Care</div>
@@ -327,70 +480,79 @@
                 </p>
             </div>
             
-            <div class="cleaning-features-grid" style="display: grid; gap: 80px; margin-top: 80px;">
-                <div class="cleaning-feature" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
-                    <div class="feature-image" style="position: relative; border-radius: var(--border-radius-xl); overflow: hidden; box-shadow: var(--shadow-lg);">
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
                         <picture>
-                            <source srcset="images/about/mission-statement-background-1600x900.webp" type="image/webp">
-                            <img src="images/about/mission-statement-background-1600x900.jpg" alt="Weekly Pool Maintenance" loading="lazy" style="width: 100%; height: 400px; object-fit: cover;">
+                            <source srcset="images/cleaning/weekly-maintenance-800x600.webp" type="image/webp">
+                            <img src="images/cleaning/weekly-maintenance-800x600.jpg" alt="Weekly Pool Maintenance Programs" loading="lazy">
                         </picture>
-                        <div class="feature-icon" style="position: absolute; top: 24px; left: 24px; width: 60px; height: 60px; background: var(--white-pure); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold-dark); font-size: 1.5rem; box-shadow: var(--shadow-md);">
+                        <div class="service-icon">
                             <i class="fas fa-calendar-week"></i>
                         </div>
                     </div>
-                    <div class="feature-content">
-                        <h3 style="color: var(--navy-dark); margin-bottom: 16px; font-size: 1.75rem;">Weekly Maintenance Programs</h3>
-                        <p style="color: var(--gray-medium); margin-bottom: 24px; line-height: 1.7;">Comprehensive weekly cleaning schedules that include water testing, chemical balancing, skimming, vacuuming, and equipment inspection. Tailored to your pool's specific needs and usage patterns.</p>
-                        <ul class="feature-list" style="list-style: none; margin: 0; padding: 0;">
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Professional water chemistry analysis</li>
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Thorough cleaning and debris removal</li>
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Equipment performance monitoring</li>
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Detailed service reports</li>
-                        </ul>
+                    <div class="service-content">
+                        <h3 class="service-title">Weekly Maintenance Programs</h3>
+                        <p class="service-description">
+                            Comprehensive weekly cleaning schedules that include water testing, chemical balancing, 
+                            skimming, vacuuming, and equipment inspection. Tailored to your pool's specific needs.
+                        </p>
+                        <div class="service-features">
+                            <span class="feature-tag">Water Chemistry Analysis</span>
+                            <span class="feature-tag">Thorough Cleaning</span>
+                            <span class="feature-tag">Equipment Monitoring</span>
+                            <span class="feature-tag">Service Reports</span>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="cleaning-feature reverse" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
-                    <div class="feature-content" style="order: 1;">
-                        <h3 style="color: var(--navy-dark); margin-bottom: 16px; font-size: 1.75rem;">Expert Chemical Balancing</h3>
-                        <p style="color: var(--gray-medium); margin-bottom: 24px; line-height: 1.7;">Precise water chemistry management using professional-grade testing equipment and premium chemicals. We maintain optimal pH, chlorine, alkalinity, and calcium hardness levels for swimmer comfort and safety.</p>
-                        <ul class="feature-list" style="list-style: none; margin: 0; padding: 0;">
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Professional-grade testing protocols</li>
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Premium chemical treatments</li>
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Automated system optimization</li>
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Seasonal adjustment programs</li>
-                        </ul>
-                    </div>
-                    <div class="feature-image" style="position: relative; border-radius: var(--border-radius-xl); overflow: hidden; box-shadow: var(--shadow-lg); order: 2;">
+                <div class="service-card">
+                    <div class="service-image">
                         <picture>
-                            <source srcset="images/services/services-cta-background-1600x900.webp" type="image/webp">
-                            <img src="images/about/company-values-background-1600x900.jpg" alt="Expert Chemical Balancing" loading="lazy" style="width: 100%; height: 400px; object-fit: cover;">
+                            <source srcset="images/cleaning/chemical-balancing-800x600.webp" type="image/webp">
+                            <img src="images/cleaning/chemical-balancing-800x600.jpg" alt="Expert Chemical Balancing" loading="lazy">
                         </picture>
-                        <div class="feature-icon" style="position: absolute; top: 24px; left: 24px; width: 60px; height: 60px; background: var(--white-pure); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold-dark); font-size: 1.5rem; box-shadow: var(--shadow-md);">
+                        <div class="service-icon">
                             <i class="fas fa-flask"></i>
                         </div>
                     </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Expert Chemical Balancing</h3>
+                        <p class="service-description">
+                            Precise water chemistry management using professional-grade testing equipment and premium 
+                            chemicals. We maintain optimal pH, chlorine, alkalinity, and calcium hardness levels.
+                        </p>
+                        <div class="service-features">
+                            <span class="feature-tag">Professional Testing</span>
+                            <span class="feature-tag">Premium Chemicals</span>
+                            <span class="feature-tag">System Optimization</span>
+                            <span class="feature-tag">Seasonal Adjustments</span>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="cleaning-feature" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
-                    <div class="feature-image" style="position: relative; border-radius: var(--border-radius-xl); overflow: hidden; box-shadow: var(--shadow-lg);">
+                <div class="service-card">
+                    <div class="service-image">
                         <picture>
-                            <source srcset="images/services/credentials-background-1600x900.webp" type="image/webp">
-                            <img src="images/services/credentials-background-1600x900.jpg" alt="Equipment Care & Maintenance" loading="lazy" style="width: 100%; height: 400px; object-fit: cover;">
+                            <source srcset="images/cleaning/equipment-maintenance-800x600.webp" type="image/webp">
+                            <img src="images/cleaning/equipment-maintenance-800x600.jpg" alt="Equipment Care & Maintenance" loading="lazy">
                         </picture>
-                        <div class="feature-icon" style="position: absolute; top: 24px; left: 24px; width: 60px; height: 60px; background: var(--white-pure); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold-dark); font-size: 1.5rem; box-shadow: var(--shadow-md);">
+                        <div class="service-icon">
                             <i class="fas fa-cogs"></i>
                         </div>
                     </div>
-                    <div class="feature-content">
-                        <h3 style="color: var(--navy-dark); margin-bottom: 16px; font-size: 1.75rem;">Equipment Care & Maintenance</h3>
-                        <p style="color: var(--gray-medium); margin-bottom: 24px; line-height: 1.7;">Proactive maintenance of all pool equipment including pumps, filters, heaters, and automated systems. Our preventive approach ensures optimal performance and extends equipment lifespan.</p>
-                        <ul class="feature-list" style="list-style: none; margin: 0; padding: 0;">
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Filter cleaning and replacement</li>
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Pump and motor inspection</li>
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Heater system optimization</li>
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Automation system calibration</li>
-                        </ul>
+                    <div class="service-content">
+                        <h3 class="service-title">Equipment Care & Maintenance</h3>
+                        <p class="service-description">
+                            Proactive maintenance of all pool equipment including pumps, filters, heaters, and 
+                            automated systems. Our preventive approach ensures optimal performance and longevity.
+                        </p>
+                        <div class="service-features">
+                            <span class="feature-tag">Filter Cleaning</span>
+                            <span class="feature-tag">Pump Inspection</span>
+                            <span class="feature-tag">Heater Optimization</span>
+                            <span class="feature-tag">System Calibration</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -398,7 +560,7 @@
     </section>
 
     <!-- Service Tiers -->
-    <section class="service-tiers" style="padding: 80px 0; background: linear-gradient(135deg, var(--white-warm), var(--cream));">
+    <section class="coverage-section">
         <div class="container">
             <div class="section-header">
                 <div class="section-badge">Service Excellence</div>
@@ -409,84 +571,53 @@
                 </p>
             </div>
             
-            <div class="tiers-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; margin-top: 80px;">
-                <div class="tier-card" style="background: var(--white-pure); border-radius: var(--border-radius-xl); padding: 40px; box-shadow: var(--shadow-lg); border: 1px solid var(--border-color); transition: var(--transition);">
-                    <div class="tier-header" style="text-align: center; margin-bottom: 32px;">
-                        <div class="tier-icon" style="width: 60px; height: 60px; background: var(--gray-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold-dark); font-size: 1.5rem; margin: 0 auto 16px;">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h3 style="color: var(--navy-dark); margin-bottom: 8px; font-size: 1.5rem;">Essential Care</h3>
-                        <p class="tier-subtitle" style="color: var(--gold-dark); font-weight: 600; margin: 0; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Foundation of Excellence</p>
-                    </div>
-                    <div class="tier-features" style="margin-bottom: 32px;">
-                        <ul style="list-style: none; margin: 0; padding: 0;">
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Weekly professional cleaning</li>
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Water chemistry testing & balancing</li>
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Skimming, brushing & vacuuming</li>
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Filter cleaning and maintenance</li>
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Equipment inspection reports</li>
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Emergency response support</li>
-                        </ul>
-                    </div>
-                    <div class="tier-note" style="background: var(--cream); padding: 20px; border-radius: var(--border-radius); border-left: 4px solid var(--gold-medium);">
-                        <p style="margin: 0; color: var(--gray-dark); font-size: 0.9375rem; line-height: 1.5;">Perfect for pools with regular family use requiring consistent maintenance and water quality management.</p>
-                    </div>
+            <div class="coverage-grid">
+                <div class="coverage-card">
+                    <h3><i class="fas fa-star"></i> Essential Care</h3>
+                    <p>Foundation of Excellence</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Weekly professional cleaning</li>
+                        <li><i class="fas fa-check"></i> Water chemistry testing & balancing</li>
+                        <li><i class="fas fa-check"></i> Skimming, brushing & vacuuming</li>
+                        <li><i class="fas fa-check"></i> Filter cleaning and maintenance</li>
+                        <li><i class="fas fa-check"></i> Equipment inspection reports</li>
+                        <li><i class="fas fa-check"></i> Emergency response support</li>
+                    </ul>
                 </div>
                 
-                <div class="tier-card featured" style="background: var(--white-pure); border-radius: var(--border-radius-xl); padding: 40px; box-shadow: var(--shadow-xl); border: 2px solid var(--gold-medium); transform: translateY(-8px); position: relative;">
-                    <div class="tier-badge" style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--gold-medium); color: var(--navy-dark); padding: 8px 24px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">Most Popular</div>
-                    <div class="tier-header" style="text-align: center; margin-bottom: 32px;">
-                        <div class="tier-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--gold-dark), var(--gold-medium)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white-pure); font-size: 1.5rem; margin: 0 auto 16px;">
-                            <i class="fas fa-crown"></i>
-                        </div>
-                        <h3 style="color: var(--navy-dark); margin-bottom: 8px; font-size: 1.5rem;">Premium Care</h3>
-                        <p class="tier-subtitle" style="color: var(--gold-dark); font-weight: 600; margin: 0; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Luxury Standard</p>
-                    </div>
-                    <div class="tier-features" style="margin-bottom: 32px;">
-                        <ul style="list-style: none; margin: 0; padding: 0;">
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> All Essential Care services</li>
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Bi-weekly deep cleaning sessions</li>
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Tile and grout detailed cleaning</li>
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Pool deck and furniture care</li>
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Seasonal equipment overhauls</li>
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Water feature maintenance</li>
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Aesthetic enhancement services</li>
-                        </ul>
-                    </div>
-                    <div class="tier-note" style="background: var(--cream); padding: 20px; border-radius: var(--border-radius); border-left: 4px solid var(--gold-medium);">
-                        <p style="margin: 0; color: var(--gray-dark); font-size: 0.9375rem; line-height: 1.5;">Ideal for distinguished properties hosting events and maintaining the highest aesthetic standards.</p>
-                    </div>
+                <div class="coverage-card featured">
+                    <h3><i class="fas fa-crown"></i> Premium Care</h3>
+                    <p>Luxury Standard</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> All Essential Care services</li>
+                        <li><i class="fas fa-check"></i> Bi-weekly deep cleaning sessions</li>
+                        <li><i class="fas fa-check"></i> Tile and grout detailed cleaning</li>
+                        <li><i class="fas fa-check"></i> Pool deck and furniture care</li>
+                        <li><i class="fas fa-check"></i> Seasonal equipment overhauls</li>
+                        <li><i class="fas fa-check"></i> Water feature maintenance</li>
+                        <li><i class="fas fa-check"></i> Aesthetic enhancement services</li>
+                    </ul>
                 </div>
                 
-                <div class="tier-card" style="background: var(--white-pure); border-radius: var(--border-radius-xl); padding: 40px; box-shadow: var(--shadow-lg); border: 1px solid var(--border-color); transition: var(--transition);">
-                    <div class="tier-header" style="text-align: center; margin-bottom: 32px;">
-                        <div class="tier-icon" style="width: 60px; height: 60px; background: var(--navy-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold-medium); font-size: 1.5rem; margin: 0 auto 16px;">
-                            <i class="fas fa-gem"></i>
-                        </div>
-                        <h3 style="color: var(--navy-dark); margin-bottom: 8px; font-size: 1.5rem;">Platinum Concierge</h3>
-                        <p class="tier-subtitle" style="color: var(--gold-dark); font-weight: 600; margin: 0; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Ultimate Excellence</p>
-                    </div>
-                    <div class="tier-features" style="margin-bottom: 32px;">
-                        <ul style="list-style: none; margin: 0; padding: 0;">
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> All Premium Care services</li>
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Daily monitoring and touch-ups</li>
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> White-glove equipment concierge</li>
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Landscape integration services</li>
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Pre-event preparation protocols</li>
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> 24/7 emergency response</li>
-                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--gray-dark);"><i class="fas fa-check" style="color: var(--gold-medium);"></i> Bespoke service customization</li>
-                        </ul>
-                    </div>
-                    <div class="tier-note" style="background: var(--cream); padding: 20px; border-radius: var(--border-radius); border-left: 4px solid var(--gold-medium);">
-                        <p style="margin: 0; color: var(--gray-dark); font-size: 0.9375rem; line-height: 1.5;">For ultra-luxury properties requiring the highest level of comprehensive aquatic environment management.</p>
-                    </div>
+                <div class="coverage-card">
+                    <h3><i class="fas fa-gem"></i> Platinum Concierge</h3>
+                    <p>Ultimate Excellence</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> All Premium Care services</li>
+                        <li><i class="fas fa-check"></i> Daily monitoring and touch-ups</li>
+                        <li><i class="fas fa-check"></i> White-glove equipment concierge</li>
+                        <li><i class="fas fa-check"></i> Landscape integration services</li>
+                        <li><i class="fas fa-check"></i> Pre-event preparation protocols</li>
+                        <li><i class="fas fa-check"></i> 24/7 emergency response</li>
+                        <li><i class="fas fa-check"></i> Bespoke service customization</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Specialized Services -->
-    <section class="specialized-services" style="padding: 80px 0; background: var(--white-pure);">
+    <section class="services-section">
         <div class="container">
             <div class="section-header">
                 <div class="section-badge">Specialized Excellence</div>
@@ -497,64 +628,112 @@
                 </p>
             </div>
             
-            <div class="specialized-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; margin-top: 80px;">
-                <div class="specialized-item" style="display: flex; gap: 24px; padding: 32px; background: var(--white-warm); border-radius: var(--border-radius-xl); border: 1px solid var(--border-color); transition: var(--transition);">
-                    <div class="specialized-icon" style="width: 60px; height: 60px; background: var(--gold-medium); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white-pure); font-size: 1.25rem; flex-shrink: 0;">
-                        <i class="fas fa-tint"></i>
-                    </div>
-                    <div class="specialized-content">
-                        <h4 style="color: var(--navy-dark); margin-bottom: 12px; font-size: 1.125rem;">Water Feature Maintenance</h4>
-                        <p style="color: var(--gray-medium); margin: 0; line-height: 1.6;">Specialized care for fountains, waterfalls, spas, and other water features, ensuring optimal performance and aesthetic appeal.</p>
-                    </div>
-                </div>
-                
-                <div class="specialized-item" style="display: flex; gap: 24px; padding: 32px; background: var(--white-warm); border-radius: var(--border-radius-xl); border: 1px solid var(--border-color); transition: var(--transition);">
-                    <div class="specialized-icon" style="width: 60px; height: 60px; background: var(--gold-medium); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white-pure); font-size: 1.25rem; flex-shrink: 0;">
-                        <i class="fas fa-thermometer-half"></i>
-                    </div>
-                    <div class="specialized-content">
-                        <h4 style="color: var(--navy-dark); margin-bottom: 12px; font-size: 1.125rem;">Heating System Optimization</h4>
-                        <p style="color: var(--gray-medium); margin: 0; line-height: 1.6;">Professional maintenance and efficiency optimization of pool and spa heating systems for year-round comfort.</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon-standalone">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <h3 class="service-title">Water Feature Maintenance</h3>
+                        <p class="service-description">
+                            Specialized care for fountains, waterfalls, spas, and other water features, ensuring 
+                            optimal performance and aesthetic appeal.
+                        </p>
+                        <div class="service-features">
+                            <span class="feature-tag">Fountain Care</span>
+                            <span class="feature-tag">Waterfall Maintenance</span>
+                            <span class="feature-tag">Spa Service</span>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="specialized-item" style="display: flex; gap: 24px; padding: 32px; background: var(--white-warm); border-radius: var(--border-radius-xl); border: 1px solid var(--border-color); transition: var(--transition);">
-                    <div class="specialized-icon" style="width: 60px; height: 60px; background: var(--gold-medium); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white-pure); font-size: 1.25rem; flex-shrink: 0;">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <div class="specialized-content">
-                        <h4 style="color: var(--navy-dark); margin-bottom: 12px; font-size: 1.125rem;">LED & Lighting Systems</h4>
-                        <p style="color: var(--gray-medium); margin: 0; line-height: 1.6;">Maintenance and programming of sophisticated pool lighting systems, including underwater LEDs and landscape integration.</p>
-                    </div>
-                </div>
-                
-                <div class="specialized-item" style="display: flex; gap: 24px; padding: 32px; background: var(--white-warm); border-radius: var(--border-radius-xl); border: 1px solid var(--border-color); transition: var(--transition);">
-                    <div class="specialized-icon" style="width: 60px; height: 60px; background: var(--gold-medium); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white-pure); font-size: 1.25rem; flex-shrink: 0;">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="specialized-content">
-                        <h4 style="color: var(--navy-dark); margin-bottom: 12px; font-size: 1.125rem;">Automation System Management</h4>
-                        <p style="color: var(--gray-medium); margin: 0; line-height: 1.6;">Expert care and programming of automated pool systems, ensuring seamless operation and energy efficiency.</p>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon-standalone">
+                            <i class="fas fa-thermometer-half"></i>
+                        </div>
+                        <h3 class="service-title">Heating System Optimization</h3>
+                        <p class="service-description">
+                            Professional maintenance and efficiency optimization of pool and spa heating systems 
+                            for year-round comfort.
+                        </p>
+                        <div class="service-features">
+                            <span class="feature-tag">System Efficiency</span>
+                            <span class="feature-tag">Energy Optimization</span>
+                            <span class="feature-tag">Year-Round Comfort</span>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="specialized-item" style="display: flex; gap: 24px; padding: 32px; background: var(--white-warm); border-radius: var(--border-radius-xl); border: 1px solid var(--border-color); transition: var(--transition);">
-                    <div class="specialized-icon" style="width: 60px; height: 60px; background: var(--gold-medium); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white-pure); font-size: 1.25rem; flex-shrink: 0;">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <div class="specialized-content">
-                        <h4 style="color: var(--navy-dark); margin-bottom: 12px; font-size: 1.125rem;">Eco-Friendly Solutions</h4>
-                        <p style="color: var(--gray-medium); margin: 0; line-height: 1.6;">Sustainable pool maintenance practices using environmentally conscious products and energy-efficient techniques.</p>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon-standalone">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3 class="service-title">LED & Lighting Systems</h3>
+                        <p class="service-description">
+                            Maintenance and programming of sophisticated pool lighting systems, including 
+                            underwater LEDs and landscape integration.
+                        </p>
+                        <div class="service-features">
+                            <span class="feature-tag">LED Maintenance</span>
+                            <span class="feature-tag">System Programming</span>
+                            <span class="feature-tag">Landscape Integration</span>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="specialized-item" style="display: flex; gap: 24px; padding: 32px; background: var(--white-warm); border-radius: var(--border-radius-xl); border: 1px solid var(--border-color); transition: var(--transition);">
-                    <div class="specialized-icon" style="width: 60px; height: 60px; background: var(--gold-medium); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white-pure); font-size: 1.25rem; flex-shrink: 0;">
-                        <i class="fas fa-tools"></i>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon-standalone">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3 class="service-title">Automation System Management</h3>
+                        <p class="service-description">
+                            Expert care and programming of automated pool systems, ensuring seamless operation 
+                            and energy efficiency.
+                        </p>
+                        <div class="service-features">
+                            <span class="feature-tag">System Programming</span>
+                            <span class="feature-tag">Energy Efficiency</span>
+                            <span class="feature-tag">Seamless Operation</span>
+                        </div>
                     </div>
-                    <div class="specialized-content">
-                        <h4 style="color: var(--navy-dark); margin-bottom: 12px; font-size: 1.125rem;">Emergency Repairs</h4>
-                        <p style="color: var(--gray-medium); margin: 0; line-height: 1.6;">Rapid response repair services for equipment failures, leaks, and other urgent pool maintenance issues.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon-standalone">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3 class="service-title">Eco-Friendly Solutions</h3>
+                        <p class="service-description">
+                            Sustainable pool maintenance practices using environmentally conscious products 
+                            and energy-efficient techniques.
+                        </p>
+                        <div class="service-features">
+                            <span class="feature-tag">Eco-Friendly Products</span>
+                            <span class="feature-tag">Energy Efficiency</span>
+                            <span class="feature-tag">Sustainable Practices</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon-standalone">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="service-title">Emergency Repairs</h3>
+                        <p class="service-description">
+                            Rapid response repair services for equipment failures, leaks, and other urgent 
+                            pool maintenance issues.
+                        </p>
+                        <div class="service-features">
+                            <span class="feature-tag">Rapid Response</span>
+                            <span class="feature-tag">Emergency Repairs</span>
+                            <span class="feature-tag">Urgent Service</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -562,7 +741,7 @@
     </section>
 
     <!-- Service Standards -->
-    <section class="service-standards" style="padding: 80px 0; background: linear-gradient(135deg, var(--white-warm), var(--cream));">
+    <section class="team-section">
         <div class="container">
             <div class="section-header">
                 <div class="section-badge">Our Standards</div>
@@ -573,136 +752,129 @@
                 </p>
             </div>
             
-            <div class="standards-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-top: 80px;">
-                <div class="standard-item" style="text-align: center; padding: 40px 32px; background: var(--white-pure); border-radius: var(--border-radius-xl); box-shadow: var(--shadow-md); border: 1px solid var(--border-color); transition: var(--transition);">
-                    <div class="standard-icon" style="width: 70px; height: 70px; background: var(--navy-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold-medium); font-size: 1.75rem; margin: 0 auto 24px;">
-                        <i class="fas fa-user-secret"></i>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <div style="background: linear-gradient(135deg, #B8A082, #A0876C); height: 300px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-user-secret" style="font-size: 4rem; color: white;"></i>
+                        </div>
                     </div>
-                    <h4 style="color: var(--navy-dark); margin-bottom: 16px; font-size: 1.125rem;">Discrete Operations</h4>
-                    <p style="color: var(--gray-medium); margin: 0; line-height: 1.6;">All cleaning services are performed during pre-arranged times that respect your privacy and property routines, ensuring minimal disruption to your lifestyle.</p>
+                    <div class="member-content">
+                        <h3>Discrete Operations</h3>
+                        <p class="member-title">Professional Standard</p>
+                        <p class="member-description">
+                            All cleaning services are performed during pre-arranged times that respect your privacy 
+                            and property routines, ensuring minimal disruption to your lifestyle.
+                        </p>
+                    </div>
                 </div>
                 
-                <div class="standard-item" style="text-align: center; padding: 40px 32px; background: var(--white-pure); border-radius: var(--border-radius-xl); box-shadow: var(--shadow-md); border: 1px solid var(--border-color); transition: var(--transition);">
-                    <div class="standard-icon" style="width: 70px; height: 70px; background: var(--navy-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold-medium); font-size: 1.75rem; margin: 0 auto 24px;">
-                        <i class="fas fa-certificate"></i>
+                <div class="team-member">
+                    <div class="member-image">
+                        <div style="background: linear-gradient(135deg, #B8A082, #A0876C); height: 300px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-certificate" style="font-size: 4rem; color: white;"></i>
+                        </div>
                     </div>
-                    <h4 style="color: var(--navy-dark); margin-bottom: 16px; font-size: 1.125rem;">Professional Standards</h4>
-                    <p style="color: var(--gray-medium); margin: 0; line-height: 1.6;">Our cleaning technicians are certified, uniformed, and trained in the protocols required for luxury property environments.</p>
+                    <div class="member-content">
+                        <h3>Professional Standards</h3>
+                        <p class="member-title">Certified Excellence</p>
+                        <p class="member-description">
+                            Our cleaning technicians are certified, uniformed, and trained in the protocols 
+                            required for luxury property environments.
+                        </p>
+                    </div>
                 </div>
                 
-                <div class="standard-item" style="text-align: center; padding: 40px 32px; background: var(--white-pure); border-radius: var(--border-radius-xl); box-shadow: var(--shadow-md); border: 1px solid var(--border-color); transition: var(--transition);">
-                    <div class="standard-icon" style="width: 70px; height: 70px; background: var(--navy-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold-medium); font-size: 1.75rem; margin: 0 auto 24px;">
-                        <i class="fas fa-clipboard-check"></i>
+                <div class="team-member">
+                    <div class="member-image">
+                        <div style="background: linear-gradient(135deg, #B8A082, #A0876C); height: 300px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-clipboard-check" style="font-size: 4rem; color: white;"></i>
+                        </div>
                     </div>
-                    <h4 style="color: var(--navy-dark); margin-bottom: 16px; font-size: 1.125rem;">Detailed Reporting</h4>
-                    <p style="color: var(--gray-medium); margin: 0; line-height: 1.6;">Comprehensive service reports after each visit, including water chemistry readings, equipment status, and any recommendations for optimization.</p>
-                </div>
-                
-                <div class="standard-item" style="text-align: center; padding: 40px 32px; background: var(--white-pure); border-radius: var(--border-radius-xl); box-shadow: var(--shadow-md); border: 1px solid var(--border-color); transition: var(--transition);">
-                    <div class="standard-icon" style="width: 70px; height: 70px; background: var(--navy-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold-medium); font-size: 1.75rem; margin: 0 auto 24px;">
-                        <i class="fas fa-shield-alt"></i>
+                    <div class="member-content">
+                        <h3>Detailed Reporting</h3>
+                        <p class="member-title">Comprehensive Documentation</p>
+                        <p class="member-description">
+                            Comprehensive service reports after each visit, including water chemistry readings, 
+                            equipment status, and any recommendations for optimization.
+                        </p>
                     </div>
-                    <h4 style="color: var(--navy-dark); margin-bottom: 16px; font-size: 1.125rem;">Fully Insured</h4>
-                    <p style="color: var(--gray-medium); margin: 0; line-height: 1.6;">Complete liability coverage and bonding ensure your peace of mind and property protection during all service visits.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Client Integration -->
-    <section class="client-integration" style="padding: 80px 0; background: var(--white-pure);">
+    <section class="about-section">
         <div class="container">
-            <div class="section-header">
-                <div class="section-badge gold">Seamless Integration</div>
-                <h2>Coordinated Excellence</h2>
-                <p class="section-description">
-                    Our pool cleaning services seamlessly coordinate with your lifeguarding and instruction schedules, 
-                    ensuring your pool is always in perfect condition for safe, enjoyable aquatic experiences.
-                </p>
-            </div>
-            
-            <div class="integration-features" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 80px;">
-                <div class="integration-feature" style="display: flex; gap: 24px; padding: 32px; background: var(--cream); border-radius: var(--border-radius-xl); border: 1px solid var(--gold-light); transition: var(--transition);">
-                    <div class="feature-icon" style="width: 60px; height: 60px; background: var(--gold-medium); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white-pure); font-size: 1.25rem; flex-shrink: 0;">
-                        <i class="fas fa-sync-alt"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h4 style="color: var(--navy-dark); margin-bottom: 12px; font-size: 1.125rem;">Synchronized Scheduling</h4>
-                        <p style="color: var(--gray-medium); margin: 0; line-height: 1.6;">Cleaning schedules coordinate with your lifeguarding and lesson times to ensure optimal pool conditions.</p>
-                    </div>
+            <div class="about-content">
+                <div class="about-images">
+                    <picture>
+                        <source srcset="images/cleaning/client-integration-800x600.webp" type="image/webp">
+                        <img src="images/cleaning/client-integration-800x600.jpg" alt="Seamless service integration" class="about-img primary" loading="lazy">
+                    </picture>
+                    
+                    <picture>
+                        <source srcset="images/cleaning/coordinated-excellence-800x600.webp" type="image/webp">
+                        <img src="images/cleaning/coordinated-excellence-800x600.jpg" alt="Coordinated aquatic excellence" class="about-img secondary" loading="lazy">
+                    </picture>
                 </div>
                 
-                <div class="integration-feature" style="display: flex; gap: 24px; padding: 32px; background: var(--cream); border-radius: var(--border-radius-xl); border: 1px solid var(--gold-light); transition: var(--transition);">
-                    <div class="feature-icon" style="width: 60px; height: 60px; background: var(--gold-medium); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white-pure); font-size: 1.25rem; flex-shrink: 0;">
-                        <i class="fas fa-comments"></i>
+                <div class="about-text">
+                    <div class="section-badge gold">Seamless Integration</div>
+                    <h2>Coordinated Excellence</h2>
+                    <p class="lead-text">
+                        Our pool cleaning services seamlessly coordinate with your lifeguarding and instruction schedules, 
+                        ensuring your pool is always in perfect condition for safe, enjoyable aquatic experiences.
+                    </p>
+                    <p>
+                        By integrating our cleaning services with your existing aquatic programs, we provide unified 
+                        communication, synchronized scheduling, and consistent excellence across all aspects of your 
+                        pool environment management.
+                    </p>
+                    
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Synchronized Scheduling</h4>
+                                <p>Cleaning schedules coordinate with your lifeguarding and lesson times for optimal conditions</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Unified Communication</h4>
+                                <p>Single point of contact for all aquatic services with integrated reporting and coordination</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Consistent Excellence</h4>
+                                <p>Unified quality standards ensure every aspect meets our luxury benchmarks</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="feature-content">
-                        <h4 style="color: var(--navy-dark); margin-bottom: 12px; font-size: 1.125rem;">Unified Communication</h4>
-                        <p style="color: var(--gray-medium); margin: 0; line-height: 1.6;">Single point of contact for all aquatic services with integrated reporting and service coordination.</p>
-                    </div>
-                </div>
-                
-                <div class="integration-feature" style="display: flex; gap: 24px; padding: 32px; background: var(--cream); border-radius: var(--border-radius-xl); border: 1px solid var(--gold-light); transition: var(--transition);">
-                    <div class="feature-icon" style="width: 60px; height: 60px; background: var(--gold-medium); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white-pure); font-size: 1.25rem; flex-shrink: 0;">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h4 style="color: var(--navy-dark); margin-bottom: 12px; font-size: 1.125rem;">Consistent Excellence</h4>
-                        <p style="color: var(--gray-medium); margin: 0; line-height: 1.6;">Unified quality standards across all services ensure every aspect of your aquatic experience meets our luxury benchmarks.</p>
-                    </div>
+                    
+                    <a href="https://client.805companies.com" class="btn btn-primary" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        Access Client Portal
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Client Portal Integration -->
-    <section class="portal-integration" style="padding: 80px 0; background: linear-gradient(135deg, var(--white-warm), var(--cream));">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">Digital Excellence</div>
-                <h2>Comprehensive Service Management</h2>
-                <p class="section-description">
-                    Manage all your 805 LifeGuard services through our secure client portal, 
-                    including pool cleaning schedules, service reports, and account management.
-                </p>
-            </div>
-            
-            <div class="portal-features" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 80px;">
-                <div class="portal-feature" style="text-align: center; padding: 40px 32px; background: var(--white-pure); border-radius: var(--border-radius-xl); box-shadow: var(--shadow-md); border: 1px solid var(--border-color); transition: var(--transition);">
-                    <div class="feature-icon" style="width: 70px; height: 70px; background: var(--navy-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold-medium); font-size: 1.75rem; margin: 0 auto 24px;">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <h4 style="color: var(--navy-dark); margin-bottom: 16px; font-size: 1.125rem;">Service Scheduling</h4>
-                    <p style="color: var(--gray-medium); margin: 0; line-height: 1.6;">View and manage all cleaning schedules alongside your lifeguarding and instruction appointments.</p>
-                </div>
-                
-                <div class="portal-feature" style="text-align: center; padding: 40px 32px; background: var(--white-pure); border-radius: var(--border-radius-xl); box-shadow: var(--shadow-md); border: 1px solid var(--border-color); transition: var(--transition);">
-                    <div class="feature-icon" style="width: 70px; height: 70px; background: var(--navy-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold-medium); font-size: 1.75rem; margin: 0 auto 24px;">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h4 style="color: var(--navy-dark); margin-bottom: 16px; font-size: 1.125rem;">Service Reports</h4>
-                    <p style="color: var(--gray-medium); margin: 0; line-height: 1.6;">Access detailed reports on water chemistry, equipment status, and maintenance recommendations.</p>
-                </div>
-                
-                <div class="portal-feature" style="text-align: center; padding: 40px 32px; background: var(--white-pure); border-radius: var(--border-radius-xl); box-shadow: var(--shadow-md); border: 1px solid var(--border-color); transition: var(--transition);">
-                    <div class="feature-icon" style="width: 70px; height: 70px; background: var(--navy-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold-medium); font-size: 1.75rem; margin: 0 auto 24px;">
-                        <i class="fas fa-bell"></i>
-                    </div>
-                    <h4 style="color: var(--navy-dark); margin-bottom: 16px; font-size: 1.125rem;">Smart Notifications</h4>
-                    <p style="color: var(--gray-medium); margin: 0; line-height: 1.6;">Receive alerts for scheduled services, urgent maintenance needs, and service completion confirmations.</p>
-                </div>
-            </div>
-            
-            <div class="section-cta" style="text-align: center; margin-top: 60px;">
-                <a href="https://client.805companies.com" class="btn btn-primary" target="_blank" style="display: inline-flex; align-items: center; gap: 12px; padding: 16px 32px; border-radius: 12px; font-weight: 600; font-size: 1rem; text-decoration: none; transition: var(--transition); border: 2px solid transparent; cursor: pointer; white-space: nowrap; background: linear-gradient(135deg, var(--gold-dark), var(--gold-medium)); color: var(--white-pure); box-shadow: var(--shadow-md);">
-                    <i class="fas fa-external-link-alt"></i>
-                    Access Client Portal
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Service Request CTA -->
+    <!-- Consultation CTA -->
     <section class="consultation-section">
         <div class="container">
             <div class="consultation-content">
@@ -713,29 +885,10 @@
                     Contact our concierge team to discuss how we can maintain your pool to the same exceptional 
                     standards as our lifeguarding and instruction services.
                 </p>
-                
-                <div class="cta-buttons">
-                    <a href="contact.html?service=pool-cleaning" class="btn btn-primary large">
-                        <i class="fas fa-calendar-check"></i>
-                        Request Pool Cleaning Service
-                    </a>
-                    <a href="https://client.805companies.com" class="btn btn-secondary large" target="_blank">
-                        <i class="fas fa-user-circle"></i>
-                        Access Client Portal
-                    </a>
-                </div>
-                
-                <div class="cta-contact">
-                    <p>
-                        <i class="fas fa-phone"></i>
-                        Current clients call <a href="tel:+18053676432">(805) 367-6432</a> for immediate service additions
-                    </p>
-                </div>
-                
-                <div class="response-time">
-                    <i class="fas fa-clock"></i>
-                    <span>Typical response within 2 hours during business hours</span>
-                </div>
+                <a href="contact.html?service=pool-cleaning" class="btn btn-primary large">
+                    <i class="fas fa-calendar-check"></i>
+                    Request Pool Cleaning Service
+                </a>
             </div>
         </div>
     </section>
@@ -759,15 +912,15 @@
                     </p>
                     <div class="footer-badges">
                         <span class="footer-badge">
-                            <i class="fas fa-certificate" aria-hidden="true"></i>
+                            <i class="fas fa-certificate"></i>
                             Red Cross Certified
                         </span>
                         <span class="footer-badge">
-                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            <i class="fas fa-shield-alt"></i>
                             Licensed & Bonded
                         </span>
                         <span class="footer-badge">
-                            <i class="fas fa-award" aria-hidden="true"></i>
+                            <i class="fas fa-award"></i>
                             7+ Years Experience
                         </span>
                     </div>
@@ -776,7 +929,7 @@
                 <!-- Services Links -->
                 <div class="footer-section">
                     <h4>
-                        <i class="fas fa-water" aria-hidden="true"></i>
+                        <i class="fas fa-water"></i>
                         Services
                     </h4>
                     <ul>
@@ -791,7 +944,7 @@
                 <!-- Company Links -->
                 <div class="footer-section">
                     <h4>
-                        <i class="fas fa-building" aria-hidden="true"></i>
+                        <i class="fas fa-building"></i>
                         Company
                     </h4>
                     <ul>
@@ -806,13 +959,13 @@
                 <!-- Contact Section -->
                 <div class="footer-contact">
                     <h4>
-                        <i class="fas fa-concierge-bell" aria-hidden="true"></i>
+                        <i class="fas fa-concierge-bell"></i>
                         Contact
                     </h4>
                     
                     <div class="contact-info">
                         <a href="tel:+18053676432" class="contact-item primary">
-                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <i class="fas fa-phone"></i>
                             <div>
                                 <strong>(805) 367-6432</strong>
                                 <span>24/7 Emergency Line</span>
@@ -820,7 +973,7 @@
                         </a>
                         
                         <a href="mailto:concierge@805lifeguard.com" class="contact-item">
-                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <i class="fas fa-envelope"></i>
                             <div>
                                 <strong>concierge@805lifeguard.com</strong>
                                 <span>Consultation Requests</span>
@@ -835,15 +988,15 @@
                     
                     <div class="footer-portals">
                         <a href="https://client.805companies.com" target="_blank" class="footer-portal-btn">
-                            <i class="fas fa-user-circle" aria-hidden="true"></i>
+                            <i class="fas fa-user-circle"></i>
                             Client Portal
                         </a>
                         <a href="https://admin.805companies.com" target="_blank" class="footer-portal-btn">
-                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            <i class="fas fa-shield-alt"></i>
                             Admin Portal
                         </a>
                         <a href="https://staff.805companies.com" target="_blank" class="footer-portal-btn">
-                            <i class="fas fa-users" aria-hidden="true"></i>
+                            <i class="fas fa-users"></i>
                             Staff Portal
                         </a>
                     </div>
@@ -872,284 +1025,187 @@
         </div>
     </footer>
 
-    <!-- Enhanced JavaScript -->
-    <script src="js/luxury-app.js"></script>
-    
-    <!-- Mobile Navigation Fix -->
+    <!-- Optimized JavaScript Loading -->
     <script>
-    (function() {
-        'use strict';
-        
-        // Ensure mobile navigation works regardless of main app initialization
-        function initializeMobileNavigation() {
-            console.log('🔧 Initializing Mobile Navigation Fix...');
+        // Critical JavaScript for immediate functionality
+        (function() {
+            'use strict';
             
-            const mobileToggle = document.getElementById('mobileToggle');
-            const mobileNav = document.getElementById('mobileNav');
-            const mobileNavClose = document.getElementById('mobileNavClose');
-            const body = document.body;
-            
-            if (!mobileToggle || !mobileNav) {
-                console.error('❌ Mobile navigation elements not found');
-                return;
-            }
-            
-            let isOpen = false;
-            let scrollPosition = 0;
-            
-            // Open mobile navigation
-            function openMobileNav() {
-                console.log('📱 Opening mobile navigation...');
-                isOpen = true;
-                scrollPosition = window.pageYOffset;
+            // Fast carousel slide background setup with intelligent fallback
+            function initCarouselBackgrounds() {
+                const slides = document.querySelectorAll('.carousel-slide');
+                const isMobile = window.innerWidth <= 768;
+                const isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
                 
-                // Add active classes
-                mobileToggle.classList.add('active');
-                mobileToggle.setAttribute('aria-expanded', 'true');
-                mobileNav.classList.add('active');
-                mobileNav.setAttribute('aria-hidden', 'false');
-                body.classList.add('nav-open');
+                console.log('805 LifeGuard: Setting up pool cleaning carousel backgrounds. Width:', window.innerWidth, 'Mobile:', isMobile, 'Tablet:', isTablet);
+                console.log('805 LifeGuard: Found', slides.length, 'carousel slides');
                 
-                // Lock body scroll
-                body.style.position = 'fixed';
-                body.style.top = `-${scrollPosition}px`;
-                body.style.width = '100%';
-                body.style.overflow = 'hidden';
-                
-                // Focus management
-                setTimeout(() => {
-                    const firstLink = mobileNav.querySelector('.mobile-nav-link');
-                    if (firstLink) {
-                        firstLink.focus();
+                slides.forEach(function(slide, index) {
+                    const desktopSrc = slide.dataset.bgDesktop;
+                    const tabletSrc = slide.dataset.bgTablet;
+                    const mobileSrc = slide.dataset.bgMobile;
+                    
+                    console.log('805 LifeGuard: Slide', index, 'sources:', {
+                        desktop: desktopSrc,
+                        tablet: tabletSrc,
+                        mobile: mobileSrc
+                    });
+                    
+                    // Smart fallback function
+                    function tryImageSources(sources, slideElement, slideIndex) {
+                        if (sources.length === 0) {
+                            console.error('805 LifeGuard: No more image sources to try for slide', slideIndex);
+                            return;
+                        }
+                        
+                        const currentSrc = sources[0];
+                        const remainingSources = sources.slice(1);
+                        
+                        const testImg = new Image();
+                        testImg.onload = function() {
+                            console.log('805 LifeGuard: Image loaded successfully:', currentSrc);
+                            slideElement.style.backgroundImage = 'url(' + currentSrc + ')';
+                            slideElement.style.backgroundSize = 'cover';
+                            slideElement.style.backgroundPosition = 'center';
+                            slideElement.style.backgroundRepeat = 'no-repeat';
+                        };
+                        testImg.onerror = function() {
+                            console.warn('805 LifeGuard: Failed to load image:', currentSrc, '- trying next fallback');
+                            tryImageSources(remainingSources, slideElement, slideIndex);
+                        };
+                        testImg.src = currentSrc;
                     }
-                }, 300);
-            }
-            
-            // Close mobile navigation
-            function closeMobileNav() {
-                console.log('📱 Closing mobile navigation...');
-                isOpen = false;
+                    
+                    // Determine priority order based on device
+                    let imagePriority;
+                    if (isMobile) {
+                        imagePriority = [mobileSrc, tabletSrc, desktopSrc].filter(Boolean);
+                    } else if (isTablet) {
+                        imagePriority = [tabletSrc, desktopSrc, mobileSrc].filter(Boolean);
+                    } else {
+                        imagePriority = [desktopSrc, tabletSrc, mobileSrc].filter(Boolean);
+                    }
+                    
+                    console.log('805 LifeGuard: Trying images for slide', index, 'in order:', imagePriority);
+                    tryImageSources(imagePriority, slide, index);
+                });
                 
-                // Remove active classes
-                mobileToggle.classList.remove('active');
-                mobileToggle.setAttribute('aria-expanded', 'false');
-                mobileNav.classList.remove('active');
-                mobileNav.setAttribute('aria-hidden', 'true');
-                body.classList.remove('nav-open');
-                
-                // Restore body scroll
-                body.style.position = '';
-                body.style.top = '';
-                body.style.width = '';
-                body.style.overflow = '';
-                
-                // Restore scroll position
-                window.scrollTo(0, scrollPosition);
-            }
-            
-            // Toggle mobile navigation
-            function toggleMobileNav() {
-                if (isOpen) {
-                    closeMobileNav();
-                } else {
-                    openMobileNav();
+                // Ensure first slide is active
+                const firstSlide = document.querySelector('.carousel-slide');
+                if (firstSlide) {
+                    firstSlide.classList.add('active');
+                    console.log('805 LifeGuard: First slide marked as active');
                 }
             }
             
-            // Remove any existing event listeners to prevent duplicates
-            const newMobileToggle = mobileToggle.cloneNode(true);
-            mobileToggle.parentNode.replaceChild(newMobileToggle, mobileToggle);
+            // Also run on resize
+            function handleResize() {
+                console.log('805 LifeGuard: Window resized, updating carousel backgrounds');
+                initCarouselBackgrounds();
+            }
             
-            // Add click event to mobile toggle
-            newMobileToggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                console.log('📱 Mobile toggle clicked');
-                toggleMobileNav();
-            });
-            
-            // Add click event to close button
-            if (mobileNavClose) {
-                const newMobileNavClose = mobileNavClose.cloneNode(true);
-                mobileNavClose.parentNode.replaceChild(newMobileNavClose, mobileNavClose);
+            // Fast mobile navigation fallback
+            function initMobileNav() {
+                const toggle = document.getElementById('menuToggle');
+                const nav = document.getElementById('navOverlay');
+                const body = document.body;
                 
-                newMobileNavClose.addEventListener('click', function(e) {
+                if (!toggle || !nav) return;
+                
+                toggle.addEventListener('click', function(e) {
                     e.preventDefault();
-                    e.stopPropagation();
-                    console.log('📱 Mobile close clicked');
-                    closeMobileNav();
+                    const isOpen = nav.classList.contains('active');
+                    
+                    if (isOpen) {
+                        toggle.classList.remove('active');
+                        nav.classList.remove('active');
+                        body.classList.remove('nav-open');
+                        body.style.position = '';
+                        body.style.top = '';
+                        body.style.overflow = '';
+                    } else {
+                        toggle.classList.add('active');
+                        nav.classList.add('active');
+                        body.classList.add('nav-open');
+                        body.style.position = 'fixed';
+                        body.style.top = '-' + window.pageYOffset + 'px';
+                        body.style.overflow = 'hidden';
+                    }
+                });
+                
+                // Close nav on link click
+                const links = nav.querySelectorAll('.overlay-nav-link, .overlay-logo');
+                links.forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        setTimeout(function() {
+                            toggle.click();
+                        }, 150);
+                    });
                 });
             }
             
-            // Close on outside click
-            document.addEventListener('click', function(e) {
-                if (isOpen && 
-                    !mobileNav.contains(e.target) && 
-                    !newMobileToggle.contains(e.target)) {
-                    console.log('📱 Outside click - closing mobile nav');
-                    closeMobileNav();
-                }
-            });
+            // Fast logo entrance for desktop
+            function initLogoEntrance() {
+                const logo = document.getElementById('mainLogo');
+                if (!logo || window.innerWidth <= 768) return;
+                
+                logo.style.opacity = '0';
+                logo.style.transform = 'scale(1.15) translateY(-6px)';
+                logo.style.filter = 'blur(0.3px)';
+                logo.style.transition = 'all 900ms cubic-bezier(0.23, 1, 0.32, 1)';
+                
+                setTimeout(function() {
+                    logo.style.opacity = '1';
+                    logo.style.transform = 'scale(1.05) translateY(0)';
+                    logo.style.filter = 'blur(0px)';
+                }, 250);
+            }
             
-            // Close on escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && isOpen) {
-                    console.log('📱 Escape key - closing mobile nav');
-                    closeMobileNav();
-                }
-            });
-            
-            // Close on window resize to desktop
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 768 && isOpen) {
-                    console.log('📱 Window resized to desktop - closing mobile nav');
-                    closeMobileNav();
-                }
-            });
-            
-            // Handle mobile nav links
-            const mobileLinks = mobileNav.querySelectorAll('.mobile-nav-link');
-            mobileLinks.forEach(function(link) {
-                link.addEventListener('click', function() {
-                    console.log('📱 Mobile nav link clicked');
-                    // Delay close to allow navigation
-                    setTimeout(function() {
-                        closeMobileNav();
-                    }, 100);
+            // Initialize immediately
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function() {
+                    initCarouselBackgrounds();
+                    initMobileNav();
+                    initLogoEntrance();
+                    
+                    // Add resize listener
+                    window.addEventListener('resize', handleResize);
                 });
-            });
+            } else {
+                initCarouselBackgrounds();
+                initMobileNav();
+                initLogoEntrance();
+                
+                // Add resize listener
+                window.addEventListener('resize', handleResize);
+            }
             
-            console.log('✅ Mobile Navigation Fix initialized successfully');
-            
-            // Return public API
-            return {
-                open: openMobileNav,
-                close: closeMobileNav,
-                toggle: toggleMobileNav,
-                isOpen: function() { return isOpen; }
-            };
-        }
-        
-        // Initialize immediately if DOM is ready
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initializeMobileNavigation);
-        } else {
-            initializeMobileNavigation();
-        }
-        
-        // Also initialize after a short delay to ensure it works even if other scripts interfere
-        setTimeout(initializeMobileNavigation, 100);
-        
-        // Expose globally for debugging
-        window.mobileNavFix = initializeMobileNavigation;
-        
-    })();
+            // Also run immediately for any case
+            setTimeout(function() {
+                initCarouselBackgrounds();
+            }, 100);
+        })();
     </script>
     
-    /* CSS for mobile responsive adjustments */
-    <style>
-    /* Image fallback gradients for better loading experience */
-    .feature-image {
-        background: linear-gradient(135deg, var(--navy-light), var(--navy-medium)) !important;
-    }
-    
-    .feature-image img {
-        transition: opacity 0.3s ease;
-    }
-    
-    .feature-image img:not([src]),
-    .feature-image img[src=""] {
-        opacity: 0;
-    }
-    
-    @media (max-width: 768px) {
-        .cleaning-feature {
-            grid-template-columns: 1fr !important;
-            gap: 32px !important;
+    <!-- Deferred Main JavaScript -->
+    <script>
+        // Load main application after critical content
+        function loadMainScript() {
+            const script = document.createElement('script');
+            script.src = 'js/luxury-app.js';
+            script.async = true;
+            script.onload = function() {
+                console.log('805 LifeGuard Pool Cleaning Application loaded successfully');
+            };
+            document.head.appendChild(script);
         }
         
-        .cleaning-feature.reverse .feature-content {
-            order: 0 !important;
+        // Load after initial render
+        if (window.requestIdleCallback) {
+            requestIdleCallback(loadMainScript);
+        } else {
+            setTimeout(loadMainScript, 500);
         }
-        
-        .cleaning-feature.reverse .feature-image {
-            order: 0 !important;
-        }
-        
-        .feature-image img {
-            height: 300px !important;
-        }
-        
-        .standards-grid {
-            grid-template-columns: 1fr !important;
-        }
-        
-        .tiers-grid {
-            grid-template-columns: 1fr !important;
-        }
-        
-        .specialized-grid {
-            grid-template-columns: 1fr !important;
-        }
-        
-        .specialized-item {
-            flex-direction: column !important;
-            text-align: center !important;
-        }
-        
-        .specialized-icon {
-            align-self: center !important;
-        }
-        
-        .integration-features {
-            grid-template-columns: 1fr !important;
-        }
-        
-        .portal-features {
-            grid-template-columns: 1fr !important;
-        }
-        
-        .notice-content {
-            flex-direction: column !important;
-            text-align: center !important;
-        }
-        
-        .notice-icon {
-            align-self: center !important;
-        }
-    }
-    
-    @media (max-width: 480px) {
-        .specialized-item {
-            padding: 24px !important;
-        }
-        
-        .tier-card {
-            padding: 32px 24px !important;
-        }
-        
-        .standard-item {
-            padding: 32px 24px !important;
-        }
-        
-        .notice-content {
-            padding: 32px 24px !important;
-        }
-    }
-    
-    /* Ensure hover effects work properly */
-    .specialized-item:hover,
-    .standard-item:hover,
-    .tier-card:hover,
-    .integration-feature:hover,
-    .portal-feature:hover {
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-lg);
-    }
-    
-    .tier-card.featured:hover {
-        transform: translateY(-12px);
-    }
-    </style>
+    </script>
 </body>
 </html>
