@@ -38,26 +38,116 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://805lifeguard.com/about.html">
     
-    <!-- Enhanced Performance: Preconnect to External Resources -->
+    <!-- Critical CSS - Inlined for fastest loading -->
+    <style>
+        /* Critical path CSS for immediate rendering */
+        :root {
+            --color-primary-darkest: #1A1A1A;
+            --color-primary: #4A4A4A;
+            --color-secondary: #B8A082;
+            --color-white: #FFFFFF;
+            --color-text-primary: #0F0F0F;
+            --color-text-inverse: #FFFFFF;
+            --color-bg-primary: #FFFFFF;
+            --font-family-serif: 'Playfair Display', Georgia, serif;
+            --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            --header-total-height: 132px;
+            --header-navbar-height: 88px;
+            --z-index-header: 1070;
+            --z-index-hamburger: 1080;
+            --z-index-modal: 1050;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: var(--font-family-sans);
+            color: var(--color-text-primary);
+            background: var(--color-bg-primary);
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: var(--z-index-header);
+            background: var(--color-white);
+            border-bottom: 1px solid #E8E8E8;
+        }
+        
+        .header-top {
+            background: linear-gradient(135deg, #1A1A1A, #2F2F2F);
+            color: var(--color-text-inverse);
+            padding: 0.5rem 0;
+            height: 44px;
+            display: flex;
+            align-items: center;
+        }
+        
+        @media (max-width: 768px) {
+            .header-top { display: none; }
+        }
+        
+        .navbar {
+            padding: 1.25rem 0;
+            height: var(--header-navbar-height);
+            display: flex;
+            align-items: center;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: var(--header-total-height);
+            background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('images/about/about-team-hero-1920x1080.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        @media (max-width: 768px) {
+            .hero { 
+                padding-top: calc(var(--header-navbar-height) + 1rem);
+                background-image: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('images/about/about-team-hero-768x432.jpg');
+            }
+        }
+    </style>
+    
+    <!-- Enhanced Performance: DNS Prefetch and Preconnect -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     
-    <!-- Optimized Typography - Premium Font Stack -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome Icons - Optimized -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    
-    <!-- Enhanced Caruso-Inspired Luxury Theme CSS -->
-    <link rel="stylesheet" href="css/luxury-theme.css">
-    
-    <!-- Critical Image Preloading -->
+    <!-- Critical Resource Preloading -->
     <link rel="preload" as="image" href="images/about/about-team-hero-1920x1080.webp" type="image/webp">
     <link rel="preload" as="image" href="images/about/about-team-hero-1920x1080.jpg" type="image/jpeg">
-    <link rel="preload" as="image" href="images/about/about-founder-jasper-professional-800x600.webp" type="image/webp">
-    <link rel="preload" as="image" href="images/about/about-founder-jasper-professional-800x600.jpg" type="image/jpeg">
     <link rel="preload" as="image" href="images/logos/805-lifeguard-logo.png">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- Optimized Typography - Async Loading -->
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap"></noscript>
+    
+    <!-- Font Awesome Icons - Deferred -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+    
+    <!-- Main CSS - Deferred -->
+    <link rel="preload" href="css/luxury-theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/luxury-theme.css"></noscript>
     
     <!-- Favicon and Apple Touch Icons -->
     <link rel="icon" type="image/x-icon" href="images/logos/805-lifeguard-favicon.ico">
@@ -226,7 +316,7 @@
         </div>
     </header>
 
-    <!-- Enhanced Hero Section (Clean Caruso Aesthetic) -->
+    <!-- Enhanced Hero Section (Clean Caruso Aesthetic) - Matching Homepage Layout -->
     <section class="hero" role="banner" aria-label="About 805 LifeGuard">
         <!-- Background Carousel -->
         <div class="hero-carousel" id="heroCarousel">
@@ -246,8 +336,7 @@
                 <h1 class="hero-title" itemprop="slogan">Meet Jasper & Our Distinguished Team</h1>
                 <p class="hero-subtitle" itemprop="description">
                     Led by founder Jasper van der Zwaan, our team brings over 7 years of American Red Cross certified 
-                    aquatic safety expertise to Southern California's most prestigious clientele. Every member is 
-                    carefully vetted, extensively trained, and committed to the highest standards of discretion and service.
+                    aquatic safety expertise to Southern California's most prestigious clientele.
                 </p>
                 
                 <div class="hero-buttons">
@@ -269,8 +358,8 @@
         </div>
     </section>
 
-    <!-- Founder Story Section -->
-    <section class="content-section">
+    <!-- About Section - Matching Homepage Structure -->
+    <section class="about-section">
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
@@ -323,16 +412,6 @@
                                 <p>Fully licensed for private property services with comprehensive insurance coverage</p>
                             </div>
                         </div>
-                        
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <div class="feature-content">
-                                <h4>Trusted by Distinguished Families</h4>
-                                <p>Over 7 years serving Southern California's most discerning clientele with absolute discretion</p>
-                            </div>
-                        </div>
                     </div>
                     
                     <div class="callout-box">
@@ -352,26 +431,16 @@
                         <img src="images/about/about-founder-jasper-professional-800x600.jpg" alt="Jasper van der Zwaan - Founder & Lead Instructor of 805 LifeGuard" class="about-img primary" loading="lazy">
                     </picture>
                     
-                    <div class="image-gallery">
-                        <div class="gallery-item">
-                            <picture>
-                                <source srcset="images/about/about-founder-jasper-action-800x600.webp" type="image/webp">
-                                <img src="images/about/about-founder-jasper-action-800x600.jpg" alt="Jasper providing professional swimming instruction" loading="lazy">
-                            </picture>
-                        </div>
-                        <div class="gallery-item">
-                            <picture>
-                                <source srcset="images/about/about-founder-training-800x600.webp" type="image/webp">
-                                <img src="images/about/about-founder-training-800x600.jpg" alt="Jasper during professional lifeguard training" loading="lazy">
-                            </picture>
-                        </div>
-                    </div>
+                    <picture>
+                        <source srcset="images/about/about-founder-jasper-action-800x600.webp" type="image/webp">
+                        <img src="images/about/about-founder-jasper-action-800x600.jpg" alt="Jasper providing professional swimming instruction" class="about-img secondary" loading="lazy">
+                    </picture>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Professional Credentials -->
+    <!-- Professional Credentials - Services Section Style -->
     <section class="services-section">
         <div class="container">
             <div class="section-header">
@@ -441,8 +510,8 @@
         </div>
     </section>
 
-    <!-- Company Values -->
-    <section class="content-section bg-company-values background-overlay">
+    <!-- Company Values - Team Section Style -->
+    <section class="team-section">
         <div class="container">
             <div class="section-header">
                 <div class="section-badge">Our Foundation</div>
@@ -453,81 +522,51 @@
                 </p>
             </div>
             
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-content">
-                        <div class="service-icon-standalone">
-                            <i class="fas fa-shield-alt"></i>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <div style="background: linear-gradient(135deg, #B8A082, #A0876C); height: 300px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-shield-alt" style="font-size: 4rem; color: white;"></i>
                         </div>
-                        <h3 class="service-title">Unwavering Safety</h3>
-                        <p class="service-description">
+                    </div>
+                    <div class="member-content">
+                        <h3>Unwavering Safety</h3>
+                        <p class="member-title">Core Principle</p>
+                        <p class="member-description">
                             Safety is never compromised. Every protocol, every decision, and every action 
                             is guided by our commitment to providing the highest level of aquatic safety.
                         </p>
                     </div>
                 </div>
                 
-                <div class="service-card">
-                    <div class="service-content">
-                        <div class="service-icon-standalone">
-                            <i class="fas fa-user-secret"></i>
+                <div class="team-member">
+                    <div class="member-image">
+                        <div style="background: linear-gradient(135deg, #B8A082, #A0876C); height: 300px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-user-secret" style="font-size: 4rem; color: white;"></i>
                         </div>
-                        <h3 class="service-title">Absolute Discretion</h3>
-                        <p class="service-description">
+                    </div>
+                    <div class="member-content">
+                        <h3>Absolute Discretion</h3>
+                        <p class="member-title">Core Principle</p>
+                        <p class="member-description">
                             Your privacy is paramount. Our team operates with the utmost discretion, 
                             respecting the confidential nature of private property services.
                         </p>
                     </div>
                 </div>
                 
-                <div class="service-card">
-                    <div class="service-content">
-                        <div class="service-icon-standalone">
-                            <i class="fas fa-star"></i>
+                <div class="team-member">
+                    <div class="member-image">
+                        <div style="background: linear-gradient(135deg, #B8A082, #A0876C); height: 300px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-star" style="font-size: 4rem; color: white;"></i>
                         </div>
-                        <h3 class="service-title">Excellence in Service</h3>
-                        <p class="service-description">
+                    </div>
+                    <div class="member-content">
+                        <h3>Excellence in Service</h3>
+                        <p class="member-title">Core Principle</p>
+                        <p class="member-description">
                             We don't just meet expectations—we exceed them. Every service is delivered 
                             with meticulous attention to detail and professional excellence.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-content">
-                        <div class="service-icon-standalone">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <h3 class="service-title">Personalized Care</h3>
-                        <p class="service-description">
-                            Every client and family member receives individualized attention, 
-                            with services tailored to their specific needs and comfort levels.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-content">
-                        <div class="service-icon-standalone">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h3 class="service-title">Continuous Learning</h3>
-                        <p class="service-description">
-                            We stay current with the latest aquatic safety techniques and certifications, 
-                            ensuring our services represent the pinnacle of professional standards.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-content">
-                        <div class="service-icon-standalone">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <h3 class="service-title">Reliability & Trust</h3>
-                        <p class="service-description">
-                            Dependability is essential for peace of mind. We arrive prepared, on time, 
-                            and ready to provide consistent, trustworthy service.
                         </p>
                     </div>
                 </div>
@@ -535,7 +574,7 @@
         </div>
     </section>
 
-    <!-- Statistics Section -->
+    <!-- Statistics Section - Coverage Section Style -->
     <section class="coverage-section">
         <div class="container">
             <div class="section-header">
@@ -591,63 +630,79 @@
         </div>
     </section>
 
-    <!-- Mission Statement -->
-    <section class="content-section bg-mission-statement background-overlay">
+    <!-- Testimonials - Matching Homepage Style -->
+    <section class="testimonials-section">
         <div class="container">
             <div class="section-header">
-                <div class="section-badge gold">Our Mission</div>
-                <h2>Redefining Aquatic Safety for Distinguished Clientele</h2>
+                <div class="section-badge">Client Excellence</div>
+                <h2>Trusted by Distinguished Families</h2>
                 <p class="section-description">
-                    To provide unparalleled aquatic safety and instruction services that allow families 
-                    to enjoy their pools with complete confidence, knowing that every aspect of water safety 
-                    is managed by trained professionals who understand the unique requirements of luxury living.
+                    Hear from our valued clients about their experiences with our premium aquatic services.
                 </p>
             </div>
             
-            <div class="services-grid">
-                <div class="service-card mission-card">
-                    <div class="service-content">
-                        <div class="mission-number">
-                            <span>01</span>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>Jasper is exceptional with children and our boys adored their lessons, eagerly anticipating each session. For distinguished swimming instruction or professional event oversight, his expertise is unparalleled.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <div class="author-name">Sarah M.</div>
+                            <div class="author-location">Agoura Hills, CA</div>
                         </div>
-                        <h3 class="service-title">Safety First, Always</h3>
-                        <p class="service-description">
-                            Every decision prioritizes the safety and well-being of your family and guests, 
-                            with protocols designed for the highest risk management standards.
-                        </p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="service-card mission-card">
-                    <div class="service-content">
-                        <div class="mission-number">
-                            <span>02</span>
+                <div class="testimonial-card featured">
+                    <div class="testimonial-content">
+                        <p>His approach was both patient and engaging, yet appropriately firm with our strong-willed son. We are thoroughly pleased with the remarkable progress and impeccable professional service.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <div class="author-name">Michael R.</div>
+                            <div class="author-location">Newbury Park, CA</div>
                         </div>
-                        <h3 class="service-title">Invisible Excellence</h3>
-                        <p class="service-description">
-                            Professional service that enhances your lifestyle without disrupting your privacy, 
-                            providing peace of mind through discrete, expert oversight.
-                        </p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="service-card mission-card">
-                    <div class="service-content">
-                        <div class="mission-number">
-                            <span>03</span>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>Jasper exceeded all expectations! I was able to thoroughly enjoy my son's celebration while maintaining complete confidence in the children's pool safety. We will certainly engage his services repeatedly.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <div class="author-name">Jennifer L.</div>
+                            <div class="author-location">Thousand Oaks, CA</div>
                         </div>
-                        <h3 class="service-title">Continuous Innovation</h3>
-                        <p class="service-description">
-                            Constantly evolving our methods to provide the most advanced aquatic safety services, 
-                            staying ahead of industry standards and client expectations.
-                        </p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Consultation CTA -->
+    <!-- Consultation CTA - Matching Homepage Style -->
     <section class="consultation-section">
         <div class="container">
             <div class="consultation-content">
@@ -665,7 +720,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer - Matching Homepage -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -722,7 +777,7 @@
                     <ul>
                         <li><a href="about.html">About Jasper & Team</a></li>
                         <li><a href="portfolio.html">Client Portfolio</a></li>
-                        <li><a href="testimonials.html">Client Testimonials</a></li>
+                        <li><="testimonials.html">Client Testimonials</a></li>
                         <li><a href="faq.html">Frequently Asked Questions</a></li>
                         <li><a href="contact.html">Contact & Consultation</a></li>
                     </ul>
@@ -797,7 +852,101 @@
         </div>
     </footer>
 
-    <!-- Optimized Luxury JavaScript -->
-    <script src="js/luxury-app.js"></script>
+    <!-- Optimized JavaScript Loading -->
+    <script>
+        // Critical JavaScript for immediate functionality
+        (function() {
+            'use strict';
+            
+            // Fast mobile navigation fallback
+            function initMobileNav() {
+                const toggle = document.getElementById('menuToggle');
+                const nav = document.getElementById('navOverlay');
+                const body = document.body;
+                
+                if (!toggle || !nav) return;
+                
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const isOpen = nav.classList.contains('active');
+                    
+                    if (isOpen) {
+                        toggle.classList.remove('active');
+                        nav.classList.remove('active');
+                        body.classList.remove('nav-open');
+                        body.style.position = '';
+                        body.style.top = '';
+                        body.style.overflow = '';
+                    } else {
+                        toggle.classList.add('active');
+                        nav.classList.add('active');
+                        body.classList.add('nav-open');
+                        body.style.position = 'fixed';
+                        body.style.top = '-' + window.pageYOffset + 'px';
+                        body.style.overflow = 'hidden';
+                    }
+                });
+                
+                // Close nav on link click
+                const links = nav.querySelectorAll('.overlay-nav-link, .overlay-logo');
+                links.forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        setTimeout(function() {
+                            toggle.click();
+                        }, 150);
+                    });
+                });
+            }
+            
+            // Fast logo entrance for desktop
+            function initLogoEntrance() {
+                const logo = document.getElementById('mainLogo');
+                if (!logo || window.innerWidth <= 768) return;
+                
+                logo.style.opacity = '0';
+                logo.style.transform = 'scale(1.15) translateY(-6px)';
+                logo.style.filter = 'blur(0.3px)';
+                logo.style.transition = 'all 900ms cubic-bezier(0.23, 1, 0.32, 1)';
+                
+                setTimeout(function() {
+                    logo.style.opacity = '1';
+                    logo.style.transform = 'scale(1.05) translateY(0)';
+                    logo.style.filter = 'blur(0px)';
+                }, 250);
+            }
+            
+            // Initialize immediately
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function() {
+                    initMobileNav();
+                    initLogoEntrance();
+                });
+            } else {
+                initMobileNav();
+                initLogoEntrance();
+            }
+        })();
+    </script>
+    
+    <!-- Deferred Main JavaScript -->
+    <script>
+        // Load main application after critical content
+        function loadMainScript() {
+            const script = document.createElement('script');
+            script.src = 'js/luxury-app.js';
+            script.async = true;
+            script.onload = function() {
+                console.log('805 LifeGuard Optimized Application loaded successfully');
+            };
+            document.head.appendChild(script);
+        }
+        
+        // Load after initial render
+        if (window.requestIdleCallback) {
+            requestIdleCallback(loadMainScript);
+        } else {
+            setTimeout(loadMainScript, 500);
+        }
+    </script>
 </body>
 </html>
