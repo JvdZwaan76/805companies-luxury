@@ -1,44 +1,35 @@
 /* 
- * 805 LifeGuard - Enhanced Caruso-Inspired Luxury Theme CSS (Enterprise Design System)
- * Version: 10.0 - OPTIMIZED with Perfect Header Visibility & Performance
- * Sophisticated brand-focused design with perfect header visibility and fast loading
+ * 805 LifeGuard - OPTIMIZED Caruso-Inspired Luxury Theme CSS (Enterprise Design System)
+ * Version: 11.0 - PERFORMANCE OPTIMIZED while maintaining perfect functionality
+ * Sophisticated brand-focused design with fast loading and perfect header visibility
  */
 
-/* === CSS RESET === */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* === OPTIMIZED CSS RESET === */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-/* === DESIGN TOKENS (Enhanced Caruso-Inspired Sophisticated Palette) === */
+/* === OPTIMIZED DESIGN TOKENS === */
 :root {
-    /* Primary Brand Colors - Sophisticated Neutrals */
-    --color-primary-darkest: #1A1A1A;     /* Charcoal Black */
-    --color-primary-dark: #2F2F2F;        /* Dark Gray */
-    --color-primary: #4A4A4A;             /* Medium Gray */
-    --color-primary-light: #6B6B6B;       /* Light Gray */
-    --color-primary-lightest: #F8F8F8;    /* Off White */
+    /* Primary Brand Colors */
+    --color-primary-darkest: #1A1A1A;
+    --color-primary-dark: #2F2F2F;
+    --color-primary: #4A4A4A;
+    --color-primary-light: #6B6B6B;
+    --color-primary-lightest: #F8F8F8;
     
-    /* Secondary Colors - Refined Accent */
-    --color-secondary-darkest: #8B7355;   /* Deep Taupe */
-    --color-secondary-dark: #A0876C;      /* Warm Taupe */
-    --color-secondary: #B8A082;           /* Sophisticated Beige */
-    --color-secondary-light: #D4C4A8;     /* Light Beige */
-    --color-secondary-lightest: #F5F2ED;  /* Cream */
+    /* Secondary Colors */
+    --color-secondary-darkest: #8B7355;
+    --color-secondary-dark: #A0876C;
+    --color-secondary: #B8A082;
+    --color-secondary-light: #D4C4A8;
+    --color-secondary-lightest: #F5F2ED;
     
-    /* Neutral Colors - Clean Minimalist Grays */
-    --color-neutral-darkest: #0F0F0F;     /* Pure Black */
-    --color-neutral-dark: #333333;        /* Charcoal */
-    --color-neutral: #666666;             /* Medium Gray */
-    --color-neutral-light: #999999;       /* Light Gray */
-    --color-neutral-lighter: #CCCCCC;     /* Lighter Gray */
-    --color-neutral-lightest: #F9F9F9;    /* Near White */
+    /* Neutral Colors */
+    --color-neutral-darkest: #0F0F0F;
+    --color-neutral-dark: #333333;
+    --color-neutral: #666666;
+    --color-neutral-light: #999999;
+    --color-neutral-lighter: #CCCCCC;
+    --color-neutral-lightest: #F9F9F9;
     
     /* Semantic Colors */
     --color-white: #FFFFFF;
@@ -66,7 +57,7 @@
     --color-border-secondary: #F0F0F0;
     --color-border-accent: var(--color-secondary);
     
-    /* Typography - Premium Font Stack */
+    /* Typography */
     --font-family-serif: 'Playfair Display', Georgia, serif;
     --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
     
@@ -78,18 +69,18 @@
     --font-weight-bold: 700;
     --font-weight-extrabold: 800;
     
-    /* Font Sizes - Refined Type Scale */
-    --font-size-xs: 0.75rem;      /* 12px */
-    --font-size-sm: 0.875rem;     /* 14px */
-    --font-size-base: 1rem;       /* 16px */
-    --font-size-lg: 1.125rem;     /* 18px */
-    --font-size-xl: 1.25rem;      /* 20px */
-    --font-size-2xl: 1.5rem;      /* 24px */
-    --font-size-3xl: 1.875rem;    /* 30px */
-    --font-size-4xl: 2.25rem;     /* 36px */
-    --font-size-5xl: 3rem;        /* 48px */
-    --font-size-6xl: 3.75rem;     /* 60px */
-    --font-size-7xl: 4.5rem;      /* 72px */
+    /* Font Sizes */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    --font-size-4xl: 2.25rem;
+    --font-size-5xl: 3rem;
+    --font-size-6xl: 3.75rem;
+    --font-size-7xl: 4.5rem;
     
     /* Line Heights */
     --line-height-tight: 1.25;
@@ -97,36 +88,36 @@
     --line-height-relaxed: 1.625;
     --line-height-loose: 2;
     
-    /* Spacing Scale - Generous 8px Grid System */
+    /* Spacing Scale */
     --spacing-0: 0;
-    --spacing-1: 0.25rem;   /* 4px */
-    --spacing-2: 0.5rem;    /* 8px */
-    --spacing-3: 0.75rem;   /* 12px */
-    --spacing-4: 1rem;      /* 16px */
-    --spacing-5: 1.25rem;   /* 20px */
-    --spacing-6: 1.5rem;    /* 24px */
-    --spacing-8: 2rem;      /* 32px */
-    --spacing-10: 2.5rem;   /* 40px */
-    --spacing-12: 3rem;     /* 48px */
-    --spacing-16: 4rem;     /* 64px */
-    --spacing-20: 5rem;     /* 80px */
-    --spacing-24: 6rem;     /* 96px */
-    --spacing-32: 8rem;     /* 128px */
-    --spacing-40: 10rem;    /* 160px */
-    --spacing-48: 12rem;    /* 192px */
+    --spacing-1: 0.25rem;
+    --spacing-2: 0.5rem;
+    --spacing-3: 0.75rem;
+    --spacing-4: 1rem;
+    --spacing-5: 1.25rem;
+    --spacing-6: 1.5rem;
+    --spacing-8: 2rem;
+    --spacing-10: 2.5rem;
+    --spacing-12: 3rem;
+    --spacing-16: 4rem;
+    --spacing-20: 5rem;
+    --spacing-24: 6rem;
+    --spacing-32: 8rem;
+    --spacing-40: 10rem;
+    --spacing-48: 12rem;
     
-    /* Border Radius - Subtle Curves */
+    /* Border Radius */
     --radius-none: 0;
-    --radius-sm: 0.125rem;   /* 2px */
-    --radius-base: 0.25rem;  /* 4px */
-    --radius-md: 0.375rem;   /* 6px */
-    --radius-lg: 0.5rem;     /* 8px */
-    --radius-xl: 0.75rem;    /* 12px */
-    --radius-2xl: 1rem;      /* 16px */
-    --radius-3xl: 1.5rem;    /* 24px */
+    --radius-sm: 0.125rem;
+    --radius-base: 0.25rem;
+    --radius-md: 0.375rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-2xl: 1rem;
+    --radius-3xl: 1.5rem;
     --radius-full: 9999px;
     
-    /* Shadows - Refined Elevation System */
+    /* Shadows */
     --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
     --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
     --shadow-base: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
@@ -136,7 +127,7 @@
     --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.20);
     --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.04);
     
-    /* Transitions - Refined Timing */
+    /* Transitions */
     --transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
     --transition-normal: 350ms cubic-bezier(0.4, 0, 0.2, 1);
     --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -153,8 +144,8 @@
     --z-index-banner: 1030;
     --z-index-overlay: 1040;
     --z-index-modal: 1050;
-    --z-index-header: 1070;        /* NEW: Dedicated header layer */
-    --z-index-hamburger: 1080;     /* NEW: Hamburger always on top */
+    --z-index-header: 1070;
+    --z-index-hamburger: 1080;
     --z-index-popover: 1060;
     --z-index-skipLink: 1070;
     --z-index-toast: 1080;
@@ -174,13 +165,13 @@
     --container-xl: 1280px;
     --container-2xl: 1400px;
     
-    /* Header Height Constants */
+    /* Header Height Constants - Enhanced for Prominent Branding */
     --header-top-height: 44px;
-    --header-navbar-height: 76px;
-    --header-total-height: 120px;
+    --header-navbar-height: 88px;
+    --header-total-height: 132px;
 }
 
-/* === BASE STYLES === */
+/* === OPTIMIZED BASE STYLES === */
 html {
     scroll-behavior: smooth;
     height: 100%;
@@ -200,8 +191,8 @@ body {
     min-height: 100%;
 }
 
-/* === TYPOGRAPHY SYSTEM === */
-h1, h2, h3, h4, h5, h6 {
+/* === OPTIMIZED TYPOGRAPHY === */
+h1,h2,h3,h4,h5,h6 {
     font-family: var(--font-family-serif);
     font-weight: var(--font-weight-regular);
     line-height: var(--line-height-tight);
@@ -256,7 +247,7 @@ p {
     letter-spacing: -0.01em;
 }
 
-/* === LAYOUT COMPONENTS === */
+/* === OPTIMIZED LAYOUT === */
 .container {
     width: 100%;
     max-width: var(--container-xl);
@@ -279,7 +270,7 @@ p {
     }
 }
 
-/* === ENHANCED HEADER SYSTEM WITH PERFECT VISIBILITY === */
+/* === OPTIMIZED HEADER SYSTEM === */
 .header {
     position: fixed;
     top: 0;
@@ -289,8 +280,6 @@ p {
     background: var(--color-white);
     border-bottom: 1px solid var(--color-border-primary);
     transition: var(--transition-normal);
-    
-    /* Ensure header always stays on top */
     isolation: isolate;
 }
 
@@ -299,15 +288,12 @@ p {
     box-shadow: var(--shadow-sm);
 }
 
-/* CRITICAL FIX: Ensure header ALWAYS stays visible above navigation */
 .nav-open .header {
     background: var(--color-white) !important;
     box-shadow: var(--shadow-md) !important;
     z-index: var(--z-index-header) !important;
     position: fixed !important;
     top: 0 !important;
-    
-    /* Force highest stacking context */
     isolation: isolate !important;
 }
 
@@ -364,9 +350,9 @@ p {
     }
 }
 
-/* Enhanced Main Navigation - Caruso Style with Perfect Balance */
+/* Enhanced Main Navigation - Prominent Branding Focus */
 .navbar {
-    padding: var(--spacing-3) 0;
+    padding: var(--spacing-5) 0;
     background: var(--color-white);
     position: relative;
     height: var(--header-navbar-height);
@@ -378,29 +364,29 @@ p {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    gap: var(--spacing-3);
+    gap: var(--spacing-5);
     position: relative;
     height: 100%;
 }
 
-/* Mobile optimization for better balance */
 @media (min-width: 769px) {
     .navbar {
-        padding: var(--spacing-4) 0;
+        padding: var(--spacing-6) 0;
     }
     
     .navbar-content {
-        gap: var(--spacing-4);
+        gap: var(--spacing-6);
     }
 }
 
-/* Hamburger Menu - Enhanced Balance and Perfect X Transformation */
+/* OPTIMIZED Hamburger Menu - Enhanced Balance */
 .desktop-menu-toggle {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    z-index: var(--z-index-hamburger); /* Highest z-index for always clickable */
+    z-index: var(--z-index-hamburger);
     position: relative;
+    padding: var(--spacing-2);
 }
 
 .menu-toggle {
@@ -408,27 +394,24 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 6px;
-    z-index: var(--z-index-hamburger); /* Highest z-index for always clickable */
+    padding: 8px;
+    z-index: var(--z-index-hamburger);
     transition: var(--transition-normal);
     position: relative;
     border-radius: var(--radius-lg);
-    
-    /* Ensure clickability */
     isolation: isolate;
 }
 
-/* Desktop sizing */
 @media (min-width: 769px) {
     .menu-toggle {
-        width: 44px;
-        height: 44px;
-        padding: 8px;
+        width: 48px;
+        height: 48px;
+        padding: 10px;
     }
 }
 
@@ -441,7 +424,6 @@ p {
     background: rgba(0, 0, 0, 0.08);
 }
 
-/* Enhanced Hamburger Bars with Perfect X Transformation */
 .menu-toggle .bar {
     width: 24px;
     height: 2px;
@@ -453,7 +435,6 @@ p {
     position: relative;
 }
 
-/* Desktop sizing */
 @media (min-width: 769px) {
     .menu-toggle .bar {
         width: 28px;
@@ -461,7 +442,6 @@ p {
     }
 }
 
-/* Perfect X Transformation */
 .menu-toggle.active .bar:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
     background: var(--color-text-primary);
@@ -477,7 +457,6 @@ p {
     background: var(--color-text-primary);
 }
 
-/* Desktop X transformation adjustment */
 @media (min-width: 769px) {
     .menu-toggle.active .bar:nth-child(1) {
         transform: rotate(45deg) translate(6px, 6px);
@@ -488,53 +467,45 @@ p {
     }
 }
 
-/* === ELEGANT LOGO WITH SOPHISTICATED ENTRANCE ANIMATION === */
+/* === OPTIMIZED ELEGANT LOGO - Enhanced Prominent Branding === */
 .logo {
     display: flex;
     align-items: center;
-    gap: var(--spacing-3);
+    gap: var(--spacing-4);
     text-decoration: none;
     justify-self: center;
-    z-index: calc(var(--z-index-header) - 5); /* Below hamburger but above navigation */
+    z-index: calc(var(--z-index-header) - 5);
     position: relative;
     transform-origin: center;
-    
-    /* Start visible on mobile, entrance animation only on desktop */
     opacity: 1;
     transform: scale(1) translateY(0);
     filter: blur(0px);
-    
-    /* Enhanced Transition Properties */
     transition: all var(--transition-entrance) ease-out;
     will-change: transform, opacity, filter;
-    
-    /* Remove ALL borders and outlines */
     border: none !important;
     outline: none !important;
     box-shadow: none !important;
-    
-    /* Ensure proper stacking */
     isolation: isolate;
+    padding: var(--spacing-2) var(--spacing-4);
 }
 
-/* Desktop gap */
 @media (min-width: 769px) {
     .logo {
-        gap: var(--spacing-4);
-        /* Desktop entrance animation initial state */
+        gap: var(--spacing-5);
         opacity: 0;
         transform: scale(1.15) translateY(-6px);
         filter: blur(0.3px);
+        padding: var(--spacing-3) var(--spacing-6);
     }
 }
 
-/* Mobile: Start visible without animation */
 @media (max-width: 768px) {
     .logo {
         opacity: 1 !important;
         transform: scale(1) translateY(0) !important;
         filter: blur(0px) !important;
         transition: all var(--transition-normal) ease-out;
+        padding: var(--spacing-2) var(--spacing-3);
     }
 }
 
@@ -544,7 +515,7 @@ p {
     box-shadow: none !important;
 }
 
-/* Elegant Entrance Animation States (Desktop Only) */
+/* OPTIMIZED Logo Animation States (Desktop Only) */
 @media (min-width: 769px) {
     .logo.loading {
         opacity: 0 !important;
@@ -566,7 +537,6 @@ p {
         transition: all var(--transition-entrance) ease-out;
     }
 
-    /* Dynamic Logo Scaling States (Desktop Only) */
     .logo.logo-large {
         transform: scale(1.05) translateY(0) !important;
         transition: all var(--transition-elegant) ease-out;
@@ -582,7 +552,6 @@ p {
         transition: all var(--transition-elegant) ease-out;
     }
 
-    /* Sophisticated Hover Effect with Gentle Floating (Desktop Only) */
     .logo:hover {
         transform: scale(1.08) translateY(-1px) !important;
         transition: all var(--transition-normal) ease-out;
@@ -598,7 +567,6 @@ p {
     }
 }
 
-/* Desktop: Always maintain logo visibility when navigation is active */
 @media (min-width: 769px) {
     .nav-open .logo {
         opacity: 1 !important;
@@ -609,7 +577,6 @@ p {
     }
 }
 
-/* Mobile: Hide logo only on mobile when nav is active */
 @media (max-width: 768px) {
     .nav-open .logo {
         opacity: 0 !important;
@@ -619,51 +586,43 @@ p {
     }
 }
 
-/* Logo Image - Clean and Borderless */
 .logo-img {
-    height: 48px;
+    height: 56px;
     width: auto;
     border-radius: var(--radius-lg);
     transition: all var(--transition-elegant) ease-out;
-    
-    /* Ensure NO borders or outlines */
     border: none !important;
     outline: none !important;
     box-shadow: none !important;
-    
-    /* Enhance image quality */
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
 }
 
-/* Desktop logo sizing */
 @media (min-width: 769px) {
     .logo-img {
-        height: 56px;
+        height: 64px;
     }
     
     .logo.logo-large .logo-img {
-        height: 64px;
+        height: 72px;
         transition: all var(--transition-elegant) ease-out;
     }
 
     .logo.logo-small .logo-img {
-        height: 56px;
+        height: 64px;
         transition: all var(--transition-elegant) ease-out;
     }
 }
 
-/* Logo Text Container */
 .logo-text {
     display: flex;
     flex-direction: column;
     transition: all var(--transition-elegant) ease-out;
 }
 
-/* Logo Brand Name */
 .logo-name {
     font-family: var(--font-family-serif);
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-xl);
     font-weight: var(--font-weight-light);
     color: var(--color-text-primary);
     line-height: 1;
@@ -671,24 +630,22 @@ p {
     transition: all var(--transition-elegant) ease-out;
 }
 
-/* Desktop logo name sizing */
 @media (min-width: 769px) {
     .logo-name {
-        font-size: var(--font-size-xl);
+        font-size: var(--font-size-2xl);
     }
     
     .logo.logo-large .logo-name {
-        font-size: var(--font-size-2xl);
+        font-size: var(--font-size-3xl);
         transition: all var(--transition-elegant) ease-out;
     }
 
     .logo.logo-small .logo-name {
-        font-size: var(--font-size-xl);
+        font-size: var(--font-size-2xl);
         transition: all var(--transition-elegant) ease-out;
     }
 }
 
-/* Logo Tagline - Hidden on Mobile for Clean Layout */
 .logo-tagline {
     font-size: var(--font-size-xs);
     color: var(--color-text-secondary);
@@ -699,7 +656,6 @@ p {
     transition: all var(--transition-elegant) ease-out;
 }
 
-/* Desktop tagline sizing */
 @media (min-width: 769px) {
     .logo.logo-large .logo-tagline {
         font-size: var(--font-size-sm);
@@ -712,34 +668,33 @@ p {
     }
 }
 
-/* Hide tagline on mobile for cleaner, less crowded header */
 @media (max-width: 768px) {
     .logo-tagline {
         display: none;
     }
 }
 
-/* Actions - Right Side with Mobile-First Balance */
+/* OPTIMIZED Actions - Enhanced Balance */
 .nav-actions {
     display: flex;
     align-items: center;
     gap: var(--spacing-2);
     justify-self: end;
+    padding: var(--spacing-2);
 }
 
-/* Desktop gap */
 @media (min-width: 769px) {
     .nav-actions {
         gap: var(--spacing-3);
+        padding: var(--spacing-3);
     }
 }
 
 .portal-group {
-    display: none; /* Hidden on mobile for better branding focus */
+    display: none;
     gap: var(--spacing-2);
 }
 
-/* Show portal buttons only on desktop for clean mobile design */
 @media (min-width: 769px) {
     .portal-group {
         display: flex;
@@ -786,7 +741,6 @@ p {
     white-space: nowrap;
 }
 
-/* Desktop consultation button sizing */
 @media (min-width: 769px) {
     .consultation-btn {
         gap: var(--spacing-2);
@@ -802,7 +756,6 @@ p {
     box-shadow: var(--shadow-md);
 }
 
-/* Hide consultation text on smaller mobile screens for better balance */
 @media (max-width: 480px) {
     .consultation-btn .consultation-text {
         display: none;
@@ -818,7 +771,7 @@ p {
     }
 }
 
-/* Enhanced Caruso-Style Sidebar Navigation with PERFECT Header Clearance */
+/* === OPTIMIZED NAVIGATION OVERLAY === */
 .nav-overlay {
     position: fixed;
     top: 0;
@@ -826,7 +779,7 @@ p {
     width: 100vw;
     height: 100vh;
     height: 100dvh;
-    z-index: var(--z-index-modal); /* Below header */
+    z-index: var(--z-index-modal);
     pointer-events: none;
     visibility: hidden;
     opacity: 0;
@@ -839,7 +792,6 @@ p {
     opacity: 1;
 }
 
-/* CRITICAL FIX: Enhanced backdrop overlay with perfect header clearance */
 .nav-overlay::before {
     content: '';
     position: absolute;
@@ -857,15 +809,13 @@ p {
     opacity: 1;
 }
 
-/* Desktop: backdrop starts BELOW the full header */
 @media (min-width: 769px) {
     .nav-overlay::before {
-        top: var(--header-total-height) !important; /* Start below full header */
+        top: var(--header-total-height) !important;
         height: calc(100% - var(--header-total-height)) !important;
     }
 }
 
-/* Mobile: backdrop covers full screen since header logo is hidden */
 @media (max-width: 768px) {
     .nav-overlay::before {
         top: 0;
@@ -873,13 +823,12 @@ p {
     }
 }
 
-/* Enhanced elegant sidebar with proper header clearance */
 .nav-overlay-content {
     position: absolute;
-    top: var(--header-total-height); /* Start below full header on desktop */
+    top: var(--header-total-height);
     left: 0;
     width: 420px;
-    height: calc(100% - var(--header-total-height)); /* Adjust height for full header */
+    height: calc(100% - var(--header-total-height));
     background: var(--color-white);
     box-shadow: var(--shadow-2xl);
     transform: translateX(-100%);
@@ -893,10 +842,9 @@ p {
     border-right: 1px solid var(--color-border-primary);
 }
 
-/* Mobile: full height with logo header */
 @media (max-width: 768px) {
     .nav-overlay-content {
-        top: 0; /* Full height on mobile */
+        top: 0;
         height: 100%;
         width: 320px;
     }
@@ -906,9 +854,8 @@ p {
     transform: translateX(0);
 }
 
-/* Sidebar Header - Show ONLY on mobile for branding, hidden on desktop */
 .nav-overlay-header {
-    display: none; /* Hidden on desktop since main header stays visible */
+    display: none;
     justify-content: center;
     align-items: center;
     padding: var(--spacing-4);
@@ -918,10 +865,9 @@ p {
     background: var(--color-white);
 }
 
-/* Mobile: Show sidebar header with prominent logo branding */
 @media (max-width: 768px) {
     .nav-overlay-header {
-        display: flex !important; /* Show on mobile for branding */
+        display: flex !important;
     }
 }
 
@@ -931,8 +877,6 @@ p {
     gap: var(--spacing-3);
     text-decoration: none;
     transition: var(--transition-fast);
-    
-    /* Remove borders from overlay logo */
     border: none !important;
     outline: none !important;
     box-shadow: none !important;
@@ -953,8 +897,6 @@ p {
     width: 48px;
     border-radius: var(--radius-lg);
     flex-shrink: 0;
-    
-    /* Remove borders */
     border: none !important;
     outline: none !important;
     box-shadow: none !important;
@@ -972,14 +914,13 @@ p {
 
 .nav-overlay-menu {
     flex: 1;
-    padding: var(--spacing-6) 0 var(--spacing-4); /* Desktop: start with more padding since no header */
+    padding: var(--spacing-6) 0 var(--spacing-4);
     overflow-y: auto;
 }
 
-/* Mobile: Adjust padding since header is present */
 @media (max-width: 768px) {
     .nav-overlay-menu {
-        padding: var(--spacing-4) 0; /* Less top padding since header is present */
+        padding: var(--spacing-4) 0;
     }
 }
 
@@ -1012,7 +953,6 @@ p {
     background: var(--color-bg-secondary);
 }
 
-/* Mobile adjustments for overlay actions */
 @media (max-width: 768px) {
     .nav-overlay-actions {
         padding: var(--spacing-4);
@@ -1033,7 +973,6 @@ p {
     margin-bottom: var(--spacing-4);
 }
 
-/* Mobile: single column layout */
 @media (max-width: 768px) {
     .overlay-portals {
         grid-template-columns: 1fr;
@@ -1058,7 +997,6 @@ p {
     text-align: center;
 }
 
-/* Mobile adjustments */
 @media (max-width: 768px) {
     .overlay-portal-btn {
         padding: var(--spacing-2) var(--spacing-3);
@@ -1090,7 +1028,6 @@ p {
     transition: var(--transition-fast);
 }
 
-/* Mobile adjustments */
 @media (max-width: 768px) {
     .overlay-consultation-btn {
         padding: var(--spacing-3);
@@ -1122,7 +1059,6 @@ p {
     font-size: var(--font-size-sm);
 }
 
-/* Mobile adjustments */
 @media (max-width: 768px) {
     .overlay-contact-btn {
         padding: var(--spacing-2) var(--spacing-4);
@@ -1136,14 +1072,13 @@ p {
     transform: translateY(-2px);
 }
 
-/* Body lock when nav is open */
 body.nav-open {
     overflow: hidden !important;
     position: fixed !important;
     width: 100% !important;
 }
 
-/* === ENHANCED HERO SECTION (Clean Caruso Aesthetic) === */
+/* === OPTIMIZED HERO SECTION === */
 .hero {
     position: relative;
     min-height: 100vh;
@@ -1153,14 +1088,12 @@ body.nav-open {
     padding-top: var(--header-total-height);
 }
 
-/* Mobile hero adjustments */
 @media (max-width: 768px) {
     .hero {
-        padding-top: calc(var(--header-navbar-height) + var(--spacing-4)); /* Adjusted for smaller mobile header */
+        padding-top: calc(var(--header-navbar-height) + var(--spacing-4));
     }
 }
 
-/* Carousel */
 .hero-carousel {
     position: absolute;
     top: 0;
@@ -1195,16 +1128,10 @@ body.nav-open {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        135deg,
-        rgba(0, 0, 0, 0.3) 0%,
-        rgba(0, 0, 0, 0.4) 50%,
-        rgba(0, 0, 0, 0.5) 100%
-    );
+    background: linear-gradient(135deg,rgba(0, 0, 0, 0.3) 0%,rgba(0, 0, 0, 0.4) 50%,rgba(0, 0, 0, 0.5) 100%);
     z-index: 1;
 }
 
-/* REMOVED: All Carousel Indicators and Controls for Clean Caruso Aesthetic */
 .carousel-indicators,
 .carousel-controls,
 .carousel-prev,
@@ -1213,23 +1140,16 @@ body.nav-open {
     display: none !important;
 }
 
-/* Hero Overlay */
 .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        135deg,
-        rgba(0, 0, 0, 0.2) 0%,
-        rgba(0, 0, 0, 0.3) 50%,
-        rgba(0, 0, 0, 0.4) 100%
-    );
+    background: linear-gradient(135deg,rgba(0, 0, 0, 0.2) 0%,rgba(0, 0, 0, 0.3) 50%,rgba(0, 0, 0, 0.4) 100%);
     z-index: 2;
 }
 
-/* Hero Content */
 .hero-content {
     position: relative;
     z-index: var(--z-index-docked);
@@ -1285,7 +1205,6 @@ body.nav-open {
     color: var(--color-secondary-light);
 }
 
-/* Enhanced Mobile Hero with More Breathing Room */
 @media (max-width: 768px) {
     .hero {
         min-height: 100vh;
@@ -1323,7 +1242,7 @@ body.nav-open {
     }
 }
 
-/* === BUTTON SYSTEM === */
+/* === OPTIMIZED BUTTON SYSTEM === */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -1377,7 +1296,7 @@ body.nav-open {
     }
 }
 
-/* === SECTION SYSTEM === */
+/* === OPTIMIZED SECTION SYSTEM === */
 section {
     padding: var(--spacing-32) 0;
 }
@@ -1422,7 +1341,7 @@ section {
     margin-top: var(--spacing-16);
 }
 
-/* === PAGE TEMPLATES === */
+/* === OPTIMIZED PAGE TEMPLATES === */
 .page-header {
     padding: var(--spacing-20) 0 var(--spacing-16);
     background: var(--color-bg-secondary);
@@ -1451,10 +1370,7 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        rgba(0, 0, 0, 0.3), 
-        rgba(0, 0, 0, 0.4)
-    );
+    background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.4));
     z-index: 1;
 }
 
@@ -1499,7 +1415,7 @@ section {
     }
 }
 
-/* === CONTENT SECTION === */
+/* === OPTIMIZED CONTENT SECTIONS === */
 .content-section {
     padding: var(--spacing-32) 0;
 }
@@ -1519,10 +1435,7 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        rgba(0, 0, 0, 0.6), 
-        rgba(0, 0, 0, 0.7)
-    );
+    background: linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.7));
     z-index: 1;
 }
 
@@ -1541,7 +1454,7 @@ section {
     color: rgba(255, 255, 255, 0.9);
 }
 
-/* === SERVICES SECTION === */
+/* === OPTIMIZED SERVICES SECTION === */
 .services-section {
     background: var(--color-bg-primary);
 }
@@ -1734,7 +1647,7 @@ section {
     }
 }
 
-/* === ABOUT SECTION === */
+/* === OPTIMIZED ABOUT SECTION === */
 .about-section {
     background: var(--color-bg-secondary);
 }
@@ -1828,7 +1741,7 @@ section {
     }
 }
 
-/* === COVERAGE SECTION === */
+/* === OPTIMIZED COVERAGE SECTION === */
 .coverage-section {
     background: var(--color-bg-primary);
 }
@@ -1883,7 +1796,7 @@ section {
     font-size: var(--font-size-sm);
 }
 
-/* === TEAM SECTION === */
+/* === OPTIMIZED TEAM SECTION === */
 .team-section {
     background: var(--color-bg-secondary);
 }
@@ -1969,7 +1882,7 @@ section {
     gap: var(--spacing-1);
 }
 
-/* === TESTIMONIALS SECTION === */
+/* === OPTIMIZED TESTIMONIALS SECTION === */
 .testimonials-section {
     background: var(--color-bg-primary);
 }
@@ -2057,7 +1970,7 @@ section {
     }
 }
 
-/* === CONSULTATION SECTION === */
+/* === OPTIMIZED CONSULTATION SECTION === */
 .consultation-section {
     background: linear-gradient(135deg, #1A1A1A, #2F2F2F);
     color: var(--color-text-inverse);
@@ -2081,7 +1994,7 @@ section {
     font-weight: var(--font-weight-light);
 }
 
-/* === FOOTER === */
+/* === OPTIMIZED FOOTER === */
 .footer {
     background: linear-gradient(135deg, #0A1628, #0F1B2E);
     color: var(--color-text-inverse);
@@ -2123,8 +2036,6 @@ section {
 .footer-logo img {
     height: 48px;
     border-radius: var(--radius-lg);
-    
-    /* Remove borders from footer logo */
     border: none !important;
     outline: none !important;
     box-shadow: none !important;
@@ -2361,7 +2272,7 @@ section {
     font-weight: var(--font-weight-medium);
 }
 
-/* === MOBILE FOOTER OPTIMIZATION === */
+/* === OPTIMIZED MOBILE FOOTER === */
 @media (max-width: 768px) {
     .footer {
         padding: var(--spacing-12) 0 var(--spacing-4);
@@ -2439,7 +2350,7 @@ section {
     }
 }
 
-/* === CALLOUT BOX === */
+/* === OPTIMIZED CALLOUT BOX === */
 .callout-box {
     background: var(--color-secondary-lightest);
     border-left: 4px solid var(--color-secondary);
@@ -2474,7 +2385,7 @@ section {
     text-align: right;
 }
 
-/* === IMAGE GALLERY === */
+/* === OPTIMIZED IMAGE GALLERY === */
 .image-gallery {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -2505,7 +2416,7 @@ section {
     transform: scale(1.05);
 }
 
-/* === ANIMATIONS === */
+/* === OPTIMIZED ANIMATIONS === */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -2530,12 +2441,11 @@ section {
     animation: fadeInUp 0.6s ease-out;
 }
 
-/* Smooth page load animation */
 body {
     animation: fadeIn 0.3s ease-out;
 }
 
-/* === ACCESSIBILITY === */
+/* === OPTIMIZED ACCESSIBILITY === */
 .nav-link:focus,
 .btn:focus,
 .menu-toggle:focus,
@@ -2545,7 +2455,6 @@ body {
     outline: none;
 }
 
-/* Custom focus styles for luxury brand */
 .btn:focus {
     box-shadow: 0 0 0 2px var(--color-secondary-light);
 }
@@ -2554,14 +2463,13 @@ body {
     box-shadow: 0 0 0 2px var(--color-secondary-light);
 }
 
-/* Remove focus outline from logo */
 .logo:focus,
 .overlay-logo:focus {
     outline: none !important;
     box-shadow: none !important;
 }
 
-/* === REDUCED MOTION === */
+/* === OPTIMIZED REDUCED MOTION === */
 @media (prefers-reduced-motion: reduce) {
     * {
         animation-duration: 0.01ms !important;
@@ -2592,7 +2500,7 @@ body {
     }
 }
 
-/* === PERFORMANCE OPTIMIZATIONS === */
+/* === OPTIMIZED PERFORMANCE ENHANCEMENTS === */
 img, picture, video, canvas, svg {
     display: block;
     max-width: 100%;
@@ -2602,7 +2510,7 @@ img {
     height: auto;
 }
 
-/* === ENHANCED SCROLLBAR STYLING === */
+/* === OPTIMIZED SCROLLBAR === */
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -2621,7 +2529,7 @@ img {
     background: var(--color-secondary-dark);
 }
 
-/* === UTILITY CLASSES === */
+/* === OPTIMIZED UTILITY CLASSES === */
 .text-primary { color: var(--color-text-primary); }
 .text-secondary { color: var(--color-text-secondary); }
 .text-muted { color: var(--color-text-tertiary); }
@@ -2641,7 +2549,7 @@ img {
 .shadow-lg { box-shadow: var(--shadow-lg); }
 .shadow-xl { box-shadow: var(--shadow-xl); }
 
-/* === LOADING STATES === */
+/* === OPTIMIZED LOADING STATES === */
 .loading-spinner {
     display: inline-block;
     width: 20px;
@@ -2657,7 +2565,7 @@ img {
     100% { transform: rotate(360deg); }
 }
 
-/* === HIGH CONTRAST MODE SUPPORT === */
+/* === OPTIMIZED HIGH CONTRAST MODE === */
 @media (prefers-contrast: high) {
     :root {
         --color-border-primary: #000000;
@@ -2670,5 +2578,3 @@ img {
         border: 2px solid;
     }
 }
-
-/* === END OF OPTIMIZED LUXURY THEME === */
