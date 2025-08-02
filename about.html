@@ -373,7 +373,7 @@
     <section class="hero" role="banner" aria-label="About 805 LifeGuard">
         <!-- Background Carousel -->
         <div class="hero-carousel" id="heroCarousel">
-            <div class="carousel-slide active" data-bg-desktop="images/about/about-team-hero-1920x1080.jpg" data-bg-tablet="images/about/about-team-hero-1024x576.jpg" data-bg-mobile="images/about/about-team-hero-768x432.jpg" aria-label="Jasper and professional lifeguard team"></div>
+            <div class="carousel-slide active" style="background-image: url('images/about/about-team-hero-1920x1080.jpg')" data-bg-desktop="images/about/about-team-hero-1920x1080.jpg" data-bg-tablet="images/about/about-team-hero-1024x576.jpg" data-bg-mobile="images/about/about-team-hero-768x432.jpg" aria-label="Jasper and professional lifeguard team"></div>
             <div class="carousel-slide" data-bg-desktop="images/about/about-founder-story-1920x1080.jpg" data-bg-tablet="images/about/about-founder-story-1024x576.jpg" data-bg-mobile="images/about/about-founder-story-768x432.jpg" aria-label="Founder Jasper van der Zwaan story"></div>
             <div class="carousel-slide" data-bg-desktop="images/about/about-certifications-1920x1080.jpg" data-bg-tablet="images/about/about-certifications-1024x576.jpg" data-bg-mobile="images/about/about-certifications-768x432.jpg" aria-label="Professional certifications and credentials"></div>
             <div class="carousel-slide" data-bg-desktop="images/about/about-company-mission-1920x1080.jpg" data-bg-tablet="images/about/about-company-mission-1024x576.jpg" data-bg-mobile="images/about/about-company-mission-768x432.jpg" aria-label="Company mission and values"></div>
@@ -915,29 +915,48 @@
             function initCarouselBackgrounds() {
                 const slides = document.querySelectorAll('.carousel-slide');
                 const isMobile = window.innerWidth <= 768;
+                const isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
                 
-                console.log('805 LifeGuard: Setting up carousel backgrounds. Mobile:', isMobile, 'Slides found:', slides.length);
+                console.log('805 LifeGuard: Setting up carousel backgrounds. Width:', window.innerWidth, 'Mobile:', isMobile, 'Tablet:', isTablet);
+                console.log('805 LifeGuard: Found', slides.length, 'carousel slides');
                 
                 slides.forEach(function(slide, index) {
                     const desktopSrc = slide.dataset.bgDesktop;
                     const tabletSrc = slide.dataset.bgTablet;
                     const mobileSrc = slide.dataset.bgMobile;
                     
+                    console.log('805 LifeGuard: Slide', index, 'sources:', {
+                        desktop: desktopSrc,
+                        tablet: tabletSrc,
+                        mobile: mobileSrc
+                    });
+                    
                     let selectedSrc;
                     if (isMobile) {
                         selectedSrc = mobileSrc || tabletSrc || desktopSrc;
-                    } else if (window.innerWidth <= 1024) {
+                    } else if (isTablet) {
                         selectedSrc = tabletSrc || desktopSrc || mobileSrc;
                     } else {
                         selectedSrc = desktopSrc || tabletSrc || mobileSrc;
                     }
                     
                     if (selectedSrc) {
+                        // Force override any existing background
                         slide.style.backgroundImage = 'url(' + selectedSrc + ')';
                         slide.style.backgroundSize = 'cover';
                         slide.style.backgroundPosition = 'center';
                         slide.style.backgroundRepeat = 'no-repeat';
-                        console.log('805 LifeGuard: Set slide', index, 'background:', selectedSrc);
+                        console.log('805 LifeGuard: Set slide', index, 'background to:', selectedSrc);
+                        
+                        // Test if image loads
+                        const testImg = new Image();
+                        testImg.onload = function() {
+                            console.log('805 LifeGuard: Image loaded successfully:', selectedSrc);
+                        };
+                        testImg.onerror = function() {
+                            console.error('805 LifeGuard: Failed to load image:', selectedSrc);
+                        };
+                        testImg.src = selectedSrc;
                     }
                 });
                 
@@ -945,8 +964,14 @@
                 const firstSlide = document.querySelector('.carousel-slide');
                 if (firstSlide) {
                     firstSlide.classList.add('active');
-                    console.log('805 LifeGuard: First slide marked as active');
+                    console.log('805 LifeGuard: First slide marked as active, background:', firstSlide.style.backgroundImage);
                 }
+            }
+            
+            // Also run on resize
+            function handleResize() {
+                console.log('805 LifeGuard: Window resized, updating carousel backgrounds');
+                initCarouselBackgrounds();
             }
             
             // Fast mobile navigation fallback
@@ -1012,12 +1037,23 @@
                     initCarouselBackgrounds();
                     initMobileNav();
                     initLogoEntrance();
+                    
+                    // Add resize listener
+                    window.addEventListener('resize', handleResize);
                 });
             } else {
                 initCarouselBackgrounds();
                 initMobileNav();
                 initLogoEntrance();
+                
+                // Add resize listener
+                window.addEventListener('resize', handleResize);
             }
+            
+            // Also run immediately for any case
+            setTimeout(function() {
+                initCarouselBackgrounds();
+            }, 100);
         })();
     </script>
     
