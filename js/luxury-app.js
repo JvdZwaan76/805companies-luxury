@@ -1,6 +1,6 @@
 /*
  * 805 LifeGuard - OPTIMIZED Luxury App JS (Enterprise JavaScript Application)
- * Version: 12.0 - PERFORMANCE OPTIMIZED while maintaining perfect functionality
+ * Version: 12.1 - PERFORMANCE OPTIMIZED with enhanced About page support
  * Sophisticated brand-focused design with fast loading and perfect header visibility
  */
 
@@ -1462,7 +1462,7 @@
         this.smoothScroll = null;
         this.contactUpdater = null;
         this.isInitialized = false;
-        this.version = '12.0';
+        this.version = '12.1';
 
         this.init();
     }
