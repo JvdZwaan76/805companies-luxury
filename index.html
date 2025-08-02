@@ -38,24 +38,116 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://805lifeguard.com/">
     
-    <!-- Enhanced Performance: Preconnect to External Resources -->
+    <!-- Critical CSS - Inlined for fastest loading -->
+    <style>
+        /* Critical path CSS for immediate rendering */
+        :root {
+            --color-primary-darkest: #1A1A1A;
+            --color-primary: #4A4A4A;
+            --color-secondary: #B8A082;
+            --color-white: #FFFFFF;
+            --color-text-primary: #0F0F0F;
+            --color-text-inverse: #FFFFFF;
+            --color-bg-primary: #FFFFFF;
+            --font-family-serif: 'Playfair Display', Georgia, serif;
+            --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            --header-total-height: 132px;
+            --header-navbar-height: 88px;
+            --z-index-header: 1070;
+            --z-index-hamburger: 1080;
+            --z-index-modal: 1050;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: var(--font-family-sans);
+            color: var(--color-text-primary);
+            background: var(--color-bg-primary);
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: var(--z-index-header);
+            background: var(--color-white);
+            border-bottom: 1px solid #E8E8E8;
+        }
+        
+        .header-top {
+            background: linear-gradient(135deg, #1A1A1A, #2F2F2F);
+            color: var(--color-text-inverse);
+            padding: 0.5rem 0;
+            height: 44px;
+            display: flex;
+            align-items: center;
+        }
+        
+        @media (max-width: 768px) {
+            .header-top { display: none; }
+        }
+        
+        .navbar {
+            padding: 1.25rem 0;
+            height: var(--header-navbar-height);
+            display: flex;
+            align-items: center;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: var(--header-total-height);
+            background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('images/home/home-luxury-estate-hero-1920x1080.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        @media (max-width: 768px) {
+            .hero { 
+                padding-top: calc(var(--header-navbar-height) + 1rem);
+                background-image: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('images/home/home-luxury-estate-hero-768x432.jpg');
+            }
+        }
+    </style>
+    
+    <!-- Enhanced Performance: DNS Prefetch and Preconnect -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     
-    <!-- Optimized Typography - Premium Font Stack -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome Icons - Optimized -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    
-    <!-- Enhanced Caruso-Inspired Luxury Theme CSS -->
-    <link rel="stylesheet" href="css/luxury-theme.css">
-    
-    <!-- Critical Image Preloading -->
+    <!-- Critical Resource Preloading -->
     <link rel="preload" as="image" href="images/home/home-luxury-estate-hero-1920x1080.webp" type="image/webp">
     <link rel="preload" as="image" href="images/home/home-luxury-estate-hero-1920x1080.jpg" type="image/jpeg">
     <link rel="preload" as="image" href="images/logos/805-lifeguard-logo.png">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- Optimized Typography - Async Loading -->
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap"></noscript>
+    
+    <!-- Font Awesome Icons - Deferred -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+    
+    <!-- Main CSS - Deferred -->
+    <link rel="preload" href="css/luxury-theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/luxury-theme.css"></noscript>
     
     <!-- Favicon and Apple Touch Icons -->
     <link rel="icon" type="image/x-icon" href="images/logos/805-lifeguard-favicon.ico">
@@ -89,63 +181,21 @@
         "longitude": "-118.8376"
       },
       "areaServed": [
-        {
-          "@type": "City",
-          "name": "Thousand Oaks",
-          "addressRegion": "CA",
-          "addressCountry": "US"
-        },
-        {
-          "@type": "City",
-          "name": "Westlake Village",
-          "addressRegion": "CA",
-          "addressCountry": "US"
-        },
-        {
-          "@type": "City",
-          "name": "Agoura Hills",
-          "addressRegion": "CA",
-          "addressCountry": "US"
-        },
-        {
-          "@type": "City",
-          "name": "Malibu",
-          "addressRegion": "CA",
-          "addressCountry": "US"
-        },
-        {
-          "@type": "City",
-          "name": "Beverly Hills",
-          "addressRegion": "CA",
-          "addressCountry": "US"
-        },
-        {
-          "@type": "City",
-          "name": "Newport Beach",
-          "addressRegion": "CA",
-          "addressCountry": "US"
-        }
+        {"@type": "City", "name": "Thousand Oaks", "addressRegion": "CA", "addressCountry": "US"},
+        {"@type": "City", "name": "Westlake Village", "addressRegion": "CA", "addressCountry": "US"},
+        {"@type": "City", "name": "Agoura Hills", "addressRegion": "CA", "addressCountry": "US"},
+        {"@type": "City", "name": "Malibu", "addressRegion": "CA", "addressCountry": "US"},
+        {"@type": "City", "name": "Beverly Hills", "addressRegion": "CA", "addressCountry": "US"},
+        {"@type": "City", "name": "Newport Beach", "addressRegion": "CA", "addressCountry": "US"}
       ],
-      "serviceType": [
-        "Private Lifeguarding",
-        "Swimming Instruction",
-        "Pool Safety Services",
-        "Luxury Event Management",
-        "Pool Cleaning Services",
-        "HOA Aquatic Services"
-      ],
+      "serviceType": ["Private Lifeguarding", "Swimming Instruction", "Pool Safety Services", "Luxury Event Management", "Pool Cleaning Services", "HOA Aquatic Services"],
       "priceRange": "$$",
       "foundingDate": "2016",
       "founder": {
         "@type": "Person",
         "name": "Jasper van der Zwaan",
         "jobTitle": "Founder & Lead Instructor",
-        "hasCredential": [
-          {
-            "@type": "EducationalOccupationalCredential",
-            "credentialCategory": "American Red Cross Lifeguard Certification"
-          }
-        ]
+        "hasCredential": [{"@type": "EducationalOccupationalCredential", "credentialCategory": "American Red Cross Lifeguard Certification"}]
       },
       "aggregateRating": {
         "@type": "AggregateRating",
@@ -153,12 +203,7 @@
         "reviewCount": "50",
         "bestRating": "5",
         "worstRating": "1"
-      },
-      "sameAs": [
-        "https://www.facebook.com/805lifeguard",
-        "https://www.instagram.com/805lifeguard",
-        "https://www.linkedin.com/company/805lifeguard"
-      ]
+      }
     }
     </script>
 </head>
@@ -876,7 +921,101 @@
         </div>
     </footer>
 
-    <!-- Optimized Luxury JavaScript -->
-    <script src="js/luxury-app.js"></script>
+    <!-- Optimized JavaScript Loading -->
+    <script>
+        // Critical JavaScript for immediate functionality
+        (function() {
+            'use strict';
+            
+            // Fast mobile navigation fallback
+            function initMobileNav() {
+                const toggle = document.getElementById('menuToggle');
+                const nav = document.getElementById('navOverlay');
+                const body = document.body;
+                
+                if (!toggle || !nav) return;
+                
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const isOpen = nav.classList.contains('active');
+                    
+                    if (isOpen) {
+                        toggle.classList.remove('active');
+                        nav.classList.remove('active');
+                        body.classList.remove('nav-open');
+                        body.style.position = '';
+                        body.style.top = '';
+                        body.style.overflow = '';
+                    } else {
+                        toggle.classList.add('active');
+                        nav.classList.add('active');
+                        body.classList.add('nav-open');
+                        body.style.position = 'fixed';
+                        body.style.top = '-' + window.pageYOffset + 'px';
+                        body.style.overflow = 'hidden';
+                    }
+                });
+                
+                // Close nav on link click
+                const links = nav.querySelectorAll('.overlay-nav-link, .overlay-logo');
+                links.forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        setTimeout(function() {
+                            toggle.click();
+                        }, 150);
+                    });
+                });
+            }
+            
+            // Fast logo entrance for desktop
+            function initLogoEntrance() {
+                const logo = document.getElementById('mainLogo');
+                if (!logo || window.innerWidth <= 768) return;
+                
+                logo.style.opacity = '0';
+                logo.style.transform = 'scale(1.15) translateY(-6px)';
+                logo.style.filter = 'blur(0.3px)';
+                logo.style.transition = 'all 900ms cubic-bezier(0.23, 1, 0.32, 1)';
+                
+                setTimeout(function() {
+                    logo.style.opacity = '1';
+                    logo.style.transform = 'scale(1.05) translateY(0)';
+                    logo.style.filter = 'blur(0px)';
+                }, 250);
+            }
+            
+            // Initialize immediately
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function() {
+                    initMobileNav();
+                    initLogoEntrance();
+                });
+            } else {
+                initMobileNav();
+                initLogoEntrance();
+            }
+        })();
+    </script>
+    
+    <!-- Deferred Main JavaScript -->
+    <script>
+        // Load main application after critical content
+        function loadMainScript() {
+            const script = document.createElement('script');
+            script.src = 'js/luxury-app.js';
+            script.async = true;
+            script.onload = function() {
+                console.log('805 LifeGuard Optimized Application loaded successfully');
+            };
+            document.head.appendChild(script);
+        }
+        
+        // Load after initial render
+        if (window.requestIdleCallback) {
+            requestIdleCallback(loadMainScript);
+        } else {
+            setTimeout(loadMainScript, 500);
+        }
+    </script>
 </body>
 </html>
