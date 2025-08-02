@@ -1,6 +1,6 @@
 /*
  * 805 LifeGuard - OPTIMIZED Luxury App JS (Enterprise JavaScript Application)
- * Version: 12.1 - PERFORMANCE OPTIMIZED with enhanced About page support
+ * Version: 12.2 - PERFORMANCE OPTIMIZED with enhanced Services page support
  * Sophisticated brand-focused design with fast loading and perfect header visibility
  */
 
@@ -72,6 +72,14 @@
             TOP_HEIGHT: 44,
             NAVBAR_HEIGHT: 88,
             TOTAL_HEIGHT: 132
+        },
+        
+        // Services Page Specific Settings
+        SERVICES: {
+            SMOOTH_SCROLL_OFFSET: 132, // Header height
+            MOBILE_SCROLL_OFFSET: 88,  // Mobile header height
+            ANCHOR_SCROLL_BEHAVIOR: 'smooth',
+            SERVICE_LINK_DELAY: 150
         }
     };
     
@@ -196,6 +204,42 @@
                 default:
                     console.log(logMessage, data || '');
             }
+        },
+
+        /*
+         * Services page specific utilities
+         */
+        getCurrentPage: function() {
+            const path = window.location.pathname;
+            const page = path.split('/').pop() || 'index.html';
+            return page.replace('.html', '');
+        },
+
+        isServicesPage: function() {
+            return this.getCurrentPage() === 'services' || window.location.pathname.includes('services');
+        },
+
+        /*
+         * Enhanced smooth scroll with offset
+         */
+        smoothScrollTo: function(targetId, offset) {
+            const target = document.querySelector(targetId);
+            if (!target) return false;
+
+            offset = offset || (Utils.isMobile() ? CONFIG.SERVICES.MOBILE_SCROLL_OFFSET : CONFIG.SERVICES.SMOOTH_SCROLL_OFFSET);
+            const targetPosition = target.offsetTop - offset;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: CONFIG.SERVICES.ANCHOR_SCROLL_BEHAVIOR
+            });
+
+            // Set focus for accessibility
+            target.setAttribute('tabindex', '-1');
+            target.focus();
+            target.style.outline = 'none';
+            
+            return true;
         }
     };
 
@@ -631,6 +675,7 @@
             this.updateActiveLinks();
             this.updatePortalLinks();
             this.enhanceAccessibility();
+            this.setupServicesPageNavigation();
             
             Utils.log('info', 'Navigation Controller initialized successfully');
         } catch (error) {
@@ -1046,6 +1091,52 @@
         }
     };
 
+    // === SERVICES PAGE SPECIFIC NAVIGATION ===
+    NavigationController.prototype.setupServicesPageNavigation = function() {
+        if (!Utils.isServicesPage()) return;
+
+        Utils.log('info', 'Setting up services page navigation enhancements...');
+
+        const self = this;
+
+        // Enhanced service link navigation
+        const serviceLinks = document.querySelectorAll('.service-link[href^="#"]');
+        serviceLinks.forEach(function(link) {
+            const linkCleanup = Utils.addEventListenerWithCleanup(
+                link, 'click', function(e) {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    
+                    // Close mobile nav if open
+                    if (self.isOpen) {
+                        self.closeMobileNav();
+                        setTimeout(function() {
+                            Utils.smoothScrollTo(targetId);
+                        }, CONFIG.SERVICES.SERVICE_LINK_DELAY);
+                    } else {
+                        Utils.smoothScrollTo(targetId);
+                    }
+                }
+            );
+            self.cleanupFunctions.push(linkCleanup);
+        });
+
+        // Enhanced hero button navigation
+        const heroButtons = document.querySelectorAll('.hero-buttons a[href^="#"]');
+        heroButtons.forEach(function(button) {
+            const buttonCleanup = Utils.addEventListenerWithCleanup(
+                button, 'click', function(e) {
+                    e.preventDefault();
+                    const targetId = button.getAttribute('href');
+                    Utils.smoothScrollTo(targetId);
+                }
+            );
+            self.cleanupFunctions.push(buttonCleanup);
+        });
+
+        Utils.log('info', 'Services page navigation enhancements completed');
+    };
+
     NavigationController.prototype.destroy = function() {
         if (this.logoEntranceTimer) {
             clearTimeout(this.logoEntranceTimer);
@@ -1067,6 +1158,7 @@
             this.setupScrollAnimations();
             this.setupHoverEffects();
             this.setupHeroAnimations();
+            this.setupServicesPageAnimations();
             this.setupPerformanceOptimizations();
             
             Utils.log('info', 'Animation Controller initialized successfully');
@@ -1105,6 +1197,7 @@
         this.setupCardHoverEffects('.team-member', -8);
         this.setupButtonHoverEffects();
         this.setupNavigationHoverEffects();
+        this.setupServiceLinkHoverEffects();
     };
 
     AnimationController.prototype.setupCardHoverEffects = function(selector, translateY) {
@@ -1154,6 +1247,21 @@
         });
     };
 
+    AnimationController.prototype.setupServiceLinkHoverEffects = function() {
+        const serviceLinks = document.querySelectorAll('.service-link');
+        serviceLinks.forEach(function(link) {
+            link.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(4px)';
+                this.style.willChange = 'transform';
+            });
+
+            link.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0)';
+                this.style.willChange = 'auto';
+            });
+        });
+    };
+
     AnimationController.prototype.setupHeroAnimations = function() {
         const heroElements = document.querySelectorAll(
             '.hero-title, .hero-subtitle, .hero-buttons, .hero-notice'
@@ -1168,6 +1276,36 @@
                 element.style.opacity = '1';
                 element.style.transform = 'translateY(0)';
             }, 600 + (index * 150));
+        });
+    };
+
+    AnimationController.prototype.setupServicesPageAnimations = function() {
+        if (!Utils.isServicesPage()) return;
+
+        // Staggered animation for service cards
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(function(card, index) {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+
+            setTimeout(function() {
+                card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 200 + (index * 100));
+        });
+
+        // Enhanced feature items animation
+        const featureItems = document.querySelectorAll('.feature-item');
+        featureItems.forEach(function(item, index) {
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(-20px)';
+
+            setTimeout(function() {
+                item.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+                item.style.opacity = '1';
+                item.style.transform = 'translateX(0)';
+            }, 300 + (index * 150));
         });
     };
 
@@ -1201,6 +1339,7 @@
             this.setupPhoneFormatting();
             this.handleURLParameters();
             this.setupEnhancedInteractions();
+            this.setupServicesPageForms();
             
             Utils.log('info', 'Form Handler initialized successfully');
         } catch (error) {
@@ -1298,6 +1437,22 @@
         });
     };
 
+    FormHandler.prototype.setupServicesPageForms = function() {
+        if (!Utils.isServicesPage()) return;
+
+        // Handle service-specific contact form prefills
+        const serviceButtons = document.querySelectorAll('.btn[href*="contact.html"]');
+        serviceButtons.forEach(function(button) {
+            button.addEventListener('click', function(e) {
+                const href = button.getAttribute('href');
+                if (href && href.includes('?service=')) {
+                    // Let the URL parameters handle the prefill
+                    return;
+                }
+            });
+        });
+    };
+
     FormHandler.prototype.showFormError = function(message) {
         const existingError = document.querySelector('.form-error-message');
         if (existingError) {
@@ -1342,6 +1497,7 @@
     SmoothScrollController.prototype.init = function() {
         try {
             this.setupSmoothScrolling();
+            this.setupServicesPageScrolling();
         } catch (error) {
             Utils.log('error', 'Failed to initialize smooth scroll', error);
         }
@@ -1355,22 +1511,34 @@
             const clickCleanup = Utils.addEventListenerWithCleanup(
                 link, 'click', function(e) {
                     const targetId = link.getAttribute('href');
+                    
+                    if (targetId === '#' || targetId === '') return;
+                    
                     const target = document.querySelector(targetId);
 
                     if (target) {
                         e.preventDefault();
-                        const headerHeight = CONFIG.HEADER.TOTAL_HEIGHT;
-                        const targetPosition = target.offsetTop - headerHeight;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                        
-                        target.setAttribute('tabindex', '-1');
-                        target.focus();
-                        target.style.outline = 'none';
+                        Utils.smoothScrollTo(targetId);
                     }
+                }
+            );
+            self.cleanupFunctions.push(clickCleanup);
+        });
+    };
+
+    SmoothScrollController.prototype.setupServicesPageScrolling = function() {
+        if (!Utils.isServicesPage()) return;
+
+        // Enhanced services page scroll behavior
+        const servicesLinks = document.querySelectorAll('a[href^="#lifeguarding"], a[href^="#instruction"], a[href^="#events"]');
+        const self = this;
+
+        servicesLinks.forEach(function(link) {
+            const clickCleanup = Utils.addEventListenerWithCleanup(
+                link, 'click', function(e) {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    Utils.smoothScrollTo(targetId);
                 }
             );
             self.cleanupFunctions.push(clickCleanup);
@@ -1462,7 +1630,7 @@
         this.smoothScroll = null;
         this.contactUpdater = null;
         this.isInitialized = false;
-        this.version = '12.1';
+        this.version = '12.2';
 
         this.init();
     }
@@ -1523,6 +1691,8 @@
                 version: this.version,
                 timestamp: new Date().toISOString(),
                 deviceType: Utils.getDeviceType(),
+                currentPage: Utils.getCurrentPage(),
+                isServicesPage: Utils.isServicesPage(),
                 features: {
                     optimizedPerformance: true,
                     perfectHeaderVisibility: true,
@@ -1530,7 +1700,8 @@
                     brandFocusedDesign: true,
                     cleanCarouselMode: CONFIG.CAROUSEL.CLEAN_MODE,
                     carusoAesthetic: true,
-                    fastLoading: true
+                    fastLoading: true,
+                    servicesPageOptimized: true
                 }
             }
         });
@@ -1580,10 +1751,11 @@
         const smoothLinks = document.querySelectorAll('a[href^="#"]');
         smoothLinks.forEach(function(link) {
             link.addEventListener('click', function(e) {
-                const target = document.querySelector(link.getAttribute('href'));
+                const targetId = link.getAttribute('href');
+                const target = document.querySelector(targetId);
                 if (target) {
                     e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth' });
+                    Utils.smoothScrollTo(targetId);
                 }
             });
         });
@@ -1660,6 +1832,18 @@
         return Utils.getDeviceType();
     };
 
+    LuxuryApp.prototype.getCurrentPage = function() {
+        return Utils.getCurrentPage();
+    };
+
+    LuxuryApp.prototype.isServicesPage = function() {
+        return Utils.isServicesPage();
+    };
+
+    LuxuryApp.prototype.smoothScrollTo = function(targetId, offset) {
+        return Utils.smoothScrollTo(targetId, offset);
+    };
+
     LuxuryApp.prototype.getFeatures = function() {
         return {
             optimizedPerformance: true,
@@ -1669,6 +1853,7 @@
             cleanCarouselMode: CONFIG.CAROUSEL.CLEAN_MODE,
             carusoAesthetic: true,
             fastLoading: true,
+            servicesPageOptimized: true,
             version: this.version
         };
     };
@@ -1720,12 +1905,14 @@
         
         window.Utils = Utils;
         window.CONFIG = CONFIG;
-        Utils.log('info', 'Optimized debug mode active - Perfect header visibility with fast loading');
+        Utils.log('info', 'Optimized debug mode active - Services page optimized with perfect header visibility');
         Utils.log('info', 'Access app instance via window.app');
         Utils.log('info', 'Access utilities via window.Utils');
         Utils.log('info', 'Access config via window.CONFIG');
         Utils.log('info', 'Current device type: ' + Utils.getDeviceType());
-        Utils.log('info', 'Features: Perfect header visibility, optimized performance, elegant logo entrance, fast loading');
+        Utils.log('info', 'Current page: ' + Utils.getCurrentPage());
+        Utils.log('info', 'Is services page: ' + Utils.isServicesPage());
+        Utils.log('info', 'Features: Perfect header visibility, optimized performance, elegant logo entrance, fast loading, services page optimization');
     }
 
 })();
