@@ -1,7 +1,7 @@
 /*
- * 805 LifeGuard - Enhanced Luxury App JS (Optimized Enterprise JavaScript Application)
- * Version: 10.0 - OPTIMIZED with Perfect Header Visibility & Performance
- * Sophisticated brand-focused design with perfect header visibility and fast loading
+ * 805 LifeGuard - OPTIMIZED Luxury App JS (Enterprise JavaScript Application)
+ * Version: 12.0 - PERFORMANCE OPTIMIZED while maintaining perfect functionality
+ * Sophisticated brand-focused design with fast loading and perfect header visibility
  */
 
 (function() {
@@ -52,7 +52,7 @@
         
         // Performance Settings (Optimized)
         PERFORMANCE: {
-            DEBOUNCE_DELAY: 200,  // Reduced for better responsiveness
+            DEBOUNCE_DELAY: 150,  // Optimized for fast loading
             THROTTLE_DELAY: 16,
             INTERSECTION_THRESHOLD: 0.1,
             INTERSECTION_ROOT_MARGIN: '0px 0px -50px 0px'
@@ -67,18 +67,18 @@
             XXL: 1536
         },
         
-        // Header Heights (matches CSS custom properties)
+        // Header Heights (Enhanced for Prominent Branding)
         HEADER: {
             TOP_HEIGHT: 44,
-            NAVBAR_HEIGHT: 76,
-            TOTAL_HEIGHT: 120
+            NAVBAR_HEIGHT: 88,
+            TOTAL_HEIGHT: 132
         }
     };
     
     // === OPTIMIZED UTILITY FUNCTIONS ===
     const Utils = {
         /*
-         * Optimized debounce function
+         * Ultra-fast debounce function
          */
         debounce: function(func, wait) {
             wait = wait || CONFIG.PERFORMANCE.DEBOUNCE_DELAY;
@@ -96,7 +96,7 @@
         },
 
         /*
-         * Optimized throttle function
+         * Ultra-fast throttle function
          */
         throttle: function(func, limit) {
             limit = limit || CONFIG.PERFORMANCE.THROTTLE_DELAY;
@@ -113,7 +113,7 @@
         },
 
         /*
-         * Device type detection
+         * Fast device type detection
          */
         isMobile: function() {
             return window.innerWidth <= CONFIG.BREAKPOINTS.MD;
@@ -135,7 +135,7 @@
         },
 
         /*
-         * Optimized image preloading
+         * Fast image preloading with error handling
          */
         preloadImage: function(src) {
             return new Promise(function(resolve, reject) {
@@ -152,7 +152,7 @@
         },
 
         /*
-         * Optimized viewport check
+         * Fast viewport check
          */
         isInViewport: function(element, threshold) {
             threshold = threshold || 0.1;
@@ -175,13 +175,13 @@
         },
 
         /*
-         * Optimized logging
+         * Fast logging for development
          */
         log: function(level, message, data) {
             if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'production') return;
             
-            const timestamp = new Date().toISOString();
-            const logMessage = '[' + timestamp + '] [' + level.toUpperCase() + '] 805 LifeGuard Optimized: ' + message;
+            const timestamp = new Date().toISOString().substr(11, 8);
+            const logMessage = '[' + timestamp + '] [' + level.toUpperCase() + '] 805 LifeGuard: ' + message;
             
             switch (level) {
                 case 'error':
@@ -260,7 +260,7 @@
             return;
         }
 
-        Utils.log('info', 'Initializing Optimized Clean Caruso Carousel...');
+        Utils.log('info', 'Initializing Clean Caruso Carousel...');
 
         try {
             this.removeAllNavigationElements();
@@ -271,7 +271,7 @@
             this.startAutoPlay();
             this.handleResize();
             
-            Utils.log('info', 'Optimized Clean Caruso Carousel initialized successfully');
+            Utils.log('info', 'Clean Caruso Carousel initialized successfully');
         } catch (error) {
             Utils.log('error', 'Failed to initialize carousel', error);
         }
@@ -302,26 +302,60 @@
         const imagePromises = [];
         const self = this;
         
-        this.slides.forEach(function(slide) {
-            const desktopSrc = slide.dataset.bgDesktop;
-            const tabletSrc = slide.dataset.bgTablet;
-            const mobileSrc = slide.dataset.bgMobile;
-            
-            if (desktopSrc) imagePromises.push(Utils.preloadImage(desktopSrc));
-            if (tabletSrc && tabletSrc !== desktopSrc) imagePromises.push(Utils.preloadImage(tabletSrc));
-            if (mobileSrc && mobileSrc !== desktopSrc && mobileSrc !== tabletSrc) {
-                imagePromises.push(Utils.preloadImage(mobileSrc));
+        this.slides.forEach(function(slide, index) {
+            // Only preload first 3 images for faster initial load
+            if (index < 3) {
+                const desktopSrc = slide.dataset.bgDesktop;
+                const tabletSrc = slide.dataset.bgTablet;
+                const mobileSrc = slide.dataset.bgMobile;
+                
+                if (desktopSrc) imagePromises.push(Utils.preloadImage(desktopSrc));
+                if (tabletSrc && tabletSrc !== desktopSrc) imagePromises.push(Utils.preloadImage(tabletSrc));
+                if (mobileSrc && mobileSrc !== desktopSrc && mobileSrc !== tabletSrc) {
+                    imagePromises.push(Utils.preloadImage(mobileSrc));
+                }
             }
         });
 
         if (imagePromises.length > 0) {
             Promise.allSettled(imagePromises).then(function(results) {
                 const successCount = results.filter(r => r.status === 'fulfilled').length;
-                Utils.log('info', 'Clean carousel images preloaded: ' + successCount + '/' + imagePromises.length);
+                Utils.log('info', 'Clean carousel critical images preloaded: ' + successCount + '/' + imagePromises.length);
+                
+                // Preload remaining images after initial load
+                self.preloadRemainingImages();
             }).catch(function(error) {
                 Utils.log('warn', 'Some carousel images failed to preload', error);
             });
         }
+    };
+
+    CarouselController.prototype.preloadRemainingImages = function() {
+        const self = this;
+        setTimeout(function() {
+            const remainingPromises = [];
+            
+            self.slides.forEach(function(slide, index) {
+                if (index >= 3) {
+                    const desktopSrc = slide.dataset.bgDesktop;
+                    const tabletSrc = slide.dataset.bgTablet;
+                    const mobileSrc = slide.dataset.bgMobile;
+                    
+                    if (desktopSrc) remainingPromises.push(Utils.preloadImage(desktopSrc));
+                    if (tabletSrc && tabletSrc !== desktopSrc) remainingPromises.push(Utils.preloadImage(tabletSrc));
+                    if (mobileSrc && mobileSrc !== desktopSrc && mobileSrc !== tabletSrc) {
+                        remainingPromises.push(Utils.preloadImage(mobileSrc));
+                    }
+                }
+            });
+            
+            if (remainingPromises.length > 0) {
+                Promise.allSettled(remainingPromises).then(function(results) {
+                    const successCount = results.filter(r => r.status === 'fulfilled').length;
+                    Utils.log('info', 'Remaining carousel images preloaded: ' + successCount + '/' + remainingPromises.length);
+                });
+            }
+        }, 2000);
     };
 
     CarouselController.prototype.setupResponsiveBackgrounds = function() {
@@ -358,7 +392,6 @@
             
             if (currentBg !== newBg) {
                 slide.style.backgroundImage = newBg;
-                Utils.log('info', 'Updated slide background for ' + deviceType + ': ' + selectedSrc);
             }
         }
     };
@@ -476,7 +509,6 @@
         const newDeviceType = Utils.getDeviceType();
         
         if (newDeviceType !== this.currentDeviceType) {
-            Utils.log('info', 'Device type changed from ' + this.currentDeviceType + ' to ' + newDeviceType);
             this.currentDeviceType = newDeviceType;
             this.setupResponsiveBackgrounds();
         }
@@ -546,7 +578,6 @@
         if (this.autoPlayTimer) {
             clearInterval(this.autoPlayTimer);
             this.autoPlayTimer = null;
-            Utils.log('info', 'Clean carousel autoplay stopped');
         }
     };
 
@@ -571,7 +602,6 @@
         this.stopAutoPlay();
         this.cleanupFunctions.forEach(function(cleanup) { cleanup(); });
         this.cleanupFunctions = [];
-        Utils.log('info', 'Clean Carousel destroyed');
     };
 
     // === OPTIMIZED NAVIGATION CONTROLLER (Perfect Header Visibility) ===
@@ -592,7 +622,7 @@
     }
 
     NavigationController.prototype.init = function() {
-        Utils.log('info', 'Initializing Optimized Navigation Controller with Perfect Header Visibility...');
+        Utils.log('info', 'Initializing Navigation Controller...');
 
         try {
             this.setupEventListeners();
@@ -602,7 +632,7 @@
             this.updatePortalLinks();
             this.enhanceAccessibility();
             
-            Utils.log('info', 'Optimized Navigation Controller initialized successfully');
+            Utils.log('info', 'Navigation Controller initialized successfully');
         } catch (error) {
             Utils.log('error', 'Failed to initialize navigation', error);
         }
@@ -688,14 +718,12 @@
     };
 
     NavigationController.prototype.openMobileNav = function() {
-        Utils.log('info', 'Opening optimized navigation with perfect header visibility');
-        
         this.isOpen = true;
         this.scrollPosition = window.pageYOffset;
 
         // CRITICAL: Ensure header stays visible with proper z-index
         if (this.header) {
-            this.header.style.zIndex = '1070'; // Higher than nav overlay
+            this.header.style.zIndex = '1070';
             this.header.style.position = 'fixed';
             this.header.style.top = '0';
         }
@@ -723,8 +751,6 @@
     };
 
     NavigationController.prototype.closeMobileNav = function() {
-        Utils.log('info', 'Closing optimized navigation');
-        
         this.isOpen = false;
 
         // Focus management
@@ -749,8 +775,9 @@
         window.scrollTo(0, this.scrollPosition);
         
         // Focus return
-        setTimeout(() => {
-            this.mobileToggle.focus();
+        const self = this;
+        setTimeout(function() {
+            self.mobileToggle.focus();
         }, 100);
     };
 
@@ -788,7 +815,6 @@
 
         // Only run entrance animation on desktop viewports
         if (Utils.isMobile()) {
-            Utils.log('info', 'Skipping logo entrance animation on mobile viewport');
             this.logo.style.opacity = '1';
             this.logo.style.transform = 'scale(1) translateY(0)';
             this.logo.style.filter = 'blur(0px)';
@@ -796,7 +822,7 @@
             return;
         }
 
-        Utils.log('info', 'Initializing optimized elegant logo entrance animation...');
+        Utils.log('info', 'Initializing elegant logo entrance animation...');
 
         const self = this;
 
@@ -810,16 +836,12 @@
         this.logoEntranceTimer = setTimeout(function() {
             self.executeElegantEntrance();
         }, CONFIG.LOGO.ENTRANCE_DELAY);
-
-        Utils.log('info', 'Desktop logo entrance animation scheduled');
     };
 
     NavigationController.prototype.executeElegantEntrance = function() {
         if (!this.logo || Utils.isMobile()) return;
 
         const self = this;
-
-        Utils.log('info', 'Executing optimized elegant logo entrance animation');
 
         // Stage 1: Begin entrance
         this.logo.classList.remove('loading');
@@ -839,8 +861,6 @@
             self.logo.style.transform = 'scale(' + CONFIG.LOGO.LARGE_SCALE + ') translateY(0)';
             self.isLogoLarge = true;
             self.logoEntranceComplete = true;
-            
-            Utils.log('info', 'Optimized elegant logo entrance completed');
             
             self.setupLogoHoverEffects();
             self.dispatchLogoEntranceEvent();
@@ -878,7 +898,6 @@
         );
 
         this.cleanupFunctions.push(hoverInCleanup, hoverOutCleanup);
-        Utils.log('info', 'Logo hover effects initialized');
     };
 
     NavigationController.prototype.handleLogoScaling = function(scrollY) {
@@ -901,7 +920,6 @@
         this.logo.style.transform = 'scale(' + CONFIG.LOGO.LARGE_SCALE + ') translateY(0)';
         
         this.isLogoLarge = true;
-        Utils.log('info', 'Logo scaled to large size');
     };
 
     NavigationController.prototype.setLogoSmall = function() {
@@ -914,7 +932,6 @@
         this.logo.style.transform = 'scale(' + CONFIG.LOGO.NORMAL_SCALE + ') translateY(0)';
         
         this.isLogoLarge = false;
-        Utils.log('info', 'Logo scaled to normal size');
     };
 
     NavigationController.prototype.dispatchLogoEntranceEvent = function() {
@@ -929,7 +946,6 @@
             }
         });
         window.dispatchEvent(event);
-        Utils.log('info', 'Optimized elegant logo entrance complete event dispatched');
     };
 
     NavigationController.prototype.updateActiveLinks = function() {
@@ -1036,7 +1052,6 @@
         }
         this.cleanupFunctions.forEach(function(cleanup) { cleanup(); });
         this.cleanupFunctions = [];
-        Utils.log('info', 'Optimized Navigation destroyed');
     };
 
     // === OPTIMIZED ANIMATION CONTROLLER ===
@@ -1046,7 +1061,7 @@
     }
 
     AnimationController.prototype.init = function() {
-        Utils.log('info', 'Initializing Optimized Animation Controller...');
+        Utils.log('info', 'Initializing Animation Controller...');
 
         try {
             this.setupScrollAnimations();
@@ -1054,7 +1069,7 @@
             this.setupHeroAnimations();
             this.setupPerformanceOptimizations();
             
-            Utils.log('info', 'Optimized Animation Controller initialized successfully');
+            Utils.log('info', 'Animation Controller initialized successfully');
         } catch (error) {
             Utils.log('error', 'Failed to initialize animations', error);
         }
@@ -1170,7 +1185,6 @@
     AnimationController.prototype.destroy = function() {
         this.observers.forEach(function(observer) { observer.disconnect(); });
         this.observers = [];
-        Utils.log('info', 'Optimized Animation Controller destroyed');
     };
 
     // === OPTIMIZED FORM HANDLER ===
@@ -1180,7 +1194,7 @@
     }
 
     FormHandler.prototype.init = function() {
-        Utils.log('info', 'Initializing Optimized Form Handler...');
+        Utils.log('info', 'Initializing Form Handler...');
 
         try {
             this.setupFormValidation();
@@ -1188,7 +1202,7 @@
             this.handleURLParameters();
             this.setupEnhancedInteractions();
             
-            Utils.log('info', 'Optimized Form Handler initialized successfully');
+            Utils.log('info', 'Form Handler initialized successfully');
         } catch (error) {
             Utils.log('error', 'Failed to initialize form handler', error);
         }
@@ -1317,7 +1331,6 @@
     FormHandler.prototype.destroy = function() {
         this.cleanupFunctions.forEach(function(cleanup) { cleanup(); });
         this.cleanupFunctions = [];
-        Utils.log('info', 'Optimized Form Handler destroyed');
     };
 
     // === OPTIMIZED SMOOTH SCROLL CONTROLLER ===
@@ -1327,11 +1340,8 @@
     }
 
     SmoothScrollController.prototype.init = function() {
-        Utils.log('info', 'Initializing Optimized Smooth Scroll Controller...');
-
         try {
             this.setupSmoothScrolling();
-            Utils.log('info', 'Optimized Smooth Scroll Controller initialized successfully');
         } catch (error) {
             Utils.log('error', 'Failed to initialize smooth scroll', error);
         }
@@ -1370,7 +1380,6 @@
     SmoothScrollController.prototype.destroy = function() {
         this.cleanupFunctions.forEach(function(cleanup) { cleanup(); });
         this.cleanupFunctions = [];
-        Utils.log('info', 'Optimized Smooth Scroll Controller destroyed');
     };
 
     // === OPTIMIZED CONTACT UPDATER ===
@@ -1379,11 +1388,8 @@
     }
 
     ContactUpdater.prototype.init = function() {
-        Utils.log('info', 'Initializing Optimized Contact Updater...');
-
         try {
             this.updateAllContacts();
-            Utils.log('info', 'Optimized Contact Updater initialized successfully');
         } catch (error) {
             Utils.log('error', 'Failed to initialize contact updater', error);
         }
@@ -1456,7 +1462,7 @@
         this.smoothScroll = null;
         this.contactUpdater = null;
         this.isInitialized = false;
-        this.version = '10.0';
+        this.version = '12.0';
 
         this.init();
     }
@@ -1473,7 +1479,7 @@
     LuxuryApp.prototype.initializeApp = function() {
         const self = this;
         try {
-            Utils.log('info', 'Initializing 805 LifeGuard Optimized Luxury Application v' + this.version + ' with Perfect Header Visibility...');
+            Utils.log('info', 'Initializing 805 LifeGuard Optimized Application v' + this.version + '...');
 
             // Detect WebP support first
             this.webpService.detect().then(function() {
@@ -1496,7 +1502,7 @@
 
                 self.isInitialized = true;
 
-                Utils.log('info', '805 LifeGuard Optimized Luxury Application v' + self.version + ' initialized successfully with perfect header visibility');
+                Utils.log('info', '805 LifeGuard Optimized Application v' + self.version + ' initialized successfully');
 
                 // Dispatch ready event
                 self.dispatchReadyEvent();
@@ -1554,8 +1560,6 @@
                     document.body.classList.add('nav-open');
                 }
             });
-
-            Utils.log('info', 'Optimized fallback mobile navigation initialized');
         }
 
         // Logo fallback entrance - desktop only
