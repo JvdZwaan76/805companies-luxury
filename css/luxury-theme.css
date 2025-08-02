@@ -379,7 +379,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    z-index: calc(var(--z-index-modal) + 52);
+    z-index: calc(var(--z-index-modal) + 60); /* Highest z-index for always clickable */
     position: relative;
 }
 
@@ -394,7 +394,7 @@ p {
     border: none;
     cursor: pointer;
     padding: 6px;
-    z-index: calc(var(--z-index-modal) + 52);
+    z-index: calc(var(--z-index-modal) + 60); /* Highest z-index for always clickable */
     transition: var(--transition-normal);
     position: relative;
     border-radius: var(--radius-lg);
@@ -472,14 +472,14 @@ p {
     gap: var(--spacing-3); /* Reduced gap for mobile balance */
     text-decoration: none;
     justify-self: center;
-    z-index: calc(var(--z-index-modal) + 51);
+    z-index: calc(var(--z-index-modal) + 55); /* Below hamburger but above navigation */
     position: relative;
     transform-origin: center;
     
-    /* Initial Hidden State for Elegant Entrance (Desktop Only) */
-    opacity: 0;
-    transform: scale(1.15) translateY(-6px);
-    filter: blur(0.3px);
+    /* Start visible on mobile, entrance animation only on desktop */
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0px);
     
     /* Enhanced Transition Properties */
     transition: all var(--transition-entrance) ease-out;
@@ -495,15 +495,19 @@ p {
 @media (min-width: 769px) {
     .logo {
         gap: var(--spacing-4);
+        /* Desktop entrance animation initial state */
+        opacity: 0;
+        transform: scale(1.15) translateY(-6px);
+        filter: blur(0.3px);
     }
 }
 
 /* Mobile: Start visible without animation */
 @media (max-width: 768px) {
     .logo {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-        filter: blur(0px);
+        opacity: 1 !important;
+        transform: scale(1) translateY(0) !important;
+        filter: blur(0px) !important;
         transition: all var(--transition-normal) ease-out;
     }
 }
@@ -517,54 +521,54 @@ p {
 /* Elegant Entrance Animation States (Desktop Only) */
 @media (min-width: 769px) {
     .logo.loading {
-        opacity: 0;
-        transform: scale(1.15) translateY(-6px);
+        opacity: 0 !important;
+        transform: scale(1.15) translateY(-6px) !important;
         filter: blur(0.3px);
     }
 
     .logo.entering {
-        opacity: 0.9;
-        transform: scale(1.06) translateY(-2px);
+        opacity: 0.9 !important;
+        transform: scale(1.06) translateY(-2px) !important;
         filter: blur(0px);
         transition: all var(--transition-entrance) ease-out;
     }
 
     .logo.loaded {
-        opacity: 1;
-        transform: scale(1.05) translateY(0);
+        opacity: 1 !important;
+        transform: scale(1.05) translateY(0) !important;
         filter: blur(0px);
         transition: all var(--transition-entrance) ease-out;
     }
 
     /* Dynamic Logo Scaling States (Desktop Only) */
     .logo.logo-large {
-        transform: scale(1.05) translateY(0);
+        transform: scale(1.05) translateY(0) !important;
         transition: all var(--transition-elegant) ease-out;
     }
 
     .logo.logo-small {
-        transform: scale(1) translateY(0);
+        transform: scale(1) translateY(0) !important;
         transition: all var(--transition-elegant) ease-out;
     }
 
     .logo.scrolled {
-        transform: scale(1) translateY(0);
+        transform: scale(1) translateY(0) !important;
         transition: all var(--transition-elegant) ease-out;
     }
 
     /* Sophisticated Hover Effect with Gentle Floating (Desktop Only) */
     .logo:hover {
-        transform: scale(1.08) translateY(-1px);
+        transform: scale(1.08) translateY(-1px) !important;
         transition: all var(--transition-normal) ease-out;
         filter: brightness(1.02);
     }
 
     .logo.logo-large:hover {
-        transform: scale(1.08) translateY(-1px);
+        transform: scale(1.08) translateY(-1px) !important;
     }
 
     .logo.logo-small:hover {
-        transform: scale(1.03) translateY(-1px);
+        transform: scale(1.03) translateY(-1px) !important;
     }
 }
 
@@ -581,8 +585,8 @@ p {
 /* Mobile: Hide logo only on mobile when nav is active */
 @media (max-width: 768px) {
     .nav-open .logo {
-        opacity: 0;
-        transform: scale(0.9) translateY(3px);
+        opacity: 0 !important;
+        transform: scale(0.9) translateY(3px) !important;
         pointer-events: none;
         transition: all var(--transition-normal) ease-out;
     }
@@ -722,7 +726,7 @@ p {
     animation: logoGrandEntrance var(--transition-entrance) cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
-/* Actions - Right Side */
+/* Actions - Right Side with Mobile-First Balance */
 .nav-actions {
     display: flex;
     align-items: center;
@@ -738,8 +742,15 @@ p {
 }
 
 .portal-group {
-    display: flex;
+    display: none; /* Hidden on mobile for better branding focus */
     gap: var(--spacing-2);
+}
+
+/* Show portal buttons only on desktop for clean mobile design */
+@media (min-width: 769px) {
+    .portal-group {
+        display: flex;
+    }
 }
 
 .portal-btn {
@@ -806,10 +817,11 @@ p {
     
     .consultation-btn {
         padding: var(--spacing-2);
-        width: 36px;
-        height: 36px;
+        width: 32px;
+        height: 32px;
         border-radius: var(--radius-full);
         justify-content: center;
+        font-size: var(--font-size-xs);
     }
 }
 
