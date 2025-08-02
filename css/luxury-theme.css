@@ -1,6 +1,6 @@
 /* 
  * 805 LifeGuard - OPTIMIZED Caruso-Inspired Luxury Theme CSS (Enterprise Design System)
- * Version: 11.1 - PERFORMANCE OPTIMIZED with enhanced About page support
+ * Version: 11.2 - PERFORMANCE OPTIMIZED with enhanced Services page support
  * Sophisticated brand-focused design with fast loading and perfect header visibility
  */
 
@@ -1132,12 +1132,16 @@ body.nav-open {
     z-index: 1;
 }
 
+/* Hide all carousel navigation elements for clean Caruso aesthetic */
 .carousel-indicators,
 .carousel-controls,
 .carousel-prev,
 .carousel-next,
 .indicator {
     display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
 }
 
 .hero-overlay {
@@ -2463,5 +2467,82 @@ img {
     .nav-link,
     .overlay-nav-link {
         border: 2px solid;
+    }
+}
+
+/* === SERVICES PAGE SPECIFIC OPTIMIZATIONS === */
+
+/* Smooth anchor scrolling for services page */
+html {
+    scroll-padding-top: var(--header-total-height);
+}
+
+@media (max-width: 768px) {
+    html {
+        scroll-padding-top: var(--header-navbar-height);
+    }
+}
+
+/* Enhanced services page hero specific adjustments */
+.services-hero .hero-content {
+    max-width: 1000px;
+}
+
+/* Service detail sections - ensure proper spacing */
+#lifeguarding,
+#instruction,
+#events {
+    scroll-margin-top: var(--header-total-height);
+}
+
+@media (max-width: 768px) {
+    #lifeguarding,
+    #instruction,
+    #events {
+        scroll-margin-top: var(--header-navbar-height);
+    }
+}
+
+/* Enhanced service navigation links */
+.service-link {
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
+}
+
+.service-link:hover {
+    color: var(--color-primary-darkest);
+}
+
+/* Optimized services grid for better mobile display */
+@media (max-width: 480px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-6);
+    }
+    
+    .service-card {
+        margin-bottom: var(--spacing-4);
+    }
+}
+
+/* Enhanced feature items for services page */
+.feature-item {
+    transition: all var(--transition-normal);
+}
+
+.feature-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Optimized services page section spacing */
+.services-section + .about-section,
+.about-section + .services-section {
+    padding-top: var(--spacing-24);
+}
+
+@media (max-width: 768px) {
+    .services-section + .about-section,
+    .about-section + .services-section {
+        padding-top: var(--spacing-20);
     }
 }
