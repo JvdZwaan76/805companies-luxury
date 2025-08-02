@@ -373,11 +373,11 @@
     <section class="hero" role="banner" aria-label="About 805 LifeGuard">
         <!-- Background Carousel -->
         <div class="hero-carousel" id="heroCarousel">
-            <div class="carousel-slide active" style="background-image: url('images/about/about-team-hero-1920x1080.jpg')" data-bg-desktop="images/about/about-team-hero-1920x1080.jpg" data-bg-tablet="images/about/about-team-hero-1024x576.jpg" data-bg-mobile="images/about/about-team-hero-768x432.jpg" aria-label="Jasper and professional lifeguard team"></div>
-            <div class="carousel-slide" style="background-image: url('images/about/about-founder-story-1920x1080.jpg')" data-bg-desktop="images/about/about-founder-story-1920x1080.jpg" data-bg-tablet="images/about/about-founder-story-1024x576.jpg" data-bg-mobile="images/about/about-founder-story-768x432.jpg" aria-label="Founder Jasper van der Zwaan story"></div>
-            <div class="carousel-slide" style="background-image: url('images/about/about-certifications-1920x1080.jpg')" data-bg-desktop="images/about/about-certifications-1920x1080.jpg" data-bg-tablet="images/about/about-certifications-1024x576.jpg" data-bg-mobile="images/about/about-certifications-768x432.jpg" aria-label="Professional certifications and credentials"></div>
-            <div class="carousel-slide" style="background-image: url('images/about/about-company-mission-1920x1080.jpg')" data-bg-desktop="images/about/about-company-mission-1920x1080.jpg" data-bg-tablet="images/about/about-company-mission-1024x576.jpg" data-bg-mobile="images/about/about-company-mission-768x432.jpg" aria-label="Company mission and values"></div>
-            <div class="carousel-slide" style="background-image: url('images/about/about-excellence-track-record-1920x1080.jpg')" data-bg-desktop="images/about/about-excellence-track-record-1920x1080.jpg" data-bg-tablet="images/about/about-excellence-track-record-1024x576.jpg" data-bg-mobile="images/about/about-excellence-track-record-768x432.jpg" aria-label="Track record of excellence and client success"></div>
+            <div class="carousel-slide active" data-bg-desktop="images/about/about-team-hero-1920x1080.jpg" data-bg-tablet="images/about/about-team-hero-1024x576.jpg" data-bg-mobile="images/about/about-team-hero-768x432.jpg" aria-label="Jasper and professional lifeguard team"></div>
+            <div class="carousel-slide" data-bg-desktop="images/about/about-founder-story-1920x1080.jpg" data-bg-tablet="images/about/about-founder-story-1024x576.jpg" data-bg-mobile="images/about/about-founder-story-768x432.jpg" aria-label="Founder Jasper van der Zwaan story"></div>
+            <div class="carousel-slide" data-bg-desktop="images/about/about-certifications-1920x1080.jpg" data-bg-tablet="images/about/about-certifications-1024x576.jpg" data-bg-mobile="images/about/about-certifications-768x432.jpg" aria-label="Professional certifications and credentials"></div>
+            <div class="carousel-slide" data-bg-desktop="images/about/about-company-mission-1920x1080.jpg" data-bg-tablet="images/about/about-company-mission-1024x576.jpg" data-bg-mobile="images/about/about-company-mission-768x432.jpg" aria-label="Company mission and values"></div>
+            <div class="carousel-slide" data-bg-desktop="images/about/about-excellence-track-record-1920x1080.jpg" data-bg-tablet="images/about/about-excellence-track-record-1024x576.jpg" data-bg-mobile="images/about/about-excellence-track-record-768x432.jpg" aria-label="Track record of excellence and client success"></div>
         </div>
         
         <!-- Carousel Overlay -->
@@ -830,7 +830,7 @@
                     <ul>
                         <li><a href="about.html">About Jasper & Team</a></li>
                         <li><a href="portfolio.html">Client Portfolio</a></li>
-                        <li><="testimonials.html">Client Testimonials</a></li>
+                        <li><a href="testimonials.html">Client Testimonials</a></li>
                         <li><a href="faq.html">Frequently Asked Questions</a></li>
                         <li><a href="contact.html">Contact & Consultation</a></li>
                     </ul>
@@ -916,7 +916,9 @@
                 const slides = document.querySelectorAll('.carousel-slide');
                 const isMobile = window.innerWidth <= 768;
                 
-                slides.forEach(function(slide) {
+                console.log('805 LifeGuard: Setting up carousel backgrounds. Mobile:', isMobile, 'Slides found:', slides.length);
+                
+                slides.forEach(function(slide, index) {
                     const desktopSrc = slide.dataset.bgDesktop;
                     const tabletSrc = slide.dataset.bgTablet;
                     const mobileSrc = slide.dataset.bgMobile;
@@ -930,10 +932,21 @@
                         selectedSrc = desktopSrc || tabletSrc || mobileSrc;
                     }
                     
-                    if (selectedSrc && !slide.style.backgroundImage) {
+                    if (selectedSrc) {
                         slide.style.backgroundImage = 'url(' + selectedSrc + ')';
+                        slide.style.backgroundSize = 'cover';
+                        slide.style.backgroundPosition = 'center';
+                        slide.style.backgroundRepeat = 'no-repeat';
+                        console.log('805 LifeGuard: Set slide', index, 'background:', selectedSrc);
                     }
                 });
+                
+                // Ensure first slide is active
+                const firstSlide = document.querySelector('.carousel-slide');
+                if (firstSlide) {
+                    firstSlide.classList.add('active');
+                    console.log('805 LifeGuard: First slide marked as active');
+                }
             }
             
             // Fast mobile navigation fallback
