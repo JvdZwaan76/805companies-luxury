@@ -13,6 +13,8 @@
     <meta name="language" content="en-US">
     <meta name="geo.region" content="US-CA">
     <meta name="geo.placename" content="Thousand Oaks, California">
+    <meta name="geo.position" content="34.1706;-118.8376">
+    <meta name="ICBM" content="34.1706, -118.8376">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website">
@@ -23,6 +25,7 @@
     <meta property="og:image" content="https://805lifeguard.com/images/portfolio/portfolio-og-1200x630.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="805 LifeGuard Client Portfolio">
     <meta property="og:locale" content="en_US">
     
     <!-- Twitter Card Meta Tags -->
@@ -30,31 +33,262 @@
     <meta name="twitter:title" content="Client Portfolio - 805 LifeGuard">
     <meta name="twitter:description" content="Distinguished estate projects and success stories from Southern California's premier aquatic safety professionals.">
     <meta name="twitter:image" content="https://805lifeguard.com/images/portfolio/portfolio-twitter-1200x600.jpg">
+    <meta name="twitter:image:alt" content="805 LifeGuard Portfolio">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://805lifeguard.com/portfolio.html">
     
-    <!-- Sophisticated Country Club Fonts -->
+    <!-- Critical CSS - Inlined for fastest loading -->
+    <style>
+        /* Critical path CSS for immediate rendering */
+        :root {
+            --color-primary-darkest: #1A1A1A;
+            --color-primary: #4A4A4A;
+            --color-secondary: #B8A082;
+            --color-white: #FFFFFF;
+            --color-text-primary: #0F0F0F;
+            --color-text-inverse: #FFFFFF;
+            --color-bg-primary: #FFFFFF;
+            --font-family-serif: 'Playfair Display', Georgia, serif;
+            --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            --header-total-height: 132px;
+            --header-navbar-height: 88px;
+            --z-index-header: 1070;
+            --z-index-hamburger: 1080;
+            --z-index-modal: 1050;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: var(--font-family-sans);
+            color: var(--color-text-primary);
+            background: var(--color-bg-primary);
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: var(--z-index-header);
+            background: var(--color-white);
+            border-bottom: 1px solid #E8E8E8;
+        }
+        
+        .header-top {
+            background: linear-gradient(135deg, #1A1A1A, #2F2F2F);
+            color: var(--color-text-inverse);
+            padding: 0.5rem 0;
+            height: 44px;
+            display: flex;
+            align-items: center;
+        }
+        
+        @media (max-width: 768px) {
+            .header-top { display: none; }
+        }
+        
+        .navbar {
+            padding: 1.25rem 0;
+            height: var(--header-navbar-height);
+            display: flex;
+            align-items: center;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: var(--header-total-height);
+            overflow: hidden;
+        }
+        
+        .hero-carousel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .carousel-slide.active {
+            opacity: 1;
+        }
+        
+        .carousel-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg,rgba(0, 0, 0, 0.3) 0%,rgba(0, 0, 0, 0.4) 50%,rgba(0, 0, 0, 0.5) 100%);
+            z-index: 1;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg,rgba(0, 0, 0, 0.2) 0%,rgba(0, 0, 0, 0.3) 50%,rgba(0, 0, 0, 0.4) 100%);
+            z-index: 2;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: var(--color-text-inverse);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .hero { 
+                padding-top: calc(var(--header-navbar-height) + 1rem);
+            }
+        }
+        
+        /* Portfolio specific critical styles */
+        .portfolio-filter {
+            padding: 3rem 0;
+            background: #F9F9F9;
+        }
+        
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--color-white);
+            border: 2px solid #E8E8E8;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            color: var(--color-text-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-family-sans);
+            font-size: 0.9375rem;
+        }
+        
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--color-secondary);
+            border-color: var(--color-secondary);
+            color: var(--color-text-inverse);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+        }
+        
+        .portfolio-gallery {
+            padding: 5rem 0;
+            background: var(--color-white);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .portfolio-item {
+            background: var(--color-white);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #E8E8E8;
+            position: relative;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .portfolio-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-image img {
+            transform: scale(1.05);
+        }
+    </style>
+    
+    <!-- Enhanced Performance: DNS Prefetch and Preconnect -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     
-    <!-- Font Awesome - Fixed CDN link for better reliability -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    
-    <!-- Enhanced Luxury Theme CSS -->
-    <link rel="stylesheet" href="css/luxury-theme.css">
-    
-    <!-- Preload critical images -->
-    <link rel="preload" as="image" href="images/gallery/gallery-estate-pool-01-800x600.webp" type="image/webp">
-    <link rel="preload" as="image" href="images/gallery/gallery-estate-pool-01-800x600.jpg" type="image/jpeg">
+    <!-- Critical Resource Preloading -->
+    <link rel="preload" as="image" href="images/portfolio/portfolio-hero-1920x1080.webp" type="image/webp">
+    <link rel="preload" as="image" href="images/portfolio/portfolio-hero-1920x1080.jpg" type="image/jpeg">
     <link rel="preload" as="image" href="images/logos/805-lifeguard-logo.png">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- Optimized Typography - Async Loading -->
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap"></noscript>
+    
+    <!-- Font Awesome Icons - Deferred -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+    
+    <!-- Main CSS - Deferred -->
+    <link rel="preload" href="css/luxury-theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/luxury-theme.css"></noscript>
     
     <!-- Favicon and Apple Touch Icons -->
     <link rel="icon" type="image/x-icon" href="images/logos/805-lifeguard-favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="images/logos/805-lifeguard-apple-touch-icon-180x180.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/logos/805-lifeguard-favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/logos/805-lifeguard-favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
@@ -71,571 +305,25 @@
       "url": "https://805lifeguard.com/portfolio.html"
     }
     </script>
-    
-    <!-- Portfolio Page Specific Styles -->
-    <style>
-        /* Portfolio Hero Section */
-        .portfolio-hero {
-            position: relative;
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            padding-top: 120px;
-            padding-bottom: var(--space-20);
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        
-        .portfolio-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                135deg,
-                rgba(10, 22, 40, 0.6) 0%,
-                rgba(27, 43, 66, 0.7) 50%,
-                rgba(10, 22, 40, 0.8) 100%
-            );
-            z-index: 1;
-        }
-        
-        .portfolio-hero .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: var(--white-pure);
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 var(--space-4);
-        }
-        
-        .portfolio-hero h1 {
-            font-family: var(--font-serif);
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            color: var(--white-pure);
-            margin-bottom: var(--space-6);
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            font-weight: 700;
-        }
-        
-        .portfolio-hero .hero-subtitle {
-            font-size: 1.25rem;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.9);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        /* Portfolio Filter */
-        .portfolio-filter {
-            padding: var(--space-12) 0;
-            background: var(--cream);
-        }
-        
-        .filter-tabs {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-3);
-            flex-wrap: wrap;
-        }
-        
-        .filter-btn {
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
-            padding: var(--space-3) var(--space-6);
-            background: var(--white-pure);
-            border: 2px solid var(--border-color);
-            border-radius: var(--border-radius-lg);
-            font-weight: 500;
-            color: var(--gray-dark);
-            cursor: pointer;
-            transition: var(--transition);
-            font-family: var(--font-sans);
-            font-size: 0.9375rem;
-        }
-        
-        .filter-btn.active,
-        .filter-btn:hover {
-            background: var(--gold-medium);
-            border-color: var(--gold-medium);
-            color: var(--navy-dark);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        /* Portfolio Gallery */
-        .portfolio-gallery {
-            padding: var(--space-20) 0;
-            background: var(--white-pure);
-        }
-        
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: var(--space-8);
-        }
-        
-        .portfolio-item {
-            background: var(--white-pure);
-            border-radius: var(--border-radius-xl);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-            transition: var(--transition);
-            border: 1px solid var(--border-color);
-            position: relative;
-        }
-        
-        .portfolio-item:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-        }
-        
-        .portfolio-image {
-            position: relative;
-            height: 250px;
-            overflow: hidden;
-        }
-        
-        .portfolio-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-        
-        .portfolio-item:hover .portfolio-image img {
-            transform: scale(1.05);
-        }
-        
-        .portfolio-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(10, 22, 40, 0.9), rgba(27, 43, 66, 0.8));
-            opacity: 0;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: var(--space-5);
-        }
-        
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-        
-        .portfolio-content {
-            text-align: center;
-            color: var(--white-pure);
-            max-width: 100%;
-            width: 100%;
-        }
-        
-        .portfolio-badge {
-            display: inline-block;
-            background: var(--gold-medium);
-            color: var(--navy-dark);
-            padding: var(--space-1) var(--space-3);
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: var(--space-3);
-        }
-        
-        .portfolio-content h3 {
-            color: var(--white-pure);
-            margin-bottom: var(--space-3);
-            font-size: 1.125rem;
-            line-height: 1.3;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .portfolio-content p {
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: var(--space-4);
-            line-height: 1.4;
-            font-size: 0.875rem;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .portfolio-details {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-4);
-            flex-wrap: wrap;
-        }
-        
-        .detail-item {
-            display: flex;
-            align-items: center;
-            gap: var(--space-1);
-            font-size: 0.875rem;
-            color: var(--gold-light);
-        }
-        
-        .detail-item i {
-            font-size: 0.75rem;
-        }
-        
-        /* Portfolio Statistics */
-        .portfolio-stats {
-            padding: var(--space-20) 0;
-            background: linear-gradient(135deg, var(--navy-dark), var(--navy-medium));
-            color: var(--white-pure);
-        }
-        
-        .portfolio-stats .section-header {
-            margin-bottom: var(--space-16);
-        }
-        
-        .portfolio-stats h2 {
-            color: var(--white-pure);
-        }
-        
-        .portfolio-stats .section-description {
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: var(--space-8);
-        }
-        
-        .stat-item {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: var(--space-6);
-            border-radius: var(--border-radius-xl);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: var(--transition);
-        }
-        
-        .stat-item:hover {
-            background: rgba(212, 175, 55, 0.2);
-            border-color: var(--gold-medium);
-            transform: translateY(-4px);
-        }
-        
-        .stat-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gold-medium);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--navy-dark);
-            font-size: 1.5rem;
-            margin: 0 auto var(--space-4);
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--gold-medium);
-            font-family: var(--font-serif);
-            line-height: 1;
-            margin-bottom: var(--space-2);
-        }
-        
-        .stat-label {
-            font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.8);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-weight: 500;
-        }
-        
-        /* Portfolio Testimonials */
-        .portfolio-testimonials {
-            padding: var(--space-20) 0;
-            background: linear-gradient(135deg, var(--white-warm), var(--cream));
-        }
-        
-        .testimonials-slider {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: var(--space-8);
-        }
-        
-        .testimonial-card {
-            background: var(--white-pure);
-            padding: var(--space-6);
-            border-radius: var(--border-radius-xl);
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-            position: relative;
-            border: 1px solid var(--border-color);
-        }
-        
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: -10px;
-            left: var(--space-4);
-            font-size: 4rem;
-            color: var(--gold-light);
-            font-family: var(--font-serif);
-            opacity: 0.3;
-        }
-        
-        .testimonial-card.featured {
-            border: 2px solid var(--gold-medium);
-            background: var(--cream);
-        }
-        
-        .testimonial-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .testimonial-content p {
-            font-size: 1.0625rem;
-            line-height: 1.7;
-            color: var(--gray-dark);
-            font-style: italic;
-            margin-bottom: var(--space-5);
-            font-family: var(--font-serif);
-        }
-        
-        .testimonial-author {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .author-name {
-            font-weight: 600;
-            color: var(--navy-dark);
-            margin-bottom: var(--space-1);
-        }
-        
-        .author-location {
-            font-size: 0.875rem;
-            color: var(--gray-medium);
-        }
-        
-        .testimonial-rating {
-            display: flex;
-            gap: 2px;
-            color: var(--gold-medium);
-        }
-        
-        /* Portfolio CTA */
-        .portfolio-cta {
-            padding: var(--space-20) 0;
-            background: linear-gradient(135deg, var(--navy-dark), var(--navy-medium));
-            color: var(--white-pure);
-            text-align: center;
-        }
-        
-        .portfolio-cta .cta-content {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .portfolio-cta h2 {
-            color: var(--white-pure);
-            margin-bottom: var(--space-6);
-        }
-        
-        .portfolio-cta p {
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: var(--space-8);
-            font-size: 1.125rem;
-            line-height: 1.6;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: var(--space-4);
-            justify-content: center;
-            margin-bottom: var(--space-8);
-            flex-wrap: wrap;
-        }
-        
-        .cta-contact {
-            text-align: center;
-        }
-        
-        .cta-contact p {
-            color: rgba(255, 255, 255, 0.8);
-            margin: 0;
-            font-size: 0.9375rem;
-        }
-        
-        .cta-contact a {
-            color: var(--gold-light);
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-        
-        .cta-contact a:hover {
-            color: var(--white-pure);
-        }
-        
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .portfolio-hero {
-                min-height: 70vh;
-                padding-top: 80px;
-                background-attachment: scroll;
-            }
-            
-            .filter-tabs {
-                flex-direction: column;
-                align-items: center;
-                max-width: 300px;
-                margin: 0 auto;
-            }
-            
-            .filter-btn {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: var(--space-6);
-            }
-            
-            .portfolio-overlay {
-                padding: var(--space-4);
-            }
-            
-            .portfolio-content h3 {
-                font-size: 1rem;
-            }
-            
-            .portfolio-content p {
-                font-size: 0.8125rem;
-                line-height: 1.3;
-            }
-            
-            .portfolio-details {
-                gap: var(--space-2);
-            }
-            
-            .detail-item {
-                font-size: 0.75rem;
-            }
-            
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: var(--space-6);
-            }
-            
-            .testimonials-slider {
-                grid-template-columns: 1fr;
-                gap: var(--space-6);
-            }
-            
-            .testimonial-author {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: var(--space-2);
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn-primary,
-            .btn-secondary {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .portfolio-overlay {
-                padding: var(--space-3);
-            }
-            
-            .portfolio-content h3 {
-                font-size: 0.9375rem;
-                margin-bottom: var(--space-2);
-            }
-            
-            .portfolio-content p {
-                font-size: 0.75rem;
-                line-height: 1.25;
-                margin-bottom: var(--space-3);
-            }
-            
-            .portfolio-details {
-                flex-direction: column;
-                gap: var(--space-1);
-                align-items: center;
-            }
-            
-            .detail-item {
-                font-size: 0.6875rem;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Icon loading fix */
-        .fas, .far, .fab, .fal {
-            font-family: "Font Awesome 6 Free", "Font Awesome 6 Pro", "Font Awesome 6 Brands";
-            font-weight: 900;
-        }
-        
-        .far {
-            font-weight: 400;
-        }
-        
-        /* Ensure icons display properly on slower connections */
-        i[class*="fa-"] {
-            display: inline-block;
-            width: 1em;
-            text-align: center;
-        }
-        
-        /* Fallback for missing icons */
-        i[class*="fa-"]:before {
-            content: attr(data-fallback);
-        }
-    </style>
 </head>
 <body itemscope itemtype="https://schema.org/WebPage">
-    <!-- Enhanced Header -->
+    <!-- Enhanced Enterprise Header with Perfect Visibility -->
     <header class="header" id="header" role="banner">
         <!-- Top Bar -->
         <div class="header-top">
             <div class="container">
                 <div class="header-top-content">
                     <div class="header-top-left">
-                        <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
+                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
                         <span>Serving Southern California's Distinguished Clientele Since 2016</span>
                     </div>
                     <div class="header-top-right">
                         <a href="tel:+18053676432" class="header-contact" aria-label="Call 805 LifeGuard">
-                            <i class="fas fa-phone" aria-hidden="true" data-fallback="📞"></i>
+                            <i class="fas fa-phone" aria-hidden="true"></i>
                             (805) 367-6432
                         </a>
                         <a href="mailto:concierge@805lifeguard.com" class="header-contact" aria-label="Email 805 LifeGuard">
-                            <i class="fas fa-envelope" aria-hidden="true" data-fallback="✉️"></i>
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
                             concierge@805lifeguard.com
                         </a>
                     </div>
@@ -643,170 +331,170 @@
             </div>
         </div>
         
-        <!-- Main Navigation -->
+        <!-- Enhanced Main Navigation with Perfect Mobile Balance -->
         <nav class="navbar" role="navigation" aria-label="Main navigation">
             <div class="container">
                 <div class="navbar-content">
-                    <!-- Logo -->
-                    <a href="/" class="logo" aria-label="805 LifeGuard Homepage">
-                        <img src="images/logos/805-lifeguard-logo.png" alt="805 LifeGuard - Premier Aquatic Services" class="logo-img" width="64" height="64">
+                    <!-- Enhanced Hamburger Menu - Left -->
+                    <div class="desktop-menu-toggle">
+                        <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navOverlay">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </button>
+                    </div>
+                    
+                    <!-- Logo - Centered with Elegant Entrance Animation -->
+                    <a href="/" class="logo" id="mainLogo" aria-label="805 LifeGuard Homepage">
+                        <img src="images/logos/805-lifeguard-logo.png" alt="805 LifeGuard - Aquatic Services" class="logo-img" width="48" height="48">
                         <div class="logo-text">
                             <div class="logo-name">805 LifeGuard</div>
-                            <div class="logo-tagline">Premier Aquatic Services</div>
+                            <div class="logo-tagline">Aquatic Services</div>
                         </div>
                     </a>
                     
-                    <!-- Desktop Navigation -->
-                    <div class="nav-desktop">
-                        <ul class="nav-menu" role="menubar">
-                            <li role="none"><a href="about.html" class="nav-link" role="menuitem">About</a></li>
-                            <li role="none"><a href="services.html" class="nav-link" role="menuitem">Services</a></li>
-                            <li role="none"><a href="pool-cleaning.html" class="nav-link" role="menuitem">Pool Cleaning</a></li>
-                            <li role="none"><a href="hoa.html" class="nav-link" role="menuitem">HOA Services</a></li>
-                            <li role="none"><a href="portfolio.html" class="nav-link active" role="menuitem">Portfolio</a></li>
-                            <li role="none"><a href="testimonials.html" class="nav-link" role="menuitem">Testimonials</a></li>
-                            <li role="none"><a href="faq.html" class="nav-link" role="menuitem">FAQ</a></li>
-                        </ul>
-                        
-                        <div class="nav-actions">
-                            <div class="portal-group">
-                                <a href="https://client.805companies.com" target="_blank" rel="noopener noreferrer" class="portal-btn client-portal" aria-label="Client Portal - Opens in new window">
-                                    <i class="fas fa-user-circle" aria-hidden="true" data-fallback="👤"></i>
-                                    Client
-                                </a>
-                                <a href="https://admin.805companies.com" target="_blank" rel="noopener noreferrer" class="portal-btn admin-portal" aria-label="Admin Portal - Opens in new window">
-                                    <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
-                                    Admin
-                                </a>
-                            </div>
-                            <a href="contact.html" class="consultation-btn" aria-label="Schedule Private Consultation">
-                                <i class="fas fa-calendar-check" aria-hidden="true" data-fallback="📅"></i>
-                                Private Consultation
+                    <!-- Actions - Right with Mobile-First Branding Focus -->
+                    <div class="nav-actions">
+                        <!-- Portal buttons hidden on mobile for cleaner branding -->
+                        <div class="portal-group">
+                            <a href="https://client.805companies.com" target="_blank" rel="noopener noreferrer" class="portal-btn client-portal" aria-label="Client Portal - Opens in new window">
+                                <i class="fas fa-user-circle" aria-hidden="true"></i>
+                                Client
+                            </a>
+                            <a href="https://admin.805companies.com" target="_blank" rel="noopener noreferrer" class="portal-btn admin-portal" aria-label="Admin Portal - Opens in new window">
+                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                Admin
                             </a>
                         </div>
+                        <a href="contact.html" class="consultation-btn" aria-label="Schedule Private Consultation">
+                            <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                            <span class="consultation-text">Consultation</span>
+                        </a>
                     </div>
-                    
-                    <!-- Mobile Menu Button -->
-                    <button class="mobile-toggle" id="mobileToggle" aria-label="Open mobile navigation menu" aria-expanded="false" aria-controls="mobileNav">
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                    </button>
                 </div>
             </div>
         </nav>
         
-        <!-- Mobile Navigation -->
-        <div class="nav-mobile" id="mobileNav" role="dialog" aria-label="Mobile navigation menu" aria-hidden="true">
-            <div class="mobile-nav-content">
-                <div class="mobile-nav-header">
-                    <div class="mobile-logo">
-                        <img src="images/logos/805-lifeguard-logo.png" alt="805 LifeGuard" width="40" height="40">
+        <!-- Enhanced Full-Screen Navigation Overlay -->
+        <div class="nav-overlay" id="navOverlay" role="dialog" aria-label="Navigation menu" aria-hidden="true">
+            <div class="nav-overlay-content">
+                <!-- Mobile Branding Header - Shows only on mobile for optimal branding -->
+                <div class="nav-overlay-header">
+                    <a href="/" class="overlay-logo" onclick="document.getElementById('menuToggle').click();">
+                        <img src="images/logos/805-lifeguard-logo.png" alt="805 LifeGuard" width="48" height="48">
                         <span>805 LifeGuard</span>
-                    </div>
-                    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile navigation menu">
-                        <i class="fas fa-times" aria-hidden="true" data-fallback="✕"></i>
-                    </button>
+                    </a>
                 </div>
                 
-                <nav class="mobile-nav-menu" role="navigation" aria-label="Mobile menu">
-                    <a href="about.html" class="mobile-nav-link">About</a>
-                    <a href="services.html" class="mobile-nav-link">Services</a>
-                    <a href="pool-cleaning.html" class="mobile-nav-link">Pool Cleaning</a>
-                    <a href="hoa.html" class="mobile-nav-link">HOA Services</a>
-                    <a href="portfolio.html" class="mobile-nav-link active">Portfolio</a>
-                    <a href="testimonials.html" class="mobile-nav-link">Testimonials</a>
-                    <a href="faq.html" class="mobile-nav-link">FAQ</a>
+                <nav class="nav-overlay-menu" role="navigation" aria-label="Main menu">
+                    <a href="about.html" class="overlay-nav-link">About</a>
+                    <a href="services.html" class="overlay-nav-link">Services</a>
+                    <a href="pool-cleaning.html" class="overlay-nav-link">Pool Cleaning</a>
+                    <a href="hoa.html" class="overlay-nav-link">HOA Services</a>
+                    <a href="portfolio.html" class="overlay-nav-link active">Portfolio</a>
+                    <a href="testimonials.html" class="overlay-nav-link">Testimonials</a>
+                    <a href="faq.html" class="overlay-nav-link">FAQ</a>
                 </nav>
                 
-                <div class="mobile-nav-actions">
-                    <div class="mobile-portals">
-                        <a href="https://client.805companies.com" target="_blank" rel="noopener noreferrer" class="mobile-portal-btn" aria-label="Client Portal - Opens in new window">
-                            <i class="fas fa-user-circle" aria-hidden="true" data-fallback="👤"></i>
+                <div class="nav-overlay-actions">
+                    <div class="overlay-portals">
+                        <a href="https://client.805companies.com" target="_blank" rel="noopener noreferrer" class="overlay-portal-btn" aria-label="Client Portal - Opens in new window">
+                            <i class="fas fa-user-circle" aria-hidden="true"></i>
                             Client Portal
                         </a>
-                        <a href="https://admin.805companies.com" target="_blank" rel="noopener noreferrer" class="mobile-portal-btn" aria-label="Admin Portal - Opens in new window">
-                            <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
+                        <a href="https://admin.805companies.com" target="_blank" rel="noopener noreferrer" class="overlay-portal-btn" aria-label="Admin Portal - Opens in new window">
+                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
                             Admin Portal
                         </a>
                     </div>
-                    <a href="contact.html" class="mobile-consultation-btn" aria-label="Schedule Private Consultation">
-                        <i class="fas fa-calendar-check" aria-hidden="true" data-fallback="📅"></i>
+                    <a href="contact.html" class="overlay-consultation-btn" aria-label="Schedule Private Consultation">
+                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
                         Private Consultation
                     </a>
-                </div>
-                
-                <div class="mobile-nav-contact">
-                    <a href="tel:+18053676432" class="mobile-contact-btn" aria-label="Call 805 LifeGuard">
-                        <i class="fas fa-phone" aria-hidden="true" data-fallback="📞"></i>
-                        (805) 367-6432
-                    </a>
+                    
+                    <div class="overlay-nav-contact">
+                        <a href="tel:+18053676432" class="overlay-contact-btn" aria-label="Call 805 LifeGuard">
+                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            (805) 367-6432
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Breadcrumbs -->
-    <nav class="breadcrumbs" aria-label="Breadcrumb navigation" itemscope itemtype="https://schema.org/BreadcrumbList">
-        <div class="container">
-            <ol class="breadcrumb-list">
-                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a href="/" itemprop="item">
-                        <span itemprop="name">Home</span>
-                    </a>
-                    <meta itemprop="position" content="1" />
-                </li>
-                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <span itemprop="name" aria-current="page">Portfolio</span>
-                    <meta itemprop="position" content="2" />
-                </li>
-            </ol>
+    <!-- Enhanced Hero Section (Clean Caruso Aesthetic) -->
+    <section class="hero" role="banner" aria-label="Client Portfolio">
+        <!-- Background Carousel -->
+        <div class="hero-carousel" id="heroCarousel">
+            <div class="carousel-slide active" style="background-image: url('images/portfolio/portfolio-hero-1920x1080.jpg')" data-bg-desktop="images/portfolio/portfolio-hero-1920x1080.jpg" data-bg-tablet="images/portfolio/portfolio-hero-1024x576.jpg" data-bg-mobile="images/portfolio/portfolio-hero-768x432.jpg" aria-label="Portfolio showcase"></div>
+            <div class="carousel-slide" data-bg-desktop="images/gallery/gallery-estate-pool-01-800x600.jpg" data-bg-tablet="images/gallery/gallery-estate-pool-01-800x600.jpg" data-bg-mobile="images/gallery/gallery-estate-pool-01-800x600.jpg" aria-label="Luxury estate pool project"></div>
+            <div class="carousel-slide" data-bg-desktop="images/services/service-lifeguarding-professional-800x600.jpg" data-bg-tablet="images/services/service-lifeguarding-professional-800x600.jpg" data-bg-mobile="images/services/service-lifeguarding-professional-800x600.jpg" aria-label="Professional lifeguarding services"></div>
+            <div class="carousel-slide" data-bg-desktop="images/services/service-swim-lessons-private-800x600.jpg" data-bg-tablet="images/services/service-swim-lessons-private-800x600.jpg" data-bg-mobile="images/services/service-swim-lessons-private-800x600.jpg" aria-label="Private swimming instruction"></div>
+            <div class="carousel-slide" data-bg-desktop="images/services/service-events-luxury-800x600.jpg" data-bg-tablet="images/services/service-events-luxury-800x600.jpg" data-bg-mobile="images/services/service-events-luxury-800x600.jpg" aria-label="Luxury event management"></div>
         </div>
-    </nav>
-
-    <!-- Portfolio Hero Section -->
-    <section class="portfolio-hero" style="background-image: linear-gradient(rgba(10, 22, 40, 0.6), rgba(10, 22, 40, 0.7)), url('images/gallery/gallery-estate-pool-01-800x600.jpg');">
-        <div class="hero-content">
-            <div class="section-badge">
-                <i class="fas fa-crown" aria-hidden="true" data-fallback="👑"></i>
-                Distinguished Estate Portfolio
+        
+        <!-- Carousel Overlay -->
+        <div class="hero-overlay"></div>
+        
+        <div class="container">
+            <div class="hero-content" itemscope itemtype="https://schema.org/Organization">
+                <div class="section-badge">
+                    <i class="fas fa-crown" aria-hidden="true"></i>
+                    Distinguished Estate Portfolio
+                </div>
+                <h1 class="hero-title" itemprop="slogan">Showcasing Excellence Across Southern California</h1>
+                
+                <p class="hero-subtitle" itemprop="description">
+                    From intimate family pools to grand estate gatherings, explore our portfolio of successful 
+                    aquatic safety and instruction projects at some of Southern California's most prestigious properties.
+                </p>
+                
+                <div class="hero-buttons">
+                    <a href="contact.html" class="btn btn-primary" aria-label="Request consultation">
+                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                        Request Consultation
+                    </a>
+                    <a href="#portfolio-filter" class="btn btn-secondary" aria-label="View portfolio">
+                        <i class="fas fa-arrow-down" aria-hidden="true"></i>
+                        View Portfolio
+                    </a>
+                </div>
+                
+                <div class="hero-notice">
+                    <i class="fas fa-lock" aria-hidden="true"></i>
+                    All client details maintained with complete confidentiality and discretion.
+                </div>
             </div>
-            
-            <h1>Showcasing Excellence Across Southern California</h1>
-            
-            <p class="hero-subtitle">
-                From intimate family pools to grand estate gatherings, explore our portfolio of successful 
-                aquatic safety and instruction projects at some of Southern California's most prestigious properties.
-            </p>
         </div>
     </section>
 
     <!-- Portfolio Filter -->
-    <section class="portfolio-filter">
+    <section id="portfolio-filter" class="portfolio-filter">
         <div class="container">
             <div class="filter-tabs">
                 <button class="filter-btn active" data-category="all">
-                    <i class="fas fa-th" aria-hidden="true" data-fallback="⊞"></i>
+                    <i class="fas fa-th" aria-hidden="true"></i>
                     All Projects
                 </button>
                 <button class="filter-btn" data-category="lifeguarding">
-                    <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
+                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
                     Estate Lifeguarding
                 </button>
                 <button class="filter-btn" data-category="instruction">
-                    <i class="fas fa-swimming-pool" aria-hidden="true" data-fallback="🏊"></i>
+                    <i class="fas fa-swimming-pool" aria-hidden="true"></i>
                     Swimming Instruction
                 </button>
                 <button class="filter-btn" data-category="events">
-                    <i class="fas fa-champagne-glasses" aria-hidden="true" data-fallback="🥂"></i>
+                    <i class="fas fa-champagne-glasses" aria-hidden="true"></i>
                     Luxury Events
                 </button>
                 <button class="filter-btn" data-category="pool-cleaning">
-                    <i class="fas fa-broom" aria-hidden="true" data-fallback="🧹"></i>
+                    <i class="fas fa-broom" aria-hidden="true"></i>
                     Pool Cleaning
                 </button>
                 <button class="filter-btn" data-category="estates">
-                    <i class="fas fa-home" aria-hidden="true" data-fallback="🏠"></i>
+                    <i class="fas fa-home" aria-hidden="true"></i>
                     Featured Estates
                 </button>
             </div>
@@ -820,7 +508,10 @@
                 <!-- Estate Lifeguarding Projects -->
                 <article class="portfolio-item" data-category="lifeguarding">
                     <div class="portfolio-image">
-                        <img src="images/gallery/gallery-estate-pool-01-800x600.jpg" alt="Luxury estate pool with professional lifeguarding services" loading="lazy">
+                        <picture>
+                            <source srcset="images/gallery/gallery-estate-pool-01-800x600.webp" type="image/webp">
+                            <img src="images/gallery/gallery-estate-pool-01-800x600.jpg" alt="Luxury estate pool with professional lifeguarding services" loading="lazy">
+                        </picture>
                         <div class="portfolio-overlay">
                             <div class="portfolio-content">
                                 <div class="portfolio-badge">Estate Lifeguarding</div>
@@ -828,15 +519,15 @@
                                 <p>Providing discreet daily lifeguarding services for a distinguished family with young children, ensuring peace of mind during pool activities.</p>
                                 <div class="portfolio-details">
                                     <div class="detail-item">
-                                        <i class="fas fa-calendar-alt" aria-hidden="true" data-fallback="📅"></i>
+                                        <i class="fas fa-calendar-alt" aria-hidden="true"></i>
                                         <span>Daily Coverage</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-users" aria-hidden="true" data-fallback="👥"></i>
+                                        <i class="fas fa-users" aria-hidden="true"></i>
                                         <span>Family of 5</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-clock" aria-hidden="true" data-fallback="⏰"></i>
+                                        <i class="fas fa-clock" aria-hidden="true"></i>
                                         <span>2+ Years</span>
                                     </div>
                                 </div>
@@ -847,7 +538,10 @@
 
                 <article class="portfolio-item" data-category="instruction">
                     <div class="portfolio-image">
-                        <img src="images/gallery/gallery-swim-lesson-01-800x600.jpg" alt="Private swimming instruction session" loading="lazy">
+                        <picture>
+                            <source srcset="images/services/service-swim-lessons-private-800x600.webp" type="image/webp">
+                            <img src="images/services/service-swim-lessons-private-800x600.jpg" alt="Private swimming instruction session" loading="lazy">
+                        </picture>
                         <div class="portfolio-overlay">
                             <div class="portfolio-content">
                                 <div class="portfolio-badge">Swimming Instruction</div>
@@ -855,15 +549,15 @@
                                 <p>Customized swimming lessons for three children with varying skill levels, building confidence and technique in a private setting.</p>
                                 <div class="portfolio-details">
                                     <div class="detail-item">
-                                        <i class="fas fa-graduation-cap" aria-hidden="true" data-fallback="🎓"></i>
+                                        <i class="fas fa-graduation-cap" aria-hidden="true"></i>
                                         <span>All Skill Levels</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-heart" aria-hidden="true" data-fallback="❤️"></i>
+                                        <i class="fas fa-heart" aria-hidden="true"></i>
                                         <span>Special Needs</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-trophy" aria-hidden="true" data-fallback="🏆"></i>
+                                        <i class="fas fa-trophy" aria-hidden="true"></i>
                                         <span>Success Story</span>
                                     </div>
                                 </div>
@@ -874,7 +568,10 @@
 
                 <article class="portfolio-item" data-category="events">
                     <div class="portfolio-image">
-                        <img src="images/services/service-events-luxury-800x600.jpg" alt="Luxury pool party with professional safety management" loading="lazy">
+                        <picture>
+                            <source srcset="images/services/service-events-luxury-800x600.webp" type="image/webp">
+                            <img src="images/services/service-events-luxury-800x600.jpg" alt="Luxury pool party with professional safety management" loading="lazy">
+                        </picture>
                         <div class="portfolio-overlay">
                             <div class="portfolio-content">
                                 <div class="portfolio-badge">Event Management</div>
@@ -882,15 +579,15 @@
                                 <p>Comprehensive aquatic safety management for a 50-person executive retreat featuring pool activities and entertainment.</p>
                                 <div class="portfolio-details">
                                     <div class="detail-item">
-                                        <i class="fas fa-building" aria-hidden="true" data-fallback="🏢"></i>
+                                        <i class="fas fa-building" aria-hidden="true"></i>
                                         <span>Corporate</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-users" aria-hidden="true" data-fallback="👥"></i>
+                                        <i class="fas fa-users" aria-hidden="true"></i>
                                         <span>50 Guests</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
+                                        <i class="fas fa-star" aria-hidden="true"></i>
                                         <span>Premium Service</span>
                                     </div>
                                 </div>
@@ -901,7 +598,10 @@
 
                 <article class="portfolio-item" data-category="pool-cleaning">
                     <div class="portfolio-image">
-                        <img src="images/about/company-values-background-1600x900.jpg" alt="White-glove pool cleaning service" loading="lazy">
+                        <picture>
+                            <source srcset="images/cleaning/pool-cleaning-hero-1920x1080.webp" type="image/webp">
+                            <img src="images/cleaning/pool-cleaning-hero-1920x1080.jpg" alt="White-glove pool cleaning service" loading="lazy">
+                        </picture>
                         <div class="portfolio-overlay">
                             <div class="portfolio-content">
                                 <div class="portfolio-badge">Pool Cleaning</div>
@@ -909,15 +609,15 @@
                                 <p>Exclusive pool cleaning services integrated with ongoing lifeguarding coverage, maintaining pristine water quality and aesthetic appeal.</p>
                                 <div class="portfolio-details">
                                     <div class="detail-item">
-                                        <i class="fas fa-crown" aria-hidden="true" data-fallback="👑"></i>
+                                        <i class="fas fa-crown" aria-hidden="true"></i>
                                         <span>Exclusive Client</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-calendar-week" aria-hidden="true" data-fallback="📅"></i>
+                                        <i class="fas fa-calendar-week" aria-hidden="true"></i>
                                         <span>Weekly Service</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-spa" aria-hidden="true" data-fallback="🧘"></i>
+                                        <i class="fas fa-spa" aria-hidden="true"></i>
                                         <span>Full Complex</span>
                                     </div>
                                 </div>
@@ -928,7 +628,10 @@
 
                 <article class="portfolio-item" data-category="estates">
                     <div class="portfolio-image">
-                        <img src="images/about/about-hero-background-1920x1080.jpg" alt="Magnificent estate pool environment" loading="lazy">
+                        <picture>
+                            <source srcset="images/about/about-hero-background-1920x1080.webp" type="image/webp">
+                            <img src="images/about/about-hero-background-1920x1080.jpg" alt="Magnificent estate pool environment" loading="lazy">
+                        </picture>
                         <div class="portfolio-overlay">
                             <div class="portfolio-content">
                                 <div class="portfolio-badge">Featured Estate</div>
@@ -936,15 +639,15 @@
                                 <p>Multi-level pool complex requiring specialized safety protocols and discrete professional oversight for high-profile clientele.</p>
                                 <div class="portfolio-details">
                                     <div class="detail-item">
-                                        <i class="fas fa-water" aria-hidden="true" data-fallback="💧"></i>
+                                        <i class="fas fa-water" aria-hidden="true"></i>
                                         <span>Multi-Level Pool</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-user-secret" aria-hidden="true" data-fallback="🤐"></i>
+                                        <i class="fas fa-user-secret" aria-hidden="true"></i>
                                         <span>High Profile</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
+                                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
                                         <span>Security Cleared</span>
                                     </div>
                                 </div>
@@ -955,7 +658,10 @@
 
                 <article class="portfolio-item" data-category="instruction">
                     <div class="portfolio-image">
-                        <img src="images/about/about-founder-jasper-action-800x600.jpg" alt="Adult swimming instruction session" loading="lazy">
+                        <picture>
+                            <source srcset="images/about/about-founder-jasper-action-800x600.webp" type="image/webp">
+                            <img src="images/about/about-founder-jasper-action-800x600.jpg" alt="Adult swimming instruction session" loading="lazy">
+                        </picture>
                         <div class="portfolio-overlay">
                             <div class="portfolio-content">
                                 <div class="portfolio-badge">Adult Instruction</div>
@@ -963,15 +669,15 @@
                                 <p>Confidence-building swimming lessons for a busy executive who wanted to overcome water anxiety and enjoy pool activities with family.</p>
                                 <div class="portfolio-details">
                                     <div class="detail-item">
-                                        <i class="fas fa-briefcase" aria-hidden="true" data-fallback="💼"></i>
+                                        <i class="fas fa-briefcase" aria-hidden="true"></i>
                                         <span>Executive</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-heart" aria-hidden="true" data-fallback="❤️"></i>
+                                        <i class="fas fa-heart" aria-hidden="true"></i>
                                         <span>Confidence Building</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-calendar" aria-hidden="true" data-fallback="📅"></i>
+                                        <i class="fas fa-calendar" aria-hidden="true"></i>
                                         <span>Flexible Schedule</span>
                                     </div>
                                 </div>
@@ -982,7 +688,10 @@
 
                 <article class="portfolio-item" data-category="events">
                     <div class="portfolio-image">
-                        <img src="images/services/services-hero-background-1920x1080.jpg" alt="Wedding reception with pool safety management" loading="lazy">
+                        <picture>
+                            <source srcset="images/services/services-hero-background-1920x1080.webp" type="image/webp">
+                            <img src="images/services/services-hero-background-1920x1080.jpg" alt="Wedding reception with pool safety management" loading="lazy">
+                        </picture>
                         <div class="portfolio-overlay">
                             <div class="portfolio-content">
                                 <div class="portfolio-badge">Special Event</div>
@@ -990,15 +699,15 @@
                                 <p>Elegant wedding reception with poolside ceremony requiring invisible safety management throughout the evening celebration.</p>
                                 <div class="portfolio-details">
                                     <div class="detail-item">
-                                        <i class="fas fa-heart" aria-hidden="true" data-fallback="❤️"></i>
+                                        <i class="fas fa-heart" aria-hidden="true"></i>
                                         <span>Wedding</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-users" aria-hidden="true" data-fallback="👥"></i>
+                                        <i class="fas fa-users" aria-hidden="true"></i>
                                         <span>100 Guests</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-moon" aria-hidden="true" data-fallback="🌙"></i>
+                                        <i class="fas fa-moon" aria-hidden="true"></i>
                                         <span>Evening Event</span>
                                     </div>
                                 </div>
@@ -1009,7 +718,10 @@
 
                 <article class="portfolio-item" data-category="lifeguarding">
                     <div class="portfolio-image">
-                        <img src="images/services/service-lifeguarding-professional-800x600.jpg" alt="Private estate lifeguarding service" loading="lazy">
+                        <picture>
+                            <source srcset="images/services/service-lifeguarding-professional-800x600.webp" type="image/webp">
+                            <img src="images/services/service-lifeguarding-professional-800x600.jpg" alt="Private estate lifeguarding service" loading="lazy">
+                        </picture>
                         <div class="portfolio-overlay">
                             <div class="portfolio-content">
                                 <div class="portfolio-badge">Estate Lifeguarding</div>
@@ -1017,43 +729,16 @@
                                 <p>Ongoing aquatic safety services for a celebrity family requiring the highest levels of discretion and professional security clearance.</p>
                                 <div class="portfolio-details">
                                     <div class="detail-item">
-                                        <i class="fas fa-user-secret" aria-hidden="true" data-fallback="🤐"></i>
+                                        <i class="fas fa-user-secret" aria-hidden="true"></i>
                                         <span>Celebrity Client</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-clock" aria-hidden="true" data-fallback="⏰"></i>
+                                        <i class="fas fa-clock" aria-hidden="true"></i>
                                         <span>On-Call 24/7</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
+                                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
                                         <span>Security Cleared</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="portfolio-item" data-category="instruction">
-                    <div class="portfolio-image">
-                        <img src="images/services/service-swim-lessons-private-800x600.jpg" alt="Special needs swimming instruction" loading="lazy">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-content">
-                                <div class="portfolio-badge">Special Needs Program</div>
-                                <h3>Therapeutic Swimming Program</h3>
-                                <p>Specialized aquatic therapy and swimming instruction for a child with autism, focusing on sensory integration and water confidence.</p>
-                                <div class="portfolio-details">
-                                    <div class="detail-item">
-                                        <i class="fas fa-heart" aria-hidden="true" data-fallback="❤️"></i>
-                                        <span>Special Needs</span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <i class="fas fa-medkit" aria-hidden="true" data-fallback="🏥"></i>
-                                        <span>Therapeutic</span>
-                                    </div>
-                                    <div class="detail-item">
-                                        <i class="fas fa-graduation-cap" aria-hidden="true" data-fallback="🎓"></i>
-                                        <span>Certified Program</span>
                                     </div>
                                 </div>
                             </div>
@@ -1063,7 +748,10 @@
 
                 <article class="portfolio-item" data-category="estates">
                     <div class="portfolio-image">
-                        <img src="images/about/mission-statement-background-1600x900.jpg" alt="Luxury resort-style estate pool" loading="lazy">
+                        <picture>
+                            <source srcset="images/about/mission-statement-background-1600x900.webp" type="image/webp">
+                            <img src="images/about/mission-statement-background-1600x900.jpg" alt="Luxury resort-style estate pool" loading="lazy">
+                        </picture>
                         <div class="portfolio-overlay">
                             <div class="portfolio-content">
                                 <div class="portfolio-badge">Featured Estate</div>
@@ -1071,15 +759,15 @@
                                 <p>Comprehensive aquatic services for a resort-style estate featuring multiple pools, spa, and water features requiring specialized expertise.</p>
                                 <div class="portfolio-details">
                                     <div class="detail-item">
-                                        <i class="fas fa-water" aria-hidden="true" data-fallback="💧"></i>
+                                        <i class="fas fa-water" aria-hidden="true"></i>
                                         <span>Multi-Pool Complex</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-spa" aria-hidden="true" data-fallback="🧘"></i>
+                                        <i class="fas fa-spa" aria-hidden="true"></i>
                                         <span>Spa Features</span>
                                     </div>
                                     <div class="detail-item">
-                                        <i class="fas fa-crown" aria-hidden="true" data-fallback="👑"></i>
+                                        <i class="fas fa-crown" aria-hidden="true"></i>
                                         <span>Ultra-Luxury</span>
                                     </div>
                                 </div>
@@ -1092,7 +780,7 @@
     </section>
 
     <!-- Portfolio Statistics -->
-    <section class="portfolio-stats">
+    <section class="services-section">
         <div class="container">
             <div class="section-header">
                 <div class="section-badge">Portfolio Achievements</div>
@@ -1102,60 +790,52 @@
                 </p>
             </div>
             
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-icon">
-                        <i class="fas fa-home" aria-hidden="true" data-fallback="🏠"></i>
-                    </div>
-                    <div class="stat-number" data-target="150">0</div>
-                    <div class="stat-label">Estates Served</div>
+            <div class="coverage-grid">
+                <div class="coverage-card">
+                    <h3><i class="fas fa-home"></i> 150+</h3>
+                    <p>Estates Served</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Luxury Properties</li>
+                        <li><i class="fas fa-check"></i> Celebrity Estates</li>
+                        <li><i class="fas fa-check"></i> Multi-Million Dollar Homes</li>
+                    </ul>
                 </div>
                 
-                <div class="stat-item">
-                    <div class="stat-icon">
-                        <i class="fas fa-calendar-alt" aria-hidden="true" data-fallback="📅"></i>
-                    </div>
-                    <div class="stat-number" data-target="500">0</div>
-                    <div class="stat-label">Events Managed</div>
+                <div class="coverage-card featured">
+                    <h3><i class="fas fa-calendar-alt"></i> 500+</h3>
+                    <p>Events Managed</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Private Pool Parties</li>
+                        <li><i class="fas fa-check"></i> Corporate Events</li>
+                        <li><i class="fas fa-check"></i> Wedding Receptions</li>
+                    </ul>
                 </div>
                 
-                <div class="stat-item">
-                    <div class="stat-icon">
-                        <i class="fas fa-graduation-cap" aria-hidden="true" data-fallback="🎓"></i>
-                    </div>
-                    <div class="stat-number" data-target="1000">0</div>
-                    <div class="stat-label">Lessons Taught</div>
+                <div class="coverage-card">
+                    <h3><i class="fas fa-graduation-cap"></i> 1000+</h3>
+                    <p>Lessons Taught</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> All Ages & Abilities</li>
+                        <li><i class="fas fa-check"></i> Special Needs Programs</li>
+                        <li><i class="fas fa-check"></i> Adult Instruction</li>
+                    </ul>
                 </div>
                 
-                <div class="stat-item">
-                    <div class="stat-icon">
-                        <i class="fas fa-clock" aria-hidden="true" data-fallback="⏰"></i>
-                    </div>
-                    <div class="stat-number" data-target="10000">0</div>
-                    <div class="stat-label">Service Hours</div>
-                </div>
-                
-                <div class="stat-item">
-                    <div class="stat-icon">
-                        <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
-                    </div>
-                    <div class="stat-number" data-target="100">0</div>
-                    <div class="stat-label">% Client Satisfaction</div>
-                </div>
-                
-                <div class="stat-item">
-                    <div class="stat-icon">
-                        <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
-                    </div>
-                    <div class="stat-number" data-target="7">0</div>
-                    <div class="stat-label">Years Experience</div>
+                <div class="coverage-card">
+                    <h3><i class="fas fa-star"></i> 100%</h3>
+                    <p>Client Satisfaction</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 5-Star Reviews</li>
+                        <li><i class="fas fa-check"></i> Repeat Clients</li>
+                        <li><i class="fas fa-check"></i> Zero Safety Incidents</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Portfolio Testimonials -->
-    <section class="portfolio-testimonials">
+    <section class="testimonials-section">
         <div class="container">
             <div class="section-header">
                 <div class="section-badge">Client Excellence</div>
@@ -1166,8 +846,8 @@
                 </p>
             </div>
             
-            <div class="testimonials-slider">
-                <article class="testimonial-card featured">
+            <div class="testimonials-grid">
+                <div class="testimonial-card featured">
                     <div class="testimonial-content">
                         <p>"Jasper has been incredible with our three children. His patience and expertise have transformed our kids from being afraid of water to confident swimmers. The professionalism and discretion he brings to our estate is exactly what we needed."</p>
                     </div>
@@ -1177,16 +857,16 @@
                             <div class="author-location">Westlake Village Estate</div>
                         </div>
                         <div class="testimonial-rating" aria-label="5 star rating">
-                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
-                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
-                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
-                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
-                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
                         </div>
                     </div>
-                </article>
+                </div>
                 
-                <article class="testimonial-card">
+                <div class="testimonial-card">
                     <div class="testimonial-content">
                         <p>"For our corporate retreat, 805 LifeGuard provided seamless aquatic safety management. Our guests could enjoy the pool activities with complete peace of mind, and the service was so professional it was practically invisible."</p>
                     </div>
@@ -1196,16 +876,16 @@
                             <div class="author-location">Tech Executive, Thousand Oaks</div>
                         </div>
                         <div class="testimonial-rating" aria-label="5 star rating">
-                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
-                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
-                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
-                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
-                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
                         </div>
                     </div>
-                </article>
+                </div>
                 
-                <article class="testimonial-card">
+                <div class="testimonial-card">
                     <div class="testimonial-content">
                         <p>"Working with special needs children requires a unique skill set, and Jasper exceeded all expectations. His specialized training and compassionate approach helped our son develop both swimming skills and confidence in the water."</p>
                     </div>
@@ -1215,46 +895,32 @@
                             <div class="author-location">Agoura Hills, CA</div>
                         </div>
                         <div class="testimonial-rating" aria-label="5 star rating">
-                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
-                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
-                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
-                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
-                            <i class="fas fa-star" aria-hidden="true" data-fallback="⭐"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
                         </div>
                     </div>
-                </article>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio CTA -->
-    <section class="portfolio-cta">
+    <!-- Consultation CTA -->
+    <section class="consultation-section">
         <div class="container">
-            <div class="cta-content">
-                <div class="section-badge">Join Our Distinguished Portfolio</div>
+            <div class="consultation-content">
+                <div class="section-badge gold">Join Our Distinguished Portfolio</div>
                 <h2>Experience the 805 LifeGuard Difference</h2>
                 <p>
                     Discover why Southern California's most discerning families trust us with their aquatic safety needs. 
                     Let us create a customized service plan that seamlessly integrates with your estate's lifestyle.
                 </p>
-                
-                <div class="cta-buttons">
-                    <a href="contact.html" class="btn btn-primary large">
-                        <i class="fas fa-calendar-check" aria-hidden="true" data-fallback="📅"></i>
-                        Schedule Private Consultation
-                    </a>
-                    <a href="services.html" class="btn btn-secondary large">
-                        <i class="fas fa-water" aria-hidden="true" data-fallback="💧"></i>
-                        Explore Services
-                    </a>
-                </div>
-                
-                <div class="cta-contact">
-                    <p>
-                        <i class="fas fa-phone" aria-hidden="true" data-fallback="📞"></i>
-                        Call <a href="tel:+18053676432">(805) 367-6432</a> for immediate consultation
-                    </p>
-                </div>
+                <a href="contact.html" class="btn btn-primary large">
+                    <i class="fas fa-calendar-check"></i>
+                    Schedule Private Consultation
+                </a>
             </div>
         </div>
     </section>
@@ -1278,15 +944,15 @@
                     </p>
                     <div class="footer-badges">
                         <span class="footer-badge">
-                            <i class="fas fa-certificate" aria-hidden="true" data-fallback="🏆"></i>
+                            <i class="fas fa-certificate"></i>
                             Red Cross Certified
                         </span>
                         <span class="footer-badge">
-                            <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
+                            <i class="fas fa-shield-alt"></i>
                             Licensed & Bonded
                         </span>
                         <span class="footer-badge">
-                            <i class="fas fa-award" aria-hidden="true" data-fallback="🏅"></i>
+                            <i class="fas fa-award"></i>
                             7+ Years Experience
                         </span>
                     </div>
@@ -1295,7 +961,7 @@
                 <!-- Services Links -->
                 <div class="footer-section">
                     <h4>
-                        <i class="fas fa-water" aria-hidden="true" data-fallback="💧"></i>
+                        <i class="fas fa-water"></i>
                         Services
                     </h4>
                     <ul>
@@ -1310,7 +976,7 @@
                 <!-- Company Links -->
                 <div class="footer-section">
                     <h4>
-                        <i class="fas fa-building" aria-hidden="true" data-fallback="🏢"></i>
+                        <i class="fas fa-building"></i>
                         Company
                     </h4>
                     <ul>
@@ -1325,13 +991,13 @@
                 <!-- Contact Section -->
                 <div class="footer-contact">
                     <h4>
-                        <i class="fas fa-concierge-bell" aria-hidden="true" data-fallback="🛎️"></i>
+                        <i class="fas fa-concierge-bell"></i>
                         Contact
                     </h4>
                     
                     <div class="contact-info">
                         <a href="tel:+18053676432" class="contact-item primary">
-                            <i class="fas fa-phone" aria-hidden="true" data-fallback="📞"></i>
+                            <i class="fas fa-phone"></i>
                             <div>
                                 <strong>(805) 367-6432</strong>
                                 <span>24/7 Emergency Line</span>
@@ -1339,7 +1005,7 @@
                         </a>
                         
                         <a href="mailto:concierge@805lifeguard.com" class="contact-item">
-                            <i class="fas fa-envelope" aria-hidden="true" data-fallback="✉️"></i>
+                            <i class="fas fa-envelope"></i>
                             <div>
                                 <strong>concierge@805lifeguard.com</strong>
                                 <span>Consultation Requests</span>
@@ -1354,15 +1020,15 @@
                     
                     <div class="footer-portals">
                         <a href="https://client.805companies.com" target="_blank" class="footer-portal-btn">
-                            <i class="fas fa-user-circle" aria-hidden="true" data-fallback="👤"></i>
+                            <i class="fas fa-user-circle"></i>
                             Client Portal
                         </a>
                         <a href="https://admin.805companies.com" target="_blank" class="footer-portal-btn">
-                            <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
+                            <i class="fas fa-shield-alt"></i>
                             Admin Portal
                         </a>
                         <a href="https://staff.805companies.com" target="_blank" class="footer-portal-btn">
-                            <i class="fas fa-users" aria-hidden="true" data-fallback="👥"></i>
+                            <i class="fas fa-users"></i>
                             Staff Portal
                         </a>
                     </div>
@@ -1391,270 +1057,224 @@
         </div>
     </footer>
 
-    <!-- Enhanced JavaScript -->
-    <script src="js/luxury-app.js"></script>
-    
-    <!-- Portfolio Page Specific JavaScript -->
+    <!-- Optimized JavaScript Loading -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Portfolio filtering functionality
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const portfolioItems = document.querySelectorAll('.portfolio-item');
+        // Critical JavaScript for immediate functionality
+        (function() {
+            'use strict';
             
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const category = this.dataset.category;
+            // Fast carousel slide background setup with intelligent fallback
+            function initCarouselBackgrounds() {
+                const slides = document.querySelectorAll('.carousel-slide');
+                const isMobile = window.innerWidth <= 768;
+                const isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
+                
+                console.log('805 LifeGuard: Setting up portfolio carousel backgrounds. Width:', window.innerWidth, 'Mobile:', isMobile, 'Tablet:', isTablet);
+                console.log('805 LifeGuard: Found', slides.length, 'carousel slides');
+                
+                slides.forEach(function(slide, index) {
+                    const desktopSrc = slide.dataset.bgDesktop;
+                    const tabletSrc = slide.dataset.bgTablet;
+                    const mobileSrc = slide.dataset.bgMobile;
                     
-                    // Update active button
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Filter portfolio items
-                    portfolioItems.forEach(item => {
-                        if (category === 'all' || item.dataset.category === category) {
-                            item.style.display = 'block';
-                            setTimeout(() => {
-                                item.style.opacity = '1';
-                                item.style.transform = 'translateY(0)';
-                            }, 50);
-                        } else {
-                            item.style.opacity = '0';
-                            item.style.transform = 'translateY(20px)';
-                            setTimeout(() => {
-                                item.style.display = 'none';
-                            }, 300);
-                        }
+                    console.log('805 LifeGuard: Slide', index, 'sources:', {
+                        desktop: desktopSrc,
+                        tablet: tabletSrc,
+                        mobile: mobileSrc
                     });
+                    
+                    // Smart fallback function
+                    function tryImageSources(sources, slideElement, slideIndex) {
+                        if (sources.length === 0) {
+                            console.error('805 LifeGuard: No more image sources to try for slide', slideIndex);
+                            return;
+                        }
+                        
+                        const currentSrc = sources[0];
+                        const remainingSources = sources.slice(1);
+                        
+                        const testImg = new Image();
+                        testImg.onload = function() {
+                            console.log('805 LifeGuard: Image loaded successfully:', currentSrc);
+                            slideElement.style.backgroundImage = 'url(' + currentSrc + ')';
+                            slideElement.style.backgroundSize = 'cover';
+                            slideElement.style.backgroundPosition = 'center';
+                            slideElement.style.backgroundRepeat = 'no-repeat';
+                        };
+                        testImg.onerror = function() {
+                            console.warn('805 LifeGuard: Failed to load image:', currentSrc, '- trying next fallback');
+                            tryImageSources(remainingSources, slideElement, slideIndex);
+                        };
+                        testImg.src = currentSrc;
+                    }
+                    
+                    // Determine priority order based on device
+                    let imagePriority;
+                    if (isMobile) {
+                        imagePriority = [mobileSrc, tabletSrc, desktopSrc].filter(Boolean);
+                    } else if (isTablet) {
+                        imagePriority = [tabletSrc, desktopSrc, mobileSrc].filter(Boolean);
+                    } else {
+                        imagePriority = [desktopSrc, tabletSrc, mobileSrc].filter(Boolean);
+                    }
+                    
+                    console.log('805 LifeGuard: Trying images for slide', index, 'in order:', imagePriority);
+                    tryImageSources(imagePriority, slide, index);
                 });
-            });
-            
-            // Animate statistics when in view
-            function animateStats() {
-                const stats = document.querySelectorAll('.stat-number');
                 
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const stat = entry.target;
-                            const target = parseInt(stat.dataset.target);
-                            const increment = target / 100;
-                            let current = 0;
-                            
-                            const timer = setInterval(() => {
-                                current += increment;
-                                if (current >= target) {
-                                    stat.textContent = target;
-                                    clearInterval(timer);
-                                } else {
-                                    stat.textContent = Math.floor(current);
-                                }
-                            }, 20);
-                            
-                            observer.unobserve(stat);
-                        }
-                    });
-                }, { threshold: 0.5 });
-                
-                stats.forEach(stat => observer.observe(stat));
+                // Ensure first slide is active
+                const firstSlide = document.querySelector('.carousel-slide');
+                if (firstSlide) {
+                    firstSlide.classList.add('active');
+                    console.log('805 LifeGuard: First slide marked as active');
+                }
             }
             
-            // Initialize stats animation
-            animateStats();
+            // Portfolio filtering functionality
+            function initPortfolioFilter() {
+                const filterBtns = document.querySelectorAll('.filter-btn');
+                const portfolioItems = document.querySelectorAll('.portfolio-item');
+                
+                if (filterBtns.length === 0 || portfolioItems.length === 0) return;
+                
+                filterBtns.forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        const category = this.dataset.category;
+                        
+                        // Update active button
+                        filterBtns.forEach(function(b) { b.classList.remove('active'); });
+                        this.classList.add('active');
+                        
+                        // Filter portfolio items
+                        portfolioItems.forEach(function(item) {
+                            if (category === 'all' || item.dataset.category === category) {
+                                item.style.display = 'block';
+                                setTimeout(function() {
+                                    item.style.opacity = '1';
+                                    item.style.transform = 'translateY(0)';
+                                }, 50);
+                            } else {
+                                item.style.opacity = '0';
+                                item.style.transform = 'translateY(20px)';
+                                setTimeout(function() {
+                                    item.style.display = 'none';
+                                }, 300);
+                            }
+                        });
+                    });
+                });
+            }
             
-            // Add scroll animations to portfolio items
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
+            // Also run on resize
+            function handleResize() {
+                console.log('805 LifeGuard: Window resized, updating carousel backgrounds');
+                initCarouselBackgrounds();
+            }
             
-            const portfolioObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
+            // Fast mobile navigation fallback
+            function initMobileNav() {
+                const toggle = document.getElementById('menuToggle');
+                const nav = document.getElementById('navOverlay');
+                const body = document.body;
+                
+                if (!toggle || !nav) return;
+                
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const isOpen = nav.classList.contains('active');
+                    
+                    if (isOpen) {
+                        toggle.classList.remove('active');
+                        nav.classList.remove('active');
+                        body.classList.remove('nav-open');
+                        body.style.position = '';
+                        body.style.top = '';
+                        body.style.overflow = '';
+                    } else {
+                        toggle.classList.add('active');
+                        nav.classList.add('active');
+                        body.classList.add('nav-open');
+                        body.style.position = 'fixed';
+                        body.style.top = '-' + window.pageYOffset + 'px';
+                        body.style.overflow = 'hidden';
                     }
                 });
-            }, observerOptions);
+                
+                // Close nav on link click
+                const links = nav.querySelectorAll('.overlay-nav-link, .overlay-logo');
+                links.forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        setTimeout(function() {
+                            toggle.click();
+                        }, 150);
+                    });
+                });
+            }
             
-            // Initially hide items for animation
-            portfolioItems.forEach(item => {
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(20px)';
-                item.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-                portfolioObserver.observe(item);
-            });
-        });
+            // Fast logo entrance for desktop
+            function initLogoEntrance() {
+                const logo = document.getElementById('mainLogo');
+                if (!logo || window.innerWidth <= 768) return;
+                
+                logo.style.opacity = '0';
+                logo.style.transform = 'scale(1.15) translateY(-6px)';
+                logo.style.filter = 'blur(0.3px)';
+                logo.style.transition = 'all 900ms cubic-bezier(0.23, 1, 0.32, 1)';
+                
+                setTimeout(function() {
+                    logo.style.opacity = '1';
+                    logo.style.transform = 'scale(1.05) translateY(0)';
+                    logo.style.filter = 'blur(0px)';
+                }, 250);
+            }
+            
+            // Initialize immediately
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function() {
+                    initCarouselBackgrounds();
+                    initPortfolioFilter();
+                    initMobileNav();
+                    initLogoEntrance();
+                    
+                    // Add resize listener
+                    window.addEventListener('resize', handleResize);
+                });
+            } else {
+                initCarouselBackgrounds();
+                initPortfolioFilter();
+                initMobileNav();
+                initLogoEntrance();
+                
+                // Add resize listener
+                window.addEventListener('resize', handleResize);
+            }
+            
+            // Also run immediately for any case
+            setTimeout(function() {
+                initCarouselBackgrounds();
+            }, 100);
+        })();
     </script>
     
-    <!-- Mobile Navigation Fix Script -->
+    <!-- Deferred Main JavaScript -->
     <script>
-    (function() {
-        'use strict';
-        
-        // Ensure mobile navigation works regardless of main app initialization
-        function initializeMobileNavigation() {
-            console.log('🔧 Initializing Mobile Navigation Fix...');
-            
-            const mobileToggle = document.getElementById('mobileToggle');
-            const mobileNav = document.getElementById('mobileNav');
-            const mobileNavClose = document.getElementById('mobileNavClose');
-            const body = document.body;
-            
-            if (!mobileToggle || !mobileNav) {
-                console.error('❌ Mobile navigation elements not found');
-                return;
-            }
-            
-            let isOpen = false;
-            let scrollPosition = 0;
-            
-            // Open mobile navigation
-            function openMobileNav() {
-                console.log('📱 Opening mobile navigation...');
-                isOpen = true;
-                scrollPosition = window.pageYOffset;
-                
-                // Add active classes
-                mobileToggle.classList.add('active');
-                mobileToggle.setAttribute('aria-expanded', 'true');
-                mobileNav.classList.add('active');
-                mobileNav.setAttribute('aria-hidden', 'false');
-                body.classList.add('nav-open');
-                
-                // Lock body scroll
-                body.style.position = 'fixed';
-                body.style.top = `-${scrollPosition}px`;
-                body.style.width = '100%';
-                body.style.overflow = 'hidden';
-                
-                // Focus management
-                setTimeout(() => {
-                    const firstLink = mobileNav.querySelector('.mobile-nav-link');
-                    if (firstLink) {
-                        firstLink.focus();
-                    }
-                }, 300);
-            }
-            
-            // Close mobile navigation
-            function closeMobileNav() {
-                console.log('📱 Closing mobile navigation...');
-                isOpen = false;
-                
-                // Remove active classes
-                mobileToggle.classList.remove('active');
-                mobileToggle.setAttribute('aria-expanded', 'false');
-                mobileNav.classList.remove('active');
-                mobileNav.setAttribute('aria-hidden', 'true');
-                body.classList.remove('nav-open');
-                
-                // Restore body scroll
-                body.style.position = '';
-                body.style.top = '';
-                body.style.width = '';
-                body.style.overflow = '';
-                
-                // Restore scroll position
-                window.scrollTo(0, scrollPosition);
-            }
-            
-            // Toggle mobile navigation
-            function toggleMobileNav() {
-                if (isOpen) {
-                    closeMobileNav();
-                } else {
-                    openMobileNav();
-                }
-            }
-            
-            // Remove any existing event listeners to prevent duplicates
-            const newMobileToggle = mobileToggle.cloneNode(true);
-            mobileToggle.parentNode.replaceChild(newMobileToggle, mobileToggle);
-            
-            // Add click event to mobile toggle
-            newMobileToggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                console.log('📱 Mobile toggle clicked');
-                toggleMobileNav();
-            });
-            
-            // Add click event to close button
-            if (mobileNavClose) {
-                const newMobileNavClose = mobileNavClose.cloneNode(true);
-                mobileNavClose.parentNode.replaceChild(newMobileNavClose, mobileNavClose);
-                
-                newMobileNavClose.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log('📱 Mobile close clicked');
-                    closeMobileNav();
-                });
-            }
-            
-            // Close on outside click
-            document.addEventListener('click', function(e) {
-                if (isOpen && 
-                    !mobileNav.contains(e.target) && 
-                    !newMobileToggle.contains(e.target)) {
-                    console.log('📱 Outside click - closing mobile nav');
-                    closeMobileNav();
-                }
-            });
-            
-            // Close on escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && isOpen) {
-                    console.log('📱 Escape key - closing mobile nav');
-                    closeMobileNav();
-                }
-            });
-            
-            // Close on window resize to desktop
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 768 && isOpen) {
-                    console.log('📱 Window resized to desktop - closing mobile nav');
-                    closeMobileNav();
-                }
-            });
-            
-            // Handle mobile nav links
-            const mobileLinks = mobileNav.querySelectorAll('.mobile-nav-link');
-            mobileLinks.forEach(function(link) {
-                link.addEventListener('click', function() {
-                    console.log('📱 Mobile nav link clicked');
-                    // Delay close to allow navigation
-                    setTimeout(function() {
-                        closeMobileNav();
-                    }, 100);
-                });
-            });
-            
-            console.log('✅ Mobile Navigation Fix initialized successfully');
-            
-            // Return public API
-            return {
-                open: openMobileNav,
-                close: closeMobileNav,
-                toggle: toggleMobileNav,
-                isOpen: function() { return isOpen; }
+        // Load main application after critical content
+        function loadMainScript() {
+            const script = document.createElement('script');
+            script.src = 'js/luxury-app.js';
+            script.async = true;
+            script.onload = function() {
+                console.log('805 LifeGuard Portfolio Page loaded successfully');
             };
+            document.head.appendChild(script);
         }
         
-        // Initialize immediately if DOM is ready
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initializeMobileNavigation);
+        // Load after initial render
+        if (window.requestIdleCallback) {
+            requestIdleCallback(loadMainScript);
         } else {
-            initializeMobileNavigation();
+            setTimeout(loadMainScript, 500);
         }
-        
-        // Also initialize after a short delay to ensure it works even if other scripts interfere
-        setTimeout(initializeMobileNavigation, 100);
-        
-        // Expose globally for debugging
-        window.mobileNavFix = initializeMobileNavigation;
-        
-    })();
     </script>
 </body>
 </html>
