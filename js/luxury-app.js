@@ -1,6 +1,6 @@
 /*
  * 805 LifeGuard - OPTIMIZED Luxury App JS (Enterprise JavaScript Application)
- * Version: 12.2 - PERFORMANCE OPTIMIZED with enhanced Services page support
+ * Version: 12.3 - PERFORMANCE OPTIMIZED with enhanced Services & Testimonials page support
  * Sophisticated brand-focused design with fast loading and perfect header visibility
  */
 
@@ -80,6 +80,17 @@
             MOBILE_SCROLL_OFFSET: 88,  // Mobile header height
             ANCHOR_SCROLL_BEHAVIOR: 'smooth',
             SERVICE_LINK_DELAY: 150
+        },
+        
+        // Testimonials Page Specific Settings
+        TESTIMONIALS: {
+            SMOOTH_SCROLL_OFFSET: 132, // Header height
+            MOBILE_SCROLL_OFFSET: 88,  // Mobile header height
+            ANCHOR_SCROLL_BEHAVIOR: 'smooth',
+            REVIEW_LINK_DELAY: 150,
+            PLATFORM_ANIMATION_DELAY: 200,
+            STATS_ANIMATION_DELAY: 400,
+            REVIEWS_STAGGER_DELAY: 100
         }
     };
     
@@ -207,7 +218,7 @@
         },
 
         /*
-         * Services page specific utilities
+         * Page-specific utilities
          */
         getCurrentPage: function() {
             const path = window.location.pathname;
@@ -217,6 +228,14 @@
 
         isServicesPage: function() {
             return this.getCurrentPage() === 'services' || window.location.pathname.includes('services');
+        },
+
+        isTestimonialsPage: function() {
+            return this.getCurrentPage() === 'testimonials' || window.location.pathname.includes('testimonials');
+        },
+
+        isAboutPage: function() {
+            return this.getCurrentPage() === 'about' || window.location.pathname.includes('about');
         },
 
         /*
@@ -676,6 +695,7 @@
             this.updatePortalLinks();
             this.enhanceAccessibility();
             this.setupServicesPageNavigation();
+            this.setupTestimonialsPageNavigation();
             
             Utils.log('info', 'Navigation Controller initialized successfully');
         } catch (error) {
@@ -720,7 +740,7 @@
                     setTimeout(function() { self.closeMobileNav(); }, 100);
                 }
             );
-            self.cleanupFunctions.push(logoCleanup);
+            this.cleanupFunctions.push(logoCleanup);
         }
 
         // Enhanced backdrop click
@@ -1137,6 +1157,55 @@
         Utils.log('info', 'Services page navigation enhancements completed');
     };
 
+    // === TESTIMONIALS PAGE SPECIFIC NAVIGATION ===
+    NavigationController.prototype.setupTestimonialsPageNavigation = function() {
+        if (!Utils.isTestimonialsPage()) return;
+
+        Utils.log('info', 'Setting up testimonials page navigation enhancements...');
+
+        const self = this;
+
+        // Enhanced testimonials section navigation
+        const testimonialsLinks = document.querySelectorAll('a[href^="#testimonials"], a[href^="#google-reviews"], a[href^="#yelp-reviews"]');
+        testimonialsLinks.forEach(function(link) {
+            const linkCleanup = Utils.addEventListenerWithCleanup(
+                link, 'click', function(e) {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    
+                    // Close mobile nav if open
+                    if (self.isOpen) {
+                        self.closeMobileNav();
+                        setTimeout(function() {
+                            Utils.smoothScrollTo(targetId);
+                        }, CONFIG.TESTIMONIALS.REVIEW_LINK_DELAY);
+                    } else {
+                        Utils.smoothScrollTo(targetId);
+                    }
+                }
+            );
+            self.cleanupFunctions.push(linkCleanup);
+        });
+
+        // Enhanced platform review navigation
+        const platformLinks = document.querySelectorAll('.review-platform');
+        platformLinks.forEach(function(platform) {
+            const platformCleanup = Utils.addEventListenerWithCleanup(
+                platform, 'click', function(e) {
+                    e.preventDefault();
+                    const platformId = platform.getAttribute('id');
+                    if (platformId) {
+                        const targetSection = platformId.includes('google') ? '#google-reviews-section' : '#yelp-reviews-section';
+                        Utils.smoothScrollTo(targetSection);
+                    }
+                }
+            );
+            self.cleanupFunctions.push(platformCleanup);
+        });
+
+        Utils.log('info', 'Testimonials page navigation enhancements completed');
+    };
+
     NavigationController.prototype.destroy = function() {
         if (this.logoEntranceTimer) {
             clearTimeout(this.logoEntranceTimer);
@@ -1159,6 +1228,7 @@
             this.setupHoverEffects();
             this.setupHeroAnimations();
             this.setupServicesPageAnimations();
+            this.setupTestimonialsPageAnimations();
             this.setupPerformanceOptimizations();
             
             Utils.log('info', 'Animation Controller initialized successfully');
@@ -1307,6 +1377,66 @@
                 item.style.transform = 'translateX(0)';
             }, 300 + (index * 150));
         });
+    };
+
+    AnimationController.prototype.setupTestimonialsPageAnimations = function() {
+        if (!Utils.isTestimonialsPage()) return;
+
+        Utils.log('info', 'Setting up testimonials page animations...');
+
+        // Staggered animation for platform review cards
+        const reviewCards = document.querySelectorAll('.testimonial-card[data-platform]');
+        reviewCards.forEach(function(card, index) {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+
+            setTimeout(function() {
+                card.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 150 + (index * CONFIG.TESTIMONIALS.REVIEWS_STAGGER_DELAY));
+        });
+
+        // Enhanced animation for review platforms in hero
+        const reviewPlatforms = document.querySelectorAll('.review-platform');
+        reviewPlatforms.forEach(function(platform, index) {
+            platform.style.opacity = '0';
+            platform.style.transform = 'scale(0.8)';
+
+            setTimeout(function() {
+                platform.style.transition = 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                platform.style.opacity = '1';
+                platform.style.transform = 'scale(1)';
+            }, 800 + (index * CONFIG.TESTIMONIALS.PLATFORM_ANIMATION_DELAY));
+        });
+
+        // Live reviews widget animation
+        const liveWidget = document.getElementById('liveReviewsWidget');
+        if (liveWidget) {
+            liveWidget.style.opacity = '0';
+            liveWidget.style.transform = 'translateY(20px)';
+
+            setTimeout(function() {
+                liveWidget.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+                liveWidget.style.opacity = '1';
+                liveWidget.style.transform = 'translateY(0)';
+            }, 1200);
+        }
+
+        // Statistics cards animation
+        const statsCards = document.querySelectorAll('.coverage-card');
+        statsCards.forEach(function(card, index) {
+            card.style.opacity = '0';
+            card.style.transform = 'translateX(-20px)';
+
+            setTimeout(function() {
+                card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                card.style.opacity = '1';
+                card.style.transform = 'translateX(0)';
+            }, CONFIG.TESTIMONIALS.STATS_ANIMATION_DELAY + (index * 150));
+        });
+
+        Utils.log('info', 'Testimonials page animations completed');
     };
 
     AnimationController.prototype.setupPerformanceOptimizations = function() {
@@ -1498,6 +1628,7 @@
         try {
             this.setupSmoothScrolling();
             this.setupServicesPageScrolling();
+            this.setupTestimonialsPageScrolling();
         } catch (error) {
             Utils.log('error', 'Failed to initialize smooth scroll', error);
         }
@@ -1539,6 +1670,40 @@
                     e.preventDefault();
                     const targetId = link.getAttribute('href');
                     Utils.smoothScrollTo(targetId);
+                }
+            );
+            self.cleanupFunctions.push(clickCleanup);
+        });
+    };
+
+    SmoothScrollController.prototype.setupTestimonialsPageScrolling = function() {
+        if (!Utils.isTestimonialsPage()) return;
+
+        // Enhanced testimonials page scroll behavior
+        const testimonialsLinks = document.querySelectorAll('a[href^="#testimonials"], a[href^="#google-reviews"], a[href^="#yelp-reviews"]');
+        const self = this;
+
+        testimonialsLinks.forEach(function(link) {
+            const clickCleanup = Utils.addEventListenerWithCleanup(
+                link, 'click', function(e) {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    Utils.smoothScrollTo(targetId);
+                }
+            );
+            self.cleanupFunctions.push(clickCleanup);
+        });
+
+        // Platform review navigation
+        const platformLinks = document.querySelectorAll('.review-platform[id]');
+        platformLinks.forEach(function(platform) {
+            const clickCleanup = Utils.addEventListenerWithCleanup(
+                platform, 'click', function(e) {
+                    const platformId = platform.getAttribute('id');
+                    if (platformId && platformId.includes('-preview')) {
+                        const targetId = platformId.includes('google') ? '#google-reviews-section' : '#yelp-reviews-section';
+                        Utils.smoothScrollTo(targetId);
+                    }
                 }
             );
             self.cleanupFunctions.push(clickCleanup);
@@ -1630,7 +1795,7 @@
         this.smoothScroll = null;
         this.contactUpdater = null;
         this.isInitialized = false;
-        this.version = '12.2';
+        this.version = '12.3';
 
         this.init();
     }
@@ -1693,6 +1858,8 @@
                 deviceType: Utils.getDeviceType(),
                 currentPage: Utils.getCurrentPage(),
                 isServicesPage: Utils.isServicesPage(),
+                isTestimonialsPage: Utils.isTestimonialsPage(),
+                isAboutPage: Utils.isAboutPage(),
                 features: {
                     optimizedPerformance: true,
                     perfectHeaderVisibility: true,
@@ -1701,7 +1868,10 @@
                     cleanCarouselMode: CONFIG.CAROUSEL.CLEAN_MODE,
                     carusoAesthetic: true,
                     fastLoading: true,
-                    servicesPageOptimized: true
+                    servicesPageOptimized: true,
+                    testimonialsApiIntegration: Utils.isTestimonialsPage(),
+                    liveReviewsSystem: Utils.isTestimonialsPage(),
+                    enhancedNavigation: true
                 }
             }
         });
@@ -1840,6 +2010,14 @@
         return Utils.isServicesPage();
     };
 
+    LuxuryApp.prototype.isTestimonialsPage = function() {
+        return Utils.isTestimonialsPage();
+    };
+
+    LuxuryApp.prototype.isAboutPage = function() {
+        return Utils.isAboutPage();
+    };
+
     LuxuryApp.prototype.smoothScrollTo = function(targetId, offset) {
         return Utils.smoothScrollTo(targetId, offset);
     };
@@ -1854,8 +2032,46 @@
             carusoAesthetic: true,
             fastLoading: true,
             servicesPageOptimized: true,
+            testimonialsApiIntegration: this.isTestimonialsPage(),
+            liveReviewsSystem: this.isTestimonialsPage(),
+            enhancedNavigation: true,
             version: this.version
         };
+    };
+
+    // === TESTIMONIALS API INTEGRATION HELPERS ===
+    LuxuryApp.prototype.getReviewsAPI = function() {
+        // Return the global ReviewsAPI if on testimonials page
+        if (this.isTestimonialsPage() && typeof window.ReviewsAPI !== 'undefined') {
+            return window.ReviewsAPI;
+        }
+        return null;
+    };
+
+    LuxuryApp.prototype.refreshReviews = function() {
+        const reviewsAPI = this.getReviewsAPI();
+        if (reviewsAPI) {
+            return reviewsAPI.refresh();
+        }
+        console.warn('Reviews API not available - not on testimonials page or API not loaded');
+        return false;
+    };
+
+    LuxuryApp.prototype.clearReviewsCache = function() {
+        const reviewsAPI = this.getReviewsAPI();
+        if (reviewsAPI) {
+            reviewsAPI.clearCache();
+            return true;
+        }
+        return false;
+    };
+
+    LuxuryApp.prototype.getReviewsStats = function() {
+        const reviewsAPI = this.getReviewsAPI();
+        if (reviewsAPI) {
+            return reviewsAPI.getStats();
+        }
+        return null;
     };
 
     LuxuryApp.prototype.destroy = function() {
@@ -1905,14 +2121,16 @@
         
         window.Utils = Utils;
         window.CONFIG = CONFIG;
-        Utils.log('info', 'Optimized debug mode active - Services page optimized with perfect header visibility');
+        Utils.log('info', 'Optimized debug mode active - Services & Testimonials pages optimized with perfect header visibility');
         Utils.log('info', 'Access app instance via window.app');
         Utils.log('info', 'Access utilities via window.Utils');
         Utils.log('info', 'Access config via window.CONFIG');
         Utils.log('info', 'Current device type: ' + Utils.getDeviceType());
         Utils.log('info', 'Current page: ' + Utils.getCurrentPage());
         Utils.log('info', 'Is services page: ' + Utils.isServicesPage());
-        Utils.log('info', 'Features: Perfect header visibility, optimized performance, elegant logo entrance, fast loading, services page optimization');
+        Utils.log('info', 'Is testimonials page: ' + Utils.isTestimonialsPage());
+        Utils.log('info', 'Is about page: ' + Utils.isAboutPage());
+        Utils.log('info', 'Features: Perfect header visibility, optimized performance, elegant logo entrance, fast loading, services page optimization, testimonials API integration');
     }
 
 })();
