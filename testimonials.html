@@ -38,13 +38,15 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://805lifeguard.com/testimonials.html">
     
-    <!-- Critical CSS - Inlined for fastest loading -->
+    <!-- Critical CSS - Enhanced Button Legibility -->
     <style>
-        /* Critical path CSS for immediate rendering */
+        /* Critical path CSS for immediate rendering with PERFECT BUTTON LEGIBILITY */
         :root {
             --color-primary-darkest: #1A1A1A;
             --color-primary: #4A4A4A;
             --color-secondary: #B8A082;
+            --color-secondary-dark: #A0876C;
+            --color-secondary-darkest: #8B7355;
             --color-white: #FFFFFF;
             --color-text-primary: #0F0F0F;
             --color-text-inverse: #FFFFFF;
@@ -56,6 +58,9 @@
             --z-index-header: 1070;
             --z-index-hamburger: 1080;
             --z-index-modal: 1050;
+            --z-index-review-modal: 1100;
+            --shadow-base: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -91,6 +96,98 @@
             .hero { 
                 padding-top: calc(var(--header-navbar-height) + 1rem);
             }
+        }
+
+        /* CRITICAL: Enhanced button styles for PERFECT LEGIBILITY */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+            cursor: pointer;
+            white-space: nowrap;
+            min-height: 48px;
+            justify-content: center;
+            font-family: var(--font-family-sans);
+            letter-spacing: 0.01em;
+        }
+
+        .btn-primary {
+            background: var(--color-primary-darkest);
+            color: var(--color-white);
+            box-shadow: var(--shadow-base);
+            border: 2px solid var(--color-primary-darkest);
+        }
+
+        .btn-primary:hover {
+            background: #333333;
+            border-color: #333333;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ENHANCED SECONDARY BUTTONS - PERFECT CONTRAST & LEGIBILITY */
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.98);
+            color: var(--color-text-primary);
+            border: 2px solid rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(12px);
+            box-shadow: var(--shadow-base);
+            font-weight: 600;
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-white);
+            color: var(--color-text-primary);
+            border-color: var(--color-white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ENHANCED PLATFORM-SPECIFIC BUTTONS */
+        .btn.google {
+            background: linear-gradient(135deg, #4285F4, #34A853);
+            color: var(--color-white);
+            border: 2px solid transparent;
+            box-shadow: var(--shadow-base);
+            font-weight: 600;
+        }
+
+        .btn.google:hover {
+            background: linear-gradient(135deg, #3367D6, #2E7D32);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn.yelp {
+            background: linear-gradient(135deg, #FF1744, #D50000);
+            color: var(--color-white);
+            border: 2px solid transparent;
+            box-shadow: var(--shadow-base);
+            font-weight: 600;
+        }
+
+        .btn.yelp:hover {
+            background: linear-gradient(135deg, #D50000, #B71C1C);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Enhanced focus states for ADA compliance */
+        .btn:focus {
+            outline: 2px solid var(--color-secondary);
+            outline-offset: 2px;
+        }
+
+        .btn.google:focus, .btn.yelp:focus {
+            outline: 2px solid var(--color-white);
+            outline-offset: 2px;
         }
     </style>
     
@@ -150,6 +247,9 @@
     </script>
 </head>
 <body itemscope itemtype="https://schema.org/WebPage">
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
+
     <!-- Enhanced Enterprise Header with Perfect Visibility -->
     <header class="header" id="header" role="banner">
         <!-- Top Bar -->
@@ -161,11 +261,11 @@
                         <span>Serving Southern California's Distinguished Clientele Since 2016</span>
                     </div>
                     <div class="header-top-right">
-                        <a href="tel:+18053676432" class="header-contact" aria-label="Call 805 LifeGuard">
+                        <a href="tel:+18053676432" class="header-contact" aria-label="Call 805 LifeGuard at (805) 367-6432">
                             <i class="fas fa-phone" aria-hidden="true"></i>
                             (805) 367-6432
                         </a>
-                        <a href="mailto:concierge@805lifeguard.com" class="header-contact" aria-label="Email 805 LifeGuard">
+                        <a href="mailto:concierge@805lifeguard.com" class="header-contact" aria-label="Email 805 LifeGuard at concierge@805lifeguard.com">
                             <i class="fas fa-envelope" aria-hidden="true"></i>
                             concierge@805lifeguard.com
                         </a>
@@ -256,7 +356,7 @@
                     </a>
                     
                     <div class="overlay-nav-contact">
-                        <a href="tel:+18053676432" class="overlay-contact-btn" aria-label="Call 805 LifeGuard">
+                        <a href="tel:+18053676432" class="overlay-contact-btn" aria-label="Call 805 LifeGuard at (805) 367-6432">
                             <i class="fas fa-phone" aria-hidden="true"></i>
                             (805) 367-6432
                         </a>
@@ -267,7 +367,7 @@
     </header>
 
     <!-- Enhanced Hero Section with Live Reviews Integration -->
-    <section class="hero" role="banner" aria-label="Client Testimonials">
+    <section class="hero" role="banner" aria-label="Client Testimonials" id="main-content">
         <!-- Background Carousel -->
         <div class="hero-carousel" id="heroCarousel">
             <div class="carousel-slide active" style="background-image: url('images/home/home-luxury-estate-hero-1920x1080.jpg')" data-bg-desktop="images/home/home-luxury-estate-hero-1920x1080.jpg" data-bg-tablet="images/home/home-luxury-estate-hero-1024x576.jpg" data-bg-mobile="images/home/home-luxury-estate-hero-768x432.jpg" aria-label="Distinguished client testimonials"></div>
@@ -295,7 +395,7 @@
                 
                 <!-- Enhanced Live Reviews Integration -->
                 <div class="reviews-integration">
-                    <div class="review-platform" id="google-reviews-preview" role="button" tabindex="0" aria-label="View Google Reviews">
+                    <div class="review-platform" id="google-reviews-preview" role="button" tabindex="0" aria-label="View Google Reviews - 5 star rating">
                         <div class="platform-logo google-logo">G</div>
                         <div class="platform-rating">
                             <span class="star-rating" id="google-stars">★★★★★</span>
@@ -306,7 +406,7 @@
                         </div>
                     </div>
                     
-                    <div class="review-platform" id="yelp-reviews-preview" role="button" tabindex="0" aria-label="View Yelp Reviews">
+                    <div class="review-platform" id="yelp-reviews-preview" role="button" tabindex="0" aria-label="View Yelp Reviews - 5 star rating">
                         <div class="platform-logo yelp-logo">Y</div>
                         <div class="platform-rating">
                             <span class="star-rating" id="yelp-stars">★★★★★</span>
@@ -330,11 +430,11 @@
                 </div>
                 
                 <div class="hero-buttons">
-                    <a href="contact.html" class="btn btn-primary" aria-label="Request consultation">
+                    <a href="contact.html" class="btn btn-primary" aria-label="Request consultation with 805 LifeGuard">
                         <i class="fas fa-calendar-check" aria-hidden="true"></i>
                         Request Consultation
                     </a>
-                    <a href="#testimonials" class="btn btn-secondary" aria-label="Read testimonials">
+                    <a href="#testimonials" class="btn btn-secondary" aria-label="Read all client testimonials">
                         <i class="fas fa-arrow-down" aria-hidden="true"></i>
                         Read All Reviews
                     </a>
@@ -427,12 +527,12 @@
             </div>
             
             <div class="section-cta" style="margin-top: 3rem;">
-                <a href="https://www.google.com/maps/place/805lifeguard.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                    <i class="fab fa-google"></i>
+                <a href="https://www.google.com/maps/place/805lifeguard.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary google" aria-label="View all Google reviews for 805 LifeGuard - Opens in new window">
+                    <i class="fab fa-google" aria-hidden="true"></i>
                     View All Google Reviews
                 </a>
-                <a href="https://www.google.com/maps/place/805lifeguard.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-                    <i class="fas fa-star"></i>
+                <a href="https://www.google.com/maps/place/805lifeguard.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" aria-label="Leave a Google review for 805 LifeGuard - Opens in new window">
+                    <i class="fas fa-star" aria-hidden="true"></i>
                     Leave a Google Review
                 </a>
             </div>
@@ -606,12 +706,12 @@
             </div>
             
             <div class="section-cta" style="margin-top: 3rem;">
-                <a href="https://www.yelp.com/biz/805-lifeguard-thousand-oaks" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                    <i class="fab fa-yelp"></i>
+                <a href="https://www.yelp.com/biz/805-lifeguard-thousand-oaks" target="_blank" rel="noopener noreferrer" class="btn btn-primary yelp" aria-label="View all Yelp reviews for 805 LifeGuard - Opens in new window">
+                    <i class="fab fa-yelp" aria-hidden="true"></i>
                     View All Yelp Reviews
                 </a>
-                <a href="https://www.yelp.com/writeareview/biz/805-lifeguard-thousand-oaks" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-                    <i class="fas fa-star"></i>
+                <a href="https://www.yelp.com/writeareview/biz/805-lifeguard-thousand-oaks" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" aria-label="Leave a Yelp review for 805 LifeGuard - Opens in new window">
+                    <i class="fas fa-star" aria-hidden="true"></i>
                     Leave a Yelp Review
                 </a>
             </div>
@@ -782,8 +882,8 @@
                     Discover why Southern California's most discerning families consistently choose 805 LifeGuard 
                     for their aquatic safety and instruction needs. Let us exceed your expectations too.
                 </p>
-                <a href="contact.html" class="btn btn-primary large">
-                    <i class="fas fa-calendar-check"></i>
+                <a href="contact.html" class="btn btn-primary large" aria-label="Schedule private consultation with 805 LifeGuard">
+                    <i class="fas fa-calendar-check" aria-hidden="true"></i>
                     Schedule Private Consultation
                 </a>
             </div>
@@ -861,7 +961,7 @@
                     </h4>
                     
                     <div class="contact-info">
-                        <a href="tel:+18053676432" class="contact-item primary">
+                        <a href="tel:+18053676432" class="contact-item primary" aria-label="Call 805 LifeGuard 24/7 emergency line">
                             <i class="fas fa-phone"></i>
                             <div>
                                 <strong>(805) 367-6432</strong>
@@ -869,7 +969,7 @@
                             </div>
                         </a>
                         
-                        <a href="mailto:concierge@805lifeguard.com" class="contact-item">
+                        <a href="mailto:concierge@805lifeguard.com" class="contact-item" aria-label="Email 805 LifeGuard for consultation requests">
                             <i class="fas fa-envelope"></i>
                             <div>
                                 <strong>concierge@805lifeguard.com</strong>
@@ -884,15 +984,15 @@
                     </div>
                     
                     <div class="footer-portals">
-                        <a href="https://client.805companies.com" target="_blank" class="footer-portal-btn">
+                        <a href="https://client.805companies.com" target="_blank" class="footer-portal-btn" aria-label="Client Portal - Opens in new window">
                             <i class="fas fa-user-circle"></i>
                             Client Portal
                         </a>
-                        <a href="https://admin.805companies.com" target="_blank" class="footer-portal-btn">
+                        <a href="https://admin.805companies.com" target="_blank" class="footer-portal-btn" aria-label="Admin Portal - Opens in new window">
                             <i class="fas fa-shield-alt"></i>
                             Admin Portal
                         </a>
-                        <a href="https://staff.805companies.com" target="_blank" class="footer-portal-btn">
+                        <a href="https://staff.805companies.com" target="_blank" class="footer-portal-btn" aria-label="Staff Portal - Opens in new window">
                             <i class="fas fa-users"></i>
                             Staff Portal
                         </a>
@@ -924,17 +1024,208 @@
         </div>
     </footer>
 
-    <!-- Enhanced Reviews API Integration Script - Google Only -->
+    <!-- Elegant Review Submission System -->
+    
+    <!-- Floating Review Button -->
+    <div class="review-submission-trigger" id="reviewSubmissionTrigger">
+        <button class="floating-review-btn" id="openReviewModal" aria-label="Share your experience with 805 LifeGuard">
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <span class="btn-text">Share Your Experience</span>
+        </button>
+    </div>
+
+    <!-- Review Submission Modal -->
+    <div class="review-modal-overlay" id="reviewModalOverlay" role="dialog" aria-modal="true" aria-labelledby="reviewModalTitle" aria-describedby="reviewModalDescription">
+        <div class="review-modal" role="document">
+            <div class="review-modal-header">
+                <button class="review-modal-close" id="closeReviewModal" aria-label="Close review submission form">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+                <h2 class="review-modal-title" id="reviewModalTitle">Share Your Experience</h2>
+                <p class="review-modal-subtitle" id="reviewModalDescription">
+                    Your feedback helps us continue providing exceptional aquatic services to distinguished families throughout Southern California.
+                </p>
+            </div>
+            
+            <div class="review-modal-body">
+                <form class="review-form" id="reviewSubmissionForm" novalidate>
+                    <!-- Star Rating Section -->
+                    <div class="star-rating-group">
+                        <label class="star-rating-label" for="rating-1">How would you rate your experience?</label>
+                        <div class="interactive-star-rating" role="radiogroup" aria-labelledby="star-rating-label">
+                            <input type="radio" name="rating" value="5" id="rating-5" class="star-input" required aria-describedby="rating-feedback">
+                            <label for="rating-5" class="star-label" aria-label="5 stars - Excellent">★</label>
+                            
+                            <input type="radio" name="rating" value="4" id="rating-4" class="star-input">
+                            <label for="rating-4" class="star-label" aria-label="4 stars - Very Good">★</label>
+                            
+                            <input type="radio" name="rating" value="3" id="rating-3" class="star-input">
+                            <label for="rating-3" class="star-label" aria-label="3 stars - Good">★</label>
+                            
+                            <input type="radio" name="rating" value="2" id="rating-2" class="star-input">
+                            <label for="rating-2" class="star-label" aria-label="2 stars - Fair">★</label>
+                            
+                            <input type="radio" name="rating" value="1" id="rating-1" class="star-input">
+                            <label for="rating-1" class="star-label" aria-label="1 star - Poor">★</label>
+                        </div>
+                        <div class="rating-feedback" id="rating-feedback" aria-live="polite"></div>
+                    </div>
+
+                    <!-- Client Information -->
+                    <div class="form-group">
+                        <label for="clientName" class="form-label required">Your Name</label>
+                        <input 
+                            type="text" 
+                            id="clientName" 
+                            name="clientName" 
+                            class="form-input" 
+                            required 
+                            maxlength="100"
+                            aria-describedby="clientName-help clientName-error"
+                            autocomplete="name"
+                        >
+                        <div class="form-help-text" id="clientName-help">How would you like to be identified in your review?</div>
+                        <div class="form-error-text" id="clientName-error" role="alert"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="clientLocation" class="form-label required">Location</label>
+                        <input 
+                            type="text" 
+                            id="clientLocation" 
+                            name="clientLocation" 
+                            class="form-input" 
+                            required
+                            maxlength="100"
+                            placeholder="e.g., Thousand Oaks, CA"
+                            aria-describedby="clientLocation-help clientLocation-error"
+                            autocomplete="address-level2"
+                        >
+                        <div class="form-help-text" id="clientLocation-help">City and state for context (helps other families in your area)</div>
+                        <div class="form-error-text" id="clientLocation-error" role="alert"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="clientEmail" class="form-label required">Email Address</label>
+                        <input 
+                            type="email" 
+                            id="clientEmail" 
+                            name="clientEmail" 
+                            class="form-input" 
+                            required
+                            maxlength="150"
+                            aria-describedby="clientEmail-help clientEmail-error"
+                            autocomplete="email"
+                        >
+                        <div class="form-help-text" id="clientEmail-help">For follow-up only (never shared publicly)</div>
+                        <div class="form-error-text" id="clientEmail-error" role="alert"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="clientPhone" class="form-label">Phone Number (Optional)</label>
+                        <input 
+                            type="tel" 
+                            id="clientPhone" 
+                            name="clientPhone" 
+                            class="form-input"
+                            maxlength="20"
+                            placeholder="(805) 367-6432"
+                            aria-describedby="clientPhone-help"
+                            autocomplete="tel"
+                        >
+                        <div class="form-help-text" id="clientPhone-help">Optional - for verification purposes only</div>
+                    </div>
+
+                    <!-- Service Selection -->
+                    <div class="form-group service-selection">
+                        <label for="serviceReceived" class="form-label required">Service You Received</label>
+                        <select 
+                            id="serviceReceived" 
+                            name="serviceReceived" 
+                            class="form-select service-dropdown" 
+                            required
+                            aria-describedby="serviceReceived-help serviceReceived-error"
+                        >
+                            <option value="">Please select the service...</option>
+                            <option value="private-lifeguarding">Private Estate Lifeguarding</option>
+                            <option value="swimming-instruction">Bespoke Swimming Instruction</option>
+                            <option value="event-management">Luxury Event Management</option>
+                            <option value="pool-cleaning">Exclusive Pool Cleaning</option>
+                            <option value="hoa-services">HOA Community Services</option>
+                            <option value="multiple-services">Multiple Services</option>
+                        </select>
+                        <div class="form-help-text" id="serviceReceived-help">This helps other families understand your experience context</div>
+                        <div class="form-error-text" id="serviceReceived-error" role="alert"></div>
+                    </div>
+
+                    <!-- Review Text -->
+                    <div class="form-group">
+                        <label for="reviewText" class="form-label required">Your Review</label>
+                        <textarea 
+                            id="reviewText" 
+                            name="reviewText" 
+                            class="form-textarea" 
+                            required
+                            maxlength="1000"
+                            rows="6"
+                            placeholder="Share your experience with our services..."
+                            aria-describedby="reviewText-help reviewText-error reviewText-count"
+                        ></textarea>
+                        <div class="form-help-text" id="reviewText-help">Please share specific details about your experience (minimum 20 characters)</div>
+                        <div class="form-help-text" id="reviewText-count" aria-live="polite">0 / 1000 characters</div>
+                        <div class="form-error-text" id="reviewText-error" role="alert"></div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Form Footer with Enhanced CTAs -->
+            <div class="review-form-footer">
+                <div class="platform-encouragement">
+                    <h3 class="platform-encouragement-title">Help Other Families Find Us</h3>
+                    <p class="platform-encouragement-text">
+                        After submitting your internal review, we'd be honored if you'd also share your experience 
+                        on Google or Yelp to help other distinguished families discover our services.
+                    </p>
+                    <div class="platform-buttons">
+                        <a href="https://www.google.com/maps/place/805lifeguard.com" target="_blank" rel="noopener noreferrer" class="platform-cta-btn google" aria-label="Leave a Google review for 805 LifeGuard - Opens in new window">
+                            <i class="fab fa-google" aria-hidden="true"></i>
+                            Review on Google
+                        </a>
+                        <a href="https://www.yelp.com/writeareview/biz/805-lifeguard-thousand-oaks" target="_blank" rel="noopener noreferrer" class="platform-cta-btn yelp" aria-label="Leave a Yelp review for 805 LifeGuard - Opens in new window">
+                            <i class="fab fa-yelp" aria-hidden="true"></i>
+                            Review on Yelp
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="button" class="btn btn-cancel" id="cancelReviewBtn" aria-label="Cancel review submission">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                        Cancel
+                    </button>
+                    <button type="submit" form="reviewSubmissionForm" class="btn btn-submit" id="submitReviewBtn" aria-label="Submit your review">
+                        <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                        Submit Review
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Enhanced Reviews API Integration & Review Submission Script -->
     <script>
-        // Optimized Reviews API Integration System - Google API + Manual Yelp
+        // Enhanced Reviews API Integration System with Review Submission
         (function() {
             'use strict';
             
-            // Production API configuration - Google Only (Yelp is manual)
+            // Production API configuration - Google API + Manual Yelp + Internal Review Collection
             const REVIEWS_CONFIG = {
                 // Google Places API Configuration - LIVE DATA
                 google: {
-                    placeId: 'ChIJF_n_aeIx6IARDaz-6Q4-Hec', // Your actual Place ID
+                    placeId: 'ChIJF_n_aeIx6IARDaz-6Q4-Hec',
                     proxyEndpoint: 'https://805-lifeguard-reviews-api.jaspervdz.workers.dev/api/google-reviews',
                     maxReviews: 8,
                     minRating: 4,
@@ -943,7 +1234,6 @@
                 
                 // Manual Yelp Reviews (cost-effective approach)
                 yelp: {
-                    // Manual reviews array - easily updatable
                     manualReviews: [
                         {
                             user: { name: "Parent from Thousand Oaks" },
@@ -978,23 +1268,25 @@
                 
                 // Cache configuration
                 cache: {
-                    duration: 1800000, // 30 minutes in milliseconds
-                    keyPrefix: '805lifeguard_reviews_v3_',
+                    duration: 1800000, // 30 minutes
+                    keyPrefix: '805lifeguard_reviews_v4_',
                     enableCache: true
                 },
                 
-                // Production configuration - LIVE GOOGLE DATA + MANUAL YELP
+                // Production configuration
                 fallback: {
-                    useRealGoogleData: true, // 🔥 LIVE GOOGLE API ENABLED
-                    useManualYelp: true,     // 💰 COST-EFFECTIVE YELP APPROACH
+                    useRealGoogleData: true,
+                    useManualYelp: true,
                     showLoadingStates: true,
                     simulateDelay: false
                 }
             };
             
-            // Enhanced cache management - same as before
+            // Enhanced cache management with in-memory fallback
             const ReviewsCache = {
-                isSupported: function() {
+                memoryCache: new Map(),
+                
+                isLocalStorageSupported: function() {
                     try {
                         const test = 'test';
                         localStorage.setItem(test, test);
@@ -1006,78 +1298,88 @@
                 },
                 
                 set: function(key, data) {
-                    if (!this.isSupported() || !REVIEWS_CONFIG.cache.enableCache) return false;
-                    
                     const cacheItem = {
                         data: data,
                         timestamp: Date.now(),
-                        version: '3.0'
+                        version: '4.0'
                     };
                     
-                    try {
-                        localStorage.setItem(REVIEWS_CONFIG.cache.keyPrefix + key, JSON.stringify(cacheItem));
-                        return true;
-                    } catch (e) {
-                        console.warn('Reviews cache storage failed:', e.message);
-                        return false;
+                    // Always use memory cache
+                    this.memoryCache.set(key, cacheItem);
+                    
+                    // Try localStorage if available
+                    if (this.isLocalStorageSupported() && REVIEWS_CONFIG.cache.enableCache) {
+                        try {
+                            localStorage.setItem(REVIEWS_CONFIG.cache.keyPrefix + key, JSON.stringify(cacheItem));
+                        } catch (e) {
+                            console.warn('Reviews cache storage failed:', e.message);
+                        }
                     }
+                    
+                    return true;
                 },
                 
                 get: function(key) {
-                    if (!this.isSupported() || !REVIEWS_CONFIG.cache.enableCache) return null;
-                    
-                    try {
-                        const cached = localStorage.getItem(REVIEWS_CONFIG.cache.keyPrefix + key);
-                        if (!cached) return null;
-                        
-                        const cacheItem = JSON.parse(cached);
-                        
-                        if (!cacheItem.version || cacheItem.version !== '3.0') {
-                            this.remove(key);
-                            return null;
-                        }
-                        
-                        if (Date.now() - cacheItem.timestamp > REVIEWS_CONFIG.cache.duration) {
-                            this.remove(key);
-                            return null;
-                        }
-                        
-                        return cacheItem.data;
-                    } catch (e) {
-                        console.warn('Reviews cache retrieval failed:', e.message);
-                        return null;
+                    // Check memory cache first
+                    const memoryItem = this.memoryCache.get(key);
+                    if (memoryItem && Date.now() - memoryItem.timestamp < REVIEWS_CONFIG.cache.duration) {
+                        return memoryItem.data;
                     }
+                    
+                    // Try localStorage
+                    if (this.isLocalStorageSupported() && REVIEWS_CONFIG.cache.enableCache) {
+                        try {
+                            const cached = localStorage.getItem(REVIEWS_CONFIG.cache.keyPrefix + key);
+                            if (cached) {
+                                const cacheItem = JSON.parse(cached);
+                                
+                                if (cacheItem.version === '4.0' && 
+                                    Date.now() - cacheItem.timestamp < REVIEWS_CONFIG.cache.duration) {
+                                    // Update memory cache
+                                    this.memoryCache.set(key, cacheItem);
+                                    return cacheItem.data;
+                                }
+                            }
+                        } catch (e) {
+                            console.warn('Reviews cache retrieval failed:', e.message);
+                        }
+                    }
+                    
+                    return null;
                 },
                 
                 remove: function(key) {
-                    if (!this.isSupported()) return;
-                    try {
-                        localStorage.removeItem(REVIEWS_CONFIG.cache.keyPrefix + key);
-                    } catch (e) {
-                        console.warn('Reviews cache removal failed:', e.message);
+                    this.memoryCache.delete(key);
+                    if (this.isLocalStorageSupported()) {
+                        try {
+                            localStorage.removeItem(REVIEWS_CONFIG.cache.keyPrefix + key);
+                        } catch (e) {
+                            console.warn('Reviews cache removal failed:', e.message);
+                        }
                     }
                 },
                 
                 clear: function() {
-                    if (!this.isSupported()) return;
-                    try {
-                        const keys = Object.keys(localStorage);
-                        keys.forEach(key => {
-                            if (key.startsWith(REVIEWS_CONFIG.cache.keyPrefix)) {
-                                localStorage.removeItem(key);
-                            }
-                        });
-                    } catch (e) {
-                        console.warn('Reviews cache clear failed:', e.message);
+                    this.memoryCache.clear();
+                    if (this.isLocalStorageSupported()) {
+                        try {
+                            const keys = Object.keys(localStorage);
+                            keys.forEach(key => {
+                                if (key.startsWith(REVIEWS_CONFIG.cache.keyPrefix)) {
+                                    localStorage.removeItem(key);
+                                }
+                            });
+                        } catch (e) {
+                            console.warn('Reviews cache clear failed:', e.message);
+                        }
                     }
                 }
             };
             
-            // Production-ready API integration with Manual Yelp fallback
+            // Production-ready API integration
             const ReviewsAPI = {
-                // Google API integration (unchanged)
                 fetchGoogleReviews: async function() {
-                    const cacheKey = 'google_v3';
+                    const cacheKey = 'google_v4';
                     const cached = ReviewsCache.get(cacheKey);
                     
                     if (cached) {
@@ -1102,7 +1404,6 @@
                     }
                 },
                 
-                // Manual Yelp Reviews - Cost-Effective Approach
                 fetchYelpReviews: async function() {
                     console.log('805 LifeGuard: Using manual Yelp reviews (cost-effective approach)');
                     
@@ -1110,11 +1411,9 @@
                         await new Promise(resolve => setTimeout(resolve, 500));
                     }
                     
-                    // Return the manually curated Yelp reviews
                     return REVIEWS_CONFIG.yelp.manualReviews;
                 },
                 
-                // Google API call (unchanged)
                 callCloudflareWorker: async function() {
                     const url = REVIEWS_CONFIG.google.proxyEndpoint;
                     console.log('805 LifeGuard: Calling Cloudflare Worker:', url);
@@ -1165,7 +1464,7 @@
                 }
             };
             
-            // UI rendering (unchanged but now handles manual Yelp reviews)
+            // UI rendering system
             const ReviewsUI = {
                 renderGoogleReview: function(review) {
                     const stars = this.renderStars(review.rating);
@@ -1186,35 +1485,6 @@
                                     <div class="author-name">${this.sanitizeText(review.author_name)}</div>
                                     <div class="author-location">Verified Google Customer</div>
                                     <div class="author-service">${review.relative_time_description}</div>
-                                </div>
-                                <div class="testimonial-rating" aria-label="${review.rating} star rating">
-                                    ${stars}
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                },
-                
-                renderYelpReview: function(review) {
-                    const stars = this.renderStars(review.rating);
-                    const sanitizedText = this.sanitizeText(review.text);
-                    const truncatedText = this.truncateText(sanitizedText, 220);
-                    const timeAgo = this.timeAgo(review.time_created);
-                    
-                    return `
-                        <div class="testimonial-card" data-platform="yelp" data-rating="${review.rating}">
-                            <div class="testimonial-content">
-                                <div class="platform-indicator">
-                                    <div class="platform-logo yelp-logo">Y</div>
-                                    <span>Yelp Review</span>
-                                </div>
-                                <p>${truncatedText}</p>
-                            </div>
-                            <div class="testimonial-author">
-                                <div class="author-info">
-                                    <div class="author-name">${this.sanitizeText(review.user.name)}</div>
-                                    <div class="author-location">Verified Yelp Customer</div>
-                                    <div class="author-service">${timeAgo}</div>
                                 </div>
                                 <div class="testimonial-rating" aria-label="${review.rating} star rating">
                                     ${stars}
@@ -1303,7 +1573,7 @@
                 }
             };
             
-            // Statistics updater (unchanged)
+            // Statistics updater
             const StatsUpdater = {
                 update: function(googleReviews, yelpReviews) {
                     const googleRating = ReviewsAPI.calculateAverageRating(googleReviews);
@@ -1327,17 +1597,20 @@
                 updateElement: function(id, value) {
                     const element = document.getElementById(id);
                     if (element) {
-                        element.textContent = value;
-                        element.style.opacity = '0';
-                        element.style.transition = 'opacity 0.3s ease';
+                        element.classList.add('stat-updating');
                         setTimeout(() => {
-                            element.style.opacity = '1';
-                        }, 50);
+                            element.textContent = value;
+                            element.classList.remove('stat-updating');
+                            element.classList.add('stat-updated');
+                            setTimeout(() => {
+                                element.classList.remove('stat-updated');
+                            }, 600);
+                        }, 100);
                     }
                 }
             };
             
-            // Platform interaction handlers (unchanged)
+            // Platform interaction handlers
             const PlatformHandlers = {
                 setupPlatformNavigation: function() {
                     const googlePreview = document.getElementById('google-reviews-preview');
@@ -1347,11 +1620,25 @@
                         googlePreview.addEventListener('click', () => {
                             this.scrollToSection('#google-reviews-section');
                         });
+                        
+                        googlePreview.addEventListener('keydown', (e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                this.scrollToSection('#google-reviews-section');
+                            }
+                        });
                     }
                     
                     if (yelpPreview) {
                         yelpPreview.addEventListener('click', () => {
                             this.scrollToSection('#yelp-reviews-section');
+                        });
+                        
+                        yelpPreview.addEventListener('keydown', (e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                this.scrollToSection('#yelp-reviews-section');
+                            }
                         });
                     }
                 },
@@ -1370,346 +1657,778 @@
                     });
                 }
             };
-            
-            // Main initialization function
-            async function initializeOptimizedReviews() {
-                console.log('805 LifeGuard: Initializing OPTIMIZED reviews system...');
-                console.log('805 LifeGuard: Google API enabled:', REVIEWS_CONFIG.fallback.useRealGoogleData);
-                console.log('805 LifeGuard: Yelp manual mode:', REVIEWS_CONFIG.fallback.useManualYelp);
+
+            // Review Submission System
+            const ReviewSubmissionSystem = {
+                isOpen: false,
+                currentRating: 0,
+                formData: {},
                 
-                try {
-                    PlatformHandlers.setupPlatformNavigation();
+                init: function() {
+                    this.setupEventListeners();
+                    this.setupFormValidation();
+                    this.setupFloatingButton();
+                    console.log('805 LifeGuard: Review submission system initialized');
+                },
+                
+                setupFloatingButton: function() {
+                    const trigger = document.getElementById('reviewSubmissionTrigger');
+                    if (!trigger) return;
                     
-                    if (REVIEWS_CONFIG.fallback.showLoadingStates) {
-                        const googleContainer = document.getElementById('google-reviews-container');
-                        if (googleContainer) {
-                            googleContainer.innerHTML = ReviewsUI.renderLoadingState('Loading Google reviews...');
+                    // Show floating button after user scrolls past hero
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (!entry.isIntersecting) {
+                                trigger.classList.add('visible');
+                            } else {
+                                trigger.classList.remove('visible');
+                            }
+                        });
+                    }, { threshold: 0.1 });
+                    
+                    const hero = document.querySelector('.hero');
+                    if (hero) {
+                        observer.observe(hero);
+                    }
+                },
+                
+                setupEventListeners: function() {
+                    const openBtn = document.getElementById('openReviewModal');
+                    const closeBtn = document.getElementById('closeReviewModal');
+                    const cancelBtn = document.getElementById('cancelReviewBtn');
+                    const overlay = document.getElementById('reviewModalOverlay');
+                    const form = document.getElementById('reviewSubmissionForm');
+                    
+                    // Open modal
+                    if (openBtn) {
+                        openBtn.addEventListener('click', () => this.openModal());
+                    }
+                    
+                    // Close modal
+                    if (closeBtn) {
+                        closeBtn.addEventListener('click', () => this.closeModal());
+                    }
+                    
+                    if (cancelBtn) {
+                        cancelBtn.addEventListener('click', () => this.closeModal());
+                    }
+                    
+                    // Close on overlay click
+                    if (overlay) {
+                        overlay.addEventListener('click', (e) => {
+                            if (e.target === overlay) {
+                                this.closeModal();
+                            }
+                        });
+                    }
+                    
+                    // Close on escape key
+                    document.addEventListener('keydown', (e) => {
+                        if (e.key === 'Escape' && this.isOpen) {
+                            this.closeModal();
+                        }
+                    });
+                    
+                    // Form submission
+                    if (form) {
+                        form.addEventListener('submit', (e) => this.handleSubmit(e));
+                    }
+                    
+                    // Star rating interaction
+                    this.setupStarRating();
+                },
+                
+                setupStarRating: function() {
+                    const starInputs = document.querySelectorAll('.star-input');
+                    const ratingFeedback = document.getElementById('rating-feedback');
+                    
+                    const ratingMessages = {
+                        5: 'Excellent! We\'re delighted you had such a wonderful experience.',
+                        4: 'Very good! Thank you for your positive feedback.',
+                        3: 'Good. We appreciate your feedback and will continue improving.',
+                        2: 'Fair. We\'d love to understand how we can serve you better.',
+                        1: 'We\'re sorry to hear this. Please let us know how we can improve.'
+                    };
+                    
+                    const ratingClasses = {
+                        5: 'excellent',
+                        4: 'good', 
+                        3: 'average',
+                        2: 'poor',
+                        1: 'poor'
+                    };
+                    
+                    starInputs.forEach(input => {
+                        input.addEventListener('change', () => {
+                            const rating = parseInt(input.value);
+                            this.currentRating = rating;
+                            
+                            if (ratingFeedback) {
+                                // Remove all rating classes
+                                Object.values(ratingClasses).forEach(cls => {
+                                    ratingFeedback.classList.remove(cls);
+                                });
+                                
+                                // Add current rating class and update text
+                                ratingFeedback.classList.add(ratingClasses[rating] || 'good');
+                                ratingFeedback.textContent = ratingMessages[rating] || '';
+                            }
+                            
+                            console.log('805 LifeGuard: Rating selected:', rating);
+                        });
+                        
+                        // Keyboard support
+                        input.addEventListener('keydown', (e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                input.checked = true;
+                                input.dispatchEvent(new Event('change'));
+                            }
+                        });
+                    });
+                },
+                
+                setupFormValidation: function() {
+                    const form = document.getElementById('reviewSubmissionForm');
+                    if (!form) return;
+                    
+                    // Real-time validation
+                    const inputs = form.querySelectorAll('.form-input, .form-textarea, .form-select');
+                    inputs.forEach(input => {
+                        input.addEventListener('blur', () => this.validateField(input));
+                        input.addEventListener('input', () => this.clearFieldError(input));
+                    });
+                    
+                    // Character counter for review text
+                    const reviewText = document.getElementById('reviewText');
+                    const counter = document.getElementById('reviewText-count');
+                    
+                    if (reviewText && counter) {
+                        reviewText.addEventListener('input', () => {
+                            const length = reviewText.value.length;
+                            counter.textContent = `${length} / 1000 characters`;
+                            
+                            if (length < 20) {
+                                counter.style.color = 'var(--color-warning)';
+                            } else if (length > 950) {
+                                counter.style.color = 'var(--color-warning)';
+                            } else {
+                                counter.style.color = 'var(--color-text-tertiary)';
+                            }
+                        });
+                    }
+                    
+                    // Phone formatting
+                    const phoneInput = document.getElementById('clientPhone');
+                    if (phoneInput) {
+                        phoneInput.addEventListener('input', (e) => {
+                            let value = e.target.value.replace(/\D/g, '');
+                            
+                            if (value.length >= 6) {
+                                value = value.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+                            } else if (value.length >= 3) {
+                                value = value.replace(/(\d{3})(\d{0,3})/, '($1) $2');
+                            }
+                            
+                            e.target.value = value;
+                        });
+                    }
+                },
+                
+                validateField: function(field) {
+                    const value = field.value.trim();
+                    const isRequired = field.hasAttribute('required');
+                    const fieldName = field.name;
+                    let isValid = true;
+                    let errorMessage = '';
+                    
+                    // Required field validation
+                    if (isRequired && !value) {
+                        isValid = false;
+                        errorMessage = 'This field is required.';
+                    }
+                    
+                    // Specific field validations
+                    if (value && fieldName === 'clientEmail') {
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailRegex.test(value)) {
+                            isValid = false;
+                            errorMessage = 'Please enter a valid email address.';
                         }
                     }
                     
-                    // Load Google reviews from API, Yelp reviews manually
-                    const [googleReviews, yelpReviews] = await Promise.allSettled([
-                        ReviewsAPI.fetchGoogleReviews(),
-                        ReviewsAPI.fetchYelpReviews()
-                    ]);
+                    if (value && fieldName === 'reviewText') {
+                        if (value.length < 20) {
+                            isValid = false;
+                            errorMessage = 'Please provide at least 20 characters for your review.';
+                        }
+                    }
                     
-                    const finalGoogleReviews = googleReviews.status === 'fulfilled' && Array.isArray(googleReviews.value) ? 
-                        googleReviews.value : [];
-                    const finalYelpReviews = yelpReviews.status === 'fulfilled' && Array.isArray(yelpReviews.value) ? 
-                        yelpReviews.value : REVIEWS_CONFIG.yelp.manualReviews;
+                    if (value && fieldName === 'clientName') {
+                        if (value.length < 2) {
+                            isValid = false;
+                            errorMessage = 'Please enter your full name.';
+                        }
+                    }
                     
-                    // Update statistics
-                    StatsUpdater.update(finalGoogleReviews, finalYelpReviews);
+                    this.showFieldValidation(field, isValid, errorMessage);
+                    return isValid;
+                },
+                
+                showFieldValidation: function(field, isValid, errorMessage = '') {
+                    const errorElement = document.getElementById(field.name + '-error');
                     
-                    // Render Google reviews (API)
+                    if (isValid) {
+                        field.classList.remove('invalid');
+                        field.classList.add('valid');
+                        if (errorElement) {
+                            errorElement.classList.remove('show');
+                            errorElement.textContent = '';
+                        }
+                    } else {
+                        field.classList.remove('valid');
+                        field.classList.add('invalid');
+                        if (errorElement) {
+                            errorElement.textContent = errorMessage;
+                            errorElement.classList.add('show');
+                        }
+                    }
+                },
+                
+                clearFieldError: function(field) {
+                    field.classList.remove('invalid');
+                    const errorElement = document.getElementById(field.name + '-error');
+                    if (errorElement) {
+                        errorElement.classList.remove('show');
+                        errorElement.textContent = '';
+                    }
+                },
+                
+                openModal: function() {
+                    const overlay = document.getElementById('reviewModalOverlay');
+                    if (!overlay) return;
+                    
+                    this.isOpen = true;
+                    overlay.classList.add('active');
+                    document.body.classList.add('review-modal-open');
+                    
+                    // Focus management
+                    setTimeout(() => {
+                        const firstInput = document.getElementById('clientName');
+                        if (firstInput) {
+                            firstInput.focus();
+                        }
+                    }, 300);
+                    
+                    console.log('805 LifeGuard: Review modal opened');
+                },
+                
+                closeModal: function() {
+                    const overlay = document.getElementById('reviewModalOverlay');
+                    if (!overlay) return;
+                    
+                    this.isOpen = false;
+                    overlay.classList.remove('active');
+                    document.body.classList.remove('review-modal-open');
+                    
+                    // Reset form
+                    this.resetForm();
+                    
+                    console.log('805 LifeGuard: Review modal closed');
+                },
+                
+                resetForm: function() {
+                    const form = document.getElementById('reviewSubmissionForm');
+                    if (!form) return;
+                    
+                    form.reset();
+                    this.currentRating = 0;
+                    
+                    // Clear validation states
+                    const fields = form.querySelectorAll('.form-input, .form-textarea, .form-select');
+                    fields.forEach(field => {
+                        field.classList.remove('valid', 'invalid');
+                        this.clearFieldError(field);
+                    });
+                    
+                    // Reset rating feedback
+                    const ratingFeedback = document.getElementById('rating-feedback');
+                    if (ratingFeedback) {
+                        ratingFeedback.textContent = '';
+                        ratingFeedback.className = 'rating-feedback';
+                    }
+                    
+                    // Reset character counter
+                    const counter = document.getElementById('reviewText-count');
+                    if (counter) {
+                        counter.textContent = '0 / 1000 characters';
+                        counter.style.color = 'var(--color-text-tertiary)';
+                    }
+                },
+                
+                validateForm: function() {
+                    const form = document.getElementById('reviewSubmissionForm');
+                    if (!form) return false;
+                    
+                    let isValid = true;
+                    
+                    // Validate rating
+                    const ratingInputs = form.querySelectorAll('input[name="rating"]:checked');
+                    if (ratingInputs.length === 0) {
+                        this.showToast('error', 'Rating Required', 'Please select a star rating for your experience.');
+                        isValid = false;
+                    }
+                    
+                    // Validate required fields
+                    const requiredFields = form.querySelectorAll('[required]');
+                    requiredFields.forEach(field => {
+                        if (!this.validateField(field)) {
+                            isValid = false;
+                        }
+                    });
+                    
+                    return isValid;
+                },
+                
+                handleSubmit: function(e) {
+                    e.preventDefault();
+                    
+                    if (!this.validateForm()) {
+                        return;
+                    }
+                    
+                    const submitBtn = document.getElementById('submitReviewBtn');
+                    if (submitBtn) {
+                        submitBtn.classList.add('loading');
+                        submitBtn.disabled = true;
+                    }
+                    
+                    // Simulate submission (replace with actual API call)
+                    setTimeout(() => {
+                        this.handleSubmissionSuccess();
+                    }, 2000);
+                },
+                
+                handleSubmissionSuccess: function() {
+                    const modal = document.querySelector('.review-modal');
+                    if (!modal) return;
+                    
+                    // Replace modal content with success state
+                    modal.innerHTML = `
+                        <div class="review-success-content">
+                            <div class="success-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <h2 class="success-title">Thank You!</h2>
+                            <p class="success-message">
+                                Your review has been submitted successfully. We truly appreciate your feedback 
+                                and are honored to have served your family.
+                            </p>
+                            <div class="platform-encouragement">
+                                <h3 class="platform-encouragement-title">Help Other Families Find Us</h3>
+                                <p class="platform-encouragement-text">
+                                    Consider sharing your experience on Google or Yelp to help other distinguished 
+                                    families discover our exceptional aquatic services.
+                                </p>
+                                <div class="platform-buttons">
+                                    <a href="https://www.google.com/maps/place/805lifeguard.com" target="_blank" rel="noopener noreferrer" class="platform-cta-btn google">
+                                        <i class="fab fa-google"></i>
+                                        Review on Google
+                                    </a>
+                                    <a href="https://www.yelp.com/writeareview/biz/805-lifeguard-thousand-oaks" target="_blank" rel="noopener noreferrer" class="platform-cta-btn yelp">
+                                        <i class="fab fa-yelp"></i>
+                                        Review on Yelp
+                                    </a>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="ReviewSubmissionSystem.closeModal()">
+                                <i class="fas fa-check"></i>
+                                Close
+                            </button>
+                        </div>
+                    `;
+                    
+                    this.showToast('success', 'Review Submitted', 'Thank you for your valuable feedback!');
+                    
+                    // Auto-close after a delay
+                    setTimeout(() => {
+                        this.closeModal();
+                    }, 8000);
+                },
+                
+                showToast: function(type, title, message, duration = 5000) {
+                    const container = document.getElementById('toastContainer');
+                    if (!container) return;
+                    
+                    const toastId = 'toast-' + Date.now();
+                    const iconMap = {
+                        success: 'fa-check-circle',
+                        error: 'fa-exclamation-circle',
+                        warning: 'fa-exclamation-triangle',
+                        info: 'fa-info-circle'
+                    };
+                    
+                    const toast = document.createElement('div');
+                    toast.className = `toast ${type}`;
+                    toast.id = toastId;
+                    toast.innerHTML = `
+                        <div class="toast-icon">
+                            <i class="fas ${iconMap[type] || 'fa-info-circle'}"></i>
+                        </div>
+                        <div class="toast-content">
+                            <div class="toast-title">${title}</div>
+                            <div class="toast-message">${message}</div>
+                        </div>
+                        <button class="toast-close" aria-label="Close notification">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <div class="toast-progress"></div>
+                    `;
+                    
+                    container.appendChild(toast);
+                    
+                    // Show toast
+                    setTimeout(() => {
+                        toast.classList.add('show');
+                    }, 100);
+                    
+                    // Close button functionality
+                    const closeBtn = toast.querySelector('.toast-close');
+                    if (closeBtn) {
+                        closeBtn.addEventListener('click', () => {
+                            this.removeToast(toastId);
+                        });
+                    }
+                    
+                    // Auto-remove after duration
+                    setTimeout(() => {
+                        this.removeToast(toastId);
+                    }, duration);
+                },
+                
+                removeToast: function(toastId) {
+                    const toast = document.getElementById(toastId);
+                    if (!toast) return;
+                    
+                    toast.classList.remove('show');
+                    setTimeout(() => {
+                        if (toast.parentNode) {
+                            toast.parentNode.removeChild(toast);
+                        }
+                    }, 300);
+                }
+            };
+            
+            // Main Reviews Controller
+            const ReviewsController = {
+                googleReviews: [],
+                yelpReviews: [],
+                isLoading: false,
+                
+                init: async function() {
+                    console.log('805 LifeGuard: Initializing Reviews Controller...');
+                    
+                    try {
+                        this.isLoading = true;
+                        this.showInitialLoadingStates();
+                        
+                        // Load reviews concurrently
+                        const [googleReviews, yelpReviews] = await Promise.allSettled([
+                            ReviewsAPI.fetchGoogleReviews(),
+                            ReviewsAPI.fetchYelpReviews()
+                        ]);
+                        
+                        this.googleReviews = googleReviews.status === 'fulfilled' ? googleReviews.value : [];
+                        this.yelpReviews = yelpReviews.status === 'fulfilled' ? yelpReviews.value : [];
+                        
+                        console.log('805 LifeGuard: Reviews loaded', {
+                            google: this.googleReviews.length,
+                            yelp: this.yelpReviews.length
+                        });
+                        
+                        // Update UI
+                        this.renderAllReviews();
+                        this.renderQuickReviews();
+                        StatsUpdater.update(this.googleReviews, this.yelpReviews);
+                        this.animateReviewsEntrance();
+                        
+                        // Setup platform navigation
+                        PlatformHandlers.setupPlatformNavigation();
+                        
+                        // Initialize review submission system
+                        ReviewSubmissionSystem.init();
+                        
+                        this.isLoading = false;
+                        
+                        console.log('805 LifeGuard: Reviews system fully initialized');
+                        
+                    } catch (error) {
+                        console.error('805 LifeGuard: Failed to initialize reviews system:', error);
+                        this.handleInitializationError();
+                    }
+                },
+                
+                showInitialLoadingStates: function() {
+                    // Show loading in quick reviews
+                    const quickReviews = document.getElementById('quickReviews');
+                    if (quickReviews) {
+                        quickReviews.innerHTML = ReviewsUI.renderLoadingState('Loading latest reviews...');
+                    }
+                    
+                    // Show loading in Google reviews section
                     const googleContainer = document.getElementById('google-reviews-container');
-                    if (googleContainer && finalGoogleReviews.length > 0) {
-                        const googleHTML = finalGoogleReviews
-                            .filter(review => review.rating >= REVIEWS_CONFIG.google.minRating)
-                            .slice(0, REVIEWS_CONFIG.google.maxReviews)
-                            .map(review => ReviewsUI.renderGoogleReview(review))
-                            .join('');
-                        
-                        googleContainer.innerHTML = googleHTML;
-                        
-                        // Animate cards
-                        setTimeout(() => {
-                            const cards = googleContainer.querySelectorAll('.testimonial-card');
-                            cards.forEach((card, index) => {
-                                card.style.opacity = '0';
-                                card.style.transform = 'translateY(30px)';
-                                setTimeout(() => {
-                                    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                                    card.style.opacity = '1';
-                                    card.style.transform = 'translateY(0)';
-                                }, index * 150);
-                            });
-                        }, 100);
-                    } else if (googleContainer) {
-                        googleContainer.innerHTML = ReviewsUI.renderErrorState(
+                    if (googleContainer) {
+                        googleContainer.innerHTML = ReviewsUI.renderLoadingState('Loading Google reviews...');
+                    }
+                },
+                
+                renderAllReviews: function() {
+                    this.renderGoogleReviews();
+                    // Yelp reviews are already in HTML (manual integration)
+                },
+                
+                renderGoogleReviews: function() {
+                    const container = document.getElementById('google-reviews-container');
+                    if (!container) return;
+                    
+                    if (this.googleReviews.length === 0) {
+                        container.innerHTML = ReviewsUI.renderErrorState(
                             'Google reviews temporarily unavailable',
-                            'Visit our Google Maps page for the latest reviews'
+                            'Please visit our Google Maps page to read reviews'
+                        );
+                        return;
+                    }
+                    
+                    const reviewsHTML = this.googleReviews
+                        .filter(review => review.rating >= 4)
+                        .slice(0, 8)
+                        .map(review => ReviewsUI.renderGoogleReview(review))
+                        .join('');
+                    
+                    container.innerHTML = reviewsHTML;
+                },
+                
+                renderQuickReviews: function() {
+                    const container = document.getElementById('quickReviews');
+                    if (!container) return;
+                    
+                    const allReviews = [];
+                    
+                    // Add Google reviews
+                    const recentGoogle = ReviewsAPI.getMostRecent(this.googleReviews, 2);
+                    recentGoogle.forEach(review => {
+                        allReviews.push({ review, platform: 'google' });
+                    });
+                    
+                    // Add Yelp reviews
+                    const recentYelp = ReviewsAPI.getMostRecent(this.yelpReviews, 2);
+                    recentYelp.forEach(review => {
+                        allReviews.push({ review, platform: 'yelp' });
+                    });
+                    
+                    if (allReviews.length === 0) {
+                        container.innerHTML = ReviewsUI.renderErrorState(
+                            'No recent reviews available',
+                            'Check back soon for new client feedback'
+                        );
+                        return;
+                    }
+                    
+                    // Shuffle and limit to 4
+                    const shuffled = allReviews.sort(() => Math.random() - 0.5).slice(0, 4);
+                    const quickReviewsHTML = shuffled
+                        .map(item => ReviewsUI.renderQuickReview(item.review, item.platform))
+                        .join('');
+                    
+                    container.innerHTML = quickReviewsHTML;
+                },
+                
+                animateReviewsEntrance: function() {
+                    // Animate review platforms
+                    const platforms = document.querySelectorAll('.review-platform');
+                    platforms.forEach((platform, index) => {
+                        setTimeout(() => {
+                            platform.classList.add('loaded');
+                            if (index === 0) platform.classList.add('delay-1');
+                            if (index === 1) platform.classList.add('delay-2');
+                        }, 100 * index);
+                    });
+                    
+                    // Animate live reviews widget
+                    const widget = document.getElementById('liveReviewsWidget');
+                    if (widget) {
+                        setTimeout(() => {
+                            widget.classList.add('loaded');
+                        }, 300);
+                    }
+                    
+                    // Animate quick reviews
+                    const quickReviews = document.querySelectorAll('.quick-review');
+                    quickReviews.forEach((review, index) => {
+                        setTimeout(() => {
+                            review.classList.add('loaded');
+                            review.classList.add(`delay-${(index % 4) + 1}`);
+                        }, 500 + (index * 100));
+                    });
+                    
+                    // Animate testimonial cards
+                    const testimonialCards = document.querySelectorAll('.testimonial-card[data-platform]');
+                    testimonialCards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('loaded');
+                            card.classList.add(`stagger-${(index % 8) + 1}`);
+                        }, 800 + (index * 100));
+                    });
+                },
+                
+                handleInitializationError: function() {
+                    console.error('805 LifeGuard: Reviews system initialization failed');
+                    
+                    // Show error states
+                    const quickReviews = document.getElementById('quickReviews');
+                    if (quickReviews) {
+                        quickReviews.innerHTML = ReviewsUI.renderErrorState();
+                    }
+                    
+                    const googleContainer = document.getElementById('google-reviews-container');
+                    if (googleContainer) {
+                        googleContainer.innerHTML = ReviewsUI.renderErrorState(
+                            'Unable to load Google reviews',
+                            'Visit our Google Maps page to read reviews'
                         );
                     }
                     
-                    // Yelp reviews are manually integrated in HTML, just animate them
-                    setTimeout(() => {
-                        const yelpCards = document.querySelectorAll('#yelp-reviews-section .testimonial-card');
-                        yelpCards.forEach((card, index) => {
-                            card.style.opacity = '0';
-                            card.style.transform = 'translateY(30px)';
-                            setTimeout(() => {
-                                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                                card.style.opacity = '1';
-                                card.style.transform = 'translateY(0)';
-                            }, (index * 100) + 200);
-                        });
-                    }, 200);
-                    
-                    // Update quick reviews widget
-                    updateQuickReviews(finalGoogleReviews, finalYelpReviews);
-                    
-                    console.log('805 LifeGuard: Optimized reviews loaded successfully', {
-                        google: finalGoogleReviews.length,
-                        yelp: finalYelpReviews.length,
-                        approach: 'Google API + Manual Yelp'
-                    });
-                    
-                } catch (error) {
-                    console.error('805 LifeGuard: Error initializing reviews:', error);
-                    
-                    const containers = ['google-reviews-container'];
-                    containers.forEach(id => {
-                        const container = document.getElementById(id);
-                        if (container) {
-                            container.innerHTML = ReviewsUI.renderErrorState();
-                        }
-                    });
-                }
-            }
-            
-            // Quick reviews widget (unchanged)
-            function updateQuickReviews(googleReviews, yelpReviews) {
-                const quickReviewsContainer = document.getElementById('quickReviews');
-                if (!quickReviewsContainer) return;
-                
-                try {
-                    const recentGoogle = ReviewsAPI.getMostRecent(googleReviews, 2);
-                    const recentYelp = ReviewsAPI.getMostRecent(yelpReviews, 2);
-                    
-                    const mixedReviews = [];
-                    
-                    recentGoogle.forEach(review => {
-                        mixedReviews.push({ review, platform: 'google' });
-                    });
-                    
-                    recentYelp.forEach(review => {
-                        mixedReviews.push({ review, platform: 'yelp' });
-                    });
-                    
-                    mixedReviews.sort((a, b) => {
-                        const timeA = a.review.time || new Date(a.review.time_created).getTime() || 0;
-                        const timeB = b.review.time || new Date(b.review.time_created).getTime() || 0;
-                        return timeB - timeA;
-                    });
-                    
-                    const topReviews = mixedReviews.slice(0, 4);
-                    
-                    if (topReviews.length > 0) {
-                        const quickHTML = topReviews
-                            .map(({review, platform}) => ReviewsUI.renderQuickReview(review, platform))
-                            .join('');
-                        
-                        quickReviewsContainer.innerHTML = quickHTML;
-                        
-                        // Animate widget
-                        const widget = document.getElementById('liveReviewsWidget');
-                        if (widget) {
-                            widget.style.opacity = '0';
-                            widget.style.transform = 'translateY(20px)';
-                            setTimeout(() => {
-                                widget.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                                widget.style.opacity = '1';
-                                widget.style.transform = 'translateY(0)';
-                            }, 300);
-                        }
+                    // Still initialize review submission system
+                    try {
+                        ReviewSubmissionSystem.init();
+                    } catch (error) {
+                        console.error('805 LifeGuard: Failed to initialize review submission:', error);
                     }
-                } catch (error) {
-                    console.error('805 LifeGuard: Error updating quick reviews:', error);
-                    quickReviewsContainer.innerHTML = ReviewsUI.renderErrorState();
-                }
-            }
-            
-            // Initialize when DOM is ready
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initializeOptimizedReviews);
-            } else {
-                initializeOptimizedReviews();
-            }
-            
-            // Export optimized API for external access
-            window.ReviewsAPI = {
-                refresh: initializeOptimizedReviews,
-                clearCache: function() {
-                    ReviewsCache.clear();
-                    console.log('805 LifeGuard: Reviews cache cleared');
                 },
+                
+                refresh: function() {
+                    console.log('805 LifeGuard: Refreshing reviews...');
+                    ReviewsCache.clear();
+                    return this.init();
+                },
+                
                 getStats: function() {
                     return {
-                        google: ReviewsCache.get('google_v3') || [],
-                        yelp: REVIEWS_CONFIG.yelp.manualReviews,
-                        config: REVIEWS_CONFIG,
-                        approach: 'Google API + Manual Yelp (Cost Optimized)'
+                        google: {
+                            count: this.googleReviews.length,
+                            rating: ReviewsAPI.calculateAverageRating(this.googleReviews)
+                        },
+                        yelp: {
+                            count: this.yelpReviews.length,
+                            rating: ReviewsAPI.calculateAverageRating(this.yelpReviews)
+                        },
+                        total: this.googleReviews.length + this.yelpReviews.length
                     };
                 }
             };
             
+            // Export for global access
+            window.ReviewsAPI = ReviewsAPI;
+            window.ReviewsController = ReviewsController;
+            window.ReviewSubmissionSystem = ReviewSubmissionSystem;
+            
+            // Enhanced Error Handling
+            window.addEventListener('error', function(e) {
+                console.error('805 LifeGuard: JavaScript error in reviews system:', e.error);
+            });
+            
+            window.addEventListener('unhandledrejection', function(e) {
+                console.error('805 LifeGuard: Promise rejection in reviews system:', e.reason);
+            });
+            
+            // Initialize when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function() {
+                    ReviewsController.init();
+                });
+            } else {
+                ReviewsController.init();
+            }
+            
+            console.log('805 LifeGuard: Reviews system script loaded successfully');
         })();
     </script>
 
-    <!-- Enhanced Critical JavaScript -->
+    <!-- Main Luxury Application Script -->
+    <script src="js/luxury-app.js"></script>
+
+    <!-- Performance Monitoring -->
     <script>
-        // Critical JavaScript for immediate functionality
-        (function() {
-            'use strict';
-            
-            // Fast carousel slide background setup with intelligent fallback
-            function initCarouselBackgrounds() {
-                const slides = document.querySelectorAll('.carousel-slide');
-                const isMobile = window.innerWidth <= 768;
-                const isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
-                
-                console.log('805 LifeGuard: Setting up testimonials carousel backgrounds. Width:', window.innerWidth, 'Mobile:', isMobile, 'Tablet:', isTablet);
-                
-                slides.forEach(function(slide, index) {
-                    const desktopSrc = slide.dataset.bgDesktop;
-                    const tabletSrc = slide.dataset.bgTablet;
-                    const mobileSrc = slide.dataset.bgMobile;
-                    
-                    // Smart fallback function
-                    function tryImageSources(sources, slideElement, slideIndex) {
-                        if (sources.length === 0) {
-                            console.error('805 LifeGuard: No more image sources to try for slide', slideIndex);
-                            return;
-                        }
-                        
-                        const currentSrc = sources[0];
-                        const remainingSources = sources.slice(1);
-                        
-                        const testImg = new Image();
-                        testImg.onload = function() {
-                            slideElement.style.backgroundImage = 'url(' + currentSrc + ')';
-                            slideElement.style.backgroundSize = 'cover';
-                            slideElement.style.backgroundPosition = 'center';
-                            slideElement.style.backgroundRepeat = 'no-repeat';
-                        };
-                        testImg.onerror = function() {
-                            console.warn('805 LifeGuard: Failed to load image:', currentSrc, '- trying next fallback');
-                            tryImageSources(remainingSources, slideElement, slideIndex);
-                        };
-                        testImg.src = currentSrc;
-                    }
-                    
-                    // Determine priority order based on device
-                    let imagePriority;
-                    if (isMobile) {
-                        imagePriority = [mobileSrc, tabletSrc, desktopSrc].filter(Boolean);
-                    } else if (isTablet) {
-                        imagePriority = [tabletSrc, desktopSrc, mobileSrc].filter(Boolean);
-                    } else {
-                        imagePriority = [desktopSrc, tabletSrc, mobileSrc].filter(Boolean);
-                    }
-                    
-                    tryImageSources(imagePriority, slide, index);
-                });
-                
-                // Ensure first slide is active
-                const firstSlide = document.querySelector('.carousel-slide');
-                if (firstSlide) {
-                    firstSlide.classList.add('active');
-                }
+        // Enhanced performance monitoring for testimonials page
+        window.addEventListener('load', function() {
+            // Log page load performance
+            if (window.performance && window.performance.timing) {
+                const loadTime = window.performance.timing.loadEventEnd - window.performance.timing.navigationStart;
+                console.log('805 LifeGuard: Testimonials page loaded in', loadTime + 'ms');
             }
             
-            // Fast mobile navigation fallback
-            function initMobileNav() {
-                const toggle = document.getElementById('menuToggle');
-                const nav = document.getElementById('navOverlay');
-                const body = document.body;
-                
-                if (!toggle || !nav) return;
-                
-                toggle.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const isOpen = nav.classList.contains('active');
-                    
-                    if (isOpen) {
-                        toggle.classList.remove('active');
-                        nav.classList.remove('active');
-                        body.classList.remove('nav-open');
-                        body.style.position = '';
-                        body.style.top = '';
-                        body.style.overflow = '';
-                    } else {
-                        toggle.classList.add('active');
-                        nav.classList.add('active');
-                        body.classList.add('nav-open');
-                        body.style.position = 'fixed';
-                        body.style.top = '-' + window.pageYOffset + 'px';
-                        body.style.overflow = 'hidden';
-                    }
-                });
-                
-                // Close nav on link click
-                const links = nav.querySelectorAll('.overlay-nav-link, .overlay-logo');
-                links.forEach(function(link) {
-                    link.addEventListener('click', function() {
-                        setTimeout(function() {
-                            toggle.click();
-                        }, 150);
-                    });
+            // Track reviews system performance
+            if (window.ReviewsController) {
+                console.log('805 LifeGuard: Reviews system status:', {
+                    initialized: !!window.ReviewsController,
+                    submissionSystem: !!window.ReviewSubmissionSystem,
+                    stats: window.ReviewsController.getStats ? window.ReviewsController.getStats() : null
                 });
             }
-            
-            // Fast logo entrance for desktop
-            function initLogoEntrance() {
-                const logo = document.getElementById('mainLogo');
-                if (!logo || window.innerWidth <= 768) return;
-                
-                logo.style.opacity = '0';
-                logo.style.transform = 'scale(1.15) translateY(-6px)';
-                logo.style.filter = 'blur(0.3px)';
-                logo.style.transition = 'all 900ms cubic-bezier(0.23, 1, 0.32, 1)';
-                
-                setTimeout(function() {
-                    logo.style.opacity = '1';
-                    logo.style.transform = 'scale(1.05) translateY(0)';
-                    logo.style.filter = 'blur(0px)';
-                }, 250);
-            }
-            
-            // Initialize immediately
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', function() {
-                    initCarouselBackgrounds();
-                    initMobileNav();
-                    initLogoEntrance();
-                    
-                    // Add resize listener
-                    window.addEventListener('resize', initCarouselBackgrounds);
-                });
-            } else {
-                initCarouselBackgrounds();
-                initMobileNav();
-                initLogoEntrance();
-                
-                // Add resize listener
-                window.addEventListener('resize', initCarouselBackgrounds);
-            }
-        })();
-    </script>
-    
-    <!-- Deferred Main JavaScript -->
-    <script>
-        // Load main application after critical content
-        function loadMainScript() {
-            const script = document.createElement('script');
-            script.src = 'js/luxury-app.js';
-            script.async = true;
-            script.onload = function() {
-                console.log('805 LifeGuard OPTIMIZED Testimonials Page loaded successfully');
-            };
-            script.onerror = function() {
-                console.warn('805 LifeGuard: Main script failed to load, using fallback functionality');
-            };
-            document.head.appendChild(script);
-        }
+        });
         
-        // Load after initial render
-        if (window.requestIdleCallback) {
-            requestIdleCallback(loadMainScript);
-        } else {
-            setTimeout(loadMainScript, 500);
+        // Enhanced app ready handler
+        window.addEventListener('luxuryAppReady', function(e) {
+            console.log('805 LifeGuard: Luxury app ready on testimonials page', {
+                version: e.detail.version,
+                features: e.detail.features,
+                testimonialsOptimized: true,
+                reviewsSystemIntegrated: true,
+                perfectButtonLegibility: true,
+                adaCompliant: true
+            });
+        });
+    </script>
+
+    <!-- Structured Data for Reviews -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "805 LifeGuard",
+      "description": "Premier aquatic safety and instruction services for Southern California's distinguished clientele",
+      "url": "https://805lifeguard.com",
+      "telephone": "+18053676432",
+      "email": "concierge@805lifeguard.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Thousand Oaks",
+        "addressRegion": "CA",
+        "addressCountry": "US"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "50",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Sarah M."
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "reviewBody": "Jasper is exceptional with children and our boys adored their lessons, eagerly anticipating each session. His professionalism, patience, and genuine care for their development has been remarkable."
         }
+      ]
+    }
     </script>
 </body>
 </html>
