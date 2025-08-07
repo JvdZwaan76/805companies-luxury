@@ -98,10 +98,11 @@
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="//maps.googleapis.com">
+    <link rel="dns-prefetch" href="//805-lifeguard-reviews-api.jaspervdz.workers.dev">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://805-lifeguard-reviews-api.jaspervdz.workers.dev" crossorigin>
     
     <!-- Critical Resource Preloading -->
     <link rel="preload" as="image" href="images/home/home-luxury-estate-hero-1920x1080.webp" type="image/webp">
@@ -785,20 +786,14 @@
         (function() {
             'use strict';
             
-            // Enhanced configuration for production API integration
+            // Production API configuration - Updated for live Google Reviews
             const REVIEWS_CONFIG = {
-                // Google Places API Configuration
+                // Google Places API Configuration - LIVE DATA
                 google: {
-                    // IMPORTANT: Replace with your actual Google Place ID
-                    // To find your Place ID: https://developers.google.com/maps/documentation/places/web-service/place-id
-                    placeId: 'ChIJF5n_aexhzoARA1zukw3j1-c', // This is a placeholder - replace with actual
+                    placeId: 'ChIJF_n_aeIx6IARDaz-6Q4-Hec', // Your actual Place ID
                     
-                    // IMPORTANT: API Key should be stored server-side for security
-                    // This is for demonstration - implement server-side proxy for production
-                    apiKey: 'YOUR_GOOGLE_PLACES_API_KEY', // Replace with actual API key
-                    
-                    // Server-side proxy endpoint (recommended for production)
-                    proxyEndpoint: '/api/google-reviews', // Your server endpoint
+                    // Production Cloudflare Worker endpoint
+                    proxyEndpoint: 'https://805-lifeguard-reviews-api.jaspervdz.workers.dev/api/google-reviews',
                     
                     maxReviews: 8,
                     minRating: 4,
@@ -807,12 +802,10 @@
                 
                 // Yelp Fusion API Configuration  
                 yelp: {
-                    // IMPORTANT: Replace with your actual Yelp Business ID
-                    businessId: '805-lifeguard-thousand-oaks', // Replace with actual
+                    businessId: '805-lifeguard-thousand-oaks', // Replace when you get Yelp setup
                     
-                    // IMPORTANT: Yelp API requires server-side implementation due to CORS
-                    // Client-side calls are not allowed by Yelp
-                    proxyEndpoint: '/api/yelp-reviews', // Your server endpoint
+                    // Yelp endpoint (when available)
+                    proxyEndpoint: 'https://805-lifeguard-reviews-api.jaspervdz.workers.dev/api/yelp-reviews',
                     
                     maxReviews: 8,
                     minRating: 4
@@ -825,12 +818,12 @@
                     enableCache: true
                 },
                 
-                // Fallback configuration
+                // Production configuration - LIVE DATA ENABLED
                 fallback: {
-                    useRealData: false, // Set to true when APIs are connected
+                    useRealData: true, // 🔥 LIVE DATA ENABLED
                     showLoadingStates: true,
-                    simulateDelay: true,
-                    delayTime: 1500
+                    simulateDelay: false, // No delay for production
+                    delayTime: 0
                 }
             };
             
@@ -1017,7 +1010,7 @@
             
             // Production-ready API integration
             const ReviewsAPI = {
-                // Enhanced Google Places API integration
+                // Enhanced Google Places API integration via Cloudflare Worker
                 fetchGoogleReviews: async function() {
                     const cacheKey = 'google_v2';
                     const cached = ReviewsCache.get(cacheKey);
@@ -1028,9 +1021,10 @@
                     }
                     
                     try {
-                        if (REVIEWS_CONFIG.fallback.useRealData && REVIEWS_CONFIG.google.apiKey !== 'YOUR_GOOGLE_PLACES_API_KEY') {
-                            // Production API call
-                            const response = await this.callGooglePlacesAPI();
+                        if (REVIEWS_CONFIG.fallback.useRealData && REVIEWS_CONFIG.google.proxyEndpoint) {
+                            // Production API call via Cloudflare Worker
+                            console.log('805 LifeGuard: Fetching live Google reviews from Worker...');
+                            const response = await this.callCloudflareWorker();
                             ReviewsCache.set(cacheKey, response);
                             return response;
                         } else {
@@ -1048,11 +1042,12 @@
                         
                     } catch (error) {
                         console.error('805 LifeGuard: Google reviews API error:', error);
+                        console.log('805 LifeGuard: Falling back to demo reviews');
                         return REALISTIC_REVIEWS.google;
                     }
                 },
                 
-                // Enhanced Yelp Fusion API integration
+                // Enhanced Yelp Fusion API integration via Cloudflare Worker
                 fetchYelpReviews: async function() {
                     const cacheKey = 'yelp_v2';
                     const cached = ReviewsCache.get(cacheKey);
@@ -1063,9 +1058,10 @@
                     }
                     
                     try {
-                        if (REVIEWS_CONFIG.fallback.useRealData) {
-                            // Production API call (server-side required)
-                            const response = await this.callYelpAPI();
+                        if (REVIEWS_CONFIG.fallback.useRealData && REVIEWS_CONFIG.yelp.proxyEndpoint) {
+                            // Production API call via Cloudflare Worker (when Yelp API is set up)
+                            console.log('805 LifeGuard: Attempting to fetch Yelp reviews...');
+                            const response = await this.callYelpWorker();
                             ReviewsCache.set(cacheKey, response);
                             return response;
                         } else {
@@ -1082,41 +1078,73 @@
                         }
                         
                     } catch (error) {
-                        console.error('805 LifeGuard: Yelp reviews API error:', error);
+                        console.warn('805 LifeGuard: Yelp reviews not available yet:', error.message);
+                        console.log('805 LifeGuard: Using fallback Yelp reviews');
                         return REALISTIC_REVIEWS.yelp;
                     }
                 },
                 
-                // Production Google Places API call
-                callGooglePlacesAPI: async function() {
-                    const url = REVIEWS_CONFIG.google.proxyEndpoint || 
-                        `https://maps.googleapis.com/maps/api/place/details/json?place_id=${REVIEWS_CONFIG.google.placeId}&fields=${REVIEWS_CONFIG.google.fields}&key=${REVIEWS_CONFIG.google.apiKey}`;
+                // Production Cloudflare Worker API call
+                callCloudflareWorker: async function() {
+                    const url = REVIEWS_CONFIG.google.proxyEndpoint;
                     
-                    const response = await fetch(url);
+                    console.log('805 LifeGuard: Calling Cloudflare Worker:', url);
+                    
+                    const response = await fetch(url, {
+                        method: 'GET',
+                        headers: {
+                            'Accept': 'application/json',
+                        }
+                    });
+                    
                     if (!response.ok) {
-                        throw new Error(`Google API request failed: ${response.status}`);
+                        throw new Error(`Cloudflare Worker request failed: ${response.status} ${response.statusText}`);
                     }
                     
                     const data = await response.json();
                     
-                    if (data.status !== 'OK') {
-                        throw new Error(`Google API error: ${data.status}`);
+                    if (!data.success) {
+                        console.warn('805 LifeGuard: Worker returned error:', data.error || 'Unknown error');
+                        if (data.fallback) {
+                            // Worker is in fallback mode, use the reviews it provides
+                            return data.reviews || [];
+                        }
+                        throw new Error(data.error || 'Worker API error');
                     }
                     
-                    return data.result.reviews || [];
+                    console.log('805 LifeGuard: Successfully loaded', data.reviews?.length || 0, 'live Google reviews');
+                    return data.reviews || [];
                 },
                 
-                // Production Yelp API call (server-side only)
-                callYelpAPI: async function() {
-                    // Yelp requires server-side implementation due to CORS restrictions
-                    const url = REVIEWS_CONFIG.yelp.proxyEndpoint || `/api/yelp-reviews/${REVIEWS_CONFIG.yelp.businessId}`;
+                // Production Yelp API call via Cloudflare Worker
+                callYelpWorker: async function() {
+                    const url = `${REVIEWS_CONFIG.yelp.proxyEndpoint}/${REVIEWS_CONFIG.yelp.businessId}`;
                     
-                    const response = await fetch(url);
+                    console.log('805 LifeGuard: Calling Yelp Worker:', url);
+                    
+                    const response = await fetch(url, {
+                        method: 'GET',
+                        headers: {
+                            'Accept': 'application/json',
+                        }
+                    });
+                    
                     if (!response.ok) {
-                        throw new Error(`Yelp API request failed: ${response.status}`);
+                        throw new Error(`Yelp Worker request failed: ${response.status} ${response.statusText}`);
                     }
                     
                     const data = await response.json();
+                    
+                    if (!data.success) {
+                        console.warn('805 LifeGuard: Yelp Worker returned error:', data.error || 'Yelp API not configured');
+                        if (data.fallback) {
+                            // Worker is in fallback mode
+                            return [];
+                        }
+                        throw new Error(data.error || 'Yelp Worker API error');
+                    }
+                    
+                    console.log('805 LifeGuard: Successfully loaded', data.reviews?.length || 0, 'live Yelp reviews');
                     return data.reviews || [];
                 },
                 
@@ -1402,6 +1430,8 @@
             // Main initialization function
             async function initializeEnhancedReviews() {
                 console.log('805 LifeGuard: Initializing enhanced reviews system v2.0...');
+                console.log('805 LifeGuard: Live API enabled:', REVIEWS_CONFIG.fallback.useRealData);
+                console.log('805 LifeGuard: Google endpoint:', REVIEWS_CONFIG.google.proxyEndpoint);
                 
                 try {
                     // Setup platform navigation first
@@ -1420,15 +1450,17 @@
                         }
                     }
                     
-                    // Load reviews concurrently for better performance
+                    // Load reviews concurrently for better performance  
                     const [googleReviews, yelpReviews] = await Promise.allSettled([
                         ReviewsAPI.fetchGoogleReviews(),
                         ReviewsAPI.fetchYelpReviews()
                     ]);
                     
-                    // Process results
-                    const finalGoogleReviews = googleReviews.status === 'fulfilled' ? googleReviews.value : REALISTIC_REVIEWS.google;
-                    const finalYelpReviews = yelpReviews.status === 'fulfilled' ? yelpReviews.value : REALISTIC_REVIEWS.yelp;
+                    // Process results with enhanced error handling
+                    const finalGoogleReviews = googleReviews.status === 'fulfilled' && Array.isArray(googleReviews.value) ? 
+                        googleReviews.value : REALISTIC_REVIEWS.google;
+                    const finalYelpReviews = yelpReviews.status === 'fulfilled' && Array.isArray(yelpReviews.value) ? 
+                        yelpReviews.value : REALISTIC_REVIEWS.yelp;
                     
                     // Update statistics first
                     StatsUpdater.update(finalGoogleReviews, finalYelpReviews);
@@ -1783,7 +1815,7 @@
             script.src = 'js/luxury-app.js';
             script.async = true;
             script.onload = function() {
-                console.log('805 LifeGuard Enhanced Testimonials Page with API Integration loaded successfully');
+                console.log('805 LifeGuard Enhanced Testimonials Page with Live API Integration loaded successfully');
             };
             script.onerror = function() {
                 console.warn('805 LifeGuard: Main script failed to load, using fallback functionality');
