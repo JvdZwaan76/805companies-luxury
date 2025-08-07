@@ -189,6 +189,56 @@
             outline: 2px solid var(--color-white);
             outline-offset: 2px;
         }
+
+        /* ENHANCED MOBILE BUTTON STYLES - Caruso-Inspired Spacing */
+        @media (max-width: 768px) {
+            .btn {
+                width: 100%;
+                max-width: none;
+                margin: 0.75rem 1.5rem;
+                padding: 1.25rem 2rem;
+                font-size: 1rem;
+                min-height: 52px;
+                border-radius: 2rem;
+            }
+            
+            .section-cta {
+                padding: 0 1.5rem;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+            
+            .hero-buttons {
+                padding: 0 1.5rem;
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .hero-buttons .btn {
+                margin: 0.5rem 0;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .btn {
+                margin: 0.75rem 1rem;
+                padding: 1rem 1.5rem;
+                font-size: 0.95rem;
+                min-height: 48px;
+            }
+            
+            .section-cta {
+                padding: 0 1rem;
+            }
+            
+            .hero-buttons {
+                padding: 0 1rem;
+            }
+        }
     </style>
     
     <!-- Enhanced Performance: DNS Prefetch and Preconnect -->
