@@ -1,24 +1,61 @@
 /**
- * 805 LifeGuard Testimonials & Reviews System v3.0
- * Production-optimized reviews API integration and submission system
- * Maintains Caruso-inspired design aesthetic with perfect performance
+ * 805 LifeGuard Testimonials & Reviews System - PRODUCTION OPTIMIZED
+ * Version: 4.0-ENTERPRISE (Caruso Design System Compatible)
+ * Integration: Luxury App v12.3+ Required
+ * Scope: testimonials.html ONLY - Zero impact on other pages
+ * 
+ * ENTERPRISE PROTECTION: Safeguards protect existing design system
  */
 
 (function() {
     'use strict';
     
+    // === INTEGRATION SAFEGUARDS ===
+    const SAFETY_CONFIG = {
+        REQUIRED_LUXURY_APP_VERSION: '12.3',
+        TESTIMONIALS_PAGE_ONLY: true,
+        MAX_INIT_ATTEMPTS: 3,
+        INIT_TIMEOUT: 10000,
+        FALLBACK_ENABLED: true
+    };
+    
+    // === PRE-FLIGHT SAFETY CHECKS ===
+    function performSafetyChecks() {
+        const isTestimonialsPage = window.location.pathname.includes('testimonials') || 
+                                  document.querySelector('#main-content[aria-label*="testimonials" i]') ||
+                                  document.querySelector('.testimonials-section, #google-reviews-container');
+        
+        const checks = {
+            isTestimonialsPage,
+            luxuryAppExists: typeof window.app !== 'undefined',
+            luxuryAppReady: window.app ? window.app.isReady() : false,
+            criticalElementsPresent: checkCriticalElements(),
+            noConflicts: !window.TestimonialsReviews // Ensure no old version conflicts
+        };
+        
+        console.log('🔒 805 LifeGuard: Safety checks:', checks);
+        return checks;
+    }
+    
+    function checkCriticalElements() {
+        const required = ['header', 'menuToggle', 'navOverlay', 'mainLogo'];
+        return required.every(id => document.getElementById(id) !== null);
+    }
+    
     // === PRODUCTION CONFIGURATION ===
     const REVIEWS_CONFIG = {
-        // Google Places API Configuration - LIVE DATA
+        // Google Places API Configuration
         google: {
             placeId: 'ChIJF_n_aeIx6IARDaz-6Q4-Hec',
             proxyEndpoint: 'https://805-lifeguard-reviews-api.jaspervdz.workers.dev/api/google-reviews',
             maxReviews: 8,
             minRating: 4,
-            fields: 'reviews,rating,user_ratings_total,name'
+            timeout: 8000,
+            retryAttempts: 2,
+            retryDelay: 1000
         },
         
-        // Manual Yelp Reviews (cost-effective approach)
+        // Manual Yelp Reviews (cost-effective)
         yelp: {
             manualReviews: [
                 {
@@ -55,32 +92,93 @@
         // Cache configuration
         cache: {
             duration: 1800000, // 30 minutes
-            keyPrefix: '805lifeguard_reviews_v3_',
+            keyPrefix: '805lifeguard_reviews_v4_',
             enableCache: true
-        },
-        
-        // Production configuration
-        fallback: {
-            useRealGoogleData: true,
-            useManualYelp: true,
-            showLoadingStates: true,
-            simulateDelay: false
         },
         
         // Performance settings
         performance: {
-            debounceDelay: 150,
+            debounceDelay: 200,
             throttleDelay: 16,
-            animationDelay: 100,
+            animationDelay: 150,
             staggerDelay: 100
         }
     };
     
-    // === OPTIMIZED CACHE MANAGEMENT ===
+    // === INTELLIGENT CACHE SYSTEM (No localStorage dependency) ===
     const ReviewsCache = {
         memoryCache: new Map(),
+        memoryOrder: [],
+        maxItems: 10,
         
-        isLocalStorageSupported: function() {
+        set: function(key, data) {
+            const cacheItem = {
+                data: data,
+                timestamp: Date.now(),
+                version: '4.0'
+            };
+            
+            // Memory cache with LRU eviction
+            if (this.memoryCache.size >= this.maxItems) {
+                const oldestKey = this.memoryOrder.shift();
+                this.memoryCache.delete(oldestKey);
+            }
+            
+            this.memoryCache.set(key, cacheItem);
+            this.memoryOrder.push(key);
+            
+            // Try localStorage only if available (graceful fallback)
+            if (this.isStorageAvailable() && REVIEWS_CONFIG.cache.enableCache) {
+                try {
+                    localStorage.setItem(REVIEWS_CONFIG.cache.keyPrefix + key, JSON.stringify(cacheItem));
+                } catch (e) {
+                    console.warn('805 LifeGuard: Cache storage unavailable, using memory only');
+                }
+            }
+            
+            return true;
+        },
+        
+        get: function(key) {
+            // Check memory cache first
+            const memoryItem = this.memoryCache.get(key);
+            if (memoryItem && this.isValid(memoryItem)) {
+                // Move to end (LRU)
+                const index = this.memoryOrder.indexOf(key);
+                if (index > -1) {
+                    this.memoryOrder.splice(index, 1);
+                    this.memoryOrder.push(key);
+                }
+                return memoryItem.data;
+            }
+            
+            // Try localStorage fallback
+            if (this.isStorageAvailable() && REVIEWS_CONFIG.cache.enableCache) {
+                try {
+                    const cached = localStorage.getItem(REVIEWS_CONFIG.cache.keyPrefix + key);
+                    if (cached) {
+                        const cacheItem = JSON.parse(cached);
+                        if (this.isValid(cacheItem)) {
+                            // Update memory cache
+                            this.set(key, cacheItem.data);
+                            return cacheItem.data;
+                        }
+                    }
+                } catch (e) {
+                    console.warn('805 LifeGuard: Cache retrieval failed, using fresh data');
+                }
+            }
+            
+            return null;
+        },
+        
+        isValid: function(cacheItem) {
+            if (!cacheItem || !cacheItem.timestamp) return false;
+            const age = Date.now() - cacheItem.timestamp;
+            return age < REVIEWS_CONFIG.cache.duration && cacheItem.version === '4.0';
+        },
+        
+        isStorageAvailable: function() {
             try {
                 const test = 'test';
                 localStorage.setItem(test, test);
@@ -91,60 +189,11 @@
             }
         },
         
-        set: function(key, data) {
-            const cacheItem = {
-                data: data,
-                timestamp: Date.now(),
-                version: '3.0'
-            };
-            
-            // Always use memory cache
-            this.memoryCache.set(key, cacheItem);
-            
-            // Try localStorage if available
-            if (this.isLocalStorageSupported() && REVIEWS_CONFIG.cache.enableCache) {
-                try {
-                    localStorage.setItem(REVIEWS_CONFIG.cache.keyPrefix + key, JSON.stringify(cacheItem));
-                } catch (e) {
-                    console.warn('Reviews cache storage failed:', e.message);
-                }
-            }
-            
-            return true;
-        },
-        
-        get: function(key) {
-            // Check memory cache first
-            const memoryItem = this.memoryCache.get(key);
-            if (memoryItem && Date.now() - memoryItem.timestamp < REVIEWS_CONFIG.cache.duration) {
-                return memoryItem.data;
-            }
-            
-            // Try localStorage
-            if (this.isLocalStorageSupported() && REVIEWS_CONFIG.cache.enableCache) {
-                try {
-                    const cached = localStorage.getItem(REVIEWS_CONFIG.cache.keyPrefix + key);
-                    if (cached) {
-                        const cacheItem = JSON.parse(cached);
-                        
-                        if (cacheItem.version === '3.0' && 
-                            Date.now() - cacheItem.timestamp < REVIEWS_CONFIG.cache.duration) {
-                            // Update memory cache
-                            this.memoryCache.set(key, cacheItem);
-                            return cacheItem.data;
-                        }
-                    }
-                } catch (e) {
-                    console.warn('Reviews cache retrieval failed:', e.message);
-                }
-            }
-            
-            return null;
-        },
-        
         clear: function() {
             this.memoryCache.clear();
-            if (this.isLocalStorageSupported()) {
+            this.memoryOrder = [];
+            
+            if (this.isStorageAvailable()) {
                 try {
                     const keys = Object.keys(localStorage);
                     keys.forEach(key => {
@@ -153,16 +202,19 @@
                         }
                     });
                 } catch (e) {
-                    console.warn('Reviews cache clear failed:', e.message);
+                    console.warn('805 LifeGuard: Cache clear failed');
                 }
             }
         }
     };
     
-    // === PRODUCTION-READY API INTEGRATION ===
+    // === PRODUCTION API INTEGRATION ===
     const ReviewsAPI = {
-        fetchGoogleReviews: async function() {
-            const cacheKey = 'google_v3';
+        activeRequests: 0,
+        maxConcurrentRequests: 3,
+        
+        async fetchGoogleReviews() {
+            const cacheKey = 'google_v4';
             const cached = ReviewsCache.get(cacheKey);
             
             if (cached) {
@@ -171,13 +223,15 @@
             }
             
             try {
-                if (REVIEWS_CONFIG.fallback.useRealGoogleData && REVIEWS_CONFIG.google.proxyEndpoint) {
-                    console.log('805 LifeGuard: Fetching live Google reviews...');
-                    const response = await this.callCloudflareWorker();
+                console.log('805 LifeGuard: Fetching live Google reviews...');
+                const response = await this.callCloudflareWorker();
+                
+                if (response && response.length > 0) {
                     ReviewsCache.set(cacheKey, response);
+                    console.log('805 LifeGuard: Google reviews fetched and cached');
                     return response;
                 } else {
-                    console.log('805 LifeGuard: Using fallback Google reviews');
+                    console.warn('805 LifeGuard: No Google reviews returned');
                     return [];
                 }
                 
@@ -187,52 +241,52 @@
             }
         },
         
-        fetchYelpReviews: async function() {
-            console.log('805 LifeGuard: Using manual Yelp reviews (cost-effective approach)');
-            
-            if (REVIEWS_CONFIG.fallback.simulateDelay) {
-                await new Promise(resolve => setTimeout(resolve, 500));
-            }
-            
+        async fetchYelpReviews() {
+            console.log('805 LifeGuard: Loading manual Yelp reviews');
             return REVIEWS_CONFIG.yelp.manualReviews;
         },
         
-        callCloudflareWorker: async function() {
+        async callCloudflareWorker() {
             const url = REVIEWS_CONFIG.google.proxyEndpoint;
-            console.log('805 LifeGuard: Calling Cloudflare Worker:', url);
             
-            const response = await fetch(url, {
-                method: 'GET',
-                headers: { 'Accept': 'application/json' },
-                signal: AbortSignal.timeout(8000)
-            });
-            
-            if (!response.ok) {
-                throw new Error(`Worker request failed: ${response.status}`);
-            }
-            
-            const data = await response.json();
-            
-            if (!data.success) {
-                console.warn('805 LifeGuard: Worker returned error:', data.error);
-                if (data.fallback) {
+            try {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), REVIEWS_CONFIG.google.timeout);
+                
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: { 'Accept': 'application/json' },
+                    signal: controller.signal
+                });
+                
+                clearTimeout(timeoutId);
+                
+                if (!response.ok) {
+                    throw new Error(`Worker request failed: ${response.status} ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                
+                if (!data.success) {
+                    console.warn('805 LifeGuard: Worker returned error:', data.error);
                     return data.reviews || [];
                 }
-                throw new Error(data.error || 'Worker API error');
+                
+                console.log('805 LifeGuard: Successfully loaded', data.reviews?.length || 0, 'Google reviews');
+                return data.reviews || [];
+                
+            } catch (error) {
+                if (error.name === 'AbortError') {
+                    throw new Error('Request timeout');
+                }
+                throw error;
             }
-            
-            console.log('805 LifeGuard: Successfully loaded', data.reviews?.length || 0, 'live Google reviews');
-            return data.reviews || [];
         },
         
         calculateAverageRating: function(reviews) {
             if (!reviews || reviews.length === 0) return '5.0';
             const sum = reviews.reduce((acc, review) => acc + (review.rating || 5), 0);
             return (sum / reviews.length).toFixed(1);
-        },
-        
-        calculateTotalReviews: function(reviews) {
-            return reviews ? reviews.length : 0;
         },
         
         getMostRecent: function(reviews, count = 4) {
@@ -248,7 +302,7 @@
         }
     };
     
-    // === OPTIMIZED UI RENDERING SYSTEM ===
+    // === OPTIMIZED UI RENDERING ===
     const ReviewsUI = {
         renderGoogleReview: function(review) {
             const stars = this.renderStars(review.rating);
@@ -333,7 +387,7 @@
             return `
                 <div class="error-message show">
                     <i class="fas fa-exclamation-triangle"></i>
-                    <p>${message}</p>
+                    <p><strong>${message}</strong></p>
                     <p><small>${subMessage}</small></p>
                 </div>
             `;
@@ -345,8 +399,8 @@
         update: function(googleReviews, yelpReviews) {
             const googleRating = ReviewsAPI.calculateAverageRating(googleReviews);
             const yelpRating = ReviewsAPI.calculateAverageRating(yelpReviews);
-            const googleCount = ReviewsAPI.calculateTotalReviews(googleReviews);
-            const yelpCount = ReviewsAPI.calculateTotalReviews(yelpReviews);
+            const googleCount = googleReviews ? googleReviews.length : 0;
+            const yelpCount = yelpReviews ? yelpReviews.length : 0;
             
             this.updateElement('google-rating', googleRating);
             this.updateElement('yelp-rating', yelpRating);
@@ -377,59 +431,60 @@
         }
     };
     
-    // === PLATFORM NAVIGATION HANDLERS ===
+    // === PLATFORM NAVIGATION ===
     const PlatformHandlers = {
         setupPlatformNavigation: function() {
             const googlePreview = document.getElementById('google-reviews-preview');
             const yelpPreview = document.getElementById('yelp-reviews-preview');
             
             if (googlePreview) {
-                googlePreview.addEventListener('click', () => {
-                    this.scrollToSection('#google-reviews-section');
-                });
-                
-                googlePreview.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        this.scrollToSection('#google-reviews-section');
-                    }
-                });
+                this.setupPlatformButton(googlePreview, '#google-reviews-section');
             }
             
             if (yelpPreview) {
-                yelpPreview.addEventListener('click', () => {
-                    this.scrollToSection('#yelp-reviews-section');
-                });
-                
-                yelpPreview.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        this.scrollToSection('#yelp-reviews-section');
-                    }
-                });
+                this.setupPlatformButton(yelpPreview, '#yelp-reviews-section');
             }
+        },
+        
+        setupPlatformButton: function(button, targetSection) {
+            const scrollHandler = () => {
+                this.scrollToSection(targetSection);
+            };
+            
+            button.addEventListener('click', scrollHandler);
+            button.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    scrollHandler();
+                }
+            });
         },
         
         scrollToSection: function(targetId) {
             const target = document.querySelector(targetId);
             if (!target) return;
             
-            const isMobile = window.innerWidth <= 768;
-            const offset = isMobile ? 88 : 132;
-            const targetPosition = target.offsetTop - offset;
-            
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
+            // Use luxury app smooth scroll if available
+            if (window.app && window.app.smoothScrollTo) {
+                window.app.smoothScrollTo(targetId);
+            } else {
+                // Fallback smooth scroll
+                const isMobile = window.innerWidth <= 768;
+                const offset = isMobile ? 88 : 132;
+                const targetPosition = target.offsetTop - offset;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
         }
     };
-
+    
     // === REVIEW SUBMISSION SYSTEM ===
     const ReviewSubmissionSystem = {
         isOpen: false,
         currentRating: 0,
-        formData: {},
         
         init: function() {
             this.setupEventListeners();
@@ -442,7 +497,6 @@
             const trigger = document.getElementById('reviewSubmissionTrigger');
             if (!trigger) return;
             
-            // Show floating button after user scrolls past hero
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (!entry.isIntersecting) {
@@ -466,12 +520,10 @@
             const overlay = document.getElementById('reviewModalOverlay');
             const form = document.getElementById('reviewSubmissionForm');
             
-            // Open modal
             if (openBtn) {
                 openBtn.addEventListener('click', () => this.openModal());
             }
             
-            // Close modal
             if (closeBtn) {
                 closeBtn.addEventListener('click', () => this.closeModal());
             }
@@ -480,7 +532,6 @@
                 cancelBtn.addEventListener('click', () => this.closeModal());
             }
             
-            // Close on overlay click
             if (overlay) {
                 overlay.addEventListener('click', (e) => {
                     if (e.target === overlay) {
@@ -489,19 +540,16 @@
                 });
             }
             
-            // Close on escape key
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && this.isOpen) {
                     this.closeModal();
                 }
             });
             
-            // Form submission
             if (form) {
                 form.addEventListener('submit', (e) => this.handleSubmit(e));
             }
             
-            // Star rating interaction
             this.setupStarRating();
         },
         
@@ -518,11 +566,7 @@
             };
             
             const ratingClasses = {
-                5: 'excellent',
-                4: 'good', 
-                3: 'average',
-                2: 'poor',
-                1: 'poor'
+                5: 'excellent', 4: 'good', 3: 'average', 2: 'poor', 1: 'poor'
             };
             
             starInputs.forEach(input => {
@@ -531,26 +575,15 @@
                     this.currentRating = rating;
                     
                     if (ratingFeedback) {
-                        // Remove all rating classes
                         Object.values(ratingClasses).forEach(cls => {
                             ratingFeedback.classList.remove(cls);
                         });
                         
-                        // Add current rating class and update text
                         ratingFeedback.classList.add(ratingClasses[rating] || 'good');
                         ratingFeedback.textContent = ratingMessages[rating] || '';
                     }
                     
                     console.log('805 LifeGuard: Rating selected:', rating);
-                });
-                
-                // Keyboard support
-                input.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        input.checked = true;
-                        input.dispatchEvent(new Event('change'));
-                    }
                 });
             });
         },
@@ -559,14 +592,13 @@
             const form = document.getElementById('reviewSubmissionForm');
             if (!form) return;
             
-            // Real-time validation
             const inputs = form.querySelectorAll('.form-input, .form-textarea, .form-select');
             inputs.forEach(input => {
                 input.addEventListener('blur', () => this.validateField(input));
                 input.addEventListener('input', () => this.clearFieldError(input));
             });
             
-            // Character counter for review text
+            // Character counter
             const reviewText = document.getElementById('reviewText');
             const counter = document.getElementById('reviewText-count');
             
@@ -609,13 +641,11 @@
             let isValid = true;
             let errorMessage = '';
             
-            // Required field validation
             if (isRequired && !value) {
                 isValid = false;
                 errorMessage = 'This field is required.';
             }
             
-            // Specific field validations
             if (value && fieldName === 'clientEmail') {
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(value)) {
@@ -628,13 +658,6 @@
                 if (value.length < 20) {
                     isValid = false;
                     errorMessage = 'Please provide at least 20 characters for your review.';
-                }
-            }
-            
-            if (value && fieldName === 'clientName') {
-                if (value.length < 2) {
-                    isValid = false;
-                    errorMessage = 'Please enter your full name.';
                 }
             }
             
@@ -679,7 +702,6 @@
             overlay.classList.add('active');
             document.body.classList.add('review-modal-open');
             
-            // Focus management
             setTimeout(() => {
                 const firstInput = document.getElementById('clientName');
                 if (firstInput) {
@@ -698,9 +720,7 @@
             overlay.classList.remove('active');
             document.body.classList.remove('review-modal-open');
             
-            // Reset form
             this.resetForm();
-            
             console.log('805 LifeGuard: Review modal closed');
         },
         
@@ -711,21 +731,18 @@
             form.reset();
             this.currentRating = 0;
             
-            // Clear validation states
             const fields = form.querySelectorAll('.form-input, .form-textarea, .form-select');
             fields.forEach(field => {
                 field.classList.remove('valid', 'invalid');
                 this.clearFieldError(field);
             });
             
-            // Reset rating feedback
             const ratingFeedback = document.getElementById('rating-feedback');
             if (ratingFeedback) {
                 ratingFeedback.textContent = '';
                 ratingFeedback.className = 'rating-feedback';
             }
             
-            // Reset character counter
             const counter = document.getElementById('reviewText-count');
             if (counter) {
                 counter.textContent = '0 / 1000 characters';
@@ -739,14 +756,12 @@
             
             let isValid = true;
             
-            // Validate rating
             const ratingInputs = form.querySelectorAll('input[name="rating"]:checked');
             if (ratingInputs.length === 0) {
                 this.showToast('error', 'Rating Required', 'Please select a star rating for your experience.');
                 isValid = false;
             }
             
-            // Validate required fields
             const requiredFields = form.querySelectorAll('[required]');
             requiredFields.forEach(field => {
                 if (!this.validateField(field)) {
@@ -780,7 +795,6 @@
             const modal = document.querySelector('.review-modal');
             if (!modal) return;
             
-            // Replace modal content with success state
             modal.innerHTML = `
                 <div class="review-success-content">
                     <div class="success-icon">
@@ -817,7 +831,6 @@
             
             this.showToast('success', 'Review Submitted', 'Thank you for your valuable feedback!');
             
-            // Auto-close after a delay
             setTimeout(() => {
                 this.closeModal();
             }, 8000);
@@ -854,12 +867,10 @@
             
             container.appendChild(toast);
             
-            // Show toast
             setTimeout(() => {
                 toast.classList.add('show');
             }, 100);
             
-            // Close button functionality
             const closeBtn = toast.querySelector('.toast-close');
             if (closeBtn) {
                 closeBtn.addEventListener('click', () => {
@@ -867,7 +878,6 @@
                 });
             }
             
-            // Auto-remove after duration
             setTimeout(() => {
                 this.removeToast(toastId);
             }, duration);
@@ -891,13 +901,17 @@
         googleReviews: [],
         yelpReviews: [],
         isLoading: false,
+        isInitialized: false,
         
-        init: async function() {
-            console.log('805 LifeGuard: Initializing Reviews Controller v3.0...');
+        async init() {
+            console.log('805 LifeGuard: Initializing Reviews Controller v4.0...');
             
             try {
                 this.isLoading = true;
                 this.showInitialLoadingStates();
+                
+                // Wait for luxury app if available
+                await this.waitForLuxuryApp();
                 
                 // Load reviews concurrently
                 const [googleReviews, yelpReviews] = await Promise.allSettled([
@@ -919,13 +933,12 @@
                 StatsUpdater.update(this.googleReviews, this.yelpReviews);
                 this.animateReviewsEntrance();
                 
-                // Setup platform navigation
+                // Setup systems
                 PlatformHandlers.setupPlatformNavigation();
-                
-                // Initialize review submission system
                 ReviewSubmissionSystem.init();
                 
                 this.isLoading = false;
+                this.isInitialized = true;
                 
                 console.log('805 LifeGuard: Reviews system fully initialized');
                 
@@ -935,14 +948,29 @@
             }
         },
         
+        waitForLuxuryApp: function() {
+            return new Promise(resolve => {
+                if (window.app && window.app.isReady && window.app.isReady()) {
+                    resolve();
+                } else {
+                    const checkApp = () => {
+                        if (window.app && window.app.isReady && window.app.isReady()) {
+                            resolve();
+                        } else {
+                            setTimeout(checkApp, 100);
+                        }
+                    };
+                    setTimeout(checkApp, 500);
+                }
+            });
+        },
+        
         showInitialLoadingStates: function() {
-            // Show loading in quick reviews
             const quickReviews = document.getElementById('quickReviews');
             if (quickReviews) {
                 quickReviews.innerHTML = ReviewsUI.renderLoadingState('Loading latest reviews...');
             }
             
-            // Show loading in Google reviews section
             const googleContainer = document.getElementById('google-reviews-container');
             if (googleContainer) {
                 googleContainer.innerHTML = ReviewsUI.renderLoadingState('Loading Google reviews...');
@@ -981,13 +1009,11 @@
             
             const allReviews = [];
             
-            // Add Google reviews
             const recentGoogle = ReviewsAPI.getMostRecent(this.googleReviews, 2);
             recentGoogle.forEach(review => {
                 allReviews.push({ review, platform: 'google' });
             });
             
-            // Add Yelp reviews
             const recentYelp = ReviewsAPI.getMostRecent(this.yelpReviews, 2);
             recentYelp.forEach(review => {
                 allReviews.push({ review, platform: 'yelp' });
@@ -1001,7 +1027,6 @@
                 return;
             }
             
-            // Shuffle and limit to 4
             const shuffled = allReviews.sort(() => Math.random() - 0.5).slice(0, 4);
             const quickReviewsHTML = shuffled
                 .map(item => ReviewsUI.renderQuickReview(item.review, item.platform))
@@ -1011,47 +1036,44 @@
         },
         
         animateReviewsEntrance: function() {
-            // Animate review platforms
-            const platforms = document.querySelectorAll('.review-platform');
-            platforms.forEach((platform, index) => {
-                setTimeout(() => {
-                    platform.classList.add('loaded');
-                    if (index === 0) platform.classList.add('delay-1');
-                    if (index === 1) platform.classList.add('delay-2');
-                }, REVIEWS_CONFIG.performance.animationDelay * index);
-            });
-            
-            // Animate live reviews widget
-            const widget = document.getElementById('liveReviewsWidget');
-            if (widget) {
-                setTimeout(() => {
-                    widget.classList.add('loaded');
-                }, 300);
-            }
-            
-            // Animate quick reviews
-            const quickReviews = document.querySelectorAll('.quick-review');
-            quickReviews.forEach((review, index) => {
-                setTimeout(() => {
-                    review.classList.add('loaded');
-                    review.classList.add(`delay-${(index % 4) + 1}`);
-                }, 500 + (index * REVIEWS_CONFIG.performance.staggerDelay));
-            });
-            
-            // Animate testimonial cards
-            const testimonialCards = document.querySelectorAll('.testimonial-card[data-platform]');
-            testimonialCards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.classList.add('loaded');
-                    card.classList.add(`stagger-${(index % 8) + 1}`);
-                }, 800 + (index * REVIEWS_CONFIG.performance.staggerDelay));
-            });
+            setTimeout(() => {
+                const platforms = document.querySelectorAll('.review-platform');
+                platforms.forEach((platform, index) => {
+                    setTimeout(() => {
+                        platform.classList.add('loaded');
+                        if (index === 0) platform.classList.add('delay-1');
+                        if (index === 1) platform.classList.add('delay-2');
+                    }, REVIEWS_CONFIG.performance.animationDelay * index);
+                });
+                
+                const widget = document.getElementById('liveReviewsWidget');
+                if (widget) {
+                    setTimeout(() => {
+                        widget.classList.add('loaded');
+                    }, 300);
+                }
+                
+                const quickReviews = document.querySelectorAll('.quick-review');
+                quickReviews.forEach((review, index) => {
+                    setTimeout(() => {
+                        review.classList.add('loaded');
+                        review.classList.add(`delay-${(index % 4) + 1}`);
+                    }, 500 + (index * REVIEWS_CONFIG.performance.staggerDelay));
+                });
+                
+                const testimonialCards = document.querySelectorAll('.testimonial-card[data-platform]');
+                testimonialCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('loaded');
+                        card.classList.add(`stagger-${(index % 8) + 1}`);
+                    }, 800 + (index * REVIEWS_CONFIG.performance.staggerDelay));
+                });
+            }, 100);
         },
         
         handleInitializationError: function() {
             console.error('805 LifeGuard: Reviews system initialization failed');
             
-            // Show error states
             const quickReviews = document.getElementById('quickReviews');
             if (quickReviews) {
                 quickReviews.innerHTML = ReviewsUI.renderErrorState();
@@ -1065,9 +1087,10 @@
                 );
             }
             
-            // Still initialize review submission system
+            // Still try to initialize submission system
             try {
                 ReviewSubmissionSystem.init();
+                PlatformHandlers.setupPlatformNavigation();
             } catch (error) {
                 console.error('805 LifeGuard: Failed to initialize review submission:', error);
             }
@@ -1089,10 +1112,42 @@
                     count: this.yelpReviews.length,
                     rating: ReviewsAPI.calculateAverageRating(this.yelpReviews)
                 },
-                total: this.googleReviews.length + this.yelpReviews.length
+                total: this.googleReviews.length + this.yelpReviews.length,
+                version: '4.0'
             };
         }
     };
+    
+    // === PROTECTED INITIALIZATION ===
+    let initAttempts = 0;
+    
+    function safeInitialize() {
+        initAttempts++;
+        
+        if (initAttempts > SAFETY_CONFIG.MAX_INIT_ATTEMPTS) {
+            console.error('805 LifeGuard: Max initialization attempts exceeded');
+            return;
+        }
+        
+        const checks = performSafetyChecks();
+        
+        // CRITICAL: Only proceed if on testimonials page
+        if (!checks.isTestimonialsPage) {
+            console.log('805 LifeGuard: Not on testimonials page, skipping reviews initialization');
+            return;
+        }
+        
+        if (!checks.criticalElementsPresent || !checks.noConflicts) {
+            console.warn('805 LifeGuard: Safety checks failed, retrying...');
+            setTimeout(safeInitialize, 1000);
+            return;
+        }
+        
+        console.log('805 LifeGuard: Safety checks passed, initializing...');
+        
+        // Initialize the system
+        ReviewsController.init();
+    }
     
     // === EXPORT FOR GLOBAL ACCESS ===
     window.TestimonialsReviews = {
@@ -1100,10 +1155,11 @@
         ReviewsController: ReviewsController,
         ReviewSubmissionSystem: ReviewSubmissionSystem,
         ReviewsCache: ReviewsCache,
-        version: '3.0'
+        StatsUpdater: StatsUpdater,
+        version: '4.0'
     };
     
-    // === ENHANCED ERROR HANDLING ===
+    // === ERROR HANDLING ===
     window.addEventListener('error', function(e) {
         console.error('805 LifeGuard: JavaScript error in reviews system:', e.error);
     });
@@ -1112,26 +1168,13 @@
         console.error('805 LifeGuard: Promise rejection in reviews system:', e.reason);
     });
     
-    // === INITIALIZE WHEN DOM IS READY ===
-    function initializeTestimonialsReviews() {
-        // Check if we're on the testimonials page
-        const isTestimonialsPage = window.location.pathname.includes('testimonials') || 
-                                  document.querySelector('#main-content[aria-label*="testimonials" i]') ||
-                                  document.querySelector('.testimonials-section, #google-reviews-container');
-        
-        if (!isTestimonialsPage) {
-            console.log('805 LifeGuard: Not on testimonials page, skipping reviews initialization');
-            return;
-        }
-        
-        ReviewsController.init();
-    }
-    
+    // === INITIALIZE WHEN READY ===
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initializeTestimonialsReviews);
+        document.addEventListener('DOMContentLoaded', safeInitialize);
     } else {
-        initializeTestimonialsReviews();
+        safeInitialize();
     }
     
-    console.log('805 LifeGuard: Testimonials reviews system v3.0 loaded successfully');
+    console.log('805 LifeGuard: Testimonials reviews system v4.0 loaded successfully');
+    
 })();
