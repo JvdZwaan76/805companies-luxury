@@ -38,19 +38,24 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://805lifeguard.com/faq.html">
     
-    <!-- Critical CSS - Enhanced FAQ Functionality -->
+    <!-- Critical CSS - Enhanced FAQ Functionality with Caruso Design System Integration -->
     <style>
-        /* Critical path CSS for immediate rendering */
+        /* Critical path CSS for immediate rendering - INTEGRATED WITH CARUSO DESIGN SYSTEM */
         :root {
             --color-primary-darkest: #1A1A1A;
             --color-primary: #4A4A4A;
             --color-secondary: #B8A082;
             --color-secondary-dark: #A0876C;
             --color-secondary-darkest: #8B7355;
+            --color-secondary-lightest: #F5F2ED;
             --color-white: #FFFFFF;
             --color-text-primary: #0F0F0F;
+            --color-text-secondary: #666666;
+            --color-text-tertiary: #999999;
             --color-text-inverse: #FFFFFF;
             --color-bg-primary: #FFFFFF;
+            --color-bg-secondary: #F9F9F9;
+            --color-border-primary: #E8E8E8;
             --font-family-serif: 'Playfair Display', Georgia, serif;
             --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
             --header-total-height: 132px;
@@ -60,6 +65,44 @@
             --z-index-modal: 1050;
             --shadow-base: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
             --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+            --radius-lg: 0.5rem;
+            --radius-xl: 0.75rem;
+            --radius-2xl: 1rem;
+            --radius-3xl: 1.5rem;
+            --radius-full: 9999px;
+            --spacing-2: 0.5rem;
+            --spacing-3: 0.75rem;
+            --spacing-4: 1rem;
+            --spacing-6: 1.5rem;
+            --spacing-8: 2rem;
+            --spacing-10: 2.5rem;
+            --spacing-12: 3rem;
+            --spacing-16: 4rem;
+            --spacing-20: 5rem;
+            --spacing-24: 6rem;
+            --spacing-32: 8rem;
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.875rem;
+            --font-size-4xl: 2.25rem;
+            --font-size-5xl: 3rem;
+            --font-size-6xl: 3.75rem;
+            --line-height-tight: 1.25;
+            --line-height-normal: 1.5;
+            --line-height-relaxed: 1.625;
+            --font-weight-light: 300;
+            --font-weight-regular: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+            --transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-normal: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -69,7 +112,9 @@
             color: var(--color-text-primary);
             background: var(--color-bg-primary);
             overflow-x: hidden;
-            line-height: 1.5;
+            line-height: var(--line-height-normal);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         .header {
@@ -79,7 +124,7 @@
             right: 0;
             z-index: var(--z-index-header);
             background: var(--color-white);
-            border-bottom: 1px solid #E8E8E8;
+            border-bottom: 1px solid var(--color-border-primary);
         }
         
         .hero {
@@ -93,98 +138,234 @@
         
         @media (max-width: 768px) {
             .hero { 
-                padding-top: calc(var(--header-navbar-height) + 1rem);
+                padding-top: calc(var(--header-navbar-height) + var(--spacing-4));
+                min-height: 100vh;
+                min-height: 100dvh;
             }
         }
 
-        /* Enhanced FAQ Critical Styles */
+        /* === ENHANCED FAQ STYLES - CARUSO DESIGN SYSTEM INTEGRATION === */
+        
+        /* FAQ Content Section - Proper Caruso spacing and layout */
         .faq-content {
             padding-top: var(--header-total-height);
             min-height: 100vh;
+            background: var(--color-bg-primary);
         }
         
+        @media (max-width: 768px) {
+            .faq-content {
+                padding-top: calc(var(--header-navbar-height) + var(--spacing-4));
+            }
+        }
+        
+        /* FAQ Layout - Responsive Caruso Grid */
         .faq-layout {
             display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 3rem;
+            grid-template-columns: 320px 1fr;
+            gap: var(--spacing-12);
             align-items: start;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-6);
         }
         
+        @media (min-width: 640px) {
+            .faq-layout {
+                padding: 0 var(--spacing-8);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .faq-layout {
+                padding: 0 var(--spacing-10);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .faq-layout {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-8);
+                padding: 0 var(--spacing-6);
+            }
+        }
+        
+        /* FAQ Sidebar - Enhanced Caruso styling */
         .faq-sidebar {
             position: sticky;
-            top: calc(var(--header-total-height) + 2rem);
-            max-height: calc(100vh - var(--header-total-height) - 4rem);
+            top: calc(var(--header-total-height) + var(--spacing-8));
+            max-height: calc(100vh - var(--header-total-height) - var(--spacing-16));
             overflow-y: auto;
             background: var(--color-white);
-            border-radius: 1.5rem;
-            padding: 2rem;
+            border-radius: var(--radius-3xl);
+            padding: var(--spacing-8);
             box-shadow: var(--shadow-base);
+            border: 1px solid var(--color-border-primary);
         }
         
+        @media (max-width: 768px) {
+            .faq-sidebar {
+                position: static;
+                order: 2;
+                margin-top: var(--spacing-8);
+                max-height: none;
+                padding: var(--spacing-6);
+                border-radius: var(--radius-2xl);
+            }
+        }
+        
+        /* FAQ Main Content - Caruso card styling */
         .faq-main {
             background: var(--color-white);
-            border-radius: 1.5rem;
-            padding: 3rem;
+            border-radius: var(--radius-3xl);
+            padding: var(--spacing-12);
             box-shadow: var(--shadow-base);
+            border: 1px solid var(--color-border-primary);
         }
         
+        @media (max-width: 768px) {
+            .faq-main {
+                order: 1;
+                padding: var(--spacing-8);
+                border-radius: var(--radius-2xl);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .faq-main {
+                padding: var(--spacing-6);
+            }
+        }
+        
+        /* FAQ Items - Enhanced Caruso interaction */
         .faq-item {
-            border: 1px solid #E8E8E8;
-            border-radius: 1rem;
-            margin-bottom: 1rem;
+            border: 1px solid var(--color-border-primary);
+            border-radius: var(--radius-2xl);
+            margin-bottom: var(--spacing-6);
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all var(--transition-normal);
+            background: var(--color-white);
         }
         
         .faq-item:hover {
             box-shadow: var(--shadow-base);
+            transform: translateY(-2px);
         }
         
+        .faq-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* FAQ Questions - Caruso typography */
         .faq-question {
             width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem;
+            padding: var(--spacing-6);
             background: none;
             border: none;
             text-align: left;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all var(--transition-normal);
+            font-family: var(--font-family-sans);
+        }
+        
+        @media (max-width: 480px) {
+            .faq-question {
+                padding: var(--spacing-4);
+            }
         }
         
         .faq-question:hover {
-            background: #F9F9F9;
+            background: var(--color-bg-secondary);
         }
         
         .faq-question.active {
             background: var(--color-secondary);
-            color: var(--color-white);
+            color: var(--color-text-inverse);
         }
         
+        .faq-question h3 {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-semibold);
+            margin: 0;
+            line-height: var(--line-height-normal);
+            font-family: var(--font-family-sans);
+        }
+        
+        @media (max-width: 480px) {
+            .faq-question h3 {
+                font-size: var(--font-size-base);
+            }
+        }
+        
+        .faq-question i {
+            transition: transform var(--transition-normal);
+            font-size: var(--font-size-lg);
+            flex-shrink: 0;
+            margin-left: var(--spacing-4);
+        }
+        
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+        
+        /* FAQ Answers - Caruso content styling */
         .faq-answer {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease;
+            transition: max-height var(--transition-slow);
         }
         
         .faq-answer.active {
-            max-height: 800px;
+            max-height: 1000px;
         }
         
         .faq-answer > div {
-            padding: 0 1.5rem 1.5rem;
-            border-top: 1px solid #E8E8E8;
+            padding: 0 var(--spacing-6) var(--spacing-6);
+            border-top: 1px solid var(--color-border-primary);
         }
         
-        /* Enhanced search styles */
+        @media (max-width: 480px) {
+            .faq-answer > div {
+                padding: 0 var(--spacing-4) var(--spacing-4);
+            }
+        }
+        
+        .faq-answer p {
+            margin-bottom: var(--spacing-4);
+            color: var(--color-text-secondary);
+            line-height: var(--line-height-relaxed);
+            font-size: var(--font-size-base);
+        }
+        
+        .faq-answer ul {
+            margin-left: var(--spacing-6);
+            margin-bottom: var(--spacing-4);
+        }
+        
+        .faq-answer li {
+            margin-bottom: var(--spacing-2);
+            color: var(--color-text-secondary);
+            line-height: var(--line-height-relaxed);
+        }
+        
+        .faq-answer strong {
+            color: var(--color-text-primary);
+            font-weight: var(--font-weight-semibold);
+        }
+        
+        /* Search Section - Caruso styling integration */
         .search-input {
             width: 100%;
-            padding: 1rem 1rem 1rem 3rem;
-            border: 2px solid #E8E8E8;
-            border-radius: 2rem;
-            font-size: 1rem;
-            transition: all 0.3s ease;
+            padding: var(--spacing-4) var(--spacing-4) var(--spacing-4) var(--spacing-12);
+            border: 2px solid var(--color-border-primary);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-base);
+            transition: all var(--transition-normal);
+            background: var(--color-white);
+            font-family: var(--font-family-sans);
         }
         
         .search-input:focus {
@@ -193,39 +374,378 @@
             box-shadow: 0 0 0 4px rgba(184, 160, 130, 0.15);
         }
         
+        .search-input-wrapper {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto var(--spacing-8);
+        }
+        
+        .search-input-wrapper i {
+            position: absolute;
+            left: var(--spacing-4);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-text-tertiary);
+            font-size: var(--font-size-lg);
+        }
+        
+        /* Category Buttons - Caruso button styling */
+        .search-categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-3);
+        }
+        
+        @media (max-width: 480px) {
+            .search-categories {
+                gap: var(--spacing-2);
+            }
+        }
+        
         .category-btn {
-            padding: 0.75rem 1.5rem;
-            border: 2px solid #E8E8E8;
+            padding: var(--spacing-3) var(--spacing-6);
+            border: 2px solid var(--color-border-primary);
             background: var(--color-white);
-            border-radius: 2rem;
+            border-radius: var(--radius-full);
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
+            transition: all var(--transition-normal);
+            font-weight: var(--font-weight-medium);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-primary);
+            font-family: var(--font-family-sans);
+        }
+        
+        @media (max-width: 480px) {
+            .category-btn {
+                padding: var(--spacing-2) var(--spacing-4);
+                font-size: var(--font-size-xs);
+            }
         }
         
         .category-btn:hover,
         .category-btn.active {
             background: var(--color-secondary);
-            color: var(--color-white);
+            color: var(--color-text-inverse);
             border-color: var(--color-secondary);
+            transform: translateY(-1px);
+        }
+        
+        /* Sidebar Elements - Caruso styling */
+        .sidebar-header h3 {
+            font-family: var(--font-family-serif);
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-regular);
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-8);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+        }
+        
+        @media (max-width: 480px) {
+            .sidebar-header h3 {
+                font-size: var(--font-size-lg);
+                margin-bottom: var(--spacing-6);
+            }
+        }
+        
+        .category-list {
+            margin-bottom: var(--spacing-8);
+        }
+        
+        .category-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-4);
+            margin-bottom: var(--spacing-2);
+            border-radius: var(--radius-xl);
+            text-decoration: none;
+            transition: all var(--transition-normal);
+            border-left: 3px solid transparent;
+            color: var(--color-text-primary);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+        }
+        
+        @media (max-width: 480px) {
+            .category-link {
+                padding: var(--spacing-3);
+                font-size: var(--font-size-xs);
+            }
+        }
+        
+        .category-link:hover,
+        .category-link.active {
+            background: var(--color-secondary-lightest);
+            border-left-color: var(--color-secondary);
+            color: var(--color-text-primary);
+        }
+        
+        .category-link span {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+        }
+        
+        .question-count {
+            background: var(--color-secondary);
+            color: var(--color-text-inverse);
+            padding: var(--spacing-1) var(--spacing-2);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-semibold);
+            min-width: 24px;
+            text-align: center;
+        }
+        
+        /* Contact Sidebar - Caruso card styling */
+        .contact-sidebar {
+            background: var(--color-secondary-lightest);
+            padding: var(--spacing-6);
+            border-radius: var(--radius-2xl);
+            border: 1px solid rgba(184, 160, 130, 0.2);
+        }
+        
+        @media (max-width: 480px) {
+            .contact-sidebar {
+                padding: var(--spacing-4);
+            }
+        }
+        
+        .contact-sidebar h4 {
+            font-family: var(--font-family-serif);
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-4);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+        }
+        
+        .contact-sidebar p {
+            margin: var(--spacing-4) 0;
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            line-height: var(--line-height-relaxed);
+        }
+        
+        /* Section Titles - Caruso typography */
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+            margin-bottom: var(--spacing-8);
+            font-family: var(--font-family-serif);
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-regular);
+            color: var(--color-text-primary);
         }
         
         @media (max-width: 768px) {
+            .section-title {
+                font-size: var(--font-size-2xl);
+                margin-bottom: var(--spacing-6);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: var(--font-size-xl);
+                gap: var(--spacing-2);
+            }
+        }
+        
+        /* FAQ Sections - Proper spacing */
+        .faq-section {
+            margin-bottom: var(--spacing-16);
+        }
+        
+        .faq-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .faq-section {
+                margin-bottom: var(--spacing-12);
+            }
+        }
+        
+        /* Enhanced Button Integration */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            padding: var(--spacing-3) var(--spacing-6);
+            border-radius: var(--radius-full);
+            font-weight: var(--font-weight-medium);
+            font-size: var(--font-size-sm);
+            text-decoration: none;
+            transition: all var(--transition-normal);
+            border: 2px solid transparent;
+            cursor: pointer;
+            white-space: nowrap;
+            font-family: var(--font-family-sans);
+            justify-content: center;
+            min-height: 44px;
+        }
+        
+        .btn-primary {
+            background: var(--color-text-primary);
+            color: var(--color-text-inverse);
+            border-color: var(--color-text-primary);
+        }
+        
+        .btn-primary:hover {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-base);
+        }
+        
+        .btn-small {
+            padding: var(--spacing-2) var(--spacing-4);
+            font-size: var(--font-size-xs);
+            min-height: 36px;
+        }
+        
+        @media (max-width: 480px) {
+            .btn {
+                width: 100%;
+                padding: var(--spacing-3) var(--spacing-4);
+            }
+        }
+        
+        /* Container and spacing fixes */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-left: var(--spacing-6);
+            padding-right: var(--spacing-6);
+        }
+        
+        @media (min-width: 640px) {
+            .container {
+                padding-left: var(--spacing-8);
+                padding-right: var(--spacing-8);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .container {
+                padding-left: var(--spacing-10);
+                padding-right: var(--spacing-10);
+            }
+        }
+        
+        /* Section styling consistency */
+        section {
+            padding: var(--spacing-32) 0;
+        }
+        
+        @media (max-width: 768px) {
+            section {
+                padding: var(--spacing-24) 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            section {
+                padding: var(--spacing-20) 0;
+            }
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--spacing-20);
+        }
+        
+        @media (max-width: 768px) {
+            .section-header {
+                margin: 0 auto var(--spacing-16);
+            }
+        }
+        
+        .section-badge {
+            display: inline-block;
+            background: var(--color-secondary);
+            color: var(--color-text-inverse);
+            padding: var(--spacing-2) var(--spacing-4);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-medium);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--spacing-6);
+        }
+        
+        .section-header h2 {
+            font-family: var(--font-family-serif);
+            font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-5xl));
+            font-weight: var(--font-weight-light);
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-6);
+            line-height: var(--line-height-tight);
+        }
+        
+        .section-description {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+            line-height: var(--line-height-relaxed);
+            font-weight: var(--font-weight-light);
+            margin: 0;
+        }
+        
+        @media (max-width: 480px) {
+            .section-description {
+                font-size: var(--font-size-base);
+            }
+        }
+        
+        /* Enhanced focus states for accessibility */
+        .faq-question:focus,
+        .category-btn:focus,
+        .category-link:focus,
+        .search-input:focus,
+        .btn:focus {
+            outline: 2px solid var(--color-secondary);
+            outline-offset: 2px;
+        }
+        
+        /* Performance optimizations */
+        .faq-item,
+        .category-btn,
+        .btn {
+            will-change: transform;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Print styles */
+        @media print {
+            .faq-sidebar,
+            .search-categories,
+            .search-input-wrapper {
+                display: none;
+            }
+            
             .faq-layout {
                 grid-template-columns: 1fr;
-                gap: 2rem;
             }
             
-            .faq-sidebar {
-                position: static;
-                order: 2;
-                margin-top: 2rem;
-                max-height: none;
+            .faq-answer {
+                max-height: none !important;
             }
             
-            .faq-main {
-                order: 1;
-                padding: 2rem;
+            .faq-item {
+                page-break-inside: avoid;
             }
         }
     </style>
@@ -479,12 +999,12 @@
             </div>
             
             <div class="search-wrapper">
-                <div class="search-input-wrapper" style="position: relative; max-width: 600px; margin: 0 auto 2rem;">
-                    <i class="fas fa-search" aria-hidden="true" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #999;"></i>
+                <div class="search-input-wrapper">
+                    <i class="fas fa-search" aria-hidden="true"></i>
                     <input type="text" id="faqSearch" class="search-input" placeholder="Search for answers about services, certifications, pool cleaning..." aria-label="Search FAQ">
                 </div>
                 
-                <div class="search-categories" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
+                <div class="search-categories">
                     <button class="category-btn active" data-category="all">All Topics</button>
                     <button class="category-btn" data-category="services">Services</button>
                     <button class="category-btn" data-category="pool-cleaning">Pool Cleaning</button>
@@ -505,33 +1025,33 @@
                     <div class="sidebar-header">
                         <h3><i class="fas fa-list" aria-hidden="true"></i> FAQ Categories</h3>
                     </div>
-                    <nav class="category-list" style="margin-bottom: 2rem;">
-                        <a href="#services" class="category-link active" data-category="services" style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; margin-bottom: 0.5rem; border-radius: 0.5rem; text-decoration: none; transition: all 0.3s ease; border-left: 3px solid transparent;">
+                    <nav class="category-list">
+                        <a href="#services" class="category-link active" data-category="services">
                             <span><i class="fas fa-water" aria-hidden="true"></i> Services & Offerings</span>
-                            <span class="question-count" style="background: var(--color-secondary); color: white; padding: 0.25rem 0.5rem; border-radius: 1rem; font-size: 0.75rem;">8</span>
+                            <span class="question-count">8</span>
                         </a>
-                        <a href="#pool-cleaning" class="category-link" data-category="pool-cleaning" style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; margin-bottom: 0.5rem; border-radius: 0.5rem; text-decoration: none; transition: all 0.3s ease; border-left: 3px solid transparent;">
+                        <a href="#pool-cleaning" class="category-link" data-category="pool-cleaning">
                             <span><i class="fas fa-broom" aria-hidden="true"></i> Pool Cleaning Services</span>
-                            <span class="question-count" style="background: var(--color-secondary); color: white; padding: 0.25rem 0.5rem; border-radius: 1rem; font-size: 0.75rem;">6</span>
+                            <span class="question-count">6</span>
                         </a>
-                        <a href="#safety" class="category-link" data-category="safety" style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; margin-bottom: 0.5rem; border-radius: 0.5rem; text-decoration: none; transition: all 0.3s ease; border-left: 3px solid transparent;">
+                        <a href="#safety" class="category-link" data-category="safety">
                             <span><i class="fas fa-shield-alt" aria-hidden="true"></i> Safety & Certifications</span>
-                            <span class="question-count" style="background: var(--color-secondary); color: white; padding: 0.25rem 0.5rem; border-radius: 1rem; font-size: 0.75rem;">7</span>
+                            <span class="question-count">7</span>
                         </a>
-                        <a href="#booking" class="category-link" data-category="booking" style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; margin-bottom: 0.5rem; border-radius: 0.5rem; text-decoration: none; transition: all 0.3s ease; border-left: 3px solid transparent;">
+                        <a href="#booking" class="category-link" data-category="booking">
                             <span><i class="fas fa-calendar-check" aria-hidden="true"></i> Booking & Scheduling</span>
-                            <span class="question-count" style="background: var(--color-secondary); color: white; padding: 0.25rem 0.5rem; border-radius: 1rem; font-size: 0.75rem;">5</span>
+                            <span class="question-count">5</span>
                         </a>
-                        <a href="#estate" class="category-link" data-category="estate" style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; margin-bottom: 0.5rem; border-radius: 0.5rem; text-decoration: none; transition: all 0.3s ease; border-left: 3px solid transparent;">
+                        <a href="#estate" class="category-link" data-category="estate">
                             <span><i class="fas fa-home" aria-hidden="true"></i> Estate Requirements</span>
-                            <span class="question-count" style="background: var(--color-secondary); color: white; padding: 0.25rem 0.5rem; border-radius: 1rem; font-size: 0.75rem;">4</span>
+                            <span class="question-count">4</span>
                         </a>
                     </nav>
                     
-                    <div class="contact-sidebar" style="background: var(--color-secondary-lightest); padding: 1.5rem; border-radius: 1rem;">
+                    <div class="contact-sidebar">
                         <h4><i class="fas fa-headset" aria-hidden="true"></i> Still Have Questions?</h4>
-                        <p style="margin: 1rem 0; font-size: 0.9rem; color: var(--color-text-secondary);">Our concierge team is available to provide personalized answers and guidance.</p>
-                        <a href="contact.html" class="btn btn-primary btn-small" style="width: 100%; justify-content: center;">
+                        <p>Our concierge team is available to provide personalized answers and guidance.</p>
+                        <a href="contact.html" class="btn btn-primary btn-small">
                             <i class="fas fa-phone" aria-hidden="true"></i>
                             Contact Us
                         </a>
@@ -542,24 +1062,24 @@
                 <main class="faq-main">
                     <!-- Services & Offerings -->
                     <section id="services" class="faq-section" data-category="services">
-                        <h2 class="section-title" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem;">
+                        <h2 class="section-title">
                             <i class="fas fa-water" aria-hidden="true"></i>
                             Services & Offerings
                         </h2>
                         
                         <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                             <button class="faq-question" tabindex="0" role="button" aria-expanded="false">
-                                <h3 itemprop="name" style="font-size: 1.1rem; font-weight: 600; margin: 0;">What types of aquatic services do you provide?</h3>
-                                <i class="fas fa-chevron-down" aria-hidden="true" style="transition: transform 0.3s ease;"></i>
+                                <h3 itemprop="name">What types of aquatic services do you provide?</h3>
+                                <i class="fas fa-chevron-down" aria-hidden="true"></i>
                             </button>
                             <div class="faq-answer" aria-hidden="true" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                                 <div itemprop="text">
                                     <p>We specialize in four primary areas of luxury aquatic services:</p>
-                                    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-                                        <li style="margin-bottom: 0.5rem;"><strong>Private Estate Lifeguarding:</strong> Professional, discreet safety oversight for daily pool activities, family gatherings, and special events</li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>Bespoke Swimming Instruction:</strong> Personalized lessons for all ages and skill levels, including special needs instruction</li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>Luxury Event Management:</strong> Comprehensive aquatic safety management for pool parties, corporate events, and special occasions</li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>Exclusive Pool Cleaning:</strong> White-glove pool maintenance and cleaning services available exclusively to our lifeguarding and instruction clients</li>
+                                    <ul>
+                                        <li><strong>Private Estate Lifeguarding:</strong> Professional, discreet safety oversight for daily pool activities, family gatherings, and special events</li>
+                                        <li><strong>Bespoke Swimming Instruction:</strong> Personalized lessons for all ages and skill levels, including special needs instruction</li>
+                                        <li><strong>Luxury Event Management:</strong> Comprehensive aquatic safety management for pool parties, corporate events, and special occasions</li>
+                                        <li><strong>Exclusive Pool Cleaning:</strong> White-glove pool maintenance and cleaning services available exclusively to our lifeguarding and instruction clients</li>
                                     </ul>
                                     <p>All services are fully customizable to meet the specific requirements of your estate and family lifestyle.</p>
                                 </div>
@@ -568,17 +1088,17 @@
 
                         <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                             <button class="faq-question" tabindex="0" role="button" aria-expanded="false">
-                                <h3 itemprop="name" style="font-size: 1.1rem; font-weight: 600; margin: 0;">Do you work with special needs individuals?</h3>
-                                <i class="fas fa-chevron-down" aria-hidden="true" style="transition: transform 0.3s ease;"></i>
+                                <h3 itemprop="name">Do you work with special needs individuals?</h3>
+                                <i class="fas fa-chevron-down" aria-hidden="true"></i>
                             </button>
                             <div class="faq-answer" aria-hidden="true" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                                 <div itemprop="text">
                                     <p>Yes, we have specialized training and certification in adaptive aquatic instruction. Our approach includes:</p>
-                                    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-                                        <li style="margin-bottom: 0.5rem;">Customized instruction methods for various special needs</li>
-                                        <li style="margin-bottom: 0.5rem;">Sensory-friendly approaches for autism spectrum individuals</li>
-                                        <li style="margin-bottom: 0.5rem;">Adaptive techniques for physical disabilities</li>
-                                        <li style="margin-bottom: 0.5rem;">Therapeutic swimming programs focused on confidence building</li>
+                                    <ul>
+                                        <li>Customized instruction methods for various special needs</li>
+                                        <li>Sensory-friendly approaches for autism spectrum individuals</li>
+                                        <li>Adaptive techniques for physical disabilities</li>
+                                        <li>Therapeutic swimming programs focused on confidence building</li>
                                     </ul>
                                     <p>We work closely with families to understand specific needs and create supportive, effective learning environments.</p>
                                 </div>
@@ -587,16 +1107,16 @@
 
                         <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                             <button class="faq-question" tabindex="0" role="button" aria-expanded="false">
-                                <h3 itemprop="name" style="font-size: 1.1rem; font-weight: 600; margin: 0;">What areas do you serve?</h3>
-                                <i class="fas fa-chevron-down" aria-hidden="true" style="transition: transform 0.3s ease;"></i>
+                                <h3 itemprop="name">What areas do you serve?</h3>
+                                <i class="fas fa-chevron-down" aria-hidden="true"></i>
                             </button>
                             <div class="faq-answer" aria-hidden="true" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                                 <div itemprop="text">
                                     <p>Our service area covers the Conejo Valley and surrounding luxury communities:</p>
-                                    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-                                        <li style="margin-bottom: 0.5rem;"><strong>Primary Coverage:</strong> Thousand Oaks, Westlake Village, Agoura Hills, Newbury Park, Oak Park</li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>Extended Coverage:</strong> Malibu, Calabasas, Hidden Hills, Camarillo, Ventura</li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>Premium Locations:</strong> Beverly Hills, Manhattan Beach, Newport Beach, Palos Verdes, Laguna Beach</li>
+                                    <ul>
+                                        <li><strong>Primary Coverage:</strong> Thousand Oaks, Westlake Village, Agoura Hills, Newbury Park, Oak Park</li>
+                                        <li><strong>Extended Coverage:</strong> Malibu, Calabasas, Hidden Hills, Camarillo, Ventura</li>
+                                        <li><strong>Premium Locations:</strong> Beverly Hills, Manhattan Beach, Newport Beach, Palos Verdes, Laguna Beach</li>
                                     </ul>
                                     <p>We're happy to discuss service availability for other locations upon request.</p>
                                 </div>
@@ -605,18 +1125,18 @@
 
                         <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                             <button class="faq-question" tabindex="0" role="button" aria-expanded="false">
-                                <h3 itemprop="name" style="font-size: 1.1rem; font-weight: 600; margin: 0;">Can you provide services for corporate events?</h3>
-                                <i class="fas fa-chevron-down" aria-hidden="true" style="transition: transform 0.3s ease;"></i>
+                                <h3 itemprop="name">Can you provide services for corporate events?</h3>
+                                <i class="fas fa-chevron-down" aria-hidden="true"></i>
                             </button>
                             <div class="faq-answer" aria-hidden="true" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                                 <div itemprop="text">
                                     <p>Absolutely. We provide professional aquatic safety management for corporate retreats, executive events, and business gatherings. Our corporate services include:</p>
-                                    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-                                        <li style="margin-bottom: 0.5rem;">Pre-event safety assessment and planning</li>
-                                        <li style="margin-bottom: 0.5rem;">Discrete professional oversight during events</li>
-                                        <li style="margin-bottom: 0.5rem;">Coordination with event planners and venues</li>
-                                        <li style="margin-bottom: 0.5rem;">Emergency response protocols and equipment</li>
-                                        <li style="margin-bottom: 0.5rem;">Flexible scheduling for day or evening events</li>
+                                    <ul>
+                                        <li>Pre-event safety assessment and planning</li>
+                                        <li>Discrete professional oversight during events</li>
+                                        <li>Coordination with event planners and venues</li>
+                                        <li>Emergency response protocols and equipment</li>
+                                        <li>Flexible scheduling for day or evening events</li>
                                     </ul>
                                     <p>We understand the importance of maintaining a professional atmosphere while ensuring complete safety.</p>
                                 </div>
@@ -626,24 +1146,24 @@
 
                     <!-- Pool Cleaning Services -->
                     <section id="pool-cleaning" class="faq-section" data-category="pool-cleaning">
-                        <h2 class="section-title" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem;">
+                        <h2 class="section-title">
                             <i class="fas fa-broom" aria-hidden="true"></i>
                             Pool Cleaning Services
                         </h2>
                         
                         <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                             <button class="faq-question" tabindex="0" role="button" aria-expanded="false">
-                                <h3 itemprop="name" style="font-size: 1.1rem; font-weight: 600; margin: 0;">Who can access your pool cleaning services?</h3>
-                                <i class="fas fa-chevron-down" aria-hidden="true" style="transition: transform 0.3s ease;"></i>
+                                <h3 itemprop="name">Who can access your pool cleaning services?</h3>
+                                <i class="fas fa-chevron-down" aria-hidden="true"></i>
                             </button>
                             <div class="faq-answer" aria-hidden="true" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                                 <div itemprop="text">
                                     <p>Our pool cleaning services are exclusively available to current 805 LifeGuard clients who utilize our lifeguarding or swimming instruction services. This exclusive approach ensures:</p>
-                                    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-                                        <li style="margin-bottom: 0.5rem;">Consistent quality standards across all our services</li>
-                                        <li style="margin-bottom: 0.5rem;">Integrated service coordination and scheduling</li>
-                                        <li style="margin-bottom: 0.5rem;">Enhanced understanding of your pool's specific needs</li>
-                                        <li style="margin-bottom: 0.5rem;">Seamless communication through a single point of contact</li>
+                                    <ul>
+                                        <li>Consistent quality standards across all our services</li>
+                                        <li>Integrated service coordination and scheduling</li>
+                                        <li>Enhanced understanding of your pool's specific needs</li>
+                                        <li>Seamless communication through a single point of contact</li>
                                     </ul>
                                     <p>If you're interested in adding pool cleaning to your existing services, contact our concierge team.</p>
                                 </div>
@@ -652,18 +1172,18 @@
 
                         <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                             <button class="faq-question" tabindex="0" role="button" aria-expanded="false">
-                                <h3 itemprop="name" style="font-size: 1.1rem; font-weight: 600; margin: 0;">What does your pool cleaning service include?</h3>
-                                <i class="fas fa-chevron-down" aria-hidden="true" style="transition: transform 0.3s ease;"></i>
+                                <h3 itemprop="name">What does your pool cleaning service include?</h3>
+                                <i class="fas fa-chevron-down" aria-hidden="true"></i>
                             </button>
                             <div class="faq-answer" aria-hidden="true" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                                 <div itemprop="text">
                                     <p>Our comprehensive pool cleaning service includes:</p>
-                                    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-                                        <li style="margin-bottom: 0.5rem;"><strong>Water Chemistry Management:</strong> Professional testing and balancing of pH, chlorine, alkalinity, and calcium hardness</li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>Physical Cleaning:</strong> Skimming, brushing walls, vacuuming, and debris removal</li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>Equipment Maintenance:</strong> Filter cleaning, pump inspection, and equipment optimization</li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>Detailed Reporting:</strong> Comprehensive service reports with water chemistry readings and maintenance recommendations</li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>Seasonal Services:</strong> Equipment winterization, spring opening, and specialized treatments</li>
+                                    <ul>
+                                        <li><strong>Water Chemistry Management:</strong> Professional testing and balancing of pH, chlorine, alkalinity, and calcium hardness</li>
+                                        <li><strong>Physical Cleaning:</strong> Skimming, brushing walls, vacuuming, and debris removal</li>
+                                        <li><strong>Equipment Maintenance:</strong> Filter cleaning, pump inspection, and equipment optimization</li>
+                                        <li><strong>Detailed Reporting:</strong> Comprehensive service reports with water chemistry readings and maintenance recommendations</li>
+                                        <li><strong>Seasonal Services:</strong> Equipment winterization, spring opening, and specialized treatments</li>
                                     </ul>
                                     <p>All services are customized to your pool's specific requirements and usage patterns.</p>
                                 </div>
@@ -673,26 +1193,26 @@
 
                     <!-- Safety & Certifications -->
                     <section id="safety" class="faq-section" data-category="safety">
-                        <h2 class="section-title" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem;">
+                        <h2 class="section-title">
                             <i class="fas fa-shield-alt" aria-hidden="true"></i>
                             Safety & Certifications
                         </h2>
                         
                         <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                             <button class="faq-question" tabindex="0" role="button" aria-expanded="false">
-                                <h3 itemprop="name" style="font-size: 1.1rem; font-weight: 600; margin: 0;">What certifications and training do you have?</h3>
-                                <i class="fas fa-chevron-down" aria-hidden="true" style="transition: transform 0.3s ease;"></i>
+                                <h3 itemprop="name">What certifications and training do you have?</h3>
+                                <i class="fas fa-chevron-down" aria-hidden="true"></i>
                             </button>
                             <div class="faq-answer" aria-hidden="true" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                                 <div itemprop="text">
                                     <p>Our comprehensive certifications include:</p>
-                                    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-                                        <li style="margin-bottom: 0.5rem;"><strong>American Red Cross Lifeguard Certification</strong> (Current)</li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>CPR/AED for Professional Rescuers</strong></li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>Water Safety Instructor (WSI) Certification</strong></li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>Special Needs Aquatic Instruction</strong></li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>Licensed & Bonded for Private Estate Services</strong></li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>Background Checked & Security Cleared</strong></li>
+                                    <ul>
+                                        <li><strong>American Red Cross Lifeguard Certification</strong> (Current)</li>
+                                        <li><strong>CPR/AED for Professional Rescuers</strong></li>
+                                        <li><strong>Water Safety Instructor (WSI) Certification</strong></li>
+                                        <li><strong>Special Needs Aquatic Instruction</strong></li>
+                                        <li><strong>Licensed & Bonded for Private Estate Services</strong></li>
+                                        <li><strong>Background Checked & Security Cleared</strong></li>
                                     </ul>
                                     <p>All certifications are kept current through regular renewal and continuing education programs.</p>
                                 </div>
@@ -701,17 +1221,17 @@
 
                         <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                             <button class="faq-question" tabindex="0" role="button" aria-expanded="false">
-                                <h3 itemprop="name" style="font-size: 1.1rem; font-weight: 600; margin: 0;">Are you insured and bonded?</h3>
-                                <i class="fas fa-chevron-down" aria-hidden="true" style="transition: transform 0.3s ease;"></i>
+                                <h3 itemprop="name">Are you insured and bonded?</h3>
+                                <i class="fas fa-chevron-down" aria-hidden="true"></i>
                             </button>
                             <div class="faq-answer" aria-hidden="true" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                                 <div itemprop="text">
                                     <p>Yes, we maintain comprehensive insurance and bonding:</p>
-                                    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-                                        <li style="margin-bottom: 0.5rem;"><strong>Professional Liability Insurance:</strong> $2 million coverage for all services</li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>General Liability Insurance:</strong> Protection for property and personal injury</li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>Bonding:</strong> Licensed and bonded for private estate services</li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>Background Verification:</strong> Complete screening for all team members</li>
+                                    <ul>
+                                        <li><strong>Professional Liability Insurance:</strong> $2 million coverage for all services</li>
+                                        <li><strong>General Liability Insurance:</strong> Protection for property and personal injury</li>
+                                        <li><strong>Bonding:</strong> Licensed and bonded for private estate services</li>
+                                        <li><strong>Background Verification:</strong> Complete screening for all team members</li>
                                     </ul>
                                     <p>Insurance certificates and bonding documentation are available upon request and provided to all clients before service commencement.</p>
                                 </div>
@@ -721,26 +1241,26 @@
 
                     <!-- Booking & Scheduling -->
                     <section id="booking" class="faq-section" data-category="booking">
-                        <h2 class="section-title" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem;">
+                        <h2 class="section-title">
                             <i class="fas fa-calendar-check" aria-hidden="true"></i>
                             Booking & Scheduling
                         </h2>
                         
                         <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                             <button class="faq-question" tabindex="0" role="button" aria-expanded="false">
-                                <h3 itemprop="name" style="font-size: 1.1rem; font-weight: 600; margin: 0;">How far in advance should I book services?</h3>
-                                <i class="fas fa-chevron-down" aria-hidden="true" style="transition: transform 0.3s ease;"></i>
+                                <h3 itemprop="name">How far in advance should I book services?</h3>
+                                <i class="fas fa-chevron-down" aria-hidden="true"></i>
                             </button>
                             <div class="faq-answer" aria-hidden="true" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                                 <div itemprop="text">
                                     <p>Booking timelines vary by service type and season:</p>
-                                    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-                                        <li style="margin-bottom: 0.5rem;"><strong>Swimming Lessons:</strong> 1-2 weeks advance booking recommended</li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>Event Services:</strong> 2-4 weeks for optimal scheduling</li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>Pool Cleaning:</strong> Can be added to existing service packages with 1 week notice</li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>Emergency Coverage:</strong> Available with 24-48 hours notice</li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>Summer Season:</strong> Book 4-6 weeks in advance (high demand period)</li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>Holiday Events:</strong> 6-8 weeks advance booking strongly recommended</li>
+                                    <ul>
+                                        <li><strong>Swimming Lessons:</strong> 1-2 weeks advance booking recommended</li>
+                                        <li><strong>Event Services:</strong> 2-4 weeks for optimal scheduling</li>
+                                        <li><strong>Pool Cleaning:</strong> Can be added to existing service packages with 1 week notice</li>
+                                        <li><strong>Emergency Coverage:</strong> Available with 24-48 hours notice</li>
+                                        <li><strong>Summer Season:</strong> Book 4-6 weeks in advance (high demand period)</li>
+                                        <li><strong>Holiday Events:</strong> 6-8 weeks advance booking strongly recommended</li>
                                     </ul>
                                     <p>We always try to accommodate urgent requests and maintain flexibility for our established clients.</p>
                                 </div>
@@ -750,25 +1270,25 @@
 
                     <!-- Estate Requirements -->
                     <section id="estate" class="faq-section" data-category="estate">
-                        <h2 class="section-title" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem;">
+                        <h2 class="section-title">
                             <i class="fas fa-home" aria-hidden="true"></i>
                             Estate Requirements
                         </h2>
                         
                         <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                             <button class="faq-question" tabindex="0" role="button" aria-expanded="false">
-                                <h3 itemprop="name" style="font-size: 1.1rem; font-weight: 600; margin: 0;">What do you need to know about our pool and estate?</h3>
-                                <i class="fas fa-chevron-down" aria-hidden="true" style="transition: transform 0.3s ease;"></i>
+                                <h3 itemprop="name">What do you need to know about our pool and estate?</h3>
+                                <i class="fas fa-chevron-down" aria-hidden="true"></i>
                             </button>
                             <div class="faq-answer" aria-hidden="true" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                                 <div itemprop="text">
                                     <p>For optimal service delivery, we assess several key factors:</p>
-                                    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-                                        <li style="margin-bottom: 0.5rem;"><strong>Pool specifications:</strong> Size, depth, special features (spa, slide, etc.)</li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>Access requirements:</strong> Parking, gate codes, security protocols</li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>Safety equipment:</strong> Available rescue equipment and emergency access</li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>Family needs:</strong> Number of swimmers, ages, skill levels, special requirements</li>
-                                        <li style="margin-bottom: 0.5rem;"><strong>Privacy considerations:</strong> Discretion requirements and estate protocols</li>
+                                    <ul>
+                                        <li><strong>Pool specifications:</strong> Size, depth, special features (spa, slide, etc.)</li>
+                                        <li><strong>Access requirements:</strong> Parking, gate codes, security protocols</li>
+                                        <li><strong>Safety equipment:</strong> Available rescue equipment and emergency access</li>
+                                        <li><strong>Family needs:</strong> Number of swimmers, ages, skill levels, special requirements</li>
+                                        <li><strong>Privacy considerations:</strong> Discretion requirements and estate protocols</li>
                                     </ul>
                                     <p>This information is gathered during our initial consultation to ensure seamless service integration.</p>
                                 </div>
@@ -777,17 +1297,17 @@
 
                         <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                             <button class="faq-question" tabindex="0" role="button" aria-expanded="false">
-                                <h3 itemprop="name" style="font-size: 1.1rem; font-weight: 600; margin: 0;">Do you work with estate management companies?</h3>
-                                <i class="fas fa-chevron-down" aria-hidden="true" style="transition: transform 0.3s ease;"></i>
+                                <h3 itemprop="name">Do you work with estate management companies?</h3>
+                                <i class="fas fa-chevron-down" aria-hidden="true"></i>
                             </button>
                             <div class="faq-answer" aria-hidden="true" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                                 <div itemprop="text">
                                     <p>Yes, we frequently coordinate with estate management companies and household staff:</p>
-                                    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-                                        <li style="margin-bottom: 0.5rem;">Direct communication with estate managers and house managers</li>
-                                        <li style="margin-bottom: 0.5rem;">Coordination with security teams and access protocols</li>
-                                        <li style="margin-bottom: 0.5rem;">Integration with existing maintenance schedules</li>
-                                        <li style="margin-bottom: 0.5rem;">Professional service reports for estate management records</li>
+                                    <ul>
+                                        <li>Direct communication with estate managers and house managers</li>
+                                        <li>Coordination with security teams and access protocols</li>
+                                        <li>Integration with existing maintenance schedules</li>
+                                        <li>Professional service reports for estate management records</li>
                                     </ul>
                                     <p>We understand the importance of seamless coordination in luxury estate environments.</p>
                                 </div>
