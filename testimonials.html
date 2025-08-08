@@ -190,6 +190,23 @@
             outline-offset: 2px;
         }
 
+        /* Font Awesome Icon Compatibility Fix */
+        .service-icon-standalone i:before {
+            font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", "FontAwesome";
+            font-weight: 900;
+            font-style: normal;
+        }
+
+        /* Specific fix for accessibility icon */
+        .fa-universal-access:before {
+            content: "\f29a";
+        }
+
+        /* Fallback for older accessibility icon */
+        .fa-accessibility:before {
+            content: "\f29a";
+        }
+
         /* ENHANCED MOBILE BUTTON STYLES - Caruso-Inspired Spacing */
         @media (max-width: 768px) {
             .btn {
@@ -899,7 +916,7 @@
                 <div class="service-card">
                     <div class="service-content">
                         <div class="service-icon-standalone">
-                            <i class="fas fa-accessibility"></i>
+                            <i class="fas fa-universal-access"></i>
                         </div>
                         <h3 class="service-title">Adaptive Swimming</h3>
                         <blockquote class="service-testimonial">
