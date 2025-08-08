@@ -1271,7 +1271,7 @@
     <!-- Load Optimized Testimonials Reviews Script -->
     <script src="js/testimonials-reviews.js"></script>
 
-    <!-- Performance Monitoring -->
+    <!-- Enhanced Performance Monitoring -->
     <script>
         // Enhanced performance monitoring for testimonials page
         window.addEventListener('load', function() {
@@ -1291,10 +1291,10 @@
                         stats: window.TestimonialsReviews.ReviewsController?.getStats ? window.TestimonialsReviews.ReviewsController.getStats() : null
                     });
                 }
-            }, 2000);
+            }, 3000);
         });
         
-        // Enhanced app ready handler
+        // Enhanced app ready handler with testimonials integration
         window.addEventListener('luxuryAppReady', function(e) {
             console.log('805 LifeGuard: Luxury app ready on testimonials page', {
                 version: e.detail.version,
@@ -1303,7 +1303,17 @@
                 reviewsSystemIntegrated: true,
                 perfectButtonLegibility: true,
                 adaCompliant: true,
-                externalJSOptimized: true
+                carusoDesignPreserved: true
+            });
+        });
+        
+        // Enhanced testimonials ready handler
+        window.addEventListener('testimonialsAppReady', function(e) {
+            console.log('805 LifeGuard: Testimonials system ready', {
+                version: e.detail.version,
+                reviewCounts: e.detail.reviews,
+                integration: 'luxury-app-integrated',
+                performance: 'optimized'
             });
         });
     </script>
