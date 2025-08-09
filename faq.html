@@ -90,6 +90,49 @@
                 padding-top: calc(var(--header-navbar-height) + 1rem);
             }
         }
+        
+        /* Enhanced FAQ specific styles */
+        .faq-accordion {
+            background: transparent;
+            border: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            opacity: 0;
+        }
+        
+        .faq-answer.expanded {
+            max-height: 500px;
+            opacity: 1;
+            padding-top: 1rem;
+        }
+        
+        .search-highlight {
+            background: rgba(184, 160, 130, 0.3);
+            padding: 0.1rem 0.2rem;
+            border-radius: 0.25rem;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+        
+        .no-results.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
     
     <!-- Enhanced Performance: DNS Prefetch and Preconnect -->
@@ -313,9 +356,9 @@
                 </p>
                 
                 <div class="hero-buttons">
-                    <a href="#faq-content" class="btn btn-primary" aria-label="Browse FAQ topics">
-                        <i class="fas fa-search" aria-hidden="true"></i>
-                        Browse FAQ
+                    <a href="#quick-answers" class="btn btn-primary" aria-label="Browse quick answers">
+                        <i class="fas fa-bolt" aria-hidden="true"></i>
+                        Quick Answers
                     </a>
                     <a href="contact.html" class="btn btn-secondary" aria-label="Contact our experts">
                         <i class="fas fa-phone" aria-hidden="true"></i>
@@ -331,38 +374,135 @@
         </div>
     </section>
 
-    <!-- FAQ Content Section - Using Existing Design System -->
-    <section class="about-section" id="faq-content">
+    <!-- Quick Answer Cards - Using Services Section Style -->
+    <section class="services-section" id="quick-answers">
         <div class="container">
             <div class="section-header">
                 <div class="section-badge">Quick Answers</div>
-                <h2>Search Our Knowledge Base</h2>
+                <h2>Most Common Questions</h2>
                 <p class="section-description">
-                    Find instant answers to your questions about services, certifications, and procedures.
+                    Get instant answers to our most frequently asked questions about aquatic services and safety.
                 </p>
             </div>
             
-            <!-- Search Interface using existing design patterns -->
-            <div style="max-width: 600px; margin: 0 auto var(--spacing-12); text-align: center;">
-                <div style="position: relative; margin-bottom: var(--spacing-6);">
-                    <i class="fas fa-search" style="position: absolute; left: var(--spacing-4); top: 50%; transform: translateY(-50%); color: var(--color-text-tertiary);"></i>
-                    <input type="text" id="faqSearch" placeholder="Search for answers about services, certifications, pool cleaning..." style="width: 100%; padding: var(--spacing-4) var(--spacing-4) var(--spacing-4) var(--spacing-12); border: 2px solid var(--color-border-primary); border-radius: var(--radius-full); font-size: var(--font-size-base); font-family: var(--font-family-sans);" aria-label="Search FAQ">
+            <div class="services-grid">
+                <div class="service-card" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <div class="service-content">
+                        <div class="service-icon-standalone">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <h3 class="service-title" itemprop="name">What services do you offer?</h3>
+                        <div class="service-description" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">We provide Private Estate Lifeguarding, Bespoke Swimming Instruction, Luxury Event Management, and Exclusive Pool Cleaning for existing clients.</p>
+                        </div>
+                        <div class="service-features">
+                            <span class="feature-tag">Estate Services</span>
+                            <span class="feature-tag">Professional</span>
+                        </div>
+                        <a href="#services-section" class="service-link">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
-                
-                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: var(--spacing-2);">
-                    <button class="btn" style="padding: var(--spacing-2) var(--spacing-4); border: 2px solid var(--color-border-primary); background: var(--color-secondary); color: var(--color-text-inverse); border-radius: var(--radius-full); font-size: var(--font-size-sm);" data-category="all">All Topics</button>
-                    <button class="btn" style="padding: var(--spacing-2) var(--spacing-4); border: 2px solid var(--color-border-primary); background: var(--color-white); color: var(--color-text-primary); border-radius: var(--radius-full); font-size: var(--font-size-sm);" data-category="services">Services</button>
-                    <button class="btn" style="padding: var(--spacing-2) var(--spacing-4); border: 2px solid var(--color-border-primary); background: var(--color-white); color: var(--color-text-primary); border-radius: var(--radius-full); font-size: var(--font-size-sm);" data-category="pool-cleaning">Pool Cleaning</button>
-                    <button class="btn" style="padding: var(--spacing-2) var(--spacing-4); border: 2px solid var(--color-border-primary); background: var(--color-white); color: var(--color-text-primary); border-radius: var(--radius-full); font-size: var(--font-size-sm);" data-category="safety">Safety</button>
-                    <button class="btn" style="padding: var(--spacing-2) var(--spacing-4); border: 2px solid var(--color-border-primary); background: var(--color-white); color: var(--color-text-primary); border-radius: var(--radius-full); font-size: var(--font-size-sm);" data-category="booking">Booking</button>
-                    <button class="btn" style="padding: var(--spacing-2) var(--spacing-4); border: 2px solid var(--color-border-primary); background: var(--color-white); color: var(--color-text-primary); border-radius: var(--radius-full); font-size: var(--font-size-sm);" data-category="estate">Estate</button>
+
+                <div class="service-card" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <div class="service-content">
+                        <div class="service-icon-standalone">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3 class="service-title" itemprop="name">How far in advance should I book?</h3>
+                        <div class="service-description" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">Swimming lessons: 1-2 weeks, Events: 2-4 weeks, Summer season: 4-6 weeks. Emergency coverage available with 24-48 hours notice.</p>
+                        </div>
+                        <div class="service-features">
+                            <span class="feature-tag">Flexible Scheduling</span>
+                            <span class="feature-tag">Emergency Available</span>
+                        </div>
+                        <a href="#booking-section" class="service-link">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <div class="service-content">
+                        <div class="service-icon-standalone">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="service-title" itemprop="name">Are you certified and insured?</h3>
+                        <div class="service-description" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">Yes! American Red Cross certified with $2M liability coverage, fully licensed and bonded for private estate services, background checked.</p>
+                        </div>
+                        <div class="service-features">
+                            <span class="feature-tag">$2M Coverage</span>
+                            <span class="feature-tag">Licensed & Bonded</span>
+                        </div>
+                        <a href="#safety-section" class="service-link">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <div class="service-content">
+                        <div class="service-icon-standalone">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 class="service-title" itemprop="name">Do you work with special needs?</h3>
+                        <div class="service-description" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">Absolutely! We have specialized training in adaptive aquatic instruction, sensory-friendly approaches, and therapeutic swimming programs.</p>
+                        </div>
+                        <div class="service-features">
+                            <span class="feature-tag">Specialized Training</span>
+                            <span class="feature-tag">Adaptive Methods</span>
+                        </div>
+                        <a href="#services-section" class="service-link">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services & Offerings - Using Services Section Style -->
-    <section class="services-section" id="services" data-category="services">
+    <!-- Enhanced Search Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Search Knowledge Base</div>
+                <h2>Find Specific Answers</h2>
+                <p class="section-description">
+                    Search our comprehensive FAQ database or browse by category to find exactly what you need.
+                </p>
+            </div>
+            
+            <!-- Enhanced Search Interface -->
+            <div style="max-width: 700px; margin: 0 auto var(--spacing-12);">
+                <div style="position: relative; margin-bottom: var(--spacing-6);">
+                    <i class="fas fa-search" id="searchIcon" style="position: absolute; left: var(--spacing-4); top: 50%; transform: translateY(-50%); color: var(--color-text-tertiary); transition: all 0.3s ease;"></i>
+                    <input type="text" id="faqSearch" placeholder="Search for answers about services, certifications, pool cleaning..." style="width: 100%; padding: var(--spacing-4) var(--spacing-4) var(--spacing-4) var(--spacing-12); border: 2px solid var(--color-border-primary); border-radius: var(--radius-full); font-size: var(--font-size-base); font-family: var(--font-family-sans); transition: all 0.3s ease;" aria-label="Search FAQ">
+                    <div id="searchClearBtn" style="position: absolute; right: var(--spacing-4); top: 50%; transform: translateY(-50%); cursor: pointer; opacity: 0; transition: all 0.3s ease; color: var(--color-text-tertiary); font-size: var(--font-size-lg);">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                </div>
+                
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: var(--spacing-2); margin-bottom: var(--spacing-6);">
+                    <button class="btn category-filter-btn active" style="padding: var(--spacing-2) var(--spacing-4); border: 2px solid var(--color-border-primary); background: var(--color-secondary); color: var(--color-text-inverse); border-radius: var(--radius-full); font-size: var(--font-size-sm); transition: all 0.3s ease;" data-category="all">All Topics</button>
+                    <button class="btn category-filter-btn" style="padding: var(--spacing-2) var(--spacing-4); border: 2px solid var(--color-border-primary); background: var(--color-white); color: var(--color-text-primary); border-radius: var(--radius-full); font-size: var(--font-size-sm); transition: all 0.3s ease;" data-category="services">Services</button>
+                    <button class="btn category-filter-btn" style="padding: var(--spacing-2) var(--spacing-4); border: 2px solid var(--color-border-primary); background: var(--color-white); color: var(--color-text-primary); border-radius: var(--radius-full); font-size: var(--font-size-sm); transition: all 0.3s ease;" data-category="pool-cleaning">Pool Cleaning</button>
+                    <button class="btn category-filter-btn" style="padding: var(--spacing-2) var(--spacing-4); border: 2px solid var(--color-border-primary); background: var(--color-white); color: var(--color-text-primary); border-radius: var(--radius-full); font-size: var(--font-size-sm); transition: all 0.3s ease;" data-category="safety">Safety</button>
+                    <button class="btn category-filter-btn" style="padding: var(--spacing-2) var(--spacing-4); border: 2px solid var(--color-border-primary); background: var(--color-white); color: var(--color-text-primary); border-radius: var(--radius-full); font-size: var(--font-size-sm); transition: all 0.3s ease;" data-category="booking">Booking</button>
+                    <button class="btn category-filter-btn" style="padding: var(--spacing-2) var(--spacing-4); border: 2px solid var(--color-border-primary); background: var(--color-white); color: var(--color-text-primary); border-radius: var(--radius-full); font-size: var(--font-size-sm); transition: all 0.3s ease;" data-category="estate">Estate</button>
+                </div>
+                
+                <!-- Search Results Counter -->
+                <div id="searchResults" style="text-align: center; margin-bottom: var(--spacing-4); font-size: var(--font-size-sm); color: var(--color-text-secondary); opacity: 0; transition: all 0.3s ease;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services & Offerings - Interactive Accordion -->
+    <section class="services-section" id="services-section" data-category="services">
         <div class="container">
             <div class="section-header">
                 <div class="section-badge">Services & Offerings</div>
@@ -373,14 +513,17 @@
             </div>
             
             <div class="services-grid">
-                <div class="service-card" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <div class="service-card faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" data-category="services">
                     <div class="service-content">
-                        <div class="service-icon-standalone">
-                            <i class="fas fa-water"></i>
-                        </div>
-                        <h3 class="service-title" itemprop="name">What types of aquatic services do you provide?</h3>
-                        <div class="service-description" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                            <div itemprop="text">
+                        <button class="faq-accordion" aria-expanded="false">
+                            <div class="service-icon-standalone">
+                                <i class="fas fa-water"></i>
+                            </div>
+                            <h3 class="service-title" itemprop="name">What types of aquatic services do you provide?</h3>
+                            <i class="fas fa-chevron-down" style="position: absolute; top: var(--spacing-6); right: var(--spacing-6); transition: transform 0.3s ease; color: var(--color-secondary); font-size: var(--font-size-lg);"></i>
+                        </button>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <div class="service-description" itemprop="text">
                                 <p>We specialize in four primary areas of luxury aquatic services:</p>
                                 <ul style="list-style: none; padding-left: 0; margin: var(--spacing-4) 0;">
                                     <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Private Estate Lifeguarding:</strong> Professional, discreet safety oversight</li>
@@ -388,61 +531,55 @@
                                     <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Luxury Event Management:</strong> Comprehensive aquatic safety for events</li>
                                     <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Exclusive Pool Cleaning:</strong> Available to our existing clients</li>
                                 </ul>
+                                <p>All services are fully customizable to meet the specific requirements of your estate and family lifestyle.</p>
                             </div>
-                        </div>
-                        <div class="service-features">
-                            <span class="feature-tag">Fully Customizable</span>
-                            <span class="feature-tag">Estate Services</span>
-                            <span class="feature-tag">Professional</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="service-card" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <div class="service-card faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" data-category="services">
                     <div class="service-content">
-                        <div class="service-icon-standalone">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <h3 class="service-title" itemprop="name">Do you work with special needs individuals?</h3>
-                        <div class="service-description" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                            <div itemprop="text">
+                        <button class="faq-accordion" aria-expanded="false">
+                            <div class="service-icon-standalone">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3 class="service-title" itemprop="name">Do you work with special needs individuals?</h3>
+                            <i class="fas fa-chevron-down" style="position: absolute; top: var(--spacing-6); right: var(--spacing-6); transition: transform 0.3s ease; color: var(--color-secondary); font-size: var(--font-size-lg);"></i>
+                        </button>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <div class="service-description" itemprop="text">
                                 <p>Yes, we have specialized training and certification in adaptive aquatic instruction:</p>
                                 <ul style="list-style: none; padding-left: 0; margin: var(--spacing-4) 0;">
                                     <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span>Customized instruction methods for various special needs</li>
                                     <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span>Sensory-friendly approaches for autism spectrum individuals</li>
                                     <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span>Adaptive techniques for physical disabilities</li>
-                                    <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span>Therapeutic swimming programs</li>
+                                    <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span>Therapeutic swimming programs focused on confidence building</li>
                                 </ul>
+                                <p>We work closely with families to understand specific needs and create supportive, effective learning environments.</p>
                             </div>
-                        </div>
-                        <div class="service-features">
-                            <span class="feature-tag">Specialized Training</span>
-                            <span class="feature-tag">Adaptive Methods</span>
-                            <span class="feature-tag">Therapeutic</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="service-card" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <div class="service-card faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" data-category="services">
                     <div class="service-content">
-                        <div class="service-icon-standalone">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <h3 class="service-title" itemprop="name">What areas do you serve?</h3>
-                        <div class="service-description" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                            <div itemprop="text">
+                        <button class="faq-accordion" aria-expanded="false">
+                            <div class="service-icon-standalone">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h3 class="service-title" itemprop="name">What areas do you serve?</h3>
+                            <i class="fas fa-chevron-down" style="position: absolute; top: var(--spacing-6); right: var(--spacing-6); transition: transform 0.3s ease; color: var(--color-secondary); font-size: var(--font-size-lg);"></i>
+                        </button>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <div class="service-description" itemprop="text">
                                 <p>Our service area covers the Conejo Valley and surrounding luxury communities:</p>
                                 <ul style="list-style: none; padding-left: 0; margin: var(--spacing-4) 0;">
-                                    <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Primary:</strong> Thousand Oaks, Westlake Village, Agoura Hills</li>
-                                    <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Extended:</strong> Malibu, Calabasas, Hidden Hills</li>
-                                    <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Premium:</strong> Beverly Hills, Manhattan Beach</li>
+                                    <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Primary Coverage:</strong> Thousand Oaks, Westlake Village, Agoura Hills, Newbury Park</li>
+                                    <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Extended Coverage:</strong> Malibu, Calabasas, Hidden Hills, Camarillo, Ventura</li>
+                                    <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Premium Locations:</strong> Beverly Hills, Manhattan Beach, Newport Beach, Palos Verdes</li>
                                 </ul>
+                                <p>We're happy to discuss service availability for other locations upon request.</p>
                             </div>
-                        </div>
-                        <div class="service-features">
-                            <span class="feature-tag">Conejo Valley</span>
-                            <span class="feature-tag">Luxury Communities</span>
-                            <span class="feature-tag">Premium Locations</span>
                         </div>
                     </div>
                 </div>
@@ -450,49 +587,22 @@
         </div>
     </section>
 
-    <!-- Pool Cleaning - Using About Section Style -->
-    <section class="about-section" id="pool-cleaning" data-category="pool-cleaning">
+    <!-- Contact Integration -->
+    <section class="about-section">
         <div class="container">
-            <div class="section-header">
-                <div class="section-badge">Pool Cleaning Services</div>
-                <h2><i class="fas fa-broom" aria-hidden="true"></i> Exclusive Pool Maintenance</h2>
-                <p class="section-description">
-                    Professional pool cleaning services available exclusively to our clients.
-                </p>
-            </div>
-            
             <div class="about-content">
                 <div class="about-text">
-                    <div class="feature-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                        <div class="feature-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="feature-content">
-                            <h4 itemprop="name">Who can access your pool cleaning services?</h4>
-                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                                <p itemprop="text">Our pool cleaning services are exclusively available to current 805 LifeGuard clients who utilize our lifeguarding or swimming instruction services. This ensures consistent quality standards and integrated service coordination.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="feature-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                        <div class="feature-icon">
-                            <i class="fas fa-list-check"></i>
-                        </div>
-                        <div class="feature-content">
-                            <h4 itemprop="name">What does your pool cleaning service include?</h4>
-                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                                <div itemprop="text">
-                                    <p>Our comprehensive service includes:</p>
-                                    <ul style="list-style: none; padding-left: 0; margin: var(--spacing-4) 0;">
-                                        <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Water Chemistry Management:</strong> Professional testing and balancing</li>
-                                        <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Physical Cleaning:</strong> Skimming, brushing, vacuuming</li>
-                                        <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Equipment Maintenance:</strong> Filter cleaning, pump inspection</li>
-                                        <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Detailed Reporting:</strong> Comprehensive service reports</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="callout-box">
+                        <blockquote>
+                            <i class="fas fa-question-circle"></i>
+                            Still have questions about our services? Our concierge team is standing by to provide personalized answers and guidance tailored to your specific needs.
+                            <cite>
+                                <a href="contact.html" class="btn btn-primary" style="margin-top: var(--spacing-4);">
+                                    <i class="fas fa-phone"></i>
+                                    Contact Our Team
+                                </a>
+                            </cite>
+                        </blockquote>
                     </div>
                 </div>
                 
@@ -511,8 +621,75 @@
         </div>
     </section>
 
-    <!-- Safety & Certifications - Using Team Section Style -->
-    <section class="team-section" id="safety" data-category="safety">
+    <!-- Pool Cleaning - Interactive Accordion -->
+    <section class="team-section" id="pool-cleaning-section" data-category="pool-cleaning">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Pool Cleaning Services</div>
+                <h2><i class="fas fa-broom" aria-hidden="true"></i> Exclusive Pool Maintenance</h2>
+                <p class="section-description">
+                    Professional pool cleaning services available exclusively to our clients.
+                </p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" data-category="pool-cleaning">
+                    <button class="faq-accordion" aria-expanded="false" style="background: none; border: none; width: 100%; text-align: left;">
+                        <div class="member-image">
+                            <div style="background: linear-gradient(135deg, #B8A082, #A0876C); height: 300px; display: flex; align-items: center; justify-content: center; position: relative;">
+                                <i class="fas fa-users" style="font-size: 4rem; color: white;"></i>
+                                <i class="fas fa-chevron-down" style="position: absolute; bottom: var(--spacing-4); right: var(--spacing-4); color: white; font-size: var(--font-size-xl); transition: transform 0.3s ease;"></i>
+                            </div>
+                        </div>
+                        <div class="member-content">
+                            <h3 itemprop="name">Who can access your pool cleaning services?</h3>
+                        </div>
+                    </button>
+                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div class="member-description" itemprop="text" style="padding: var(--spacing-6);">
+                            <p>Our pool cleaning services are exclusively available to current 805 LifeGuard clients who utilize our lifeguarding or swimming instruction services. This exclusive approach ensures:</p>
+                            <ul style="list-style: none; padding-left: 0; margin: var(--spacing-4) 0;">
+                                <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span>Consistent quality standards across all our services</li>
+                                <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span>Integrated service coordination and scheduling</li>
+                                <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span>Enhanced understanding of your pool's specific needs</li>
+                                <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span>Seamless communication through a single point of contact</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" data-category="pool-cleaning">
+                    <button class="faq-accordion" aria-expanded="false" style="background: none; border: none; width: 100%; text-align: left;">
+                        <div class="member-image">
+                            <div style="background: linear-gradient(135deg, #B8A082, #A0876C); height: 300px; display: flex; align-items: center; justify-content: center; position: relative;">
+                                <i class="fas fa-list-check" style="font-size: 4rem; color: white;"></i>
+                                <i class="fas fa-chevron-down" style="position: absolute; bottom: var(--spacing-4); right: var(--spacing-4); color: white; font-size: var(--font-size-xl); transition: transform 0.3s ease;"></i>
+                            </div>
+                        </div>
+                        <div class="member-content">
+                            <h3 itemprop="name">What does your pool cleaning service include?</h3>
+                        </div>
+                    </button>
+                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div class="member-description" itemprop="text" style="padding: var(--spacing-6);">
+                            <p>Our comprehensive pool cleaning service includes:</p>
+                            <ul style="list-style: none; padding-left: 0; margin: var(--spacing-4) 0;">
+                                <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Water Chemistry Management:</strong> Professional testing and balancing of pH, chlorine, alkalinity, and calcium hardness</li>
+                                <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Physical Cleaning:</strong> Skimming, brushing walls, vacuuming, and debris removal</li>
+                                <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Equipment Maintenance:</strong> Filter cleaning, pump inspection, and equipment optimization</li>
+                                <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Detailed Reporting:</strong> Comprehensive service reports with water chemistry readings and maintenance recommendations</li>
+                                <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Seasonal Services:</strong> Equipment winterization, spring opening, and specialized treatments</li>
+                            </ul>
+                            <p>All services are customized to your pool's specific requirements and usage patterns.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety & Certifications -->
+    <section class="coverage-section" id="safety-section" data-category="safety">
         <div class="container">
             <div class="section-header">
                 <div class="section-badge">Safety & Certifications</div>
@@ -522,43 +699,43 @@
                 </p>
             </div>
             
-            <div class="team-grid">
-                <div class="team-member" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <div class="member-image">
-                        <div style="background: linear-gradient(135deg, #B8A082, #A0876C); height: 300px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-certificate" style="font-size: 4rem; color: white;"></i>
-                        </div>
-                    </div>
-                    <div class="member-content">
-                        <h3 itemprop="name">What certifications and training do you have?</h3>
-                        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                            <div class="member-description" itemprop="text">
-                                Our comprehensive certifications include American Red Cross Lifeguard Certification, CPR/AED for Professional Rescuers, Water Safety Instructor (WSI) Certification, and Special Needs Aquatic Instruction.
-                            </div>
-                        </div>
-                        <div class="member-credentials">
-                            <span class="credential">Current Certification</span>
-                            <span class="credential">Professional Level</span>
+            <div class="coverage-grid">
+                <div class="coverage-card faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" data-category="safety">
+                    <button class="faq-accordion" aria-expanded="false" style="background: none; border: none; width: 100%; text-align: left;">
+                        <h3 itemprop="name"><i class="fas fa-certificate"></i> What certifications and training do you have?</h3>
+                        <i class="fas fa-chevron-down" style="position: absolute; top: var(--spacing-4); right: var(--spacing-4); transition: transform 0.3s ease; color: var(--color-secondary);"></i>
+                    </button>
+                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div itemprop="text" style="padding: var(--spacing-4) 0;">
+                            <p>Our comprehensive certifications include:</p>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>American Red Cross Lifeguard Certification</strong> (Current)</li>
+                                <li><i class="fas fa-check"></i> <strong>CPR/AED for Professional Rescuers</strong></li>
+                                <li><i class="fas fa-check"></i> <strong>Water Safety Instructor (WSI) Certification</strong></li>
+                                <li><i class="fas fa-check"></i> <strong>Special Needs Aquatic Instruction</strong></li>
+                                <li><i class="fas fa-check"></i> <strong>Licensed & Bonded for Private Estate Services</strong></li>
+                                <li><i class="fas fa-check"></i> <strong>Background Checked & Security Cleared</strong></li>
+                            </ul>
+                            <p>All certifications are kept current through regular renewal and continuing education programs.</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="team-member" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <div class="member-image">
-                        <div style="background: linear-gradient(135deg, #B8A082, #A0876C); height: 300px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-shield-alt" style="font-size: 4rem; color: white;"></i>
-                        </div>
-                    </div>
-                    <div class="member-content">
-                        <h3 itemprop="name">Are you insured and bonded?</h3>
-                        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                            <div class="member-description" itemprop="text">
-                                Yes, we maintain comprehensive insurance and bonding with $2 million professional liability coverage, general liability insurance, and complete background verification for all team members.
-                            </div>
-                        </div>
-                        <div class="member-credentials">
-                            <span class="credential">Licensed & Bonded</span>
-                            <span class="credential">$2M Coverage</span>
+                <div class="coverage-card featured faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" data-category="safety">
+                    <button class="faq-accordion" aria-expanded="false" style="background: none; border: none; width: 100%; text-align: left;">
+                        <h3 itemprop="name"><i class="fas fa-shield-alt"></i> Are you insured and bonded?</h3>
+                        <i class="fas fa-chevron-down" style="position: absolute; top: var(--spacing-4); right: var(--spacing-4); transition: transform 0.3s ease; color: var(--color-secondary);"></i>
+                    </button>
+                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div itemprop="text" style="padding: var(--spacing-4) 0;">
+                            <p>Yes, we maintain comprehensive insurance and bonding:</p>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>Professional Liability Insurance:</strong> $2 million coverage for all services</li>
+                                <li><i class="fas fa-check"></i> <strong>General Liability Insurance:</strong> Protection for property and personal injury</li>
+                                <li><i class="fas fa-check"></i> <strong>Bonding:</strong> Licensed and bonded for private estate services</li>
+                                <li><i class="fas fa-check"></i> <strong>Background Verification:</strong> Complete screening for all team members</li>
+                            </ul>
+                            <p>Insurance certificates and bonding documentation are available upon request and provided to all clients before service commencement.</p>
                         </div>
                     </div>
                 </div>
@@ -566,8 +743,8 @@
         </div>
     </section>
 
-    <!-- Booking & Estate - Using Coverage Section Style -->
-    <section class="coverage-section" id="booking" data-category="booking estate">
+    <!-- Booking & Estate Requirements -->
+    <section class="testimonials-section" id="booking-section" data-category="booking estate">
         <div class="container">
             <div class="section-header">
                 <div class="section-badge">Booking & Estate Requirements</div>
@@ -577,51 +754,84 @@
                 </p>
             </div>
             
-            <div class="coverage-grid">
-                <div class="coverage-card" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <h3 itemprop="name"><i class="fas fa-calendar-alt"></i> How far in advance should I book?</h3>
-                    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">
-                            <p>Booking timelines vary by service type:</p>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Swimming Lessons: 1-2 weeks</li>
-                                <li><i class="fas fa-check"></i> Event Services: 2-4 weeks</li>
-                                <li><i class="fas fa-check"></i> Summer Season: 4-6 weeks</li>
+            <div class="testimonials-grid">
+                <div class="testimonial-card faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" data-category="booking">
+                    <button class="faq-accordion" aria-expanded="false" style="background: none; border: none; width: 100%; text-align: left; padding: var(--spacing-6);">
+                        <h3 itemprop="name" style="margin-bottom: 0;">How far in advance should I book services?</h3>
+                        <i class="fas fa-chevron-down" style="position: absolute; top: var(--spacing-6); right: var(--spacing-6); transition: transform 0.3s ease; color: var(--color-secondary);"></i>
+                    </button>
+                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div class="testimonial-content" itemprop="text">
+                            <p>Booking timelines vary by service type and season:</p>
+                            <ul style="list-style: none; padding-left: 0; margin: var(--spacing-4) 0;">
+                                <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Swimming Lessons:</strong> 1-2 weeks advance booking recommended</li>
+                                <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Event Services:</strong> 2-4 weeks for optimal scheduling</li>
+                                <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Pool Cleaning:</strong> Can be added to existing service packages with 1 week notice</li>
+                                <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Emergency Coverage:</strong> Available with 24-48 hours notice</li>
+                                <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Summer Season:</strong> Book 4-6 weeks in advance (high demand period)</li>
+                                <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Holiday Events:</strong> 6-8 weeks advance booking strongly recommended</li>
                             </ul>
+                            <p>We always try to accommodate urgent requests and maintain flexibility for our established clients.</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="coverage-card featured" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <h3 itemprop="name"><i class="fas fa-home"></i> What do you need about our estate?</h3>
-                    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">
-                            <p>For optimal service delivery:</p>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Pool specifications and features</li>
-                                <li><i class="fas fa-check"></i> Access requirements and security</li>
-                                <li><i class="fas fa-check"></i> Family needs and preferences</li>
+                <div class="testimonial-card faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" data-category="estate">
+                    <button class="faq-accordion" aria-expanded="false" style="background: none; border: none; width: 100%; text-align: left; padding: var(--spacing-6);">
+                        <h3 itemprop="name" style="margin-bottom: 0;">What do you need to know about our pool and estate?</h3>
+                        <i class="fas fa-chevron-down" style="position: absolute; top: var(--spacing-6); right: var(--spacing-6); transition: transform 0.3s ease; color: var(--color-secondary);"></i>
+                    </button>
+                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div class="testimonial-content" itemprop="text">
+                            <p>For optimal service delivery, we assess several key factors:</p>
+                            <ul style="list-style: none; padding-left: 0; margin: var(--spacing-4) 0;">
+                                <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Pool specifications:</strong> Size, depth, special features (spa, slide, etc.)</li>
+                                <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Access requirements:</strong> Parking, gate codes, security protocols</li>
+                                <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Safety equipment:</strong> Available rescue equipment and emergency access</li>
+                                <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Family needs:</strong> Number of swimmers, ages, skill levels, special requirements</li>
+                                <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span><strong>Privacy considerations:</strong> Discretion requirements and estate protocols</li>
                             </ul>
+                            <p>This information is gathered during our initial consultation to ensure seamless service integration.</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="coverage-card" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <h3 itemprop="name"><i class="fas fa-building"></i> Do you work with estate management?</h3>
-                    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div itemprop="text">
-                            <p>Yes, we coordinate seamlessly with:</p>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Estate managers and house managers</li>
-                                <li><i class="fas fa-check"></i> Security teams and protocols</li>
-                                <li><i class="fas fa-check"></i> Existing maintenance schedules</li>
+                <div class="testimonial-card faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" data-category="estate">
+                    <button class="faq-accordion" aria-expanded="false" style="background: none; border: none; width: 100%; text-align: left; padding: var(--spacing-6);">
+                        <h3 itemprop="name" style="margin-bottom: 0;">Do you work with estate management companies?</h3>
+                        <i class="fas fa-chevron-down" style="position: absolute; top: var(--spacing-6); right: var(--spacing-6); transition: transform 0.3s ease; color: var(--color-secondary);"></i>
+                    </button>
+                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div class="testimonial-content" itemprop="text">
+                            <p>Yes, we frequently coordinate with estate management companies and household staff:</p>
+                            <ul style="list-style: none; padding-left: 0; margin: var(--spacing-4) 0;">
+                                <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span>Direct communication with estate managers and house managers</li>
+                                <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span>Coordination with security teams and access protocols</li>
+                                <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span>Integration with existing maintenance schedules</li>
+                                <li style="margin-bottom: var(--spacing-2); padding-left: var(--spacing-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-secondary);">•</span>Professional service reports for estate management records</li>
                             </ul>
+                            <p>We understand the importance of seamless coordination in luxury estate environments.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- No Results Section -->
+    <div id="noResults" class="no-results">
+        <div class="container">
+            <div style="max-width: 500px; margin: 0 auto; text-align: center;">
+                <i class="fas fa-search" style="font-size: 3rem; color: var(--color-text-tertiary); margin-bottom: var(--spacing-4);"></i>
+                <h3>No results found</h3>
+                <p style="margin-bottom: var(--spacing-6); color: var(--color-text-secondary);">We couldn't find any FAQs matching your search. Try different keywords or contact us directly for personalized assistance.</p>
+                <a href="contact.html" class="btn btn-primary">
+                    <i class="fas fa-phone"></i>
+                    Contact Our Team
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- FAQ CTA - Using Consultation Section Style -->
     <section class="consultation-section">
@@ -784,76 +994,303 @@
     <!-- Load Main Luxury Application Script -->
     <script src="js/luxury-app.js"></script>
 
-    <!-- FAQ-Specific Functionality - Minimal and Clean -->
+    <!-- Enhanced FAQ Functionality -->
     <script>
         (function() {
             'use strict';
             
-            console.log('805 LifeGuard: Initializing FAQ functionality...');
+            console.log('805 LifeGuard: Initializing Enhanced FAQ functionality...');
             
-            // Simple search functionality
-            function initializeFAQSearch() {
+            // Enhanced search functionality with real-time filtering
+            function initializeEnhancedFAQSearch() {
                 const searchInput = document.getElementById('faqSearch');
-                const categoryButtons = document.querySelectorAll('[data-category]');
-                const faqSections = document.querySelectorAll('[data-category]');
+                const searchIcon = document.getElementById('searchIcon');
+                const clearBtn = document.getElementById('searchClearBtn');
+                const searchResults = document.getElementById('searchResults');
+                const categoryButtons = document.querySelectorAll('.category-filter-btn');
+                const faqItems = document.querySelectorAll('.faq-item');
+                const noResults = document.getElementById('noResults');
                 
                 let currentCategory = 'all';
+                let searchTimeout;
                 
-                // Search functionality
+                // Search input enhancements
                 if (searchInput) {
                     searchInput.addEventListener('input', function() {
-                        const searchTerm = this.value.toLowerCase();
-                        filterFAQs(searchTerm, currentCategory);
+                        const searchTerm = this.value.toLowerCase().trim();
+                        
+                        // Show/hide clear button
+                        if (searchTerm) {
+                            clearBtn.style.opacity = '1';
+                            searchIcon.style.color = 'var(--color-secondary)';
+                        } else {
+                            clearBtn.style.opacity = '0';
+                            searchIcon.style.color = 'var(--color-text-tertiary)';
+                        }
+                        
+                        // Debounced search
+                        clearTimeout(searchTimeout);
+                        searchTimeout = setTimeout(function() {
+                            performSearch(searchTerm, currentCategory);
+                        }, 150);
+                    });
+                    
+                    searchInput.addEventListener('focus', function() {
+                        this.style.borderColor = 'var(--color-secondary)';
+                        this.style.boxShadow = '0 0 0 4px rgba(184, 160, 130, 0.15)';
+                    });
+                    
+                    searchInput.addEventListener('blur', function() {
+                        this.style.borderColor = 'var(--color-border-primary)';
+                        this.style.boxShadow = 'none';
                     });
                 }
                 
-                // Category filtering
+                // Clear search
+                if (clearBtn) {
+                    clearBtn.addEventListener('click', function() {
+                        searchInput.value = '';
+                        clearBtn.style.opacity = '0';
+                        searchIcon.style.color = 'var(--color-text-tertiary)';
+                        performSearch('', currentCategory);
+                        searchInput.focus();
+                    });
+                }
+                
+                // Category filtering with enhanced animations
                 categoryButtons.forEach(function(button) {
                     button.addEventListener('click', function() {
                         currentCategory = this.dataset.category;
                         
-                        // Update active button
+                        // Update active button with smooth transition
                         categoryButtons.forEach(function(btn) {
                             btn.style.background = 'var(--color-white)';
                             btn.style.color = 'var(--color-text-primary)';
+                            btn.style.borderColor = 'var(--color-border-primary)';
+                            btn.classList.remove('active');
                         });
+                        
                         this.style.background = 'var(--color-secondary)';
                         this.style.color = 'var(--color-text-inverse)';
+                        this.style.borderColor = 'var(--color-secondary)';
+                        this.classList.add('active');
                         
-                        // Filter FAQs
-                        const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
-                        filterFAQs(searchTerm, currentCategory);
+                        // Filter with current search term
+                        const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
+                        performSearch(searchTerm, currentCategory);
                     });
                 });
                 
-                function filterFAQs(searchTerm, category) {
-                    faqSections.forEach(function(section) {
-                        const sectionCategories = section.dataset.category.split(' ');
-                        const shouldShowSection = category === 'all' || sectionCategories.includes(category);
+                function performSearch(searchTerm, category) {
+                    let visibleCount = 0;
+                    
+                    faqItems.forEach(function(item, index) {
+                        const itemCategories = item.dataset.category ? item.dataset.category.split(' ') : ['all'];
+                        const shouldShowCategory = category === 'all' || itemCategories.includes(category);
                         
-                        if (shouldShowSection) {
+                        if (shouldShowCategory) {
                             if (!searchTerm) {
-                                section.style.display = 'block';
+                                // Show all items in category
+                                showFAQItem(item, index);
+                                visibleCount++;
                             } else {
-                                const content = section.textContent.toLowerCase();
-                                section.style.display = content.includes(searchTerm) ? 'block' : 'none';
+                                // Search within content
+                                const title = item.querySelector('h3').textContent.toLowerCase();
+                                const content = item.textContent.toLowerCase();
+                                
+                                if (title.includes(searchTerm) || content.includes(searchTerm)) {
+                                    highlightSearchTerms(item, searchTerm);
+                                    showFAQItem(item, index);
+                                    visibleCount++;
+                                } else {
+                                    hideFAQItem(item);
+                                }
                             }
                         } else {
-                            section.style.display = 'none';
+                            hideFAQItem(item);
+                        }
+                    });
+                    
+                    // Update search results counter
+                    updateSearchResults(visibleCount, searchTerm);
+                    
+                    // Show/hide no results
+                    if (visibleCount === 0 && (searchTerm || category !== 'all')) {
+                        showNoResults();
+                    } else {
+                        hideNoResults();
+                    }
+                }
+                
+                function showFAQItem(item, index) {
+                    item.style.display = 'block';
+                    setTimeout(function() {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, index * 50);
+                }
+                
+                function hideFAQItem(item) {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px)';
+                    setTimeout(function() {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+                
+                function highlightSearchTerms(item, searchTerm) {
+                    // Remove existing highlights
+                    const highlights = item.querySelectorAll('.search-highlight');
+                    highlights.forEach(function(highlight) {
+                        const parent = highlight.parentNode;
+                        parent.replaceChild(document.createTextNode(highlight.textContent), highlight);
+                        parent.normalize();
+                    });
+                    
+                    // Add new highlights (simplified for performance)
+                    const textNodes = getTextNodes(item);
+                    textNodes.forEach(function(node) {
+                        if (node.textContent.toLowerCase().includes(searchTerm)) {
+                            const regex = new RegExp('(' + escapeRegex(searchTerm) + ')', 'gi');
+                            const highlightedText = node.textContent.replace(regex, '<span class="search-highlight">$1</span>');
+                            if (highlightedText !== node.textContent) {
+                                const wrapper = document.createElement('div');
+                                wrapper.innerHTML = highlightedText;
+                                node.parentNode.replaceChild(wrapper, node);
+                            }
                         }
                     });
                 }
+                
+                function getTextNodes(element) {
+                    const textNodes = [];
+                    const walk = document.createTreeWalker(
+                        element,
+                        NodeFilter.SHOW_TEXT,
+                        null,
+                        false
+                    );
+                    
+                    let node;
+                    while (node = walk.nextNode()) {
+                        if (node.textContent.trim()) {
+                            textNodes.push(node);
+                        }
+                    }
+                    return textNodes;
+                }
+                
+                function escapeRegex(string) {
+                    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                }
+                
+                function updateSearchResults(count, searchTerm) {
+                    if (searchTerm) {
+                        searchResults.textContent = count + ' result' + (count !== 1 ? 's' : '') + ' found';
+                        searchResults.style.opacity = '1';
+                    } else {
+                        searchResults.style.opacity = '0';
+                    }
+                }
+                
+                function showNoResults() {
+                    noResults.classList.add('show');
+                }
+                
+                function hideNoResults() {
+                    noResults.classList.remove('show');
+                }
+            }
+            
+            // Enhanced accordion functionality
+            function initializeAccordion() {
+                const accordions = document.querySelectorAll('.faq-accordion');
+                
+                accordions.forEach(function(accordion) {
+                    accordion.addEventListener('click', function() {
+                        const answer = this.parentElement.querySelector('.faq-answer');
+                        const chevron = this.querySelector('.fa-chevron-down');
+                        const isExpanded = answer.classList.contains('expanded');
+                        
+                        // Close all other accordions
+                        accordions.forEach(function(otherAccordion) {
+                            if (otherAccordion !== accordion) {
+                                const otherAnswer = otherAccordion.parentElement.querySelector('.faq-answer');
+                                const otherChevron = otherAccordion.querySelector('.fa-chevron-down');
+                                
+                                if (otherAnswer && otherAnswer.classList.contains('expanded')) {
+                                    otherAnswer.classList.remove('expanded');
+                                    otherAccordion.setAttribute('aria-expanded', 'false');
+                                    if (otherChevron) {
+                                        otherChevron.style.transform = 'rotate(0deg)';
+                                    }
+                                }
+                            }
+                        });
+                        
+                        // Toggle current accordion
+                        if (isExpanded) {
+                            answer.classList.remove('expanded');
+                            this.setAttribute('aria-expanded', 'false');
+                            if (chevron) {
+                                chevron.style.transform = 'rotate(0deg)';
+                            }
+                        } else {
+                            answer.classList.add('expanded');
+                            this.setAttribute('aria-expanded', 'true');
+                            if (chevron) {
+                                chevron.style.transform = 'rotate(180deg)';
+                            }
+                            
+                            // Smooth scroll to question
+                            setTimeout(function() {
+                                accordion.scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'start'
+                                });
+                            }, 200);
+                        }
+                    });
+                });
+            }
+            
+            // Smooth scroll for internal links
+            function initializeSmoothScroll() {
+                const links = document.querySelectorAll('a[href^="#"]');
+                
+                links.forEach(function(link) {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href');
+                        const target = document.querySelector(targetId);
+                        
+                        if (target) {
+                            const offset = window.innerWidth <= 768 ? 88 : 132;
+                            const targetPosition = target.offsetTop - offset;
+                            
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
             }
             
             // Initialize when DOM is ready
             if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initializeFAQSearch);
+                document.addEventListener('DOMContentLoaded', function() {
+                    initializeEnhancedFAQSearch();
+                    initializeAccordion();
+                    initializeSmoothScroll();
+                });
             } else {
-                initializeFAQSearch();
+                initializeEnhancedFAQSearch();
+                initializeAccordion();
+                initializeSmoothScroll();
             }
             
-            console.log('805 LifeGuard: FAQ functionality initialized successfully');
-            
+            console.log('805 LifeGuard: Enhanced FAQ functionality initialized successfully');
         })();
     </script>
 
@@ -862,15 +1299,17 @@
         window.addEventListener('load', function() {
             if (window.performance && window.performance.timing) {
                 const loadTime = window.performance.timing.loadEventEnd - window.performance.timing.navigationStart;
-                console.log('805 LifeGuard: FAQ page loaded in', loadTime + 'ms');
+                console.log('805 LifeGuard: Enhanced FAQ page loaded in', loadTime + 'ms');
             }
         });
         
         window.addEventListener('luxuryAppReady', function(e) {
-            console.log('805 LifeGuard: Luxury app ready on FAQ page', {
+            console.log('805 LifeGuard: Luxury app ready on Enhanced FAQ page', {
                 version: e.detail.version,
                 features: e.detail.features,
-                faqOptimized: true,
+                enhancedFAQ: true,
+                interactiveAccordion: true,
+                realTimeSearch: true,
                 designSystemCompliant: true,
                 carusoAesthetic: true
             });
