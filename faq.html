@@ -38,960 +38,7 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://805lifeguard.com/faq.html">
     
-    <!-- Critical CSS - Enhanced FAQ Functionality with Caruso Design System Integration -->
-    <style>
-        /* Critical path CSS for immediate rendering - INTEGRATED WITH CARUSO DESIGN SYSTEM */
-        :root {
-            --color-primary-darkest: #1A1A1A;
-            --color-primary: #4A4A4A;
-            --color-secondary: #B8A082;
-            --color-secondary-dark: #A0876C;
-            --color-secondary-darkest: #8B7355;
-            --color-secondary-lightest: #F5F2ED;
-            --color-white: #FFFFFF;
-            --color-text-primary: #0F0F0F;
-            --color-text-secondary: #666666;
-            --color-text-tertiary: #999999;
-            --color-text-inverse: #FFFFFF;
-            --color-bg-primary: #FFFFFF;
-            --color-bg-secondary: #F9F9F9;
-            --color-border-primary: #E8E8E8;
-            --font-family-serif: 'Playfair Display', Georgia, serif;
-            --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            --header-total-height: 132px;
-            --header-navbar-height: 88px;
-            --z-index-header: 1070;
-            --z-index-hamburger: 1080;
-            --z-index-modal: 1050;
-            --shadow-base: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
-            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
-            --radius-lg: 0.5rem;
-            --radius-xl: 0.75rem;
-            --radius-2xl: 1rem;
-            --radius-3xl: 1.5rem;
-            --radius-full: 9999px;
-            --spacing-2: 0.5rem;
-            --spacing-3: 0.75rem;
-            --spacing-4: 1rem;
-            --spacing-6: 1.5rem;
-            --spacing-8: 2rem;
-            --spacing-10: 2.5rem;
-            --spacing-12: 3rem;
-            --spacing-16: 4rem;
-            --spacing-20: 5rem;
-            --spacing-24: 6rem;
-            --spacing-32: 8rem;
-            --font-size-xs: 0.75rem;
-            --font-size-sm: 0.875rem;
-            --font-size-base: 1rem;
-            --font-size-lg: 1.125rem;
-            --font-size-xl: 1.25rem;
-            --font-size-2xl: 1.5rem;
-            --font-size-3xl: 1.875rem;
-            --font-size-4xl: 2.25rem;
-            --font-size-5xl: 3rem;
-            --font-size-6xl: 3.75rem;
-            --line-height-tight: 1.25;
-            --line-height-normal: 1.5;
-            --line-height-relaxed: 1.625;
-            --font-weight-light: 300;
-            --font-weight-regular: 400;
-            --font-weight-medium: 500;
-            --font-weight-semibold: 600;
-            --font-weight-bold: 700;
-            --transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-normal: 350ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: var(--font-family-sans);
-            color: var(--color-text-primary);
-            background: var(--color-bg-primary);
-            overflow-x: hidden;
-            line-height: var(--line-height-normal);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: var(--z-index-header);
-            background: var(--color-white);
-            border-bottom: 1px solid var(--color-border-primary);
-        }
-        
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: var(--header-total-height);
-            overflow: hidden;
-        }
-        
-        @media (max-width: 768px) {
-            .hero { 
-                padding-top: calc(var(--header-navbar-height) + var(--spacing-4));
-                min-height: 100vh;
-                min-height: 100dvh;
-            }
-        }
-
-        /* === ENHANCED FAQ STYLES - PERFECT CARUSO DESIGN SYSTEM INTEGRATION === */
-        
-        /* FAQ Content Section - Matching established design system */
-        #faq-content {
-            padding: var(--spacing-20) 0;
-            background: var(--color-bg-primary);
-        }
-        
-        @media (max-width: 768px) {
-            #faq-content {
-                padding: var(--spacing-16) 0;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            #faq-content {
-                padding: var(--spacing-12) 0;
-            }
-        }
-        
-        /* FAQ Layout - Perfect Caruso responsive grid with optimal space usage */
-        .faq-layout {
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: var(--spacing-8);
-            align-items: start;
-            width: 100%;
-            max-width: none;
-        }
-        
-        @media (max-width: 1024px) {
-            .faq-layout {
-                grid-template-columns: 260px 1fr;
-                gap: var(--spacing-6);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .faq-layout {
-                grid-template-columns: 1fr;
-                gap: var(--spacing-6);
-            }
-        }
-        
-        /* FAQ Sidebar - Optimized Caruso card styling */
-        .faq-sidebar {
-            position: sticky;
-            top: calc(var(--header-total-height) + var(--spacing-6));
-            max-height: calc(100vh - var(--header-total-height) - var(--spacing-12));
-            overflow-y: auto;
-            background: var(--color-white);
-            border-radius: var(--radius-2xl);
-            padding: var(--spacing-6);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--color-border-primary);
-            transition: all var(--transition-normal);
-        }
-        
-        .faq-sidebar:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-base);
-        }
-        
-        @media (max-width: 768px) {
-            .faq-sidebar {
-                position: static;
-                order: 2;
-                margin-top: var(--spacing-6);
-                max-height: none;
-                padding: var(--spacing-5);
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .faq-sidebar {
-                padding: var(--spacing-4);
-                margin-top: var(--spacing-4);
-            }
-        }
-        
-        /* FAQ Main Content - Perfect Caruso card */
-        .faq-main {
-            background: var(--color-white);
-            border-radius: var(--radius-2xl);
-            padding: var(--spacing-8);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--color-border-primary);
-            transition: all var(--transition-normal);
-            width: 100%;
-        }
-        
-        .faq-main:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-base);
-        }
-        
-        @media (max-width: 768px) {
-            .faq-main {
-                order: 1;
-                padding: var(--spacing-6);
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .faq-main {
-                padding: var(--spacing-5);
-                border-radius: var(--radius-xl);
-            }
-        }
-        
-        /* FAQ Items - Enhanced Caruso interaction */
-        .faq-item {
-            background: var(--color-bg-primary);
-            border: 1px solid var(--color-border-primary);
-            border-radius: var(--radius-xl);
-            margin-bottom: var(--spacing-4);
-            overflow: hidden;
-            transition: all var(--transition-normal);
-        }
-        
-        .faq-item:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-base);
-            border-color: var(--color-secondary);
-        }
-        
-        .faq-item:last-child {
-            margin-bottom: 0;
-        }
-        
-        @media (max-width: 480px) {
-            .faq-item {
-                margin-bottom: var(--spacing-3);
-                border-radius: var(--radius-lg);
-            }
-        }
-        
-        /* FAQ Questions - Perfect Caruso typography */
-        .faq-question {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding: var(--spacing-5);
-            background: none;
-            border: none;
-            text-align: left;
-            cursor: pointer;
-            transition: all var(--transition-normal);
-            font-family: var(--font-family-sans);
-            gap: var(--spacing-3);
-        }
-        
-        .faq-question:hover {
-            background: var(--color-bg-secondary);
-        }
-        
-        .faq-question.active {
-            background: var(--color-secondary);
-            color: var(--color-text-inverse);
-        }
-        
-        @media (max-width: 480px) {
-            .faq-question {
-                padding: var(--spacing-4);
-                gap: var(--spacing-2);
-            }
-        }
-        
-        .faq-question h3 {
-            font-size: var(--font-size-lg);
-            font-weight: var(--font-weight-semibold);
-            margin: 0;
-            line-height: var(--line-height-tight);
-            font-family: var(--font-family-sans);
-            color: inherit;
-            flex: 1;
-        }
-        
-        @media (max-width: 768px) {
-            .faq-question h3 {
-                font-size: var(--font-size-base);
-                line-height: var(--line-height-normal);
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .faq-question h3 {
-                font-size: var(--font-size-sm);
-                font-weight: var(--font-weight-medium);
-            }
-        }
-        
-        .faq-question i {
-            transition: transform var(--transition-normal);
-            font-size: var(--font-size-lg);
-            flex-shrink: 0;
-            color: inherit;
-            margin-top: 2px;
-        }
-        
-        .faq-question.active i {
-            transform: rotate(180deg);
-        }
-        
-        @media (max-width: 480px) {
-            .faq-question i {
-                font-size: var(--font-size-base);
-            }
-        }
-        
-        /* FAQ Answers - Perfect Caruso content styling */
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height var(--transition-slow);
-            background: var(--color-bg-primary);
-        }
-        
-        .faq-answer.active {
-            max-height: 800px;
-        }
-        
-        .faq-answer > div {
-            padding: 0 var(--spacing-5) var(--spacing-5);
-            border-top: 1px solid var(--color-border-primary);
-        }
-        
-        @media (max-width: 480px) {
-            .faq-answer > div {
-                padding: 0 var(--spacing-4) var(--spacing-4);
-            }
-        }
-        
-        .faq-answer p {
-            margin-bottom: var(--spacing-3);
-            color: var(--color-text-secondary);
-            line-height: var(--line-height-relaxed);
-            font-size: var(--font-size-base);
-            font-weight: var(--font-weight-light);
-        }
-        
-        @media (max-width: 480px) {
-            .faq-answer p {
-                font-size: var(--font-size-sm);
-                margin-bottom: var(--spacing-2);
-            }
-        }
-        
-        .faq-answer ul {
-            margin-left: var(--spacing-5);
-            margin-bottom: var(--spacing-3);
-            list-style-type: none;
-        }
-        
-        .faq-answer li {
-            margin-bottom: var(--spacing-2);
-            color: var(--color-text-secondary);
-            line-height: var(--line-height-relaxed);
-            font-size: var(--font-size-base);
-            font-weight: var(--font-weight-light);
-            position: relative;
-            padding-left: var(--spacing-5);
-        }
-        
-        .faq-answer li::before {
-            content: '•';
-            color: var(--color-secondary);
-            font-weight: var(--font-weight-bold);
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-        
-        @media (max-width: 480px) {
-            .faq-answer ul {
-                margin-left: var(--spacing-3);
-            }
-            
-            .faq-answer li {
-                font-size: var(--font-size-sm);
-                margin-bottom: var(--spacing-1);
-                padding-left: var(--spacing-3);
-            }
-        }
-        
-        .faq-answer strong {
-            color: var(--color-text-primary);
-            font-weight: var(--font-weight-semibold);
-        }
-        
-        /* Search Section - Perfect Caruso styling integration */
-        .search-input {
-            width: 100%;
-            padding: var(--spacing-3) var(--spacing-3) var(--spacing-3) var(--spacing-10);
-            border: 2px solid var(--color-border-primary);
-            border-radius: var(--radius-full);
-            font-size: var(--font-size-base);
-            transition: all var(--transition-normal);
-            background: var(--color-white);
-            font-family: var(--font-family-sans);
-            font-weight: var(--font-weight-regular);
-            color: var(--color-text-primary);
-        }
-        
-        .search-input:focus {
-            outline: none;
-            border-color: var(--color-secondary);
-            box-shadow: 0 0 0 4px rgba(184, 160, 130, 0.15);
-            transform: scale(1.01);
-        }
-        
-        @media (max-width: 480px) {
-            .search-input {
-                padding: var(--spacing-3) var(--spacing-3) var(--spacing-3) var(--spacing-8);
-                font-size: var(--font-size-sm);
-            }
-        }
-        
-        .search-input-wrapper {
-            position: relative;
-            max-width: 600px;
-            margin: 0 auto var(--spacing-6);
-        }
-        
-        @media (max-width: 480px) {
-            .search-input-wrapper {
-                margin: 0 auto var(--spacing-4);
-            }
-        }
-        
-        .search-input-wrapper i {
-            position: absolute;
-            left: var(--spacing-3);
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--color-text-tertiary);
-            font-size: var(--font-size-base);
-            pointer-events: none;
-        }
-        
-        @media (max-width: 480px) {
-            .search-input-wrapper i {
-                left: var(--spacing-2);
-                font-size: var(--font-size-sm);
-            }
-        }
-        
-        /* Category Buttons - Perfect Caruso button styling */
-        .search-categories {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: var(--spacing-2);
-        }
-        
-        @media (max-width: 480px) {
-            .search-categories {
-                gap: var(--spacing-1);
-            }
-        }
-        
-        .category-btn {
-            padding: var(--spacing-2) var(--spacing-4);
-            border: 2px solid var(--color-border-primary);
-            background: var(--color-white);
-            border-radius: var(--radius-full);
-            cursor: pointer;
-            transition: all var(--transition-normal);
-            font-weight: var(--font-weight-medium);
-            font-size: var(--font-size-sm);
-            color: var(--color-text-primary);
-            font-family: var(--font-family-sans);
-            box-shadow: var(--shadow-xs);
-            min-height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .category-btn:hover {
-            background: var(--color-secondary);
-            color: var(--color-text-inverse);
-            border-color: var(--color-secondary);
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .category-btn.active {
-            background: var(--color-secondary);
-            color: var(--color-text-inverse);
-            border-color: var(--color-secondary);
-            box-shadow: var(--shadow-base);
-        }
-        
-        @media (max-width: 480px) {
-            .category-btn {
-                padding: var(--spacing-2) var(--spacing-3);
-                font-size: var(--font-size-xs);
-                min-height: 36px;
-            }
-        }
-        
-        /* Sidebar Elements - Perfect Caruso styling */
-        .sidebar-header h3 {
-            font-family: var(--font-family-serif);
-            font-size: var(--font-size-xl);
-            font-weight: var(--font-weight-regular);
-            color: var(--color-text-primary);
-            margin-bottom: var(--spacing-6);
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-2);
-            line-height: var(--line-height-tight);
-        }
-        
-        .sidebar-header h3 i {
-            color: var(--color-secondary);
-        }
-        
-        @media (max-width: 768px) {
-            .sidebar-header h3 {
-                font-size: var(--font-size-lg);
-                margin-bottom: var(--spacing-4);
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .sidebar-header h3 {
-                font-size: var(--font-size-base);
-                margin-bottom: var(--spacing-3);
-            }
-        }
-        
-        .category-list {
-            margin-bottom: var(--spacing-6);
-        }
-        
-        @media (max-width: 480px) {
-            .category-list {
-                margin-bottom: var(--spacing-4);
-            }
-        }
-        
-        .category-link {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: var(--spacing-3);
-            margin-bottom: var(--spacing-1);
-            border-radius: var(--radius-lg);
-            text-decoration: none;
-            transition: all var(--transition-normal);
-            border-left: 3px solid transparent;
-            color: var(--color-text-primary);
-            font-size: var(--font-size-sm);
-            font-weight: var(--font-weight-medium);
-            font-family: var(--font-family-sans);
-        }
-        
-        .category-link:hover {
-            background: var(--color-secondary-lightest);
-            border-left-color: var(--color-secondary);
-            color: var(--color-text-primary);
-            transform: translateX(2px);
-        }
-        
-        .category-link.active {
-            background: var(--color-secondary-lightest);
-            border-left-color: var(--color-secondary);
-            color: var(--color-text-primary);
-        }
-        
-        @media (max-width: 480px) {
-            .category-link {
-                padding: var(--spacing-2);
-                font-size: var(--font-size-xs);
-                border-radius: var(--radius-md);
-            }
-        }
-        
-        .category-link span {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-2);
-        }
-        
-        .category-link span i {
-            color: var(--color-secondary);
-            font-size: var(--font-size-sm);
-        }
-        
-        .question-count {
-            background: var(--color-secondary);
-            color: var(--color-text-inverse);
-            padding: var(--spacing-1) var(--spacing-2);
-            border-radius: var(--radius-full);
-            font-size: var(--font-size-xs);
-            font-weight: var(--font-weight-semibold);
-            min-width: 20px;
-            text-align: center;
-            line-height: 1;
-        }
-        
-        @media (max-width: 480px) {
-            .question-count {
-                min-width: 18px;
-                font-size: 10px;
-                padding: 1px var(--spacing-1);
-            }
-        }
-        
-        /* Contact Sidebar - Perfect Caruso card styling */
-        .contact-sidebar {
-            background: var(--color-secondary-lightest);
-            padding: var(--spacing-5);
-            border-radius: var(--radius-xl);
-            border: 1px solid rgba(184, 160, 130, 0.2);
-            box-shadow: var(--shadow-xs);
-            transition: all var(--transition-normal);
-        }
-        
-        .contact-sidebar:hover {
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-sm);
-        }
-        
-        @media (max-width: 480px) {
-            .contact-sidebar {
-                padding: var(--spacing-3);
-                border-radius: var(--radius-lg);
-            }
-        }
-        
-        .contact-sidebar h4 {
-            font-family: var(--font-family-serif);
-            font-size: var(--font-size-lg);
-            font-weight: var(--font-weight-medium);
-            color: var(--color-text-primary);
-            margin-bottom: var(--spacing-3);
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-2);
-            line-height: var(--line-height-tight);
-        }
-        
-        .contact-sidebar h4 i {
-            color: var(--color-secondary);
-        }
-        
-        @media (max-width: 480px) {
-            .contact-sidebar h4 {
-                font-size: var(--font-size-base);
-                margin-bottom: var(--spacing-2);
-            }
-        }
-        
-        .contact-sidebar p {
-            margin: var(--spacing-3) 0;
-            font-size: var(--font-size-sm);
-            color: var(--color-text-secondary);
-            line-height: var(--line-height-relaxed);
-            font-weight: var(--font-weight-light);
-        }
-        
-        @media (max-width: 480px) {
-            .contact-sidebar p {
-                font-size: var(--font-size-xs);
-                margin: var(--spacing-2) 0;
-            }
-        }
-        
-        /* Section Titles - Perfect Caruso typography */
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-2);
-            margin-bottom: var(--spacing-6);
-            font-family: var(--font-family-serif);
-            font-size: var(--font-size-2xl);
-            font-weight: var(--font-weight-light);
-            color: var(--color-text-primary);
-            line-height: var(--line-height-tight);
-            letter-spacing: -0.02em;
-        }
-        
-        .section-title i {
-            color: var(--color-secondary);
-            font-size: var(--font-size-xl);
-        }
-        
-        @media (max-width: 768px) {
-            .section-title {
-                font-size: var(--font-size-xl);
-                margin-bottom: var(--spacing-4);
-            }
-            
-            .section-title i {
-                font-size: var(--font-size-lg);
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .section-title {
-                font-size: var(--font-size-lg);
-                gap: var(--spacing-2);
-                margin-bottom: var(--spacing-3);
-            }
-            
-            .section-title i {
-                font-size: var(--font-size-base);
-            }
-        }
-        
-        /* FAQ Sections - Optimized spacing */
-        .faq-section {
-            margin-bottom: var(--spacing-10);
-        }
-        
-        .faq-section:last-child {
-            margin-bottom: 0;
-        }
-        
-        @media (max-width: 768px) {
-            .faq-section {
-                margin-bottom: var(--spacing-8);
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .faq-section {
-                margin-bottom: var(--spacing-6);
-            }
-        }
-        
-        /* Enhanced Button Integration - Perfect Caruso styling */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--spacing-2);
-            padding: var(--spacing-3) var(--spacing-5);
-            border-radius: var(--radius-full);
-            font-weight: var(--font-weight-medium);
-            font-size: var(--font-size-sm);
-            text-decoration: none;
-            transition: all var(--transition-normal);
-            border: 2px solid transparent;
-            cursor: pointer;
-            white-space: nowrap;
-            font-family: var(--font-family-sans);
-            justify-content: center;
-            min-height: 42px;
-            letter-spacing: 0.01em;
-            box-shadow: var(--shadow-xs);
-        }
-        
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-base);
-        }
-        
-        .btn:active {
-            transform: translateY(0);
-            box-shadow: var(--shadow-xs);
-        }
-        
-        .btn-primary {
-            background: var(--color-text-primary);
-            color: var(--color-text-inverse);
-            border-color: var(--color-text-primary);
-        }
-        
-        .btn-primary:hover {
-            background: var(--color-primary);
-            border-color: var(--color-primary);
-        }
-        
-        .btn-small {
-            padding: var(--spacing-2) var(--spacing-4);
-            font-size: var(--font-size-xs);
-            min-height: 36px;
-            gap: var(--spacing-1);
-        }
-        
-        @media (max-width: 480px) {
-            .btn {
-                width: 100%;
-                padding: var(--spacing-3) var(--spacing-4);
-                font-size: var(--font-size-xs);
-                min-height: 40px;
-            }
-            
-            .btn-small {
-                padding: var(--spacing-2) var(--spacing-3);
-                min-height: 34px;
-            }
-        }
-        
-        /* Enhanced container and spacing consistency */
-        .container {
-            width: 100%;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding-left: var(--spacing-6);
-            padding-right: var(--spacing-6);
-        }
-        
-        @media (min-width: 640px) {
-            .container {
-                padding-left: var(--spacing-8);
-                padding-right: var(--spacing-8);
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .container {
-                padding-left: var(--spacing-10);
-                padding-right: var(--spacing-10);
-            }
-        }
-        
-        /* Section styling perfect consistency - REDUCED SPACING */
-        section {
-            padding: var(--spacing-20) 0;
-        }
-        
-        @media (max-width: 768px) {
-            section {
-                padding: var(--spacing-16) 0;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            section {
-                padding: var(--spacing-12) 0;
-            }
-        }
-        
-        .section-header {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto var(--spacing-12);
-        }
-        
-        @media (max-width: 768px) {
-            .section-header {
-                margin: 0 auto var(--spacing-10);
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .section-header {
-                margin: 0 auto var(--spacing-8);
-            }
-        }
-        
-        .section-badge {
-            display: inline-block;
-            background: var(--color-secondary);
-            color: var(--color-text-inverse);
-            padding: var(--spacing-2) var(--spacing-4);
-            border-radius: var(--radius-full);
-            font-size: var(--font-size-xs);
-            font-weight: var(--font-weight-medium);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: var(--spacing-4);
-            box-shadow: var(--shadow-xs);
-            transition: all var(--transition-normal);
-        }
-        
-        .section-badge:hover {
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .section-header h2 {
-            font-family: var(--font-family-serif);
-            font-size: clamp(var(--font-size-2xl), 4vw, var(--font-size-4xl));
-            font-weight: var(--font-weight-light);
-            color: var(--color-text-primary);
-            margin-bottom: var(--spacing-4);
-            line-height: var(--line-height-tight);
-            letter-spacing: -0.02em;
-        }
-        
-        .section-description {
-            font-size: var(--font-size-lg);
-            color: var(--color-text-secondary);
-            line-height: var(--line-height-relaxed);
-            font-weight: var(--font-weight-light);
-            margin: 0;
-        }
-        
-        @media (max-width: 480px) {
-            .section-description {
-                font-size: var(--font-size-base);
-            }
-        }
-        
-        /* Enhanced focus states for perfect accessibility */
-        .faq-question:focus,
-        .category-btn:focus,
-        .category-link:focus,
-        .search-input:focus,
-        .btn:focus {
-            outline: 2px solid var(--color-secondary);
-            outline-offset: 2px;
-        }
-        
-        /* Performance optimizations */
-        .faq-item,
-        .category-btn,
-        .btn,
-        .faq-sidebar,
-        .faq-main,
-        .contact-sidebar {
-            will-change: transform;
-            backface-visibility: hidden;
-            transform: translateZ(0);
-        }
-        
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Print styles */
-        @media print {
-            .faq-sidebar,
-            .search-categories,
-            .search-input-wrapper {
-                display: none;
-            }
-            
-            .faq-layout {
-                grid-template-columns: 1fr;
-            }
-            
-            .faq-answer {
-                max-height: none !important;
-            }
-            
-            .faq-item {
-                page-break-inside: avoid;
-            }
-        }
-    </style>
+    <!-- REMOVED CONFLICTING INLINE CSS - Now uses main luxury-theme.css -->
     
     <!-- Enhanced Performance: DNS Prefetch and Preconnect -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -1017,6 +64,418 @@
     <!-- Main CSS - Unified Design System -->
     <link rel="preload" href="css/luxury-theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="css/luxury-theme.css"></noscript>
+    
+    <!-- FAQ-Specific Styles (Minimal, Non-Conflicting) -->
+    <style>
+        /* FAQ Page Specific Enhancements - Preserves Caruso Design System */
+        .faq-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: var(--spacing-8);
+            align-items: start;
+            width: 100%;
+            max-width: none;
+        }
+        
+        @media (max-width: 1024px) {
+            .faq-layout {
+                grid-template-columns: 260px 1fr;
+                gap: var(--spacing-6);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .faq-layout {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-6);
+            }
+        }
+        
+        .faq-sidebar {
+            position: sticky;
+            top: calc(var(--header-total-height) + var(--spacing-6));
+            max-height: calc(100vh - var(--header-total-height) - var(--spacing-12));
+            overflow-y: auto;
+            background: var(--color-white);
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-8);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--color-border-primary);
+            transition: all var(--transition-normal);
+        }
+        
+        .faq-sidebar:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-base);
+        }
+        
+        @media (max-width: 768px) {
+            .faq-sidebar {
+                position: static;
+                order: 2;
+                margin-top: var(--spacing-6);
+                max-height: none;
+                padding: var(--spacing-6);
+            }
+        }
+        
+        .faq-main {
+            background: var(--color-white);
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-8);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--color-border-primary);
+            transition: all var(--transition-normal);
+            width: 100%;
+        }
+        
+        .faq-main:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-base);
+        }
+        
+        @media (max-width: 768px) {
+            .faq-main {
+                order: 1;
+                padding: var(--spacing-6);
+            }
+        }
+        
+        .faq-item {
+            background: var(--color-white);
+            border: 1px solid var(--color-border-primary);
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--spacing-4);
+            overflow: hidden;
+            transition: all var(--transition-normal);
+        }
+        
+        .faq-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-base);
+            border-color: var(--color-secondary);
+        }
+        
+        .faq-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .faq-question {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: var(--spacing-6);
+            background: none;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            font-family: var(--font-family-sans);
+            gap: var(--spacing-3);
+        }
+        
+        .faq-question:hover {
+            background: var(--color-bg-secondary);
+        }
+        
+        .faq-question.active {
+            background: var(--color-secondary);
+            color: var(--color-text-inverse);
+        }
+        
+        .faq-question h3 {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-semibold);
+            margin: 0;
+            line-height: var(--line-height-tight);
+            font-family: var(--font-family-sans);
+            color: inherit;
+            flex: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .faq-question h3 {
+                font-size: var(--font-size-base);
+            }
+        }
+        
+        .faq-question i {
+            transition: transform var(--transition-normal);
+            font-size: var(--font-size-lg);
+            flex-shrink: 0;
+            color: inherit;
+            margin-top: 2px;
+        }
+        
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-slow);
+            background: var(--color-white);
+        }
+        
+        .faq-answer.active {
+            max-height: 800px;
+        }
+        
+        .faq-answer > div {
+            padding: 0 var(--spacing-6) var(--spacing-6);
+            border-top: 1px solid var(--color-border-primary);
+        }
+        
+        .faq-answer p {
+            margin-bottom: var(--spacing-4);
+            color: var(--color-text-secondary);
+            line-height: var(--line-height-relaxed);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-light);
+        }
+        
+        .faq-answer ul {
+            margin-left: var(--spacing-5);
+            margin-bottom: var(--spacing-4);
+            list-style-type: none;
+        }
+        
+        .faq-answer li {
+            margin-bottom: var(--spacing-2);
+            color: var(--color-text-secondary);
+            line-height: var(--line-height-relaxed);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-light);
+            position: relative;
+            padding-left: var(--spacing-4);
+        }
+        
+        .faq-answer li::before {
+            content: '•';
+            color: var(--color-secondary);
+            font-weight: var(--font-weight-bold);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .faq-answer strong {
+            color: var(--color-text-primary);
+            font-weight: var(--font-weight-semibold);
+        }
+        
+        .sidebar-header h3 {
+            font-family: var(--font-family-serif);
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-regular);
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-6);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            line-height: var(--line-height-tight);
+        }
+        
+        .sidebar-header h3 i {
+            color: var(--color-secondary);
+        }
+        
+        .category-list {
+            margin-bottom: var(--spacing-6);
+        }
+        
+        .category-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-3);
+            margin-bottom: var(--spacing-2);
+            border-radius: var(--radius-lg);
+            text-decoration: none;
+            transition: all var(--transition-normal);
+            border-left: 3px solid transparent;
+            color: var(--color-text-primary);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            font-family: var(--font-family-sans);
+        }
+        
+        .category-link:hover {
+            background: var(--color-secondary-lightest);
+            border-left-color: var(--color-secondary);
+            color: var(--color-text-primary);
+            transform: translateX(2px);
+        }
+        
+        .category-link.active {
+            background: var(--color-secondary-lightest);
+            border-left-color: var(--color-secondary);
+            color: var(--color-text-primary);
+        }
+        
+        .category-link span {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+        }
+        
+        .category-link span i {
+            color: var(--color-secondary);
+            font-size: var(--font-size-sm);
+        }
+        
+        .question-count {
+            background: var(--color-secondary);
+            color: var(--color-text-inverse);
+            padding: var(--spacing-1) var(--spacing-2);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-semibold);
+            min-width: 20px;
+            text-align: center;
+            line-height: 1;
+        }
+        
+        .contact-sidebar {
+            background: var(--color-secondary-lightest);
+            padding: var(--spacing-6);
+            border-radius: var(--radius-xl);
+            border: 1px solid rgba(184, 160, 130, 0.2);
+            box-shadow: var(--shadow-xs);
+            transition: all var(--transition-normal);
+        }
+        
+        .contact-sidebar:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .contact-sidebar h4 {
+            font-family: var(--font-family-serif);
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-4);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            line-height: var(--line-height-tight);
+        }
+        
+        .contact-sidebar h4 i {
+            color: var(--color-secondary);
+        }
+        
+        .contact-sidebar p {
+            margin: var(--spacing-3) 0;
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            line-height: var(--line-height-relaxed);
+            font-weight: var(--font-weight-light);
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+            margin-bottom: var(--spacing-8);
+            font-family: var(--font-family-serif);
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-light);
+            color: var(--color-text-primary);
+            line-height: var(--line-height-tight);
+            letter-spacing: -0.02em;
+        }
+        
+        .section-title i {
+            color: var(--color-secondary);
+            font-size: var(--font-size-xl);
+        }
+        
+        .faq-section {
+            margin-bottom: var(--spacing-12);
+        }
+        
+        .faq-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .search-input-wrapper {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto var(--spacing-6);
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: var(--spacing-4) var(--spacing-4) var(--spacing-4) var(--spacing-12);
+            border: 2px solid var(--color-border-primary);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-base);
+            transition: all var(--transition-normal);
+            background: var(--color-white);
+            font-family: var(--font-family-sans);
+            font-weight: var(--font-weight-regular);
+            color: var(--color-text-primary);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--color-secondary);
+            box-shadow: 0 0 0 4px rgba(184, 160, 130, 0.15);
+            transform: scale(1.01);
+        }
+        
+        .search-input-wrapper i {
+            position: absolute;
+            left: var(--spacing-4);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-text-tertiary);
+            font-size: var(--font-size-base);
+            pointer-events: none;
+        }
+        
+        .search-categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-2);
+        }
+        
+        .category-btn {
+            padding: var(--spacing-2) var(--spacing-4);
+            border: 2px solid var(--color-border-primary);
+            background: var(--color-white);
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            font-weight: var(--font-weight-medium);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-primary);
+            font-family: var(--font-family-sans);
+            box-shadow: var(--shadow-xs);
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--color-secondary);
+            color: var(--color-text-inverse);
+            border-color: var(--color-secondary);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .search-wrapper {
+            margin-bottom: var(--spacing-12);
+        }
+    </style>
     
     <!-- Favicon and Apple Touch Icons -->
     <link rel="icon" type="image/x-icon" href="images/logos/805-lifeguard-favicon.ico">
@@ -1260,7 +719,7 @@
     </section>
 
     <!-- FAQ Content Section -->
-    <section class="faq-content" id="faq-content">
+    <section class="about-section" id="faq-content">
         <div class="container">
             <div class="faq-layout">
                 <!-- FAQ Sidebar -->
@@ -1271,23 +730,23 @@
                     <nav class="category-list">
                         <a href="#services" class="category-link active" data-category="services">
                             <span><i class="fas fa-water" aria-hidden="true"></i> Services & Offerings</span>
-                            <span class="question-count">8</span>
+                            <span class="question-count">4</span>
                         </a>
                         <a href="#pool-cleaning" class="category-link" data-category="pool-cleaning">
                             <span><i class="fas fa-broom" aria-hidden="true"></i> Pool Cleaning Services</span>
-                            <span class="question-count">6</span>
+                            <span class="question-count">2</span>
                         </a>
                         <a href="#safety" class="category-link" data-category="safety">
                             <span><i class="fas fa-shield-alt" aria-hidden="true"></i> Safety & Certifications</span>
-                            <span class="question-count">7</span>
+                            <span class="question-count">2</span>
                         </a>
                         <a href="#booking" class="category-link" data-category="booking">
                             <span><i class="fas fa-calendar-check" aria-hidden="true"></i> Booking & Scheduling</span>
-                            <span class="question-count">5</span>
+                            <span class="question-count">1</span>
                         </a>
                         <a href="#estate" class="category-link" data-category="estate">
                             <span><i class="fas fa-home" aria-hidden="true"></i> Estate Requirements</span>
-                            <span class="question-count">4</span>
+                            <span class="question-count">2</span>
                         </a>
                     </nav>
                     
