@@ -559,13 +559,90 @@
     line-height: var(--line-height-relaxed);
 }
 
-/* === FAQ ITEM ENHANCEMENTS === */
+/* === ENHANCED FAQ ANSWER CONTENT STYLING === */
+
+/* FAQ Answer Content */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity: 0;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 0 0 var(--radius-2xl) var(--radius-2xl);
+}
+
+.faq-answer.expanded {
+    max-height: 1000px;
+    opacity: 1;
+    padding: var(--spacing-6) var(--spacing-8) var(--spacing-8) var(--spacing-8);
+}
+
+/* Enhanced content styling inside FAQ answers */
+.faq-answer p {
+    margin-bottom: var(--spacing-4);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-light);
+}
+
+.faq-answer p:last-child {
+    margin-bottom: 0;
+}
+
+.faq-answer ul {
+    margin: var(--spacing-4) 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.faq-answer li {
+    margin-bottom: var(--spacing-3);
+    padding-left: var(--spacing-6);
+    position: relative;
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-light);
+}
+
+.faq-answer li:last-child {
+    margin-bottom: 0;
+}
+
+.faq-answer li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--color-secondary);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-lg);
+}
+
+.faq-answer strong {
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Enhanced spacing for nested content */
+.faq-answer .service-description {
+    margin-bottom: var(--spacing-6);
+}
+
+.faq-answer .member-description {
+    padding: var(--spacing-6);
+    margin: 0;
+}
+
+/* === FAQ SECTION SPACING ENHANCEMENTS === */
+
+/* Enhanced section spacing for FAQ page consistency */
 .faq-item {
     display: block;
     opacity: 1;
     transform: translateY(0);
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    margin-bottom: var(--spacing-6);
+    margin-bottom: var(--spacing-8);
 }
 
 .faq-item.hidden {
@@ -582,7 +659,64 @@
     animation: highlightPulse 2s ease-in-out;
 }
 
-/* === ACCORDION ENHANCEMENTS === */
+/* Enhanced spacing for FAQ grid layouts */
+.faq-item .services-grid,
+.faq-item .team-grid,
+.faq-item .testimonials-grid,
+.faq-item .coverage-grid {
+    gap: var(--spacing-8);
+}
+
+/* Ensure consistent card styling across FAQ sections */
+.faq-item .service-card,
+.faq-item .team-member,
+.faq-item .testimonial-card,
+.faq-item .coverage-card {
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border-primary);
+    transition: all var(--transition-normal);
+}
+
+.faq-item .service-card:hover,
+.faq-item .team-member:hover,
+.faq-item .testimonial-card:hover,
+.faq-item .coverage-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-border-accent);
+}
+
+/* Enhanced title spacing in FAQ cards */
+.faq-item .service-title,
+.faq-item h3 {
+    margin-bottom: var(--spacing-4);
+    line-height: var(--line-height-tight);
+}
+
+/* Enhanced list styling consistency */
+.faq-item ul:not(.coverage-card ul) {
+    margin: var(--spacing-4) 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.faq-item li:not(.coverage-card li) {
+    margin-bottom: var(--spacing-3);
+    padding-left: var(--spacing-6);
+    position: relative;
+    line-height: var(--line-height-relaxed);
+}
+
+.faq-item li:not(.coverage-card li)::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--color-secondary);
+    font-weight: var(--font-weight-bold);
+}
+
+/* === ENHANCED ACCORDION ENHANCEMENTS === */
 .faq-accordion {
     background: transparent;
     border: none;
@@ -592,7 +726,7 @@
     outline: none;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
-    padding: var(--spacing-6);
+    padding: var(--spacing-8);
     border-radius: var(--radius-2xl);
 }
 
@@ -617,21 +751,83 @@
     transform: rotate(180deg);
 }
 
-/* FAQ Answer Content */
-.faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    opacity: 0;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 0 0 var(--radius-2xl) var(--radius-2xl);
+/* === ENHANCED FAQ PAGE SPECIFIC OVERRIDES === */
+
+/* Ensure consistent spacing for FAQ page service cards */
+.faq-item .service-content {
+    padding: var(--spacing-8);
 }
 
-.faq-answer.expanded {
-    max-height: 1000px;
-    opacity: 1;
-    padding-top: var(--spacing-4);
-    padding-bottom: var(--spacing-6);
+.faq-item .service-description {
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-6);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-light);
+}
+
+/* Enhanced team member card spacing for FAQ page */
+.faq-item .member-content {
+    padding: var(--spacing-8);
+}
+
+.faq-item .member-description {
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-6);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-light);
+    padding: 0;
+}
+
+/* Enhanced testimonial card spacing for FAQ page */
+.faq-item .testimonial-content {
+    padding: var(--spacing-8);
+}
+
+.faq-item .testimonial-content p {
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-6);
+    color: var(--color-text-primary);
+    font-style: italic;
+    font-family: var(--font-family-serif);
+    font-weight: var(--font-weight-light);
+}
+
+/* Enhanced coverage card spacing for FAQ page */
+.faq-item .coverage-card {
+    padding: var(--spacing-8);
+}
+
+.faq-item .coverage-card h3 {
+    margin-bottom: var(--spacing-6);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-regular);
+}
+
+.faq-item .coverage-card ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.faq-item .coverage-card li {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    margin-bottom: var(--spacing-3);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-light);
+    line-height: var(--line-height-relaxed);
+}
+
+.faq-item .coverage-card li:last-child {
+    margin-bottom: 0;
+}
+
+.faq-item .coverage-card li i {
+    color: var(--color-secondary);
+    font-size: var(--font-size-sm);
+    flex-shrink: 0;
 }
 
 /* === ANIMATIONS === */
@@ -758,8 +954,43 @@
         margin: var(--spacing-4) 0;
     }
     
+    /* Enhanced mobile FAQ accordion spacing */
     .faq-accordion {
-        padding: var(--spacing-4);
+        padding: var(--spacing-6);
+    }
+    
+    .faq-answer.expanded {
+        padding: var(--spacing-4) var(--spacing-6) var(--spacing-6) var(--spacing-6);
+    }
+    
+    .faq-answer p {
+        font-size: var(--font-size-sm);
+        margin-bottom: var(--spacing-3);
+    }
+    
+    .faq-answer li {
+        margin-bottom: var(--spacing-2);
+        padding-left: var(--spacing-5);
+        font-size: var(--font-size-sm);
+    }
+    
+    /* Enhanced mobile FAQ card spacing */
+    .faq-item {
+        margin-bottom: var(--spacing-6);
+    }
+    
+    .faq-item .service-content,
+    .faq-item .member-content,
+    .faq-item .testimonial-content,
+    .faq-item .coverage-card {
+        padding: var(--spacing-6);
+    }
+    
+    .faq-item .services-grid,
+    .faq-item .team-grid,
+    .faq-item .testimonials-grid,
+    .faq-item .coverage-grid {
+        gap: var(--spacing-6);
     }
     
     .suggestion-item {
@@ -802,6 +1033,51 @@
     
     .result-excerpt {
         font-size: var(--font-size-sm);
+    }
+    
+    /* Enhanced mobile FAQ spacing */
+    .faq-accordion {
+        padding: var(--spacing-4);
+    }
+    
+    .faq-answer.expanded {
+        padding: var(--spacing-3) var(--spacing-4) var(--spacing-4) var(--spacing-4);
+    }
+    
+    .faq-answer p {
+        font-size: var(--font-size-xs);
+        margin-bottom: var(--spacing-2);
+        line-height: var(--line-height-normal);
+    }
+    
+    .faq-answer li {
+        margin-bottom: var(--spacing-1);
+        padding-left: var(--spacing-4);
+        font-size: var(--font-size-xs);
+        line-height: var(--line-height-normal);
+    }
+    
+    .faq-answer li::before {
+        font-size: var(--font-size-base);
+    }
+    
+    /* Enhanced mobile FAQ card spacing */
+    .faq-item {
+        margin-bottom: var(--spacing-4);
+    }
+    
+    .faq-item .service-content,
+    .faq-item .member-content,
+    .faq-item .testimonial-content,
+    .faq-item .coverage-card {
+        padding: var(--spacing-4);
+    }
+    
+    .faq-item .services-grid,
+    .faq-item .team-grid,
+    .faq-item .testimonials-grid,
+    .faq-item .coverage-grid {
+        gap: var(--spacing-4);
     }
 }
 
