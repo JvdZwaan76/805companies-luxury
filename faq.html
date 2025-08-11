@@ -198,9 +198,9 @@
     <link rel="preload" href="css/luxury-theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="css/luxury-theme.css"></noscript>
     
-    <!-- FAQ Enhanced CSS - Search System & Mobile Optimizations -->
-    <link rel="preload" href="css/faq-enhanced.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="css/faq-enhanced.css"></noscript>
+    <!-- FAQ Enterprise CSS - Advanced Search System & Mobile Optimizations -->
+    <link rel="preload" href="css/faq-enterprise.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/faq-enterprise.css"></noscript>
     
     <!-- Favicon and Apple Touch Icons -->
     <link rel="icon" type="image/x-icon" href="images/logos/805-lifeguard-favicon.ico">
@@ -507,22 +507,26 @@
         </div>
     </section>
 
-    <!-- Enhanced Search Section -->
+    <!-- Enhanced Enterprise Search Section -->
     <section class="about-section">
         <div class="container">
             <div class="section-header">
-                <div class="section-badge">Search Knowledge Base</div>
+                <div class="section-badge">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                    Enterprise Search System
+                </div>
                 <h2>Find Specific Answers</h2>
                 <p class="section-description">
-                    Search our comprehensive FAQ database or browse by category to find exactly what you need.
+                    Search our comprehensive FAQ database with advanced fuzzy matching, relevance scoring, 
+                    and real-time suggestions. Find exactly what you need with enterprise-level search technology.
                 </p>
             </div>
             
-            <!-- Enhanced Search Interface -->
+            <!-- Enhanced Enterprise Search Interface -->
             <div class="faq-search-container">
                 <div style="position: relative; margin-bottom: var(--spacing-6);">
                     <i class="fas fa-search" id="searchIcon"></i>
-                    <input type="text" id="faqSearch" placeholder="Search for answers about services, certifications, pool cleaning..." aria-label="Search FAQ">
+                    <input type="text" id="faqSearch" placeholder="Search for answers about services, certifications, pool cleaning..." aria-label="Search FAQ" autocomplete="off">
                     <div id="searchClearBtn">
                         <i class="fas fa-times-circle"></i>
                     </div>
@@ -537,7 +541,7 @@
                     <button class="btn category-filter-btn" data-category="estate">Estate</button>
                 </div>
                 
-                <!-- Search Results Counter -->
+                <!-- Enterprise Search Results Counter -->
                 <div id="searchResults"></div>
             </div>
         </div>
@@ -1036,15 +1040,15 @@
     <!-- Load Main Luxury Application Script -->
     <script src="js/luxury-app.js"></script>
 
-    <!-- Load Dedicated FAQ Search System -->
-    <script src="js/faq-search.js"></script>
+    <!-- Load Enterprise FAQ Search System -->
+    <script src="js/enterprise-faq-search.js"></script>
 
     <!-- Enhanced Performance Monitoring -->
     <script>
         window.addEventListener('load', function() {
             if (window.performance && window.performance.timing) {
                 const loadTime = window.performance.timing.loadEventEnd - window.performance.timing.navigationStart;
-                console.log('805 LifeGuard: FAQ page with dedicated search loaded in', loadTime + 'ms');
+                console.log('805 LifeGuard: FAQ page with Enterprise Search loaded in', loadTime + 'ms');
             }
         });
         
@@ -1052,22 +1056,31 @@
             console.log('805 LifeGuard: Luxury app ready on FAQ page', {
                 version: e.detail.version,
                 features: e.detail.features,
-                dedicatedFAQSearch: true,
-                separateJavaScript: true,
-                robustSearchSystem: true,
-                conflictFreeSearch: true,
+                enterpriseFAQSearch: true,
+                advancedSearchEngine: true,
+                fuzzySearchAlgorithm: true,
+                levenshteinDistance: true,
+                relevanceScoring: true,
+                realTimeSuggestions: true,
+                searchResultHighlighting: true,
+                contextualExcerpts: true,
+                searchHistory: true,
+                categoryIntegration: true,
+                loadingStates: true,
+                accessibilityCompliant: true,
                 optimizedMobileSpacing: true,
                 workingAccordion: true,
                 designSystemCompliant: true,
                 carusoAesthetic: true
             });
             
-            // Check if FAQ search system loaded
+            // Check if Enterprise FAQ search system loaded
             setTimeout(function() {
-                if (window.FAQSearchSystem && window.FAQSearchSystem.isInitialized()) {
-                    console.log('805 LifeGuard: FAQ Search System status:', window.FAQSearchSystem.getState());
+                if (window.EnterpriseFAQSearch && window.EnterpriseFAQSearch.isInitialized()) {
+                    console.log('805 LifeGuard: Enterprise FAQ Search System status:', window.EnterpriseFAQSearch.getState());
+                    console.log('805 LifeGuard: Enterprise search features active - Fuzzy search, relevance scoring, real-time suggestions');
                 } else {
-                    console.warn('805 LifeGuard: FAQ Search System not fully loaded');
+                    console.warn('805 LifeGuard: Enterprise FAQ Search System not fully loaded');
                 }
             }, 500);
         });
