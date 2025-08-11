@@ -88,6 +88,7 @@
         @media (max-width: 768px) {
             .hero { 
                 padding-top: calc(var(--header-navbar-height) + 1rem);
+                min-height: 85vh;
             }
         }
         
@@ -100,6 +101,7 @@
             cursor: pointer;
             outline: none;
             transition: all 0.3s ease;
+            position: relative;
         }
         
         .faq-answer {
@@ -127,11 +129,34 @@
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.4s ease;
+            display: none;
         }
         
         .no-results.show {
             opacity: 1;
             transform: translateY(0);
+            display: block;
+        }
+
+        /* Mobile spacing fixes */
+        @media (max-width: 768px) {
+            section {
+                padding: 4rem 0 2rem 0;
+            }
+            
+            .coverage-section,
+            .team-section,
+            .testimonials-section {
+                padding: 3rem 0;
+            }
+            
+            .services-section {
+                padding: 2rem 0;
+            }
+            
+            .about-section {
+                padding: 2rem 0;
+            }
         }
     </style>
     
@@ -994,15 +1019,15 @@
     <!-- Load Main Luxury Application Script -->
     <script src="js/luxury-app.js"></script>
 
-    <!-- Enhanced FAQ Functionality -->
+    <!-- FIXED FAQ Functionality - Simplified and Robust -->
     <script>
         (function() {
             'use strict';
             
-            console.log('805 LifeGuard: Initializing Enhanced FAQ functionality...');
+            console.log('805 LifeGuard: Initializing FIXED FAQ functionality...');
             
-            // Enhanced search functionality with real-time filtering
-            function initializeEnhancedFAQSearch() {
+            // Simplified and robust FAQ search functionality
+            function initializeFAQSearch() {
                 const searchInput = document.getElementById('faqSearch');
                 const searchIcon = document.getElementById('searchIcon');
                 const clearBtn = document.getElementById('searchClearBtn');
@@ -1011,15 +1036,61 @@
                 const faqItems = document.querySelectorAll('.faq-item');
                 const noResults = document.getElementById('noResults');
                 
+                if (!searchInput || !faqItems.length) {
+                    console.warn('FAQ search elements not found');
+                    return;
+                }
+                
                 let currentCategory = 'all';
                 let searchTimeout;
                 
-                // Search input enhancements
-                if (searchInput) {
-                    searchInput.addEventListener('input', function() {
-                        const searchTerm = this.value.toLowerCase().trim();
-                        
-                        // Show/hide clear button
+                // Search input functionality
+                searchInput.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase().trim();
+                    
+                    // Update UI
+                    updateSearchUI(searchTerm);
+                    
+                    // Debounced search
+                    clearTimeout(searchTimeout);
+                    searchTimeout = setTimeout(function() {
+                        performSearch(searchTerm, currentCategory);
+                    }, 150);
+                });
+                
+                // Clear button functionality
+                if (clearBtn) {
+                    clearBtn.addEventListener('click', function() {
+                        searchInput.value = '';
+                        updateSearchUI('');
+                        performSearch('', currentCategory);
+                        searchInput.focus();
+                    });
+                }
+                
+                // Category filtering
+                categoryButtons.forEach(function(button) {
+                    button.addEventListener('click', function() {
+                        currentCategory = this.dataset.category;
+                        updateActiveCategory(this);
+                        const searchTerm = searchInput.value.toLowerCase().trim();
+                        performSearch(searchTerm, currentCategory);
+                    });
+                });
+                
+                // Search focus effects
+                searchInput.addEventListener('focus', function() {
+                    this.style.borderColor = 'var(--color-secondary)';
+                    this.style.boxShadow = '0 0 0 4px rgba(184, 160, 130, 0.15)';
+                });
+                
+                searchInput.addEventListener('blur', function() {
+                    this.style.borderColor = 'var(--color-border-primary)';
+                    this.style.boxShadow = 'none';
+                });
+                
+                function updateSearchUI(searchTerm) {
+                    if (clearBtn && searchIcon) {
                         if (searchTerm) {
                             clearBtn.style.opacity = '1';
                             searchIcon.style.color = 'var(--color-secondary)';
@@ -1027,85 +1098,47 @@
                             clearBtn.style.opacity = '0';
                             searchIcon.style.color = 'var(--color-text-tertiary)';
                         }
-                        
-                        // Debounced search
-                        clearTimeout(searchTimeout);
-                        searchTimeout = setTimeout(function() {
-                            performSearch(searchTerm, currentCategory);
-                        }, 150);
-                    });
-                    
-                    searchInput.addEventListener('focus', function() {
-                        this.style.borderColor = 'var(--color-secondary)';
-                        this.style.boxShadow = '0 0 0 4px rgba(184, 160, 130, 0.15)';
-                    });
-                    
-                    searchInput.addEventListener('blur', function() {
-                        this.style.borderColor = 'var(--color-border-primary)';
-                        this.style.boxShadow = 'none';
-                    });
+                    }
                 }
                 
-                // Clear search
-                if (clearBtn) {
-                    clearBtn.addEventListener('click', function() {
-                        searchInput.value = '';
-                        clearBtn.style.opacity = '0';
-                        searchIcon.style.color = 'var(--color-text-tertiary)';
-                        performSearch('', currentCategory);
-                        searchInput.focus();
+                function updateActiveCategory(activeButton) {
+                    categoryButtons.forEach(function(btn) {
+                        btn.style.background = 'var(--color-white)';
+                        btn.style.color = 'var(--color-text-primary)';
+                        btn.style.borderColor = 'var(--color-border-primary)';
+                        btn.classList.remove('active');
                     });
+                    
+                    activeButton.style.background = 'var(--color-secondary)';
+                    activeButton.style.color = 'var(--color-text-inverse)';
+                    activeButton.style.borderColor = 'var(--color-secondary)';
+                    activeButton.classList.add('active');
                 }
-                
-                // Category filtering with enhanced animations
-                categoryButtons.forEach(function(button) {
-                    button.addEventListener('click', function() {
-                        currentCategory = this.dataset.category;
-                        
-                        // Update active button with smooth transition
-                        categoryButtons.forEach(function(btn) {
-                            btn.style.background = 'var(--color-white)';
-                            btn.style.color = 'var(--color-text-primary)';
-                            btn.style.borderColor = 'var(--color-border-primary)';
-                            btn.classList.remove('active');
-                        });
-                        
-                        this.style.background = 'var(--color-secondary)';
-                        this.style.color = 'var(--color-text-inverse)';
-                        this.style.borderColor = 'var(--color-secondary)';
-                        this.classList.add('active');
-                        
-                        // Filter with current search term
-                        const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
-                        performSearch(searchTerm, currentCategory);
-                    });
-                });
                 
                 function performSearch(searchTerm, category) {
                     let visibleCount = 0;
                     
-                    faqItems.forEach(function(item, index) {
+                    faqItems.forEach(function(item) {
                         const itemCategories = item.dataset.category ? item.dataset.category.split(' ') : ['all'];
                         const shouldShowCategory = category === 'all' || itemCategories.includes(category);
                         
+                        let shouldShow = false;
+                        
                         if (shouldShowCategory) {
                             if (!searchTerm) {
-                                // Show all items in category
-                                showFAQItem(item, index);
-                                visibleCount++;
+                                shouldShow = true;
                             } else {
-                                // Search within content
-                                const title = item.querySelector('h3').textContent.toLowerCase();
-                                const content = item.textContent.toLowerCase();
-                                
-                                if (title.includes(searchTerm) || content.includes(searchTerm)) {
-                                    highlightSearchTerms(item, searchTerm);
-                                    showFAQItem(item, index);
-                                    visibleCount++;
-                                } else {
-                                    hideFAQItem(item);
+                                // Search in text content
+                                const textContent = item.textContent.toLowerCase();
+                                if (textContent.includes(searchTerm)) {
+                                    shouldShow = true;
                                 }
                             }
+                        }
+                        
+                        if (shouldShow) {
+                            showFAQItem(item);
+                            visibleCount++;
                         } else {
                             hideFAQItem(item);
                         }
@@ -1122,87 +1155,47 @@
                     }
                 }
                 
-                function showFAQItem(item, index) {
+                function showFAQItem(item) {
                     item.style.display = 'block';
-                    setTimeout(function() {
-                        item.style.opacity = '1';
-                        item.style.transform = 'translateY(0)';
-                    }, index * 50);
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
                 }
                 
                 function hideFAQItem(item) {
                     item.style.opacity = '0';
                     item.style.transform = 'translateY(20px)';
                     setTimeout(function() {
-                        item.style.display = 'none';
+                        if (item.style.opacity === '0') {
+                            item.style.display = 'none';
+                        }
                     }, 300);
                 }
                 
-                function highlightSearchTerms(item, searchTerm) {
-                    // Remove existing highlights
-                    const highlights = item.querySelectorAll('.search-highlight');
-                    highlights.forEach(function(highlight) {
-                        const parent = highlight.parentNode;
-                        parent.replaceChild(document.createTextNode(highlight.textContent), highlight);
-                        parent.normalize();
-                    });
-                    
-                    // Add new highlights (simplified for performance)
-                    const textNodes = getTextNodes(item);
-                    textNodes.forEach(function(node) {
-                        if (node.textContent.toLowerCase().includes(searchTerm)) {
-                            const regex = new RegExp('(' + escapeRegex(searchTerm) + ')', 'gi');
-                            const highlightedText = node.textContent.replace(regex, '<span class="search-highlight">$1</span>');
-                            if (highlightedText !== node.textContent) {
-                                const wrapper = document.createElement('div');
-                                wrapper.innerHTML = highlightedText;
-                                node.parentNode.replaceChild(wrapper, node);
-                            }
-                        }
-                    });
-                }
-                
-                function getTextNodes(element) {
-                    const textNodes = [];
-                    const walk = document.createTreeWalker(
-                        element,
-                        NodeFilter.SHOW_TEXT,
-                        null,
-                        false
-                    );
-                    
-                    let node;
-                    while (node = walk.nextNode()) {
-                        if (node.textContent.trim()) {
-                            textNodes.push(node);
-                        }
-                    }
-                    return textNodes;
-                }
-                
-                function escapeRegex(string) {
-                    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-                }
-                
                 function updateSearchResults(count, searchTerm) {
-                    if (searchTerm) {
-                        searchResults.textContent = count + ' result' + (count !== 1 ? 's' : '') + ' found';
-                        searchResults.style.opacity = '1';
-                    } else {
-                        searchResults.style.opacity = '0';
+                    if (searchResults) {
+                        if (searchTerm) {
+                            searchResults.textContent = count + ' result' + (count !== 1 ? 's' : '') + ' found';
+                            searchResults.style.opacity = '1';
+                        } else {
+                            searchResults.style.opacity = '0';
+                        }
                     }
                 }
                 
                 function showNoResults() {
-                    noResults.classList.add('show');
+                    if (noResults) {
+                        noResults.classList.add('show');
+                    }
                 }
                 
                 function hideNoResults() {
-                    noResults.classList.remove('show');
+                    if (noResults) {
+                        noResults.classList.remove('show');
+                    }
                 }
             }
             
-            // Enhanced accordion functionality
+            // Simplified accordion functionality
             function initializeAccordion() {
                 const accordions = document.querySelectorAll('.faq-accordion');
                 
@@ -1210,7 +1203,7 @@
                     accordion.addEventListener('click', function() {
                         const answer = this.parentElement.querySelector('.faq-answer');
                         const chevron = this.querySelector('.fa-chevron-down');
-                        const isExpanded = answer.classList.contains('expanded');
+                        const isExpanded = answer && answer.classList.contains('expanded');
                         
                         // Close all other accordions
                         accordions.forEach(function(otherAccordion) {
@@ -1229,26 +1222,28 @@
                         });
                         
                         // Toggle current accordion
-                        if (isExpanded) {
-                            answer.classList.remove('expanded');
-                            this.setAttribute('aria-expanded', 'false');
-                            if (chevron) {
-                                chevron.style.transform = 'rotate(0deg)';
+                        if (answer) {
+                            if (isExpanded) {
+                                answer.classList.remove('expanded');
+                                this.setAttribute('aria-expanded', 'false');
+                                if (chevron) {
+                                    chevron.style.transform = 'rotate(0deg)';
+                                }
+                            } else {
+                                answer.classList.add('expanded');
+                                this.setAttribute('aria-expanded', 'true');
+                                if (chevron) {
+                                    chevron.style.transform = 'rotate(180deg)';
+                                }
+                                
+                                // Smooth scroll to question
+                                setTimeout(function() {
+                                    accordion.scrollIntoView({
+                                        behavior: 'smooth',
+                                        block: 'start'
+                                    });
+                                }, 200);
                             }
-                        } else {
-                            answer.classList.add('expanded');
-                            this.setAttribute('aria-expanded', 'true');
-                            if (chevron) {
-                                chevron.style.transform = 'rotate(180deg)';
-                            }
-                            
-                            // Smooth scroll to question
-                            setTimeout(function() {
-                                accordion.scrollIntoView({
-                                    behavior: 'smooth',
-                                    block: 'start'
-                                });
-                            }, 200);
                         }
                     });
                 });
@@ -1260,11 +1255,12 @@
                 
                 links.forEach(function(link) {
                     link.addEventListener('click', function(e) {
-                        e.preventDefault();
                         const targetId = this.getAttribute('href');
-                        const target = document.querySelector(targetId);
+                        if (targetId === '#' || targetId === '') return;
                         
+                        const target = document.querySelector(targetId);
                         if (target) {
+                            e.preventDefault();
                             const offset = window.innerWidth <= 768 ? 88 : 132;
                             const targetPosition = target.offsetTop - offset;
                             
@@ -1278,19 +1274,23 @@
             }
             
             // Initialize when DOM is ready
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', function() {
-                    initializeEnhancedFAQSearch();
+            function initialize() {
+                try {
+                    initializeFAQSearch();
                     initializeAccordion();
                     initializeSmoothScroll();
-                });
-            } else {
-                initializeEnhancedFAQSearch();
-                initializeAccordion();
-                initializeSmoothScroll();
+                    console.log('805 LifeGuard: FAQ functionality initialized successfully');
+                } catch (error) {
+                    console.error('805 LifeGuard: Error initializing FAQ functionality', error);
+                }
             }
             
-            console.log('805 LifeGuard: Enhanced FAQ functionality initialized successfully');
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initialize);
+            } else {
+                initialize();
+            }
+            
         })();
     </script>
 
@@ -1299,17 +1299,18 @@
         window.addEventListener('load', function() {
             if (window.performance && window.performance.timing) {
                 const loadTime = window.performance.timing.loadEventEnd - window.performance.timing.navigationStart;
-                console.log('805 LifeGuard: Enhanced FAQ page loaded in', loadTime + 'ms');
+                console.log('805 LifeGuard: Fixed FAQ page loaded in', loadTime + 'ms');
             }
         });
         
         window.addEventListener('luxuryAppReady', function(e) {
-            console.log('805 LifeGuard: Luxury app ready on Enhanced FAQ page', {
+            console.log('805 LifeGuard: Luxury app ready on Fixed FAQ page', {
                 version: e.detail.version,
                 features: e.detail.features,
-                enhancedFAQ: true,
-                interactiveAccordion: true,
-                realTimeSearch: true,
+                fixedFAQ: true,
+                workingSearch: true,
+                optimizedMobileSpacing: true,
+                robustAccordion: true,
                 designSystemCompliant: true,
                 carusoAesthetic: true
             });
