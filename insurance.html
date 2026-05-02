@@ -5,39 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta Tags -->
-    <title>Lifeguard Insurance & Bonding | $5M Coverage | 805 LifeGuard</title>
-    <meta name="description" content="$1M general liability + $5M excess coverage for private estates, HOA pools & luxury events. Licensed, bonded & Red Cross certified. Docs provided before every engagement.">
-    <meta name="keywords" content="805 LifeGuard insurance, bonded lifeguard, licensed aquatic services, private estate pool insurance, HOA lifeguard insurance, $5 million liability coverage, Southern California aquatic safety">
+    <title>Lifeguard Insurance &amp; Bonding | $5M Coverage | 805 LifeGuard</title>
+    <meta name="description" content="$1M general liability + $5M excess coverage for private estates, HOA pools &amp; luxury events. Licensed, bonded &amp; Red Cross certified. Docs provided before every engagement.">
+    <meta name="keywords" content="exclusive pool cleaning, luxury pool maintenance, pool chemical balancing, equipment maintenance, Southern California pool cleaning, Thousand Oaks pool service, Westlake Village pool maintenance, premium pool care">
     <meta name="author" content="805 LifeGuard LLC">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="language" content="en-US">
     <meta name="geo.region" content="US-CA">
     <meta name="geo.placename" content="Thousand Oaks, California">
     <meta name="geo.position" content="34.1706;-118.8376">
     <meta name="ICBM" content="34.1706, -118.8376">
-    <meta name="revised" content="2026-05-02">
-
-    <!-- Open Graph -->
+    
+    <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Lifeguard Insurance & Bonding | $5M Coverage | 805 LifeGuard">
-    <meta property="og:description" content="$1M general liability + $5M excess coverage for private estates, HOA pools & luxury events throughout Southern California.">
+    <meta property="og:title" content="Lifeguard Insurance &amp; Bonding | $5M Coverage | 805 LifeGuard">
+    <meta property="og:description" content="White-glove pool cleaning and maintenance services exclusively for 805 LifeGuard clients. Professional aquatic environment management in Southern California.">
     <meta property="og:url" content="https://805lifeguard.com/insurance.html">
     <meta property="og:site_name" content="805 LifeGuard">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:image" content="https://805lifeguard.com/images/logos/805-lifeguard-logo.png">
+    <meta property="og:image" content="https://805lifeguard.com/images/cleaning/pool-cleaning-og-1200x630.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-
-    <!-- Twitter Card -->
+    <meta property="og:image:alt" content="805 LifeGuard Exclusive Pool Cleaning Services">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Lifeguard Insurance & Bonding | $5M Coverage | 805 LifeGuard">
-    <meta name="twitter:description" content="$1M general liability + $5M excess coverage. Licensed, bonded & Red Cross certified.">
-    <meta name="twitter:image" content="https://805lifeguard.com/images/logos/805-lifeguard-logo.png">
-
-    <!-- Canonical -->
+    <meta name="twitter:title" content="Exclusive Pool Cleaning - 805 LifeGuard">
+    <meta name="twitter:description" content="White-glove pool maintenance exclusively for distinguished 805 LifeGuard clients.">
+    <meta name="twitter:image" content="https://805lifeguard.com/images/cleaning/pool-cleaning-twitter-1200x600.jpg">
+    <meta name="twitter:image:alt" content="805 LifeGuard Pool Cleaning Services">
+    
+    <!-- Canonical URL -->
     <link rel="canonical" href="https://805lifeguard.com/insurance.html">
-
-    <!-- Critical CSS — identical pattern to about.html -->
+    
+    <!-- Critical CSS - Inlined for fastest loading -->
     <style>
+        /* Critical path CSS for immediate rendering */
         :root {
             --color-primary-darkest: #1A1A1A;
             --color-primary: #4A4A4A;
@@ -54,7 +57,9 @@
             --z-index-hamburger: 1080;
             --z-index-modal: 1050;
         }
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
             font-family: var(--font-family-sans);
             color: var(--color-text-primary);
@@ -62,13 +67,17 @@
             overflow-x: hidden;
             line-height: 1.5;
         }
+        
         .header {
             position: fixed;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: var(--z-index-header);
             background: var(--color-white);
             border-bottom: 1px solid #E8E8E8;
         }
+        
         .header-top {
             background: linear-gradient(135deg, #1A1A1A, #2F2F2F);
             color: var(--color-text-inverse);
@@ -77,41 +86,157 @@
             display: flex;
             align-items: center;
         }
-        @media (max-width: 768px) { .header-top { display: none; } }
+        
+        @media (max-width: 768px) {
+            .header-top { display: none; }
+        }
+        
         .navbar {
             padding: 1.25rem 0;
             height: var(--header-navbar-height);
             display: flex;
             align-items: center;
         }
+        
         .container {
             width: 100%;
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
+        
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: var(--header-total-height);
+            overflow: hidden;
+        }
+        
+        .hero-carousel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .carousel-slide.active {
+            opacity: 1;
+        }
+        
+        .carousel-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg,rgba(0, 0, 0, 0.3) 0%,rgba(0, 0, 0, 0.4) 50%,rgba(0, 0, 0, 0.5) 100%);
+            z-index: 1;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg,rgba(0, 0, 0, 0.2) 0%,rgba(0, 0, 0, 0.3) 50%,rgba(0, 0, 0, 0.4) 100%);
+            z-index: 2;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: var(--color-text-inverse);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .hero { 
+                padding-top: calc(var(--header-navbar-height) + 1rem);
+            }
+        }
     </style>
-
-    <!-- Fonts — identical to about.html -->
+    
+    <!-- Enhanced Performance: DNS Prefetch and Preconnect -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    
+    <!-- Critical Resource Preloading -->
+    <link rel="preload" as="image" href="images/cleaning/pool-cleaning-hero-1920x1080.webp" type="image/webp">
+    <link rel="preload" as="image" href="images/cleaning/pool-cleaning-hero-1920x1080.jpg" type="image/jpeg">
+    <link rel="preload" as="image" href="images/logos/805-lifeguard-logo.png">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- Optimized Typography - Async Loading -->
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap"></noscript>
-
-    <!-- Font Awesome — identical to about.html -->
+    
+    <!-- Font Awesome Icons - Deferred -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-
-    <!-- Main CSS — identical to about.html -->
+    
+    <!-- Main CSS - Deferred -->
     <link rel="preload" href="css/luxury-theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="css/luxury-theme.css"></noscript>
-
-    <!-- Favicons — identical to about.html -->
+    
+    <!-- Favicon and Apple Touch Icons -->
     <link rel="icon" type="image/x-icon" href="images/logos/805-lifeguard-favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="images/logos/805-lifeguard-apple-touch-icon-180x180.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/logos/805-lifeguard-favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/logos/805-lifeguard-favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "805 LifeGuard",
+        "description": "Premier aquatic safety and instruction services for Southern California's distinguished clientele"
+      },
+      "serviceType": "Exclusive Pool Cleaning Services",
+      "name": "White-Glove Pool Cleaning & Maintenance",
+      "description": "Exclusive pool cleaning and maintenance services available only to 805 LifeGuard lifeguarding and instruction clients. Professional weekly maintenance, chemical balancing, and equipment care.",
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Thousand Oaks",
+          "addressRegion": "CA"
+        },
+        {
+          "@type": "City",
+          "name": "Westlake Village", 
+          "addressRegion": "CA"
+        }
+      ],
+      "url": "https://805lifeguard.com/pool-cleaning.html"
+    }
+    </script>
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -120,28 +245,15 @@
       "@graph": [
         {
           "@type": "WebPage",
-          "@id": "https://805lifeguard.com/insurance.html#webpage",
           "url": "https://805lifeguard.com/insurance.html",
           "name": "Lifeguard Insurance & Bonding | $5M Coverage | 805 LifeGuard",
-          "description": "$1M general liability plus $5M excess liability for private estates, HOA communities, and luxury events throughout Southern California.",
-          "dateModified": "2026-05-02",
-          "inLanguage": "en-US",
-          "breadcrumb": {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://805lifeguard.com" },
-              { "@type": "ListItem", "position": 2, "name": "Insurance & Bonding", "item": "https://805lifeguard.com/insurance.html" }
-            ]
-          }
+          "dateModified": "2026-05-02"
         },
         {
           "@type": ["LocalBusiness", "ProfessionalService"],
           "@id": "https://805lifeguard.com/#business",
           "name": "805 LifeGuard",
           "telephone": "+18053676432",
-          "email": "concierge@805lifeguard.com",
-          "address": { "@type": "PostalAddress", "addressLocality": "Thousand Oaks", "addressRegion": "CA", "addressCountry": "US" },
-          "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "50" },
           "hasCredential": [
             { "@type": "EducationalOccupationalCredential", "name": "General Liability Insurance — $1,000,000 Per Occurrence" },
             { "@type": "EducationalOccupationalCredential", "name": "Excess Liability Insurance — $5,000,000" },
@@ -152,28 +264,16 @@
         {
           "@type": "FAQPage",
           "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "What insurance coverage does 805 LifeGuard carry?",
-              "acceptedAnswer": { "@type": "Answer", "text": "805 LifeGuard carries $1,000,000 per occurrence general liability plus $5,000,000 excess liability. All policies cover private residences, HOA community pools, corporate venues, and luxury events throughout Southern California." }
-            },
-            {
-              "@type": "Question",
-              "name": "Can my HOA be named as additional insured?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Yes. HOA boards, property management companies, and homeowners can all be named as additional insured on our $1,000,000 general liability policy at no additional cost." }
-            },
-            {
-              "@type": "Question",
-              "name": "Does 805 LifeGuard insurance cover private pool parties?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Yes. Our insurance covers all services at private residences including pool parties, family events, daily lifeguard coverage, and swimming instruction." }
-            }
+            { "@type": "Question", "name": "What insurance does 805 LifeGuard carry?", "acceptedAnswer": { "@type": "Answer", "text": "$1,000,000 per occurrence general liability plus $5,000,000 excess liability, covering private residences, HOA pools, and luxury events." } },
+            { "@type": "Question", "name": "Can my HOA be named as additional insured?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. HOA boards and homeowners can be named as additional insured at no additional cost." } }
           ]
         }
       ]
     }
     </script>
 </head>
-<body>
+<body itemscope itemtype="https://schema.org/WebPage">
+    <!-- Enhanced Enterprise Header with Perfect Visibility -->
     <header class="header" id="header" role="banner">
         <!-- Top Bar -->
         <div class="header-top">
@@ -288,907 +388,6 @@
             </div>
         </div>
     </header>
-
-    <!-- Page styles — from terms.html -->
-    <style>
-        /* Privacy/Terms Hero Section */
-        .privacy-hero {
-            position: relative;
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            padding-top: 120px;
-            padding-bottom: var(--space-20);
-            background: linear-gradient(135deg, var(--navy-dark), var(--navy-medium));
-        }
-        
-        .privacy-hero-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            z-index: 1;
-        }
-        
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                135deg,
-                rgba(10, 22, 40, 0.7) 0%,
-                rgba(27, 43, 66, 0.8) 50%,
-                rgba(10, 22, 40, 0.9) 100%
-            );
-            z-index: 2;
-        }
-        
-        .privacy-hero .hero-content {
-            position: relative;
-            z-index: 3;
-            text-align: center;
-            color: var(--white-pure);
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 var(--space-4);
-        }
-        
-        .privacy-hero h1 {
-            font-family: var(--font-serif);
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            color: var(--white-pure);
-            margin-bottom: var(--space-6);
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            font-weight: 700;
-        }
-        
-        .privacy-hero .hero-subtitle {
-            font-size: 1.25rem;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.9);
-            max-width: 700px;
-            margin: 0 auto var(--space-8);
-        }
-        
-        .last-updated {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--space-2);
-            font-size: 0.9375rem;
-            color: var(--gold-light);
-            font-weight: 500;
-        }
-        
-        /* Privacy/Terms Content */
-        .privacy-content {
-            padding: var(--space-20) 0;
-            background: var(--white-warm);
-            min-height: 70vh;
-        }
-        
-        .content-layout {
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            gap: var(--space-16);
-            align-items: start;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        /* Privacy Sidebar */
-        .privacy-sidebar {
-            position: sticky;
-            top: 140px;
-            background: var(--white-pure);
-            border-radius: var(--border-radius-xl);
-            box-shadow: var(--shadow-lg);
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            height: fit-content;
-            max-height: calc(100vh - 160px);
-            overflow-y: auto;
-        }
-        
-        .sidebar-header {
-            background: linear-gradient(135deg, var(--navy-dark), var(--navy-medium));
-            color: var(--white-pure);
-            padding: var(--space-6);
-            text-align: center;
-        }
-        
-        .sidebar-header h3 {
-            color: var(--white-pure);
-            margin: 0;
-            font-size: 1.125rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--space-2);
-        }
-        
-        .policy-nav {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .nav-item {
-            display: flex;
-            align-items: center;
-            padding: var(--space-4) var(--space-5);
-            text-decoration: none;
-            color: var(--gray-dark);
-            border-bottom: 1px solid var(--border-color);
-            transition: var(--transition);
-            font-weight: 500;
-            font-size: 0.9375rem;
-        }
-        
-        .nav-item:hover {
-            background: rgba(212, 175, 55, 0.08);
-            color: var(--gold-dark);
-            border-left: 4px solid var(--gold-medium);
-            padding-left: calc(var(--space-5) - 4px);
-        }
-        
-        .nav-item.active {
-            background: rgba(212, 175, 55, 0.12);
-            color: var(--gold-dark);
-            border-left: 4px solid var(--gold-medium);
-            padding-left: calc(var(--space-5) - 4px);
-            font-weight: 600;
-        }
-        
-        .nav-item:last-child {
-            border-bottom: none;
-        }
-        
-        .privacy-highlights {
-            background: var(--cream);
-            padding: var(--space-6);
-        }
-        
-        .privacy-highlights h4 {
-            color: var(--navy-dark);
-            margin-bottom: var(--space-4);
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--space-2);
-        }
-        
-        .privacy-highlights ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        
-        .privacy-highlights li {
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
-            margin-bottom: var(--space-2);
-            color: var(--gray-medium);
-            font-size: 0.875rem;
-        }
-        
-        .privacy-highlights i {
-            color: var(--gold-medium);
-            font-size: 0.75rem;
-        }
-        
-        /* Privacy Main Content */
-        .privacy-main {
-            background: var(--white-pure);
-            border-radius: var(--border-radius-xl);
-            padding: var(--space-12);
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--border-color);
-            min-height: 600px;
-        }
-        
-        .policy-section {
-            margin-bottom: var(--space-16);
-            scroll-margin-top: 140px;
-        }
-        
-        .policy-section:last-child {
-            margin-bottom: 0;
-        }
-        
-        .policy-section h2 {
-            color: var(--navy-dark);
-            margin-bottom: var(--space-8);
-            padding-bottom: var(--space-4);
-            border-bottom: 2px solid var(--gold-medium);
-            font-size: 1.75rem;
-            display: flex;
-            align-items: center;
-            gap: var(--space-3);
-        }
-        
-        .policy-section h3 {
-            color: var(--navy-dark);
-            margin-bottom: var(--space-4);
-            font-size: 1.25rem;
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
-        }
-        
-        .policy-section h3 i {
-            color: var(--gold-medium);
-            font-size: 1rem;
-        }
-        
-        .policy-section h4 {
-            color: var(--navy-dark);
-            margin-bottom: var(--space-3);
-            font-size: 1.125rem;
-        }
-        
-        .policy-section p {
-            color: var(--gray-dark);
-            line-height: 1.7;
-            margin-bottom: var(--space-4);
-        }
-        
-        .policy-section ul {
-            margin: var(--space-4) 0;
-            padding-left: var(--space-6);
-        }
-        
-        .policy-section li {
-            color: var(--gray-dark);
-            line-height: 1.6;
-            margin-bottom: var(--space-2);
-        }
-        
-        .policy-section strong {
-            color: var(--navy-dark);
-            font-weight: 600;
-        }
-        
-        /* Content Components */
-        .commitment-statement {
-            background: var(--cream);
-            padding: var(--space-6);
-            border-radius: var(--border-radius-lg);
-            border-left: 4px solid var(--gold-medium);
-            margin: var(--space-8) 0;
-        }
-        
-        .lead-text {
-            font-size: 1.25rem;
-            font-family: var(--font-serif);
-            color: var(--gray-dark);
-            line-height: 1.6;
-            margin: 0;
-        }
-        
-        .principles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--space-6);
-            margin: var(--space-8) 0;
-        }
-        
-        .principle-item {
-            background: var(--white-warm);
-            padding: var(--space-6);
-            border-radius: var(--border-radius-lg);
-            border: 1px solid var(--border-color);
-            text-align: center;
-            transition: var(--transition);
-        }
-        
-        .principle-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .principle-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gold-medium);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white-pure);
-            font-size: 1.5rem;
-            margin: 0 auto var(--space-4);
-        }
-        
-        .principle-item h4 {
-            color: var(--navy-dark);
-            margin-bottom: var(--space-3);
-            font-size: 1.125rem;
-        }
-        
-        .principle-item p {
-            color: var(--gray-medium);
-            margin: 0;
-            font-size: 0.9375rem;
-            line-height: 1.5;
-        }
-        
-        .usage-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--space-6);
-            margin: var(--space-8) 0;
-        }
-        
-        .usage-item {
-            background: var(--white-warm);
-            padding: var(--space-6);
-            border-radius: var(--border-radius-lg);
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-        
-        .usage-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .usage-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--navy-dark);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold-medium);
-            font-size: 1.25rem;
-            margin-bottom: var(--space-4);
-        }
-        
-        .usage-item h4 {
-            color: var(--navy-dark);
-            margin-bottom: var(--space-3);
-            font-size: 1.125rem;
-        }
-        
-        .usage-item ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        
-        .usage-item li {
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
-            margin-bottom: var(--space-2);
-            color: var(--gray-dark);
-            font-size: 0.9375rem;
-        }
-        
-        .usage-item li::before {
-            content: '•';
-            color: var(--gold-medium);
-            font-weight: bold;
-        }
-        
-        .info-category {
-            background: var(--white-warm);
-            padding: var(--space-6);
-            border-radius: var(--border-radius-lg);
-            border: 1px solid var(--border-color);
-            margin: var(--space-8) 0;
-        }
-        
-        .info-category h3 {
-            color: var(--navy-dark);
-            margin-bottom: var(--space-4);
-            font-size: 1.125rem;
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
-        }
-        
-        .info-category h3 i {
-            color: var(--gold-medium);
-        }
-        
-        .sharing-scenarios {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: var(--space-6);
-            margin: var(--space-8) 0;
-        }
-        
-        .scenario-item {
-            background: var(--white-warm);
-            padding: var(--space-6);
-            border-radius: var(--border-radius-lg);
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-        
-        .scenario-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .scenario-item h4 {
-            color: var(--navy-dark);
-            margin-bottom: var(--space-3);
-            font-size: 1.125rem;
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
-        }
-        
-        .scenario-item h4 i {
-            color: var(--gold-medium);
-        }
-        
-        .scenario-item p {
-            color: var(--gray-medium);
-            margin: 0;
-        }
-        
-        .rights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--space-6);
-            margin: var(--space-8) 0;
-        }
-        
-        .right-item {
-            background: var(--white-warm);
-            padding: var(--space-6);
-            border-radius: var(--border-radius-lg);
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-        
-        .right-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .right-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--gold-medium);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white-pure);
-            font-size: 1.25rem;
-            margin-bottom: var(--space-4);
-        }
-        
-        .right-item h4 {
-            color: var(--navy-dark);
-            margin-bottom: var(--space-3);
-            font-size: 1.125rem;
-        }
-        
-        .right-item p {
-            color: var(--gray-medium);
-            margin: 0;
-            line-height: 1.6;
-        }
-        
-        .security-measures {
-            margin: var(--space-8) 0;
-        }
-        
-        .security-category {
-            margin-bottom: var(--space-8);
-        }
-        
-        .security-category h3 {
-            color: var(--navy-dark);
-            margin-bottom: var(--space-4);
-            font-size: 1.25rem;
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
-        }
-        
-        .security-category h3 i {
-            color: var(--gold-medium);
-        }
-        
-        .security-category ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        
-        .security-category li {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--space-3);
-            margin-bottom: var(--space-3);
-            color: var(--gray-dark);
-            line-height: 1.6;
-        }
-        
-        .security-category li::before {
-            content: '✓';
-            color: var(--gold-medium);
-            font-weight: bold;
-            font-size: 1.125rem;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-        
-        .sharing-commitment {
-            background: linear-gradient(135deg, var(--gold-light), var(--gold-medium));
-            color: var(--navy-dark);
-            padding: var(--space-6);
-            border-radius: var(--border-radius-lg);
-            margin: var(--space-8) 0;
-        }
-        
-        .commitment-badge {
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
-            font-weight: 700;
-            font-size: 1.125rem;
-            margin-bottom: var(--space-3);
-        }
-        
-        .commitment-badge i {
-            font-size: 1.25rem;
-        }
-        
-        .sharing-commitment p {
-            color: var(--navy-dark);
-            margin: 0;
-            line-height: 1.6;
-        }
-        
-        .retention-schedule {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: var(--space-6);
-            margin: var(--space-8) 0;
-        }
-        
-        .retention-item {
-            background: var(--white-warm);
-            padding: var(--space-6);
-            border-radius: var(--border-radius-lg);
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-        
-        .retention-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .retention-item h4 {
-            color: var(--navy-dark);
-            margin-bottom: var(--space-3);
-            font-size: 1.125rem;
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
-        }
-        
-        .retention-item h4 i {
-            color: var(--gold-medium);
-        }
-        
-        .retention-item p {
-            color: var(--gray-medium);
-            margin: 0;
-            line-height: 1.6;
-        }
-        
-        .retention-note {
-            background: var(--cream);
-            padding: var(--space-5);
-            border-radius: var(--border-radius-lg);
-            border-left: 4px solid var(--gold-medium);
-            margin: var(--space-8) 0;
-            display: flex;
-            align-items: flex-start;
-            gap: var(--space-3);
-        }
-        
-        .retention-note i {
-            color: var(--gold-medium);
-            font-size: 1.25rem;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-        
-        .retention-note p {
-            color: var(--gray-dark);
-            margin: 0;
-            line-height: 1.6;
-        }
-        
-        .rights-contact {
-            background: var(--cream);
-            padding: var(--space-8);
-            border-radius: var(--border-radius-lg);
-            text-align: center;
-            margin: var(--space-8) 0;
-        }
-        
-        .rights-contact h3 {
-            color: var(--navy-dark);
-            margin-bottom: var(--space-4);
-            font-size: 1.5rem;
-        }
-        
-        .rights-contact p {
-            color: var(--gray-medium);
-            margin-bottom: var(--space-6);
-        }
-        
-        .contact-methods {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-8);
-            margin: var(--space-6) 0;
-        }
-        
-        .contact-method {
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
-            color: var(--gold-dark);
-            font-weight: 600;
-            font-size: 1.125rem;
-        }
-        
-        .contact-method i {
-            font-size: 1.25rem;
-        }
-        
-        .response-time {
-            color: var(--gray-medium);
-            font-size: 0.9375rem;
-            font-style: italic;
-            margin: 0;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 1023px) {
-            .content-layout {
-                grid-template-columns: 1fr;
-                gap: var(--space-8);
-            }
-            
-            .privacy-sidebar {
-                position: static;
-                order: 2;
-                margin-top: var(--space-8);
-                max-height: none;
-            }
-            
-            .privacy-main {
-                order: 1;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .privacy-hero {
-                min-height: 70vh;
-                padding-top: 80px;
-                padding-bottom: var(--space-12);
-                background-attachment: scroll;
-            }
-            
-            .privacy-hero h1 {
-                font-size: 2.5rem;
-                margin-bottom: var(--space-5);
-            }
-            
-            .privacy-hero .hero-subtitle {
-                font-size: 1.125rem;
-                margin-bottom: var(--space-6);
-            }
-            
-            .privacy-content {
-                padding: var(--space-16) 0;
-            }
-            
-            .privacy-main {
-                padding: var(--space-8);
-            }
-            
-            .principles-grid {
-                grid-template-columns: 1fr;
-                gap: var(--space-4);
-            }
-            
-            .usage-grid {
-                grid-template-columns: 1fr;
-                gap: var(--space-4);
-            }
-            
-            .sharing-scenarios {
-                grid-template-columns: 1fr;
-                gap: var(--space-4);
-            }
-            
-            .rights-grid {
-                grid-template-columns: 1fr;
-                gap: var(--space-4);
-            }
-            
-            .retention-schedule {
-                grid-template-columns: 1fr;
-                gap: var(--space-4);
-            }
-            
-            .contact-methods {
-                flex-direction: column;
-                gap: var(--space-4);
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .privacy-main {
-                padding: var(--space-6);
-            }
-            
-            .policy-section h2 {
-                font-size: 1.5rem;
-                margin-bottom: var(--space-6);
-            }
-            
-            .principle-item,
-            .usage-item,
-            .scenario-item,
-            .right-item,
-            .retention-item {
-                padding: var(--space-5);
-            }
-            
-            .commitment-statement,
-            .info-category,
-            .sharing-commitment,
-            .retention-note,
-            .rights-contact {
-                padding: var(--space-5);
-            }
-        }
-        
-        /* Icon loading fix */
-        .fas, .far, .fab, .fal {
-            font-family: "Font Awesome 6 Free", "Font Awesome 6 Pro", "Font Awesome 6 Brands";
-            font-weight: 900;
-        }
-        
-        .far {
-            font-weight: 400;
-        }
-        
-        /* Ensure icons display properly on slower connections */
-        i[class*="fa-"] {
-            display: inline-block;
-            width: 1em;
-            text-align: center;
-        }
-        
-        /* Fallback for missing icons */
-        i[class*="fa-"]:before {
-            content: attr(data-fallback);
-        }
-        
-        /* Smooth scrolling for navigation */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Navigation active state management */
-        .nav-item {
-            position: relative;
-        }
-        
-        .nav-item.active::after {
-            content: '';
-            position: absolute;
-            right: var(--space-4);
-            top: 50%;
-            transform: translateY(-50%);
-            width: 8px;
-            height: 8px;
-            background: var(--gold-medium);
-            border-radius: 50%;
-        }
-
-        /* Insurance page additions */
-        .coverage-figure {
-            font-family: var(--font-serif);
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--gold-dark);
-            display: block;
-            margin-bottom: var(--space-2);
-        }
-        .cert-label {
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--gold-dark);
-            background: rgba(212,175,55,0.12);
-            padding: 2px 10px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: var(--space-3);
-        }
-        .principles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--space-6);
-            margin: var(--space-8) 0;
-        }
-        .principle-item {
-            background: var(--white-warm);
-            padding: var(--space-6);
-            border-radius: var(--border-radius-lg);
-            border: 1px solid var(--border-color);
-            text-align: center;
-            transition: var(--transition);
-        }
-        .principle-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-        .principle-icon {
-            width: 60px; height: 60px;
-            background: var(--gold-medium);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: var(--white-pure);
-            font-size: 1.5rem;
-            margin: 0 auto var(--space-4);
-        }
-        .principle-icon.navy-icon { background: var(--navy-dark); color: var(--gold-medium); }
-        .principle-item h4 { color: var(--navy-dark); margin-bottom: var(--space-3); font-size: 1.125rem; }
-        .principle-item p { color: var(--gray-medium); margin: 0; font-size: 0.9375rem; line-height: 1.5; }
-        .usage-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--space-6);
-            margin: var(--space-8) 0;
-        }
-        .usage-item {
-            background: var(--white-warm);
-            padding: var(--space-6);
-            border-radius: var(--border-radius-lg);
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-        .usage-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-        .usage-icon {
-            width: 50px; height: 50px;
-            background: var(--navy-dark);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: var(--gold-medium);
-            font-size: 1.25rem;
-            margin-bottom: var(--space-4);
-        }
-        .usage-icon.gold-icon { background: var(--gold-medium); color: var(--white-pure); }
-        .usage-item h4 { color: var(--navy-dark); margin-bottom: var(--space-3); font-size: 1.125rem; }
-        .usage-item p { color: var(--gray-medium); font-size: 0.9375rem; line-height: 1.55; margin: 0; }
-    </style>
-
     <!-- Breadcrumbs — identical to terms.html -->
     <nav class="breadcrumbs" aria-label="Breadcrumb navigation" itemscope itemtype="https://schema.org/BreadcrumbList">
         <div class="container">
@@ -1208,544 +407,380 @@
     <!-- =====================================================================
          HERO
     ===================================================================== -->
-    <section class="privacy-hero" role="banner">
-        <div class="privacy-hero-background"></div>
+    <!-- Hero Section -->
+    <section class="hero" role="banner" aria-label="Insurance &amp; Bonding">
+        <!-- Background -->
+        <div class="hero-carousel" id="heroCarousel">
+            <div class="carousel-slide active" style="background-image: url('images/services/lifeguard-hero-1920x1080.jpg')" data-bg-desktop="images/services/lifeguard-hero-1920x1080.jpg" data-bg-tablet="images/services/lifeguard-hero-1024x576.jpg" data-bg-mobile="images/services/lifeguard-hero-768x432.jpg" aria-label="805 LifeGuard professional aquatic safety"></div>
+        </div>
         <div class="hero-overlay"></div>
         <div class="container">
-            <div class="hero-content">
+            <div class="hero-content" itemscope itemtype="https://schema.org/Organization">
                 <div class="section-badge">
-                    <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
+                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
                     Comprehensive Protection &amp; Professional Credentials
                 </div>
-                <h1 itemprop="name">Fully Protected.<br>Every Engagement.</h1>
+                <h1 class="hero-title" itemprop="slogan">Fully Protected.<br>Every Engagement.</h1>
                 <p class="hero-subtitle" itemprop="description">
                     When you invite 805 LifeGuard onto your property, you deserve complete confidence 
                     that every detail of your protection has been handled. Our comprehensive insurance, 
                     licensing, and bonding covers private residences, HOA communities, corporate venues, 
-                    and luxury events — so you can focus entirely on enjoying your pool.
+                    and luxury events.
                 </p>
-                <div class="last-updated">
-                    <i class="fas fa-certificate" aria-hidden="true" data-fallback="🏅"></i>
+                <div class="hero-buttons">
+                    <a href="contact.html" class="btn btn-primary" aria-label="Request documentation">
+                        <i class="fas fa-file-contract" aria-hidden="true"></i>
+                        Request Documentation
+                    </a>
+                    <a href="contact.html" class="btn btn-secondary" aria-label="Schedule consultation">
+                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                        Schedule Consultation
+                    </a>
+                </div>
+                <div class="hero-notice">
+                    <i class="fas fa-certificate" aria-hidden="true"></i>
                     All credentials current &amp; continuously renewed — documentation provided before every engagement
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- =====================================================================
-         MAIN CONTENT
-    ===================================================================== -->
-    <section class="privacy-content">
+
+    <!-- Coverage Overview -->
+    <section class="about-section">
         <div class="container">
-            <div class="content-layout">
-
-                <!-- Sidebar -->
-                <aside class="privacy-sidebar" aria-label="Page navigation">
-                    <div class="sidebar-header">
-                        <h3>
-                            <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
-                            Coverage Overview
-                        </h3>
-                    </div>
-                    <nav class="policy-nav" role="navigation" aria-label="Insurance sections">
-                        <a href="#coverage" class="nav-item active">Coverage at a Glance</a>
-                        <a href="#private-estates" class="nav-item">Private Residences</a>
-                        <a href="#hoa" class="nav-item">HOA &amp; Communities</a>
-                        <a href="#certifications" class="nav-item">Certifications</a>
-                        <a href="#documentation" class="nav-item">Documentation</a>
-                        <a href="#faq" class="nav-item">FAQ</a>
-                        <a href="#contact" class="nav-item">Request Package</a>
-                    </nav>
-                    <div class="privacy-highlights">
-                        <h4>
-                            <i class="fas fa-check-circle" aria-hidden="true" data-fallback="✅"></i>
-                            Protection Summary
-                        </h4>
-                        <ul>
-                            <li><i class="fas fa-circle" aria-hidden="true"></i> $1M per occurrence — general liability</li>
-                            <li><i class="fas fa-circle" aria-hidden="true"></i> $5M excess liability available</li>
-                            <li><i class="fas fa-circle" aria-hidden="true"></i> Private residences covered</li>
-                            <li><i class="fas fa-circle" aria-hidden="true"></i> HOA &amp; community pools covered</li>
-                            <li><i class="fas fa-circle" aria-hidden="true"></i> Corporate &amp; luxury events covered</li>
-                            <li><i class="fas fa-circle" aria-hidden="true"></i> Additional insured on request</li>
-                            <li><i class="fas fa-circle" aria-hidden="true"></i> Licensed &amp; bonded — California</li>
-                            <li><i class="fas fa-circle" aria-hidden="true"></i> Red Cross certified</li>
-                            <li><i class="fas fa-circle" aria-hidden="true"></i> Background verified — all personnel</li>
-                            <li><i class="fas fa-circle" aria-hidden="true"></i> Full docs before every engagement</li>
-                        </ul>
-                    </div>
-                </aside>
-
-                <!-- Main -->
-                <div class="privacy-main">
-
-                    <!-- ── SECTION 1: COVERAGE AT A GLANCE ── -->
-                    <section id="coverage" class="policy-section">
-                        <h2>
-                            <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
-                            Coverage at a Glance
-                        </h2>
-
-                        <div class="commitment-statement">
-                            <p class="lead-text">
-                                Our clients live at a level where the details matter. That is why we carry 
-                                coverage that matches the environments we serve — and why every insurance 
-                                certificate, bonding document, and credential is in your hands 
-                                before we ever set foot on your property.
-                            </p>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="section-badge">Complete Protection</div>
+                    <h2>Fully Covered. Every Engagement.</h2>
+                    <p class="lead-text">
+                        Our clients live at a level where the details matter. Every insurance certificate, 
+                        bonding document, and credential is in your hands before we ever set foot on your property.
+                    </p>
+                    <p>
+                        805 LifeGuard carries $1,000,000 per occurrence general liability insurance plus 
+                        $5,000,000 excess liability coverage — for private residences, HOA communities, 
+                        corporate venues, and luxury events throughout Southern California.
+                    </p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div class="feature-content">
+                                <h4>$1M General Liability</h4>
+                                <p>Per occurrence — private homes, HOA pools, events, and corporate venues</p>
+                            </div>
                         </div>
-
-                        <!-- TL;DR — GEO: structured for AI Overview extraction & voice search -->
-                        <div class="info-category" style="margin-bottom: var(--space-8);">
-                            <h3 style="margin-bottom: var(--space-4);">
-                                <i class="fas fa-bolt" aria-hidden="true" data-fallback="⚡"></i>
-                                Quick Summary
-                            </h3>
-                            <ul style="list-style:none;padding:0;margin:0;">
-                                <li style="display:flex;gap:var(--space-3);margin-bottom:var(--space-2);color:var(--gray-dark);line-height:1.6;">
-                                    <i class="fas fa-check-circle" style="color:var(--gold-medium);margin-top:3px;flex-shrink:0;" aria-hidden="true"></i>
-                                    <span><strong>$1,000,000</strong> general liability per occurrence — private homes, HOA pools, events, and corporate venues</span>
-                                </li>
-                                <li style="display:flex;gap:var(--space-3);margin-bottom:var(--space-2);color:var(--gray-dark);line-height:1.6;">
-                                    <i class="fas fa-check-circle" style="color:var(--gold-medium);margin-top:3px;flex-shrink:0;" aria-hidden="true"></i>
-                                    <span><strong>$5,000,000</strong> excess liability — available for HOAs, property managers, and high-profile engagements</span>
-                                </li>
-                                <li style="display:flex;gap:var(--space-3);margin-bottom:var(--space-2);color:var(--gray-dark);line-height:1.6;">
-                                    <i class="fas fa-check-circle" style="color:var(--gold-medium);margin-top:3px;flex-shrink:0;" aria-hidden="true"></i>
-                                    <span>Homeowners, HOA boards, and property managers <strong>named as additional insured</strong> at no extra cost</span>
-                                </li>
-                                <li style="display:flex;gap:var(--space-3);margin-bottom:var(--space-2);color:var(--gray-dark);line-height:1.6;">
-                                    <i class="fas fa-check-circle" style="color:var(--gold-medium);margin-top:3px;flex-shrink:0;" aria-hidden="true"></i>
-                                    <span>California licensed, professionally bonded, background verified — all credentials current</span>
-                                </li>
-                                <li style="display:flex;gap:var(--space-3);margin-bottom:0;color:var(--gray-dark);line-height:1.6;">
-                                    <i class="fas fa-check-circle" style="color:var(--gold-medium);margin-top:3px;flex-shrink:0;" aria-hidden="true"></i>
-                                    <span>Complete documentation package provided before every engagement — no exceptions</span>
-                                </li>
-                            </ul>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-layer-group"></i></div>
+                            <div class="feature-content">
+                                <h4>$5M Excess Liability</h4>
+                                <p>Available for HOAs, property managers, and high-profile engagements</p>
+                            </div>
                         </div>
-
-                        <!-- 4-card grid using principles-grid — matches terms.html exactly -->
-                        <div class="principles-grid">
-                            <div class="principle-item">
-                                <div class="principle-icon">
-                                    <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
-                                </div>
-                                <h4>General Liability</h4>
-                                <span class="coverage-figure">$1,000,000</span>
-                                <p>Per occurrence. Covers private residences, HOA pools, corporate venues, and all events. Property damage and personal injury included.</p>
-                            </div>
-
-                            <div class="principle-item">
-                                <div class="principle-icon navy-icon">
-                                    <i class="fas fa-layer-group" aria-hidden="true" data-fallback="📚"></i>
-                                </div>
-                                <h4>Excess Liability</h4>
-                                <span class="coverage-figure">$5,000,000</span>
-                                <p>Available for HOA partnerships, large events, and high-profile private engagements requiring an elevated layer of protection.</p>
-                            </div>
-
-                            <div class="principle-item">
-                                <div class="principle-icon">
-                                    <i class="fas fa-lock" aria-hidden="true" data-fallback="🔒"></i>
-                                </div>
-                                <h4>Licensed &amp; Bonded</h4>
-                                <span class="coverage-figure">California</span>
-                                <p>Fully licensed for private estate and community aquatic services statewide. Bonded for an additional tier of financial accountability.</p>
-                            </div>
-
-                            <div class="principle-item">
-                                <div class="principle-icon navy-icon">
-                                    <i class="fas fa-user-check" aria-hidden="true" data-fallback="✅"></i>
-                                </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-user-check"></i></div>
+                            <div class="feature-content">
                                 <h4>Additional Insured</h4>
-                                <span class="coverage-figure">On Request</span>
-                                <p>Homeowners, HOA boards, property managers, and corporate clients named as additional insured at no additional cost.</p>
+                                <p>Homeowners, HOA boards, and property managers at no extra cost</p>
                             </div>
                         </div>
-                    </section>
-
-                    <!-- ── SECTION 2: PRIVATE RESIDENCES ── -->
-                    <section id="private-estates" class="policy-section">
-                        <h2>
-                            <i class="fas fa-home" aria-hidden="true" data-fallback="🏠"></i>
-                            Private Residence Coverage
-                        </h2>
-
-                        <p>When you engage 805 LifeGuard for your home, our insurance travels with us. Your property — and everyone on it — is protected from the moment our team arrives to the moment we leave.</p>
-
-                        <div class="commitment-statement">
-                            <p class="lead-text">
-                                Whether you are hosting an intimate family gathering, a landmark celebration, 
-                                or simply want a certified professional present during daily pool use, 
-                                our coverage is structured to protect your estate with the same 
-                                rigour you apply to every other aspect of your home.
-                            </p>
-                        </div>
-
-                        <div class="security-measures">
-                            <div class="security-category">
-                                <h3>
-                                    <i class="fas fa-check-circle" aria-hidden="true" data-fallback="✅"></i>
-                                    What Is Covered at Your Residence
-                                </h3>
-                                <ul>
-                                    <li>
-                                        <i class="fas fa-check-circle" aria-hidden="true"></i>
-                                        <span><strong>Private pool parties and family events</strong> — guests, family members, and your property fully covered</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle" aria-hidden="true"></i>
-                                        <span><strong>Daily and recurring engagements</strong> — ongoing coverage for regular service arrangements</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle" aria-hidden="true"></i>
-                                        <span><strong>Swimming instruction sessions</strong> — all ages and abilities, in your private pool</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle" aria-hidden="true"></i>
-                                        <span><strong>Corporate and executive entertaining</strong> — professional aquatic safety for business events at your home</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle" aria-hidden="true"></i>
-                                        <span><strong>Special occasions</strong> — weddings, milestone celebrations, and holiday gatherings</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle" aria-hidden="true"></i>
-                                        <span><strong>Property damage</strong> — covered under general liability for any incident attributable to our team</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle" aria-hidden="true"></i>
-                                        <span><strong>Personal injury</strong> — comprehensive coverage for guests and family members throughout</span>
-                                    </li>
-                                </ul>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-certificate"></i></div>
+                            <div class="feature-content">
+                                <h4>Docs Before Every Engagement</h4>
+                                <p>Complete credentials package provided before service commencement</p>
                             </div>
                         </div>
-
-                        <div class="sharing-commitment">
-                            <div class="commitment-badge">
-                                <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
-                                <span>Your First Line of Defence</span>
-                            </div>
-                            <p>Your homeowner's insurance should never be your first line of defence when a professional aquatic service is on your property. Ours is — and it is structured specifically for the environments our clients call home.</p>
-                        </div>
-                    </section>
-
-                    <!-- ── SECTION 3: HOA & COMMUNITIES ── -->
-                    <section id="hoa" class="policy-section">
-                        <h2>
-                            <i class="fas fa-building" aria-hidden="true" data-fallback="🏢"></i>
-                            HOA &amp; Community Coverage
-                        </h2>
-
-                        <p>Community pools carry community-level responsibility. 805 LifeGuard's insurance is structured to satisfy the liability requirements of HOA boards, property management companies, and luxury residential developments throughout Southern California.</p>
-
-                        <div class="commitment-statement">
-                            <p class="lead-text">
-                                Every HOA partner receives a certificate of insurance naming the association 
-                                as additional insured before a single shift begins. Our $5,000,000 excess 
-                                liability option exists precisely for the communities whose standards demand it.
-                            </p>
-                        </div>
-
-                        <div class="security-measures">
-                            <div class="security-category">
-                                <h3>
-                                    <i class="fas fa-check-circle" aria-hidden="true" data-fallback="✅"></i>
-                                    HOA &amp; Community Protections
-                                </h3>
-                                <ul>
-                                    <li>
-                                        <i class="fas fa-check-circle" aria-hidden="true"></i>
-                                        <span><strong>HOA named as additional insured</strong> — on both the $1M general liability and $5M excess policies</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle" aria-hidden="true"></i>
-                                        <span><strong>Property management companies</strong> — can be named as additional insured on request</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle" aria-hidden="true"></i>
-                                        <span><strong>Community pool operations</strong> — regular lifeguard coverage, seasonal programs, and daily oversight</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle" aria-hidden="true"></i>
-                                        <span><strong>Resident events and HOA gatherings</strong> — summer kick-offs, holiday parties, community socials</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle" aria-hidden="true"></i>
-                                        <span><strong>Resident swimming programs</strong> — group instruction and water safety education</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle" aria-hidden="true"></i>
-                                        <span><strong>Board-level indemnification</strong> — 805 LifeGuard indemnifies the HOA from claims arising from our team's negligence</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle" aria-hidden="true"></i>
-                                        <span><strong>Board compliance documentation</strong> — all credentials provided for board records before service commencement</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="security-category">
-                                <h3>
-                                    <i class="fas fa-map-marker-alt" aria-hidden="true" data-fallback="📍"></i>
-                                    Communities We Serve
-                                </h3>
-                                <ul>
-                                    <li>
-                                        <i class="fas fa-check-circle" aria-hidden="true"></i>
-                                        <span>Hidden Hills HOA — established community partner</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle" aria-hidden="true"></i>
-                                        <span>Westlake Village gated communities and residential developments</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle" aria-hidden="true"></i>
-                                        <span>Thousand Oaks, Newbury Park, and Agoura Hills HOAs</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle" aria-hidden="true"></i>
-                                        <span>Calabasas luxury communities</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle" aria-hidden="true"></i>
-                                        <span>Malibu, Beverly Hills, Manhattan Beach, Newport Beach, and Palos Verdes</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle" aria-hidden="true"></i>
-                                        <span>All HOAs and luxury residential developments across Southern California — contact us to discuss your community's specific requirements</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- ── SECTION 4: CERTIFICATIONS ── -->
-                    <section id="certifications" class="policy-section">
-                        <h2>
-                            <i class="fas fa-certificate" aria-hidden="true" data-fallback="🏅"></i>
-                            Professional Certifications
-                        </h2>
-
-                        <p>Insurance and bonding protect your property. Our certifications protect the people in your pool. Every member of the 805 LifeGuard team holds current credentials — renewed on schedule, without exception — because lapsed certifications are not a risk we are willing to take with your family.</p>
-
-                        <!-- 6-card using usage-grid — matches terms.html exactly -->
-                        <div class="usage-grid">
-                            <div class="usage-item">
-                                <div class="usage-icon gold-icon">
-                                    <i class="fas fa-first-aid" aria-hidden="true" data-fallback="🩺"></i>
-                                </div>
-                                <h4>American Red Cross Lifeguard</h4>
-                                <span class="cert-label">Current</span>
-                                <p>The gold standard in aquatic safety. Includes advanced water rescue, emergency response protocols, and mandatory continuing education.</p>
-                            </div>
-
-                            <div class="usage-item">
-                                <div class="usage-icon">
-                                    <i class="fas fa-heartbeat" aria-hidden="true" data-fallback="❤️"></i>
-                                </div>
-                                <h4>CPR / AED Professional Rescuer</h4>
-                                <span class="cert-label">Current</span>
-                                <p>Advanced cardiac and respiratory emergency response — Professional Rescuer level, the same standard required for clinical and emergency medical personnel.</p>
-                            </div>
-
-                            <div class="usage-item">
-                                <div class="usage-icon gold-icon">
-                                    <i class="fas fa-swimmer" aria-hidden="true" data-fallback="🏊"></i>
-                                </div>
-                                <h4>Water Safety Instructor (WSI)</h4>
-                                <span class="cert-label">Certified</span>
-                                <p>American Red Cross WSI certification authorises instruction at every level — from toddler water introduction to adult technique refinement and competitive development.</p>
-                            </div>
-
-                            <div class="usage-item">
-                                <div class="usage-icon">
-                                    <i class="fas fa-hands-helping" aria-hidden="true" data-fallback="🤝"></i>
-                                </div>
-                                <h4>Special Needs Aquatic Instruction</h4>
-                                <span class="cert-label">Certified</span>
-                                <p>Advanced certification in adaptive aquatic instruction — sensory-friendly approaches, physical adaptive techniques, and therapeutic swimming programmes for all abilities.</p>
-                            </div>
-
-                            <div class="usage-item">
-                                <div class="usage-icon gold-icon">
-                                    <i class="fas fa-id-badge" aria-hidden="true" data-fallback="🪪"></i>
-                                </div>
-                                <h4>Background Verified</h4>
-                                <span class="cert-label">All Personnel</span>
-                                <p>Comprehensive criminal background checks and security clearance for every team member before any engagement. Discretion verification is part of our standard screening process.</p>
-                            </div>
-
-                            <div class="usage-item">
-                                <div class="usage-icon">
-                                    <i class="fas fa-balance-scale" aria-hidden="true" data-fallback="⚖️"></i>
-                                </div>
-                                <h4>California Licensed &amp; Bonded</h4>
-                                <span class="cert-label">Active</span>
-                                <p>Licensed for private estate and community aquatic services throughout California. Bonding provides financial accountability beyond standard insurance — an additional layer of professional commitment.</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- ── SECTION 5: DOCUMENTATION ── -->
-                    <section id="documentation" class="policy-section">
-                        <h2>
-                            <i class="fas fa-folder-open" aria-hidden="true" data-fallback="📂"></i>
-                            Documentation &amp; Verification
-                        </h2>
-
-                        <p>Clients at this level do not take assurances on faith — and they should not have to. Every document below is provided to you in full before service begins, at no charge, without being asked twice.</p>
-
-                        <!-- 6-card using rights-grid — matches terms.html exactly -->
-                        <div class="rights-grid">
-                            <div class="right-item">
-                                <div class="right-icon">
-                                    <i class="fas fa-file-contract" aria-hidden="true" data-fallback="📋"></i>
-                                </div>
-                                <h4>General Liability Certificate</h4>
-                                <p>Certificate of Insurance — $1,000,000 per occurrence, naming your property or organisation as outlined in your service agreement.</p>
-                            </div>
-
-                            <div class="right-item">
-                                <div class="right-icon">
-                                    <i class="fas fa-layer-group" aria-hidden="true" data-fallback="📚"></i>
-                                </div>
-                                <h4>Excess Liability Certificate</h4>
-                                <p>Certificate of Insurance — $5,000,000 excess liability, available for HOA boards, property managers, and high-profile engagements.</p>
-                            </div>
-
-                            <div class="right-item">
-                                <div class="right-icon">
-                                    <i class="fas fa-user-check" aria-hidden="true" data-fallback="✅"></i>
-                                </div>
-                                <h4>Additional Insured Endorsement</h4>
-                                <p>Formal endorsement naming homeowners, HOA boards, or property management companies as additional insured on our policy.</p>
-                            </div>
-
-                            <div class="right-item">
-                                <div class="right-icon">
-                                    <i class="fas fa-lock" aria-hidden="true" data-fallback="🔒"></i>
-                                </div>
-                                <h4>Bonding Certificate</h4>
-                                <p>Professional bonding documentation confirming our licensed and bonded status for private estate and community aquatic services in California.</p>
-                            </div>
-
-                            <div class="right-item">
-                                <div class="right-icon">
-                                    <i class="fas fa-certificate" aria-hidden="true" data-fallback="🏅"></i>
-                                </div>
-                                <h4>Certifications Package</h4>
-                                <p>Current American Red Cross Lifeguard, CPR/AED, Water Safety Instructor, and Special Needs certifications — all with valid expiry dates confirmed.</p>
-                            </div>
-
-                            <div class="right-item">
-                                <div class="right-icon">
-                                    <i class="fas fa-id-badge" aria-hidden="true" data-fallback="🪪"></i>
-                                </div>
-                                <h4>Background Verification</h4>
-                                <p>Background check verification summary and California Business License — available for HOA board records, estate managers, and legal counsel review.</p>
-                            </div>
-                        </div>
-
-                        <div class="commitment-statement">
-                            <p class="lead-text">
-                                If your estate manager, HOA board, legal counsel, or household team 
-                                requires any additional documentation — we will provide it. 
-                                No credential request from a client has ever gone unanswered.
-                            </p>
-                        </div>
-                    </section>
-
-                    <!-- ── SECTION 6: FAQ — FAQPage rich result eligible ── -->
-                    <section id="faq" class="policy-section">
-                        <h2>
-                            <i class="fas fa-question-circle" aria-hidden="true" data-fallback="❓"></i>
-                            Frequently Asked Questions
-                        </h2>
-                        <p>The questions our clients — and their estate managers, HOA boards, and legal counsel — most commonly ask before service commencement.</p>
-
-                        <div class="security-measures">
-
-                            <div class="security-category">
-                                <h3>
-                                    <i class="fas fa-shield-alt" aria-hidden="true" data-fallback="🛡️"></i>
-                                    What insurance coverage does 805 LifeGuard carry?
-                                </h3>
-                                <p style="color:var(--gray-dark);line-height:1.7;margin-bottom:0;">805 LifeGuard carries <strong>$1,000,000 per occurrence general liability insurance</strong> plus <strong>$5,000,000 excess liability coverage</strong>. All policies cover private residences, HOA community pools, corporate venues, and luxury events throughout Southern California. We are fully licensed and bonded for private estate services in California.</p>
-                            </div>
-
-                            <div class="security-category">
-                                <h3>
-                                    <i class="fas fa-building" aria-hidden="true" data-fallback="🏢"></i>
-                                    Can my HOA or property management company be named as additional insured?
-                                </h3>
-                                <p style="color:var(--gray-dark);line-height:1.7;margin-bottom:0;">Yes. HOA boards, property management companies, and homeowners can all be named as additional insured on our $1,000,000 general liability policy at no additional cost. The $5,000,000 excess liability is also available for communities requiring enhanced protection. Insurance certificates are issued and provided before service commencement.</p>
-                            </div>
-
-                            <div class="security-category">
-                                <h3>
-                                    <i class="fas fa-home" aria-hidden="true" data-fallback="🏠"></i>
-                                    Does 805 LifeGuard insurance cover private pool parties at my home?
-                                </h3>
-                                <p style="color:var(--gray-dark);line-height:1.7;margin-bottom:0;">Yes. Our insurance covers all services at private residences — pool parties, family events, daily lifeguard coverage, swimming instruction, and corporate entertaining. Property damage and personal injury are both included under our general liability policy. Your homeowner's insurance does not need to be your first line of defence when a professional aquatic service is on your property. Ours is.</p>
-                            </div>
-
-                            <div class="security-category">
-                                <h3>
-                                    <i class="fas fa-certificate" aria-hidden="true" data-fallback="🏅"></i>
-                                    What certifications do 805 LifeGuard professionals hold?
-                                </h3>
-                                <p style="color:var(--gray-dark);line-height:1.7;margin-bottom:0;">All professionals hold current American Red Cross Lifeguard Certification, CPR/AED for Professional Rescuers, and Water Safety Instructor (WSI) certification. Additional credentials include Special Needs Aquatic Instruction certification, California business licensing, professional bonding, and comprehensive criminal background check verification. All certifications are renewed on schedule without exception.</p>
-                            </div>
-
-                            <div class="security-category">
-                                <h3>
-                                    <i class="fas fa-folder-open" aria-hidden="true" data-fallback="📂"></i>
-                                    How quickly can 805 LifeGuard provide insurance documentation?
-                                </h3>
-                                <p style="color:var(--gray-dark);line-height:1.7;margin-bottom:0;">All insurance documentation — certificates of insurance, additional insured endorsements, bonding certificates, and certification copies — is provided before service commencement. For HOA board presentations or legal counsel review, contact us at <a href="tel:+18053676432" style="color:var(--gold-dark);font-weight:600;">(805) 367-6432</a> and we will prepare a complete credentials package tailored to your requirements.</p>
-                            </div>
-
-                            <div class="security-category">
-                                <h3>
-                                    <i class="fas fa-map-marker-alt" aria-hidden="true" data-fallback="📍"></i>
-                                    What areas does 805 LifeGuard serve?
-                                </h3>
-                                <p style="color:var(--gray-dark);line-height:1.7;margin-bottom:0;">805 LifeGuard provides fully insured aquatic services throughout Southern California, including Thousand Oaks, Westlake Village, Agoura Hills, Newbury Park, Calabasas, Hidden Hills, Malibu, Beverly Hills, Manhattan Beach, Newport Beach, Palos Verdes, and Laguna Beach. Contact us to discuss service availability for your location.</p>
-                            </div>
-
-                        </div>
-                    </section>
-
-                    <!-- ── SECTION 7: CONTACT ── -->
-                    <section id="contact" class="policy-section">
-                        <div class="rights-contact">
-                            <h3>Request Your Documentation Package</h3>
-                            <p>Contact us and we will prepare a complete credentials package — tailored to your property, community, or organisation's specific requirements. Certificates of insurance, additional insured endorsements, certifications, and bonding documentation, all in one place.</p>
-                            <div class="contact-methods">
-                                <div class="contact-method">
-                                    <i class="fas fa-phone" aria-hidden="true" data-fallback="📞"></i>
-                                    <span>(805) 367-6432</span>
-                                </div>
-                                <div class="contact-method">
-                                    <i class="fas fa-envelope" aria-hidden="true" data-fallback="✉️"></i>
-                                    <span>concierge@805lifeguard.com</span>
-                                </div>
-                            </div>
-                            <p class="response-time">All documentation provided before service commencement — without exception.</p>
-                        </div>
-                    </section>
-
-                </div><!-- /privacy-main -->
-            </div><!-- /content-layout -->
-        </div><!-- /container -->
+                    </div>
+                </div>
+                <div class="about-images">
+                    <picture>
+                        <img src="images/services/insurance-coverage-800x600.jpg" alt="805 LifeGuard comprehensive insurance coverage" class="about-img primary" loading="lazy">
+                    </picture>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- =====================================================================
-         FOOTER — identical structure to terms.html
-    ===================================================================== -->
-    <!-- Footer - Matching Homepage -->
+    <!-- Coverage Cards -->
+    <section class="coverage-section" id="coverage">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Insurance Coverage</div>
+                <h2>Comprehensive Protection at Every Level</h2>
+                <p class="section-description">
+                    Coverage structured to match the environments we serve — from intimate private pools to 
+                    large-scale HOA communities and luxury events.
+                </p>
+            </div>
+            <div class="coverage-grid">
+                <div class="coverage-card">
+                    <h3><i class="fas fa-shield-alt"></i> General Liability</h3>
+                    <p>$1,000,000 Per Occurrence</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Private residences &amp; estates</li>
+                        <li><i class="fas fa-check"></i> HOA community pools</li>
+                        <li><i class="fas fa-check"></i> Corporate venues &amp; events</li>
+                        <li><i class="fas fa-check"></i> Property damage covered</li>
+                        <li><i class="fas fa-check"></i> Personal injury covered</li>
+                        <li><i class="fas fa-check"></i> Additional insured at no cost</li>
+                    </ul>
+                </div>
+                <div class="coverage-card featured">
+                    <h3><i class="fas fa-layer-group"></i> Excess Liability</h3>
+                    <p>$5,000,000 Available</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> HOA board protection</li>
+                        <li><i class="fas fa-check"></i> Property management companies</li>
+                        <li><i class="fas fa-check"></i> High-profile private engagements</li>
+                        <li><i class="fas fa-check"></i> Large-scale luxury events</li>
+                        <li><i class="fas fa-check"></i> Community pool operations</li>
+                        <li><i class="fas fa-check"></i> Board indemnification</li>
+                    </ul>
+                </div>
+                <div class="coverage-card">
+                    <h3><i class="fas fa-lock"></i> Licensed &amp; Bonded</h3>
+                    <p>California</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> California business license</li>
+                        <li><i class="fas fa-check"></i> Professional bonding certificate</li>
+                        <li><i class="fas fa-check"></i> Background verified staff</li>
+                        <li><i class="fas fa-check"></i> Red Cross certified</li>
+                        <li><i class="fas fa-check"></i> Security cleared personnel</li>
+                        <li><i class="fas fa-check"></i> All docs provided upfront</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Private Residence Coverage -->
+    <section class="services-section" id="private-estates">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Private Residence Coverage</div>
+                <h2>Your Home. Fully Protected.</h2>
+                <p class="section-description">
+                    When you engage 805 LifeGuard for your home, our insurance travels with us. 
+                    Your property and everyone on it is protected from arrival to departure.
+                </p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-content">
+                        <h3 class="service-title">Pool Parties &amp; Family Events</h3>
+                        <p class="service-description">Guests, family members, and your property fully covered for private gatherings of any size.</p>
+                        <div class="service-features">
+                            <span class="feature-tag">Property Damage</span>
+                            <span class="feature-tag">Personal Injury</span>
+                            <span class="feature-tag">All Ages</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <h3 class="service-title">Daily &amp; Recurring Coverage</h3>
+                        <p class="service-description">Ongoing coverage for regular service arrangements — daily lifeguard coverage and swimming instruction sessions.</p>
+                        <div class="service-features">
+                            <span class="feature-tag">Regular Coverage</span>
+                            <span class="feature-tag">Instruction Sessions</span>
+                            <span class="feature-tag">All Schedules</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <h3 class="service-title">Corporate &amp; Special Occasions</h3>
+                        <p class="service-description">Executive entertaining, corporate retreats, weddings, and milestone celebrations at your private residence.</p>
+                        <div class="service-features">
+                            <span class="feature-tag">Corporate Events</span>
+                            <span class="feature-tag">Special Occasions</span>
+                            <span class="feature-tag">All Venues</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOA Coverage -->
+    <section class="about-section" id="hoa">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="section-badge">HOA &amp; Community Coverage</div>
+                    <h2>Community Pools. Complete Confidence.</h2>
+                    <p class="lead-text">
+                        Every HOA partner receives a certificate of insurance naming the association as 
+                        additional insured before a single shift begins.
+                    </p>
+                    <p>
+                        Our $5,000,000 excess liability option exists precisely for the communities whose 
+                        standards demand it. HOA boards, property management companies, and residents 
+                        are all protected under our comprehensive coverage.
+                    </p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-building"></i></div>
+                            <div class="feature-content">
+                                <h4>HOA Additional Insured</h4>
+                                <p>Named on both $1M general liability and $5M excess policies</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="feature-content">
+                                <h4>Communities We Serve</h4>
+                                <p>Hidden Hills, Westlake Village, Calabasas, Beverly Hills, Manhattan Beach, Newport Beach &amp; more</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-handshake"></i></div>
+                            <div class="feature-content">
+                                <h4>Board Indemnification</h4>
+                                <p>805 LifeGuard indemnifies the HOA from claims arising from our negligence</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-file-contract"></i></div>
+                            <div class="feature-content">
+                                <h4>Board Documentation</h4>
+                                <p>All credentials provided for board records before service commencement</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-images">
+                    <picture>
+                        <img src="images/hoa/hoa-community-pool-800x600.jpg" alt="HOA community pool coverage" class="about-img primary" loading="lazy">
+                    </picture>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section class="coverage-section" id="certifications">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Professional Certifications</div>
+                <h2>Credentials That Protect Your Family</h2>
+                <p class="section-description">
+                    Insurance protects your property. Our certifications protect the people in your pool. 
+                    Every team member holds current credentials — renewed on schedule, without exception.
+                </p>
+            </div>
+            <div class="coverage-grid">
+                <div class="coverage-card">
+                    <h3><i class="fas fa-first-aid"></i> Red Cross Lifeguard</h3>
+                    <p>Current Certification</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Advanced water rescue techniques</li>
+                        <li><i class="fas fa-check"></i> Emergency response protocols</li>
+                        <li><i class="fas fa-check"></i> Renewed on schedule</li>
+                        <li><i class="fas fa-check"></i> Continuing education</li>
+                    </ul>
+                </div>
+                <div class="coverage-card featured">
+                    <h3><i class="fas fa-heartbeat"></i> CPR / AED</h3>
+                    <p>Professional Rescuer Level</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Advanced cardiac response</li>
+                        <li><i class="fas fa-check"></i> Respiratory emergency protocols</li>
+                        <li><i class="fas fa-check"></i> Clinical-grade standard</li>
+                        <li><i class="fas fa-check"></i> Current certification</li>
+                    </ul>
+                </div>
+                <div class="coverage-card">
+                    <h3><i class="fas fa-swimmer"></i> Water Safety Instructor</h3>
+                    <p>WSI — All Levels</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> All ages &amp; ability levels</li>
+                        <li><i class="fas fa-check"></i> Special needs aquatic instruction</li>
+                        <li><i class="fas fa-check"></i> Adaptive techniques certified</li>
+                        <li><i class="fas fa-check"></i> Background verified</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documentation -->
+    <section class="services-section" id="documentation">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Documentation &amp; Verification</div>
+                <h2>Everything in Writing. Before We Arrive.</h2>
+                <p class="section-description">
+                    Clients at this level do not take assurances on faith. Every document below is 
+                    provided in full before service begins — at no charge, without being asked twice.
+                </p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-content">
+                        <h3 class="service-title">Insurance Certificates</h3>
+                        <p class="service-description">Certificate of Insurance for general liability ($1M) and excess liability ($5M), with additional insured endorsements for homeowners, HOA boards, and property managers.</p>
+                        <div class="service-features">
+                            <span class="feature-tag">General Liability</span>
+                            <span class="feature-tag">Excess Liability</span>
+                            <span class="feature-tag">Additional Insured</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <h3 class="service-title">Licensing &amp; Bonding</h3>
+                        <p class="service-description">California Business License, Professional Bonding Certificate, and all applicable state licensing documentation provided before service commencement.</p>
+                        <div class="service-features">
+                            <span class="feature-tag">Business License</span>
+                            <span class="feature-tag">Bonding Certificate</span>
+                            <span class="feature-tag">State Licensed</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <h3 class="service-title">Certifications &amp; Background</h3>
+                        <p class="service-description">Current Red Cross Lifeguard, CPR/AED, WSI, and Special Needs certifications with valid expiry dates, plus background check verification summary.</p>
+                        <div class="service-features">
+                            <span class="feature-tag">Red Cross Certs</span>
+                            <span class="feature-tag">Background Check</span>
+                            <span class="feature-tag">Security Cleared</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="cta-content">
+                <div class="section-badge">Request Documentation</div>
+                <h2>Your Complete Credentials Package</h2>
+                <p>
+                    Contact us and we will prepare a complete credentials package tailored to your property, 
+                    community, or organisation's specific requirements. All documentation provided before 
+                    service commencement — without exception.
+                </p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary">
+                        <i class="fas fa-file-contract"></i>
+                        Request Package
+                    </a>
+                    <a href="tel:+18053676432" class="btn btn-secondary">
+                        <i class="fas fa-phone"></i>
+                        (805) 367-6432
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+        <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -1883,13 +918,13 @@
         (function() {
             'use strict';
             
-            // Fast carousel slide background setup for mobile
+            // Fast carousel slide background setup with intelligent fallback
             function initCarouselBackgrounds() {
                 const slides = document.querySelectorAll('.carousel-slide');
                 const isMobile = window.innerWidth <= 768;
                 const isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
                 
-                console.log('805 LifeGuard: Setting up carousel backgrounds. Width:', window.innerWidth, 'Mobile:', isMobile, 'Tablet:', isTablet);
+                console.log('805 LifeGuard: Setting up pool cleaning carousel backgrounds. Width:', window.innerWidth, 'Mobile:', isMobile, 'Tablet:', isTablet);
                 console.log('805 LifeGuard: Found', slides.length, 'carousel slides');
                 
                 slides.forEach(function(slide, index) {
@@ -1903,40 +938,50 @@
                         mobile: mobileSrc
                     });
                     
-                    let selectedSrc;
-                    if (isMobile) {
-                        selectedSrc = mobileSrc || tabletSrc || desktopSrc;
-                    } else if (isTablet) {
-                        selectedSrc = tabletSrc || desktopSrc || mobileSrc;
-                    } else {
-                        selectedSrc = desktopSrc || tabletSrc || mobileSrc;
-                    }
-                    
-                    if (selectedSrc) {
-                        // Force override any existing background
-                        slide.style.backgroundImage = 'url(' + selectedSrc + ')';
-                        slide.style.backgroundSize = 'cover';
-                        slide.style.backgroundPosition = 'center';
-                        slide.style.backgroundRepeat = 'no-repeat';
-                        console.log('805 LifeGuard: Set slide', index, 'background to:', selectedSrc);
+                    // Smart fallback function
+                    function tryImageSources(sources, slideElement, slideIndex) {
+                        if (sources.length === 0) {
+                            console.error('805 LifeGuard: No more image sources to try for slide', slideIndex);
+                            return;
+                        }
                         
-                        // Test if image loads
+                        const currentSrc = sources[0];
+                        const remainingSources = sources.slice(1);
+                        
                         const testImg = new Image();
                         testImg.onload = function() {
-                            console.log('805 LifeGuard: Image loaded successfully:', selectedSrc);
+                            console.log('805 LifeGuard: Image loaded successfully:', currentSrc);
+                            slideElement.style.backgroundImage = 'url(' + currentSrc + ')';
+                            slideElement.style.backgroundSize = 'cover';
+                            slideElement.style.backgroundPosition = 'center';
+                            slideElement.style.backgroundRepeat = 'no-repeat';
                         };
                         testImg.onerror = function() {
-                            console.error('805 LifeGuard: Failed to load image:', selectedSrc);
+                            console.warn('805 LifeGuard: Failed to load image:', currentSrc, '- trying next fallback');
+                            tryImageSources(remainingSources, slideElement, slideIndex);
                         };
-                        testImg.src = selectedSrc;
+                        testImg.src = currentSrc;
                     }
+                    
+                    // Determine priority order based on device
+                    let imagePriority;
+                    if (isMobile) {
+                        imagePriority = [mobileSrc, tabletSrc, desktopSrc].filter(Boolean);
+                    } else if (isTablet) {
+                        imagePriority = [tabletSrc, desktopSrc, mobileSrc].filter(Boolean);
+                    } else {
+                        imagePriority = [desktopSrc, tabletSrc, mobileSrc].filter(Boolean);
+                    }
+                    
+                    console.log('805 LifeGuard: Trying images for slide', index, 'in order:', imagePriority);
+                    tryImageSources(imagePriority, slide, index);
                 });
                 
                 // Ensure first slide is active
                 const firstSlide = document.querySelector('.carousel-slide');
                 if (firstSlide) {
                     firstSlide.classList.add('active');
-                    console.log('805 LifeGuard: First slide marked as active, background:', firstSlide.style.backgroundImage);
+                    console.log('805 LifeGuard: First slide marked as active');
                 }
             }
             
@@ -2037,7 +1082,7 @@
             script.src = 'js/luxury-app.js';
             script.async = true;
             script.onload = function() {
-                console.log('805 LifeGuard Optimized Application loaded successfully');
+                console.log('805 LifeGuard Pool Cleaning Page loaded successfully');
             };
             document.head.appendChild(script);
         }
