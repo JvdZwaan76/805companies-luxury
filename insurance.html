@@ -1,84 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" prefix="og: https://ogp.me/ns#">
+<html lang="en">
 <head>
-    <base href="/">
     <meta charset="UTF-8">
-    <!-- Viewport: mobile-first per Google mobile-first indexing mandate -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
-    <!-- Critical CSS - Inlined for immediate rendering (same method as working pages) -->
-    <style>
-        /* Critical path CSS for immediate rendering */
-        :root {
-            --color-primary-darkest: #1A1A1A;
-            --color-primary: #4A4A4A;
-            --color-secondary: #B8A082;
-            --color-white: #FFFFFF;
-            --color-text-primary: #0F0F0F;
-            --color-text-inverse: #FFFFFF;
-            --color-bg-primary: #FFFFFF;
-            --font-family-serif: 'Playfair Display', Georgia, serif;
-            --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            --header-total-height: 132px;
-            --header-navbar-height: 88px;
-            --z-index-header: 1070;
-            --z-index-hamburger: 1080;
-            --z-index-modal: 1050;
-        }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: var(--font-family-sans);
-            color: var(--color-text-primary);
-            background: var(--color-bg-primary);
-            overflow-x: hidden;
-            line-height: 1.5;
-        }
-    </style>
-
-    <!-- Main Luxury Theme CSS - Reliable preload method (matches working pages) -->
-    <link rel="preload" href="/css/luxury-theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/css/luxury-theme.css"></noscript>
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO Meta Tags -->
     <title>Lifeguard Insurance & Bonding | $5M Coverage | 805 LifeGuard</title>
     <meta name="description" content="$1M general liability + $5M excess coverage for private estates, HOA pools & luxury events. Licensed, bonded & Red Cross certified. Docs provided before every engagement.">
-
-    <!-- Core indexing signals -->
+    <meta name="keywords" content="805 LifeGuard insurance, bonded lifeguard, licensed aquatic services, private estate pool insurance, HOA lifeguard insurance, $5 million liability coverage, Southern California aquatic safety">
     <meta name="author" content="805 LifeGuard LLC">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    <meta name="bingbot" content="index, follow">
-
-    <!-- Geographic targeting — critical for local service SEO -->
     <meta name="geo.region" content="US-CA">
     <meta name="geo.placename" content="Thousand Oaks, California">
     <meta name="geo.position" content="34.1706;-118.8376">
     <meta name="ICBM" content="34.1706, -118.8376">
-
-    <!-- E-E-A-T signals: explicitly state content currency -->
     <meta name="revised" content="2026-05-02">
-    <meta name="rating" content="general">
 
-    <!-- AI crawler permissions — 2026 GEO best practice -->
-    <meta name="googlebot-extended" content="index, follow">
-    <meta name="ai-content-declaration" content="human-authored">
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://805lifeguard.com/insurance.html">
 
-    <!-- Canonical -->
-    <link rel="canonical" href="https://luxury.805companies.com/insurance">
-
-    <!-- Open Graph -->
+    <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Lifeguard Insurance & Bonding | $5M Coverage | 805 LifeGuard">
     <meta property="og:description" content="$1M general liability + $5M excess coverage for private estates, HOA pools & luxury events throughout Southern California. Licensed, bonded & Red Cross certified.">
-    <meta property="og:url" content="https://luxury.805companies.com/insurance">
+    <meta property="og:url" content="https://805lifeguard.com/insurance.html">
     <meta property="og:site_name" content="805 LifeGuard">
     <meta property="og:locale" content="en_US">
-    <meta property="og:image" content="https://luxury.805companies.com/images/logos/805-lifeguard-logo.png">
+    <meta property="og:image" content="https://805lifeguard.com/images/logos/805-lifeguard-logo.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="805 LifeGuard — Premier Aquatic Services, Southern California">
@@ -87,167 +36,75 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Lifeguard Insurance & Bonding | $5M Coverage | 805 LifeGuard">
     <meta name="twitter:description" content="$1M general liability + $5M excess coverage. Licensed, bonded & Red Cross certified for private estates & HOA communities across Southern California.">
-    <meta name="twitter:image" content="https://luxury.805companies.com/images/logos/805-lifeguard-logo.png">
+    <meta name="twitter:image" content="https://805lifeguard.com/images/logos/805-lifeguard-logo.png">
     <meta name="twitter:image:alt" content="805 LifeGuard — Premier Aquatic Services">
-    <meta name="twitter:site" content="@805LifeGuard">
 
-    <!-- Fonts — identical to other pages -->
+    <!-- Fonts — identical to terms.html -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 
-    <!-- Preload critical image -->
-    <link rel="preload" as="image" href="images/logos/805-lifeguard-logo.png" fetchpriority="high">
-
-    <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="images/logos/805-lifeguard-favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/logos/805-lifeguard-apple-touch-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/logos/805-lifeguard-favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/logos/805-lifeguard-favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <meta name="theme-color" content="#0a1628">
-    <meta name="msapplication-TileColor" content="#0a1628">
-    <!-- Fonts — identical to terms.html / privacy.html -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome — identical CDN + integrity hash to terms.html -->
+    <!-- Font Awesome — identical to terms.html -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
-    <!-- Luxury Theme CSS — shared across all pages -->
-    <link rel="stylesheet" href="https://luxury.805companies.com/css/luxury-theme.css">
+    <!-- Luxury Theme CSS — identical to terms.html -->
+    <link rel="stylesheet" href="css/luxury-theme.css">
 
-    <!-- Preload critical image -->
+    <!-- Preload critical image — identical to terms.html -->
     <link rel="preload" as="image" href="images/logos/805-lifeguard-logo.png">
 
-    <!-- Favicons -->
+    <!-- Favicons — identical to terms.html -->
     <link rel="icon" type="image/x-icon" href="images/logos/805-lifeguard-favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="images/logos/805-lifeguard-apple-touch-icon-180x180.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/logos/805-lifeguard-favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/logos/805-lifeguard-favicon-16x16.png">
 
-    <!-- ═══════════════════════════════════════════════════════════════
-         RESOURCE HINTS — performance = ranking signal
-    ═══════════════════════════════════════════════════════════════ -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <!-- DNS prefetch for third-party domains -->
-    <link rel="dns-prefetch" href="https://www.google-analytics.com">
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
-
-    <!-- Site CSS -->
-    <link rel="stylesheet" href="https://luxury.805companies.com/css/luxury-theme.css">
-
-    <!-- Critical image preload — eliminates LCP penalty -->
-    <link rel="preload" as="image" href="images/logos/805-lifeguard-logo.png" fetchpriority="high">
-
-    <!-- Favicons — full coverage for all platforms -->
-    <link rel="icon" type="image/x-icon" href="images/logos/805-lifeguard-favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/logos/805-lifeguard-apple-touch-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/logos/805-lifeguard-favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/logos/805-lifeguard-favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <meta name="theme-color" content="#0a1628">
-    <meta name="msapplication-TileColor" content="#0a1628">
-
-    <!-- ═══════════════════════════════════════════════════════════════
-         STRUCTURED DATA — Full enterprise @graph stack
-         Validates at: search.google.com/test/rich-results
-         Covers: WebSite, WebPage, LocalBusiness, Service (×4),
-                 FAQPage, BreadcrumbList, Person (founder)
-    ═══════════════════════════════════════════════════════════════ -->
+    <!-- Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@graph": [
-
         {
           "@type": "WebSite",
           "@id": "https://805lifeguard.com/#website",
           "url": "https://805lifeguard.com",
           "name": "805 LifeGuard",
           "description": "Premier private lifeguarding, swimming instruction, and luxury aquatic event management for Southern California's most distinguished estates and communities.",
-          "publisher": { "@id": "https://805lifeguard.com/#business" },
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": {
-              "@type": "EntryPoint",
-              "urlTemplate": "https://805lifeguard.com/?s={search_term_string}"
-            },
-            "query-input": "required name=search_term_string"
-          }
+          "publisher": { "@id": "https://805lifeguard.com/#business" }
         },
-
         {
           "@type": "WebPage",
           "@id": "https://805lifeguard.com/insurance.html#webpage",
           "url": "https://805lifeguard.com/insurance.html",
           "name": "Lifeguard Insurance & Bonding | $5M Coverage | 805 LifeGuard",
-          "description": "$1M general liability plus $5M excess liability insurance for private estates, HOA communities, and luxury events throughout Southern California. Licensed, bonded, and American Red Cross certified.",
+          "description": "$1M general liability plus $5M excess liability insurance for private estates, HOA communities, and luxury events throughout Southern California.",
           "datePublished": "2025-01-15",
           "dateModified": "2026-05-02",
           "inLanguage": "en-US",
           "isPartOf": { "@id": "https://805lifeguard.com/#website" },
           "about": { "@id": "https://805lifeguard.com/#business" },
           "breadcrumb": { "@id": "https://805lifeguard.com/insurance.html#breadcrumb" },
-          "author": { "@id": "https://805lifeguard.com/#founder" },
-          "primaryImageOfPage": {
-            "@type": "ImageObject",
-            "url": "https://805lifeguard.com/images/logos/805-lifeguard-logo.png"
-          },
-          "speakable": {
-            "@type": "SpeakableSpecification",
-            "cssSelector": [".hero-content", "#coverage", "#private-estates", "#hoa"]
-          }
+          "author": { "@id": "https://805lifeguard.com/#founder" }
         },
-
         {
           "@type": "BreadcrumbList",
           "@id": "https://805lifeguard.com/insurance.html#breadcrumb",
           "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://805lifeguard.com"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Insurance & Bonding",
-              "item": "https://805lifeguard.com/insurance.html"
-            }
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://805lifeguard.com" },
+            { "@type": "ListItem", "position": 2, "name": "Insurance & Bonding", "item": "https://805lifeguard.com/insurance.html" }
           ]
         },
-
         {
           "@type": ["LocalBusiness", "ProfessionalService"],
           "@id": "https://805lifeguard.com/#business",
           "name": "805 LifeGuard",
           "legalName": "805 Lifeguard LLC",
-          "description": "Premier private lifeguarding, bespoke swimming instruction, luxury event aquatic management, and exclusive pool cleaning for Southern California's most distinguished estates and communities. American Red Cross certified, licensed, bonded, and insured since 2016.",
+          "description": "Premier private lifeguarding, bespoke swimming instruction, luxury event aquatic management, and exclusive pool cleaning for Southern California's most distinguished estates and communities.",
           "url": "https://805lifeguard.com",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://805lifeguard.com/images/logos/805-lifeguard-logo.png",
-            "width": 512,
-            "height": 512
-          },
-          "image": "https://805lifeguard.com/images/logos/805-lifeguard-logo.png",
           "telephone": "+18053676432",
           "email": "concierge@805lifeguard.com",
           "foundingDate": "2016",
           "priceRange": "$$$$",
-          "currenciesAccepted": "USD",
-          "paymentAccepted": "Cash, Check, Credit Card, ACH, Zelle",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Thousand Oaks",
@@ -255,106 +112,26 @@
             "postalCode": "91360",
             "addressCountry": "US"
           },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 34.1706,
-            "longitude": -118.8376
-          },
-          "areaServed": [
-            "Thousand Oaks, CA", "Westlake Village, CA", "Agoura Hills, CA",
-            "Newbury Park, CA", "Oak Park, CA", "Malibu, CA", "Calabasas, CA",
-            "Hidden Hills, CA", "Camarillo, CA", "Moorpark, CA",
-            "Beverly Hills, CA", "Manhattan Beach, CA", "Newport Beach, CA",
-            "Palos Verdes, CA", "Laguna Beach, CA"
-          ],
-          "openingHoursSpecification": [{
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-            "opens": "07:00",
-            "closes": "21:00"
-          }],
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5.0",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
-          "sameAs": [
-            "https://www.yelp.com/biz/805-lifeguard-thousand-oaks",
-            "https://www.google.com/maps/place/805lifeguard.com/"
-          ],
+          "geo": { "@type": "GeoCoordinates", "latitude": 34.1706, "longitude": -118.8376 },
+          "areaServed": ["Thousand Oaks, CA","Westlake Village, CA","Agoura Hills, CA","Newbury Park, CA","Malibu, CA","Calabasas, CA","Hidden Hills, CA","Beverly Hills, CA","Manhattan Beach, CA","Newport Beach, CA","Palos Verdes, CA","Laguna Beach, CA"],
+          "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "50", "bestRating": "5", "worstRating": "1" },
           "hasCredential": [
-            {
-              "@type": "EducationalOccupationalCredential",
-              "credentialCategory": "license",
-              "name": "California Licensed — Private Estate & Community Aquatic Services"
-            },
-            {
-              "@type": "EducationalOccupationalCredential",
-              "credentialCategory": "certification",
-              "name": "General Liability Insurance — $1,000,000 Per Occurrence"
-            },
-            {
-              "@type": "EducationalOccupationalCredential",
-              "credentialCategory": "certification",
-              "name": "Excess Liability Insurance — $5,000,000"
-            },
-            {
-              "@type": "EducationalOccupationalCredential",
-              "credentialCategory": "license",
-              "name": "Professional Bonding — Private Property Services"
-            },
-            {
-              "@type": "EducationalOccupationalCredential",
-              "credentialCategory": "certification",
-              "name": "American Red Cross Lifeguard Certification — Current"
-            },
-            {
-              "@type": "EducationalOccupationalCredential",
-              "credentialCategory": "certification",
-              "name": "CPR/AED for Professional Rescuers — Current"
-            },
-            {
-              "@type": "EducationalOccupationalCredential",
-              "credentialCategory": "certification",
-              "name": "Water Safety Instructor (WSI) — American Red Cross, Current"
-            },
-            {
-              "@type": "EducationalOccupationalCredential",
-              "credentialCategory": "certification",
-              "name": "Special Needs Aquatic Instruction — Adaptive Techniques Certified"
-            }
+            { "@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "General Liability Insurance — $1,000,000 Per Occurrence" },
+            { "@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "Excess Liability Insurance — $5,000,000" },
+            { "@type": "EducationalOccupationalCredential", "credentialCategory": "license", "name": "California Licensed & Bonded — Private Estate Aquatic Services" },
+            { "@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "American Red Cross Lifeguard Certification — Current" },
+            { "@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "CPR/AED for Professional Rescuers — Current" },
+            { "@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "Water Safety Instructor (WSI) — American Red Cross, Current" }
           ]
         },
-
         {
           "@type": "Person",
           "@id": "https://805lifeguard.com/#founder",
           "name": "Jasper van der Zwaan",
           "jobTitle": "Founder & Lead Instructor",
-          "description": "American Red Cross Certified Lifeguard and Water Safety Instructor with 7+ years of experience serving Southern California's distinguished clientele. Specialist in adaptive aquatic instruction and private estate pool safety.",
           "worksFor": { "@id": "https://805lifeguard.com/#business" },
-          "url": "https://805lifeguard.com/about.html",
-          "knowsAbout": ["Lifeguarding","Swimming Instruction","Aquatic Safety","Pool Safety","Special Needs Aquatic Instruction","HOA Pool Management"]
+          "url": "https://805lifeguard.com/about.html"
         },
-
-        {
-          "@type": "Service",
-          "@id": "https://805lifeguard.com/insurance.html#insurance-coverage",
-          "name": "Comprehensive Aquatic Service Insurance Coverage",
-          "serviceType": "Licensed & Insured Aquatic Safety Services",
-          "description": "805 LifeGuard carries $1,000,000 per occurrence general liability insurance plus $5,000,000 excess liability coverage for all private estate, HOA community pool, and luxury event engagements throughout Southern California.",
-          "provider": { "@id": "https://805lifeguard.com/#business" },
-          "areaServed": { "@type": "State", "name": "California" },
-          "offers": {
-            "@type": "Offer",
-            "availability": "https://schema.org/InStock",
-            "areaServed": "Southern California"
-          },
-          "termsOfService": "https://805lifeguard.com/terms.html"
-        },
-
         {
           "@type": "FAQPage",
           "@id": "https://805lifeguard.com/insurance.html#faq",
@@ -362,51 +139,34 @@
             {
               "@type": "Question",
               "name": "What insurance coverage does 805 LifeGuard carry?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "805 LifeGuard carries $1,000,000 per occurrence general liability insurance plus $5,000,000 excess liability coverage. All policies cover private residences, HOA community pools, corporate venues, and luxury events throughout Southern California. We are also fully licensed and bonded for private estate services in California."
-              }
+              "acceptedAnswer": { "@type": "Answer", "text": "805 LifeGuard carries $1,000,000 per occurrence general liability insurance plus $5,000,000 excess liability coverage. All policies cover private residences, HOA community pools, corporate venues, and luxury events throughout Southern California. We are fully licensed and bonded for private estate services in California." }
             },
             {
               "@type": "Question",
               "name": "Can my HOA or property management company be named as additional insured?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes. HOA boards, property management companies, and homeowners can all be named as additional insured on our $1,000,000 general liability policy at no additional cost. The $5,000,000 excess liability is also available for communities requiring enhanced protection. Insurance certificates are provided before service commencement."
-              }
+              "acceptedAnswer": { "@type": "Answer", "text": "Yes. HOA boards, property management companies, and homeowners can all be named as additional insured on our $1,000,000 general liability policy at no additional cost. The $5,000,000 excess liability is also available for communities requiring enhanced protection." }
             },
             {
               "@type": "Question",
               "name": "Does 805 LifeGuard insurance cover private pool parties at my home?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes. Our insurance covers all services at private residences including pool parties, family events, daily lifeguard coverage, swimming instruction, and corporate entertaining. Property damage and personal injury are both included under our general liability policy. Your homeowner's insurance does not need to be your first line of defence — ours is."
-              }
+              "acceptedAnswer": { "@type": "Answer", "text": "Yes. Our insurance covers all services at private residences including pool parties, family events, daily lifeguard coverage, swimming instruction, and corporate entertaining. Property damage and personal injury are both included under our general liability policy." }
             },
             {
               "@type": "Question",
               "name": "What certifications do 805 LifeGuard professionals hold?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "All 805 LifeGuard professionals hold current American Red Cross Lifeguard Certification, CPR/AED for Professional Rescuers, and Water Safety Instructor (WSI) certification. Additional credentials include Special Needs Aquatic Instruction certification, California business licensing, professional bonding, and comprehensive background check verification. All certifications are renewed on schedule without exception."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How quickly can 805 LifeGuard provide insurance documentation?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "All insurance documentation — including certificates of insurance, additional insured endorsements, bonding certificates, and certification copies — is provided before service commencement. For HOA board presentations or legal counsel review, contact us at (805) 367-6432 or concierge@805lifeguard.com and we will prepare a complete credentials package tailored to your specific requirements."
-              }
+              "acceptedAnswer": { "@type": "Answer", "text": "All professionals hold current American Red Cross Lifeguard Certification, CPR/AED for Professional Rescuers, and Water Safety Instructor (WSI) certification. Additional credentials include Special Needs Aquatic Instruction certification, California business licensing, professional bonding, and comprehensive criminal background check verification." }
             },
             {
               "@type": "Question",
               "name": "What areas does 805 LifeGuard serve in Southern California?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "805 LifeGuard provides fully insured aquatic services throughout Southern California including Thousand Oaks, Westlake Village, Agoura Hills, Newbury Park, Calabasas, Hidden Hills, Malibu, Beverly Hills, Manhattan Beach, Newport Beach, Palos Verdes, and Laguna Beach. Contact us to discuss service availability for your specific location."
-              }
+              "acceptedAnswer": { "@type": "Answer", "text": "805 LifeGuard provides fully insured aquatic services throughout Southern California including Thousand Oaks, Westlake Village, Agoura Hills, Newbury Park, Calabasas, Hidden Hills, Malibu, Beverly Hills, Manhattan Beach, Newport Beach, Palos Verdes, and Laguna Beach." }
             }
+          ]
+        }
+      ]
+    }
+    </script>
+
           ]
         }
 
