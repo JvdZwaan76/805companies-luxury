@@ -69,7 +69,6 @@
           "@id": "https://805lifeguard.com/#website",
           "url": "https://805lifeguard.com",
           "name": "805 LifeGuard",
-          "description": "Premier private lifeguarding, swimming instruction, and luxury aquatic event management for Southern California's most distinguished estates and communities.",
           "publisher": { "@id": "https://805lifeguard.com/#business" }
         },
         {
@@ -77,12 +76,10 @@
           "@id": "https://805lifeguard.com/insurance.html#webpage",
           "url": "https://805lifeguard.com/insurance.html",
           "name": "Lifeguard Insurance & Bonding | $5M Coverage | 805 LifeGuard",
-          "description": "$1M general liability plus $5M excess liability insurance for private estates, HOA communities, and luxury events throughout Southern California.",
           "datePublished": "2025-01-15",
           "dateModified": "2026-05-02",
           "inLanguage": "en-US",
           "isPartOf": { "@id": "https://805lifeguard.com/#website" },
-          "about": { "@id": "https://805lifeguard.com/#business" },
           "breadcrumb": { "@id": "https://805lifeguard.com/insurance.html#breadcrumb" },
           "author": { "@id": "https://805lifeguard.com/#founder" }
         },
@@ -99,7 +96,6 @@
           "@id": "https://805lifeguard.com/#business",
           "name": "805 LifeGuard",
           "legalName": "805 Lifeguard LLC",
-          "description": "Premier private lifeguarding, bespoke swimming instruction, luxury event aquatic management, and exclusive pool cleaning for Southern California's most distinguished estates and communities.",
           "url": "https://805lifeguard.com",
           "telephone": "+18053676432",
           "email": "concierge@805lifeguard.com",
@@ -113,7 +109,6 @@
             "addressCountry": "US"
           },
           "geo": { "@type": "GeoCoordinates", "latitude": 34.1706, "longitude": -118.8376 },
-          "areaServed": ["Thousand Oaks, CA","Westlake Village, CA","Agoura Hills, CA","Newbury Park, CA","Malibu, CA","Calabasas, CA","Hidden Hills, CA","Beverly Hills, CA","Manhattan Beach, CA","Newport Beach, CA","Palos Verdes, CA","Laguna Beach, CA"],
           "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "50", "bestRating": "5", "worstRating": "1" },
           "hasCredential": [
             { "@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "General Liability Insurance — $1,000,000 Per Occurrence" },
@@ -139,7 +134,7 @@
             {
               "@type": "Question",
               "name": "What insurance coverage does 805 LifeGuard carry?",
-              "acceptedAnswer": { "@type": "Answer", "text": "805 LifeGuard carries $1,000,000 per occurrence general liability insurance plus $5,000,000 excess liability coverage. All policies cover private residences, HOA community pools, corporate venues, and luxury events throughout Southern California. We are fully licensed and bonded for private estate services in California." }
+              "acceptedAnswer": { "@type": "Answer", "text": "805 LifeGuard carries $1,000,000 per occurrence general liability insurance plus $5,000,000 excess liability coverage. All policies cover private residences, HOA community pools, corporate venues, and luxury events throughout Southern California." }
             },
             {
               "@type": "Question",
@@ -154,7 +149,7 @@
             {
               "@type": "Question",
               "name": "What certifications do 805 LifeGuard professionals hold?",
-              "acceptedAnswer": { "@type": "Answer", "text": "All professionals hold current American Red Cross Lifeguard Certification, CPR/AED for Professional Rescuers, and Water Safety Instructor (WSI) certification. Additional credentials include Special Needs Aquatic Instruction certification, California business licensing, professional bonding, and comprehensive criminal background check verification." }
+              "acceptedAnswer": { "@type": "Answer", "text": "All professionals hold current American Red Cross Lifeguard Certification, CPR/AED for Professional Rescuers, and Water Safety Instructor (WSI) certification. Additional credentials include Special Needs Aquatic Instruction certification, California business licensing, professional bonding, and comprehensive background check verification." }
             },
             {
               "@type": "Question",
@@ -167,19 +162,8 @@
     }
     </script>
 
-          ]
-        }
-
-      ]
-    }
-    </script>
-
-    <!-- Page-specific styles — all class names sourced directly from luxury-theme.css patterns -->
     <style>
-
-        /* =====================================================================
-           HERO — copied verbatim from terms.html .privacy-hero
-        ===================================================================== */
+        /* Privacy/Terms Hero Section */
         .privacy-hero {
             position: relative;
             min-height: 80vh;
@@ -190,25 +174,34 @@
             padding-bottom: var(--space-20);
             background: linear-gradient(135deg, var(--navy-dark), var(--navy-medium));
         }
+        
         .privacy-hero-background {
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             z-index: 1;
         }
+        
         .hero-overlay {
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(135deg,
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
                 rgba(10, 22, 40, 0.7) 0%,
                 rgba(27, 43, 66, 0.8) 50%,
-                rgba(10, 22, 40, 0.9) 100%);
+                rgba(10, 22, 40, 0.9) 100%
+            );
             z-index: 2;
         }
+        
         .privacy-hero .hero-content {
             position: relative;
             z-index: 3;
@@ -218,6 +211,7 @@
             margin: 0 auto;
             padding: 0 var(--space-4);
         }
+        
         .privacy-hero h1 {
             font-family: var(--font-serif);
             font-size: clamp(2.5rem, 5vw, 4rem);
@@ -226,13 +220,15 @@
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
             font-weight: 700;
         }
+        
         .privacy-hero .hero-subtitle {
             font-size: 1.25rem;
             line-height: 1.6;
             color: rgba(255, 255, 255, 0.9);
-            max-width: 720px;
+            max-width: 700px;
             margin: 0 auto var(--space-8);
         }
+        
         .last-updated {
             display: flex;
             align-items: center;
@@ -242,15 +238,14 @@
             color: var(--gold-light);
             font-weight: 500;
         }
-
-        /* =====================================================================
-           CONTENT LAYOUT — copied verbatim from terms.html
-        ===================================================================== */
+        
+        /* Privacy/Terms Content */
         .privacy-content {
             padding: var(--space-20) 0;
             background: var(--white-warm);
             min-height: 70vh;
         }
+        
         .content-layout {
             display: grid;
             grid-template-columns: 320px 1fr;
@@ -259,10 +254,8 @@
             max-width: 1400px;
             margin: 0 auto;
         }
-
-        /* =====================================================================
-           SIDEBAR — copied verbatim from terms.html
-        ===================================================================== */
+        
+        /* Privacy Sidebar */
         .privacy-sidebar {
             position: sticky;
             top: 140px;
@@ -275,12 +268,14 @@
             max-height: calc(100vh - 160px);
             overflow-y: auto;
         }
+        
         .sidebar-header {
             background: linear-gradient(135deg, var(--navy-dark), var(--navy-medium));
             color: var(--white-pure);
             padding: var(--space-6);
             text-align: center;
         }
+        
         .sidebar-header h3 {
             color: var(--white-pure);
             margin: 0;
@@ -290,7 +285,12 @@
             justify-content: center;
             gap: var(--space-2);
         }
-        .policy-nav { display: flex; flex-direction: column; }
+        
+        .policy-nav {
+            display: flex;
+            flex-direction: column;
+        }
+        
         .nav-item {
             display: flex;
             align-items: center;
@@ -301,14 +301,15 @@
             transition: var(--transition);
             font-weight: 500;
             font-size: 0.9375rem;
-            position: relative;
         }
+        
         .nav-item:hover {
             background: rgba(212, 175, 55, 0.08);
             color: var(--gold-dark);
             border-left: 4px solid var(--gold-medium);
             padding-left: calc(var(--space-5) - 4px);
         }
+        
         .nav-item.active {
             background: rgba(212, 175, 55, 0.12);
             color: var(--gold-dark);
@@ -316,21 +317,16 @@
             padding-left: calc(var(--space-5) - 4px);
             font-weight: 600;
         }
-        .nav-item:last-child { border-bottom: none; }
-        .nav-item.active::after {
-            content: '';
-            position: absolute;
-            right: var(--space-4);
-            top: 50%;
-            transform: translateY(-50%);
-            width: 8px; height: 8px;
-            background: var(--gold-medium);
-            border-radius: 50%;
+        
+        .nav-item:last-child {
+            border-bottom: none;
         }
+        
         .privacy-highlights {
             background: var(--cream);
             padding: var(--space-6);
         }
+        
         .privacy-highlights h4 {
             color: var(--navy-dark);
             margin-bottom: var(--space-4);
@@ -340,7 +336,13 @@
             justify-content: center;
             gap: var(--space-2);
         }
-        .privacy-highlights ul { list-style: none; margin: 0; padding: 0; }
+        
+        .privacy-highlights ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
         .privacy-highlights li {
             display: flex;
             align-items: center;
@@ -349,11 +351,13 @@
             color: var(--gray-medium);
             font-size: 0.875rem;
         }
-        .privacy-highlights i { color: var(--gold-medium); font-size: 0.75rem; }
-
-        /* =====================================================================
-           MAIN CONTENT AREA — copied verbatim from terms.html
-        ===================================================================== */
+        
+        .privacy-highlights i {
+            color: var(--gold-medium);
+            font-size: 0.75rem;
+        }
+        
+        /* Privacy Main Content */
         .privacy-main {
             background: var(--white-pure);
             border-radius: var(--border-radius-xl);
@@ -362,11 +366,16 @@
             border: 1px solid var(--border-color);
             min-height: 600px;
         }
+        
         .policy-section {
             margin-bottom: var(--space-16);
             scroll-margin-top: 140px;
         }
-        .policy-section:last-child { margin-bottom: 0; }
+        
+        .policy-section:last-child {
+            margin-bottom: 0;
+        }
+        
         .policy-section h2 {
             color: var(--navy-dark);
             margin-bottom: var(--space-8);
@@ -377,6 +386,7 @@
             align-items: center;
             gap: var(--space-3);
         }
+        
         .policy-section h3 {
             color: var(--navy-dark);
             margin-bottom: var(--space-4);
@@ -385,23 +395,41 @@
             align-items: center;
             gap: var(--space-2);
         }
-        .policy-section h3 i { color: var(--gold-medium); font-size: 1rem; }
+        
+        .policy-section h3 i {
+            color: var(--gold-medium);
+            font-size: 1rem;
+        }
+        
+        .policy-section h4 {
+            color: var(--navy-dark);
+            margin-bottom: var(--space-3);
+            font-size: 1.125rem;
+        }
+        
         .policy-section p {
             color: var(--gray-dark);
             line-height: 1.7;
             margin-bottom: var(--space-4);
         }
-        .policy-section ul { margin: var(--space-4) 0; padding-left: var(--space-6); }
+        
+        .policy-section ul {
+            margin: var(--space-4) 0;
+            padding-left: var(--space-6);
+        }
+        
         .policy-section li {
             color: var(--gray-dark);
             line-height: 1.6;
             margin-bottom: var(--space-2);
         }
-        .policy-section strong { color: var(--navy-dark); font-weight: 600; }
-
-        /* =====================================================================
-           COMMITMENT STATEMENT — copied verbatim from terms.html
-        ===================================================================== */
+        
+        .policy-section strong {
+            color: var(--navy-dark);
+            font-weight: 600;
+        }
+        
+        /* Content Components */
         .commitment-statement {
             background: var(--cream);
             padding: var(--space-6);
@@ -409,6 +437,7 @@
             border-left: 4px solid var(--gold-medium);
             margin: var(--space-8) 0;
         }
+        
         .lead-text {
             font-size: 1.25rem;
             font-family: var(--font-serif);
@@ -416,17 +445,14 @@
             line-height: 1.6;
             margin: 0;
         }
-
-        /* =====================================================================
-           PRINCIPLES GRID — copied verbatim from terms.html
-           Used for the 4 primary coverage cards
-        ===================================================================== */
+        
         .principles-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: var(--space-6);
             margin: var(--space-8) 0;
         }
+        
         .principle-item {
             background: var(--white-warm);
             padding: var(--space-6);
@@ -435,12 +461,15 @@
             text-align: center;
             transition: var(--transition);
         }
+        
         .principle-item:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-md);
         }
+        
         .principle-icon {
-            width: 60px; height: 60px;
+            width: 60px;
+            height: 60px;
             background: var(--gold-medium);
             border-radius: 50%;
             display: flex;
@@ -450,40 +479,27 @@
             font-size: 1.5rem;
             margin: 0 auto var(--space-4);
         }
-        .principle-icon.navy-icon {
-            background: var(--navy-dark);
-            color: var(--gold-medium);
-        }
+        
         .principle-item h4 {
             color: var(--navy-dark);
             margin-bottom: var(--space-3);
             font-size: 1.125rem;
         }
+        
         .principle-item p {
             color: var(--gray-medium);
             margin: 0;
             font-size: 0.9375rem;
             line-height: 1.5;
         }
-        .principle-item .coverage-figure {
-            font-family: var(--font-serif);
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--gold-dark);
-            display: block;
-            margin-bottom: var(--space-2);
-        }
-
-        /* =====================================================================
-           USAGE GRID — copied verbatim from terms.html
-           Used for certification cards
-        ===================================================================== */
+        
         .usage-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: var(--space-6);
             margin: var(--space-8) 0;
         }
+        
         .usage-item {
             background: var(--white-warm);
             padding: var(--space-6);
@@ -491,12 +507,15 @@
             border: 1px solid var(--border-color);
             transition: var(--transition);
         }
+        
         .usage-item:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-md);
         }
+        
         .usage-icon {
-            width: 50px; height: 50px;
+            width: 50px;
+            height: 50px;
             background: var(--navy-dark);
             border-radius: 50%;
             display: flex;
@@ -506,16 +525,478 @@
             font-size: 1.25rem;
             margin-bottom: var(--space-4);
         }
-        .usage-icon.gold-icon {
-            background: var(--gold-medium);
-            color: var(--white-pure);
-        }
+        
         .usage-item h4 {
             color: var(--navy-dark);
             margin-bottom: var(--space-3);
             font-size: 1.125rem;
         }
-        .usage-item .cert-label {
+        
+        .usage-item ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .usage-item li {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            margin-bottom: var(--space-2);
+            color: var(--gray-dark);
+            font-size: 0.9375rem;
+        }
+        
+        .usage-item li::before {
+            content: '•';
+            color: var(--gold-medium);
+            font-weight: bold;
+        }
+        
+        .info-category {
+            background: var(--white-warm);
+            padding: var(--space-6);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--border-color);
+            margin: var(--space-8) 0;
+        }
+        
+        .info-category h3 {
+            color: var(--navy-dark);
+            margin-bottom: var(--space-4);
+            font-size: 1.125rem;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+        
+        .info-category h3 i {
+            color: var(--gold-medium);
+        }
+        
+        .sharing-scenarios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-6);
+            margin: var(--space-8) 0;
+        }
+        
+        .scenario-item {
+            background: var(--white-warm);
+            padding: var(--space-6);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        
+        .scenario-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .scenario-item h4 {
+            color: var(--navy-dark);
+            margin-bottom: var(--space-3);
+            font-size: 1.125rem;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+        
+        .scenario-item h4 i {
+            color: var(--gold-medium);
+        }
+        
+        .scenario-item p {
+            color: var(--gray-medium);
+            margin: 0;
+        }
+        
+        .rights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-6);
+            margin: var(--space-8) 0;
+        }
+        
+        .right-item {
+            background: var(--white-warm);
+            padding: var(--space-6);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        
+        .right-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .right-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gold-medium);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white-pure);
+            font-size: 1.25rem;
+            margin-bottom: var(--space-4);
+        }
+        
+        .right-item h4 {
+            color: var(--navy-dark);
+            margin-bottom: var(--space-3);
+            font-size: 1.125rem;
+        }
+        
+        .right-item p {
+            color: var(--gray-medium);
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        .security-measures {
+            margin: var(--space-8) 0;
+        }
+        
+        .security-category {
+            margin-bottom: var(--space-8);
+        }
+        
+        .security-category h3 {
+            color: var(--navy-dark);
+            margin-bottom: var(--space-4);
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+        
+        .security-category h3 i {
+            color: var(--gold-medium);
+        }
+        
+        .security-category ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .security-category li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-3);
+            margin-bottom: var(--space-3);
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+        
+        .security-category li::before {
+            content: '✓';
+            color: var(--gold-medium);
+            font-weight: bold;
+            font-size: 1.125rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .sharing-commitment {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-medium));
+            color: var(--navy-dark);
+            padding: var(--space-6);
+            border-radius: var(--border-radius-lg);
+            margin: var(--space-8) 0;
+        }
+        
+        .commitment-badge {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin-bottom: var(--space-3);
+        }
+        
+        .commitment-badge i {
+            font-size: 1.25rem;
+        }
+        
+        .sharing-commitment p {
+            color: var(--navy-dark);
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        .retention-schedule {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-6);
+            margin: var(--space-8) 0;
+        }
+        
+        .retention-item {
+            background: var(--white-warm);
+            padding: var(--space-6);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        
+        .retention-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .retention-item h4 {
+            color: var(--navy-dark);
+            margin-bottom: var(--space-3);
+            font-size: 1.125rem;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+        
+        .retention-item h4 i {
+            color: var(--gold-medium);
+        }
+        
+        .retention-item p {
+            color: var(--gray-medium);
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        .retention-note {
+            background: var(--cream);
+            padding: var(--space-5);
+            border-radius: var(--border-radius-lg);
+            border-left: 4px solid var(--gold-medium);
+            margin: var(--space-8) 0;
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-3);
+        }
+        
+        .retention-note i {
+            color: var(--gold-medium);
+            font-size: 1.25rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .retention-note p {
+            color: var(--gray-dark);
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        .rights-contact {
+            background: var(--cream);
+            padding: var(--space-8);
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            margin: var(--space-8) 0;
+        }
+        
+        .rights-contact h3 {
+            color: var(--navy-dark);
+            margin-bottom: var(--space-4);
+            font-size: 1.5rem;
+        }
+        
+        .rights-contact p {
+            color: var(--gray-medium);
+            margin-bottom: var(--space-6);
+        }
+        
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-8);
+            margin: var(--space-6) 0;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            color: var(--gold-dark);
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+        
+        .contact-method i {
+            font-size: 1.25rem;
+        }
+        
+        .response-time {
+            color: var(--gray-medium);
+            font-size: 0.9375rem;
+            font-style: italic;
+            margin: 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1023px) {
+            .content-layout {
+                grid-template-columns: 1fr;
+                gap: var(--space-8);
+            }
+            
+            .privacy-sidebar {
+                position: static;
+                order: 2;
+                margin-top: var(--space-8);
+                max-height: none;
+            }
+            
+            .privacy-main {
+                order: 1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .privacy-hero {
+                min-height: 70vh;
+                padding-top: 80px;
+                padding-bottom: var(--space-12);
+                background-attachment: scroll;
+            }
+            
+            .privacy-hero h1 {
+                font-size: 2.5rem;
+                margin-bottom: var(--space-5);
+            }
+            
+            .privacy-hero .hero-subtitle {
+                font-size: 1.125rem;
+                margin-bottom: var(--space-6);
+            }
+            
+            .privacy-content {
+                padding: var(--space-16) 0;
+            }
+            
+            .privacy-main {
+                padding: var(--space-8);
+            }
+            
+            .principles-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-4);
+            }
+            
+            .usage-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-4);
+            }
+            
+            .sharing-scenarios {
+                grid-template-columns: 1fr;
+                gap: var(--space-4);
+            }
+            
+            .rights-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-4);
+            }
+            
+            .retention-schedule {
+                grid-template-columns: 1fr;
+                gap: var(--space-4);
+            }
+            
+            .contact-methods {
+                flex-direction: column;
+                gap: var(--space-4);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .privacy-main {
+                padding: var(--space-6);
+            }
+            
+            .policy-section h2 {
+                font-size: 1.5rem;
+                margin-bottom: var(--space-6);
+            }
+            
+            .principle-item,
+            .usage-item,
+            .scenario-item,
+            .right-item,
+            .retention-item {
+                padding: var(--space-5);
+            }
+            
+            .commitment-statement,
+            .info-category,
+            .sharing-commitment,
+            .retention-note,
+            .rights-contact {
+                padding: var(--space-5);
+            }
+        }
+        
+        /* Icon loading fix */
+        .fas, .far, .fab, .fal {
+            font-family: "Font Awesome 6 Free", "Font Awesome 6 Pro", "Font Awesome 6 Brands";
+            font-weight: 900;
+        }
+        
+        .far {
+            font-weight: 400;
+        }
+        
+        /* Ensure icons display properly on slower connections */
+        i[class*="fa-"] {
+            display: inline-block;
+            width: 1em;
+            text-align: center;
+        }
+        
+        /* Fallback for missing icons */
+        i[class*="fa-"]:before {
+            content: attr(data-fallback);
+        }
+        
+        /* Smooth scrolling for navigation */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Navigation active state management */
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            right: var(--space-4);
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: var(--gold-medium);
+            border-radius: 50%;
+        }
+    </style>
+
+        /* ── Insurance page specific additions ── */
+        .coverage-figure {
+            font-family: var(--font-serif);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--gold-dark);
+            display: block;
+            margin-bottom: var(--space-2);
+        }
+
+        .cert-label {
             font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 0.08em;
@@ -527,6 +1008,103 @@
             display: inline-block;
             margin-bottom: var(--space-3);
         }
+
+        .principle-item {
+            background: var(--white-warm);
+            padding: var(--space-6);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .principle-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .principle-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gold-medium);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white-pure);
+            font-size: 1.5rem;
+            margin: 0 auto var(--space-4);
+        }
+
+        .principle-icon.navy-icon {
+            background: var(--navy-dark);
+            color: var(--gold-medium);
+        }
+
+        .principle-item h4 {
+            color: var(--navy-dark);
+            margin-bottom: var(--space-3);
+            font-size: 1.125rem;
+        }
+
+        .principle-item p {
+            color: var(--gray-medium);
+            margin: 0;
+            font-size: 0.9375rem;
+            line-height: 1.5;
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-6);
+            margin: var(--space-8) 0;
+        }
+
+        .usage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-6);
+            margin: var(--space-8) 0;
+        }
+
+        .usage-item {
+            background: var(--white-warm);
+            padding: var(--space-6);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .usage-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .usage-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--navy-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-medium);
+            font-size: 1.25rem;
+            margin-bottom: var(--space-4);
+        }
+
+        .usage-icon.gold-icon {
+            background: var(--gold-medium);
+            color: var(--white-pure);
+        }
+
+        .usage-item h4 {
+            color: var(--navy-dark);
+            margin-bottom: var(--space-3);
+            font-size: 1.125rem;
+        }
+
         .usage-item p {
             color: var(--gray-medium);
             font-size: 0.9375rem;
@@ -534,220 +1112,6 @@
             margin: 0;
         }
 
-        /* =====================================================================
-           RIGHTS GRID — copied verbatim from terms.html
-           Used for documentation list items
-        ===================================================================== */
-        .rights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--space-6);
-            margin: var(--space-8) 0;
-        }
-        .right-item {
-            background: var(--white-warm);
-            padding: var(--space-6);
-            border-radius: var(--border-radius-lg);
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-        .right-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-        }
-        .right-icon {
-            width: 50px; height: 50px;
-            background: var(--gold-medium);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white-pure);
-            font-size: 1.25rem;
-            margin-bottom: var(--space-4);
-        }
-        .right-item h4 {
-            color: var(--navy-dark);
-            margin-bottom: var(--space-3);
-            font-size: 1.125rem;
-        }
-        .right-item p {
-            color: var(--gray-medium);
-            margin: 0;
-            line-height: 1.6;
-            font-size: 0.9375rem;
-        }
-
-        /* =====================================================================
-           SECURITY MEASURES — copied verbatim from terms.html
-           Used for bullet list sections
-        ===================================================================== */
-        .security-measures { margin: var(--space-8) 0; }
-        .security-category { margin-bottom: var(--space-8); }
-        .security-category:last-child { margin-bottom: 0; }
-        .security-category h3 {
-            color: var(--navy-dark);
-            margin-bottom: var(--space-4);
-            font-size: 1.25rem;
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
-        }
-        .security-category h3 i { color: var(--gold-medium); }
-        .security-category ul { list-style: none; margin: 0; padding: 0; }
-        .security-category li {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--space-3);
-            margin-bottom: var(--space-3);
-            color: var(--gray-dark);
-            line-height: 1.6;
-        }
-        .security-category li i { color: var(--gold-medium); margin-top: 3px; flex-shrink: 0; }
-
-        /* =====================================================================
-           SHARING COMMITMENT — copied verbatim from terms.html
-           Used for indemnification callout
-        ===================================================================== */
-        .sharing-commitment {
-            background: var(--cream);
-            padding: var(--space-6);
-            border-radius: var(--border-radius-lg);
-            border: 1px solid var(--border-color);
-            margin: var(--space-8) 0;
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-4);
-        }
-        .commitment-badge {
-            display: flex;
-            align-items: center;
-            gap: var(--space-3);
-            font-weight: 700;
-            color: var(--navy-dark);
-            font-size: 1.0625rem;
-        }
-        .commitment-badge i { color: var(--gold-medium); font-size: 1.25rem; }
-        .sharing-commitment p {
-            color: var(--gray-dark);
-            line-height: 1.7;
-            margin: 0;
-        }
-
-        /* =====================================================================
-           CONTACT CALLOUT — copied verbatim from terms.html .rights-contact
-        ===================================================================== */
-        .rights-contact {
-            background: var(--cream);
-            padding: var(--space-8);
-            border-radius: var(--border-radius-lg);
-            text-align: center;
-            margin-top: var(--space-12);
-        }
-        .rights-contact h3 {
-            color: var(--navy-dark);
-            margin-bottom: var(--space-4);
-            font-size: 1.5rem;
-        }
-        .rights-contact > p { color: var(--gray-dark); margin-bottom: var(--space-6); }
-        .contact-methods {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-8);
-            margin-bottom: var(--space-6);
-            flex-wrap: wrap;
-        }
-        .contact-method {
-            display: flex;
-            align-items: center;
-            gap: var(--space-3);
-            color: var(--navy-dark);
-            font-weight: 600;
-            font-size: 1.0625rem;
-        }
-        .contact-method i { color: var(--gold-medium); font-size: 1.25rem; }
-        .response-time { font-size: 0.875rem; color: var(--gray-medium); margin: 0; }
-
-        /* =====================================================================
-           ICON FIX — copied verbatim from terms.html
-        ===================================================================== */
-        html { scroll-behavior: smooth; }
-        .fas, .far, .fab, .fal {
-            font-family: "Font Awesome 6 Free", "Font Awesome 6 Pro", "Font Awesome 6 Brands";
-            font-weight: 900;
-        }
-        .far { font-weight: 400; }
-        i[class*="fa-"] { display: inline-block; width: 1em; text-align: center; }
-        i[class*="fa-"]:before { content: attr(data-fallback); }
-
-        /* =====================================================================
-           RESPONSIVE — mirrors terms.html breakpoints exactly
-        ===================================================================== */
-        @media (max-width: 1200px) {
-            .content-layout {
-                grid-template-columns: 280px 1fr;
-                gap: var(--space-12);
-            }
-        }
-        @media (max-width: 1024px) {
-            .content-layout {
-                grid-template-columns: 1fr;
-                gap: var(--space-8);
-            }
-            .privacy-sidebar {
-                position: static;
-                max-height: none;
-            }
-            .policy-nav {
-                flex-direction: row;
-                flex-wrap: wrap;
-            }
-            .nav-item {
-                flex: 1 1 160px;
-                min-width: 140px;
-                border-bottom: 1px solid var(--border-color);
-            }
-            .principles-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .usage-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .rights-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (max-width: 768px) {
-            .privacy-hero {
-                min-height: 70vh;
-                padding-top: 100px;
-            }
-            .privacy-hero h1 { font-size: clamp(2rem, 6vw, 2.75rem); }
-            .privacy-hero .hero-subtitle { font-size: 1.1rem; }
-            .privacy-content { padding: var(--space-12) 0; }
-            .privacy-main { padding: var(--space-8); }
-            .policy-section h2 { font-size: 1.5rem; }
-            .principles-grid { grid-template-columns: 1fr; gap: var(--space-4); }
-            .usage-grid { grid-template-columns: 1fr; gap: var(--space-4); }
-            .rights-grid { grid-template-columns: 1fr; gap: var(--space-4); }
-            .contact-methods { flex-direction: column; gap: var(--space-4); align-items: center; }
-            .content-layout { gap: var(--space-6); }
-        }
-        @media (max-width: 480px) {
-            .privacy-main { padding: var(--space-6); }
-            .principle-item,
-            .usage-item,
-            .right-item { padding: var(--space-5); }
-            .commitment-statement,
-            .sharing-commitment,
-            .rights-contact { padding: var(--space-5); }
-            .policy-section h2 {
-                font-size: 1.375rem;
-                gap: var(--space-2);
-            }
-            .rights-contact h3 { font-size: 1.25rem; }
-        }
-    </style>
 </head>
 <body itemscope itemtype="https://schema.org/WebPage">
 
