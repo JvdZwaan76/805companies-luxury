@@ -161,7 +161,7 @@
       ]
     }
     </script>
-
+    <!-- Page Styles -->
     <style>
         /* Privacy/Terms Hero Section */
         .privacy-hero {
@@ -984,9 +984,8 @@
             background: var(--gold-medium);
             border-radius: 50%;
         }
-    </style>
 
-        /* ── Insurance page specific additions ── */
+        /* ── Insurance page specific ── */
         .coverage-figure {
             font-family: var(--font-serif);
             font-size: 1.75rem;
@@ -995,7 +994,6 @@
             display: block;
             margin-bottom: var(--space-2);
         }
-
         .cert-label {
             font-size: 0.75rem;
             font-weight: 700;
@@ -1008,7 +1006,12 @@
             display: inline-block;
             margin-bottom: var(--space-3);
         }
-
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-6);
+            margin: var(--space-8) 0;
+        }
         .principle-item {
             background: var(--white-warm);
             padding: var(--space-6);
@@ -1017,57 +1020,25 @@
             text-align: center;
             transition: var(--transition);
         }
-
-        .principle-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-        }
-
+        .principle-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
         .principle-icon {
-            width: 60px;
-            height: 60px;
+            width: 60px; height: 60px;
             background: var(--gold-medium);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
             color: var(--white-pure);
             font-size: 1.5rem;
             margin: 0 auto var(--space-4);
         }
-
-        .principle-icon.navy-icon {
-            background: var(--navy-dark);
-            color: var(--gold-medium);
-        }
-
-        .principle-item h4 {
-            color: var(--navy-dark);
-            margin-bottom: var(--space-3);
-            font-size: 1.125rem;
-        }
-
-        .principle-item p {
-            color: var(--gray-medium);
-            margin: 0;
-            font-size: 0.9375rem;
-            line-height: 1.5;
-        }
-
-        .principles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--space-6);
-            margin: var(--space-8) 0;
-        }
-
+        .principle-icon.navy-icon { background: var(--navy-dark); color: var(--gold-medium); }
+        .principle-item h4 { color: var(--navy-dark); margin-bottom: var(--space-3); font-size: 1.125rem; }
+        .principle-item p { color: var(--gray-medium); margin: 0; font-size: 0.9375rem; line-height: 1.5; }
         .usage-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: var(--space-6);
             margin: var(--space-8) 0;
         }
-
         .usage-item {
             background: var(--white-warm);
             padding: var(--space-6);
@@ -1075,43 +1046,21 @@
             border: 1px solid var(--border-color);
             transition: var(--transition);
         }
-
-        .usage-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-        }
-
+        .usage-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
         .usage-icon {
-            width: 50px;
-            height: 50px;
+            width: 50px; height: 50px;
             background: var(--navy-dark);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
             color: var(--gold-medium);
             font-size: 1.25rem;
             margin-bottom: var(--space-4);
         }
+        .usage-icon.gold-icon { background: var(--gold-medium); color: var(--white-pure); }
+        .usage-item h4 { color: var(--navy-dark); margin-bottom: var(--space-3); font-size: 1.125rem; }
+        .usage-item p { color: var(--gray-medium); font-size: 0.9375rem; line-height: 1.55; margin: 0; }
 
-        .usage-icon.gold-icon {
-            background: var(--gold-medium);
-            color: var(--white-pure);
-        }
-
-        .usage-item h4 {
-            color: var(--navy-dark);
-            margin-bottom: var(--space-3);
-            font-size: 1.125rem;
-        }
-
-        .usage-item p {
-            color: var(--gray-medium);
-            font-size: 0.9375rem;
-            line-height: 1.55;
-            margin: 0;
-        }
-
+    </style>
 </head>
 <body itemscope itemtype="https://schema.org/WebPage">
 
