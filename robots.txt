@@ -1,0 +1,73 @@
+# =============================================================================
+# 805lifeguard.com — robots.txt
+# Updated: 2026-05-02
+# =============================================================================
+
+# Default: all crawlers welcome — all content indexable
+User-agent: *
+Allow: /
+Disallow: /cdn-cgi/
+
+# =============================================================================
+# AI & LLM CRAWLERS — explicitly welcomed (2026 GEO best practice)
+# Ensures AI search engines (ChatGPT, Perplexity, Gemini, Claude) can
+# fully crawl and cite 805 LifeGuard content in AI-generated answers.
+# =============================================================================
+
+# OpenAI — ChatGPT Search & GPT training
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic — Claude AI
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Google — AI Overviews & Gemini (Google-Extended controls AI training)
+User-agent: Google-Extended
+Allow: /
+
+# Apple — Siri & Apple Intelligence
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta — Llama & Meta AI
+User-agent: FacebookBot
+Allow: /
+
+# Common Crawl — feeds many LLM training datasets
+User-agent: CCBot
+Allow: /
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+
+# Microsoft Copilot / Bing AI
+User-agent: Bingbot
+Allow: /
+
+User-agent: msnbot
+Allow: /
+
+# =============================================================================
+# SITEMAPS
+# =============================================================================
+
+Sitemap: https://805lifeguard.com/sitemap.xml
+Sitemap: https://805lifeguard.com/llms.txt
