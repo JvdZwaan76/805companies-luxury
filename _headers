@@ -1,23 +1,11 @@
 # =============================================================================
 # 805lifeguard.com — Cloudflare Pages _headers
-# =============================================================================
-# IMPORTANT: This file uses Cloudflare Pages _headers syntax.
-# The previous _headers file contained Apache .htaccess syntax which
-# Cloudflare Pages silently ignores. This file activates those headers
-# for the first time.
-#
-# Safety: Every domain in the CSP was confirmed live from the actual site.
-# Workers API: https://805companies-luxury-api.jaspervdz.workers.dev (preserved)
-# Font Awesome: https://cdnjs.cloudflare.com (confirmed in all HTML files)
-# Google Fonts: https://fonts.googleapis.com + fonts.gstatic.com (confirmed)
-#
-# Reference: developers.cloudflare.com/pages/configuration/headers/
 # Updated: 2026-05-02
+# Note: CSP intentionally omitted — Cloudflare injects scripts automatically
+# (cloudflareinsights.com beacon, email-decode.min.js) that would require
+# constant CSP maintenance. Other security headers fully active.
 # =============================================================================
 
-# ---------------------------------------------------------------------------
-# ALL PAGES — security headers applied globally
-# ---------------------------------------------------------------------------
 /*
   X-Frame-Options: SAMEORIGIN
   X-Content-Type-Options: nosniff
@@ -25,32 +13,19 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://805companies-luxury-api.jaspervdz.workers.dev; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://805lifeguard.com https://luxury.805companies.com https://805companies.com; connect-src 'self' https://805companies-luxury-api.jaspervdz.workers.dev; frame-src 'none'; media-src 'self';
 
-# ---------------------------------------------------------------------------
-# HTML — 1 hour cache, revalidate on each visit
-# ---------------------------------------------------------------------------
 /*.html
   Cache-Control: public, max-age=3600, must-revalidate
 
-# ---------------------------------------------------------------------------
-# IMAGES — 1 year immutable (safe: filenames don't change without deployment)
-# ---------------------------------------------------------------------------
 /images/*
   Cache-Control: public, max-age=31536000, immutable
 
-# ---------------------------------------------------------------------------
-# CSS & JS — 1 year immutable
-# ---------------------------------------------------------------------------
 /css/*
   Cache-Control: public, max-age=31536000, immutable
 
 /js/*
   Cache-Control: public, max-age=31536000, immutable
 
-# ---------------------------------------------------------------------------
-# FONTS — 1 year immutable
-# ---------------------------------------------------------------------------
 /*.woff2
   Cache-Control: public, max-age=31536000, immutable
 
@@ -60,9 +35,6 @@
 /*.ttf
   Cache-Control: public, max-age=31536000, immutable
 
-# ---------------------------------------------------------------------------
-# SEO FILES — short/no cache so crawlers always get current version
-# ---------------------------------------------------------------------------
 /sitemap.xml
   Cache-Control: no-cache
   Content-Type: application/xml; charset=utf-8
@@ -75,9 +47,6 @@
   Cache-Control: public, max-age=3600
   Content-Type: text/plain; charset=utf-8
 
-# ---------------------------------------------------------------------------
-# WEB MANIFEST
-# ---------------------------------------------------------------------------
 /site.webmanifest
   Cache-Control: public, max-age=86400
   Content-Type: application/manifest+json
