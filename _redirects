@@ -20,7 +20,7 @@
 # SECTION 1 — www → apex canonical redirect
 # Ensures all www traffic resolves to the bare domain (no duplicate content).
 # -----------------------------------------------------------------------------
-
+https://luxury.805companies.com/*    /:splat    200
 https://www.805lifeguard.com/*  https://805lifeguard.com/:splat  301
 
 
