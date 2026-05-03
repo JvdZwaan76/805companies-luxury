@@ -1,130 +1,49 @@
 # =============================================================================
-# 805lifeguard.com — Cloudflare Pages _redirects updated
+# SAFE MINIMAL _redirects for 805lifeguard.com
 # =============================================================================
-# Purpose : Preserve SEO equity & prevent 404s during WordPress → Cloudflare
-#           Pages migration. All rules use 301 (permanent) so Google transfers
-#           full link equity to the new canonical URLs.
-#
-# Placement: Drop this file in the ROOT of your Cloudflare Pages project repo.
-#            Cloudflare Pages processes it automatically on every deploy.
-#
-# Format  : [source]  [destination]  [status]
-#           Query-string matches require the full ?key=value syntax.
-#           Cloudflare Pages evaluates rules top-to-bottom; first match wins.
-#
-# Last updated : 2026-05-03
-# =============================================================================
-# -----------------------------------------------------------------------------
-# SECTION 2 — WordPress ?page_id= URLs (content pages)
-# All confirmed indexed by Google as of 2026-05-02.
-# -----------------------------------------------------------------------------
+# Only the most important SEO-preserving redirects
+# Designed to eliminate redirect loops
+# All rules use 301 (permanent) - first match wins
 
-# Homepage (WordPress default)
-/?page_id=2         /                        301
+# Essential WordPress page_id redirects (legacy indexed pages)
+ /?page_id=2          /                     301
+ /?page_id=14         /contact.html         301
+ /?page_id=712        /testimonials.html    301
+ /?page_id=486        /about.html           301
+ /?page_id=975        /about.html           301
+ /?page_id=3          /privacy.html         301
+ /?page_id=1478       /contact.html         301
+ /?page_id=1033       /services.html        301
 
-# Contact page
-/?page_id=14        /contact.html            301
+# Important clean URL redirects (old WordPress paths)
+ /meet-the-team/      /about.html           301
+ /meet-the-team       /about.html           301
+ /privacy-policy/     /privacy.html         301
+ /privacy-policy      /privacy.html         301
+ /now-hiring/         /contact.html         301
+ /now-hiring          /contact.html         301
+ /shop/               /services.html        301
+ /shop                /services.html        301
 
-# Testimonials
-/?page_id=712       /testimonials.html       301
+# WooCommerce legacy paths
+ /cart/               /                     301
+ /cart                /                     301
+ /checkout/           /                     301
+ /checkout            /                     301
+ /my-account/         /                     301
+ /my-account          /                     301
 
-# American Red Cross Certifications → About (closest equivalent)
-/?page_id=486       /about.html              301
+# Prevent old WP infrastructure from being crawled
+ /feed/               /                     301
+ /feed                /                     301
+ /wp-json/*           /                     301
+ /wp-login.php        /                     301
+ /wp-admin/*          /                     301
+ /xmlrpc.php          /                     301
+ /author/*            /about.html           301
+ /author              /about.html           301
 
-# Videos → About (no dedicated video page on new site; update if one is added)
-/?page_id=975       /about.html              301
-
-# Privacy Policy
-/?page_id=3         /privacy.html            301
-
-# Now Hiring → Contact (no dedicated jobs page; update if one is added)
-/?page_id=1478      /contact.html            301
-
-# Shop / Merch (WooCommerce — no shop on new site; route to services)
-/?page_id=1033      /services.html           301
-
-# WooCommerce cart, checkout, my account → homepage
-/?page_id=1035      /                        301
-/?page_id=1037      /                        301
-/?page_id=1039      /                        301
-
-
-# -----------------------------------------------------------------------------
-# SECTION 3 — WordPress ?product= individual product URLs
-# WooCommerce product pages indexed by Google. No shop on new site.
-# -----------------------------------------------------------------------------
-
-/?product=speedo-unisex-adult-junior-swim-goggles-mirrored-vanquisher-2-0  /services.html  301
-/?product=swim-cap-custom                                                   /services.html  301
-
-# Wildcard catch-all for any additional product slugs not individually listed
-/?product=*         /services.html           301
-
-
-# -----------------------------------------------------------------------------
-# SECTION 4 — WordPress ?product_cat= archive URLs
-# WooCommerce category archive pages indexed by Google.
-# -----------------------------------------------------------------------------
-
-/?product_cat=805lifeguard-swim-essentials   /services.html   301
-
-# Wildcard catch-all for any additional product category slugs
-/?product_cat=*     /services.html           301
-
-
-# -----------------------------------------------------------------------------
-# SECTION 5 — WordPress ?post_type= archive URLs
-# blog.805lifeguard.com subdomain product archive appeared in index.
-# Note: The blog subdomain needs its own Cloudflare Pages custom domain entry
-# pointing here, OR a separate _redirects on that subdomain deployment.
-# -----------------------------------------------------------------------------
-
-/?post_type=product /services.html           301
-
-
-# -----------------------------------------------------------------------------
-# SECTION 6 — WordPress clean-path slugs (OLD WordPress URLs only)
-# IMPORTANT: Do NOT add redirects for paths that match existing .html files.
-# Cloudflare Pages serves /contact.html as /contact natively — adding a
-# /contact → /contact.html rule creates a redirect loop.
-# Only redirect paths that do NOT exist as pages on the new site.
-# -----------------------------------------------------------------------------
-
-/meet-the-team/     /about.html              301
-/meet-the-team      /about.html              301
-/privacy-policy/    /privacy.html            301
-/privacy-policy     /privacy.html            301
-/now-hiring/        /contact.html            301
-/now-hiring         /contact.html            301
-/shop/              /services.html           301
-/shop               /services.html           301
-/cart/              /                        301
-/cart               /                        301
-/checkout/          /                        301
-/checkout           /                        301
-/my-account/        /                        301
-/my-account         /                        301
-
-
-# -----------------------------------------------------------------------------
-# SECTION 7 — WordPress feed, xmlrpc, and wp-admin URLs
-# Prevents exposure of WordPress infrastructure paths that may still be
-# crawled by bots after migration.
-# -----------------------------------------------------------------------------
-
-/feed/              /                        301
-/feed               /                        301
-/wp-json/*          /                        301
-/wp-login.php       /                        301
-/wp-admin/*         /                        301
-/xmlrpc.php         /                        301
-/author/*           /about.html              301
-/author             /about.html              301
-
-
-# -----------------------------------------------------------------------------
-# SECTION 8 — NOTE: Query string redirects (?page_id= etc)
-# Cloudflare Pages _redirects does NOT support query string matching.
-# These are handled via Cloudflare Worker (to be implemented separately).
-# The /?* wildcard is intentionally removed — it caused homepage redirect loops.
-# -----------------------------------------------------------------------------
+# Product and category fallbacks
+ /?product=*          /services.html        301
+ /?product_cat=*      /services.html        301
+ /?post_type=product  /services.html        301
