@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -30,6 +31,43 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://805lifeguard.com/privacy.html">
     
+    <!-- Critical CSS for immediate rendering (fixes broken layout) -->
+    <style>
+        :root {
+            --color-primary-darkest: #1A1A1A;
+            --color-primary: #2A2A2A;
+            --color-primary-light: #3A3A3A;
+            --navy-dark: #0A1628;
+            --navy-medium: #1B2B42;
+            --gold-medium: #D4AF37;
+            --gold-light: #E8C96B;
+            --cream: #F5F0E6;
+            --white-pure: #FFFFFF;
+            --gray-dark: #333333;
+            --gray-medium: #666666;
+            --border-color: #E5E5E5;
+            --space-4: 1rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            --font-serif: 'Crimson Text', serif;
+            --font-sans: 'Lato', sans-serif;
+            --border-radius-lg: 12px;
+            --border-radius-xl: 20px;
+            --shadow-md: 0 10px 25px -5px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-sans); line-height: 1.6; color: var(--gray-dark); }
+    </style>
+
+    <!-- Preload critical CSS (fixes layout) -->
+    <link rel="preload" href="/css/luxury-theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/css/luxury-theme.css"></noscript>
+
     <!-- Sophisticated Country Club Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,9 +75,6 @@
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Enhanced Luxury Theme CSS -->
-    <link rel="stylesheet" href="css/luxury-theme.css">
     
     <!-- Preload critical images -->
     <link rel="preload" as="image" href="images/logos/805-lifeguard-logo.png">
@@ -66,7 +101,7 @@
     }
     </script>
 </head>
-<body itemscope itemtype="https://schema.org/WebPage">
+    <body itemscope itemtype="https://schema.org/WebPage">
     <!-- Enhanced Header -->
     <header class="header" id="header" role="banner">
         <!-- Top Bar -->
