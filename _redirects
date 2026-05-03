@@ -1,6 +1,3 @@
-# Force www as the canonical domain - Industry best practice 301 redirect
-https://805lifeguard.com/*     https://www.805lifeguard.com/:splat     301
-http://805lifeguard.com/*      https://www.805lifeguard.com/:splat     301
 # =============================================================================
 # 805lifeguard.com — Cloudflare Pages _redirects
 # =============================================================================
