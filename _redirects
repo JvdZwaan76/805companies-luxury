@@ -12,7 +12,7 @@
 #           Query-string matches require the full ?key=value syntax.
 #           Cloudflare Pages evaluates rules top-to-bottom; first match wins.
 #
-# Last updated : 2026-05-02
+# Last updated : 2026-05-03
 # =============================================================================
 # -----------------------------------------------------------------------------
 # SECTION 2 — WordPress ?page_id= URLs (content pages)
