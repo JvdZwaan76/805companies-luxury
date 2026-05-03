@@ -1,49 +1,41 @@
 # =============================================================================
-# SAFE MINIMAL _redirects for 805lifeguard.com
+# SAFE MINIMAL _redirects - Fixed redirect loop
 # =============================================================================
-# Only the most important SEO-preserving redirects
-# Designed to eliminate redirect loops
-# All rules use 301 (permanent) - first match wins
+# Only essential SEO-preserving redirects
+# First-match-wins — no overlapping rules
 
-# Essential WordPress page_id redirects (legacy indexed pages)
- /?page_id=2          /                     301
- /?page_id=14         /contact.html         301
- /?page_id=712        /testimonials.html    301
- /?page_id=486        /about.html           301
- /?page_id=975        /about.html           301
- /?page_id=3          /privacy.html         301
- /?page_id=1478       /contact.html         301
- /?page_id=1033       /services.html        301
+# Legacy WordPress page_id redirects
+/?page_id=2          /                     301
+/?page_id=14         /contact.html         301
+/?page_id=712        /testimonials.html    301
+/?page_id=486        /about.html           301
+/?page_id=975        /about.html           301
+/?page_id=3          /privacy.html         301
+/?page_id=1478       /contact.html         301
+/?page_id=1033       /services.html        301
 
-# Important clean URL redirects (old WordPress paths)
- /meet-the-team/      /about.html           301
- /meet-the-team       /about.html           301
- /privacy-policy/     /privacy.html         301
- /privacy-policy      /privacy.html         301
- /now-hiring/         /contact.html         301
- /now-hiring          /contact.html         301
- /shop/               /services.html        301
- /shop                /services.html        301
+# Important old WordPress clean URLs
+/meet-the-team/      /about.html           301
+/meet-the-team       /about.html           301
+/privacy-policy/     /privacy.html         301
+/privacy-policy      /privacy.html         301
+/now-hiring/         /contact.html         301
+/now-hiring          /contact.html         301
+/shop/               /services.html        301
+/shop                /services.html        301
 
 # WooCommerce legacy paths
- /cart/               /                     301
- /cart                /                     301
- /checkout/           /                     301
- /checkout            /                     301
- /my-account/         /                     301
- /my-account          /                     301
+/cart/               /                     301
+/cart                /                     301
+/checkout/           /                     301
+/checkout            /                     301
+/my-account/         /                     301
+/my-account          /                     301
 
-# Prevent old WP infrastructure from being crawled
- /feed/               /                     301
- /feed                /                     301
- /wp-json/*           /                     301
- /wp-login.php        /                     301
- /wp-admin/*          /                     301
- /xmlrpc.php          /                     301
- /author/*            /about.html           301
- /author              /about.html           301
-
-# Product and category fallbacks
- /?product=*          /services.html        301
- /?product_cat=*      /services.html        301
- /?post_type=product  /services.html        301
+# Block old WP infrastructure
+/feed/               /                     301
+/wp-json/*           /                     301
+/wp-login.php        /                     301
+/wp-admin/*          /                     301
+/xmlrpc.php          /                     301
+/author/*            /about.html           301
