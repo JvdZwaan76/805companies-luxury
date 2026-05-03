@@ -14,16 +14,6 @@
 #
 # Last updated : 2026-05-02
 # =============================================================================
-
-
-# -----------------------------------------------------------------------------
-# SECTION 1 — www → apex canonical redirect
-# Ensures all www traffic resolves to the bare domain (no duplicate content).
-# -----------------------------------------------------------------------------
-
-https://www.805lifeguard.com/*  https://805lifeguard.com/:splat  301
-
-
 # -----------------------------------------------------------------------------
 # SECTION 2 — WordPress ?page_id= URLs (content pages)
 # All confirmed indexed by Google as of 2026-05-02.
