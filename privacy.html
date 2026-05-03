@@ -31,7 +31,7 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://805lifeguard.com/privacy.html">
     
-    <!-- Critical CSS for immediate rendering (fixes broken layout) -->
+    <!-- Critical CSS Variables (required for the design system) -->
     <style>
         :root {
             --color-primary-darkest: #1A1A1A;
@@ -64,9 +64,8 @@
         body { font-family: var(--font-sans); line-height: 1.6; color: var(--gray-dark); }
     </style>
 
-    <!-- Preload critical CSS (fixes layout) -->
-    <link rel="preload" href="/css/luxury-theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/css/luxury-theme.css"></noscript>
+    <!-- Main Stylesheet - This is the line that fixes the broken layout -->
+    <link rel="stylesheet" href="/css/luxury-theme.css">
 
     <!-- Sophisticated Country Club Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
