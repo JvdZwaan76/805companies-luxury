@@ -29,10 +29,8 @@ https://www.805lifeguard.com/*  https://805lifeguard.com/:splat  301
 # All confirmed indexed by Google as of 2026-05-02.
 # -----------------------------------------------------------------------------
 
-# Homepage (WordPress default /about/ slug also resolves here)
+# Homepage (WordPress default)
 /?page_id=2         /                        301
-/about/             /about.html              301
-/about              /about.html              301
 
 # Contact page
 /?page_id=14        /contact.html            301
@@ -95,17 +93,15 @@ https://www.805lifeguard.com/*  https://805lifeguard.com/:splat  301
 
 
 # -----------------------------------------------------------------------------
-# SECTION 6 — WordPress clean-path slugs
-# WordPress sometimes generates clean /slug/ URLs in addition to ?page_id=
-# versions. Covering common patterns as a precaution.
+# SECTION 6 — WordPress clean-path slugs (OLD WordPress URLs only)
+# IMPORTANT: Do NOT add redirects for paths that match existing .html files.
+# Cloudflare Pages serves /contact.html as /contact natively — adding a
+# /contact → /contact.html rule creates a redirect loop.
+# Only redirect paths that do NOT exist as pages on the new site.
 # -----------------------------------------------------------------------------
 
 /meet-the-team/     /about.html              301
 /meet-the-team      /about.html              301
-/testimonials/      /testimonials.html       301
-/testimonials       /testimonials.html       301
-/contact/           /contact.html            301
-/contact            /contact.html            301
 /privacy-policy/    /privacy.html            301
 /privacy-policy     /privacy.html            301
 /now-hiring/        /contact.html            301
