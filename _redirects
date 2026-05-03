@@ -1,18 +1,6 @@
 # =============================================================================
-# SAFE MINIMAL _redirects - Fixed redirect loop
+# SAFE _redirects - No query string rules (Pages doesn't support them)
 # =============================================================================
-# Only essential SEO-preserving redirects
-# First-match-wins — no overlapping rules
-
-# Legacy WordPress page_id redirects
-/?page_id=2          /                     301
-/?page_id=14         /contact.html         301
-/?page_id=712        /testimonials.html    301
-/?page_id=486        /about.html           301
-/?page_id=975        /about.html           301
-/?page_id=3          /privacy.html         301
-/?page_id=1478       /contact.html         301
-/?page_id=1033       /services.html        301
 
 # Important old WordPress clean URLs
 /meet-the-team/      /about.html           301
@@ -37,5 +25,5 @@
 /wp-json/*           /                     301
 /wp-login.php        /                     301
 /wp-admin/*          /                     301
-/xmlrpc.php          /                     301
+/xmlrpc.php          /about.html           301
 /author/*            /about.html           301
