@@ -3,6 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Analytics 4 (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2Z1L8RF8X"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-R2Z1L8RF8X', {
+            anonymize_ip: true,
+            allow_google_signals: false,
+            allow_ad_personalization_signals: false
+        });
+    </script>
     
     <!-- SEO Meta Tags -->
     <title>Exclusive Pool Cleaning Services - 805 LifeGuard | White-Glove Pool Maintenance for Distinguished Clientele</title>
@@ -1206,6 +1219,54 @@
         } else {
             setTimeout(loadMainScript, 500);
         }
+    </script>
+    <!-- GA4 Custom Event Tracking - phone, email, portal clicks -->
+    <script>
+    (function() {
+        'use strict';
+        if (typeof document === 'undefined') return;
+
+        function track(eventName, params) {
+            try {
+                if (typeof gtag === 'function') {
+                    gtag('event', eventName, params || {});
+                }
+            } catch (e) { /* never break the page */ }
+        }
+
+        // Delegated click handler — works for any current or future link
+        document.addEventListener('click', function(e) {
+            var anchor = e.target.closest && e.target.closest('a');
+            if (!anchor) return;
+            var href = anchor.getAttribute('href') || '';
+            var page = window.location.pathname;
+
+            if (href.indexOf('tel:') === 0) {
+                track('phone_click', {
+                    phone_number: href.replace('tel:', ''),
+                    page_path: page
+                });
+            } else if (href.indexOf('mailto:') === 0) {
+                track('email_click', {
+                    email_address: href.replace('mailto:', '').split('?')[0],
+                    page_path: page
+                });
+            } else if (
+                href.indexOf('client.805companies.com') !== -1 ||
+                href.indexOf('admin.805companies.com') !== -1 ||
+                href.indexOf('staff.805companies.com') !== -1
+            ) {
+                var portal = 'unknown';
+                if (href.indexOf('client.') !== -1) portal = 'client';
+                else if (href.indexOf('admin.') !== -1) portal = 'admin';
+                else if (href.indexOf('staff.') !== -1) portal = 'staff';
+                track('portal_click', {
+                    portal_type: portal,
+                    page_path: page
+                });
+            }
+        }, true);
+    })();
     </script>
 </body>
 </html>
