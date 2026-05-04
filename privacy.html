@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- SEO Meta Tags -->
     <title>Privacy Policy - 805 LifeGuard | Confidential Information Protection & Client Privacy</title>
     <meta name="description" content="Our comprehensive privacy policy detailing how 805 LifeGuard protects and handles your personal information with the highest standards of confidentiality and discretion for Southern California's distinguished clientele.">
@@ -14,76 +13,615 @@
     <meta name="language" content="en-US">
     <meta name="geo.region" content="US-CA">
     <meta name="geo.placename" content="Thousand Oaks, California">
-    
+    <meta name="geo.position" content="34.1706;-118.8376">
+    <meta name="ICBM" content="34.1706, -118.8376">
+
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Privacy Policy - 805 LifeGuard">
     <meta property="og:description" content="Comprehensive privacy protection for Southern California's most distinguished clientele. Learn how we safeguard your personal information.">
     <meta property="og:url" content="https://805lifeguard.com/privacy.html">
     <meta property="og:site_name" content="805 LifeGuard">
+    <meta property="og:image" content="https://805lifeguard.com/images/logos/805-lifeguard-og-1200x630.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="805 LifeGuard - Premier Aquatic Services">
     <meta property="og:locale" content="en_US">
-    
+
     <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Privacy Policy - 805 LifeGuard">
     <meta name="twitter:description" content="Comprehensive privacy protection for distinguished clientele.">
-    
+    <meta name="twitter:image" content="https://805lifeguard.com/images/logos/805-lifeguard-og-1200x630.jpg">
+
     <!-- Canonical URL -->
     <link rel="canonical" href="https://805lifeguard.com/privacy.html">
-    
-    <!-- Critical CSS Variables (required for the design system) -->
+
+    <!-- Critical CSS - Inlined for fastest loading -->
     <style>
+        /* Critical path CSS for immediate rendering */
         :root {
             --color-primary-darkest: #1A1A1A;
-            --color-primary: #2A2A2A;
-            --color-primary-light: #3A3A3A;
-            --navy-dark: #0A1628;
-            --navy-medium: #1B2B42;
-            --gold-medium: #D4AF37;
-            --gold-light: #E8C96B;
-            --cream: #F5F0E6;
-            --white-pure: #FFFFFF;
-            --gray-dark: #333333;
-            --gray-medium: #666666;
-            --border-color: #E5E5E5;
-            --space-4: 1rem;
-            --space-6: 1.5rem;
-            --space-8: 2rem;
-            --space-12: 3rem;
-            --space-16: 4rem;
-            --space-20: 5rem;
-            --font-serif: 'Crimson Text', serif;
-            --font-sans: 'Lato', sans-serif;
-            --border-radius-lg: 12px;
-            --border-radius-xl: 20px;
-            --shadow-md: 0 10px 25px -5px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --color-primary: #4A4A4A;
+            --color-secondary: #B8A082;
+            --color-white: #FFFFFF;
+            --color-text-primary: #0F0F0F;
+            --color-text-inverse: #FFFFFF;
+            --color-bg-primary: #FFFFFF;
+            --font-family-serif: 'Playfair Display', Georgia, serif;
+            --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            --header-total-height: 132px;
+            --header-navbar-height: 88px;
+            --z-index-header: 1070;
+            --z-index-hamburger: 1080;
+            --z-index-modal: 1050;
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: var(--font-sans); line-height: 1.6; color: var(--gray-dark); }
+
+        body {
+            font-family: var(--font-family-sans);
+            color: var(--color-text-primary);
+            background: var(--color-bg-primary);
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: var(--z-index-header);
+            background: var(--color-white);
+            border-bottom: 1px solid #E8E8E8;
+        }
+
+        .header-top {
+            background: linear-gradient(135deg, #1A1A1A, #2F2F2F);
+            color: var(--color-text-inverse);
+            padding: 0.5rem 0;
+            height: 44px;
+            display: flex;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .header-top { display: none; }
+        }
+
+        .navbar {
+            padding: 1.25rem 0;
+            height: var(--header-navbar-height);
+            display: flex;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: var(--header-total-height);
+            overflow: hidden;
+        }
+
+        .hero-carousel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg,rgba(0, 0, 0, 0.3) 0%,rgba(0, 0, 0, 0.4) 50%,rgba(0, 0, 0, 0.5) 100%);
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg,rgba(0, 0, 0, 0.2) 0%,rgba(0, 0, 0, 0.3) 50%,rgba(0, 0, 0, 0.4) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: var(--color-text-inverse);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: calc(var(--header-navbar-height) + 1rem);
+            }
+        }
     </style>
 
-    <!-- Absolute URL stylesheet - this fixes the broken layout on clean URLs -->
-    <link rel="stylesheet" href="https://805lifeguard.com/css/luxury-theme.css">
-
-    <!-- Sophisticated Country Club Fonts -->
+    <!-- Enhanced Performance: DNS Prefetch and Preconnect -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Preload critical images -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <!-- Critical Resource Preloading -->
     <link rel="preload" as="image" href="images/logos/805-lifeguard-logo.png">
-    
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+    <!-- Optimized Typography - Async Loading -->
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap"></noscript>
+
+    <!-- Font Awesome Icons - Deferred -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+
+    <!-- Main CSS - Deferred -->
+    <link rel="preload" href="css/luxury-theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/luxury-theme.css"></noscript>
+
     <!-- Favicon and Apple Touch Icons -->
     <link rel="icon" type="image/x-icon" href="images/logos/805-lifeguard-favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="images/logos/805-lifeguard-apple-touch-icon-180x180.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/logos/805-lifeguard-favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/logos/805-lifeguard-favicon-16x16.png">
-    
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Policy Page Styles - Built on the production design system tokens -->
+    <style>
+        /* Hero variant for policy pages: shorter than home hero, gradient background */
+        .policy-hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            padding-top: var(--header-total-height, 132px);
+            padding-bottom: 4rem;
+            background: linear-gradient(135deg, #1A1A1A 0%, #2F2F2F 50%, #4A4A4A 100%);
+            overflow: hidden;
+        }
+        .policy-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(184, 160, 130, 0.08) 0%, transparent 60%),
+                radial-gradient(circle at 80% 70%, rgba(184, 160, 130, 0.06) 0%, transparent 60%);
+            z-index: 1;
+        }
+        .policy-hero .container { position: relative; z-index: 3; }
+        .policy-hero .hero-content { color: var(--color-text-inverse); text-align: center; max-width: 900px; margin: 0 auto; }
+        .policy-hero .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.25rem;
+            background: rgba(184, 160, 130, 0.15);
+            border: 1px solid rgba(184, 160, 130, 0.4);
+            color: var(--color-secondary, #B8A082);
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+        .policy-hero h1 {
+            font-family: var(--font-family-serif, 'Playfair Display', Georgia, serif);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.25rem;
+            color: var(--color-text-inverse, #FFFFFF);
+        }
+        .policy-hero .hero-subtitle {
+            font-size: clamp(1rem, 1.5vw, 1.125rem);
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 720px;
+            margin: 0 auto 2rem;
+        }
+        .policy-hero .last-updated {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            padding: 0.625rem 1.25rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        .policy-hero .last-updated i { color: var(--color-secondary, #B8A082); }
+
+        /* Content layout: sticky sidebar + main column */
+        .policy-content {
+            padding: 6rem 0;
+            background: #FFFFFF;
+        }
+        .policy-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        @media (max-width: 992px) {
+            .policy-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+        }
+
+        /* Sidebar */
+        .policy-sidebar {
+            position: sticky;
+            top: calc(var(--header-total-height, 132px) + 1.5rem);
+            background: #FAFAFA;
+            border: 1px solid #E8E8E8;
+            border-radius: 0.75rem;
+            padding: 1.75rem 1.5rem;
+        }
+        @media (max-width: 992px) {
+            .policy-sidebar { position: static; }
+        }
+        .policy-sidebar-header h3 {
+            font-family: var(--font-family-serif, 'Playfair Display', Georgia, serif);
+            font-size: 1.25rem;
+            color: var(--color-primary-darkest, #1A1A1A);
+            margin-bottom: 1rem;
+            padding-bottom: 0.875rem;
+            border-bottom: 2px solid var(--color-secondary, #B8A082);
+        }
+        .policy-nav { display: flex; flex-direction: column; gap: 0.125rem; margin-bottom: 1.5rem; }
+        .policy-nav a {
+            display: block;
+            padding: 0.625rem 0.875rem;
+            font-size: 0.9375rem;
+            color: #4A4A4A;
+            text-decoration: none;
+            border-left: 3px solid transparent;
+            border-radius: 0 0.375rem 0.375rem 0;
+            transition: all 0.2s ease;
+        }
+        .policy-nav a:hover {
+            background: rgba(184, 160, 130, 0.08);
+            color: var(--color-primary-darkest, #1A1A1A);
+            border-left-color: rgba(184, 160, 130, 0.4);
+        }
+        .policy-nav a.active {
+            background: rgba(184, 160, 130, 0.12);
+            color: var(--color-primary-darkest, #1A1A1A);
+            border-left-color: var(--color-secondary, #B8A082);
+            font-weight: 600;
+        }
+
+        .policy-highlights {
+            padding-top: 1.25rem;
+            border-top: 1px solid #E8E8E8;
+        }
+        .policy-highlights h4 {
+            font-family: var(--font-family-serif, 'Playfair Display', Georgia, serif);
+            font-size: 1rem;
+            color: var(--color-primary-darkest, #1A1A1A);
+            margin-bottom: 0.875rem;
+        }
+        .policy-highlights ul { list-style: none; padding: 0; margin: 0; }
+        .policy-highlights li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            padding: 0.375rem 0;
+            font-size: 0.875rem;
+            color: #4A4A4A;
+            line-height: 1.5;
+        }
+        .policy-highlights li i { color: var(--color-secondary, #B8A082); margin-top: 0.25rem; flex-shrink: 0; }
+
+        /* Main content column */
+        .policy-main { min-width: 0; }
+        .policy-section {
+            margin-bottom: 4rem;
+            scroll-margin-top: calc(var(--header-total-height, 132px) + 1rem);
+        }
+        .policy-section:last-child { margin-bottom: 0; }
+        .policy-section h2 {
+            font-family: var(--font-family-serif, 'Playfair Display', Georgia, serif);
+            font-size: clamp(1.75rem, 3vw, 2.25rem);
+            font-weight: 700;
+            color: var(--color-primary-darkest, #1A1A1A);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.875rem;
+            border-bottom: 2px solid var(--color-secondary, #B8A082);
+            line-height: 1.2;
+        }
+        .policy-section h3 {
+            font-family: var(--font-family-serif, 'Playfair Display', Georgia, serif);
+            font-size: 1.375rem;
+            font-weight: 600;
+            color: var(--color-primary-darkest, #1A1A1A);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+        }
+        .policy-section h3 i { color: var(--color-secondary, #B8A082); font-size: 1.125rem; }
+        .policy-section h4 {
+            font-family: var(--font-family-serif, 'Playfair Display', Georgia, serif);
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--color-primary-darkest, #1A1A1A);
+            margin-bottom: 0.625rem;
+        }
+        .policy-section p {
+            color: #4A4A4A;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        .policy-section ul {
+            margin: 0.5rem 0 1.25rem 1.5rem;
+            color: #4A4A4A;
+            line-height: 1.7;
+        }
+        .policy-section ul li { margin-bottom: 0.5rem; }
+        .policy-section ul li strong { color: var(--color-primary-darkest, #1A1A1A); }
+
+        /* Lead statement (intro paragraph callout) */
+        .commitment-statement {
+            background: linear-gradient(135deg, #FAFAFA 0%, #F5F2ED 100%);
+            border-left: 4px solid var(--color-secondary, #B8A082);
+            padding: 1.75rem 2rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+            margin-bottom: 2rem;
+        }
+        .commitment-statement .lead-text {
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            color: #2A2A2A;
+            margin: 0;
+        }
+
+        /* Card grids - principles, usage, rights */
+        .policy-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+            margin: 1.5rem 0 2rem;
+        }
+        .policy-card {
+            background: #FFFFFF;
+            border: 1px solid #E8E8E8;
+            border-radius: 0.75rem;
+            padding: 1.75rem 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .policy-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--color-secondary, #B8A082);
+            box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.12);
+        }
+        .policy-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 0.5rem;
+            background: linear-gradient(135deg, rgba(184, 160, 130, 0.15), rgba(184, 160, 130, 0.05));
+            color: var(--color-secondary, #B8A082);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        .policy-card h4 {
+            font-family: var(--font-family-serif, 'Playfair Display', Georgia, serif);
+            font-size: 1.125rem;
+            color: var(--color-primary-darkest, #1A1A1A);
+            margin-bottom: 0.625rem;
+        }
+        .policy-card p, .policy-card ul {
+            font-size: 0.9375rem;
+            color: #4A4A4A;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+        .policy-card ul {
+            margin: 0;
+            padding-left: 1.125rem;
+        }
+        .policy-card ul li { margin-bottom: 0.375rem; }
+
+        /* Info category - simple bordered box */
+        .policy-info-box {
+            background: #FAFAFA;
+            border-left: 3px solid var(--color-secondary, #B8A082);
+            padding: 1.5rem 1.75rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+            margin: 1.5rem 0;
+        }
+        .policy-info-box h3 { margin-top: 0; }
+        .policy-info-box ul:last-child, .policy-info-box p:last-child { margin-bottom: 0; }
+
+        /* Highlight banner (e.g. "We Never Sell Your Information") */
+        .policy-banner {
+            background: linear-gradient(135deg, #1A1A1A 0%, #2F2F2F 100%);
+            color: #FFFFFF;
+            padding: 1.75rem 2rem;
+            border-radius: 0.75rem;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(184, 160, 130, 0.3);
+        }
+        .policy-banner-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.375rem 0.875rem;
+            background: rgba(184, 160, 130, 0.15);
+            border: 1px solid var(--color-secondary, #B8A082);
+            color: var(--color-secondary, #B8A082);
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+        .policy-banner p {
+            color: rgba(255, 255, 255, 0.92);
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Note box (small reminder, lighter visual weight) */
+        .policy-note {
+            display: flex;
+            gap: 0.875rem;
+            padding: 1.25rem 1.5rem;
+            background: rgba(184, 160, 130, 0.08);
+            border-radius: 0.5rem;
+            margin: 1.25rem 0;
+        }
+        .policy-note i {
+            color: var(--color-secondary, #B8A082);
+            font-size: 1.25rem;
+            flex-shrink: 0;
+            margin-top: 0.125rem;
+        }
+        .policy-note p { margin: 0; font-size: 0.9375rem; line-height: 1.6; color: #2A2A2A; }
+
+        /* Contact card */
+        .policy-contact {
+            background: linear-gradient(135deg, #FAFAFA 0%, #F5F2ED 100%);
+            border: 1px solid #E8E8E8;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-top: 1.5rem;
+        }
+        .policy-contact h3 { margin-top: 0; padding-bottom: 0; border-bottom: none; display: block; }
+        .policy-contact-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 2rem;
+            margin: 1rem 0;
+        }
+        .policy-contact-method {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-primary-darkest, #1A1A1A);
+            font-weight: 500;
+            font-size: 0.9375rem;
+        }
+        .policy-contact-method i { color: var(--color-secondary, #B8A082); }
+        .policy-contact .response-time {
+            font-size: 0.875rem;
+            color: #6B6B6B;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        /* Final contact split (used at end of pages) */
+        .policy-contact-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        @media (max-width: 768px) { .policy-contact-split { grid-template-columns: 1fr; } }
+        .policy-contact-card {
+            background: #FAFAFA;
+            border: 1px solid #E8E8E8;
+            border-radius: 0.75rem;
+            padding: 1.75rem;
+        }
+        .policy-contact-card h4 {
+            margin-bottom: 1rem;
+            padding-bottom: 0.625rem;
+            border-bottom: 1px solid #E8E8E8;
+        }
+        .policy-contact-card .contact-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.625rem;
+            padding: 0.5rem 0;
+            font-size: 0.9375rem;
+            color: #2A2A2A;
+        }
+        .policy-contact-card .contact-row i {
+            color: var(--color-secondary, #B8A082);
+            margin-top: 0.25rem;
+            flex-shrink: 0;
+            width: 16px;
+            text-align: center;
+        }
+
+        /* Section list (text-heavy alternative to cards) */
+        .policy-section-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin: 1.5rem 0 2rem;
+        }
+        .policy-section-list-item {
+            background: #FFFFFF;
+            border: 1px solid #E8E8E8;
+            border-left: 3px solid var(--color-secondary, #B8A082);
+            border-radius: 0 0.5rem 0.5rem 0;
+            padding: 1.5rem;
+        }
+        .policy-section-list-item h4 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .policy-section-list-item h4 i { color: var(--color-secondary, #B8A082); }
+        .policy-section-list-item p { font-size: 0.9375rem; color: #4A4A4A; margin: 0; line-height: 1.6; }
+
+        /* Mobile: collapse h3 icon-flex to wrap nicely */
+        @media (max-width: 480px) {
+            .policy-section h3 { flex-wrap: wrap; }
+        }
+    </style>
+
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
     {
@@ -96,12 +634,27 @@
         "@type": "WebSite",
         "name": "805 LifeGuard",
         "url": "https://805lifeguard.com"
-      }
+      },
+      "publisher": {
+        "@type": "LocalBusiness",
+        "name": "805 LifeGuard LLC",
+        "telephone": "+1-805-367-6432",
+        "email": "concierge@805lifeguard.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Thousand Oaks",
+          "addressRegion": "CA",
+          "addressCountry": "US"
+        }
+      },
+      "inLanguage": "en-US",
+      "dateModified": "2025-01-15"
     }
     </script>
 </head>
-    <body itemscope itemtype="https://schema.org/WebPage">
-    <!-- Enhanced Header -->
+<body itemscope itemtype="https://schema.org/WebPage">
+
+    <!-- Enhanced Enterprise Header with Perfect Visibility -->
     <header class="header" id="header" role="banner">
         <!-- Top Bar -->
         <div class="header-top">
@@ -124,105 +677,94 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Main Navigation -->
+
+        <!-- Enhanced Main Navigation with Perfect Mobile Balance -->
         <nav class="navbar" role="navigation" aria-label="Main navigation">
             <div class="container">
                 <div class="navbar-content">
-                    <!-- Logo -->
-                    <a href="/" class="logo" aria-label="805 LifeGuard Homepage">
-                        <img src="images/logos/805-lifeguard-logo.png" alt="805 LifeGuard - Premier Aquatic Services" class="logo-img" width="64" height="64">
+                    <!-- Enhanced Hamburger Menu - Left -->
+                    <div class="desktop-menu-toggle">
+                        <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navOverlay">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </button>
+                    </div>
+
+                    <!-- Logo - Centered with Elegant Entrance Animation -->
+                    <a href="/" class="logo" id="mainLogo" aria-label="805 LifeGuard Homepage">
+                        <img src="images/logos/805-lifeguard-logo.png" alt="805 LifeGuard - Aquatic Services" class="logo-img" width="48" height="48">
                         <div class="logo-text">
                             <div class="logo-name">805 LifeGuard</div>
-                            <div class="logo-tagline">Premier Aquatic Services</div>
+                            <div class="logo-tagline">Aquatic Services</div>
                         </div>
                     </a>
-                    
-                    <!-- Desktop Navigation -->
-                    <div class="nav-desktop">
-                        <ul class="nav-menu" role="menubar">
-                            <li role="none"><a href="about.html" class="nav-link" role="menuitem">About</a></li>
-                            <li role="none"><a href="services.html" class="nav-link" role="menuitem">Services</a></li>
-                            <li role="none"><a href="pool-cleaning.html" class="nav-link" role="menuitem">Pool Cleaning</a></li>
-                            <li role="none"><a href="hoa.html" class="nav-link" role="menuitem">HOA Services</a></li>
-                            <li role="none"><a href="portfolio.html" class="nav-link" role="menuitem">Portfolio</a></li>
-                            <li role="none"><a href="testimonials.html" class="nav-link" role="menuitem">Testimonials</a></li>
-                            <li role="none"><a href="faq.html" class="nav-link" role="menuitem">FAQ</a></li>
-                        </ul>
-                        
-                        <div class="nav-actions">
-                            <div class="portal-group">
-                                <a href="https://client.805companies.com" target="_blank" rel="noopener noreferrer" class="portal-btn client-portal" aria-label="Client Portal - Opens in new window">
-                                    <i class="fas fa-user-circle" aria-hidden="true"></i>
-                                    Client
-                                </a>
-                                <a href="https://admin.805companies.com" target="_blank" rel="noopener noreferrer" class="portal-btn admin-portal" aria-label="Admin Portal - Opens in new window">
-                                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
-                                    Admin
-                                </a>
-                            </div>
-                            <a href="contact.html" class="consultation-btn" aria-label="Schedule Private Consultation">
-                                <i class="fas fa-calendar-check" aria-hidden="true"></i>
-                                Private Consultation
+
+                    <!-- Actions - Right with Mobile-First Branding Focus -->
+                    <div class="nav-actions">
+                        <!-- Portal buttons hidden on mobile for cleaner branding -->
+                        <div class="portal-group">
+                            <a href="https://client.805companies.com" target="_blank" rel="noopener noreferrer" class="portal-btn client-portal" aria-label="Client Portal - Opens in new window">
+                                <i class="fas fa-user-circle" aria-hidden="true"></i>
+                                Client
+                            </a>
+                            <a href="https://admin.805companies.com" target="_blank" rel="noopener noreferrer" class="portal-btn admin-portal" aria-label="Admin Portal - Opens in new window">
+                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                Admin
                             </a>
                         </div>
+                        <a href="contact.html" class="consultation-btn" aria-label="Schedule Private Consultation">
+                            <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                            <span class="consultation-text">Consultation</span>
+                        </a>
                     </div>
-                    
-                    <!-- Mobile Menu Button -->
-                    <button class="mobile-toggle" id="mobileToggle" aria-label="Open mobile navigation menu" aria-expanded="false" aria-controls="mobileNav">
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                    </button>
                 </div>
             </div>
         </nav>
-        
-        <!-- Mobile Navigation -->
-        <div class="nav-mobile" id="mobileNav" role="dialog" aria-label="Mobile navigation menu" aria-hidden="true">
-            <div class="mobile-nav-content">
-                <div class="mobile-nav-header">
-                    <div class="mobile-logo">
-                        <img src="images/logos/805-lifeguard-logo.png" alt="805 LifeGuard" width="40" height="40">
+
+        <!-- Enhanced Full-Screen Navigation Overlay -->
+        <div class="nav-overlay" id="navOverlay" role="dialog" aria-label="Navigation menu" aria-hidden="true">
+            <div class="nav-overlay-content">
+                <!-- Mobile Branding Header - Shows only on mobile for optimal branding -->
+                <div class="nav-overlay-header">
+                    <a href="/" class="overlay-logo" onclick="document.getElementById('menuToggle').click();">
+                        <img src="images/logos/805-lifeguard-logo.png" alt="805 LifeGuard" width="48" height="48">
                         <span>805 LifeGuard</span>
-                    </div>
-                    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile navigation menu">
-                        <i class="fas fa-times" aria-hidden="true"></i>
-                    </button>
+                    </a>
                 </div>
-                
-                <nav class="mobile-nav-menu" role="navigation" aria-label="Mobile menu">
-                    <a href="about.html" class="mobile-nav-link">About</a>
-                    <a href="services.html" class="mobile-nav-link">Services</a>
-                    <a href="pool-cleaning.html" class="mobile-nav-link">Pool Cleaning</a>
-                    <a href="hoa.html" class="mobile-nav-link">HOA Services</a>
-                    <a href="portfolio.html" class="mobile-nav-link">Portfolio</a>
-                    <a href="testimonials.html" class="mobile-nav-link">Testimonials</a>
-                    <a href="faq.html" class="mobile-nav-link">FAQ</a>
+
+                <nav class="nav-overlay-menu" role="navigation" aria-label="Main menu">
+                    <a href="about.html" class="overlay-nav-link">About</a>
+                    <a href="services.html" class="overlay-nav-link">Services</a>
+                    <a href="pool-cleaning.html" class="overlay-nav-link">Pool Cleaning</a>
+                    <a href="hoa.html" class="overlay-nav-link">HOA Services</a>
+                    <a href="portfolio.html" class="overlay-nav-link">Portfolio</a>
+                    <a href="testimonials.html" class="overlay-nav-link">Testimonials</a>
+                    <a href="faq.html" class="overlay-nav-link">FAQ</a>
                 </nav>
-                
-                <div class="mobile-nav-actions">
-                    <div class="mobile-portals">
-                        <a href="https://client.805companies.com" target="_blank" rel="noopener noreferrer" class="mobile-portal-btn" aria-label="Client Portal - Opens in new window">
+
+                <div class="nav-overlay-actions">
+                    <div class="overlay-portals">
+                        <a href="https://client.805companies.com" target="_blank" rel="noopener noreferrer" class="overlay-portal-btn" aria-label="Client Portal - Opens in new window">
                             <i class="fas fa-user-circle" aria-hidden="true"></i>
                             Client Portal
                         </a>
-                        <a href="https://admin.805companies.com" target="_blank" rel="noopener noreferrer" class="mobile-portal-btn" aria-label="Admin Portal - Opens in new window">
+                        <a href="https://admin.805companies.com" target="_blank" rel="noopener noreferrer" class="overlay-portal-btn" aria-label="Admin Portal - Opens in new window">
                             <i class="fas fa-shield-alt" aria-hidden="true"></i>
                             Admin Portal
                         </a>
                     </div>
-                    <a href="contact.html" class="mobile-consultation-btn" aria-label="Schedule Private Consultation">
+                    <a href="contact.html" class="overlay-consultation-btn" aria-label="Schedule Private Consultation">
                         <i class="fas fa-calendar-check" aria-hidden="true"></i>
                         Private Consultation
                     </a>
-                </div>
-                
-                <div class="mobile-nav-contact">
-                    <a href="tel:+18053676432" class="mobile-contact-btn" aria-label="Call 805 LifeGuard">
-                        <i class="fas fa-phone" aria-hidden="true"></i>
-                        (805) 367-6432
-                    </a>
+
+                    <div class="overlay-nav-contact">
+                        <a href="tel:+18053676432" class="overlay-contact-btn" aria-label="Call 805 LifeGuard">
+                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            (805) 367-6432
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -233,9 +775,7 @@
         <div class="container">
             <ol class="breadcrumb-list">
                 <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a href="/" itemprop="item">
-                        <span itemprop="name">Home</span>
-                    </a>
+                    <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
                     <meta itemprop="position" content="1" />
                 </li>
                 <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
@@ -247,25 +787,22 @@
     </nav>
 
     <!-- Privacy Hero Section -->
-    <section class="privacy-hero" role="banner">
-        <div class="privacy-hero-background"></div>
-        <div class="hero-overlay"></div>
-        
+    <section class="policy-hero" role="banner">
         <div class="container">
             <div class="hero-content">
                 <div class="section-badge">
                     <i class="fas fa-lock" aria-hidden="true"></i>
                     Your Privacy Protected
                 </div>
-                
+
                 <h1 itemprop="name">Privacy Policy</h1>
-                
+
                 <p class="hero-subtitle" itemprop="description">
-                    At 805 LifeGuard, your privacy and confidentiality are fundamental to our service. 
-                    This policy outlines our unwavering commitment to protecting your personal information 
+                    At 805 LifeGuard, your privacy and confidentiality are fundamental to our service.
+                    This policy outlines our unwavering commitment to protecting your personal information
                     with the highest standards of discretion expected by our distinguished clientele.
                 </p>
-                
+
                 <div class="last-updated">
                     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
                     Last Updated: January 15, 2025
@@ -275,26 +812,26 @@
     </section>
 
     <!-- Privacy Content -->
-    <section class="privacy-content">
+    <section class="policy-content">
         <div class="container">
-            <div class="content-layout">
+            <div class="policy-layout">
                 <!-- Navigation Sidebar -->
-                <div class="privacy-sidebar">
-                    <div class="sidebar-header">
+                <aside class="policy-sidebar">
+                    <div class="policy-sidebar-header">
                         <h3>Policy Sections</h3>
                     </div>
                     <nav class="policy-nav" role="navigation" aria-label="Privacy policy navigation">
-                        <a href="#overview" class="nav-item active">Overview</a>
-                        <a href="#information-collection" class="nav-item">Information Collection</a>
-                        <a href="#information-use" class="nav-item">How We Use Information</a>
-                        <a href="#information-sharing" class="nav-item">Information Sharing</a>
-                        <a href="#data-security" class="nav-item">Data Security</a>
-                        <a href="#client-rights" class="nav-item">Your Rights</a>
-                        <a href="#retention" class="nav-item">Data Retention</a>
-                        <a href="#contact" class="nav-item">Contact Us</a>
+                        <a href="#overview" class="active">Overview</a>
+                        <a href="#information-collection">Information Collection</a>
+                        <a href="#information-use">How We Use Information</a>
+                        <a href="#information-sharing">Information Sharing</a>
+                        <a href="#data-security">Data Security</a>
+                        <a href="#client-rights">Your Rights</a>
+                        <a href="#retention">Data Retention</a>
+                        <a href="#contact">Contact Us</a>
                     </nav>
-                    
-                    <div class="privacy-highlights">
+
+                    <div class="policy-highlights">
                         <h4>Key Commitments</h4>
                         <ul>
                             <li><i class="fas fa-check-circle" aria-hidden="true"></i> Complete confidentiality</li>
@@ -303,56 +840,43 @@
                             <li><i class="fas fa-check-circle" aria-hidden="true"></i> Client control</li>
                         </ul>
                     </div>
-                </div>
+                </aside>
 
                 <!-- Main Content -->
-                <div class="privacy-main">
+                <div class="policy-main">
                     <!-- Overview Section -->
                     <section id="overview" class="policy-section">
-                        <h2>Overview & Commitment</h2>
+                        <h2>Overview &amp; Commitment</h2>
                         <div class="commitment-statement">
                             <p class="lead-text">
-                                805 LifeGuard is committed to maintaining the highest standards of privacy and confidentiality 
-                                for all our distinguished clients. This Privacy Policy explains how we collect, use, protect, 
-                                and handle your personal information in accordance with applicable privacy laws and our 
+                                805 LifeGuard is committed to maintaining the highest standards of privacy and confidentiality
+                                for all our distinguished clients. This Privacy Policy explains how we collect, use, protect,
+                                and handle your personal information in accordance with applicable privacy laws and our
                                 professional service standards.
                             </p>
                         </div>
-                        
-                        <div class="privacy-principles">
-                            <h3>Our Privacy Principles</h3>
-                            <div class="principles-grid">
-                                <div class="principle-item">
-                                    <div class="principle-icon">
-                                        <i class="fas fa-user-secret" aria-hidden="true"></i>
-                                    </div>
-                                    <h4>Absolute Discretion</h4>
-                                    <p>Your personal information and service details are treated with complete confidentiality.</p>
-                                </div>
-                                
-                                <div class="principle-item">
-                                    <div class="principle-icon">
-                                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
-                                    </div>
-                                    <h4>Secure Protection</h4>
-                                    <p>Industry-leading security measures protect your data from unauthorized access.</p>
-                                </div>
-                                
-                                <div class="principle-item">
-                                    <div class="principle-icon">
-                                        <i class="fas fa-hands-helping" aria-hidden="true"></i>
-                                    </div>
-                                    <h4>Transparent Communication</h4>
-                                    <p>Clear, honest communication about how your information is used and protected.</p>
-                                </div>
-                                
-                                <div class="principle-item">
-                                    <div class="principle-icon">
-                                        <i class="fas fa-user-check" aria-hidden="true"></i>
-                                    </div>
-                                    <h4>Client Control</h4>
-                                    <p>You maintain control over your personal information and how it's used.</p>
-                                </div>
+
+                        <h3>Our Privacy Principles</h3>
+                        <div class="policy-card-grid">
+                            <div class="policy-card">
+                                <div class="policy-card-icon"><i class="fas fa-user-secret" aria-hidden="true"></i></div>
+                                <h4>Absolute Discretion</h4>
+                                <p>Your personal information and service details are treated with complete confidentiality.</p>
+                            </div>
+                            <div class="policy-card">
+                                <div class="policy-card-icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
+                                <h4>Secure Protection</h4>
+                                <p>Industry-leading security measures protect your data from unauthorized access.</p>
+                            </div>
+                            <div class="policy-card">
+                                <div class="policy-card-icon"><i class="fas fa-hands-helping" aria-hidden="true"></i></div>
+                                <h4>Transparent Communication</h4>
+                                <p>Clear, honest communication about how your information is used and protected.</p>
+                            </div>
+                            <div class="policy-card">
+                                <div class="policy-card-icon"><i class="fas fa-user-check" aria-hidden="true"></i></div>
+                                <h4>Client Control</h4>
+                                <p>You maintain control over your personal information and how it's used.</p>
                             </div>
                         </div>
                     </section>
@@ -361,8 +885,8 @@
                     <section id="information-collection" class="policy-section">
                         <h2>Information We Collect</h2>
                         <p>We collect only the information necessary to provide exceptional aquatic services tailored to your needs.</p>
-                        
-                        <div class="info-category">
+
+                        <div class="policy-info-box">
                             <h3><i class="fas fa-user" aria-hidden="true"></i> Personal Information</h3>
                             <ul>
                                 <li><strong>Contact Details:</strong> Name, phone number, email address, property address</li>
@@ -371,8 +895,8 @@
                                 <li><strong>Payment Information:</strong> Billing details, payment preferences (processed securely)</li>
                             </ul>
                         </div>
-                        
-                        <div class="info-category">
+
+                        <div class="policy-info-box">
                             <h3><i class="fas fa-home" aria-hidden="true"></i> Property Information</h3>
                             <ul>
                                 <li><strong>Pool Specifications:</strong> Size, depth, equipment, safety features</li>
@@ -381,8 +905,8 @@
                                 <li><strong>Special Considerations:</strong> Pets, allergies, medical conditions, accessibility requirements</li>
                             </ul>
                         </div>
-                        
-                        <div class="info-category">
+
+                        <div class="policy-info-box">
                             <h3><i class="fas fa-calendar-alt" aria-hidden="true"></i> Service Information</h3>
                             <ul>
                                 <li><strong>Scheduling Data:</strong> Appointment times, service duration, recurring schedules</li>
@@ -396,12 +920,10 @@
                     <section id="information-use" class="policy-section">
                         <h2>How We Use Your Information</h2>
                         <p>Your information is used exclusively to provide, improve, and customize our luxury aquatic services.</p>
-                        
-                        <div class="usage-grid">
-                            <div class="usage-item">
-                                <div class="usage-icon">
-                                    <i class="fas fa-concierge-bell" aria-hidden="true"></i>
-                                </div>
+
+                        <div class="policy-card-grid">
+                            <div class="policy-card">
+                                <div class="policy-card-icon"><i class="fas fa-concierge-bell" aria-hidden="true"></i></div>
                                 <h4>Service Delivery</h4>
                                 <ul>
                                     <li>Scheduling and coordinating appointments</li>
@@ -410,11 +932,8 @@
                                     <li>Providing progress reports and updates</li>
                                 </ul>
                             </div>
-                            
-                            <div class="usage-item">
-                                <div class="usage-icon">
-                                    <i class="fas fa-phone" aria-hidden="true"></i>
-                                </div>
+                            <div class="policy-card">
+                                <div class="policy-card-icon"><i class="fas fa-phone" aria-hidden="true"></i></div>
                                 <h4>Communication</h4>
                                 <ul>
                                     <li>Confirming appointments and schedules</li>
@@ -423,11 +942,8 @@
                                     <li>Responding to inquiries and requests</li>
                                 </ul>
                             </div>
-                            
-                            <div class="usage-item">
-                                <div class="usage-icon">
-                                    <i class="fas fa-chart-line" aria-hidden="true"></i>
-                                </div>
+                            <div class="policy-card">
+                                <div class="policy-card-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
                                 <h4>Service Improvement</h4>
                                 <ul>
                                     <li>Analyzing service effectiveness</li>
@@ -436,11 +952,8 @@
                                     <li>Quality assurance and safety protocols</li>
                                 </ul>
                             </div>
-                            
-                            <div class="usage-item">
-                                <div class="usage-icon">
-                                    <i class="fas fa-file-invoice-dollar" aria-hidden="true"></i>
-                                </div>
+                            <div class="policy-card">
+                                <div class="policy-card-icon"><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i></div>
                                 <h4>Business Operations</h4>
                                 <ul>
                                     <li>Processing payments and billing</li>
@@ -454,36 +967,33 @@
 
                     <!-- Information Sharing Section -->
                     <section id="information-sharing" class="policy-section">
-                        <h2>Information Sharing & Disclosure</h2>
-                        
-                        <div class="sharing-commitment">
-                            <div class="commitment-badge">
+                        <h2>Information Sharing &amp; Disclosure</h2>
+
+                        <div class="policy-banner">
+                            <div class="policy-banner-badge">
                                 <i class="fas fa-ban" aria-hidden="true"></i>
-                                <span>We Never Sell Your Information</span>
+                                We Never Sell Your Information
                             </div>
                             <p>805 LifeGuard does not sell, rent, or trade your personal information to third parties for marketing purposes.</p>
                         </div>
-                        
+
                         <h3>Limited Sharing Circumstances</h3>
                         <p>We may share your information only in these specific circumstances:</p>
-                        
-                        <div class="sharing-scenarios">
-                            <div class="scenario-item">
+
+                        <div class="policy-section-list">
+                            <div class="policy-section-list-item">
                                 <h4><i class="fas fa-user-shield" aria-hidden="true"></i> Service Providers</h4>
                                 <p>Trusted partners who assist in service delivery (background check companies, insurance providers) under strict confidentiality agreements.</p>
                             </div>
-                            
-                            <div class="scenario-item">
+                            <div class="policy-section-list-item">
                                 <h4><i class="fas fa-ambulance" aria-hidden="true"></i> Emergency Situations</h4>
                                 <p>Medical professionals or emergency services when necessary to protect health and safety during an emergency.</p>
                             </div>
-                            
-                            <div class="scenario-item">
+                            <div class="policy-section-list-item">
                                 <h4><i class="fas fa-balance-scale" aria-hidden="true"></i> Legal Requirements</h4>
                                 <p>When required by law, court order, or to comply with legal processes and protect our legal rights.</p>
                             </div>
-                            
-                            <div class="scenario-item">
+                            <div class="policy-section-list-item">
                                 <h4><i class="fas fa-handshake" aria-hidden="true"></i> With Your Consent</h4>
                                 <p>When you explicitly authorize us to share information with specific parties for particular purposes.</p>
                             </div>
@@ -492,42 +1002,40 @@
 
                     <!-- Data Security Section -->
                     <section id="data-security" class="policy-section">
-                        <h2>Data Security & Protection</h2>
+                        <h2>Data Security &amp; Protection</h2>
                         <p>We employ comprehensive security measures to protect your personal information from unauthorized access, use, or disclosure.</p>
-                        
-                        <div class="security-measures">
-                            <div class="security-category">
-                                <h3><i class="fas fa-lock" aria-hidden="true"></i> Technical Safeguards</h3>
-                                <ul>
-                                    <li>End-to-end encryption for data transmission</li>
-                                    <li>Secure servers with regular security updates</li>
-                                    <li>Multi-factor authentication for access</li>
-                                    <li>Regular security audits and monitoring</li>
-                                    <li>Secure backup and recovery systems</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="security-category">
-                                <h3><i class="fas fa-users-cog" aria-hidden="true"></i> Administrative Safeguards</h3>
-                                <ul>
-                                    <li>Strict access controls and permissions</li>
-                                    <li>Comprehensive staff training on privacy</li>
-                                    <li>Confidentiality agreements for all personnel</li>
-                                    <li>Regular privacy and security reviews</li>
-                                    <li>Incident response procedures</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="security-category">
-                                <h3><i class="fas fa-file-contract" aria-hidden="true"></i> Physical Safeguards</h3>
-                                <ul>
-                                    <li>Secure storage of physical documents</li>
-                                    <li>Restricted access to sensitive areas</li>
-                                    <li>Secure disposal of confidential materials</li>
-                                    <li>Protected mobile device and equipment policies</li>
-                                    <li>Environmental controls and monitoring</li>
-                                </ul>
-                            </div>
+
+                        <div class="policy-info-box">
+                            <h3><i class="fas fa-lock" aria-hidden="true"></i> Technical Safeguards</h3>
+                            <ul>
+                                <li>End-to-end encryption for data transmission</li>
+                                <li>Secure servers with regular security updates</li>
+                                <li>Multi-factor authentication for access</li>
+                                <li>Regular security audits and monitoring</li>
+                                <li>Secure backup and recovery systems</li>
+                            </ul>
+                        </div>
+
+                        <div class="policy-info-box">
+                            <h3><i class="fas fa-users-cog" aria-hidden="true"></i> Administrative Safeguards</h3>
+                            <ul>
+                                <li>Strict access controls and permissions</li>
+                                <li>Comprehensive staff training on privacy</li>
+                                <li>Confidentiality agreements for all personnel</li>
+                                <li>Regular privacy and security reviews</li>
+                                <li>Incident response procedures</li>
+                            </ul>
+                        </div>
+
+                        <div class="policy-info-box">
+                            <h3><i class="fas fa-file-contract" aria-hidden="true"></i> Physical Safeguards</h3>
+                            <ul>
+                                <li>Secure storage of physical documents</li>
+                                <li>Restricted access to sensitive areas</li>
+                                <li>Secure disposal of confidential materials</li>
+                                <li>Protected mobile device and equipment policies</li>
+                                <li>Environmental controls and monitoring</li>
+                            </ul>
                         </div>
                     </section>
 
@@ -535,66 +1043,49 @@
                     <section id="client-rights" class="policy-section">
                         <h2>Your Privacy Rights</h2>
                         <p>You have significant control over your personal information and how we use it.</p>
-                        
-                        <div class="rights-grid">
-                            <div class="right-item">
-                                <div class="right-icon">
-                                    <i class="fas fa-eye" aria-hidden="true"></i>
-                                </div>
+
+                        <div class="policy-card-grid">
+                            <div class="policy-card">
+                                <div class="policy-card-icon"><i class="fas fa-eye" aria-hidden="true"></i></div>
                                 <h4>Access Your Information</h4>
                                 <p>Request a copy of the personal information we have about you, including how it's being used.</p>
                             </div>
-                            
-                            <div class="right-item">
-                                <div class="right-icon">
-                                    <i class="fas fa-edit" aria-hidden="true"></i>
-                                </div>
+                            <div class="policy-card">
+                                <div class="policy-card-icon"><i class="fas fa-edit" aria-hidden="true"></i></div>
                                 <h4>Correct Your Information</h4>
                                 <p>Update or correct any inaccurate or incomplete personal information we maintain.</p>
                             </div>
-                            
-                            <div class="right-item">
-                                <div class="right-icon">
-                                    <i class="fas fa-trash-alt" aria-hidden="true"></i>
-                                </div>
+                            <div class="policy-card">
+                                <div class="policy-card-icon"><i class="fas fa-trash-alt" aria-hidden="true"></i></div>
                                 <h4>Delete Your Information</h4>
                                 <p>Request deletion of your personal information, subject to legal and business requirements.</p>
                             </div>
-                            
-                            <div class="right-item">
-                                <div class="right-icon">
-                                    <i class="fas fa-ban" aria-hidden="true"></i>
-                                </div>
+                            <div class="policy-card">
+                                <div class="policy-card-icon"><i class="fas fa-ban" aria-hidden="true"></i></div>
                                 <h4>Limit Processing</h4>
                                 <p>Restrict how we process your information for specific purposes or activities.</p>
                             </div>
-                            
-                            <div class="right-item">
-                                <div class="right-icon">
-                                    <i class="fas fa-download" aria-hidden="true"></i>
-                                </div>
+                            <div class="policy-card">
+                                <div class="policy-card-icon"><i class="fas fa-download" aria-hidden="true"></i></div>
                                 <h4>Data Portability</h4>
                                 <p>Receive your personal information in a portable format for transfer to another service.</p>
                             </div>
-                            
-                            <div class="right-item">
-                                <div class="right-icon">
-                                    <i class="fas fa-times-circle" aria-hidden="true"></i>
-                                </div>
+                            <div class="policy-card">
+                                <div class="policy-card-icon"><i class="fas fa-times-circle" aria-hidden="true"></i></div>
                                 <h4>Withdraw Consent</h4>
                                 <p>Withdraw your consent for specific uses of your information at any time.</p>
                             </div>
                         </div>
-                        
-                        <div class="rights-contact">
+
+                        <div class="policy-contact">
                             <h3>Exercising Your Rights</h3>
                             <p>To exercise any of these rights, please contact our Privacy Officer:</p>
-                            <div class="contact-methods">
-                                <div class="contact-method">
+                            <div class="policy-contact-methods">
+                                <div class="policy-contact-method">
                                     <i class="fas fa-envelope" aria-hidden="true"></i>
                                     <span>privacy@805lifeguard.com</span>
                                 </div>
-                                <div class="contact-method">
+                                <div class="policy-contact-method">
                                     <i class="fas fa-phone" aria-hidden="true"></i>
                                     <span>(805) 367-6432</span>
                                 </div>
@@ -607,30 +1098,27 @@
                     <section id="retention" class="policy-section">
                         <h2>Data Retention</h2>
                         <p>We retain your information only as long as necessary to provide services and meet legal requirements.</p>
-                        
-                        <div class="retention-schedule">
-                            <div class="retention-item">
+
+                        <div class="policy-section-list">
+                            <div class="policy-section-list-item">
                                 <h4><i class="fas fa-user-clock" aria-hidden="true"></i> Active Client Information</h4>
                                 <p>Maintained while you are an active client plus 3 years for service continuity and safety records.</p>
                             </div>
-                            
-                            <div class="retention-item">
-                                <h4><i class="fas fa-file-medical" aria-hidden="true"></i> Safety & Emergency Records</h4>
+                            <div class="policy-section-list-item">
+                                <h4><i class="fas fa-file-medical" aria-hidden="true"></i> Safety &amp; Emergency Records</h4>
                                 <p>Retained for 7 years to comply with insurance requirements and safety protocol documentation.</p>
                             </div>
-                            
-                            <div class="retention-item">
+                            <div class="policy-section-list-item">
                                 <h4><i class="fas fa-receipt" aria-hidden="true"></i> Financial Records</h4>
                                 <p>Maintained for 7 years to comply with tax and accounting requirements.</p>
                             </div>
-                            
-                            <div class="retention-item">
+                            <div class="policy-section-list-item">
                                 <h4><i class="fas fa-envelope" aria-hidden="true"></i> Communication Records</h4>
                                 <p>Kept for 3 years for service quality and dispute resolution purposes.</p>
                             </div>
                         </div>
-                        
-                        <div class="retention-note">
+
+                        <div class="policy-note">
                             <i class="fas fa-info-circle" aria-hidden="true"></i>
                             <p>You may request early deletion of your information, subject to legal and safety requirements. We securely destroy information when retention periods expire.</p>
                         </div>
@@ -640,27 +1128,25 @@
                     <section id="contact" class="policy-section">
                         <h2>Contact Information</h2>
                         <p>For questions about this Privacy Policy or our privacy practices, please contact us:</p>
-                        
-                        <div class="contact-info">
-                            <div class="contact-card">
+
+                        <div class="policy-contact-split">
+                            <div class="policy-contact-card">
                                 <h4>Privacy Officer</h4>
-                                <div class="contact-details">
-                                    <div class="contact-item">
-                                        <i class="fas fa-envelope" aria-hidden="true"></i>
-                                        <span>privacy@805lifeguard.com</span>
-                                    </div>
-                                    <div class="contact-item">
-                                        <i class="fas fa-phone" aria-hidden="true"></i>
-                                        <span>(805) 367-6432</span>
-                                    </div>
-                                    <div class="contact-item">
-                                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                                        <span>805 LifeGuard<br>Thousand Oaks, CA 91360</span>
-                                    </div>
+                                <div class="contact-row">
+                                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                                    <span>privacy@805lifeguard.com</span>
+                                </div>
+                                <div class="contact-row">
+                                    <i class="fas fa-phone" aria-hidden="true"></i>
+                                    <span>(805) 367-6432</span>
+                                </div>
+                                <div class="contact-row">
+                                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                    <span>805 LifeGuard<br>Thousand Oaks, CA 91360</span>
                                 </div>
                             </div>
-                            
-                            <div class="policy-updates">
+
+                            <div class="policy-contact-card">
                                 <h4>Policy Updates</h4>
                                 <p>We may update this Privacy Policy periodically to reflect changes in our practices or applicable laws. We will notify you of significant changes by:</p>
                                 <ul>
@@ -668,7 +1154,7 @@
                                     <li>Prominent notice on our website</li>
                                     <li>Direct communication during service visits</li>
                                 </ul>
-                                <p>The "Last Updated" date at the top of this policy indicates when it was most recently revised.</p>
+                                <p style="margin-top: 0.75rem; font-size: 0.875rem; color: #6B6B6B;">The "Last Updated" date at the top of this policy indicates when it was most recently revised.</p>
                             </div>
                         </div>
                     </section>
@@ -677,7 +1163,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer - Matching Homepage -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -691,29 +1177,29 @@
                         </div>
                     </div>
                     <p class="footer-description">
-                        Providing exceptional aquatic safety and instruction services to Southern California's 
+                        Providing exceptional aquatic safety and instruction services to Southern California's
                         most distinguished clientele since 2016. Licensed, bonded, and insured for your peace of mind.
                     </p>
                     <div class="footer-badges">
                         <span class="footer-badge">
-                            <i class="fas fa-certificate" aria-hidden="true"></i>
+                            <i class="fas fa-certificate"></i>
                             Red Cross Certified
                         </span>
                         <span class="footer-badge">
-                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
-                            Licensed & Bonded
+                            <i class="fas fa-shield-alt"></i>
+                            Licensed &amp; Bonded
                         </span>
                         <span class="footer-badge">
-                            <i class="fas fa-award" aria-hidden="true"></i>
+                            <i class="fas fa-award"></i>
                             7+ Years Experience
                         </span>
                     </div>
                 </div>
-                
+
                 <!-- Services Links -->
                 <div class="footer-section">
                     <h4>
-                        <i class="fas fa-water" aria-hidden="true"></i>
+                        <i class="fas fa-water"></i>
                         Services
                     </h4>
                     <ul>
@@ -724,69 +1210,69 @@
                         <li><a href="hoa.html">HOA Community Services</a></li>
                     </ul>
                 </div>
-                
+
                 <!-- Company Links -->
                 <div class="footer-section">
                     <h4>
-                        <i class="fas fa-building" aria-hidden="true"></i>
+                        <i class="fas fa-building"></i>
                         Company
                     </h4>
                     <ul>
-                        <li><a href="about.html">About Jasper & Team</a></li>
+                        <li><a href="about.html">About Jasper &amp; Team</a></li>
                         <li><a href="portfolio.html">Client Portfolio</a></li>
                         <li><a href="testimonials.html">Client Testimonials</a></li>
                         <li><a href="faq.html">Frequently Asked Questions</a></li>
-                        <li><a href="contact.html">Contact & Consultation</a></li>
+                        <li><a href="contact.html">Contact &amp; Consultation</a></li>
                     </ul>
                 </div>
-                
+
                 <!-- Contact Section -->
                 <div class="footer-contact">
                     <h4>
-                        <i class="fas fa-concierge-bell" aria-hidden="true"></i>
+                        <i class="fas fa-concierge-bell"></i>
                         Contact
                     </h4>
-                    
+
                     <div class="contact-info">
                         <a href="tel:+18053676432" class="contact-item primary">
-                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <i class="fas fa-phone"></i>
                             <div>
                                 <strong>(805) 367-6432</strong>
                                 <span>24/7 Emergency Line</span>
                             </div>
                         </a>
-                        
+
                         <a href="mailto:concierge@805lifeguard.com" class="contact-item">
-                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <i class="fas fa-envelope"></i>
                             <div>
                                 <strong>concierge@805lifeguard.com</strong>
                                 <span>Consultation Requests</span>
                             </div>
                         </a>
-                        
+
                         <div class="service-areas-footer">
                             <strong>Primary Areas:</strong>
-                            <span>Thousand Oaks • Westlake Village • Agoura Hills • Newbury Park</span>
+                            <span>Thousand Oaks &bull; Westlake Village &bull; Agoura Hills &bull; Newbury Park</span>
                         </div>
                     </div>
-                    
+
                     <div class="footer-portals">
                         <a href="https://client.805companies.com" target="_blank" class="footer-portal-btn">
-                            <i class="fas fa-user-circle" aria-hidden="true"></i>
+                            <i class="fas fa-user-circle"></i>
                             Client Portal
                         </a>
                         <a href="https://admin.805companies.com" target="_blank" class="footer-portal-btn">
-                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            <i class="fas fa-shield-alt"></i>
                             Admin Portal
                         </a>
                         <a href="https://staff.805companies.com" target="_blank" class="footer-portal-btn">
-                            <i class="fas fa-users" aria-hidden="true"></i>
+                            <i class="fas fa-users"></i>
                             Staff Portal
                         </a>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Footer Bottom -->
             <div class="footer-bottom">
                 <div class="footer-bottom-content">
@@ -795,13 +1281,13 @@
                         <div class="legal-links">
                             <a href="privacy.html">Privacy Policy</a>
                             <a href="terms.html">Terms of Service</a>
-                            <a href="insurance.html">Insurance & Bonding</a>
+                            <a href="insurance.html">Insurance &amp; Bonding</a>
                         </div>
                     </div>
-                    
+
                     <div class="footer-credentials">
                         <span>CA Licensed</span>
-                        <span>Bonded & Insured</span>
+                        <span>Bonded &amp; Insured</span>
                         <span>Background Checked</span>
                     </div>
                 </div>
@@ -809,7 +1295,138 @@
         </div>
     </footer>
 
-    <!-- Enhanced JavaScript -->
-    <script src="js/luxury-app.js"></script>
+    <!-- Optimized JavaScript Loading -->
+    <script>
+        // Critical JavaScript for immediate functionality
+        (function() {
+            'use strict';
+
+            // Mobile nav overlay toggle
+            function initOverlayNav() {
+                const toggle = document.getElementById('menuToggle');
+                const nav = document.getElementById('navOverlay');
+                if (!toggle || !nav) return;
+
+                toggle.addEventListener('click', function() {
+                    const isOpen = nav.classList.toggle('active');
+                    toggle.classList.toggle('active');
+                    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                    nav.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+                    document.body.style.overflow = isOpen ? 'hidden' : '';
+                });
+
+                // Close nav on link click
+                const links = nav.querySelectorAll('.overlay-nav-link, .overlay-logo, .overlay-portal-btn, .overlay-consultation-btn, .overlay-contact-btn');
+                links.forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        setTimeout(function() {
+                            if (nav.classList.contains('active')) toggle.click();
+                        }, 150);
+                    });
+                });
+
+                // Close on escape
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && nav.classList.contains('active')) toggle.click();
+                });
+            }
+
+            // Fast logo entrance for desktop
+            function initLogoEntrance() {
+                const logo = document.getElementById('mainLogo');
+                if (!logo || window.innerWidth <= 768) return;
+
+                logo.style.opacity = '0';
+                logo.style.transform = 'scale(1.15) translateY(-6px)';
+                logo.style.filter = 'blur(0.3px)';
+                logo.style.transition = 'all 900ms cubic-bezier(0.23, 1, 0.32, 1)';
+
+                setTimeout(function() {
+                    logo.style.opacity = '1';
+                    logo.style.transform = 'scale(1.05) translateY(0)';
+                    logo.style.filter = 'blur(0px)';
+                }, 250);
+            }
+
+            // Sidebar nav active-state on scroll (policy pages)
+            function initSidebarScrollSpy() {
+                const navLinks = document.querySelectorAll('.policy-nav a');
+                if (!navLinks.length) return;
+                const sections = Array.from(navLinks).map(function(a) {
+                    const id = a.getAttribute('href').replace('#', '');
+                    return document.getElementById(id);
+                }).filter(Boolean);
+
+                if (!sections.length) return;
+
+                function setActive() {
+                    const scrollPos = window.scrollY + 200;
+                    let current = sections[0];
+                    for (let i = 0; i < sections.length; i++) {
+                        if (sections[i].offsetTop <= scrollPos) current = sections[i];
+                    }
+                    navLinks.forEach(function(a) {
+                        a.classList.toggle('active', a.getAttribute('href') === '#' + current.id);
+                    });
+                }
+
+                let ticking = false;
+                window.addEventListener('scroll', function() {
+                    if (!ticking) {
+                        window.requestAnimationFrame(function() { setActive(); ticking = false; });
+                        ticking = true;
+                    }
+                }, { passive: true });
+                setActive();
+
+                // Smooth scroll on click
+                navLinks.forEach(function(a) {
+                    a.addEventListener('click', function(e) {
+                        const href = a.getAttribute('href');
+                        const target = document.querySelector(href);
+                        if (target) {
+                            e.preventDefault();
+                            const top = target.getBoundingClientRect().top + window.scrollY - 120;
+                            window.scrollTo({ top: top, behavior: 'smooth' });
+                            history.pushState(null, '', href);
+                        }
+                    });
+                });
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function() {
+                    initOverlayNav();
+                    initLogoEntrance();
+                    initSidebarScrollSpy();
+                });
+            } else {
+                initOverlayNav();
+                initLogoEntrance();
+                initSidebarScrollSpy();
+            }
+        })();
+    </script>
+
+    <!-- Deferred Main JavaScript -->
+    <script>
+        // Load main application after critical content
+        function loadMainScript() {
+            const script = document.createElement('script');
+            script.src = 'js/luxury-app.js';
+            script.async = true;
+            script.onload = function() {
+                console.log('805 LifeGuard Optimized Application loaded successfully');
+            };
+            document.head.appendChild(script);
+        }
+
+        // Load after initial render
+        if (window.requestIdleCallback) {
+            requestIdleCallback(loadMainScript);
+        } else {
+            setTimeout(loadMainScript, 500);
+        }
+    </script>
 </body>
 </html>
