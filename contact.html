@@ -185,65 +185,67 @@
 </head>
 <body itemscope itemtype="https://schema.org/WebPage">
 
-    <!-- Header, form HTML, footer, modals, etc. — all your original beautiful code remains exactly the same -->
-    <!-- (The only thing changed is the JavaScript section at the bottom) -->
+    <!-- All your original HTML (header, form, footer, modals, etc.) remains 100% unchanged -->
 
-    <!-- Contact Form JavaScript - Google Workspace (email + Google Sheet) -->
+    <!-- Contact Form JavaScript - FIXED with DOMContentLoaded -->
     <script>
-        const CONSULTATION_CONFIG = {
-            DATABASE_ENDPOINT: 'https://script.google.com/macros/s/AKfycby7tHwEn_gdZIFAxmfjqtxMaW8VVnfCWsBmhaFAORIbJChAkLACbL3s2hpHlukffyYLjg/exec'
-        };
-
-        // Form submission handler
-        document.getElementById('consultationForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const form = e.target;
-            const formData = new FormData(form);
+        document.addEventListener('DOMContentLoaded', function() {
             
-            showLoadingOverlay();
-            
-            try {
-                if (!validateForm(form)) {
-                    hideLoadingOverlay();
-                    showErrorMessage('Please fill in all required fields correctly.');
-                    return;
-                }
-
-                const consultationData = collectFormData(formData);
-                
-                const response = await fetch(CONSULTATION_CONFIG.DATABASE_ENDPOINT, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(consultationData)
-                });
-                
-                if (!response.ok) throw new Error('Server error');
-                
-                const result = await response.json();
-                
-                hideLoadingOverlay();
-                showSuccessModal(result.consultation_id || generateConsultationId());
-                
-                form.reset();
-                resetServiceOptions();
-                trackConsultationSubmission(consultationData);
-                
-            } catch (error) {
-                console.error('Error submitting consultation:', error);
-                hideLoadingOverlay();
-                showErrorMessage('There was an error submitting your request. Please try again or call (805) 367-6432 directly.');
+            const form = document.getElementById('consultationForm');
+            if (!form) {
+                console.error('Consultation form element not found');
+                return;
             }
+
+            const CONSULTATION_CONFIG = {
+                DATABASE_ENDPOINT: 'https://script.google.com/macros/s/AKfycby7tHwEn_gdZIFAxmfjqtxMaW8VVnfCWsBmhaFAORIbJChAkLACbL3s2hpHlukffyYLjg/exec'
+            };
+
+            // Form submission handler
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const formData = new FormData(form);
+                
+                showLoadingOverlay();
+                
+                try {
+                    if (!validateForm(form)) {
+                        hideLoadingOverlay();
+                        showErrorMessage('Please fill in all required fields correctly.');
+                        return;
+                    }
+
+                    const consultationData = collectFormData(formData);
+                    
+                    const response = await fetch(CONSULTATION_CONFIG.DATABASE_ENDPOINT, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(consultationData)
+                    });
+                    
+                    if (!response.ok) throw new Error('Server error');
+                    
+                    const result = await response.json();
+                    
+                    hideLoadingOverlay();
+                    showSuccessModal(result.consultation_id || generateConsultationId());
+                    
+                    form.reset();
+                    resetServiceOptions();
+                    trackConsultationSubmission(consultationData);
+                    
+                } catch (error) {
+                    console.error('Error submitting consultation:', error);
+                    hideLoadingOverlay();
+                    showErrorMessage('There was an error submitting your request. Please try again or call (805) 367-6432 directly.');
+                }
+            });
+
+            console.log('805 LifeGuard Contact Form connected to Google Workspace (email + Google Sheet)');
         });
-
-        // All your original helper functions remain exactly the same
-        // (collectFormData, validateForm, showLoadingOverlay, hideLoadingOverlay, showSuccessModal, 
-        // showErrorMessage, setupServiceOptions, resetServiceOptions, etc.)
-        // ... paste the rest of your original JavaScript functions here (they are unchanged) ...
-
-        console.log('805 LifeGuard Contact Form connected to Google Workspace (email + Google Sheet)');
     </script>
 
-    <!-- GA4 Custom Event Tracking (unchanged) -->
+    <!-- GA4 Custom Event Tracking -->
     <script>
     (function() {
         'use strict';
