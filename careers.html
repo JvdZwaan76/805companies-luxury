@@ -70,9 +70,9 @@
             --z-index-hamburger: 1080;
             --z-index-modal: 1050;
         }
-
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        
         body {
             font-family: var(--font-family-sans);
             color: var(--color-text-primary);
@@ -80,7 +80,7 @@
             overflow-x: hidden;
             line-height: 1.5;
         }
-
+        
         .header {
             position: fixed;
             top: 0;
@@ -90,7 +90,7 @@
             background: var(--color-white);
             border-bottom: 1px solid #E8E8E8;
         }
-
+        
         .header-top {
             background: linear-gradient(135deg, #1A1A1A, #2F2F2F);
             color: var(--color-text-inverse);
@@ -99,25 +99,25 @@
             display: flex;
             align-items: center;
         }
-
+        
         @media (max-width: 768px) {
             .header-top { display: none; }
         }
-
+        
         .navbar {
             padding: 1.25rem 0;
             height: var(--header-navbar-height);
             display: flex;
             align-items: center;
         }
-
+        
         .container {
             width: 100%;
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
-
+        
         .hero {
             position: relative;
             min-height: 100vh;
@@ -126,7 +126,7 @@
             padding-top: var(--header-total-height);
             overflow: hidden;
         }
-
+        
         .hero-carousel {
             position: absolute;
             top: 0;
@@ -135,7 +135,7 @@
             height: 100%;
             z-index: 0;
         }
-
+        
         .carousel-slide {
             position: absolute;
             top: 0;
@@ -148,11 +148,11 @@
             opacity: 0;
             transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
+        
         .carousel-slide.active {
             opacity: 1;
         }
-
+        
         .carousel-slide::before {
             content: '';
             position: absolute;
@@ -163,7 +163,7 @@
             background: linear-gradient(135deg,rgba(0, 0, 0, 0.3) 0%,rgba(0, 0, 0, 0.4) 50%,rgba(0, 0, 0, 0.5) 100%);
             z-index: 1;
         }
-
+        
         .hero-overlay {
             position: absolute;
             top: 0;
@@ -173,7 +173,7 @@
             background: linear-gradient(135deg,rgba(0, 0, 0, 0.2) 0%,rgba(0, 0, 0, 0.3) 50%,rgba(0, 0, 0, 0.4) 100%);
             z-index: 2;
         }
-
+        
         .hero-content {
             position: relative;
             z-index: 10;
@@ -182,9 +182,9 @@
             max-width: 900px;
             margin: 0 auto;
         }
-
+        
         @media (max-width: 768px) {
-            .hero {
+            .hero { 
                 padding-top: calc(var(--header-navbar-height) + 1rem);
             }
         }
@@ -391,7 +391,7 @@
                 </div>
             </div>
         </div>
-
+        
         <!-- Enhanced Main Navigation with Perfect Mobile Balance -->
         <nav class="navbar" role="navigation" aria-label="Main navigation">
             <div class="container">
@@ -404,8 +404,8 @@
                             <span class="bar"></span>
                         </button>
                     </div>
-
-                    <!-- Logo - Centered -->
+                    
+                    <!-- Logo - Centered with Elegant Entrance Animation -->
                     <a href="/" class="logo" id="mainLogo" aria-label="805 LifeGuard Homepage">
                         <img src="/images/logos/805-lifeguard-logo.png" alt="805 LifeGuard - Aquatic Services" class="logo-img" width="48" height="48">
                         <div class="logo-text">
@@ -413,9 +413,10 @@
                             <div class="logo-tagline">Aquatic Services</div>
                         </div>
                     </a>
-
-                    <!-- Actions - Right -->
+                    
+                    <!-- Actions - Right with Mobile-First Branding Focus -->
                     <div class="nav-actions">
+                        <!-- Portal buttons hidden on mobile for cleaner branding -->
                         <div class="portal-group">
                             <a href="https://client.805companies.com" target="_blank" rel="noopener noreferrer" class="portal-btn client-portal" aria-label="Client Portal - Opens in new window">
                                 <i class="fas fa-user-circle" aria-hidden="true"></i>
@@ -434,17 +435,18 @@
                 </div>
             </div>
         </nav>
-
+        
         <!-- Enhanced Full-Screen Navigation Overlay -->
         <div class="nav-overlay" id="navOverlay" role="dialog" aria-label="Navigation menu" aria-hidden="true">
             <div class="nav-overlay-content">
+                <!-- Mobile Branding Header - Shows only on mobile for optimal branding -->
                 <div class="nav-overlay-header">
                     <a href="/" class="overlay-logo" onclick="document.getElementById('menuToggle').click();">
                         <img src="/images/logos/805-lifeguard-logo.png" alt="805 LifeGuard" width="48" height="48">
                         <span>805 LifeGuard</span>
                     </a>
                 </div>
-
+                
                 <nav class="nav-overlay-menu" role="navigation" aria-label="Main menu">
                     <a href="about" class="overlay-nav-link">About</a>
                     <a href="services" class="overlay-nav-link">Services</a>
@@ -455,7 +457,7 @@
                     <a href="careers" class="overlay-nav-link active">Careers</a>
                     <a href="faq" class="overlay-nav-link">FAQ</a>
                 </nav>
-
+                
                 <div class="nav-overlay-actions">
                     <div class="overlay-portals">
                         <a href="https://client.805companies.com" target="_blank" rel="noopener noreferrer" class="overlay-portal-btn" aria-label="Client Portal - Opens in new window">
@@ -471,7 +473,7 @@
                         <i class="fas fa-calendar-check" aria-hidden="true"></i>
                         Private Consultation
                     </a>
-
+                    
                     <div class="overlay-nav-contact">
                         <a href="tel:+18053676432" class="overlay-contact-btn" aria-label="Call 805 LifeGuard">
                             <i class="fas fa-phone" aria-hidden="true"></i>
@@ -483,20 +485,41 @@
         </div>
     </header>
 
-    <!-- Hero Section (mirrors services.html exactly) -->
-    <section class="hero" role="banner" aria-label="805 LifeGuard Careers">
-        <div class="hero-carousel" id="heroCarousel">
-            <div class="carousel-slide active" style="background-image: url('images/services/services-hero-lifeguarding-1920x1080.jpg')" data-bg-desktop="images/services/services-hero-lifeguarding-1920x1080.jpg" data-bg-tablet="images/services/services-hero-lifeguarding-1024x576.jpg" data-bg-mobile="images/services/services-hero-lifeguarding-768x432.jpg" aria-label="Professional lifeguarding team"></div>
-            <div class="carousel-slide" data-bg-desktop="images/services/services-hero-instruction-1920x1080.jpg" data-bg-tablet="images/services/services-hero-instruction-1024x576.jpg" data-bg-mobile="images/services/services-hero-instruction-768x432.jpg" aria-label="Bespoke swimming instruction"></div>
-            <div class="carousel-slide" data-bg-desktop="images/services/services-hero-credentials-1920x1080.jpg" data-bg-tablet="images/services/services-hero-credentials-1024x576.jpg" data-bg-mobile="images/services/services-hero-credentials-768x432.jpg" aria-label="Professional credentials and certifications"></div>
-            <div class="carousel-slide" data-bg-desktop="images/services/services-hero-excellence-1920x1080.jpg" data-bg-tablet="images/services/services-hero-excellence-1024x576.jpg" data-bg-mobile="images/services/services-hero-excellence-768x432.jpg" aria-label="Professional excellence"></div>
+    <!-- Breadcrumbs — matches insurance.html pattern -->
+    <nav class="breadcrumbs" aria-label="Breadcrumb navigation" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <div class="container">
+            <ol class="breadcrumb-list">
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+                    <meta itemprop="position" content="1" />
+                </li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <span itemprop="name" aria-current="page">Careers</span>
+                    <meta itemprop="position" content="2" />
+                </li>
+            </ol>
         </div>
+    </nav>
 
+    <!-- =====================================================================
+         HERO
+    ===================================================================== -->
+    <!-- Hero Section -->
+    <section class="hero" role="banner" aria-label="805 LifeGuard Careers">
+        <!-- Background -->
+        <div class="hero-carousel" id="heroCarousel">
+            <div class="carousel-slide active" style="background-image: url('images/services/services-hero-lifeguarding-1920x1080.jpg')" data-bg-desktop="images/services/services-hero-lifeguarding-1920x1080.jpg" data-bg-tablet="images/services/services-hero-lifeguarding-1024x576.jpg" data-bg-mobile="images/services/services-hero-lifeguarding-768x432.jpg" aria-label="Professional lifeguarding team at work"></div>
+            <div class="carousel-slide" style="background-image: url('images/services/services-hero-instruction-1920x1080.jpg')" data-bg-desktop="images/services/services-hero-instruction-1920x1080.jpg" data-bg-tablet="images/services/services-hero-instruction-1024x576.jpg" data-bg-mobile="images/services/services-hero-instruction-768x432.jpg" aria-label="Private swim instruction"></div>
+            <div class="carousel-slide" style="background-image: url('images/services/services-hero-excellence-1920x1080.jpg')" data-bg-desktop="images/services/services-hero-excellence-1920x1080.jpg" data-bg-tablet="images/services/services-hero-excellence-1024x576.jpg" data-bg-mobile="images/services/services-hero-excellence-768x432.jpg" aria-label="Professional excellence and team standards"></div>
+            <div class="carousel-slide" style="background-image: url('images/services/services-hero-credentials-1920x1080.jpg')" data-bg-desktop="images/services/services-hero-credentials-1920x1080.jpg" data-bg-tablet="images/services/services-hero-credentials-1024x576.jpg" data-bg-mobile="images/services/services-hero-credentials-768x432.jpg" aria-label="Red Cross certifications and credentials"></div>
+        </div>
         <div class="hero-overlay"></div>
-
         <div class="container">
             <div class="hero-content" itemscope itemtype="https://schema.org/Organization">
-                <div class="section-badge">Now Hiring — Summer 2026</div>
+                <div class="section-badge">
+                    <i class="fas fa-water" aria-hidden="true"></i>
+                    Now Hiring — Summer 2026
+                </div>
                 <h1 class="hero-title" itemprop="slogan">Work With Us</h1>
                 <p class="hero-subtitle" itemprop="description">
                     Join Southern California's most trusted aquatic services team. We're hiring
@@ -504,7 +527,6 @@
                     Conejo Valley and Ventura County — competitive pay, flexible schedules,
                     and a team that takes pride in the work.
                 </p>
-
                 <div class="hero-buttons">
                     <a href="#private-swim-instructor" class="btn btn-primary" aria-label="View open positions">
                         <i class="fas fa-briefcase" aria-hidden="true"></i>
@@ -515,10 +537,9 @@
                         Apply Now
                     </a>
                 </div>
-
                 <div class="hero-notice">
                     <i class="fas fa-handshake" aria-hidden="true"></i>
-                    Serving the Conejo Valley, Ventura County, and surrounding communities since 2016.
+                    Serving the Conejo Valley, Ventura County, and surrounding communities since 2016
                 </div>
             </div>
         </div>
@@ -1054,7 +1075,7 @@
                         </div>
                     </div>
                     <p class="footer-description">
-                        Providing exceptional aquatic safety and instruction services to Southern California's
+                        Providing exceptional aquatic safety and instruction services to Southern California's 
                         most distinguished clientele since 2016. Licensed, bonded, and insured for your peace of mind.
                     </p>
                     <div class="footer-badges">
@@ -1064,7 +1085,7 @@
                         </span>
                         <span class="footer-badge">
                             <i class="fas fa-shield-alt"></i>
-                            Licensed &amp; Bonded
+                            Licensed & Bonded
                         </span>
                         <span class="footer-badge">
                             <i class="fas fa-award"></i>
@@ -1072,7 +1093,7 @@
                         </span>
                     </div>
                 </div>
-
+                
                 <!-- Services Links -->
                 <div class="footer-section">
                     <h4>
@@ -1087,7 +1108,7 @@
                         <li><a href="hoa">HOA Community Services</a></li>
                     </ul>
                 </div>
-
+                
                 <!-- Company Links -->
                 <div class="footer-section">
                     <h4>
@@ -1095,22 +1116,21 @@
                         Company
                     </h4>
                     <ul>
-                        <li><a href="about">About Jasper &amp; Team</a></li>
+                        <li><a href="about">About Jasper & Team</a></li>
                         <li><a href="portfolio">Client Portfolio</a></li>
                         <li><a href="testimonials">Client Testimonials</a></li>
-                        <li><a href="careers">Careers</a></li>
                         <li><a href="faq">Frequently Asked Questions</a></li>
-                        <li><a href="contact">Contact &amp; Consultation</a></li>
+                        <li><a href="contact">Contact & Consultation</a></li>
                     </ul>
                 </div>
-
+                
                 <!-- Contact Section -->
                 <div class="footer-contact">
                     <h4>
                         <i class="fas fa-concierge-bell"></i>
                         Contact
                     </h4>
-
+                    
                     <div class="contact-info">
                         <a href="tel:+18053676432" class="contact-item primary">
                             <i class="fas fa-phone"></i>
@@ -1119,7 +1139,7 @@
                                 <span>24/7 Emergency Line</span>
                             </div>
                         </a>
-
+                        
                         <a href="mailto:concierge@805lifeguard.com" class="contact-item">
                             <i class="fas fa-envelope"></i>
                             <div>
@@ -1127,21 +1147,13 @@
                                 <span>Consultation Requests</span>
                             </div>
                         </a>
-
-                        <a href="mailto:jasper@805lifeguard.com" class="contact-item">
-                            <i class="fas fa-briefcase"></i>
-                            <div>
-                                <strong>jasper@805lifeguard.com</strong>
-                                <span>Career Applications</span>
-                            </div>
-                        </a>
-
+                        
                         <div class="service-areas-footer">
                             <strong>Primary Areas:</strong>
                             <span>Thousand Oaks • Westlake Village • Agoura Hills • Newbury Park</span>
                         </div>
                     </div>
-
+                    
                     <div class="footer-portals">
                         <a href="https://client.805companies.com" target="_blank" class="footer-portal-btn">
                             <i class="fas fa-user-circle"></i>
@@ -1158,7 +1170,7 @@
                     </div>
                 </div>
             </div>
-
+            
             <!-- Footer Bottom -->
             <div class="footer-bottom">
                 <div class="footer-bottom-content">
@@ -1167,13 +1179,13 @@
                         <div class="legal-links">
                             <a href="privacy">Privacy Policy</a>
                             <a href="terms">Terms of Service</a>
-                            <a href="insurance">Insurance &amp; Bonding</a>
+                            <a href="insurance">Insurance & Bonding</a>
                         </div>
                     </div>
-
+                    
                     <div class="footer-credentials">
                         <span>CA Licensed</span>
-                        <span>Bonded &amp; Insured</span>
+                        <span>Bonded & Insured</span>
                         <span>Background Checked</span>
                     </div>
                 </div>
@@ -1186,79 +1198,160 @@
         // Critical JavaScript for immediate functionality
         (function() {
             'use strict';
-
+            
             // Fast carousel slide background setup with intelligent fallback
             function initCarouselBackgrounds() {
                 const slides = document.querySelectorAll('.carousel-slide');
                 const isMobile = window.innerWidth <= 768;
                 const isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
-
+                
+                console.log('805 LifeGuard: Setting up careers carousel backgrounds. Width:', window.innerWidth, 'Mobile:', isMobile, 'Tablet:', isTablet);
+                console.log('805 LifeGuard: Found', slides.length, 'carousel slides');
+                
                 slides.forEach(function(slide, index) {
                     const desktopSrc = slide.dataset.bgDesktop;
                     const tabletSrc = slide.dataset.bgTablet;
                     const mobileSrc = slide.dataset.bgMobile;
-
+                    
+                    console.log('805 LifeGuard: Slide', index, 'sources:', {
+                        desktop: desktopSrc,
+                        tablet: tabletSrc,
+                        mobile: mobileSrc
+                    });
+                    
                     // Smart fallback function
                     function tryImageSources(sources, slideElement, slideIndex) {
-                        if (sources.length === 0) return;
-
+                        if (sources.length === 0) {
+                            console.error('805 LifeGuard: No more image sources to try for slide', slideIndex);
+                            return;
+                        }
+                        
                         const currentSrc = sources[0];
                         const remainingSources = sources.slice(1);
-
+                        
                         const testImg = new Image();
                         testImg.onload = function() {
+                            console.log('805 LifeGuard: Image loaded successfully:', currentSrc);
                             slideElement.style.backgroundImage = 'url(' + currentSrc + ')';
                             slideElement.style.backgroundSize = 'cover';
                             slideElement.style.backgroundPosition = 'center';
                             slideElement.style.backgroundRepeat = 'no-repeat';
                         };
                         testImg.onerror = function() {
+                            console.warn('805 LifeGuard: Failed to load image:', currentSrc, '- trying next fallback');
                             tryImageSources(remainingSources, slideElement, slideIndex);
                         };
                         testImg.src = currentSrc;
                     }
-
-                    // Build sources list based on device
-                    let sources = [];
-                    if (isMobile && mobileSrc) {
-                        sources.push(mobileSrc);
-                    } else if (isTablet && tabletSrc) {
-                        sources.push(tabletSrc);
+                    
+                    // Determine priority order based on device
+                    let imagePriority;
+                    if (isMobile) {
+                        imagePriority = [mobileSrc, tabletSrc, desktopSrc].filter(Boolean);
+                    } else if (isTablet) {
+                        imagePriority = [tabletSrc, desktopSrc, mobileSrc].filter(Boolean);
+                    } else {
+                        imagePriority = [desktopSrc, tabletSrc, mobileSrc].filter(Boolean);
                     }
-                    if (desktopSrc) sources.push(desktopSrc);
-                    if (tabletSrc && !sources.includes(tabletSrc)) sources.push(tabletSrc);
-                    if (mobileSrc && !sources.includes(mobileSrc)) sources.push(mobileSrc);
-
-                    if (sources.length > 0) {
-                        tryImageSources(sources, slide, index);
+                    
+                    console.log('805 LifeGuard: Trying images for slide', index, 'in order:', imagePriority);
+                    tryImageSources(imagePriority, slide, index);
+                });
+                
+                // Ensure first slide is active
+                const firstSlide = document.querySelector('.carousel-slide');
+                if (firstSlide) {
+                    firstSlide.classList.add('active');
+                    console.log('805 LifeGuard: First slide marked as active');
+                }
+            }
+            
+            // Also run on resize
+            function handleResize() {
+                console.log('805 LifeGuard: Window resized, updating carousel backgrounds');
+                initCarouselBackgrounds();
+            }
+            
+            // Fast mobile navigation fallback
+            function initMobileNav() {
+                const toggle = document.getElementById('menuToggle');
+                const nav = document.getElementById('navOverlay');
+                const body = document.body;
+                
+                if (!toggle || !nav) return;
+                
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const isOpen = nav.classList.contains('active');
+                    
+                    if (isOpen) {
+                        toggle.classList.remove('active');
+                        nav.classList.remove('active');
+                        body.classList.remove('nav-open');
+                        body.style.position = '';
+                        body.style.top = '';
+                        body.style.overflow = '';
+                    } else {
+                        toggle.classList.add('active');
+                        nav.classList.add('active');
+                        body.classList.add('nav-open');
+                        body.style.position = 'fixed';
+                        body.style.top = '-' + window.pageYOffset + 'px';
+                        body.style.overflow = 'hidden';
                     }
                 });
+                
+                // Close nav on link click
+                const links = nav.querySelectorAll('.overlay-nav-link, .overlay-logo');
+                links.forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        setTimeout(function() {
+                            toggle.click();
+                        }, 150);
+                    });
+                });
             }
-
-            // Carousel rotation
-            function initCarouselRotation() {
-                const slides = document.querySelectorAll('.carousel-slide');
-                if (slides.length <= 1) return;
-
-                let currentSlide = 0;
-
-                setInterval(function() {
-                    slides[currentSlide].classList.remove('active');
-                    currentSlide = (currentSlide + 1) % slides.length;
-                    slides[currentSlide].classList.add('active');
-                }, 6000);
+            
+            // Fast logo entrance for desktop
+            function initLogoEntrance() {
+                const logo = document.getElementById('mainLogo');
+                if (!logo || window.innerWidth <= 768) return;
+                
+                logo.style.opacity = '0';
+                logo.style.transform = 'scale(1.15) translateY(-6px)';
+                logo.style.filter = 'blur(0.3px)';
+                logo.style.transition = 'all 900ms cubic-bezier(0.23, 1, 0.32, 1)';
+                
+                setTimeout(function() {
+                    logo.style.opacity = '1';
+                    logo.style.transform = 'scale(1.05) translateY(0)';
+                    logo.style.filter = 'blur(0px)';
+                }, 250);
             }
-
-            // Initialize on DOM ready
+            
+            // Initialize immediately
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', function() {
                     initCarouselBackgrounds();
-                    initCarouselRotation();
+                    initMobileNav();
+                    initLogoEntrance();
+                    
+                    // Add resize listener
+                    window.addEventListener('resize', handleResize);
                 });
             } else {
                 initCarouselBackgrounds();
-                initCarouselRotation();
+                initMobileNav();
+                initLogoEntrance();
+                
+                // Add resize listener
+                window.addEventListener('resize', handleResize);
             }
+            
+            // Also run immediately for any case
+            setTimeout(function() {
+                initCarouselBackgrounds();
+            }, 100);
         })();
     </script>
 
@@ -1270,11 +1363,11 @@
             script.src = 'js/luxury-app.js';
             script.async = true;
             script.onload = function() {
-                console.log('805 LifeGuard Optimized Application loaded successfully');
+                console.log('805 LifeGuard Careers Page loaded successfully');
             };
             document.head.appendChild(script);
         }
-
+        
         // Load after initial render
         if (window.requestIdleCallback) {
             requestIdleCallback(loadMainScript);

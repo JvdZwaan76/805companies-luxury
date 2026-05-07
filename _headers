@@ -9,7 +9,7 @@
 /*
   X-Frame-Options: SAMEORIGIN
   X-Content-Type-Options: nosniff
-  X-XSS-Protection: 1; mode=block
+  X-XSS-Protection: 0
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
@@ -52,15 +52,17 @@
   Content-Type: application/manifest+json
 
 # =============================================================================
-# BLOCK SEARCH ENGINES FROM INDEXING INTERNAL SUBDOMAINS
-# These are admin/client/staff areas only — never meant for public search
+# Subdomain noindex rules removed in this update.
+#
+# The previous rules targeted https://admin.805companies.com/* etc., but a
+# Cloudflare Pages _headers file only applies to responses served by the
+# project it ships with. The 805lifeguard.com Pages project never serves
+# requests to those subdomains, so the rules had no effect.
+#
+# Subdomain noindex will be configured in Phase 2 of the portal migration,
+# directly on each subdomain's Pages project.
+#
+# Note on X-XSS-Protection: explicitly set to "0" rather than the legacy
+# "1; mode=block". Modern browsers ignore this header; "0" is the current
+# OWASP recommendation for the legacy XSS auditor.
 # =============================================================================
-
-https://admin.805companies.com/*
-  X-Robots-Tag: noindex, nofollow
-
-https://client.805companies.com/*
-  X-Robots-Tag: noindex, nofollow
-
-https://staff.805companies.com/*
-  X-Robots-Tag: noindex, nofollow

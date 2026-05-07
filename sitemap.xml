@@ -7,7 +7,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://805lifeguard.com/</loc>
-    <lastmod>2026-05-04</lastmod>
+    <lastmod>2026-05-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -71,7 +71,15 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Insurance & Bonding — new page -->
+  <!-- Careers — Summer 2026 hiring push -->
+  <url>
+    <loc>https://805lifeguard.com/careers</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Insurance & Bonding -->
   <url>
     <loc>https://805lifeguard.com/insurance</loc>
     <lastmod>2026-05-04</lastmod>
