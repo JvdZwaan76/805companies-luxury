@@ -1,6 +1,6 @@
 # =============================================================================
 # 805lifeguard.com — Cloudflare Pages _headers
-# Updated: 2026-05-02
+# Updated: 2026-05-07
 # Note: CSP intentionally omitted — Cloudflare injects scripts automatically
 # (cloudflareinsights.com beacon, email-decode.min.js) that would require
 # constant CSP maintenance. Other security headers fully active.
@@ -50,3 +50,17 @@
 /site.webmanifest
   Cache-Control: public, max-age=86400
   Content-Type: application/manifest+json
+
+# =============================================================================
+# BLOCK SEARCH ENGINES FROM INDEXING INTERNAL SUBDOMAINS
+# These are admin/client/staff areas only — never meant for public search
+# =============================================================================
+
+https://admin.805companies.com/*
+  X-Robots-Tag: noindex, nofollow
+
+https://client.805companies.com/*
+  X-Robots-Tag: noindex, nofollow
+
+https://staff.805companies.com/*
+  X-Robots-Tag: noindex, nofollow
