@@ -66,3 +66,31 @@
 # "1; mode=block". Modern browsers ignore this header; "0" is the current
 # OWASP recommendation for the legacy XSS auditor.
 # =============================================================================
+
+# =============================================================================
+# Staging noindex rule
+# Added: 2026-05-08
+#
+# This rule scopes to the staging branch alias URL ONLY:
+# https://staging.805companies-luxury.pages.dev/*
+#
+# Why this works (read carefully before editing):
+#
+# 1. Cloudflare Pages _headers files match against the request hostname.
+#    Absolute-URL patterns (with https://) match the Host header literally.
+#
+# 2. The branch alias `staging.805companies-luxury.pages.dev` is served by
+#    THIS Pages project (805companies-luxury), unlike admin.805companies.com
+#    etc. which live on different projects. So the rule actually fires.
+#
+# 3. Production hostnames (805lifeguard.com, www.805lifeguard.com) do NOT
+#    match this pattern. Even if this file is merged to main, production
+#    is unaffected — the rule is dead code on production deployments.
+#
+# DO NOT modify the path pattern on this rule without understanding all of
+# the above. Removing the absolute URL (e.g. changing to /*) would apply
+# noindex to PRODUCTION and de-list 805lifeguard.com from Google.
+# =============================================================================
+
+https://staging.805companies-luxury.pages.dev/*
+  X-Robots-Tag: noindex, nofollow, noarchive
