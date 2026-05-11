@@ -137,3 +137,7 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Local install scripts (do not commit)
+add-gtm.py
+add-gtm.sh
