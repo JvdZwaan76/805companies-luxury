@@ -4,39 +4,49 @@
     "description": "Premier aquatic safety and instruction services for Southern California's distinguished clientele",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#FFFFFF",
-    "theme_color": "#0A1628",
+    "background_color": "#FDFCFA",
+    "theme_color": "#1A1A1A",
     "orientation": "portrait-primary",
     "scope": "/",
     "lang": "en-US",
     "categories": ["lifestyle", "health", "education"],
     "icons": [
         {
-            "src": "images/logos/805-lifeguard-favicon-16x16.png",
+            "src": "/images/favicon/favicon-16x16.png",
             "sizes": "16x16",
             "type": "image/png"
         },
         {
-            "src": "images/logos/805-lifeguard-favicon-32x32.png",
+            "src": "/images/favicon/favicon-32x32.png",
             "sizes": "32x32",
             "type": "image/png"
         },
         {
-            "src": "images/logos/805-lifeguard-apple-touch-icon-180x180.png",
+            "src": "/images/favicon/favicon-48x48.png",
+            "sizes": "48x48",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/favicon/favicon-96x96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/favicon/apple-touch-icon.png",
             "sizes": "180x180",
             "type": "image/png"
         },
         {
-            "src": "images/logos/805-lifeguard-logo-192x192.png",
+            "src": "/images/favicon/android-chrome-192x192.png",
             "sizes": "192x192",
             "type": "image/png",
-            "purpose": "any maskable"
+            "purpose": "any"
         },
         {
-            "src": "images/logos/805-lifeguard-logo-512x512.png",
+            "src": "/images/favicon/android-chrome-512x512.png",
             "sizes": "512x512",
             "type": "image/png",
-            "purpose": "any maskable"
+            "purpose": "any"
         }
     ]
 }
