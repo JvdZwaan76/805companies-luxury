@@ -141,3 +141,9 @@ vite.config.ts.timestamp-*
 # Local install scripts (do not commit)
 add-gtm.py
 add-gtm.sh
+
+# Local install scripts (do not commit)
+update-favicon.py
+
+# Cloudflare Wrangler cache
+.wrangler/
