@@ -4203,24 +4203,23 @@ a:focus,
 
 /* === END OF ENHANCED 805 LIFEGUARD LUXURY THEME CSS === */
 
-
 /* ============================================================ */
 /* Footer — Regional Network (Service Areas across 5 area-codes) */
 /* ============================================================ */
 
-.footer-network {
-    border-top: 1px solid var(--color-secondary-darkest);
-    border-bottom: 1px solid var(--color-secondary-darkest);
-    padding: var(--spacing-6) 0;
-    margin-top: var(--spacing-8);
+.footer .footer-network {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     gap: var(--spacing-4) var(--spacing-6);
+    border-top: 1px solid var(--color-secondary-darkest);
+    border-bottom: 1px solid var(--color-secondary-darkest);
+    padding: var(--spacing-6) 0;
+    margin-top: var(--spacing-8);
 }
 
-.footer-network-label {
+.footer .footer-network-label {
     font-family: var(--font-family-serif);
     font-size: var(--font-size-sm);
     font-weight: 600;
@@ -4230,7 +4229,7 @@ a:focus,
     margin-right: var(--spacing-3);
 }
 
-.footer-network-list {
+.footer .footer-network-list {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -4240,53 +4239,61 @@ a:focus,
     gap: var(--spacing-2) 0;
 }
 
-.footer-network-list li {
+.footer .footer-network-list li {
+    list-style: none;
     display: inline-flex;
     align-items: center;
+    padding: 0;
+    margin: 0;
 }
 
-.footer-network-list li:not(:last-child)::after {
+.footer .footer-network-list li:not(:last-child)::after {
     content: '·';
     color: var(--color-neutral-light);
     margin: 0 var(--spacing-3);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
+    font-weight: 600;
 }
 
-.footer-network-list a {
-    color: var(--color-text-tertiary);
+.footer .footer-network-list a {
+    color: rgba(255, 255, 255, 0.8);
     font-size: var(--font-size-sm);
     text-decoration: none;
-    transition: color 200ms ease;
+    transition: var(--transition-fast);
     white-space: nowrap;
+    padding: var(--spacing-1) var(--spacing-2);
+    border-radius: var(--radius-base);
+    display: inline-block;
 }
 
-.footer-network-list a:hover {
-    color: var(--color-secondary);
+.footer .footer-network-list a:hover {
+    color: var(--color-secondary-light);
+    background: rgba(255, 255, 255, 0.1);
+    text-decoration: none;
 }
 
-.footer-network-list a:focus {
+.footer .footer-network-list a:focus {
     outline: 2px solid var(--color-secondary);
     outline-offset: 2px;
-    border-radius: 2px;
 }
 
 @media (max-width: 768px) {
-    .footer-network {
+    .footer .footer-network {
         flex-direction: column;
         gap: var(--spacing-3);
         padding: var(--spacing-5) 0;
     }
     
-    .footer-network-label {
+    .footer .footer-network-label {
         margin-right: 0;
     }
     
-    .footer-network-list {
+    .footer .footer-network-list {
         justify-content: center;
         gap: var(--spacing-1) 0;
     }
     
-    .footer-network-list li:not(:last-child)::after {
+    .footer .footer-network-list li:not(:last-child)::after {
         margin: 0 var(--spacing-2);
     }
 }
