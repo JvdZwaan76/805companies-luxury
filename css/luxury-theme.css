@@ -4202,3 +4202,91 @@ a:focus,
 }
 
 /* === END OF ENHANCED 805 LIFEGUARD LUXURY THEME CSS === */
+
+
+/* ============================================================ */
+/* Footer — Regional Network (Service Areas across 5 area-codes) */
+/* ============================================================ */
+
+.footer-network {
+    border-top: 1px solid var(--color-secondary-darkest);
+    border-bottom: 1px solid var(--color-secondary-darkest);
+    padding: var(--spacing-6) 0;
+    margin-top: var(--spacing-8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-4) var(--spacing-6);
+}
+
+.footer-network-label {
+    font-family: var(--font-family-serif);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin-right: var(--spacing-3);
+}
+
+.footer-network-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-2) 0;
+}
+
+.footer-network-list li {
+    display: inline-flex;
+    align-items: center;
+}
+
+.footer-network-list li:not(:last-child)::after {
+    content: '·';
+    color: var(--color-neutral-light);
+    margin: 0 var(--spacing-3);
+    font-size: var(--font-size-sm);
+}
+
+.footer-network-list a {
+    color: var(--color-text-tertiary);
+    font-size: var(--font-size-sm);
+    text-decoration: none;
+    transition: color 200ms ease;
+    white-space: nowrap;
+}
+
+.footer-network-list a:hover {
+    color: var(--color-secondary);
+}
+
+.footer-network-list a:focus {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+    .footer-network {
+        flex-direction: column;
+        gap: var(--spacing-3);
+        padding: var(--spacing-5) 0;
+    }
+    
+    .footer-network-label {
+        margin-right: 0;
+    }
+    
+    .footer-network-list {
+        justify-content: center;
+        gap: var(--spacing-1) 0;
+    }
+    
+    .footer-network-list li:not(:last-child)::after {
+        margin: 0 var(--spacing-2);
+    }
+}
