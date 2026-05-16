@@ -1135,15 +1135,61 @@ body.review-modal-open {
     }
 }
 
+/*
+ * Hero carousel container.
+ *
+ * Inset from the top by the fixed header height so the slide images
+ * paint only in the visible area below the navbar, not in the zone
+ * that's permanently occluded by the position:fixed .header element.
+ *
+ * Without this inset, slide focal points anchored toward the top of
+ * the image would place the subject behind the navbar, requiring
+ * counterintuitive focal-point compensation per slide. This inset
+ * makes --focal-point values map to the actual visible composition.
+ *
+ * See DESIGN-SYSTEM.md for the full reasoning.
+ */
 .hero-carousel {
     position: absolute;
-    top: 0;
+    top: var(--header-total-height);
     left: 0;
-    width: 100%;
-    height: 100%;
+    right: 0;
+    bottom: 0;
     z-index: var(--z-index-base);
 }
 
+/*
+ * Mobile carousel inset: --header-top (the 44px contact bar) is
+ * hidden on mobile, so the visible header height drops to
+ * --header-navbar-height (88px). Override the desktop inset
+ * (which uses --header-total-height = 132px) so the carousel
+ * tracks the actual mobile header height and doesn't leave a
+ * gray gap above the image.
+ *
+ * Placed AFTER the desktop rule so source order ensures the
+ * mobile value wins (equal specificity).
+ */
+@media (max-width: 768px) {
+    .hero-carousel {
+        top: var(--header-navbar-height);
+    }
+}
+
+/*
+ * Carousel slide background.
+ *
+ * Each slide reads its focal point from the --focal-point CSS custom
+ * property, set inline on the slide element. This lets per-image
+ * composition (subject position within the source photo) be declared
+ * in HTML alongside other per-image data (data-bg-*, aria-label),
+ * while keeping global cover/repeat/transition behaviour in CSS.
+ *
+ * Defaults to `center` when --focal-point is absent, preserving
+ * behaviour for slides without explicit focal points.
+ *
+ * See DESIGN-SYSTEM.md -> "Hero carousel focal points" for the
+ * authoring convention and current per-page values.
+ */
 .carousel-slide {
     position: absolute;
     top: 0;
@@ -1151,7 +1197,7 @@ body.review-modal-open {
     width: 100%;
     height: 100%;
     background-size: cover;
-    background-position: center;
+    background-position: var(--focal-point, center);
     background-repeat: no-repeat;
     opacity: 0;
     transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1);

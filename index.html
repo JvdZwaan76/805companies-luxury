@@ -125,21 +125,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             padding: 0 1.5rem;
         }
         
+        /*
+         * Hero container.
+         *
+         * The carousel (.hero-carousel) handles all slide imagery. This
+         * element only carries the dark gradient overlay that improves
+         * headline readability across all slides. No hardcoded image
+         * fallback here — the carousel hydrates on initial paint and
+         * having a static image on .hero would either bleed through
+         * the carousel's navbar inset (mobile) or paint redundantly
+         * underneath the carousel (desktop).
+         */
         .hero {
             position: relative;
             min-height: 100vh;
             display: flex;
             align-items: center;
             padding-top: var(--header-total-height);
-            background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('/images/home/hero-01-sunset-estate-supervision-1920x1080.jpg');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.5));
         }
         
         @media (max-width: 768px) {
             .hero { 
                 padding-top: calc(var(--header-navbar-height) + 1rem);
-                background-image: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('/images/home/hero-01-sunset-estate-supervision-768x960.jpg');
             }
         }
     </style>
@@ -349,10 +357,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <section class="hero" role="banner" aria-label="Welcome to 805 LifeGuard">
         <!-- Background Carousel -->
         <div class="hero-carousel" id="heroCarousel">
-            <div class="carousel-slide active" style="background-image: url('/images/home/hero-01-sunset-estate-supervision-1920x1080.jpg')" data-bg-desktop="/images/home/hero-01-sunset-estate-supervision-1920x1080.jpg" data-bg-tablet="/images/home/hero-01-sunset-estate-supervision-1024x576.jpg" data-bg-mobile="/images/home/hero-01-sunset-estate-supervision-768x960.jpg" aria-label="Sunset estate poolside supervision with certified lifeguard"></div>
-            <div class="carousel-slide" style="background-image: url('/images/home/hero-02-poolside-coverage-1920x1080.jpg')" data-bg-desktop="/images/home/hero-02-poolside-coverage-1920x1080.jpg" data-bg-tablet="/images/home/hero-02-poolside-coverage-1024x576.jpg" data-bg-mobile="/images/home/hero-02-poolside-coverage-768x960.jpg" aria-label="Professional poolside lifeguard coverage"></div>
-            <div class="carousel-slide" style="background-image: url('/images/home/hero-03-underwater-instruction-1920x1080.jpg')" data-bg-desktop="/images/home/hero-03-underwater-instruction-1920x1080.jpg" data-bg-tablet="/images/home/hero-03-underwater-instruction-1024x576.jpg" data-bg-mobile="/images/home/hero-03-underwater-instruction-768x960.jpg" aria-label="Bespoke swim instruction in private pool"></div>
-            <div class="carousel-slide" style="background-image: url('/images/home/hero-04-hoa-lap-pool-coverage-1920x1080.jpg')" data-bg-desktop="/images/home/hero-04-hoa-lap-pool-coverage-1920x1080.jpg" data-bg-tablet="/images/home/hero-04-hoa-lap-pool-coverage-1024x576.jpg" data-bg-mobile="/images/home/hero-04-hoa-lap-pool-coverage-768x960.jpg" aria-label="Community pool lifeguard coverage"></div>
+            <div class="carousel-slide active" style="background-image: url('/images/home/hero-01-sunset-estate-supervision-1920x1080.jpg'); --focal-point: 30% 20%;" data-bg-desktop="/images/home/hero-01-sunset-estate-supervision-1920x1080.jpg" data-bg-tablet="/images/home/hero-01-sunset-estate-supervision-1024x576.jpg" data-bg-mobile="/images/home/hero-01-sunset-estate-supervision-768x960.jpg" aria-label="Sunset estate poolside supervision with certified lifeguard"></div>
+            <div class="carousel-slide" style="background-image: url('/images/home/hero-02-poolside-coverage-1920x1080.jpg'); --focal-point: 40% 30%;" data-bg-desktop="/images/home/hero-02-poolside-coverage-1920x1080.jpg" data-bg-tablet="/images/home/hero-02-poolside-coverage-1024x576.jpg" data-bg-mobile="/images/home/hero-02-poolside-coverage-768x960.jpg" aria-label="Professional poolside lifeguard coverage"></div>
+            <div class="carousel-slide" style="background-image: url('/images/home/hero-03-underwater-instruction-1920x1080.jpg'); --focal-point: 50% 50%;" data-bg-desktop="/images/home/hero-03-underwater-instruction-1920x1080.jpg" data-bg-tablet="/images/home/hero-03-underwater-instruction-1024x576.jpg" data-bg-mobile="/images/home/hero-03-underwater-instruction-768x960.jpg" aria-label="Bespoke swim instruction in private pool"></div>
+            <div class="carousel-slide" style="background-image: url('/images/home/hero-04-hoa-lap-pool-coverage-1920x1080.jpg'); --focal-point: 65% 45%;" data-bg-desktop="/images/home/hero-04-hoa-lap-pool-coverage-1920x1080.jpg" data-bg-tablet="/images/home/hero-04-hoa-lap-pool-coverage-1024x576.jpg" data-bg-mobile="/images/home/hero-04-hoa-lap-pool-coverage-768x960.jpg" aria-label="Community pool lifeguard coverage"></div>
         </div>
         
         <!-- Carousel Overlay -->
