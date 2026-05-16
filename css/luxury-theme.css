@@ -1219,6 +1219,70 @@ body.review-modal-open {
     z-index: 1;
 }
 
+/*
+ * Hero carousel slide backgrounds.
+ *
+ * Per-slide background-image declarations with viewport-specific
+ * overrides. The browser picks the correct variant at CSS parse time
+ * based on the matching media query, so no JS-driven image swap is
+ * needed (and no double-fetch happens on non-desktop viewports).
+ *
+ * Breakpoints align with --header-* tokens and CONFIG.BREAKPOINTS
+ * in luxury-app.js:
+ *   - mobile:  max-width 768px  -> 768x960 portrait variant
+ *   - tablet:  max-width 1024px -> 1024x576 landscape variant
+ *   - desktop: default          -> 1920x1080 landscape variant
+ *
+ * The mobile-first cascade goes from least-specific to most-specific
+ * media query so that the largest variant is the default and smaller
+ * variants override only when their media query matches.
+ *
+ * See PERFORMANCE-DESIGN-SYSTEM.md for the full rationale (Convention
+ * 1, Section 10.8 Option 3 decision).
+ */
+.carousel-slide[data-slide="01"] {
+    background-image: url('/images/home/hero-01-sunset-estate-supervision-1920x1080.jpg');
+}
+.carousel-slide[data-slide="02"] {
+    background-image: url('/images/home/hero-02-poolside-coverage-1920x1080.jpg');
+}
+.carousel-slide[data-slide="03"] {
+    background-image: url('/images/home/hero-03-underwater-instruction-1920x1080.jpg');
+}
+.carousel-slide[data-slide="04"] {
+    background-image: url('/images/home/hero-04-hoa-lap-pool-coverage-1920x1080.jpg');
+}
+
+@media (max-width: 1024px) {
+    .carousel-slide[data-slide="01"] {
+        background-image: url('/images/home/hero-01-sunset-estate-supervision-1024x576.jpg');
+    }
+    .carousel-slide[data-slide="02"] {
+        background-image: url('/images/home/hero-02-poolside-coverage-1024x576.jpg');
+    }
+    .carousel-slide[data-slide="03"] {
+        background-image: url('/images/home/hero-03-underwater-instruction-1024x576.jpg');
+    }
+    .carousel-slide[data-slide="04"] {
+        background-image: url('/images/home/hero-04-hoa-lap-pool-coverage-1024x576.jpg');
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-slide[data-slide="01"] {
+        background-image: url('/images/home/hero-01-sunset-estate-supervision-768x960.jpg');
+    }
+    .carousel-slide[data-slide="02"] {
+        background-image: url('/images/home/hero-02-poolside-coverage-768x960.jpg');
+    }
+    .carousel-slide[data-slide="03"] {
+        background-image: url('/images/home/hero-03-underwater-instruction-768x960.jpg');
+    }
+    .carousel-slide[data-slide="04"] {
+        background-image: url('/images/home/hero-04-hoa-lap-pool-coverage-768x960.jpg');
+    }
+}
+
 /* Hide all carousel navigation elements for clean Caruso aesthetic */
 .carousel-indicators,
 .carousel-controls,
