@@ -160,9 +160,48 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     
-    <!-- Critical Resource Preloading -->
-    <link rel="preload" as="image" href="/images/home/hero-01-sunset-estate-supervision-1920x1080.webp" type="image/webp">
-    <link rel="preload" as="image" href="/images/home/hero-01-sunset-estate-supervision-1920x1080.jpg" type="image/jpeg">
+    <!--
+        Critical Resource Preloading.
+
+        LCP image (slide 1 of hero carousel): three media-query-scoped
+        preloads. The browser evaluates the media attribute the same
+        way CSS evaluates @media rules, so exactly one variant is
+        fetched per visit. The breakpoints stay in sync with the
+        .carousel-slide[data-slide="01"] rules in css/luxury-theme.css.
+
+        Why not imagesrcset? When imagesizes="100vw" combines with a
+        device pixel ratio (e.g. iPhone DPR 3 means 390 CSS px = 1170
+        effective px), the browser picks the largest variant for
+        preload while CSS picks the smallest for display. The two
+        diverge, causing "preloaded but not used" warnings on mobile.
+        Media-query preloads use CSS-pixel widths the same way CSS
+        does, so they always agree.
+
+        We preload only the JPG. The carousel slides reference JPG via
+        background-image (not WebP), so a WebP preload was being
+        downloaded but never displayed. AVIF/WebP format routing is
+        deferred to Session D of the performance design system effort.
+
+        Slides 2-4 are intentionally NOT preloaded. CSS will resolve
+        their backgrounds on parse; the browser will fetch them
+        progressively as the page loads, after the LCP image has the
+        bandwidth it needs.
+
+        fetchpriority="high" signals to the browser that this is the
+        most important image on the page.
+    -->
+    <link rel="preload" as="image"
+          media="(max-width: 768px)"
+          href="/images/home/hero-01-sunset-estate-supervision-768x960.jpg"
+          fetchpriority="high">
+    <link rel="preload" as="image"
+          media="(min-width: 769px) and (max-width: 1024px)"
+          href="/images/home/hero-01-sunset-estate-supervision-1024x576.jpg"
+          fetchpriority="high">
+    <link rel="preload" as="image"
+          media="(min-width: 1025px)"
+          href="/images/home/hero-01-sunset-estate-supervision-1920x1080.jpg"
+          fetchpriority="high">
     <link rel="preload" as="image" href="/images/logos/805-lifeguard-logo.png" type="image/png">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     
@@ -355,12 +394,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Enhanced Hero Section (Clean Caruso Aesthetic) -->
     <section class="hero" role="banner" aria-label="Welcome to 805 LifeGuard">
-        <!-- Background Carousel -->
+        <!--
+            Background Carousel.
+
+            Slides are empty divs identified by data-slide. The
+            background-image and viewport-specific variants are
+            declared in css/luxury-theme.css (see "Hero carousel slide
+            backgrounds" section). --focal-point stays inline because
+            it's a design value, not an image-source value.
+
+            Why: previously each slide had background-image as an inline
+            style with the desktop variant URL, and the JS swapped it
+            to the mobile/tablet variant on init. This caused a
+            double-fetch on mobile/tablet (HTML loaded desktop, JS
+            loaded mobile). Moving variant selection into CSS lets the
+            browser pick the right one at parse time, no double-fetch.
+            See PERFORMANCE-DESIGN-SYSTEM.md Section 10 (F3 fragility).
+        -->
         <div class="hero-carousel" id="heroCarousel">
-            <div class="carousel-slide active" style="background-image: url('/images/home/hero-01-sunset-estate-supervision-1920x1080.jpg'); --focal-point: 30% 20%;" data-bg-desktop="/images/home/hero-01-sunset-estate-supervision-1920x1080.jpg" data-bg-tablet="/images/home/hero-01-sunset-estate-supervision-1024x576.jpg" data-bg-mobile="/images/home/hero-01-sunset-estate-supervision-768x960.jpg" aria-label="Sunset estate poolside supervision with certified lifeguard"></div>
-            <div class="carousel-slide" style="background-image: url('/images/home/hero-02-poolside-coverage-1920x1080.jpg'); --focal-point: 40% 30%;" data-bg-desktop="/images/home/hero-02-poolside-coverage-1920x1080.jpg" data-bg-tablet="/images/home/hero-02-poolside-coverage-1024x576.jpg" data-bg-mobile="/images/home/hero-02-poolside-coverage-768x960.jpg" aria-label="Professional poolside lifeguard coverage"></div>
-            <div class="carousel-slide" style="background-image: url('/images/home/hero-03-underwater-instruction-1920x1080.jpg'); --focal-point: 50% 50%;" data-bg-desktop="/images/home/hero-03-underwater-instruction-1920x1080.jpg" data-bg-tablet="/images/home/hero-03-underwater-instruction-1024x576.jpg" data-bg-mobile="/images/home/hero-03-underwater-instruction-768x960.jpg" aria-label="Bespoke swim instruction in private pool"></div>
-            <div class="carousel-slide" style="background-image: url('/images/home/hero-04-hoa-lap-pool-coverage-1920x1080.jpg'); --focal-point: 65% 45%;" data-bg-desktop="/images/home/hero-04-hoa-lap-pool-coverage-1920x1080.jpg" data-bg-tablet="/images/home/hero-04-hoa-lap-pool-coverage-1024x576.jpg" data-bg-mobile="/images/home/hero-04-hoa-lap-pool-coverage-768x960.jpg" aria-label="Community pool lifeguard coverage"></div>
+            <div class="carousel-slide active" data-slide="01" style="--focal-point: 30% 20%;" aria-label="Sunset estate poolside supervision with certified lifeguard"></div>
+            <div class="carousel-slide" data-slide="02" style="--focal-point: 40% 30%;" aria-label="Professional poolside lifeguard coverage"></div>
+            <div class="carousel-slide" data-slide="03" style="--focal-point: 50% 50%;" aria-label="Bespoke swim instruction in private pool"></div>
+            <div class="carousel-slide" data-slide="04" style="--focal-point: 65% 45%;" aria-label="Community pool lifeguard coverage"></div>
         </div>
         
         <!-- Carousel Overlay -->
