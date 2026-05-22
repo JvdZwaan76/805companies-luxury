@@ -150,6 +150,135 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 padding: var(--spacing-16) 0;
             }
         }
+
+        /* Two-column layout: form + QR sidebar */
+        .consultation-layout {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: var(--spacing-8);
+            align-items: start;
+        }
+
+        @media (max-width: 960px) {
+            .consultation-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* QR "Save My Contact" sidebar card */
+        .qr-save-card {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-8);
+            box-shadow: var(--shadow-xl);
+            border: 1px solid #E8E8E8;
+            text-align: center;
+            position: sticky;
+            top: calc(var(--header-total-height) + var(--spacing-4));
+        }
+
+        @media (max-width: 960px) {
+            .qr-save-card {
+                position: static;
+                max-width: 420px;
+                margin: 0 auto;
+            }
+        }
+
+        .qr-save-card .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            background: linear-gradient(135deg, #B8A082, #A0876C);
+            color: white;
+            padding: var(--spacing-2) var(--spacing-4);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--spacing-4);
+        }
+
+        .qr-save-card h2 {
+            font-family: var(--font-family-serif);
+            font-size: 1.5rem;
+            color: var(--color-primary-darkest);
+            margin: 0 0 var(--spacing-2);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .qr-save-card p.qr-lede {
+            color: #666;
+            font-size: 0.9375rem;
+            line-height: 1.55;
+            margin: 0 0 var(--spacing-6);
+        }
+
+        .qr-image-frame {
+            display: block;
+            background: white;
+            border: 1px solid #E8E8E8;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-3);
+            margin: 0 auto var(--spacing-5);
+            line-height: 0;
+            transition: var(--transition-fast);
+            text-decoration: none;
+        }
+
+        .qr-image-frame:hover,
+        .qr-image-frame:focus-visible {
+            border-color: #B8A082;
+            box-shadow: 0 8px 20px -8px rgba(184, 160, 130, 0.45);
+        }
+
+        .qr-image-frame img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-width: 220px;
+            margin: 0 auto;
+            aspect-ratio: 1 / 1;
+        }
+
+        .qr-tap-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-2);
+            width: 100%;
+            padding: var(--spacing-3) var(--spacing-4);
+            background: linear-gradient(135deg, #B8A082, #A0876C);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius-lg);
+            font-size: 0.9375rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            transition: var(--transition-fast);
+            box-shadow: var(--shadow-md);
+        }
+
+        .qr-tap-btn:hover,
+        .qr-tap-btn:focus-visible {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-lg);
+            color: white;
+        }
+
+        .qr-footnote {
+            margin: var(--spacing-4) 0 0;
+            font-size: 0.75rem;
+            color: #888;
+            letter-spacing: 0.04em;
+        }
+
+        .qr-footnote i {
+            color: #B8A082;
+            margin-right: 4px;
+        }
     </style>
     
     <!-- Enhanced Performance: DNS Prefetch and Preconnect -->
@@ -334,9 +463,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Consultation Form Container -->
     <section class="consultation-container">
         <div class="container">
-            <div class="consultation-form-wrapper" style="max-width: 900px; margin: 0 auto;">
+            <div class="consultation-form-wrapper" style="max-width: 1180px; margin: 0 auto;">
                 <!-- Form Header -->
-                <div class="form-header" style="text-align: center; margin-bottom: var(--spacing-16);">
+                <div class="form-header" style="text-align: center; margin-bottom: var(--spacing-16); max-width: 900px; margin-left: auto; margin-right: auto;">
                     <div class="form-header-content">
                         <div class="section-badge" style="display: inline-flex; align-items: center; gap: var(--spacing-2); background: linear-gradient(135deg, #B8A082, #A0876C); color: white; padding: var(--spacing-2) var(--spacing-4); border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--spacing-6);">
                             <i class="fas fa-concierge-bell"></i>
@@ -353,6 +482,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                 </div>
                 
+                <!-- Form + QR sidebar layout -->
+                <div class="consultation-layout">
                 <!-- Form Content -->
                 <div class="form-content" style="background: white; border-radius: var(--radius-xl); padding: var(--spacing-12); box-shadow: var(--shadow-xl); border: 1px solid #E8E8E8;">
                     <!-- Message Alert -->
@@ -625,6 +756,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             </p>
                         </div>
                     </form>
+                </div>
+                <!-- QR Save Contact Card -->
+                <aside class="qr-save-card" aria-labelledby="qr-save-heading">
+                    <div class="section-badge">
+                        <i class="fas fa-id-card" aria-hidden="true"></i>
+                        Save My Contact
+                    </div>
+
+                    <h2 id="qr-save-heading">Or scan to save my contact</h2>
+                    <p class="qr-lede">
+                        Skip the form &mdash; scan with your phone to save Jasper's digital business card,
+                        including phone, email, and website, in one tap.
+                    </p>
+
+                    <a href="https://s.blinq.me/nTFEIlTlAPGb7G9vkNLZ?bs=db&amp;ida_v=treatment"
+                       class="qr-image-frame"
+                       target="_blank"
+                       rel="noopener"
+                       aria-label="Open Jasper's digital contact card">
+                        <img src="/images/qr/jasper-blinq-qr.png"
+                             alt="QR code to save Jasper at 805 LifeGuard as a contact"
+                             width="220" height="220" loading="lazy">
+                    </a>
+
+                    <a href="https://s.blinq.me/nTFEIlTlAPGb7G9vkNLZ?bs=db&amp;ida_v=treatment"
+                       class="qr-tap-btn"
+                       target="_blank"
+                       rel="noopener">
+                        <i class="fas fa-mobile-alt" aria-hidden="true"></i>
+                        Tap to save on this device
+                    </a>
+
+                    <p class="qr-footnote">
+                        <i class="fas fa-lock" aria-hidden="true"></i>
+                        Powered by Blinq &middot; secure digital card
+                    </p>
+                </aside>
                 </div>
             </div>
         </div>
