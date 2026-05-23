@@ -88,13 +88,22 @@ that anchor.
 | 04 | about-04-company-mission | `55% 30%` | Beach guard profile, face in upper third |
 | 05 | about-05-excellence-track-record | `center` (default) | 3 medal students + coach, group centered |
 
+### Current values (testimonials page)
+
+| Slide | File | Focal point | Subject |
+|---|---|---|---|
+| 01 | testimonials-01-instructor-stars-stripes-medal | `center` (default) | Instructor + boy with medal in stars-stripes trunks, centered |
+| 02 | testimonials-02-hoa-guard-on-duty | `70% 50%` | HOA guard with rescue tube, right side of frame |
+| 03 | testimonials-03-instructor-goggles-safety-fence | `50% 35%` | Instructor + boy in goggles with medal, faces in upper third |
+| 04 | testimonials-04-instructor-blonde-poolside-medal | `center` (default) | Instructor + blonde boy with medal, sunny SoCal pool centered |
+
 ### Migration plan for other pages
 
-10 other HTML files share the `.carousel-slide` selector:
+9 other HTML files share the `.carousel-slide` selector:
 
 - careers.html, faq.html, hoa.html, insurance.html,
   pool-cleaning.html, portfolio.html, privacy.html, services.html,
-  terms.html, testimonials.html
+  terms.html
 
 These currently use the `center` fallback (no `--focal-point` set) and
 render identically to pre-convention behaviour. When each page's hero
