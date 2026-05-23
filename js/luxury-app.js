@@ -364,19 +364,16 @@
     CarouselController.prototype.preloadImages = function() {
         const imagePromises = [];
         const self = this;
-        
+
         this.slides.forEach(function(slide, index) {
-            // Only preload first 3 images for faster initial load
+            // Only preload first 3 images for faster initial load.
+            // Pick the single variant matching the current device type
+            // (was: preload all 3 variants regardless of device — wasteful
+            // on mobile/cellular). The shared helper keeps this in sync
+            // with updateSlideBackground()'s paint-time selection.
             if (index < 3) {
-                const desktopSrc = slide.dataset.bgDesktop;
-                const tabletSrc = slide.dataset.bgTablet;
-                const mobileSrc = slide.dataset.bgMobile;
-                
-                if (desktopSrc) imagePromises.push(Utils.preloadImage(desktopSrc));
-                if (tabletSrc && tabletSrc !== desktopSrc) imagePromises.push(Utils.preloadImage(tabletSrc));
-                if (mobileSrc && mobileSrc !== desktopSrc && mobileSrc !== tabletSrc) {
-                    imagePromises.push(Utils.preloadImage(mobileSrc));
-                }
+                const src = self._pickVariantSrc(slide);
+                if (src) imagePromises.push(Utils.preloadImage(src));
             }
         });
 
@@ -397,21 +394,17 @@
         const self = this;
         setTimeout(function() {
             const remainingPromises = [];
-            
+
             self.slides.forEach(function(slide, index) {
+                // Slides 4+ get the same viewport-aware variant selection
+                // as the first 3, just deferred by 2s so they don't compete
+                // with the LCP slide for bandwidth.
                 if (index >= 3) {
-                    const desktopSrc = slide.dataset.bgDesktop;
-                    const tabletSrc = slide.dataset.bgTablet;
-                    const mobileSrc = slide.dataset.bgMobile;
-                    
-                    if (desktopSrc) remainingPromises.push(Utils.preloadImage(desktopSrc));
-                    if (tabletSrc && tabletSrc !== desktopSrc) remainingPromises.push(Utils.preloadImage(tabletSrc));
-                    if (mobileSrc && mobileSrc !== desktopSrc && mobileSrc !== tabletSrc) {
-                        remainingPromises.push(Utils.preloadImage(mobileSrc));
-                    }
+                    const src = self._pickVariantSrc(slide);
+                    if (src) remainingPromises.push(Utils.preloadImage(src));
                 }
             });
-            
+
             if (remainingPromises.length > 0) {
                 Promise.allSettled(remainingPromises).then(function(results) {
                     const successCount = results.filter(r => r.status === 'fulfilled').length;
@@ -428,26 +421,33 @@
         });
     };
 
-    CarouselController.prototype.updateSlideBackground = function(slide) {
+    /*
+     * Private helper: pick the right src variant for the current device.
+     * Used by both preload paths (preloadImages, preloadRemainingImages)
+     * AND the paint path (updateSlideBackground) so they're guaranteed to
+     * stay in sync — same fallback policy everywhere.
+     *
+     * Fallback order per device:
+     *   mobile  → mobile  → tablet  → desktop
+     *   tablet  → tablet  → desktop → mobile
+     *   desktop → desktop → tablet  → mobile
+     */
+    CarouselController.prototype._pickVariantSrc = function(slide) {
         const deviceType = Utils.getDeviceType();
         const desktopSrc = slide.dataset.bgDesktop;
         const tabletSrc = slide.dataset.bgTablet;
         const mobileSrc = slide.dataset.bgMobile;
-        
-        let selectedSrc;
-        
+
         switch (deviceType) {
-            case 'mobile':
-                selectedSrc = mobileSrc || tabletSrc || desktopSrc;
-                break;
-            case 'tablet':
-                selectedSrc = tabletSrc || desktopSrc || mobileSrc;
-                break;
+            case 'mobile':  return mobileSrc  || tabletSrc  || desktopSrc;
+            case 'tablet':  return tabletSrc  || desktopSrc || mobileSrc;
             case 'desktop':
-            default:
-                selectedSrc = desktopSrc || tabletSrc || mobileSrc;
-                break;
+            default:        return desktopSrc || tabletSrc  || mobileSrc;
         }
+    };
+
+    CarouselController.prototype.updateSlideBackground = function(slide) {
+        const selectedSrc = this._pickVariantSrc(slide);
 
         if (selectedSrc) {
             const currentBg = slide.style.backgroundImage;
