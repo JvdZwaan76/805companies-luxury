@@ -289,8 +289,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="preconnect" href="https://805-lifeguard-reviews-api.jaspervdz.workers.dev" crossorigin>
     
     <!-- Critical Resource Preloading -->
-    <link rel="preload" as="image" href="/images/home/home-luxury-estate-hero-1920x1080.webp" type="image/webp">
-    <link rel="preload" as="image" href="/images/home/home-luxury-estate-hero-1920x1080.jpg" type="image/jpeg">
+    <!--
+        v1.4 — Testimonials hero carousel migrated to design-system convention.
+        Slide 1 (testimonials-01-instructor-stars-stripes-medal) is the LCP.
+        Three viewport-scoped preloads ensure only the matching variant fires.
+        Mirrors about.html lines 196-207. JPG-only (design system standard).
+    -->
+    <link rel="preload" as="image"
+          media="(max-width: 768px)"
+          href="/images/testimonials/testimonials-01-instructor-stars-stripes-medal-768x960.jpg"
+          fetchpriority="high">
+    <link rel="preload" as="image"
+          media="(min-width: 769px) and (max-width: 1024px)"
+          href="/images/testimonials/testimonials-01-instructor-stars-stripes-medal-1024x576.jpg"
+          fetchpriority="high">
+    <link rel="preload" as="image"
+          media="(min-width: 1025px)"
+          href="/images/testimonials/testimonials-01-instructor-stars-stripes-medal-1920x1080.jpg"
+          fetchpriority="high">
     <link rel="preload" as="image" href="/images/logos/805-lifeguard-logo.png">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     
@@ -444,11 +460,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <section class="hero" role="banner" aria-label="Client Testimonials" id="main-content">
         <!-- Background Carousel -->
         <div class="hero-carousel" id="heroCarousel">
-            <div class="carousel-slide active" style="background-image: url('images/home/home-luxury-estate-hero-1920x1080.jpg')" data-bg-desktop="images/home/home-luxury-estate-hero-1920x1080.jpg" data-bg-tablet="images/home/home-luxury-estate-hero-1024x576.jpg" data-bg-mobile="images/home/home-luxury-estate-hero-768x432.jpg" aria-label="Distinguished client testimonials"></div>
-            <div class="carousel-slide" data-bg-desktop="images/about/about-founder-jasper-professional-800x600.jpg" data-bg-tablet="images/about/about-founder-jasper-professional-800x600.jpg" data-bg-mobile="images/about/about-founder-jasper-professional-800x600.jpg" aria-label="Professional aquatic services"></div>
-            <div class="carousel-slide" data-bg-desktop="images/services/service-swim-lessons-private-800x600.jpg" data-bg-tablet="images/services/service-swim-lessons-private-800x600.jpg" data-bg-mobile="images/services/service-swim-lessons-private-800x600.jpg" aria-label="Client success stories"></div>
-            <div class="carousel-slide" data-bg-desktop="images/services/service-events-luxury-800x600.jpg" data-bg-tablet="images/services/service-events-luxury-800x600.jpg" data-bg-mobile="images/services/service-events-luxury-800x600.jpg" aria-label="Luxury event testimonials"></div>
-            <div class="carousel-slide" data-bg-desktop="images/home/home-safety-excellence-1920x1080.jpg" data-bg-tablet="images/home/home-safety-excellence-1024x576.jpg" data-bg-mobile="images/home/home-safety-excellence-768x432.jpg" aria-label="Excellence in aquatic safety"></div>
+            <div class="carousel-slide active" data-slide="01" data-bg-desktop="/images/testimonials/testimonials-01-instructor-stars-stripes-medal-1920x1080.jpg" data-bg-tablet="/images/testimonials/testimonials-01-instructor-stars-stripes-medal-1024x576.jpg" data-bg-mobile="/images/testimonials/testimonials-01-instructor-stars-stripes-medal-768x960.jpg" aria-label="805 LifeGuard instructor with young swimmer holding medal at poolside"></div>
+            <div class="carousel-slide" data-slide="02" data-bg-desktop="/images/testimonials/testimonials-02-hoa-guard-on-duty-1920x1080.jpg" data-bg-tablet="/images/testimonials/testimonials-02-hoa-guard-on-duty-1024x576.jpg" data-bg-mobile="/images/testimonials/testimonials-02-hoa-guard-on-duty-768x960.jpg" style="--focal-point: 70% 50%;" aria-label="805 LifeGuard certified guard on duty with rescue tube at HOA community pool"></div>
+            <div class="carousel-slide" data-slide="03" data-bg-desktop="/images/testimonials/testimonials-03-instructor-goggles-safety-fence-1920x1080.jpg" data-bg-tablet="/images/testimonials/testimonials-03-instructor-goggles-safety-fence-1024x576.jpg" data-bg-mobile="/images/testimonials/testimonials-03-instructor-goggles-safety-fence-768x960.jpg" style="--focal-point: 50% 35%;" aria-label="805 LifeGuard instructor with young swimmer in goggles holding medal at residential pool"></div>
+            <div class="carousel-slide" data-slide="04" data-bg-desktop="/images/testimonials/testimonials-04-instructor-blonde-poolside-medal-1920x1080.jpg" data-bg-tablet="/images/testimonials/testimonials-04-instructor-blonde-poolside-medal-1024x576.jpg" data-bg-mobile="/images/testimonials/testimonials-04-instructor-blonde-poolside-medal-768x960.jpg" aria-label="805 LifeGuard instructor with blonde young swimmer holding medal at sunny SoCal pool"></div>
         </div>
         
         <!-- Carousel Overlay -->
