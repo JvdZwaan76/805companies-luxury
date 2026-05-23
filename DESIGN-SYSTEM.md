@@ -78,11 +78,21 @@ that anchor.
 | 03 | hero-03-underwater-instruction | `50% 50%` | Swimmer centered (default; included for clarity) |
 | 04 | hero-04-hoa-lap-pool-coverage | `65% 45%` | Lifeguard right side, slightly above vertical center |
 
+### Current values (about page)
+
+| Slide | File | Focal point | Subject |
+|---|---|---|---|
+| 01 | about-01-team-hero | `50% 30%` | Coach + 2 medal kids, faces in upper third |
+| 02 | about-02-founder-story | `center` (default) | Coach + young swimmer, action centered |
+| 03 | about-03-certifications | `30% 50%` | Beach lifeguard standing left-of-center |
+| 04 | about-04-company-mission | `55% 30%` | Beach guard profile, face in upper third |
+| 05 | about-05-excellence-track-record | `center` (default) | 3 medal students + coach, group centered |
+
 ### Migration plan for other pages
 
-11 other HTML files share the `.carousel-slide` selector:
+10 other HTML files share the `.carousel-slide` selector:
 
-- about.html, careers.html, faq.html, hoa.html, insurance.html,
+- careers.html, faq.html, hoa.html, insurance.html,
   pool-cleaning.html, portfolio.html, privacy.html, services.html,
   terms.html, testimonials.html
 
