@@ -1,6 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Consent Mode v2 — Default Deny (must load BEFORE GTM/GA) -->
+<script>
+(function(){
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = window.gtag || gtag;
+  // Default-deny per CCPA/CPRA opt-out model + GDPR baseline.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'functionality_storage': 'granted',
+    'security_storage': 'granted',
+    'wait_for_update': 500
+  });
+  // Apply stored consent or GPC signal early so GTM fires correctly.
+  try {
+    var gpc = (navigator.globalPrivacyControl === true);
+    var raw = localStorage.getItem('805_consent_v1');
+    var c = raw ? JSON.parse(raw) : null;
+    if (gpc) {
+      gtag('consent', 'update', {
+        'ad_storage':'denied','ad_user_data':'denied',
+        'ad_personalization':'denied','analytics_storage':'denied'
+      });
+    } else if (c && c.version === '1.0.0') {
+      gtag('consent', 'update', {
+        'ad_storage':         c.advertising ? 'granted' : 'denied',
+        'ad_user_data':       c.advertising ? 'granted' : 'denied',
+        'ad_personalization': c.advertising ? 'granted' : 'denied',
+        'analytics_storage':  c.analytics   ? 'granted' : 'denied'
+      });
+    }
+  } catch(e) { /* fail-safe: default-deny stays in effect */ }
+})();
+</script>
+<!-- End Google Consent Mode v2 -->
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -218,6 +256,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- Main CSS - Deferred -->
     <link rel="preload" href="/css/luxury-theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/css/luxury-theme.css"></noscript>
+    <!-- Cookie Consent (CCPA/CPRA) — self-hosted -->
+    <link rel="preload" href="/css/cookie-consent.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/css/cookie-consent.css"></noscript>
+    <script src="/js/cookie-consent.js" defer></script>
+    <!-- End Cookie Consent -->
+
 
     <!-- Favicon and App Icons -->
     <link rel="icon" type="image/x-icon" href="/images/favicon/favicon.ico">
@@ -1321,6 +1365,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <a href="privacy">Privacy Policy</a>
                             <a href="terms">Terms of Service</a>
                             <a href="insurance">Insurance &amp; Bonding</a>
+                            <button type="button" class="cc-footer-trigger" onclick="return openPrivacyPreferences();" aria-label="Open privacy preferences">Privacy Preferences</button>
+                            <button type="button" class="cc-footer-trigger" onclick="return doNotSellMyInfo();" aria-label="Do Not Sell or Share My Personal Information">Do Not Sell or Share My Personal Information</button>
                         </div>
                     </div>
 
