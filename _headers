@@ -26,6 +26,22 @@
 /js/*
   Cache-Control: public, max-age=31536000, immutable
 
+# Consent banner — legal/compliance content, must be updateable.
+# Must appear AFTER /css/* and /js/* wildcards. Cloudflare Pages _headers
+# MERGES headers from all matching rules (comma-joined), so we use the
+# documented detach syntax (! Cache-Control) to remove the inherited
+# wildcard value, then set the correct one.
+# Ref: https://developers.cloudflare.com/pages/configuration/headers/#detach-a-header
+# Ref: cloudflare-cache-audit-findings-2026-05-27.md
+# DO NOT add 'immutable' or extend TTL beyond 1 hour without review.
+/css/cookie-consent.css
+  ! Cache-Control
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/js/cookie-consent.js
+  ! Cache-Control
+  Cache-Control: public, max-age=3600, must-revalidate
+
 /*.woff2
   Cache-Control: public, max-age=31536000, immutable
 
