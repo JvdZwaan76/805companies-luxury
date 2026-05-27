@@ -20,6 +20,15 @@
 /images/*
   Cache-Control: public, max-age=31536000, immutable
 
+# Consent banner — legal/compliance content, must be updateable
+# DO NOT change to 'immutable' or extend TTL beyond 1 hour without review.
+# See: cloudflare-cache-audit-findings-2026-05-27.md
+/css/cookie-consent.css
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/js/cookie-consent.js
+  Cache-Control: public, max-age=3600, must-revalidate
+
 /css/*
   Cache-Control: public, max-age=31536000, immutable
 
