@@ -1256,7 +1256,7 @@
                             <i class="fab fa-google"></i>
                             Review on Google
                         </a>
-                        <a href="https://www.yelp.com/writeareview/biz/805-lifeguard-thousand-oaks" target="_blank" rel="noopener noreferrer" class="platform-cta-btn yelp">
+                        <a href="https://www.yelp.com/biz/805-lifeguard-thousand-oaks" target="_blank" rel="noopener noreferrer" class="platform-cta-btn yelp">
                             <i class="fab fa-yelp"></i>
                             Review on Yelp
                         </a>
