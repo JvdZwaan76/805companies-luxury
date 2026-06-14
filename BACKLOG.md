@@ -15,6 +15,19 @@ Last updated: 2026-06-14
 
 ---
 
+## NEXT-SESSION PRIORITY BUG (owner-flagged 2026-06-14)
+
+### Yelp & Google review COUNTS are stale / under-reported on /testimonials
+The stats cards on https://805lifeguard.com/testimonials show "8+ Five-Star Reviews" (Yelp) and "11+ Five-Star Reviews" (Google), but the live Yelp business page shows 5.0 stars, 24 reviews. The site is under-reporting real social proof — a reputation issue for a referral-driven luxury service. Owner flagged this as fix-asap.
+
+Debug path (determine which BEFORE fixing):
+1. Check whether the counts are hardcoded fallback values in `js/testimonials-reviews.js`, or live values meant to come from the reviews API (`805-lifeguard-reviews-api.jaspervdz.workers.dev`).
+2. If hardcoded / stale -> update to current real counts (low risk, quick text change).
+3. If live-but-not-updating -> the API isn't returning fresh counts; likely tied to the reviews-API data path / Worker (see the CORS / allowlist item below). Heavier fix.
+4. Verify against current real counts on BOTH platforms before shipping (Yelp = 24 as of 2026-06-14; check Google too).
+
+---
+
 ## Top priority
 
 ### 1. v1.5.0 — Cache & asset infrastructure (design-system layer)  [VERIFY still needed at bfefe30]
