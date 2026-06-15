@@ -15,19 +15,6 @@ Last updated: 2026-06-14
 
 ---
 
-## NEXT-SESSION PRIORITY BUG (owner-flagged 2026-06-14)
-
-### Yelp & Google review COUNTS are stale / under-reported on /testimonials
-The stats cards on https://805lifeguard.com/testimonials show "8+ Five-Star Reviews" (Yelp) and "11+ Five-Star Reviews" (Google), but the live Yelp business page shows 5.0 stars, 24 reviews. The site is under-reporting real social proof — a reputation issue for a referral-driven luxury service. Owner flagged this as fix-asap.
-
-Debug path (determine which BEFORE fixing):
-1. Check whether the counts are hardcoded fallback values in `js/testimonials-reviews.js`, or live values meant to come from the reviews API (`805-lifeguard-reviews-api.jaspervdz.workers.dev`).
-2. If hardcoded / stale -> update to current real counts (low risk, quick text change).
-3. If live-but-not-updating -> the API isn't returning fresh counts; likely tied to the reviews-API data path / Worker (see the CORS / allowlist item below). Heavier fix.
-4. Verify against current real counts on BOTH platforms before shipping (Yelp = 24 as of 2026-06-14; check Google too).
-
----
-
 ## Top priority
 
 ### 1. v1.5.0 — Cache & asset infrastructure (design-system layer)  [VERIFY still needed at bfefe30]
@@ -56,12 +43,10 @@ Debug path (determine which BEFORE fixing):
 ### 3. contact.html hero audit
 Investigate why contact.html doesn't use the canonical `.hero-content` structure. Decide: align it with the 5-element canonical pattern, or document as a third sanctioned variant.
 
-### 4. Reviews API CORS — Worker allowlist update
-- Worker source location currently UNKNOWN — find it first
-- Update CORS allowlist on `805-lifeguard-reviews-api.jaspervdz.workers.dev`:
-  - Add `*.805companies-luxury.pages.dev` (currently blocked — causes staging preview to show fallback testimonials instead of real reviews; this is the source of the 7 CORS console errors seen on staging 2026-06-14)
-  - Remove stale `luxury.805companies.com`
-- Production (`805lifeguard.com`) is already allowlisted and working correctly
+### 4. Reviews API CORS — Worker allowlist [RESOLVED 2026-06-15]
+- DONE: added `https://staging.805companies-luxury.pages.dev` to the Worker's `allowedOrigins`. Staging now fetches live reviews; the 7 CORS console errors are gone (verified on staging 2026-06-15).
+- Production (`805lifeguard.com`) was already allowlisted and working.
+- Remaining (optional, low priority): the stale `luxury.805companies.com` origin is still in the list (harmless, left in place); per-deploy Pages preview URLs (`<hash>.805companies-luxury.pages.dev`) are still not covered because the check is exact-match, not wildcard — only the stable `staging.` alias is allowlisted.
 
 ---
 
@@ -119,6 +104,21 @@ Update BACKUP-LOCATIONS.txt in the canonical folder to record BOTH locations so 
 
 ---
 
+## Reviews API Worker (reference — IMPORTANT, no Git backup)
+
+The live reviews API is a Cloudflare Worker, NOT in any Git repo:
+- **Name:** `805-lifeguard-reviews-api`  •  **URL:** `https://805-lifeguard-reviews-api.jaspervdz.workers.dev`
+- **Account:** Cloudflare `Jaspervdz@me.com` (subdomain `jaspervdz.workers.dev`)
+- **Edit:** Cloudflare dashboard → Workers & Pages → `805-lifeguard-reviews-api` → **Edit code** → Deploy. Source is dashboard-only (no Git connection), edited inline.
+- **Local source copies** (the only off-Cloudflare backups) live in `~/Documents/805LifeGuard-Migration-Documents/`:
+  - `805-lifeguard-reviews-api-BACKUP-v07b7bb2e-2026-06-15.js` (pre-2026-06-15 state)
+  - `805-lifeguard-reviews-api-UPDATED-2026-06-15.js` (current deployed state)
+- **Rollback:** Cloudflare dashboard version dropdown → roll back to a prior version, OR paste a backup `.js` file into Edit code and Deploy.
+- **How it works:** Google reviews are LIVE from Google Places API (returns real `total_ratings`). Yelp is MANUAL — `review_count` is a hardcoded number in the Worker (cost/quality control; Yelp API doesn't expose counts freely). To update the Yelp count: change `review_count` in `handleYelpReviewsManual`, plus the two matching values in `handleCombinedReviews` (keep all three in sync), then Deploy.
+- **Caution:** the Worker has NO staging environment — Deploy goes straight to production. Verify with `curl .../api/yelp-reviews/805-lifeguard-thousand-oaks` immediately after.
+
+---
+
 ## Workflow conventions (reference)
 
 - Branch flow: `feat/<name>` → `staging` → `main`, all via PRs (`gh pr create`)
@@ -132,6 +132,8 @@ Update BACKUP-LOCATIONS.txt in the canonical folder to record BOTH locations so 
 ---
 
 ## Recent ship log
+
+- **2026-06-15**: Fixed stale Yelp review count on /testimonials. Root cause: the `805-lifeguard-reviews-api` Cloudflare Worker hardcoded `review_count: 8`. Updated to 24 (3 spots) + added staging CORS origin in the same deploy. Verified live on staging + production (Yelp card shows "24+", staging CORS errors gone). Worker source backed up locally (see Reviews API Worker section). NOTE: Worker edit is NOT in this repo's git history — it's a Cloudflare-only deploy.
 
 - **2026-06-14**: PR #35 merged → prod `bfefe30` (Deploy #512). Services image de-dup (Lifeguarding + Events detail galleries → real on-site photos) + Yelp CTA fix (review buttons → `/biz/` business page). Verified live. Backup `805companies-luxury-image-dedup-yelp-fix.zip` (93 MB) in Drive.
 - **2026-05-27 (approx)**: CCPA/CPRA cookie-consent banner + Consent Mode v2 feature shipped (cookie-consent.css/js, apply_consent_patches.py, +46 lines/page).
