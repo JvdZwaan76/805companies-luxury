@@ -97,6 +97,9 @@ Document that `G-4XMS9BPWGV` + `G-F75463BEKM` dual-tag setup is intentional.
 ### 13. PageSpeed Insights deep-dive session
 Full PSI audit on prod homepage + testimonials + about (mobile + desktop). Categorize findings: actionable wins / unclear / won't-fix.
 
+### 13.1 Hero-carousel layout shift (CLS)
+Homepage CLS measured ~0.51 ("poor") in a local DevTools Performance run on 2026-06-15 (cold load, network cache disabled). LCP was fine (1.26s, "good"); the problem is layout shift, not load speed. Worst cluster = the hero carousel ("12 shifts", LCP element `div.carousel-slide.active`). **Pre-existing — NOT caused by the v1.5.0 cache work** (cache directives don't affect layout); surfaced during v1.5.0 post-ship testing. Likely cause: the hero/carousel container doesn't reserve layout space before slide images load/transition, so content jumps. Likely fix: set explicit dimensions / `aspect-ratio` on the carousel container (and/or width+height on slide images) so the box is reserved before paint. IMPORTANT: this was a single synthetic local measurement — verify against real-user field data (Chrome UX Report / PageSpeed Insights field data) before investing, since lab CLS on a cold carousel load overstates what real visitors see. Tackle as part of, or just before, item #13.
+
 ### 14. Inline CSS audit across all pages
 Consolidate `.hero`, `.hero-buttons`, button CSS forks into `luxury-theme.css`.
 
