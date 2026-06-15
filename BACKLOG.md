@@ -2,21 +2,22 @@
 
 Living document. Top of list = highest priority. Edit freely; this is the source of truth, not the continuation doc.
 
-Last updated: 2026-05-24
+Last updated: 2026-06-14
 
 ---
 
 ## Current state
 
-- **Production**: serving v1.4 (Cloudflare Pages deployment `97f9c1ab`, from PR #24).
-- **Repository `main`**: at commit `7087cf9` — contains merged but **not currently deployed** work from v1.4.1 (badge unification) and v1.4.2 (testimonials hero architectural extraction).
-- **Blocker for v1.4.2 promotion**: cache infrastructure bug (see top-priority item below). Re-promoting v1.4.2 via Cloudflare Pages without fixing this first will reproduce the May 24 failure.
+- **Production**: live at commit `bfefe30` (Cloudflare Deploy #512, from PR #35). Serves the CCPA/CPRA cookie-consent feature + the 2026-06-14 services image de-dup and Yelp CTA fix.
+- **Branches**: `main`, `staging`, and both remotes synced to `bfefe30`.
+- **Rollback anchor**: tag `pre-update-2026-06-14` on origin/main.
+- **[VERIFY] v1.4.2 status**: the badge-unification + testimonials-hero-architecture work (PR #27, originally `a5844862`, rolled back May 24) was merged to main at `7087cf9`. Since then the consent feature and the June work have shipped on top. CONFIRM whether the v1.4.2 changes are now live at `bfefe30` or still un-deployed, and whether the `_headers` cache bug below still exists, BEFORE actioning item #1.
 
 ---
 
 ## Top priority
 
-### 1. v1.5.0 — Cache & asset infrastructure (design-system layer)
+### 1. v1.5.0 — Cache & asset infrastructure (design-system layer)  [VERIFY still needed at bfefe30]
 
 **Why this is blocking**: `_headers` ships `cache-control: public, max-age=31536000, immutable` for `/css/*` and `/js/*` against unversioned filenames. The `immutable` directive is a contract that the content at a URL will never change — true for content-hashed paths (`luxury-theme.7087cf9.css`), false for unversioned paths. Mismatch caused the May 24 production breakage: new HTML referencing `.reviews-showcase` was served against edge-cached v1.4 CSS with no `.reviews-showcase` rule, producing unstyled markup on `805lifeguard.com`. Will recur on any future CSS/JS change until fixed.
 
@@ -26,8 +27,9 @@ Last updated: 2026-05-24
 - If B: add build step (likely in `deploy.yml` or a pre-commit hook) to hash filenames and rewrite HTML references
 - Add Cloudflare cache purge to `.github/workflows/deploy.yml` as a safety net (requires `CLOUDFLARE_API_TOKEN` as GitHub secret)
 - Document the cache/asset contract in `DESIGN-SYSTEM.md`
-- After infrastructure is fixed and verified: re-promote v1.4.2 (already on main at 7087cf9) via Cloudflare Pages dashboard, then tag `v1.4.2-testimonials-hero-architecture` and create GitHub Release
+- After infrastructure is fixed and verified: re-promote v1.4.2 if still needed, then tag and create GitHub Release
 - Ship as `v1.5.0` (minor bump, infrastructure contract change)
+- FIRST: re-verify the `_headers` issue still exists at `bfefe30` — the repo has moved since May 24.
 
 ---
 
@@ -41,56 +43,79 @@ Last updated: 2026-05-24
 ### 3. contact.html hero audit
 Investigate why contact.html doesn't use the canonical `.hero-content` structure. Decide: align it with the 5-element canonical pattern, or document as a third sanctioned variant.
 
-### 4. Reviews API CORS — Worker allowlist update
-- Worker source location currently UNKNOWN — find it first
-- Update CORS allowlist on `805-lifeguard-reviews-api.jaspervdz.workers.dev`:
-  - Add `*.805companies-luxury.pages.dev` (currently blocked — causes staging preview to show fallback testimonials instead of real reviews, hindering staging visual verification)
-  - Remove stale `luxury.805companies.com`
-- Production (`805lifeguard.com`) is already allowlisted and working correctly
+### 4. Reviews API CORS — Worker allowlist [RESOLVED 2026-06-15]
+- DONE: added `https://staging.805companies-luxury.pages.dev` to the Worker's `allowedOrigins`. Staging now fetches live reviews; the 7 CORS console errors are gone (verified on staging 2026-06-15).
+- Production (`805lifeguard.com`) was already allowlisted and working.
+- Remaining (optional, low priority): the stale `luxury.805companies.com` origin is still in the list (harmless, left in place); per-deploy Pages preview URLs (`<hash>.805companies-luxury.pages.dev`) are still not covered because the check is exact-match, not wildcard — only the stable `staging.` alias is allowlisted.
 
 ---
 
 ## Medium priority
 
-### 5. Stale comment cleanup pass
-- `<!-- Enhanced Hero Section with Live Reviews Integration -->` at testimonials.html line 459 — now stale, reviews integration no longer in hero
+### 5. Instruction detail-gallery image still duplicated
+The Instruction gallery primary still reuses `service-swim-lessons-private-800x600` — the same de-dup issue fixed for Lifeguarding + Events on 2026-06-14. Blocked on a real 1-on-1 swim-lesson photo (none in the June batch). Swap when one is captured.
+
+### 6. Stale comment cleanup pass
+- `<!-- Enhanced Hero Section with Live Reviews Integration -->` at testimonials.html line ~459 — now stale, reviews integration no longer in hero
 - CSS comment "Enhanced Reviews Integration in Hero - PRESERVED DESIGN SYSTEM" before `.reviews-integration` rule — stale post-v1.4.2
 
-### 6. Orphan asset cleanup
+### 7. Orphan asset cleanup
 - ~24 unreferenced `.webp` files in `/images/about/` + `/images/testimonials/` — design system standardized JPG-only in v1.3
 - Legacy `testimonials-hero-{1600x1200,800x600}.jpg` — no live references post-v1.4
 
-### 7. Carousel double-fetch race (v1.3.2 candidate)
+### 8. Stray test files
+`images/services/test` and `images/hero/carousel/test` — 1-byte leftovers. Remove in a cleanup commit someday.
+
+### 9. Carousel double-fetch race (v1.3.2 candidate)
 Slide 4/5 race condition between `updateSlideBackground` and `preloadRemainingImages`.
 
-### 8. Viewport-aware variants for service tiles (v1.3.3 candidate)
-
-### 9. Cloudflare modernization bundle
-- Rename repo `805companies-luxury` → `805lifeguard`
-- Migrate `cloudflare/pages-action@v1` → `cloudflare/wrangler-action@v3`
-- Address `productionBranch` deprecation
-- Tighten `directory: ./` asset scope
-- CI hardening: `permissions: contents: read` in `deploy.yml`
-- (Cache purge step from v1.5.0 may end up landing here instead of v1.5.0 — TBD based on scope)
+### 10. Viewport-aware variants for service tiles (v1.3.3 candidate)
+`pool-cleaning-hero-1920x1080.webp` loads on mobile when it shouldn't.
 
 ---
 
 ## Low priority
 
-### 10. AWS Lightsail WordPress decommission
-Snapshot already taken May 23, 2026.
+### 11. AWS Lightsail WordPress decommission
+Snapshot already taken May 23, 2026. Confirm it exists, then schedule teardown for a calm weekday.
 
-### 11. Google Analytics dual-tag documentation
+### 12. Google Analytics dual-tag documentation
 Document that `G-4XMS9BPWGV` + `G-F75463BEKM` dual-tag setup is intentional.
 
-### 12. PageSpeed Insights deep-dive session
+### 13. PageSpeed Insights deep-dive session
 Full PSI audit on prod homepage + testimonials + about (mobile + desktop). Categorize findings: actionable wins / unclear / won't-fix.
 
-### 13. Inline CSS audit across all pages
+### 14. Inline CSS audit across all pages
 Consolidate `.hero`, `.hero-buttons`, button CSS forks into `luxury-theme.css`.
 
-### 14. Repo rename
-`805companies-luxury` → `805lifeguard` (umbrella branding artifact from earlier project structure). Bundled into Cloudflare modernization (#9) for consolidated migration.
+### 15. Cloudflare modernization bundle
+- Rename repo `805companies-luxury` → `805lifeguard` (umbrella branding artifact from earlier project structure)
+- Migrate `cloudflare/pages-action@v1` → `cloudflare/wrangler-action@v3`
+- Address `productionBranch` deprecation
+- Tighten `directory: ./` asset scope
+- CI hardening: `permissions: contents: read` in `deploy.yml`
+- (Cache purge step from v1.5.0 may land here instead — TBD based on scope)
+
+### 16. BACKUP-LOCATIONS.txt — fix + document the two-account split
+Backups live across TWO Google accounts:
+- `agiajasper@gmail.com` (locally mounted): dated folders `805lifeguard-backups-YYYYMMDD` (e.g. the May 14 set)
+- `me.com` account (NOT mounted locally): flat version-named zips in `My Drive / 805companies-luxury-backups/` — THIS is the canonical folder (holds v1.3 / v1.3.1 / v1.4 / 2026-06-14 image-dedup-yelp-fix zips)
+Update BACKUP-LOCATIONS.txt in the canonical folder to record BOTH locations so the gmail-account backups aren't invisible. Browser edit — me.com isn't mounted on this Mac.
+
+---
+
+## Reviews API Worker (reference — IMPORTANT, no Git backup)
+
+The live reviews API is a Cloudflare Worker, NOT in any Git repo:
+- **Name:** `805-lifeguard-reviews-api`  •  **URL:** `https://805-lifeguard-reviews-api.jaspervdz.workers.dev`
+- **Account:** Cloudflare `Jaspervdz@me.com` (subdomain `jaspervdz.workers.dev`)
+- **Edit:** Cloudflare dashboard → Workers & Pages → `805-lifeguard-reviews-api` → **Edit code** → Deploy. Source is dashboard-only (no Git connection), edited inline.
+- **Local source copies** (the only off-Cloudflare backups) live in `~/Documents/805LifeGuard-Migration-Documents/`:
+  - `805-lifeguard-reviews-api-BACKUP-v07b7bb2e-2026-06-15.js` (pre-2026-06-15 state)
+  - `805-lifeguard-reviews-api-UPDATED-2026-06-15.js` (current deployed state)
+- **Rollback:** Cloudflare dashboard version dropdown → roll back to a prior version, OR paste a backup `.js` file into Edit code and Deploy.
+- **How it works:** Google reviews are LIVE from Google Places API (returns real `total_ratings`). Yelp is MANUAL — `review_count` is a hardcoded number in the Worker (cost/quality control; Yelp API doesn't expose counts freely). To update the Yelp count: change `review_count` in `handleYelpReviewsManual`, plus the two matching values in `handleCombinedReviews` (keep all three in sync), then Deploy.
+- **Caution:** the Worker has NO staging environment — Deploy goes straight to production. Verify with `curl .../api/yelp-reviews/805-lifeguard-thousand-oaks` immediately after.
 
 ---
 
@@ -99,13 +124,18 @@ Consolidate `.hero`, `.hero-buttons`, button CSS forks into `luxury-theme.css`.
 - Branch flow: `feat/<name>` → `staging` → `main`, all via PRs (`gh pr create`)
 - Edit pattern: "verify-find-string" — Python heredocs with `assert html.count(old_chunk) == 1` before `.replace()`
 - After main merge: tag, GitHub Release, Drive backup zip
-- Backups: drive.google.com → My Drive → 805companies-luxury-backups, under `agiajasper@gmail.com`
+- Canonical backups: `me.com` → My Drive → `805companies-luxury-backups/` (flat version-named zips). Secondary dated backups under `agiajasper@gmail.com`.
 - Feature branches preserved (not deleted) until prod-verified
 - PR merge method: regular merge commit (NOT squash) — preserves staging integration history
+- Direct push to main blocked by branch protection; Cloudflare Pages check must pass before merge
 
 ---
 
 ## Recent ship log
 
+- **2026-06-15**: Fixed stale Yelp review count on /testimonials. Root cause: the `805-lifeguard-reviews-api` Cloudflare Worker hardcoded `review_count: 8`. Updated to 24 (3 spots) + added staging CORS origin in the same deploy. Verified live on staging + production (Yelp card shows "24+", staging CORS errors gone). Worker source backed up locally (see Reviews API Worker section). NOTE: Worker edit is NOT in this repo's git history — it's a Cloudflare-only deploy.
+
+- **2026-06-14**: PR #35 merged → prod `bfefe30` (Deploy #512). Services image de-dup (Lifeguarding + Events detail galleries → real on-site photos) + Yelp CTA fix (review buttons → `/biz/` business page). Verified live. Backup `805companies-luxury-image-dedup-yelp-fix.zip` (93 MB) in Drive.
+- **2026-05-27 (approx)**: CCPA/CPRA cookie-consent banner + Consent Mode v2 feature shipped (cookie-consent.css/js, apply_consent_patches.py, +46 lines/page).
 - **2026-05-24**: PR #27 merged to main (v1.4.1 + v1.4.2 bundled), deployed as `a5844862`, **rolled back same evening** due to cache infrastructure issue. Production reverted to v1.4 (`97f9c1ab`). Diagnosis logged; v1.5.0 cache work required before re-promotion.
 - **2026-05-23 evening**: v1.4 testimonials carousel design-system migration shipped (PR #24, tag `v1.4-testimonials-carousel`).
