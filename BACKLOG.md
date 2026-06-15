@@ -1,3 +1,30 @@
+## ★ North Star — strategic goals (read first)
+
+These three goals govern every build and prioritization decision. When choosing
+what to work on or how to implement it, weigh it against these:
+
+1. **#1 in search.** 805 LifeGuard should be the first result for its services
+   across its Southern California markets. SEO and Core Web Vitals are
+   first-class concerns, not afterthoughts — performance, structured data,
+   clean semantic HTML, and indexability get real weight. (This is why the
+   CLS item #13.1 matters: Core Web Vitals are a Google ranking factor.)
+
+2. **Stunning, consistent branding.** The luxury aesthetic is a competitive
+   asset. Every page, component, and new build should uphold the established
+   design system — no templated/generic-looking output, no visual drift.
+
+3. **Enterprise architecture, built to scale — franchising top of mind.**
+   Every structural decision should ask: "does this scale cleanly to N
+   locations / franchisees?" Favor reusable, region-parameterized patterns
+   over one-off hardcoding. The multi-area-code footer network, per-region
+   service structure, and the staging->main deploy discipline are early
+   groundwork for this; keep extending in that direction.
+
+*(Tactical backlog items below are means to these ends. If an item doesn't
+serve at least one of these, question whether it's worth doing.)*
+
+---
+
 # 805lifeguard.com — Backlog
 
 Living document. Top of list = highest priority. Edit freely; this is the source of truth, not the continuation doc.
