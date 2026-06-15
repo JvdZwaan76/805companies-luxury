@@ -2,22 +2,32 @@
 
 Living document. Top of list = highest priority. Edit freely; this is the source of truth, not the continuation doc.
 
-Last updated: 2026-06-14
+Last updated: 2026-06-15
 
 ---
 
 ## Current state
 
-- **Production**: live at commit `bfefe30` (Cloudflare Deploy #512, from PR #35). Serves the CCPA/CPRA cookie-consent feature + the 2026-06-14 services image de-dup and Yelp CTA fix.
-- **Branches**: `main`, `staging`, and both remotes synced to `bfefe30`.
-- **Rollback anchor**: tag `pre-update-2026-06-14` on origin/main.
-- **[VERIFY] v1.4.2 status**: the badge-unification + testimonials-hero-architecture work (PR #27, originally `a5844862`, rolled back May 24) was merged to main at `7087cf9`. Since then the consent feature and the June work have shipped on top. CONFIRM whether the v1.4.2 changes are now live at `bfefe30` or still un-deployed, and whether the `_headers` cache bug below still exists, BEFORE actioning item #1.
+- **Production**: live with v1.5.0 cache-header fix (PR #39, 2026-06-15) on top of the backlog-docs + Worker-fix records (PRs #36/#37) and the 2026-06-14 image de-dup + Yelp CTA fix (PR #35). `/css/*` and `/js/*` now serve `public, max-age=3600, must-revalidate`; images + fonts remain `immutable`.
+- **Branches**: `main` and `staging` synced to origin.
+- **Rollback anchor**: tag `pre-update-2026-06-14` on origin/main (pre-dates all June work).
+- **[VERIFY] v1.4.2 status**: badge-unification + testimonials-hero work (PR #27) was merged to main at `7087cf9` and has remained live through all subsequent June deploys. Treat as live unless a specific regression surfaces.
 
 ---
 
 ## Top priority
 
-### 1. v1.5.0 — Cache & asset infrastructure (design-system layer)  [VERIFY still needed at bfefe30]
+### 1. v1.5.0 — Cache & asset infrastructure  [SHIPPED 2026-06-15]
+
+**DONE (Option A).** `_headers` now caps `/css/*` and `/js/*` at `public, max-age=3600, must-revalidate` (matching the cookie-consent files). Images + fonts deliberately left `immutable` (content genuinely stable). Verified live on staging (DevTools) and production (curl): css/js return 3600 must-revalidate, images still immutable. Closes the May 24 stale-edge failure mode. Shipped via feat/v1.5.0-cache-headers -> PR #38 (staging) -> PR #39 (production).
+
+**One-time purge learning**: after the deploy, production `/js/luxury-app.js` kept serving the OLD `immutable` header (`cf-cache-status: HIT`, `age ~74h`) because an edge node still held a copy cached under the prior 1-year/immutable contract. Fixed with a Custom Purge (Cloudflare -> 805lifeguard.com -> Caching -> Configuration -> Purge Cache -> Custom Purge -> apex + www URLs). After purge it re-cached correctly (`age 0`, new header). **Takeaway**: when changing a Cache-Control directive on a file previously marked `immutable`, existing edge copies won't flip until they age out OR are manually purged. Moot for future css/js content changes (must-revalidate now forces freshness), but relevant if you ever tighten caching on an immutable asset again.
+
+**Optional follow-ups (NOT blocking, separate items):**
+- Add a Cloudflare cache-purge step to `.github/workflows/deploy.yml` as an automated safety net (needs `CLOUDFLARE_API_TOKEN` secret). Would have auto-resolved the purge above.
+- Document the cache/asset contract in `DESIGN-SYSTEM.md` (see item #2).
+
+<details><summary>Original analysis (kept for reference)</summary>
 
 **Why this is blocking**: `_headers` ships `cache-control: public, max-age=31536000, immutable` for `/css/*` and `/js/*` against unversioned filenames. The `immutable` directive is a contract that the content at a URL will never change — true for content-hashed paths (`luxury-theme.7087cf9.css`), false for unversioned paths. Mismatch caused the May 24 production breakage: new HTML referencing `.reviews-showcase` was served against edge-cached v1.4 CSS with no `.reviews-showcase` rule, producing unstyled markup on `805lifeguard.com`. Will recur on any future CSS/JS change until fixed.
 
@@ -30,6 +40,8 @@ Last updated: 2026-06-14
 - After infrastructure is fixed and verified: re-promote v1.4.2 if still needed, then tag and create GitHub Release
 - Ship as `v1.5.0` (minor bump, infrastructure contract change)
 - FIRST: re-verify the `_headers` issue still exists at `bfefe30` — the repo has moved since May 24.
+
+</details>
 
 ---
 
