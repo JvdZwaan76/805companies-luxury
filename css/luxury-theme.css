@@ -4353,3 +4353,13 @@ a:focus,
 .platform-indicator .platform-logo i.fa-brands {
     font-size: 0.75rem;
 }
+
+/* ===== 2026-08-03 FIX: testimonials rating capture =====
+   Star radios are in reverse DOM order (5→1) for the :checked ~ sibling-fill
+   pattern, but the row was never visually reversed — so the rightmost star
+   (the one users tap for "excellent") carried value="1". Reversing the row
+   puts value 5 rightmost and makes the fill light left-of-selection,
+   matching user intent. Capture bug root cause. */
+.interactive-star-rating {
+    flex-direction: row-reverse;
+}
