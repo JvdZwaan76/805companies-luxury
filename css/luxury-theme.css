@@ -4363,3 +4363,107 @@ a:focus,
 .interactive-star-rating {
     flex-direction: row-reverse;
 }
+
+/* ===== 2026-08-03 FEAT: share-modal branch — restore floating CTA label on mobile =====
+   The 768px override collapsed the review CTA to an unlabeled 48px star circle —
+   the page's primary action was unidentifiable on phones. Restore the labeled pill,
+   compact: keeps thumb-height, auto width, brand phrase visible. */
+@media (max-width: 768px) {
+    .floating-review-btn {
+        width: auto;
+        height: auto;
+        min-height: 48px;
+        padding: var(--spacing-3) var(--spacing-5);
+        justify-content: center;
+        border-radius: var(--radius-full);
+    }
+    .floating-review-btn .btn-text {
+        display: inline;
+        font-size: var(--font-size-xs);
+        white-space: nowrap;
+    }
+}
+
+/* ===== 2026-08-03 FEAT: share chooser — external-first review capture =====
+   Default modal state shows platform choices; the form stays hidden until
+   the client picks "share directly" (JS adds .share-choice-made to .review-modal).
+   Mobile-first: full-width thumb-height buttons, quiet nudge, tertiary direct path. */
+.share-chooser {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3);
+    padding: var(--spacing-2) 0 var(--spacing-4);
+}
+.share-chooser-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-3);
+    min-height: 52px;
+    padding: var(--spacing-3) var(--spacing-5);
+    border-radius: var(--radius-lg);
+    font-family: var(--font-family-sans);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-base);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    border: 1px solid transparent;
+}
+.share-chooser-google {
+    background: var(--color-secondary);
+    color: var(--color-text-inverse);
+}
+.share-chooser-google:hover,
+.share-chooser-google:focus {
+    background: var(--color-secondary-dark);
+    transform: translateY(-1px);
+}
+.share-chooser-yelp {
+    background: transparent;
+    color: var(--color-text-primary);
+    border-color: var(--color-neutral-lighter);
+}
+.share-chooser-yelp:hover,
+.share-chooser-yelp:focus {
+    border-color: var(--color-secondary);
+    transform: translateY(-1px);
+}
+.share-chooser-nudge {
+    text-align: center;
+    font-style: italic;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin: var(--spacing-2) 0 0;
+    line-height: 1.5;
+}
+.share-chooser-divider {
+    height: 1px;
+    background: var(--color-neutral-lighter);
+    margin: var(--spacing-3) var(--spacing-6);
+}
+.share-chooser-direct {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    padding: var(--spacing-2);
+    min-height: 44px;
+}
+.share-chooser-direct:hover,
+.share-chooser-direct:focus {
+    color: var(--color-secondary-dark);
+}
+/* State machine: form hidden until direct path chosen; then chooser hides */
+.review-modal .review-form {
+    display: none;
+}
+.review-modal.share-choice-made .review-form {
+    display: block;
+}
+.review-modal.share-choice-made .share-chooser {
+    display: none;
+}
