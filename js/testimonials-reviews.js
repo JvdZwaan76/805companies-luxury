@@ -1157,10 +1157,43 @@
             submitBtn.disabled = true;
         }
         
-        // Simulate submission (replace with real API call when ready)
-        setTimeout(function() {
+        // Real submission -> Apps Script pipeline (same endpoint + request shape as contact form)
+        // Map review fields onto the Apps Script consultation contract (snake_case, see contact.html collectFormData)
+        var nameParts = (data.clientName || '').trim().split(/\s+/);
+        data.first_name = nameParts.shift() || 'Testimonial';
+        data.last_name = nameParts.join(' ') || '(review)';
+        data.email = data.clientEmail;
+        data.phone = data.clientPhone;
+        data.estate_location = data.clientLocation || 'not-specified';
+        data.services = 'TESTIMONIAL: ' + (data.serviceReceived || 'unspecified');
+        data.property_type = null;
+        data.timeframe = null;
+        data.budget = null;
+        data.requirements = '[TESTIMONIAL ' + data.rating + '/5 stars] ' + data.reviewText;
+        data.client_tier = 'testimonial';
+        data.priority_level = 'standard';
+        data.submission_source = 'testimonials-review';
+        data.contact_method = 'email';
+        data.contact_time = 'anytime';
+
+        fetch('https://script.google.com/macros/s/AKfycby7tHwEn_gdZIFAxmfjqtxMaW8VVnfCWsBmhaFAORIbJChAkLACbL3s2hpHlukffyYLjg/exec', {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(data)
+        })
+        .then(function(response) {
+            if (!response.ok) { throw new Error('Submission failed: ' + response.status); }
             self.handleSubmissionSuccess(data);
-        }, 2000);
+        })
+        .catch(function(error) {
+            self.handleSubmissionError(error);
+        })
+        .finally(function() {
+            if (submitBtn) {
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+            }
+        });
         
         /* 
         // REAL API SUBMISSION (uncomment when ready):
