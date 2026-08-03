@@ -1158,13 +1158,23 @@
         }
         
         // Real submission -> Apps Script pipeline (same endpoint + request shape as contact form)
-        data.submission_source = 'testimonials-review';
-        data.form_type = 'testimonial';
-        // Aliases matching the consultation-form field convention:
-        data.name = data.clientName;
+        // Map review fields onto the Apps Script consultation contract (snake_case, see contact.html collectFormData)
+        var nameParts = (data.clientName || '').trim().split(/\s+/);
+        data.first_name = nameParts.shift() || 'Testimonial';
+        data.last_name = nameParts.join(' ') || '(review)';
         data.email = data.clientEmail;
         data.phone = data.clientPhone;
-        data.message = '[TESTIMONIAL ' + data.rating + '/5 stars — ' + (data.serviceReceived || 'unspecified') + ' — ' + (data.clientLocation || '') + '] ' + data.reviewText;
+        data.estate_location = data.clientLocation || 'not-specified';
+        data.services = 'TESTIMONIAL: ' + (data.serviceReceived || 'unspecified');
+        data.property_type = null;
+        data.timeframe = null;
+        data.budget = null;
+        data.requirements = '[TESTIMONIAL ' + data.rating + '/5 stars] ' + data.reviewText;
+        data.client_tier = 'testimonial';
+        data.priority_level = 'standard';
+        data.submission_source = 'testimonials-review';
+        data.contact_method = 'email';
+        data.contact_time = 'anytime';
 
         fetch('https://script.google.com/macros/s/AKfycby7tHwEn_gdZIFAxmfjqtxMaW8VVnfCWsBmhaFAORIbJChAkLACbL3s2hpHlukffyYLjg/exec', {
             method: 'POST',
