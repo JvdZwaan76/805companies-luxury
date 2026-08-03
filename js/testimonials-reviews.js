@@ -1583,6 +1583,22 @@
             version: testimonialsApp.version
         };
         
+        // === 2026-08-03 FEAT: #share deep-link opens the review modal ===
+        // Entry point for SMS review requests. Fires at DOM-ready (after app
+        // init) and on hash changes (covers tapping a share link while
+        // already on the page).
+        function handleShareHash() {
+            if (window.location.hash === '#share') {
+                window.testimonialsApp.openReviewModal();
+            }
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', handleShareHash);
+        } else {
+            handleShareHash();
+        }
+        window.addEventListener('hashchange', handleShareHash);
+
         // Development mode exports
         if (window.location.hostname === 'localhost' || 
             window.location.search.includes('debug=true')) {
