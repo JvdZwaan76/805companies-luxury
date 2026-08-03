@@ -4467,3 +4467,18 @@ a:focus,
 .review-modal.share-choice-made .share-chooser {
     display: none;
 }
+
+/* ===== 2026-08-03 FEAT: share chooser — footer state rules =====
+   Chooser state: hide the entire footer (Submit/Cancel belong to the hidden
+   form; the old encouragement panel duplicates the chooser's platform CTAs).
+   Form state: restore Submit/Cancel; keep the encouragement panel hidden —
+   the chooser already made the external ask one tap earlier. */
+.review-modal .review-form-footer {
+    display: none;
+}
+.review-modal.share-choice-made .review-form-footer {
+    display: block;
+}
+.review-modal.share-choice-made .platform-encouragement {
+    display: none;
+}
