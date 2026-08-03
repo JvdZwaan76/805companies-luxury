@@ -4363,3 +4363,23 @@ a:focus,
 .interactive-star-rating {
     flex-direction: row-reverse;
 }
+
+/* ===== 2026-08-03 FEAT: share-modal branch — restore floating CTA label on mobile =====
+   The 768px override collapsed the review CTA to an unlabeled 48px star circle —
+   the page's primary action was unidentifiable on phones. Restore the labeled pill,
+   compact: keeps thumb-height, auto width, brand phrase visible. */
+@media (max-width: 768px) {
+    .floating-review-btn {
+        width: auto;
+        height: auto;
+        min-height: 48px;
+        padding: var(--spacing-3) var(--spacing-5);
+        justify-content: center;
+        border-radius: var(--radius-full);
+    }
+    .floating-review-btn .btn-text {
+        display: inline;
+        font-size: var(--font-size-xs);
+        white-space: nowrap;
+    }
+}
