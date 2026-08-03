@@ -1599,6 +1599,27 @@
         }
         window.addEventListener('hashchange', handleShareHash);
 
+        // === 2026-08-03 FEAT: share chooser wiring ===
+        // Reset to chooser state on every open (regardless of how it closed).
+        const origOpenModal = ReviewSubmissionSystem.prototype.openModal;
+        ReviewSubmissionSystem.prototype.openModal = function() {
+            if (this.modal) { this.modal.classList.remove('share-choice-made'); }
+            origOpenModal.call(this);
+        };
+        // "Share directly" reveals the form and moves focus to the first field.
+        const shareDirectBtn = document.getElementById('shareDirectBtn');
+        if (shareDirectBtn) {
+            shareDirectBtn.addEventListener('click', function() {
+                const modal = document.querySelector('.review-modal');
+                if (modal) {
+                    modal.classList.add('share-choice-made');
+                    const firstInput = modal.querySelector('.review-form input, .review-form textarea, .review-form select');
+                    if (firstInput) { setTimeout(function() { firstInput.focus(); }, 100); }
+                }
+            });
+        }
+
+
         // Development mode exports
         if (window.location.hostname === 'localhost' || 
             window.location.search.includes('debug=true')) {
