@@ -1157,10 +1157,33 @@
             submitBtn.disabled = true;
         }
         
-        // Simulate submission (replace with real API call when ready)
-        setTimeout(function() {
+        // Real submission -> Apps Script pipeline (same endpoint + request shape as contact form)
+        data.submission_source = 'testimonials-review';
+        data.form_type = 'testimonial';
+        // Aliases matching the consultation-form field convention:
+        data.name = data.clientName;
+        data.email = data.clientEmail;
+        data.phone = data.clientPhone;
+        data.message = '[TESTIMONIAL ' + data.rating + '/5 stars — ' + (data.serviceReceived || 'unspecified') + ' — ' + (data.clientLocation || '') + '] ' + data.reviewText;
+
+        fetch('https://script.google.com/macros/s/AKfycby7tHwEn_gdZIFAxmfjqtxMaW8VVnfCWsBmhaFAORIbJChAkLACbL3s2hpHlukffyYLjg/exec', {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(data)
+        })
+        .then(function(response) {
+            if (!response.ok) { throw new Error('Submission failed: ' + response.status); }
             self.handleSubmissionSuccess(data);
-        }, 2000);
+        })
+        .catch(function(error) {
+            self.handleSubmissionError(error);
+        })
+        .finally(function() {
+            if (submitBtn) {
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+            }
+        });
         
         /* 
         // REAL API SUBMISSION (uncomment when ready):
