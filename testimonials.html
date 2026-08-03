@@ -1194,6 +1194,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             
             <div class="review-modal-body">
+                <!-- === 2026-08-03 FEAT: share chooser (external-first review capture) === -->
+                <div class="share-chooser" id="shareChooser">
+                    <a href="https://search.google.com/local/writereview?placeid=ChIJF_n_aeIx6IARDaz-6Q4-Hec" target="_blank" rel="noopener noreferrer" class="share-chooser-btn share-chooser-google">
+                        <i class="fa-brands fa-google" aria-hidden="true"></i>
+                        <span>Review us on Google</span>
+                    </a>
+                    <a href="https://www.yelp.com/biz/805-lifeguard-thousand-oaks" target="_blank" rel="noopener noreferrer" class="share-chooser-btn share-chooser-yelp">
+                        <i class="fa-brands fa-yelp" aria-hidden="true"></i>
+                        <span>Review us on Yelp</span>
+                    </a>
+                    <p class="share-chooser-nudge">Share wherever you prefer &mdash; every review helps another family discover the care their pool deserves.</p>
+                    <div class="share-chooser-divider" role="separator"></div>
+                    <button type="button" class="share-chooser-direct" id="shareDirectBtn">
+                        Or share it with us directly
+                    </button>
+                </div>
                 <form class="review-form" id="reviewSubmissionForm" novalidate>
                     <!-- Star Rating Section -->
                     <div class="star-rating-group">
