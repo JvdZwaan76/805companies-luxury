@@ -4343,3 +4343,13 @@ a:focus,
         margin: 0 var(--spacing-2);
     }
 }
+
+/* ── 2026-08-03: FA brand glyphs inside platform-logo badges (testimonials) ── */
+.platform-logo i.fa-brands {
+    color: #fff;
+    font-size: 1.15em;
+    line-height: 1;
+}
+.platform-indicator .platform-logo i.fa-brands {
+    font-size: 0.75rem;
+}
