@@ -4482,3 +4482,36 @@ a:focus,
 .review-modal.share-choice-made .platform-encouragement {
     display: none;
 }
+
+/* ===== 2026-08-03 FEAT: success state + footer button polish =====
+   1) submission-complete: hide the footer entirely (Submit/Cancel must not
+      survive into the success screen) and re-show the success screen's own
+      platform ask, which the share-choice-made rule otherwise hides.
+   2) Footer button grid, mobile-first: Submit full-width primary, Cancel a
+      quiet full-width secondary beneath it, consistent gutters.
+   3) Success layout: tighter mobile padding so the heading clears the modal
+      top on small screens. */
+.review-modal.submission-complete .review-form-footer {
+    display: none;
+}
+.review-modal.submission-complete .platform-encouragement {
+    display: block;
+}
+@media (max-width: 768px) {
+    .form-buttons {
+        flex-direction: column;
+        gap: var(--spacing-3);
+        padding: 0 var(--spacing-2);
+    }
+    .form-buttons .btn {
+        width: 100%;
+        justify-content: center;
+        min-height: 48px;
+    }
+    .review-success-content {
+        padding: var(--spacing-8) var(--spacing-4);
+    }
+    .success-title {
+        font-size: var(--font-size-2xl);
+    }
+}
