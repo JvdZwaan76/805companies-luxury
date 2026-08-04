@@ -1599,6 +1599,19 @@
         }
         window.addEventListener('hashchange', handleShareHash);
 
+        // === 2026-08-03 FEAT: success-state fixes ===
+        // On success: flag the modal (CSS hides the footer, restores the
+        // platform ask) and scroll the body to top so the heading is visible.
+        const origShowSuccess = ReviewSubmissionSystem.prototype.showSuccessModal;
+        ReviewSubmissionSystem.prototype.showSuccessModal = function() {
+            origShowSuccess.call(this);
+            const modal = document.querySelector('.review-modal');
+            if (modal) { modal.classList.add('submission-complete'); }
+            const body = document.querySelector('.review-modal-body');
+            if (body) { body.scrollTop = 0; }
+            if (modal && modal.scrollTo) { modal.scrollTo(0, 0); }
+        };
+
         // === 2026-08-03 FEAT: share chooser wiring ===
         // Reset to chooser state on every open (regardless of how it closed).
         const origOpenModal = ReviewSubmissionSystem.prototype.openModal;
