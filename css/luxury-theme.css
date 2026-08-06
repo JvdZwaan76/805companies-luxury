@@ -4522,3 +4522,25 @@ a:focus,
 .about-img {
     object-fit: cover;
 }
+
+/* ── Append-only (2026-08-05, feat/careers-hub): brand link treatment for
+   inline text links — gold family, never browser blue. Light sections get
+   deep gold (AA 4.97:1); dark consultation CTA gets light gold (10.2:1). ── */
+.section-description a {
+    color: #836C4F; /* secondary family, one step darker than --color-secondary-darkest for WCAG AA on white */
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: var(--transition-normal);
+}
+.section-description a:hover {
+    color: var(--color-secondary-darkest);
+}
+.consultation-section p a {
+    color: var(--color-secondary-light);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: var(--transition-normal);
+}
+.consultation-section p a:hover {
+    color: var(--color-secondary-lightest);
+}
