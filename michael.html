@@ -233,6 +233,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 padding-top: calc(var(--header-navbar-height) + 1rem);
             }
         }
+        
+        /* MICHAEL PAGE ONLY — single-column editorial measure for the two
+           text-only about sections (bio + note). The shared .about-content
+           grid expects an image column these sections deliberately omit. */
+        .about-content.single-column {
+            display: block;
+            max-width: 760px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .about-content.single-column .about-text {
+            max-width: none;
+        }
+        
+        /* MICHAEL PAGE ONLY — no hero on this page by design, so the opening
+           section must clear the fixed header itself. */
+        .about-section.page-opening {
+            padding-top: calc(var(--header-total-height) + 4rem);
+        }
+        @media (max-width: 768px) {
+            .about-section.page-opening {
+                padding-top: calc(var(--header-navbar-height) + 2.5rem);
+            }
+        }
     </style>
 
     <!-- Enhanced Performance: DNS Prefetch and Preconnect -->
@@ -447,7 +471,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          personal introduction for Michael's existing clientele, framed by
          the standard 805 shell (nav + footer carry the institutional weight).
     ===================================================================== -->
-    <section class="about-section">
+    <section class="about-section page-opening">
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
@@ -592,7 +616,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Biography — editorial third person -->
     <section class="about-section" id="about-michael">
         <div class="container">
-            <div class="about-content">
+            <div class="about-content single-column">
                 <div class="about-text">
                     <div class="section-badge">About Michael</div>
                     <h2>Two Decades in the Water</h2>
@@ -681,7 +705,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- A note from Michael — first person, warm close -->
     <section class="about-section" id="note-from-michael">
         <div class="container">
-            <div class="about-content">
+            <div class="about-content single-column">
                 <div class="about-text">
                     <div class="section-badge">A Note from Michael</div>
                     <h2>To the Families I've Had the Privilege to Serve</h2>
