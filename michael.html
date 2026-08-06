@@ -65,7 +65,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- SEO Meta Tags -->
     <title>Michael Hansen — Private Aquatic Services | 805 LifeGuard</title>
     <meta name="description" content="805 LifeGuard welcomes Michael Hansen — two decades of private swim instruction and water safety, Santa Barbara & Montecito, now with full team and insurance backing.">
-    <meta name="keywords" content="lifeguard jobs Thousand Oaks, swim instructor jobs Conejo Valley, summer lifeguard hiring Ventura County, private swim instructor jobs, swim teacher jobs Calabasas, Westlake Village lifeguard, Malibu swim instructor, Red Cross lifeguard certification, part-time aquatic jobs, seasonal lifeguard California, lifeguard certification reimbursement, swim coach jobs Southern California, Agoura Hills swim instructor, Newbury Park lifeguard">
+    <meta name="keywords" content="Michael Hansen, private swim instructor, private lifeguarding, water safety, Santa Barbara, Montecito, Southern California, 805 LifeGuard">
     <meta name="author" content="805 LifeGuard LLC">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="language" content="en-US">
@@ -83,7 +83,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta property="og:image" content="https://805lifeguard.com/images/services/services-hero-lifeguarding-1920x1080.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="805 LifeGuard — Now Hiring Lifeguards & Swim Instructors">
+    <meta property="og:image:alt" content="Private aquatic instruction — 805 LifeGuard">
     <meta property="og:locale" content="en_US">
 
     <!-- Twitter Card Meta Tags -->
@@ -91,7 +91,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta name="twitter:title" content="Michael Hansen joins 805 LifeGuard | Private Aquatic Services">
     <meta name="twitter:description" content="Michael Hansen's aquatic practice, now backed by 805 LifeGuard's team, licensing, and insurance coverage.">
     <meta name="twitter:image" content="https://805lifeguard.com/images/services/services-hero-lifeguarding-1920x1080.jpg">
-    <meta name="twitter:image:alt" content="805 LifeGuard Careers — Now Hiring">
+    <meta name="twitter:image:alt" content="Private aquatic instruction — 805 LifeGuard">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://805lifeguard.com/michael">
@@ -255,6 +255,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         @media (max-width: 768px) {
             .about-section.page-opening {
                 padding-top: calc(var(--header-navbar-height) + 2.5rem);
+            }
+        }
+        
+        /* MICHAEL PAGE ONLY — on this no-hero page the NAME must lead on
+           mobile. The sitewide .about-images{order:-1} flip would open the
+           page with two context-free photos and bury the H1 below the fold.
+           Restore source order (text first, images after) with breathing room. */
+        @media (max-width: 768px) {
+            .about-section.page-opening .about-images {
+                order: 0;
+                margin-top: 2.5rem;
             }
         }
     </style>
