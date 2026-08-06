@@ -1756,6 +1756,10 @@
 
         emailElements.forEach(function(element) {
             if (element.tagName === 'A') {
+                var explicit = (element.getAttribute('href') || '').replace('mailto:', '').split('?')[0];
+                if (explicit.indexOf('@805lifeguard.com') !== -1) {
+                    return; // explicit company mailbox (careers@, concierge@, …) is intentional — leave intact
+                }
                 element.href = 'mailto:' + CONFIG.EMAIL;
             }
             if (element.textContent.indexOf('@') !== -1) {
