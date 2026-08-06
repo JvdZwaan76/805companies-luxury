@@ -4515,3 +4515,10 @@ a:focus,
         font-size: var(--font-size-2xl);
     }
 }
+
+/* ── Append-only fix (2026-08-05, feat/careers-hub): images inside forced
+   aspect-ratio frames must crop, never stretch. Repairs .about-img skew on
+   /careers (16:9 sources) and subtle .secondary stretch on /about, /hoa. ── */
+.about-img {
+    object-fit: cover;
+}
