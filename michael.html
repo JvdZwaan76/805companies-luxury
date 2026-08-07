@@ -163,39 +163,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             padding: 0 1.5rem;
         }
         
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: var(--header-total-height);
-            overflow: hidden;
-        }
         
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg,rgba(0, 0, 0, 0.2) 0%,rgba(0, 0, 0, 0.3) 50%,rgba(0, 0, 0, 0.4) 100%);
-            z-index: 2;
-        }
         
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            color: var(--color-text-inverse);
-            max-width: 900px;
-            margin: 0 auto;
-        }
         
-        @media (max-width: 768px) {
-            .hero { 
-                padding-top: calc(var(--header-navbar-height) + 1rem);
-            }
-        }
         
         /* MICHAEL PAGE ONLY — single-column editorial measure for the two
            text-only about sections (bio + note). The shared .about-content
@@ -414,7 +384,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <a href="hoa" class="overlay-nav-link">HOA Services</a>
                     <a href="portfolio" class="overlay-nav-link">Portfolio</a>
                     <a href="testimonials" class="overlay-nav-link">Testimonials</a>
-                    <a href="careers" class="overlay-nav-link active">Careers</a>
+                    <a href="careers" class="overlay-nav-link">Careers</a>
                     <a href="faq" class="overlay-nav-link">FAQ</a>
                 </nav>
                 
@@ -705,7 +675,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <p>
                         <strong>Michael Hansen</strong><br>
                         Partner, Private Aquatic Services<br>
-                        <a href="mailto:michael@805lifeguard.com">michael@805lifeguard.com</a>
+                        <a href="mailto:michael@805lifeguard.com">michael@805lifeguard.com</a><br>
+                        <a href="tel:+14157102306" data-contact-lock>(415) 710-2306</a>
                     </p>
                 </div>
             </div>
@@ -968,7 +939,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             script.src = 'js/luxury-app.js';
             script.async = true;
             script.onload = function() {
-                console.log('805 LifeGuard Careers Page loaded successfully');
             };
             document.head.appendChild(script);
         }
@@ -1023,22 +993,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 else if (href.indexOf('staff.') !== -1) portal = 'staff';
                 track('portal_click', {
                     portal_type: portal,
-                    page_path: page
-                });
-            } else if (
-                href.indexOf('craigslist.org') !== -1
-            ) {
-                track('craigslist_click', {
-                    job_url: href,
-                    page_path: page
-                });
-            } else if (
-                href === '#private-swim-instructor' ||
-                href === '#summer-lifeguard' ||
-                href === '#open-positions-cta'
-            ) {
-                track('careers_anchor_click', {
-                    target: href,
                     page_path: page
                 });
             }
