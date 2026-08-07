@@ -1740,6 +1740,7 @@
         );
 
         phoneElements.forEach(function(element) {
+            if (element.closest("[data-contact-lock]")) { return; } // explicitly locked contact (e.g. Michael's direct line on /michael) — intentional, leave intact
             if (element.tagName === 'A') {
                 element.href = 'tel:+18053676432';
             }
