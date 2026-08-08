@@ -61,11 +61,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             allow_ad_personalization_signals: false
         });
     </script>
-    
+
     <!-- SEO Meta Tags -->
-    <title>Lifeguard Insurance &amp; Bonding | $5M Coverage | 805 LifeGuard</title>
-    <meta name="description" content="$1M general liability + $5M excess coverage for private estates, HOA pools &amp; luxury events. Licensed, bonded &amp; Red Cross certified. Docs provided before every engagement.">
-    <meta name="keywords" content="exclusive pool cleaning, luxury pool maintenance, pool chemical balancing, equipment maintenance, Southern California pool cleaning, Thousand Oaks pool service, Westlake Village pool maintenance, premium pool care">
+    <title>Jasper van der Zwaan — Founder | 805 LifeGuard</title>
+    <meta name="description" content="Jasper van der Zwaan founded 805 LifeGuard in 2016 — competitive diver turned American Red Cross certified lifeguard, Water Safety Instructor, and adaptive-instruction specialist serving Southern California's distinguished families.">
+    <meta name="keywords" content="Jasper van der Zwaan, 805 LifeGuard founder, private lifeguard, Water Safety Instructor, adaptive swim instruction, special needs swimming, Thousand Oaks, Westlake Village, Conejo Valley, Southern California">
     <meta name="author" content="805 LifeGuard LLC">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="language" content="en-US">
@@ -73,29 +73,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta name="geo.placename" content="Thousand Oaks, California">
     <meta name="geo.position" content="34.1706;-118.8376">
     <meta name="ICBM" content="34.1706, -118.8376">
-    
+
     <!-- Open Graph Meta Tags -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Lifeguard Insurance &amp; Bonding | $5M Coverage | 805 LifeGuard">
-    <meta property="og:description" content="White-glove pool cleaning and maintenance services exclusively for 805 LifeGuard clients. Professional aquatic environment management in Southern California.">
-    <meta property="og:url" content="https://805lifeguard.com/insurance">
+    <meta property="og:type" content="profile">
+    <meta property="profile:first_name" content="Jasper">
+    <meta property="profile:last_name" content="van der Zwaan">
+    <meta property="og:title" content="Jasper van der Zwaan — Founder &amp; Managing Director | 805 LifeGuard">
+    <meta property="og:description" content="The founder behind 805 LifeGuard: competitive diving, Red Cross certification, adaptive instruction, and a decade of founder-led service in the Conejo Valley.">
+    <meta property="og:url" content="https://805lifeguard.com/jasper">
     <meta property="og:site_name" content="805 LifeGuard">
-    <meta property="og:image" content="https://805lifeguard.com/images/cleaning/pool-cleaning-og-1200x630.jpg">
+    <meta property="og:image" content="https://805lifeguard.com/images/about/about-founder-jasper-og-1200x630.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="805 LifeGuard Exclusive Pool Cleaning Services">
+    <meta property="og:image:alt" content="Jasper van der Zwaan, Founder of 805 LifeGuard">
     <meta property="og:locale" content="en_US">
-    
+
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Exclusive Pool Cleaning - 805 LifeGuard">
-    <meta name="twitter:description" content="White-glove pool maintenance exclusively for distinguished 805 LifeGuard clients.">
-    <meta name="twitter:image" content="https://805lifeguard.com/images/cleaning/pool-cleaning-twitter-1200x600.jpg">
-    <meta name="twitter:image:alt" content="805 LifeGuard Pool Cleaning Services">
-    
+    <meta name="twitter:title" content="Jasper van der Zwaan — Founder &amp; Managing Director | 805 LifeGuard">
+    <meta name="twitter:description" content="The founder behind 805 LifeGuard: competitive diving, Red Cross certification, adaptive instruction, and a decade of founder-led service.">
+    <meta name="twitter:image" content="https://805lifeguard.com/images/about/about-founder-jasper-og-1200x630.jpg">
+    <meta name="twitter:image:alt" content="Jasper van der Zwaan, Founder of 805 LifeGuard">
+
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://805lifeguard.com/insurance">
-    
+    <link rel="canonical" href="https://805lifeguard.com/jasper">
+
     <!-- Critical CSS - Inlined for fastest loading -->
     <style>
         /* Critical path CSS for immediate rendering */
@@ -163,78 +165,69 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             padding: 0 1.5rem;
         }
         
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: var(--header-total-height);
-            overflow: hidden;
+        
+        
+        
+        
+        /* BIO PAGE TEMPLATE — single-column editorial measure for the two
+           text-only about sections (bio + note). The shared .about-content
+           grid expects an image column these sections deliberately omit. */
+        .about-content.single-column {
+            display: block;
+            max-width: 760px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .about-content.single-column .about-text {
+            max-width: none;
         }
         
-        .hero-carousel {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
+        /* BIO PAGE TEMPLATE — no hero on this page by design, so the opening
+           section must clear the fixed header itself. */
+        .about-section.page-opening {
+            padding-top: calc(var(--header-total-height) + 4rem);
         }
-        
-        .carousel-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0;
-            transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .carousel-slide.active {
-            opacity: 1;
-        }
-        
-        .carousel-slide::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg,rgba(0, 0, 0, 0.3) 0%,rgba(0, 0, 0, 0.4) 50%,rgba(0, 0, 0, 0.5) 100%);
-            z-index: 1;
-        }
-        
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg,rgba(0, 0, 0, 0.2) 0%,rgba(0, 0, 0, 0.3) 50%,rgba(0, 0, 0, 0.4) 100%);
-            z-index: 2;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            color: var(--color-text-inverse);
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
         @media (max-width: 768px) {
-            .hero { 
-                padding-top: calc(var(--header-navbar-height) + 1rem);
+            .about-section.page-opening {
+                padding-top: calc(var(--header-navbar-height) + 2.5rem);
             }
         }
+        
+        /* BIO PAGE TEMPLATE — on this no-hero page the NAME must lead on
+           mobile. The sitewide .about-images{order:-1} flip would open the
+           page with two context-free photos and bury the H1 below the fold.
+           Restore source order (text first, images after) with breathing room. */
+        @media (max-width: 768px) {
+            .about-section.page-opening .about-images {
+                order: 0;
+                margin-top: 2.5rem;
+            }
+        }
+        
+        /* JASPER PAGE — founder assets are 4:3 (800x600); keep the sitewide
+           default rather than michael.html's 4:5 override. */
+
+        /* BIO-PAGE TEMPLATE — inline text links in biography prose and coverage
+           lists. The sitewide gold treatment (luxury-theme.css) is scoped to
+           .section-description a and .consultation-section p a, which do not
+           cover bio-page containers; without this, outbound links render as
+           browser blue and break the restraint register. Same deep gold,
+           AA 4.97:1 on white. Page-scoped: no shared-CSS change, no purge. */
+        .about-text p a,
+        .about-text li a,
+        .coverage-card li a {
+            color: #836C4F;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            transition: var(--transition-normal);
+        }
+        .about-text p a:hover,
+        .about-text li a:hover,
+        .coverage-card li a:hover {
+            color: var(--color-secondary-darkest);
+        }
     </style>
-    
+
     <!-- Enhanced Performance: DNS Prefetch and Preconnect -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -242,20 +235,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    
+
     <!-- Critical Resource Preloading -->
-    <link rel="preload" as="image" href="/images/cleaning/pool-cleaning-hero-1920x1080.webp" type="image/webp">
-    <link rel="preload" as="image" href="/images/cleaning/pool-cleaning-hero-1920x1080.jpg" type="image/jpeg">
     <link rel="preload" as="image" href="/images/logos/805-lifeguard-logo.png">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    
+
     <!-- Optimized Typography - Async Loading -->
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap"></noscript>
-    
+
     <!-- Font Awesome Icons - Deferred -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-    
+
     <!-- Main CSS - Deferred -->
     <link rel="preload" href="/css/luxury-theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/css/luxury-theme.css"></noscript>
@@ -265,7 +256,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <script src="/js/cookie-consent.js" defer></script>
     <!-- End Cookie Consent -->
 
-    
+
     <!-- Favicon and App Icons -->
     <link rel="icon" type="image/x-icon" href="/images/favicon/favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
@@ -277,45 +268,121 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta name="msapplication-config" content="/browserconfig.xml">
     <meta name="theme-color" content="#1A1A1A">
 
-    <!-- Structured Data -->
+    <!-- ───────────────────────────────────────────────────────────────────── -->
+    <!-- Structured Data — ProfilePage → Person (no @id, per site standard) + BreadcrumbList -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebPage",
-          "url": "https://805lifeguard.com/insurance",
-          "name": "Lifeguard Insurance & Bonding | $5M Coverage | 805 LifeGuard",
-          "dateModified": "2026-05-02"
+      "@type": "ProfilePage",
+      "name": "Jasper van der Zwaan — Founder | 805 LifeGuard",
+      "url": "https://805lifeguard.com/jasper",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Jasper van der Zwaan",
+        "jobTitle": "Founder & Managing Director",
+        "email": "mailto:jasper@805lifeguard.com",
+        "telephone": "+18053676432",
+        "image": "https://805lifeguard.com/images/about/about-founder-jasper-og-1200x630.jpg",
+        "knowsAbout": [
+          "Private lifeguarding",
+          "Water safety",
+          "Swim instruction",
+          "Adaptive swim instruction for individuals with special needs",
+          "Aquatic event safety management",
+          "Pool safety for private residences",
+          "Competitive diving"
+        ],
+        "knowsLanguage": ["English"],
+        "homeLocation": {
+          "@type": "Place",
+          "name": "Thousand Oaks, California"
         },
-        {
-          "@type": ["LocalBusiness", "ProfessionalService"],
-          "@id": "https://805lifeguard.com/#business",
+        "areaServed": [
+          { "@type": "Place", "name": "Thousand Oaks, California" },
+          { "@type": "Place", "name": "Westlake Village, California" },
+          { "@type": "Place", "name": "Agoura Hills, California" },
+          { "@type": "Place", "name": "Newbury Park, California" },
+          { "@type": "Place", "name": "Southern California" }
+        ],
+        "founder": true,
+        "worksFor": {
+          "@type": "Organization",
           "name": "805 LifeGuard",
+          "alternateName": "805 LifeGuard LLC",
+          "url": "https://805lifeguard.com",
           "telephone": "+18053676432",
-          "hasCredential": [
-            { "@type": "EducationalOccupationalCredential", "name": "General Liability Insurance — $1,000,000 Per Occurrence" },
-            { "@type": "EducationalOccupationalCredential", "name": "Excess Liability Insurance — $5,000,000" },
-            { "@type": "EducationalOccupationalCredential", "name": "California Licensed & Bonded" },
-            { "@type": "EducationalOccupationalCredential", "name": "American Red Cross Lifeguard Certification" }
-          ]
+          "foundingDate": "2016",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Thousand Oaks",
+            "addressRegion": "CA",
+            "addressCountry": "US"
+          }
+        },
+        "description": "Founder and Managing Director of 805 LifeGuard. A competitive diver for Thousand Oaks High School before turning to private aquatics, he is American Red Cross certified in Lifeguarding, CPR/AED, and Water Safety Instruction, with advanced certification in adaptive aquatic instruction for individuals with special needs. Founded the firm in 2016 to serve private clients across the Conejo Valley and Southern California."
+      },
+      "mainEntityOfPage": "https://805lifeguard.com/jasper"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "805 LifeGuard", "item": "https://805lifeguard.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Jasper van der Zwaan", "item": "https://805lifeguard.com/jasper" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does the founder still work with clients directly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Jasper has never stopped working in the water. Lessons, event coverage, house calls — the standard the team is held to is the one he sets himself, in person."
+          }
         },
         {
-          "@type": "FAQPage",
-          "mainEntity": [
-            { "@type": "Question", "name": "What insurance does 805 LifeGuard carry?", "acceptedAnswer": { "@type": "Answer", "text": "$1,000,000 per occurrence general liability plus $5,000,000 excess liability, covering private residences, HOA pools, and luxury events." } },
-            { "@type": "Question", "name": "Can my HOA be named as additional insured?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. HOA boards and homeowners can be named as additional insured at no additional cost." } }
-          ]
+          "@type": "Question",
+          "name": "What certifications does Jasper hold?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "American Red Cross Lifeguarding, CPR/AED for Professional Rescuers, and Water Safety Instruction — maintained without a lapse since the firm was founded."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does 805 LifeGuard teach swimmers with special needs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Advanced certification in adaptive aquatic instruction for individuals with special needs and physical challenges — a specialism, not an accommodation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is 805 LifeGuard licensed, bonded, and insured?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fully licensed for private-property work, bonded, and comprehensively insured — with every member of the team background-checked before a first shift."
+          }
         }
       ]
     }
     </script>
 </head>
-<body itemscope itemtype="https://schema.org/WebPage">
+<body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N6FNFNPD"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+
     <!-- Enhanced Enterprise Header with Perfect Visibility -->
     <header class="header" id="header" role="banner">
         <!-- Top Bar -->
@@ -402,6 +469,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <a href="hoa" class="overlay-nav-link">HOA Services</a>
                     <a href="portfolio" class="overlay-nav-link">Portfolio</a>
                     <a href="testimonials" class="overlay-nav-link">Testimonials</a>
+                    <a href="careers" class="overlay-nav-link">Careers</a>
                     <a href="faq" class="overlay-nav-link">FAQ</a>
                 </nav>
                 
@@ -431,403 +499,302 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
         </div>
     </header>
-    <!-- Breadcrumbs — identical to terms.html -->
-    <nav class="breadcrumbs" aria-label="Breadcrumb navigation" itemscope itemtype="https://schema.org/BreadcrumbList">
-        <div class="container">
-            <ol class="breadcrumb-list">
-                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
-                    <meta itemprop="position" content="1" />
-                </li>
-                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <span itemprop="name" aria-current="page">Insurance &amp; Bonding</span>
-                    <meta itemprop="position" content="2" />
-                </li>
-            </ol>
-        </div>
-    </nav>
 
-    <!-- =====================================================================
-         HERO
-    ===================================================================== -->
-    <!-- Hero Section -->
-    <section class="hero" role="banner" aria-label="Insurance &amp; Bonding">
-        <!-- Background -->
-        <div class="hero-carousel" id="heroCarousel">
-            <div class="carousel-slide active" style="background-image: url('images/home/home-luxury-estate-hero-1920x1080.jpg')" data-bg-desktop="images/home/home-luxury-estate-hero-1920x1080.jpg" data-bg-tablet="images/home/home-luxury-estate-hero-1024x576.jpg" data-bg-mobile="images/home/home-luxury-estate-hero-768x432.jpg" aria-label="Luxury estate with pristine pool"></div>
-            <div class="carousel-slide" style="background-image: url('images/home/home-poolside-elegance-1920x1080.jpg')" data-bg-desktop="images/home/home-poolside-elegance-1920x1080.jpg" data-bg-tablet="images/home/home-poolside-elegance-1024x576.jpg" data-bg-mobile="images/home/home-poolside-elegance-768x432.jpg" aria-label="Elegant poolside setting"></div>
-            <div class="carousel-slide" style="background-image: url('images/home/home-professional-services-1920x1080.jpg')" data-bg-desktop="images/home/home-professional-services-1920x1080.jpg" data-bg-tablet="images/home/home-professional-services-1024x576.jpg" data-bg-mobile="images/home/home-professional-services-768x432.jpg" aria-label="Professional aquatic services"></div>
-            <div class="carousel-slide" style="background-image: url('images/home/home-safety-excellence-1920x1080.jpg')" data-bg-desktop="images/home/home-safety-excellence-1920x1080.jpg" data-bg-tablet="images/home/home-safety-excellence-1024x576.jpg" data-bg-mobile="images/home/home-safety-excellence-768x432.jpg" aria-label="Luxury event pool safety"></div>
-            <div class="carousel-slide" style="background-image: url('images/home/home-distinguished-clientele-1920x1080.jpg')" data-bg-desktop="images/home/home-distinguished-clientele-1920x1080.jpg" data-bg-tablet="images/home/home-distinguished-clientele-1024x576.jpg" data-bg-mobile="images/home/home-distinguished-clientele-768x432.jpg" aria-label="Distinguished aquatic services"></div>
-        </div>
-        <div class="hero-overlay"></div>
+    <!-- Page intent: founder profile. Editorial third person, restraint register,
+         no hero (the name leads), page ships DARK until leadership debut. -->
+    <!-- Page opening — founder introduction. No hero by design; the name leads. -->
+    <section class="about-section page-opening" id="jasper-intro">
         <div class="container">
-            <div class="hero-content" itemscope itemtype="https://schema.org/Organization">
-                <div class="section-badge">
-                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
-                    Comprehensive Protection &amp; Professional Credentials
+            <div class="about-content single-column">
+                <div class="about-text">
+                    <div class="section-badge">Our Founder</div>
+                    <h1>Jasper van der Zwaan</h1>
+                    <p class="lead-text">
+                        Founder &amp; Managing Director — and, a decade on, still the
+                        person most likely to be standing at the edge of your pool.
+                    </p>
+                    <p>
+                        Jasper founded 805 LifeGuard in 2016 to bring the standards of
+                        competitive aquatics to private clients: constant watch,
+                        current certification, and preparation that stays invisible
+                        because it is complete. American Red Cross certified in
+                        Lifeguarding, CPR/AED, and Water Safety Instruction, with advanced
+                        training in adaptive instruction for swimmers of every ability.
+                    </p>
                 </div>
-                <h1 class="hero-title" itemprop="slogan">Fully Protected.<br>Every Engagement.</h1>
-                <p class="hero-subtitle" itemprop="description">
-                    When you invite 805 LifeGuard onto your property, you deserve complete confidence 
-                    that every detail of your protection has been handled. Our comprehensive insurance, 
-                    licensing, and bonding covers private residences, HOA communities, corporate venues, 
-                    and luxury events.
-                </p>
-                <div class="hero-buttons">
-                    <a href="contact" class="btn btn-primary" aria-label="Request documentation">
-                        <i class="fas fa-file-contract" aria-hidden="true"></i>
-                        Request Documentation
-                    </a>
-                    <a href="contact" class="btn btn-secondary" aria-label="Schedule consultation">
-                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
-                        Schedule Consultation
-                    </a>
-                </div>
-                <div class="hero-notice">
-                    <i class="fas fa-certificate" aria-hidden="true"></i>
-                    All credentials current &amp; continuously renewed — documentation provided before every engagement
+
+                <div class="about-images">
+                    <div class="about-image-container">
+                        <picture>
+                            <source srcset="/images/about/about-founder-jasper-professional-800x600.webp" type="image/webp">
+                            <img src="/images/about/about-founder-jasper-professional-800x600.jpg"
+                                 alt="Jasper van der Zwaan, Founder and Managing Director of 805 LifeGuard, in Thousand Oaks, California"
+                                 class="about-img primary" width="800" height="600"
+                                 fetchpriority="high" decoding="async">
+                        </picture>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-
-    <!-- Coverage Overview -->
-    <section class="about-section">
+    <!-- What founder-led means — the value centerpiece -->
+    <section class="services-section" id="founder-led">
         <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <div class="section-badge">Complete Protection</div>
-                    <h2>Fully Covered. Every Engagement.</h2>
-                    <p class="lead-text">
-                        Our clients live at a level where the details matter. Every insurance certificate, 
-                        bonding document, and credential is in your hands before we ever set foot on your property.
-                    </p>
-                    <p>
-                        805 LifeGuard carries $1,000,000 per occurrence general liability insurance plus 
-                        $5,000,000 excess liability coverage — for private residences, HOA communities, 
-                        corporate venues, and luxury events throughout Southern California.
-                    </p>
-                    <div class="about-features">
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-                            <div class="feature-content">
-                                <h4>$1M General Liability</h4>
-                                <p>Per occurrence — private homes, HOA pools, events, and corporate venues</p>
-                            </div>
+            <div class="section-header">
+                <div class="section-badge">Founder-Led</div>
+                <h2>What That Actually Means</h2>
+                <p class="section-description">
+                    Plenty of firms say founder-led. At 805 LifeGuard it is a
+                    description of who is on the deck, not a line in a brochure.
+                </p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon-standalone">
+                            <i class="fas fa-user-check"></i>
                         </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-layer-group"></i></div>
-                            <div class="feature-content">
-                                <h4>$5M Excess Liability</h4>
-                                <p>Available for HOAs, property managers, and high-profile engagements</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-user-check"></i></div>
-                            <div class="feature-content">
-                                <h4>Additional Insured</h4>
-                                <p>Homeowners, HOA boards, and property managers at no extra cost</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-certificate"></i></div>
-                            <div class="feature-content">
-                                <h4>Docs Before Every Engagement</h4>
-                                <p>Complete credentials package provided before service commencement</p>
-                            </div>
+                        <h3 class="service-title">He Still Teaches</h3>
+                        <p class="service-description">
+                            Jasper has never stopped working in the water. Lessons,
+                            event coverage, house calls — the standard the team is held
+                            to is the one he sets himself, in person.
+                        </p>
+                        <div class="service-features">
+                            <span class="feature-tag">In the Water</span>
+                            <span class="feature-tag">Since 2016</span>
                         </div>
                     </div>
                 </div>
-                <div class="about-images">
-                    <picture>
-                        <img src="/images/services/insurance-coverage-800x600.jpg" alt="805 LifeGuard comprehensive insurance coverage" class="about-img primary" loading="lazy">
-                    </picture>
+
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon-standalone">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3 class="service-title">Certified, Continuously</h3>
+                        <p class="service-description">
+                            American Red Cross Lifeguarding, CPR/AED for Professional
+                            Rescuers, and Water Safety Instruction — maintained without
+                            a lapse since the firm was founded.
+                        </p>
+                        <div class="service-features">
+                            <span class="feature-tag">Red Cross Certified</span>
+                            <span class="feature-tag">WSI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon-standalone">
+                            <i class="fas fa-hands-holding-child"></i>
+                        </div>
+                        <h3 class="service-title">Every Swimmer, Included</h3>
+                        <p class="service-description">
+                            Advanced certification in adaptive aquatic instruction for
+                            individuals with special needs and physical challenges — a
+                            specialism, not an accommodation.
+                        </p>
+                        <div class="service-features">
+                            <span class="feature-tag">Adaptive Techniques</span>
+                            <span class="feature-tag">All Abilities</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon-standalone">
+                            <i class="fas fa-shield-halved"></i>
+                        </div>
+                        <h3 class="service-title">Licensed, Bonded, Insured</h3>
+                        <p class="service-description">
+                            Fully licensed for private-property work, bonded, and
+                            comprehensively insured — with every member of the team
+                            background-checked before a first shift.
+                        </p>
+                        <div class="service-features">
+                            <span class="feature-tag">Licensed</span>
+                            <span class="feature-tag">Bonded</span>
+                            <span class="feature-tag">Insured</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Coverage Cards -->
-    <section class="coverage-section" id="coverage">
+    <!-- Biography — editorial third person -->
+    <section class="about-section" id="about-jasper">
+        <div class="container">
+            <div class="about-content single-column">
+                <div class="about-text">
+                    <div class="section-badge">About Jasper</div>
+                    <h2>A Decade on the Deck</h2>
+                    <p>
+                        Jasper van der Zwaan came to private aquatics from the board.
+                        He dove competitively for Thousand Oaks High School, at a level
+                        that put him against the best in California — a discipline where
+                        the difference between a clean entry and a bad one is measured in
+                        degrees, and where every attempt is judged by people watching
+                        closely. What stayed with him was not the competition. It was the
+                        standard: the assumption that preparation is invisible when it is
+                        done properly, and conspicuous the moment it is not.
+                    </p>
+                    <p>
+                        He founded 805 LifeGuard in 2016 with a straightforward premise.
+                        The professionalism he had known in competitive aquatics — the
+                        protocols, the certifications, the discipline of constant
+                        attention — existed almost nowhere in the private market. Families
+                        hosting a party at home, or booking lessons for a nervous
+                        five-year-old, were offered whoever happened to be available.
+                        He thought they deserved the same rigor he had trained under.
+                    </p>
+                    <p>
+                        A decade on, that premise has held. Jasper maintains American Red
+                        Cross certification in Lifeguarding, CPR/AED for Professional
+                        Rescuers, and Water Safety Instruction, with advanced training in
+                        adaptive instruction for swimmers with special needs and physical
+                        challenges — work he considers among the most rewarding the
+                        profession offers. The firm is licensed for private-property
+                        service, bonded, and comprehensively insured, and every member of
+                        the team is background-checked before a first shift.
+                    </p>
+                    <p>
+                        The practice is built around the Conejo Valley — Thousand Oaks,
+                        Westlake Village, Agoura Hills, and Newbury Park — and reaches
+                        across Southern California through a network of regional teams.
+                        What has not changed is the part clients tend to remember: the
+                        founder still teaches, still guards, and still reads every
+                        consultation request himself.
+                    </p>
+                </div>
+
+                <div class="about-images">
+                    <div class="about-image-container">
+                        <picture>
+                            <source srcset="/images/about/about-founder-training-800x600.webp" type="image/webp">
+                            <img src="/images/about/about-founder-training-800x600.jpg"
+                                 alt="Jasper van der Zwaan providing private swim instruction for 805 LifeGuard in Southern California"
+                                 class="about-img primary" width="800" height="600"
+                                 loading="lazy" decoding="async">
+                        </picture>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Where the practice operates -->
+    <section class="coverage-section" id="where-jasper-serves">
         <div class="container">
             <div class="section-header">
-                <div class="section-badge">Insurance Coverage</div>
-                <h2>Comprehensive Protection at Every Level</h2>
+                <div class="section-badge">Where He Works</div>
+                <h2>Home Water, and Beyond It</h2>
                 <p class="section-description">
-                    Coverage structured to match the environments we serve — from intimate private pools to 
-                    large-scale HOA communities and luxury events.
+                    The Conejo Valley is home base. The regional network extends the same
+                    standard across Southern California.
                 </p>
             </div>
+
             <div class="coverage-grid">
-                <div class="coverage-card">
-                    <h3><i class="fas fa-shield-alt"></i> General Liability</h3>
-                    <p>$1,000,000 Per Occurrence</p>
+                <div class="coverage-card featured">
+                    <h3><i class="fas fa-map-marker-alt"></i> Conejo Valley</h3>
+                    <p>Home base — founder-led service</p>
                     <ul>
+                        <li><i class="fas fa-check"></i> Thousand Oaks &amp; Westlake Village</li>
+                        <li><i class="fas fa-check"></i> Agoura Hills &amp; Newbury Park</li>
                         <li><i class="fas fa-check"></i> Private residences &amp; estates</li>
-                        <li><i class="fas fa-check"></i> HOA community pools</li>
-                        <li><i class="fas fa-check"></i> Corporate venues &amp; events</li>
-                        <li><i class="fas fa-check"></i> Property damage covered</li>
-                        <li><i class="fas fa-check"></i> Personal injury covered</li>
-                        <li><i class="fas fa-check"></i> Additional insured at no cost</li>
                     </ul>
                 </div>
-                <div class="coverage-card featured">
-                    <h3><i class="fas fa-layer-group"></i> Excess Liability</h3>
-                    <p>$5,000,000 Available</p>
-                    <ul>
-                        <li><i class="fas fa-check"></i> HOA board protection</li>
-                        <li><i class="fas fa-check"></i> Property management companies</li>
-                        <li><i class="fas fa-check"></i> High-profile private engagements</li>
-                        <li><i class="fas fa-check"></i> Large-scale luxury events</li>
-                        <li><i class="fas fa-check"></i> Community pool operations</li>
-                        <li><i class="fas fa-check"></i> Board indemnification</li>
-                    </ul>
-                </div>
+
                 <div class="coverage-card">
-                    <h3><i class="fas fa-lock"></i> Licensed &amp; Bonded</h3>
-                    <p>California</p>
+                    <h3><i class="fas fa-water"></i> The Work Itself</h3>
+                    <p>What a founder-led engagement covers</p>
                     <ul>
-                        <li><i class="fas fa-check"></i> California business license</li>
-                        <li><i class="fas fa-check"></i> Professional bonding certificate</li>
-                        <li><i class="fas fa-check"></i> Background verified staff</li>
-                        <li><i class="fas fa-check"></i> Red Cross certified</li>
-                        <li><i class="fas fa-check"></i> Security cleared personnel</li>
-                        <li><i class="fas fa-check"></i> All docs provided upfront</li>
+                        <li><i class="fas fa-check"></i> Private lifeguarding &amp; event coverage</li>
+                        <li><i class="fas fa-check"></i> Bespoke swim instruction, all ages</li>
+                        <li><i class="fas fa-check"></i> Adaptive instruction &amp; special needs</li>
+                    </ul>
+                </div>
+
+                <div class="coverage-card">
+                    <h3><i class="fas fa-earth-americas"></i> Regional Network</h3>
+                    <p>The same standard, further afield</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> San Fernando Valley &amp; West LA</li>
+                        <li><i class="fas fa-check"></i> Hollywood &amp; Central LA</li>
+                        <li><i class="fas fa-check"></i> Orange County &amp; La Jolla</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Private Residence Coverage -->
-    <section class="services-section" id="private-estates">
+    <!-- A note from Jasper — first person, warm close -->
+    <section class="about-section" id="note-from-jasper">
         <div class="container">
-            <div class="section-header">
-                <div class="section-badge">Private Residence Coverage</div>
-                <h2>Your Home. Fully Protected.</h2>
-                <p class="section-description">
-                    When you engage 805 LifeGuard for your home, our insurance travels with us. 
-                    Your property and everyone on it is protected from arrival to departure.
-                </p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-content">
-                        <h3 class="service-title">Pool Parties &amp; Family Events</h3>
-                        <p class="service-description">Guests, family members, and your property fully covered for private gatherings of any size.</p>
-                        <div class="service-features">
-                            <span class="feature-tag">Property Damage</span>
-                            <span class="feature-tag">Personal Injury</span>
-                            <span class="feature-tag">All Ages</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-content">
-                        <h3 class="service-title">Daily &amp; Recurring Coverage</h3>
-                        <p class="service-description">Ongoing coverage for regular service arrangements — daily lifeguard coverage and swimming instruction sessions.</p>
-                        <div class="service-features">
-                            <span class="feature-tag">Regular Coverage</span>
-                            <span class="feature-tag">Instruction Sessions</span>
-                            <span class="feature-tag">All Schedules</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-content">
-                        <h3 class="service-title">Corporate &amp; Special Occasions</h3>
-                        <p class="service-description">Executive entertaining, corporate retreats, weddings, and milestone celebrations at your private residence.</p>
-                        <div class="service-features">
-                            <span class="feature-tag">Corporate Events</span>
-                            <span class="feature-tag">Special Occasions</span>
-                            <span class="feature-tag">All Venues</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- HOA Coverage -->
-    <section class="about-section" id="hoa">
-        <div class="container">
-            <div class="about-content">
+            <div class="about-content single-column">
                 <div class="about-text">
-                    <div class="section-badge">HOA &amp; Community Coverage</div>
-                    <h2>Community Pools. Complete Confidence.</h2>
+                    <div class="section-badge">A Note from Jasper</div>
+                    <h2>Why I Still Get in the Water</h2>
                     <p class="lead-text">
-                        Every HOA partner receives a certificate of insurance naming the association as 
-                        additional insured before a single shift begins.
+                        "Every family deserves to enjoy their pool with complete peace of
+                        mind. My role isn't just about safety — it's about creating an
+                        environment where memories are made, confidence is built, and the
+                        joy of swimming can be experienced without worry."
                     </p>
                     <p>
-                        Our $5,000,000 excess liability option exists precisely for the communities whose 
-                        standards demand it. HOA boards, property management companies, and residents 
-                        are all protected under our comprehensive coverage.
+                        "People sometimes ask why I still teach, when the firm could run
+                        without me on the deck. The honest answer is that I don't know how
+                        to hold a team to a standard I've stopped keeping myself. The
+                        moment I'm only reading reports, I've lost the thing that made
+                        this work worth building."
                     </p>
-                    <div class="about-features">
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-building"></i></div>
-                            <div class="feature-content">
-                                <h4>HOA Additional Insured</h4>
-                                <p>Named on both $1M general liability and $5M excess policies</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-map-marker-alt"></i></div>
-                            <div class="feature-content">
-                                <h4>Communities We Serve</h4>
-                                <p>Hidden Hills, Westlake Village, Calabasas, Beverly Hills, Manhattan Beach, Newport Beach &amp; more</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-handshake"></i></div>
-                            <div class="feature-content">
-                                <h4>Board Indemnification</h4>
-                                <p>805 LifeGuard indemnifies the HOA from claims arising from our negligence</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-file-contract"></i></div>
-                            <div class="feature-content">
-                                <h4>Board Documentation</h4>
-                                <p>All credentials provided for board records before service commencement</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-images">
-                    <picture>
-                        <img src="/images/hoa/hoa-community-pool-800x600.jpg" alt="HOA community pool coverage" class="about-img primary" loading="lazy">
-                    </picture>
+                    <p>
+                        "It also happens to be the best part of the job. A child who was
+                        afraid of the deep end in June, swimming its length in August.
+                        A parent at their own party, actually enjoying it, because someone
+                        competent has the water. That is the whole business, in two
+                        pictures."
+                    </p>
+                    <p>
+                        "If you're considering us, reach out directly. I read every
+                        consultation request myself."
+                    </p>
+                    <p>
+                        <strong>Jasper van der Zwaan</strong><br>
+                        Founder &amp; Managing Director<br>
+                        <a href="mailto:jasper@805lifeguard.com">jasper@805lifeguard.com</a><br>
+                        <a href="tel:+18053676432">(805) 367-6432</a>
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Certifications -->
-    <section class="coverage-section" id="certifications">
+    <!-- Quiet CTA -->
+    <section class="consultation-section" id="reach-jasper">
         <div class="container">
-            <div class="section-header">
-                <div class="section-badge">Professional Certifications</div>
-                <h2>Credentials That Protect Your Family</h2>
-                <p class="section-description">
-                    Insurance protects your property. Our certifications protect the people in your pool. 
-                    Every team member holds current credentials — renewed on schedule, without exception.
-                </p>
-            </div>
-            <div class="coverage-grid">
-                <div class="coverage-card">
-                    <h3><i class="fas fa-first-aid"></i> Red Cross Lifeguard</h3>
-                    <p>Current Certification</p>
-                    <ul>
-                        <li><i class="fas fa-check"></i> Advanced water rescue techniques</li>
-                        <li><i class="fas fa-check"></i> Emergency response protocols</li>
-                        <li><i class="fas fa-check"></i> Renewed on schedule</li>
-                        <li><i class="fas fa-check"></i> Continuing education</li>
-                    </ul>
-                </div>
-                <div class="coverage-card featured">
-                    <h3><i class="fas fa-heartbeat"></i> CPR / AED</h3>
-                    <p>Professional Rescuer Level</p>
-                    <ul>
-                        <li><i class="fas fa-check"></i> Advanced cardiac response</li>
-                        <li><i class="fas fa-check"></i> Respiratory emergency protocols</li>
-                        <li><i class="fas fa-check"></i> Clinical-grade standard</li>
-                        <li><i class="fas fa-check"></i> Current certification</li>
-                    </ul>
-                </div>
-                <div class="coverage-card">
-                    <h3><i class="fas fa-swimmer"></i> Water Safety Instructor</h3>
-                    <p>WSI — All Levels</p>
-                    <ul>
-                        <li><i class="fas fa-check"></i> All ages &amp; ability levels</li>
-                        <li><i class="fas fa-check"></i> Special needs aquatic instruction</li>
-                        <li><i class="fas fa-check"></i> Adaptive techniques certified</li>
-                        <li><i class="fas fa-check"></i> Background verified</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Documentation -->
-    <section class="services-section" id="documentation">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">Documentation &amp; Verification</div>
-                <h2>Everything in Writing. Before We Arrive.</h2>
-                <p class="section-description">
-                    Clients at this level do not take assurances on faith. Every document below is 
-                    provided in full before service begins — at no charge, without being asked twice.
-                </p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-content">
-                        <h3 class="service-title">Insurance Certificates</h3>
-                        <p class="service-description">Certificate of Insurance for general liability ($1M) and excess liability ($5M), with additional insured endorsements for homeowners, HOA boards, and property managers.</p>
-                        <div class="service-features">
-                            <span class="feature-tag">General Liability</span>
-                            <span class="feature-tag">Excess Liability</span>
-                            <span class="feature-tag">Additional Insured</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-content">
-                        <h3 class="service-title">Licensing &amp; Bonding</h3>
-                        <p class="service-description">California Business License, Professional Bonding Certificate, and all applicable state licensing documentation provided before service commencement.</p>
-                        <div class="service-features">
-                            <span class="feature-tag">Business License</span>
-                            <span class="feature-tag">Bonding Certificate</span>
-                            <span class="feature-tag">State Licensed</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-content">
-                        <h3 class="service-title">Certifications &amp; Background</h3>
-                        <p class="service-description">Current Red Cross Lifeguard, CPR/AED, WSI, and Special Needs certifications with valid expiry dates, plus background check verification summary.</p>
-                        <div class="service-features">
-                            <span class="feature-tag">Red Cross Certs</span>
-                            <span class="feature-tag">Background Check</span>
-                            <span class="feature-tag">Security Cleared</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section" id="contact">
-        <div class="container">
-            <div class="cta-content">
-                <div class="section-badge">Request Documentation</div>
-                <h2>Your Complete Credentials Package</h2>
+            <div class="consultation-content">
+                <div class="section-badge gold">Continue the Conversation</div>
+                <h2>Speak with Jasper</h2>
                 <p>
-                    Contact us and we will prepare a complete credentials package tailored to your property, 
-                    community, or organisation's specific requirements. All documentation provided before 
-                    service commencement — without exception.
+                    For lessons, private lifeguarding, event coverage, or a conversation
+                    about what your household actually needs — the founder's line is the
+                    same one on every page of this site.
                 </p>
-                <div class="cta-buttons">
-                    <a href="contact" class="btn btn-primary">
-                        <i class="fas fa-file-contract"></i>
-                        Request Package
-                    </a>
-                    <a href="tel:+18053676432" class="btn btn-secondary">
-                        <i class="fas fa-phone"></i>
-                        (805) 367-6432
-                    </a>
-                </div>
+                <p style="margin-top: 1rem;">
+                    <a href="mailto:jasper@805lifeguard.com">jasper@805lifeguard.com</a>
+                    &nbsp;·&nbsp; <a href="tel:+18053676432">(805) 367-6432</a>
+                </p>
             </div>
         </div>
     </section>
 
-
-        <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -978,79 +945,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         (function() {
             'use strict';
             
-            // Fast carousel slide background setup with intelligent fallback
-            function initCarouselBackgrounds() {
-                const slides = document.querySelectorAll('.carousel-slide');
-                const isMobile = window.innerWidth <= 768;
-                const isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
-                
-                console.log('805 LifeGuard: Setting up pool cleaning carousel backgrounds. Width:', window.innerWidth, 'Mobile:', isMobile, 'Tablet:', isTablet);
-                console.log('805 LifeGuard: Found', slides.length, 'carousel slides');
-                
-                slides.forEach(function(slide, index) {
-                    const desktopSrc = slide.dataset.bgDesktop;
-                    const tabletSrc = slide.dataset.bgTablet;
-                    const mobileSrc = slide.dataset.bgMobile;
-                    
-                    console.log('805 LifeGuard: Slide', index, 'sources:', {
-                        desktop: desktopSrc,
-                        tablet: tabletSrc,
-                        mobile: mobileSrc
-                    });
-                    
-                    // Smart fallback function
-                    function tryImageSources(sources, slideElement, slideIndex) {
-                        if (sources.length === 0) {
-                            console.error('805 LifeGuard: No more image sources to try for slide', slideIndex);
-                            return;
-                        }
-                        
-                        const currentSrc = sources[0];
-                        const remainingSources = sources.slice(1);
-                        
-                        const testImg = new Image();
-                        testImg.onload = function() {
-                            console.log('805 LifeGuard: Image loaded successfully:', currentSrc);
-                            slideElement.style.backgroundImage = 'url(' + currentSrc + ')';
-                            slideElement.style.backgroundSize = 'cover';
-                            slideElement.style.backgroundPosition = 'center';
-                            slideElement.style.backgroundRepeat = 'no-repeat';
-                        };
-                        testImg.onerror = function() {
-                            console.warn('805 LifeGuard: Failed to load image:', currentSrc, '- trying next fallback');
-                            tryImageSources(remainingSources, slideElement, slideIndex);
-                        };
-                        testImg.src = currentSrc;
-                    }
-                    
-                    // Determine priority order based on device
-                    let imagePriority;
-                    if (isMobile) {
-                        imagePriority = [mobileSrc, tabletSrc, desktopSrc].filter(Boolean);
-                    } else if (isTablet) {
-                        imagePriority = [tabletSrc, desktopSrc, mobileSrc].filter(Boolean);
-                    } else {
-                        imagePriority = [desktopSrc, tabletSrc, mobileSrc].filter(Boolean);
-                    }
-                    
-                    console.log('805 LifeGuard: Trying images for slide', index, 'in order:', imagePriority);
-                    tryImageSources(imagePriority, slide, index);
-                });
-                
-                // Ensure first slide is active
-                const firstSlide = document.querySelector('.carousel-slide');
-                if (firstSlide) {
-                    firstSlide.classList.add('active');
-                    console.log('805 LifeGuard: First slide marked as active');
-                }
-            }
-            
-            // Also run on resize
-            function handleResize() {
-                console.log('805 LifeGuard: Window resized, updating carousel backgrounds');
-                initCarouselBackgrounds();
-            }
-            
             // Fast mobile navigation fallback
             function initMobileNav() {
                 const toggle = document.getElementById('menuToggle');
@@ -1111,29 +1005,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             // Initialize immediately
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', function() {
-                    initCarouselBackgrounds();
                     initMobileNav();
                     initLogoEntrance();
                     
                     // Add resize listener
-                    window.addEventListener('resize', handleResize);
                 });
             } else {
-                initCarouselBackgrounds();
                 initMobileNav();
                 initLogoEntrance();
                 
                 // Add resize listener
-                window.addEventListener('resize', handleResize);
             }
             
             // Also run immediately for any case
             setTimeout(function() {
-                initCarouselBackgrounds();
             }, 100);
         })();
     </script>
-    
+
     <!-- Deferred Main JavaScript -->
     <script>
         // Load main application after critical content
@@ -1142,7 +1031,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             script.src = 'js/luxury-app.js';
             script.async = true;
             script.onload = function() {
-                console.log('805 LifeGuard Pool Cleaning Page loaded successfully');
             };
             document.head.appendChild(script);
         }
@@ -1154,6 +1042,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             setTimeout(loadMainScript, 500);
         }
     </script>
+
     <!-- GA4 Custom Event Tracking - phone, email, portal clicks -->
     <script>
     (function() {
