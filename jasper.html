@@ -61,11 +61,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             allow_ad_personalization_signals: false
         });
     </script>
-    
+
     <!-- SEO Meta Tags -->
-    <title>About Jasper & Team - 805 LifeGuard Premier Aquatic Services | Professional Excellence Since 2016</title>
-    <meta name="description" content="Meet Jasper van der Zwaan and the 805 LifeGuard professional team. American Red Cross certified, serving Southern California's most distinguished clientele with unparalleled aquatic safety expertise.">
-    <meta name="keywords" content="Jasper van der Zwaan, 805 LifeGuard founder, professional lifeguard, American Red Cross certified, swimming instructor, aquatic safety expert, special needs swimming, Southern California lifeguard, private pool safety">
+    <title>Jasper van der Zwaan — Founder | 805 LifeGuard</title>
+    <meta name="description" content="Jasper van der Zwaan founded 805 LifeGuard in 2016 — American Red Cross certified lifeguard, Water Safety Instructor, and adaptive-instruction specialist serving Southern California's distinguished families.">
+    <meta name="keywords" content="Jasper van der Zwaan, 805 LifeGuard founder, private lifeguard, Water Safety Instructor, adaptive swim instruction, special needs swimming, Thousand Oaks, Westlake Village, Conejo Valley, Southern California">
     <meta name="author" content="805 LifeGuard LLC">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="language" content="en-US">
@@ -73,29 +73,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta name="geo.placename" content="Thousand Oaks, California">
     <meta name="geo.position" content="34.1706;-118.8376">
     <meta name="ICBM" content="34.1706, -118.8376">
-    
+
     <!-- Open Graph Meta Tags -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="About Jasper & Team - 805 LifeGuard Professional Excellence">
-    <meta property="og:description" content="Meet the professional team behind Southern California's premier aquatic safety services. Led by founder Jasper van der Zwaan, certified and serving Southern California since 2016.">
-    <meta property="og:url" content="https://805lifeguard.com/about">
+    <meta property="og:type" content="profile">
+    <meta property="profile:first_name" content="Jasper">
+    <meta property="profile:last_name" content="van der Zwaan">
+    <meta property="og:title" content="Jasper van der Zwaan — Founder &amp; Managing Director | 805 LifeGuard">
+    <meta property="og:description" content="The founder behind 805 LifeGuard: competitive swimming, Red Cross certification, adaptive instruction, and a decade of founder-led service in the Conejo Valley.">
+    <meta property="og:url" content="https://805lifeguard.com/jasper">
     <meta property="og:site_name" content="805 LifeGuard">
     <meta property="og:image" content="https://805lifeguard.com/images/about/about-founder-jasper-og-1200x630.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Jasper van der Zwaan - Founder of 805 LifeGuard">
+    <meta property="og:image:alt" content="Jasper van der Zwaan, Founder of 805 LifeGuard">
     <meta property="og:locale" content="en_US">
-    
+
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="About Jasper & Team - 805 LifeGuard">
-    <meta name="twitter:description" content="Professional aquatic safety expertise serving Southern California's distinguished clientele since 2016.">
-    <meta name="twitter:image" content="https://805lifeguard.com/images/about/about-founder-jasper-twitter-1200x600.jpg">
-    <meta name="twitter:image:alt" content="Jasper van der Zwaan - Professional Lifeguard and Founder">
-    
+    <meta name="twitter:title" content="Jasper van der Zwaan — Founder &amp; Managing Director | 805 LifeGuard">
+    <meta name="twitter:description" content="The founder behind 805 LifeGuard: competitive swimming, Red Cross certification, adaptive instruction, and a decade of founder-led service.">
+    <meta name="twitter:image" content="https://805lifeguard.com/images/about/about-founder-jasper-og-1200x630.jpg">
+    <meta name="twitter:image:alt" content="Jasper van der Zwaan, Founder of 805 LifeGuard">
+
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://805lifeguard.com/about">
-    
+    <link rel="canonical" href="https://805lifeguard.com/jasper">
+
     <!-- Critical CSS - Inlined for fastest loading -->
     <style>
         /* Critical path CSS for immediate rendering */
@@ -163,33 +165,69 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             padding: 0 1.5rem;
         }
         
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: var(--header-total-height);
-            overflow: hidden;
+        
+        
+        
+        
+        /* BIO PAGE TEMPLATE — single-column editorial measure for the two
+           text-only about sections (bio + note). The shared .about-content
+           grid expects an image column these sections deliberately omit. */
+        .about-content.single-column {
+            display: block;
+            max-width: 760px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .about-content.single-column .about-text {
+            max-width: none;
         }
         
-        /*
-         * Carousel imagery (.hero-carousel, .carousel-slide,
-         * .carousel-slide.active, .carousel-slide::before,
-         * .hero-overlay, .hero-content) is owned by luxury-theme.css.
-         * Page-level overrides previously declared here drifted from
-         * the design system (top: 0 instead of navbar-inset; hardcoded
-         * background-position: center instead of var(--focal-point,
-         * center)) and have been removed. See DESIGN-SYSTEM.md
-         * "Hero carousel focal points" for the convention.
-         */
-        
+        /* BIO PAGE TEMPLATE — no hero on this page by design, so the opening
+           section must clear the fixed header itself. */
+        .about-section.page-opening {
+            padding-top: calc(var(--header-total-height) + 4rem);
+        }
         @media (max-width: 768px) {
-            .hero { 
-                padding-top: calc(var(--header-navbar-height) + 1rem);
+            .about-section.page-opening {
+                padding-top: calc(var(--header-navbar-height) + 2.5rem);
             }
         }
+        
+        /* BIO PAGE TEMPLATE — on this no-hero page the NAME must lead on
+           mobile. The sitewide .about-images{order:-1} flip would open the
+           page with two context-free photos and bury the H1 below the fold.
+           Restore source order (text first, images after) with breathing room. */
+        @media (max-width: 768px) {
+            .about-section.page-opening .about-images {
+                order: 0;
+                margin-top: 2.5rem;
+            }
+        }
+        
+        /* JASPER PAGE — founder assets are 4:3 (800x600); keep the sitewide
+           default rather than michael.html's 4:5 override. */
+
+        /* BIO-PAGE TEMPLATE — inline text links in biography prose and coverage
+           lists. The sitewide gold treatment (luxury-theme.css) is scoped to
+           .section-description a and .consultation-section p a, which do not
+           cover bio-page containers; without this, outbound links render as
+           browser blue and break the restraint register. Same deep gold,
+           AA 4.97:1 on white. Page-scoped: no shared-CSS change, no purge. */
+        .about-text p a,
+        .about-text li a,
+        .coverage-card li a {
+            color: #836C4F;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            transition: var(--transition-normal);
+        }
+        .about-text p a:hover,
+        .about-text li a:hover,
+        .coverage-card li a:hover {
+            color: var(--color-secondary-darkest);
+        }
     </style>
-    
+
     <!-- Enhanced Performance: DNS Prefetch and Preconnect -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -197,62 +235,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    
-    <!--
-        Critical Resource Preloading.
 
-        LCP image (slide 1 of hero carousel): three media-query-scoped
-        preloads. The browser evaluates the media attribute the same
-        way CSS evaluates @media rules, so exactly one variant is
-        fetched per visit. The breakpoints stay in sync with the
-        viewport breakpoints used by CarouselController.updateSlideBackground
-        in js/luxury-app.js.
-
-        Why not imagesrcset? When imagesizes="100vw" combines with a
-        device pixel ratio (e.g. iPhone DPR 3 means 390 CSS px = 1170
-        effective px), the browser picks the largest variant for
-        preload while CSS picks the smallest for display. The two
-        diverge, causing "preloaded but not used" warnings on mobile.
-        Media-query preloads use CSS-pixel widths the same way CSS
-        does, so they always agree.
-
-        We preload only the JPG. The carousel slides reference JPG via
-        background-image (not WebP), so a WebP preload was being
-        downloaded but never displayed. AVIF/WebP format routing is
-        deferred to Session D of the performance design system effort.
-
-        Slides 2-5 are intentionally NOT preloaded. CarouselController
-        in luxury-app.js handles deferred preloading of subsequent
-        slides via Utils.preloadImage() after the LCP image is ready.
-
-        fetchpriority="high" signals to the browser that this is the
-        most important image on the page.
-
-        See PERFORMANCE-DESIGN-SYSTEM.md Convention 2 for the full
-        rationale.
-    -->
-    <link rel="preload" as="image"
-          media="(max-width: 768px)"
-          href="/images/about/about-01-team-hero-768x960.jpg"
-          fetchpriority="high">
-    <link rel="preload" as="image"
-          media="(min-width: 769px) and (max-width: 1024px)"
-          href="/images/about/about-01-team-hero-1024x576.jpg"
-          fetchpriority="high">
-    <link rel="preload" as="image"
-          media="(min-width: 1025px)"
-          href="/images/about/about-01-team-hero-1920x1080.jpg"
-          fetchpriority="high">
-    <link rel="preload" as="image" href="/images/logos/805-lifeguard-logo.png" type="image/png">
+    <!-- Critical Resource Preloading -->
+    <link rel="preload" as="image" href="/images/logos/805-lifeguard-logo.png">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    
+
     <!-- Optimized Typography - Async Loading -->
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap"></noscript>
-    
+
     <!-- Font Awesome Icons - Deferred -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-    
+
     <!-- Main CSS - Deferred -->
     <link rel="preload" href="/css/luxury-theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/css/luxury-theme.css"></noscript>
@@ -262,7 +256,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <script src="/js/cookie-consent.js" defer></script>
     <!-- End Cookie Consent -->
 
-    
+
     <!-- Favicon and App Icons -->
     <link rel="icon" type="image/x-icon" href="/images/favicon/favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
@@ -273,47 +267,112 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta name="msapplication-TileColor" content="#1A1A1A">
     <meta name="msapplication-config" content="/browserconfig.xml">
     <meta name="theme-color" content="#1A1A1A">
-    
-    <!-- Structured Data (JSON-LD) -->
+
+    <!-- ───────────────────────────────────────────────────────────────────── -->
+    <!-- Structured Data — ProfilePage → Person (no @id, per site standard) + BreadcrumbList -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "AboutPage",
+      "@type": "ProfilePage",
+      "name": "Jasper van der Zwaan — Founder | 805 LifeGuard",
+      "url": "https://805lifeguard.com/jasper",
       "mainEntity": {
         "@type": "Person",
         "name": "Jasper van der Zwaan",
         "jobTitle": "Founder & Managing Director",
-        "worksFor": {
-          "@type": "LocalBusiness",
-          "name": "805 LifeGuard",
-          "description": "Premier aquatic safety and instruction services for Southern California's distinguished clientele"
-        },
-        "hasCredential": [
-          {
-            "@type": "EducationalOccupationalCredential",
-            "credentialCategory": "American Red Cross Lifeguard Certification",
-            "dateEarned": "2016"
-          },
-          {
-            "@type": "EducationalOccupationalCredential", 
-            "credentialCategory": "CPR/AED for Professional Rescuers"
-          },
-          {
-            "@type": "EducationalOccupationalCredential",
-            "credentialCategory": "Water Safety Instructor (WSI) Certification"
-          }  
-        ],
+        "email": "mailto:jasper@805lifeguard.com",
+        "telephone": "+18053676432",
+        "image": "https://805lifeguard.com/images/about/about-founder-jasper-og-1200x630.jpg",
         "knowsAbout": [
-          "Aquatic Safety",
-          "Swimming Instruction", 
-          "Special Needs Swimming",
-          "Pool Safety Management",
-          "Emergency Response"
+          "Private lifeguarding",
+          "Water safety",
+          "Swim instruction",
+          "Adaptive swim instruction for individuals with special needs",
+          "Aquatic event safety management",
+          "Pool safety for private residences"
         ],
-        "yearsOfExperience": "7+"
+        "knowsLanguage": ["English"],
+        "homeLocation": {
+          "@type": "Place",
+          "name": "Thousand Oaks, California"
+        },
+        "areaServed": [
+          { "@type": "Place", "name": "Thousand Oaks, California" },
+          { "@type": "Place", "name": "Westlake Village, California" },
+          { "@type": "Place", "name": "Agoura Hills, California" },
+          { "@type": "Place", "name": "Newbury Park, California" },
+          { "@type": "Place", "name": "Southern California" }
+        ],
+        "founder": true,
+        "worksFor": {
+          "@type": "Organization",
+          "name": "805 LifeGuard",
+          "alternateName": "805 LifeGuard LLC",
+          "url": "https://805lifeguard.com",
+          "telephone": "+18053676432",
+          "foundingDate": "2016",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Thousand Oaks",
+            "addressRegion": "CA",
+            "addressCountry": "US"
+          }
+        },
+        "description": "Founder and Managing Director of 805 LifeGuard. American Red Cross certified in Lifeguarding, CPR/AED, and Water Safety Instruction, with advanced certification in adaptive aquatic instruction for individuals with special needs. Founded the firm in 2016 to bring elite-program standards to private clients across the Conejo Valley and Southern California."
       },
-      "description": "Learn about Jasper van der Zwaan and the professional team at 805 LifeGuard, providing premier aquatic safety services to Southern California's most distinguished clientele since 2016.",
-      "url": "https://805lifeguard.com/about"
+      "mainEntityOfPage": "https://805lifeguard.com/jasper"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "805 LifeGuard", "item": "https://805lifeguard.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Jasper van der Zwaan", "item": "https://805lifeguard.com/jasper" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does the founder still work with clients directly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Jasper has never stopped working in the water. Lessons, event coverage, house calls — the standard the team is held to is the one he sets himself, in person."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What certifications does Jasper hold?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "American Red Cross Lifeguarding, CPR/AED for Professional Rescuers, and Water Safety Instruction — maintained without a lapse since the firm was founded."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does 805 LifeGuard teach swimmers with special needs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Advanced certification in adaptive aquatic instruction for individuals with special needs and physical challenges — a specialism, not an accommodation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is 805 LifeGuard licensed, bonded, and insured?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fully licensed for private-property work, bonded, and comprehensively insured — with every member of the team background-checked before a first shift."
+          }
+        }
+      ]
     }
     </script>
 </head>
@@ -322,6 +381,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N6FNFNPD"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+
     <!-- Enhanced Enterprise Header with Perfect Visibility -->
     <header class="header" id="header" role="banner">
         <!-- Top Bar -->
@@ -402,12 +462,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
                 
                 <nav class="nav-overlay-menu" role="navigation" aria-label="Main menu">
-                    <a href="about" class="overlay-nav-link active">About</a>
+                    <a href="about" class="overlay-nav-link">About</a>
                     <a href="services" class="overlay-nav-link">Services</a>
                     <a href="pool-cleaning" class="overlay-nav-link">Pool Cleaning</a>
                     <a href="hoa" class="overlay-nav-link">HOA Services</a>
                     <a href="portfolio" class="overlay-nav-link">Portfolio</a>
                     <a href="testimonials" class="overlay-nav-link">Testimonials</a>
+                    <a href="careers" class="overlay-nav-link">Careers</a>
                     <a href="faq" class="overlay-nav-link">FAQ</a>
                 </nav>
                 
@@ -438,209 +499,126 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </header>
 
-    <!-- Enhanced Hero Section (Clean Caruso Aesthetic) - Matching Homepage Layout -->
-    <section class="hero" role="banner" aria-label="About 805 LifeGuard">
-        <!--
-            Background Carousel.
-
-            Slide pattern follows the design system documented in
-            DESIGN-SYSTEM.md "Hero carousel focal points":
-            - No inline background-image (avoids double-fetch on mobile;
-              CarouselController in luxury-app.js reads data-bg-* and
-              applies the right variant per viewport)
-            - data-slide="0N" identifies the slide for any future
-              CSS targeting
-            - --focal-point inline declares per-image subject anchor
-              (only set when subject is off-center; centered subjects
-              use the var(--focal-point, center) fallback)
-            - Image paths are leading-slash absolute to match the
-              media-query-scoped preload tags in <head> (so the
-              browser cache satisfies both with the same URL)
-        -->
-        <div class="hero-carousel" id="heroCarousel">
-            <div class="carousel-slide active" data-slide="01" data-bg-desktop="/images/about/about-01-team-hero-1920x1080.jpg" data-bg-tablet="/images/about/about-01-team-hero-1024x576.jpg" data-bg-mobile="/images/about/about-01-team-hero-768x960.jpg" style="--focal-point: 50% 30%;" aria-label="Coach with two medal-winning young swimmers at poolside"></div>
-            <div class="carousel-slide" data-slide="02" data-bg-desktop="/images/about/about-02-founder-story-1920x1080.jpg" data-bg-tablet="/images/about/about-02-founder-story-1024x576.jpg" data-bg-mobile="/images/about/about-02-founder-story-768x960.jpg" aria-label="Founder Jasper van der Zwaan teaching a young swimmer"></div>
-            <div class="carousel-slide" data-slide="03" data-bg-desktop="/images/about/about-03-certifications-1920x1080.jpg" data-bg-tablet="/images/about/about-03-certifications-1024x576.jpg" data-bg-mobile="/images/about/about-03-certifications-768x960.jpg" style="--focal-point: 30% 50%;" aria-label="Certified beach lifeguard on duty with rescue tube"></div>
-            <div class="carousel-slide" data-slide="04" data-bg-desktop="/images/about/about-04-company-mission-1920x1080.jpg" data-bg-tablet="/images/about/about-04-company-mission-1024x576.jpg" data-bg-mobile="/images/about/about-04-company-mission-768x960.jpg" style="--focal-point: 55% 30%;" aria-label="Professional ocean lifeguard standing watch at the shoreline"></div>
-            <div class="carousel-slide" data-slide="05" data-bg-desktop="/images/about/about-05-excellence-track-record-1920x1080.jpg" data-bg-tablet="/images/about/about-05-excellence-track-record-1024x576.jpg" data-bg-mobile="/images/about/about-05-excellence-track-record-768x960.jpg" aria-label="Three medal-winning students celebrating with their swim coach"></div>
-        </div>
-        
-        <!-- Carousel Overlay -->
-        <div class="hero-overlay"></div>
-        
+    <!-- Page intent: founder profile. Editorial third person, restraint register,
+         no hero (the name leads), page ships DARK until leadership debut. -->
+    <!-- Page opening — founder introduction. No hero by design; the name leads. -->
+    <section class="about-section page-opening" id="jasper-intro">
         <div class="container">
-            <div class="hero-content">
-                <div class="section-badge">Professional Excellence</div>
-                <h1 class="hero-title">Meet Jasper & Our Distinguished Team</h1>
-                <p class="hero-subtitle">
-                    Led by founder Jasper van der Zwaan, since 2016 our team has brought American Red Cross certified 
-                    aquatic safety expertise to Southern California's most prestigious clientele.
-                </p>
-                
-                <div class="hero-buttons">
-                    <a href="contact" class="btn btn-primary" aria-label="Request private consultation">
-                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
-                        Request Consultation
-                    </a>
-                    <a href="services" class="btn btn-secondary" aria-label="View our services">
-                        <i class="fas fa-water" aria-hidden="true"></i>
-                        Our Services
-                    </a>
-                </div>
-                
-                <div class="hero-notice">
-                    <i class="fas fa-lock" aria-hidden="true"></i>
-                    All consultations are confidential and tailored to your unique requirements.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section - Matching Homepage Structure -->
-    <section class="about-section">
-        <div class="container">
-            <div class="about-content">
+            <div class="about-content single-column">
                 <div class="about-text">
                     <div class="section-badge">Our Founder</div>
-                    <h2>
-                        <span>Jasper van der Zwaan</span>
-                    </h2>
-                    <p class="lead-text">Founder & Managing Director</p>
-                    
-                    <p>
-                        From competitive swimming in his youth to becoming Southern California's most trusted 
-                        private aquatic safety professional, Jasper's journey has been defined by an unwavering 
-                        commitment to excellence and a genuine passion for water safety education.
+                    <h1>Jasper van der Zwaan</h1>
+                    <p class="lead-text">
+                        Founder &amp; Managing Director — and, a decade on, still the
+                        person most likely to be standing at the edge of your pool.
                     </p>
-                    
                     <p>
-                        Founded in 2016, 805 LifeGuard began with a simple yet ambitious mission: to provide 
-                        the same level of professional aquatic safety services that Jasper had experienced 
-                        during his training with elite swimming programs, but tailored specifically for private 
-                        clientele and exclusive community events.
+                        Jasper founded 805 LifeGuard in 2016 to bring the standards of
+                        elite competitive swimming to private clients: constant watch,
+                        current certification, and preparation that stays invisible
+                        because it is complete. American Red Cross certified in
+                        Lifeguarding, CPR/AED, and Water Safety Instruction, with advanced
+                        training in adaptive instruction for swimmers of every ability.
                     </p>
-                    
-                    <div class="about-features">
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-certificate"></i>
-                            </div>
-                            <div class="feature-content">
-                                <h4>American Red Cross Certified</h4>
-                                <p>Maintaining perfect certification records since 2016 with continuous advanced training</p>
-                            </div>
-                        </div>
-                        
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-heart"></i>
-                            </div>
-                            <div class="feature-content">
-                                <h4>Special Needs Expertise</h4>
-                                <p>Advanced certification in aquatic instruction for individuals with special needs and physical challenges</p>
-                            </div>
-                        </div>
-                        
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <div class="feature-content">
-                                <h4>Licensed & Bonded Professional</h4>
-                                <p>Fully licensed for private property services with comprehensive insurance coverage</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="callout-box">
-                        <blockquote>
-                            <i class="fas fa-quote-left"></i>
-                            "Every family deserves to enjoy their pool with complete peace of mind. My role isn't 
-                            just about safety—it's about creating an environment where memories are made, confidence 
-                            is built, and the joy of swimming can be experienced without worry."
-                            <cite>— Jasper van der Zwaan, Founder</cite>
-                        </blockquote>
-                    </div>
                 </div>
-                
+
                 <div class="about-images">
-                    <picture>
-                        <source srcset="/images/about/about-founder-jasper-professional-800x600.webp" type="image/webp">
-                        <img src="/images/about/about-founder-jasper-professional-800x600.jpg" alt="Jasper van der Zwaan - Founder & Managing Director of 805 LifeGuard" class="about-img primary" loading="lazy">
-                    </picture>
-                    
-                    <picture>
-                        <source srcset="/images/about/about-founder-jasper-action-800x600.webp" type="image/webp">
-                        <img src="/images/about/about-founder-jasper-action-800x600.jpg" alt="Jasper providing professional swimming instruction" class="about-img secondary" loading="lazy">
-                    </picture>
+                    <div class="about-image-container">
+                        <picture>
+                            <source srcset="/images/about/about-founder-jasper-professional-800x600.webp" type="image/webp">
+                            <img src="/images/about/about-founder-jasper-professional-800x600.jpg"
+                                 alt="Jasper van der Zwaan, Founder and Managing Director of 805 LifeGuard, in Thousand Oaks, California"
+                                 class="about-img primary" width="800" height="600"
+                                 fetchpriority="high" decoding="async">
+                        </picture>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Professional Credentials - Services Section Style -->
-    <section class="services-section">
+    <!-- What founder-led means — the value centerpiece -->
+    <section class="services-section" id="founder-led">
         <div class="container">
             <div class="section-header">
-                <div class="section-badge">Professional Excellence</div>
-                <h2>Certifications & Achievements</h2>
+                <div class="section-badge">Founder-Led</div>
+                <h2>What That Actually Means</h2>
                 <p class="section-description">
-                    Our commitment to excellence is demonstrated through continuous professional 
-                    development and the highest industry certifications.
+                    Plenty of firms say founder-led. At 805 LifeGuard it is a
+                    description of who is on the deck, not a line in a brochure.
                 </p>
             </div>
-            
+
             <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon-standalone">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <h3 class="service-title">He Still Teaches</h3>
+                        <p class="service-description">
+                            Jasper has never stopped working in the water. Lessons,
+                            event coverage, house calls — the standard the team is held
+                            to is the one he sets himself, in person.
+                        </p>
+                        <div class="service-features">
+                            <span class="feature-tag">In the Water</span>
+                            <span class="feature-tag">Since 2016</span>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="service-card">
                     <div class="service-content">
                         <div class="service-icon-standalone">
                             <i class="fas fa-certificate"></i>
                         </div>
-                        <h3 class="service-title">American Red Cross Excellence</h3>
+                        <h3 class="service-title">Certified, Continuously</h3>
                         <p class="service-description">
-                            Maintaining perfect certification records and participating in advanced training 
-                            programs since 2016. Current certifications include Lifeguard, CPR/AED, and Water Safety Instructor.
+                            American Red Cross Lifeguarding, CPR/AED for Professional
+                            Rescuers, and Water Safety Instruction — maintained without
+                            a lapse since the firm was founded.
                         </p>
                         <div class="service-features">
-                            <span class="feature-tag">Current Certification</span>
-                            <span class="feature-tag">Advanced Training</span>
-                            <span class="feature-tag">Perfect Record</span>
+                            <span class="feature-tag">Red Cross Certified</span>
+                            <span class="feature-tag">WSI</span>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="service-card">
                     <div class="service-content">
                         <div class="service-icon-standalone">
-                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-hands-holding-child"></i>
                         </div>
-                        <h3 class="service-title">Special Needs Specialist</h3>
+                        <h3 class="service-title">Every Swimmer, Included</h3>
                         <p class="service-description">
-                            Advanced certification in aquatic instruction for individuals with special needs and 
-                            physical challenges. Specialized training in adaptive swimming techniques.
+                            Advanced certification in adaptive aquatic instruction for
+                            individuals with special needs and physical challenges — a
+                            specialism, not an accommodation.
                         </p>
                         <div class="service-features">
                             <span class="feature-tag">Adaptive Techniques</span>
-                            <span class="feature-tag">Inclusive Instruction</span>
-                            <span class="feature-tag">Specialized Training</span>
+                            <span class="feature-tag">All Abilities</span>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="service-card">
                     <div class="service-content">
                         <div class="service-icon-standalone">
-                            <i class="fas fa-shield-alt"></i>
+                            <i class="fas fa-shield-halved"></i>
                         </div>
-                        <h3 class="service-title">Licensed & Bonded Professional</h3>
+                        <h3 class="service-title">Licensed, Bonded, Insured</h3>
                         <p class="service-description">
-                            Fully licensed for private property services with comprehensive insurance coverage 
-                            and professional bonding. Background checked and security cleared.
+                            Fully licensed for private-property work, bonded, and
+                            comprehensively insured — with every member of the team
+                            background-checked before a first shift.
                         </p>
                         <div class="service-features">
                             <span class="feature-tag">Licensed</span>
-                            <span class="feature-tag">Bonded & Insured</span>
-                            <span class="feature-tag">Background Checked</span>
+                            <span class="feature-tag">Bonded</span>
+                            <span class="feature-tag">Insured</span>
                         </div>
                     </div>
                 </div>
@@ -648,217 +626,172 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </section>
 
-    <!-- Company Values - Team Section Style -->
-    <section class="team-section">
+    <!-- Biography — editorial third person -->
+    <section class="about-section" id="about-jasper">
         <div class="container">
-            <div class="section-header">
-                <div class="section-badge">Our Foundation</div>
-                <h2>Values That Guide Every Service</h2>
-                <p class="section-description">
-                    These core principles shape every interaction and ensure that our services consistently 
-                    exceed the expectations of our distinguished clientele.
-                </p>
-            </div>
-            
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="member-image">
-                        <div style="background: linear-gradient(135deg, #B8A082, #A0876C); height: 300px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-shield-alt" style="font-size: 4rem; color: white;"></i>
-                        </div>
-                    </div>
-                    <div class="member-content">
-                        <h3>Unwavering Safety</h3>
-                        <p class="member-title">Core Principle</p>
-                        <p class="member-description">
-                            Safety is never compromised. Every protocol, every decision, and every action 
-                            is guided by our commitment to providing the highest level of aquatic safety.
-                        </p>
-                    </div>
+            <div class="about-content single-column">
+                <div class="about-text">
+                    <div class="section-badge">About Jasper</div>
+                    <h2>A Decade on the Deck</h2>
+                    <p>
+                        Jasper van der Zwaan came to private aquatics the long way —
+                        through competitive swimming, where the water is unforgiving
+                        about shortcuts and every stroke is examined. What stayed with
+                        him from those years was not the racing. It was the standard:
+                        the assumption that preparation is invisible when it is done
+                        properly, and conspicuous the moment it is not.
+                    </p>
+                    <p>
+                        He founded 805 LifeGuard in 2016 with a straightforward premise.
+                        The professionalism he had known inside elite swimming programs —
+                        the protocols, the certifications, the discipline of constant
+                        watch — existed almost nowhere in the private market. Families
+                        hosting a party at home, or booking lessons for a nervous
+                        five-year-old, were offered whoever happened to be available.
+                        He thought they deserved the same rigor as a competition pool.
+                    </p>
+                    <p>
+                        A decade on, that premise has held. Jasper maintains American Red
+                        Cross certification in Lifeguarding, CPR/AED for Professional
+                        Rescuers, and Water Safety Instruction, with advanced training in
+                        adaptive instruction for swimmers with special needs and physical
+                        challenges — work he considers among the most rewarding the
+                        profession offers. The firm is licensed for private-property
+                        service, bonded, and comprehensively insured, and every member of
+                        the team is background-checked before a first shift.
+                    </p>
+                    <p>
+                        The practice is built around the Conejo Valley — Thousand Oaks,
+                        Westlake Village, Agoura Hills, and Newbury Park — and reaches
+                        across Southern California through a network of regional teams.
+                        What has not changed is the part clients tend to remember: the
+                        founder still teaches, still guards, and still reads every
+                        consultation request himself.
+                    </p>
                 </div>
-                
-                <div class="team-member">
-                    <div class="member-image">
-                        <div style="background: linear-gradient(135deg, #B8A082, #A0876C); height: 300px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-user-secret" style="font-size: 4rem; color: white;"></i>
-                        </div>
-                    </div>
-                    <div class="member-content">
-                        <h3>Absolute Discretion</h3>
-                        <p class="member-title">Core Principle</p>
-                        <p class="member-description">
-                            Your privacy is paramount. Our team operates with the utmost discretion, 
-                            respecting the confidential nature of private property services.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="team-member">
-                    <div class="member-image">
-                        <div style="background: linear-gradient(135deg, #B8A082, #A0876C); height: 300px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-star" style="font-size: 4rem; color: white;"></i>
-                        </div>
-                    </div>
-                    <div class="member-content">
-                        <h3>Excellence in Service</h3>
-                        <p class="member-title">Core Principle</p>
-                        <p class="member-description">
-                            We don't just meet expectations—we exceed them. Every service is delivered 
-                            with meticulous attention to detail and professional excellence.
-                        </p>
+
+                <div class="about-images">
+                    <div class="about-image-container">
+                        <picture>
+                            <source srcset="/images/about/about-founder-training-800x600.webp" type="image/webp">
+                            <img src="/images/about/about-founder-training-800x600.jpg"
+                                 alt="Jasper van der Zwaan providing private swim instruction for 805 LifeGuard in Southern California"
+                                 class="about-img primary" width="800" height="600"
+                                 loading="lazy" decoding="async">
+                        </picture>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Statistics Section - Coverage Section Style -->
-    <section class="coverage-section">
+    <!-- Where the practice operates -->
+    <section class="coverage-section" id="where-jasper-serves">
         <div class="container">
             <div class="section-header">
-                <div class="section-badge">Track Record</div>
-                <h2>Professional Excellence by the Numbers</h2>
+                <div class="section-badge">Where He Works</div>
+                <h2>Home Water, and Beyond It</h2>
                 <p class="section-description">
-                    Our commitment to excellence is reflected in our consistent track record 
-                    of safety, satisfaction, and professional service delivery.
+                    The Conejo Valley is home base. The regional network extends the same
+                    standard across Southern California.
                 </p>
             </div>
-            
+
             <div class="coverage-grid">
                 <div class="coverage-card featured">
-                    <h3><i class="fas fa-calendar-alt"></i> Since 2016</h3>
-                    <p>Professional Experience</p>
+                    <h3><i class="fas fa-map-marker-alt"></i> Conejo Valley</h3>
+                    <p>Home base — founder-led service</p>
                     <ul>
-                        <li><i class="fas fa-check"></i> Established 2016</li>
-                        <li><i class="fas fa-check"></i> Continuous Service</li>
-                        <li><i class="fas fa-check"></i> Zero Safety Incidents</li>
+                        <li><i class="fas fa-check"></i> Thousand Oaks &amp; Westlake Village</li>
+                        <li><i class="fas fa-check"></i> Agoura Hills &amp; Newbury Park</li>
+                        <li><i class="fas fa-check"></i> Private residences &amp; estates</li>
                     </ul>
                 </div>
-                
+
                 <div class="coverage-card">
-                    <h3><i class="fas fa-users"></i> 500+</h3>
-                    <p>Swimming Lessons Provided</p>
+                    <h3><i class="fas fa-water"></i> The Work Itself</h3>
+                    <p>What a founder-led engagement covers</p>
                     <ul>
-                        <li><i class="fas fa-check"></i> All Ages & Abilities</li>
-                        <li><i class="fas fa-check"></i> Special Needs Expertise</li>
-                        <li><i class="fas fa-check"></i> Private & Group Sessions</li>
+                        <li><i class="fas fa-check"></i> Private lifeguarding &amp; event coverage</li>
+                        <li><i class="fas fa-check"></i> Bespoke swim instruction, all ages</li>
+                        <li><i class="fas fa-check"></i> Adaptive instruction &amp; special needs</li>
                     </ul>
                 </div>
-                
+
                 <div class="coverage-card">
-                    <h3><i class="fas fa-champagne-glasses"></i> 100+</h3>
-                    <p>Private Events Secured</p>
+                    <h3><i class="fas fa-earth-americas"></i> Regional Network</h3>
+                    <p>The same standard, further afield</p>
                     <ul>
-                        <li><i class="fas fa-check"></i> Luxury Pool Parties</li>
-                        <li><i class="fas fa-check"></i> Corporate Events</li>
-                        <li><i class="fas fa-check"></i> Family Gatherings</li>
-                    </ul>
-                </div>
-                
-                <div class="coverage-card">
-                    <h3><i class="fas fa-star"></i> 100%</h3>
-                    <p>Client Satisfaction Rate</p>
-                    <ul>
-                        <li><i class="fas fa-check"></i> 5-Star Reviews</li>
-                        <li><i class="fas fa-check"></i> Repeat Clients</li>
-                        <li><i class="fas fa-check"></i> Referral Rate</li>
+                        <li><i class="fas fa-check"></i> San Fernando Valley &amp; West LA</li>
+                        <li><i class="fas fa-check"></i> Hollywood &amp; Central LA</li>
+                        <li><i class="fas fa-check"></i> Orange County &amp; La Jolla</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials - Matching Homepage Style -->
-    <section class="testimonials-section">
+    <!-- A note from Jasper — first person, warm close -->
+    <section class="about-section" id="note-from-jasper">
         <div class="container">
-            <div class="section-header">
-                <div class="section-badge">Client Excellence</div>
-                <h2>Trusted by Distinguished Families</h2>
-                <p class="section-description">
-                    Hear from our valued clients about their experiences with our premium aquatic services.
-                </p>
-            </div>
-            
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>Jasper is exceptional with children and our boys adored their lessons, eagerly anticipating each session. For distinguished swimming instruction or professional event oversight, his expertise is unparalleled.</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-info">
-                            <div class="author-name">Sarah M.</div>
-                            <div class="author-location">Agoura Hills, CA</div>
-                        </div>
-                        <div class="testimonial-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card featured">
-                    <div class="testimonial-content">
-                        <p>His approach was both patient and engaging, yet appropriately firm with our strong-willed son. We are thoroughly pleased with the remarkable progress and impeccable professional service.</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-info">
-                            <div class="author-name">Michael R.</div>
-                            <div class="author-location">Newbury Park, CA</div>
-                        </div>
-                        <div class="testimonial-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>Jasper exceeded all expectations! I was able to thoroughly enjoy my son's celebration while maintaining complete confidence in the children's pool safety. We will certainly engage his services repeatedly.</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-info">
-                            <div class="author-name">Jennifer L.</div>
-                            <div class="author-location">Thousand Oaks, CA</div>
-                        </div>
-                        <div class="testimonial-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
+            <div class="about-content single-column">
+                <div class="about-text">
+                    <div class="section-badge">A Note from Jasper</div>
+                    <h2>Why I Still Get in the Water</h2>
+                    <p class="lead-text">
+                        "Every family deserves to enjoy their pool with complete peace of
+                        mind. My role isn't just about safety — it's about creating an
+                        environment where memories are made, confidence is built, and the
+                        joy of swimming can be experienced without worry."
+                    </p>
+                    <p>
+                        "People sometimes ask why I still teach, when the firm could run
+                        without me on the deck. The honest answer is that I don't know how
+                        to hold a team to a standard I've stopped keeping myself. The
+                        moment I'm only reading reports, I've lost the thing that made
+                        this work worth building."
+                    </p>
+                    <p>
+                        "It also happens to be the best part of the job. A child who was
+                        afraid of the deep end in June, swimming its length in August.
+                        A parent at their own party, actually enjoying it, because someone
+                        competent has the water. That is the whole business, in two
+                        pictures."
+                    </p>
+                    <p>
+                        "If you're considering us, reach out directly. I read every
+                        consultation request myself."
+                    </p>
+                    <p>
+                        <strong>Jasper van der Zwaan</strong><br>
+                        Founder &amp; Managing Director<br>
+                        <a href="mailto:jasper@805lifeguard.com">jasper@805lifeguard.com</a><br>
+                        <a href="tel:+18053676432">(805) 367-6432</a>
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Consultation CTA - Matching Homepage Style -->
-    <section class="consultation-section">
+    <!-- Quiet CTA -->
+    <section class="consultation-section" id="reach-jasper">
         <div class="container">
             <div class="consultation-content">
-                <div class="section-badge gold">Experience Excellence</div>
-                <h2>Schedule Your Private Consultation</h2>
+                <div class="section-badge gold">Continue the Conversation</div>
+                <h2>Speak with Jasper</h2>
                 <p>
-                    Discover how our professional aquatic services can enhance your family's pool experience 
-                    with the highest standards of safety, discretion, and personalized attention.
+                    For lessons, private lifeguarding, event coverage, or a conversation
+                    about what your household actually needs — the founder's line is the
+                    same one on every page of this site.
                 </p>
-                <a href="contact" class="btn btn-primary large">
-                    <i class="fas fa-calendar-alt"></i>
-                    Schedule Private Consultation
-                </a>
+                <p style="margin-top: 1rem;">
+                    <a href="mailto:jasper@805lifeguard.com">jasper@805lifeguard.com</a>
+                    &nbsp;·&nbsp; <a href="tel:+18053676432">(805) 367-6432</a>
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Footer - Matching Homepage -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -1009,22 +942,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         (function() {
             'use strict';
             
-            /*
-             * Carousel slide backgrounds are handled by
-             * CarouselController in js/luxury-app.js (which reads
-             * data-bg-desktop/tablet/mobile and applies the right
-             * variant per viewport via slide.style.backgroundImage).
-             *
-             * Previously this file declared its own initCarouselBackgrounds()
-             * that duplicated CarouselController.updateSlideBackground() —
-             * with extra inline-style overrides that also clobbered
-             * --focal-point. Removed for design system unification.
-             *
-             * Slide 01 LCP image is preloaded via the three media-query-scoped
-             * <link rel="preload"> tags in <head>, so it's cached and
-             * ready when luxury-app.js lazy-loads.
-             */
-            
             // Fast mobile navigation fallback
             function initMobileNav() {
                 const toggle = document.getElementById('menuToggle');
@@ -1087,14 +1004,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 document.addEventListener('DOMContentLoaded', function() {
                     initMobileNav();
                     initLogoEntrance();
+                    
+                    // Add resize listener
                 });
             } else {
                 initMobileNav();
                 initLogoEntrance();
+                
+                // Add resize listener
             }
+            
+            // Also run immediately for any case
+            setTimeout(function() {
+            }, 100);
         })();
     </script>
-    
+
     <!-- Deferred Main JavaScript -->
     <script>
         // Load main application after critical content
@@ -1103,7 +1028,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             script.src = 'js/luxury-app.js';
             script.async = true;
             script.onload = function() {
-                console.log('805 LifeGuard Optimized Application loaded successfully');
             };
             document.head.appendChild(script);
         }
@@ -1115,6 +1039,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             setTimeout(loadMainScript, 500);
         }
     </script>
+
     <!-- GA4 Custom Event Tracking - phone, email, portal clicks -->
     <script>
     (function() {
