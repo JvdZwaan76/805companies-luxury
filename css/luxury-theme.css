@@ -4181,13 +4181,6 @@ img {
     display: block;
 }
 
-/* Optimize font loading */
-@supports (font-display: swap) {
-    @font-face {
-        font-display: swap;
-    }
-}
-
 /* Optimize animations for better performance */
 @media (prefers-reduced-motion: no-preference) {
     * {
