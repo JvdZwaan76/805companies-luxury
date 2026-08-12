@@ -226,6 +226,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .coverage-card li a:hover {
             color: var(--color-secondary-darkest);
         }
+    
+        /* BIO-PAGE TEMPLATE — mobile section rhythm (2026-08-12, fix/bio-mobile-spacing):
+           sitewide section padding is 8rem/128px per side (luxury-theme.css ~2776) with
+           no mobile relief; adjacent sections stack ~256px of blank on a 390px viewport.
+           Halve the rhythm and relax header margin on mobile. Page-scoped: no shared-CSS
+           change, no purge. Candidate for sitewide promotion via C3 parity audit. */
+        @media (max-width: 768px) {
+            body section {
+                padding: var(--spacing-12) 0;
+            }
+            body .section-header {
+                margin-bottom: var(--spacing-12);
+            }
+            body .about-content {
+                gap: var(--spacing-6);
+            }
+        }
     </style>
 
     <!-- Enhanced Performance: DNS Prefetch and Preconnect -->
