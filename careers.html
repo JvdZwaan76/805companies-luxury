@@ -244,8 +244,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
     <!-- Critical Resource Preloading -->
-    <link rel="preload" as="image" href="/images/services/services-hero-lifeguarding-1920x1080.webp" type="image/webp">
-    <link rel="preload" as="image" href="/images/services/services-hero-lifeguarding-1920x1080.jpg" type="image/jpeg">
+    <link rel="preload" as="image"
+          media="(max-width: 768px)"
+          href="/images/services/services-hero-01-lifeguarding-768x960.webp"
+          type="image/webp"
+          fetchpriority="high">
+    <link rel="preload" as="image"
+          media="(min-width: 769px) and (max-width: 1023px)"
+          href="/images/services/services-hero-01-lifeguarding-1024x576.webp"
+          type="image/webp"
+          fetchpriority="high">
+    <link rel="preload" as="image"
+          media="(min-width: 1024px)"
+          href="/images/services/services-hero-01-lifeguarding-1920x1080.webp"
+          type="image/webp"
+          fetchpriority="high">
     <link rel="preload" as="image" href="/images/logos/805-lifeguard-logo.png">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
@@ -427,10 +440,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <section class="hero" role="banner" aria-label="805 LifeGuard Careers">
         <!-- Background -->
         <div class="hero-carousel" id="heroCarousel">
-            <div class="carousel-slide active" style="background-image: url('images/services/services-hero-lifeguarding-1920x1080.jpg')" data-bg-desktop="images/services/services-hero-lifeguarding-1920x1080.jpg" data-bg-tablet="images/services/services-hero-lifeguarding-1024x576.jpg" data-bg-mobile="images/services/services-hero-lifeguarding-768x432.jpg" aria-label="Professional lifeguarding team at work"></div>
-            <div class="carousel-slide" style="background-image: url('images/services/services-hero-instruction-1920x1080.jpg')" data-bg-desktop="images/services/services-hero-instruction-1920x1080.jpg" data-bg-tablet="images/services/services-hero-instruction-1024x576.jpg" data-bg-mobile="images/services/services-hero-instruction-768x432.jpg" aria-label="Private swim instruction"></div>
-            <div class="carousel-slide" style="background-image: url('images/services/services-hero-excellence-1920x1080.jpg')" data-bg-desktop="images/services/services-hero-excellence-1920x1080.jpg" data-bg-tablet="images/services/services-hero-excellence-1024x576.jpg" data-bg-mobile="images/services/services-hero-excellence-768x432.jpg" aria-label="Professional excellence and team standards"></div>
-            <div class="carousel-slide" style="background-image: url('images/services/services-hero-credentials-1920x1080.jpg')" data-bg-desktop="images/services/services-hero-credentials-1920x1080.jpg" data-bg-tablet="images/services/services-hero-credentials-1024x576.jpg" data-bg-mobile="images/services/services-hero-credentials-768x432.jpg" aria-label="Red Cross certifications and credentials"></div>
+            <div class="carousel-slide active" data-slide="01" data-bg-desktop="/images/services/services-hero-01-lifeguarding-1920x1080.webp" data-bg-tablet="/images/services/services-hero-01-lifeguarding-1024x576.webp" data-bg-mobile="/images/services/services-hero-01-lifeguarding-768x960.webp" style="--focal-point: center;" aria-label="Professional lifeguarding team at work"></div>
+            <div class="carousel-slide" data-slide="02" data-bg-desktop="/images/services/services-hero-02-instruction-1920x1080.webp" data-bg-tablet="/images/services/services-hero-02-instruction-1024x576.webp" data-bg-mobile="/images/services/services-hero-02-instruction-768x960.webp" style="--focal-point: 70% 50%;" aria-label="Private swim instruction"></div>
+            <div class="carousel-slide" data-slide="03" data-bg-desktop="/images/services/services-hero-03-excellence-1920x1080.webp" data-bg-tablet="/images/services/services-hero-03-excellence-1024x576.webp" data-bg-mobile="/images/services/services-hero-03-excellence-768x960.webp" style="--focal-point: 70% 50%;" aria-label="Professional excellence and team standards"></div>
+            <div class="carousel-slide" data-slide="04" data-bg-desktop="/images/services/services-hero-04-credentials-1920x1080.webp" data-bg-tablet="/images/services/services-hero-04-credentials-1024x576.webp" data-bg-mobile="/images/services/services-hero-04-credentials-768x960.webp" style="--focal-point: 25% 50%;" aria-label="Certified 805 LifeGuard professional with rescue equipment"></div>
         </div>
         <div class="hero-overlay"></div>
         <div class="container">
