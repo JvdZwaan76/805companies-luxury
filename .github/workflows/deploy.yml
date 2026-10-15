@@ -16,10 +16,8 @@ jobs:
         uses: actions/checkout@v4
         
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: 805companies-luxury
-          directory: ./
-          productionBranch: main
+          command: pages deploy ./ --project-name=805companies-luxury --branch=${{ github.ref_name }} --commit-dirty=true
